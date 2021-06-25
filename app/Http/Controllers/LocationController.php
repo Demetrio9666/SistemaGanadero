@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Race;
 
 use Illuminate\Http\Request;
+use App\Models\Location;
 
-class RaceController extends Controller
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class RaceController extends Controller
      */
     public function index()
     {
-        $raza = Race::all();
-        return view('race.index-race',compact('raza'));
-        //return $raza;
+        $ubicacion = Location::all();
+        return view('location.index-location',compact('ubicacion'));
     }
 
     /**
@@ -26,7 +25,7 @@ class RaceController extends Controller
      */
     public function create()
     {
-        return view('race.create-race');
+        return view('location.create-location');
     }
 
     /**
@@ -37,14 +36,14 @@ class RaceController extends Controller
      */
     public function store(Request $request)
     {
-        $raza = new Race();
+        $ubicacion = new Location();
         
-        $raza->description = $request->description;
-        $raza->percentage = $request->percentage;
-        $raza->save(); 
+        $ubicacion->location = $request->location;
+        $ubicacion->description = $request->description;
+        $ubicacion->save(); 
         
         //return redirect()->route();
-        return redirect('/confRaza');
+        return redirect('/confUbicacion');
     }
 
     /**
@@ -55,7 +54,7 @@ class RaceController extends Controller
      */
     public function show($id)
     {
-        return view('race.edit-race',compact('id'));
+        return view('location.edit-location',compact('id'));
     }
 
     /**
@@ -66,9 +65,8 @@ class RaceController extends Controller
      */
     public function edit($id)
     {
-        $raza = Race::findOrFail($id);
-        return view('race.edit-race', compact('raza'));
-        
+        $ubicacion = location::findOrFail($id);
+        return view('location.edit-location', compact('ubicacion'));
     }
 
     /**
@@ -80,11 +78,11 @@ class RaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $raza = Race::findOrFail($id);
-        $raza->description = $request->description;
-        $raza->percentage = $request->percentage;
-        $raza->save();
-        return redirect('/confRaza'); 
+        $ubicacion = Location::findOrFail($id);
+        $ubicacion->location = $request->location;
+        $ubicacion->description = $request->description;
+        $ubicacion->save(); 
+        return redirect('/confUbicacion'); 
     }
 
     /**
@@ -95,8 +93,8 @@ class RaceController extends Controller
      */
     public function destroy($id)
     {
-        $raza = Race::findOrFail($id);
-        $raza->delete();
-        return redirect('/confRaza')->with('eliminar','ok'); 
+        $ubicacion = Location::findOrFail($id);
+        $ubicacion->delete();
+        return redirect('/confUbicacion')->with('eliminar','ok'); 
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Race;
 
 use Illuminate\Http\Request;
+use APP\Models\Antibiotic;
 
-class RaceController extends Controller
+class AntibioticController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class RaceController extends Controller
      */
     public function index()
     {
-        $raza = Race::all();
-        return view('race.index-race',compact('raza'));
-        //return $raza;
+        $anti = Antibiotic::all();
+        return view('antibiotic.index-antibiotic',compact('anti'));
     }
 
     /**
@@ -26,7 +25,7 @@ class RaceController extends Controller
      */
     public function create()
     {
-        return view('race.create-race');
+        return view('antibiotic.create-antibiotic');
     }
 
     /**
@@ -37,14 +36,15 @@ class RaceController extends Controller
      */
     public function store(Request $request)
     {
-        $raza = new Race();
-        
-        $raza->description = $request->description;
-        $raza->percentage = $request->percentage;
-        $raza->save(); 
-        
+        $anti = new Antibiotic();
+        $anti->antibiotic = $request->antibiotic;
+        $anti->date_e = $request->date_e;
+        $anti->date_c = $request->date_c;
+        $anti->supplier = $request->supplier;
+        $anti->save(); 
+    
         //return redirect()->route();
-        return redirect('/confRaza');
+        return redirect('/confAnt');
     }
 
     /**
@@ -55,7 +55,7 @@ class RaceController extends Controller
      */
     public function show($id)
     {
-        return view('race.edit-race',compact('id'));
+        return view('antibiotic.edit-antibiotic',compact('id'));
     }
 
     /**
@@ -66,9 +66,8 @@ class RaceController extends Controller
      */
     public function edit($id)
     {
-        $raza = Race::findOrFail($id);
-        return view('race.edit-race', compact('raza'));
-        
+        $desp = Antibiotic::findOrFail($id);
+        return view('antibiotic.edit-antibiotic', compact('desp'));
     }
 
     /**
@@ -80,11 +79,13 @@ class RaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $raza = Race::findOrFail($id);
-        $raza->description = $request->description;
-        $raza->percentage = $request->percentage;
-        $raza->save();
-        return redirect('/confRaza'); 
+        $desp = Antibiotic::findOrFail($id);
+        $desp->antibiotic = $request->antibiotic;
+        $desp->date_e = $request->date_e;
+        $desp->date_c = $request->date_c;
+        $desp->supplier = $request->supplier;
+        $desp->save(); 
+        return redirect('/confAnt');
     }
 
     /**
@@ -95,8 +96,8 @@ class RaceController extends Controller
      */
     public function destroy($id)
     {
-        $raza = Race::findOrFail($id);
-        $raza->delete();
-        return redirect('/confRaza')->with('eliminar','ok'); 
+        $desp = Antibiotic::findOrFail($id);
+        $desp->delete();
+        return redirect('/confAnt')->with('eliminar','ok');
     }
 }

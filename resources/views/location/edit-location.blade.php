@@ -19,20 +19,20 @@
             <div class="image"></div>
             <div class="frm">
                 <h1>Editar ubicación</h1>
-                <form action=" {{route('confRaza.update',$raza->id)}}" method="POST">
+                <form action=" {{route('confUbicacion.update',$ubicacion->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="">Nombre de la Raza:</label>
-                        <input type="text" class="form-control" id="raza" name="description" value="{{$raza->description}}" >
+                        <label for="">Nombre de ubicación:</label>
+                        <input type="text" class="form-control" id="raza" name="location" value="{{$ubicacion->location}}" >
                     </div>
                     <div class="form-group">
-                        <label for="">Porcentaje:</label>
-                        <input type="int" class="form-control" id="porcentaje" name="percentage" value="{{$raza->percentage}}">
+                        <label for="">Descripción:</label>
+                        <input type="text" class="form-control" id="porcentaje" name="description" value="{{$ubicacion->description}}">
                     </div>          
                     <div class="form-group">
-                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confRaza')}}" >Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confRaza') }}" >Actualizar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confUbicacion')}}" >Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confUbicacion') }}" >Actualizar</button>
                     </div>
                 </form>
             </div>

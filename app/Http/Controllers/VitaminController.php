@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Race;
 
 use Illuminate\Http\Request;
 
-class RaceController extends Controller
+class VitaminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class RaceController extends Controller
      */
     public function index()
     {
-        $raza = Race::all();
-        return view('race.index-race',compact('raza'));
-        //return $raza;
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class RaceController extends Controller
      */
     public function create()
     {
-        return view('race.create-race');
+        //
     }
 
     /**
@@ -37,14 +34,7 @@ class RaceController extends Controller
      */
     public function store(Request $request)
     {
-        $raza = new Race();
-        
-        $raza->description = $request->description;
-        $raza->percentage = $request->percentage;
-        $raza->save(); 
-        
-        //return redirect()->route();
-        return redirect('/confRaza');
+        //
     }
 
     /**
@@ -55,7 +45,7 @@ class RaceController extends Controller
      */
     public function show($id)
     {
-        return view('race.edit-race',compact('id'));
+        //
     }
 
     /**
@@ -66,9 +56,7 @@ class RaceController extends Controller
      */
     public function edit($id)
     {
-        $raza = Race::findOrFail($id);
-        return view('race.edit-race', compact('raza'));
-        
+        //
     }
 
     /**
@@ -80,11 +68,7 @@ class RaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $raza = Race::findOrFail($id);
-        $raza->description = $request->description;
-        $raza->percentage = $request->percentage;
-        $raza->save();
-        return redirect('/confRaza'); 
+        //
     }
 
     /**
@@ -95,8 +79,6 @@ class RaceController extends Controller
      */
     public function destroy($id)
     {
-        $raza = Race::findOrFail($id);
-        $raza->delete();
-        return redirect('/confRaza')->with('eliminar','ok'); 
+        //
     }
 }

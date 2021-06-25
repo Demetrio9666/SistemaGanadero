@@ -3,50 +3,46 @@
 </head>
   <body>
     @extends('adminlte::page')
-  
     @section('title')
-  
     @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
-    @endsection
-  
+    @endsection  
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('confRaza/create')}}">Nuevo</a>
+    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('confUbicacion/create')}}">Nuevo</a>
     <div class="card">
         <div class="card-body">
-          <table id="razat" class="table table-striped table-bordered" style="width:100%">
+          <table id="ubicaciont" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>
-                    <th>Nombre de la Raza</th>
-                    <th>Porcentaje</th>
-                    <th>Accion</th>
+                    <th>Nombre de ubicación</th>
+                    <th>Descripción</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>  
-                @foreach ($raza as $i)          
+                @foreach ($ubicacion as $i)          
                 <tr>
+                    <td>{{$i->location}}</td>
                     <td >{{$i->description}}</td>
-                    <td>{{$i->percentage}}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('confRaza.edit',$i->id)}}" >Editar</a>
-                        <form action="{{route('confRaza.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
+                        <a class="btn btn-primary" href="{{route('confUbicacion.edit',$i->id)}}" >Editar</a>
+                        <form action="{{route('confUbicacion.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                             @csrf
                             @method('DELETE') 
                             <input type="submit"  class="btn btn-danger" value="Eliminar">
-                        </form>
-                          
+                        </form>                         
                     </td>  
                 </tr>
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Nombre de la Raza</th>
-                    <th>Porcentaje</th>
-                    <th>Accion</th>
+                    <th>Nombre de ubicación</th>
+                    <th>Descripción</th>
+                    <th>Acción</th>
                 </tr>
             </tfoot>
         </table>
@@ -62,7 +58,7 @@
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
     <script>
-       $('#razat').DataTable({
+       $('#ubicaciont').DataTable({
          responsive: true,
          "language": {
             "lengthMenu": "Mostrar "+

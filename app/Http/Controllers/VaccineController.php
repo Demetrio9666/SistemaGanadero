@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Race;
 
 use Illuminate\Http\Request;
+use App\Models\Vaccine;
 
-class RaceController extends Controller
+class VaccineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class RaceController extends Controller
      */
     public function index()
     {
-        $raza = Race::all();
-        return view('race.index-race',compact('raza'));
-        //return $raza;
+        $vacuna = Vaccine::all();
+        return view('vaccine.index-vaccine',compact('vacuna'));
     }
 
     /**
@@ -26,7 +25,7 @@ class RaceController extends Controller
      */
     public function create()
     {
-        return view('race.create-race');
+        return view('vaccine.create-vaccine');
     }
 
     /**
@@ -37,14 +36,16 @@ class RaceController extends Controller
      */
     public function store(Request $request)
     {
-        $raza = new Race();
+        $vacuna = new Vaccine();
         
-        $raza->description = $request->description;
-        $raza->percentage = $request->percentage;
-        $raza->save(); 
+        $vacuna->vaccine = $request->vaccine;
+        $vacuna->date_e = $request->date_e;
+        $vacuna->date_c = $request->date_c;
+        $vacuna->supplier = $request->supplier;
+        $vacuna->save(); 
         
         //return redirect()->route();
-        return redirect('/confRaza');
+        return redirect('/confVacuna');
     }
 
     /**
@@ -55,7 +56,7 @@ class RaceController extends Controller
      */
     public function show($id)
     {
-        return view('race.edit-race',compact('id'));
+        return view('vaccine.edit-vaccine',compact('id'));
     }
 
     /**
@@ -66,9 +67,8 @@ class RaceController extends Controller
      */
     public function edit($id)
     {
-        $raza = Race::findOrFail($id);
-        return view('race.edit-race', compact('raza'));
-        
+        $vacuna = Vaccine::findOrFail($id);
+        return view('vaccine.edit-vaccine', compact('vacuna'));
     }
 
     /**
@@ -80,11 +80,13 @@ class RaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $raza = Race::findOrFail($id);
-        $raza->description = $request->description;
-        $raza->percentage = $request->percentage;
-        $raza->save();
-        return redirect('/confRaza'); 
+        $vacuna = Vaccine::findOrFail($id);
+        $vacuna->vaccine = $request->vaccine;
+        $vacuna->date_e = $request->date_e;
+        $vacuna->date_c = $request->date_c;
+        $vacuna->supplier = $request->supplier;
+        $vacuna->save(); 
+        return redirect('/confVacuna');
     }
 
     /**
@@ -95,8 +97,8 @@ class RaceController extends Controller
      */
     public function destroy($id)
     {
-        $raza = Race::findOrFail($id);
-        $raza->delete();
-        return redirect('/confRaza')->with('eliminar','ok'); 
+        $vacuna = Vaccine::findOrFail($id);
+        $vacuna->delete();
+        return redirect('/confVacuna')->with('eliminar','ok'); 
     }
 }

@@ -17,19 +17,19 @@
         <div class="container" id="registration-form">
             <div class="image"></div>
             <div class="frm">
-                <form action="{{route('confRaza.store')}}" method="POST">
+                <form action="{{route('confUbicacion.store')}}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="">Nombre de la Raza:</label>
-                        <input type="text" class="form-control" id="raza" name="description" >
+                        <label for="">Nombre de la ubicación:</label>
+                        <input type="text" class="form-control" id="ubicacion" name="location" >
                     </div>
                     <div class="form-group">
-                        <label for="">Porcentaje:</label>
-                        <input type="int" class="form-control" id="porcentaje" name="percentage">
+                        <label for="">Descripción:</label>
+                        <input type="int" class="form-control" id="descripcion" name="description">
                     </div>    
                     <div class="form-group">
-                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confRaza')}}" >Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confRaza') }}" >Guardar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confUbicacion')}}">Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confUbicacion') }}" >Guardar</button>
                     </div>
                 </form>
             </div>
