@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Vitamin;
 
 class VitaminController extends Controller
 {
@@ -13,7 +14,8 @@ class VitaminController extends Controller
      */
     public function index()
     {
-        //
+        $vitamina = Vitamin::all();
+        return view('vitamin.index-vitamin',compact('vitamina'));
     }
 
     /**
@@ -23,7 +25,7 @@ class VitaminController extends Controller
      */
     public function create()
     {
-        //
+        return view('vitamin.create-vitamin');
     }
 
     /**
@@ -34,7 +36,15 @@ class VitaminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vitamina = new Vitamin();
+        
+        $vitamina->vitamin = $request->vitamin;
+        $vitamina->date_e = $request->date_e;
+        $vitamina->date_c = $request->date_c;
+        $vitamina->supplier = $request->supplier;
+        $vitamina->save(); 
+             //return redirect()->route();
+        return redirect('/confVi');
     }
 
     /**
@@ -45,7 +55,7 @@ class VitaminController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('vitamin.edit-vitamin',compact('id'));
     }
 
     /**
@@ -56,7 +66,8 @@ class VitaminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vitamina = Vitamin::findOrFail($id);
+        return view('vitamin.edit-vitamin', compact('vitamina'));
     }
 
     /**
@@ -68,7 +79,13 @@ class VitaminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vitamina = Vitamin::findOrFail($id);
+        $vitamina->vitamin = $request->vitamin;
+        $vitamina->date_e = $request->date_e;
+        $vitamina->date_c = $request->date_c;
+        $vitamina->supplier = $request->supplier;
+        $vitamina->save(); 
+        return redirect('/confVi');
     }
 
     /**
@@ -79,6 +96,8 @@ class VitaminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vitamina = Vitamin::findOrFail($id);
+        $vitamina->delete();
+        return redirect('/confVi')->with('eliminar','ok');
     }
 }
