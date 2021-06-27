@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use APP\Models\Antibiotic;
+use App\Models\Antibiotic;
 
 class AntibioticController extends Controller
 {
@@ -66,8 +66,8 @@ class AntibioticController extends Controller
      */
     public function edit($id)
     {
-        $desp = Antibiotic::findOrFail($id);
-        return view('antibiotic.edit-antibiotic', compact('desp'));
+        $anti = Antibiotic::findOrFail($id);
+        return view('antibiotic.edit-antibiotic', compact('anti'));
     }
 
     /**

@@ -18,29 +18,29 @@
         <div class="container" id="registration-form">
             <div class="image"></div>
             <div class="frm">
-                <h1>Editar Vacuna</h1>
-                <form action=" {{route('confVacuna.update',$vacuna->id)}}" method="POST">
+                <h1>Editar ubicación</h1>
+                <form action=" {{route('confAnt.update',$anti->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="">Nombre de la Vacuna:</label>
-                        <input type="text" class="form-control" id="vacuna" name="vaccine" value="{{$vacuna->vaccine}}" >
+                        <label for="">Nombre del Antibiótico:</label>
+                        <input type="text" class="form-control" id="antibiotico" name="antibiotic" value="{{$anti->antibiotic}}" >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>
-                        <input type="date" class="form-control" id="fecha_e" name="date_e" value="{{$vacuna->date_e}}">
+                        <input type="date" class="form-control" id="fecha_e" name="date_e" value="{{$anti->date_e}}">
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Caducidad:</label>
-                        <input type="date" class="form-control" id="fecha_c" name="date_c" value="{{$vacuna->date_c}}" >
+                        <input type="date" class="form-control" id="fecha_c" name="date_c" value="{{$anti->date_c}}" >
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{$vacuna->supplier}}" >
+                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{$anti->supplier}}" >
                     </div>          
                     <div class="form-group">
-                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confVacuna')}}" >Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confVacuna') }}" >Actualizar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confAnt')}}" >Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confAnt') }}" >Actualizar</button>
                     </div>
                 </form>
             </div>

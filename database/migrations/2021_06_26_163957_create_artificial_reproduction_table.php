@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAntibioticTable extends Migration
+class CreateArtificialReproductionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateAntibioticTable extends Migration
      */
     public function up()
     {
-        Schema::create('antibiotic', function (Blueprint $table) {
+        Schema::create('artificial_reproduction', function (Blueprint $table) {
             $table->id();
-            $table->string('antibiotic',20);
-            $table->date('date_e');
-            $table->date('date_c');
+            $table->date('date');
+            $table->unsignedBigInteger('race_id')->nullable();
+            $table->foreign('race_id')->references('id')->on('race')->onDelete('set null')->onUpdate('cascada');
+
+            $table->string('reproduccion',10);
             $table->string('supplier',20);
             $table->timestamps();
         });
@@ -30,6 +32,6 @@ class CreateAntibioticTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('antibiotic');
+        Schema::dropIfExists('artificial_reproduction');
     }
 }

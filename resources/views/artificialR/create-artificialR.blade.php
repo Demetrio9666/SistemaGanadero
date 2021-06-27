@@ -17,27 +17,33 @@
         <div class="container" id="registration-form">
             <div class="image"></div>
             <div class="frm">
-                <form action="{{route('confVacuna.store')}}" method="POST">
+                <form action="{{route('confMate.store')}}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="">Nombre de la Vacuna:</label>
-                        <input type="text" class="form-control" id="vacuna" name="vaccine">
+                        <label for="">Fecha de Registro:</label>
+                        <input type="date" class="form-control" id="fecha_r" name="date" >
                     </div>
                     <div class="form-group">
-                        <label for="">Fecha Elaboración:</label>
-                        <input type="date" class="form-control" id="fecha_e" name="date_e">
+                        <label for="">Raza:</label>
+                        <select class="form-control" id="razas" name="race_id">
+                                <option>Seleccione la Raza</option>
+                            @foreach ( $razas as $i )   
+                                <option value="{{$i->id}}">{{$i->description}}</option>
+                            @endforeach
+                        </select>
+    
                     </div>
                     <div class="form-group">
-                        <label for="">Fecha Caducidad:</label>
-                        <input type="date" class="form-control" id="fecha_c" name="date_c">
+                        <label for="">Tipo de Material Genetico:</label>
+                        <input type="text" class="form-control" id="reproduccion" name="reproduccion">
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
                         <input type="text" class="form-control" id="proveedor" name="supplier">
                     </div>      
                     <div class="form-group">
-                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confVacuna')}}">Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confVacuna') }}" >Guardar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confMate')}}">Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confMate') }}" >Guardar</button>
                     </div>
                 </form>
             </div>

@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>System</b>BOVINO',
+    'logo' => '<b>SoftGanado</b>BOVINO',
     'logo_img' => 'vendor/adminlte/dist/img/logo_vaca.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
