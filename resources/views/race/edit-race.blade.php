@@ -18,7 +18,7 @@
         <div class="container" id="registration-form">
             <div class="image"></div>
             <div class="frm">
-                <h1>Editar ubicación</h1>
+                <h1>Editar Raza</h1>
                 <form action=" {{route('confRaza.update',$raza->id)}}" method="POST">
                     @csrf
                     @method('PUT')

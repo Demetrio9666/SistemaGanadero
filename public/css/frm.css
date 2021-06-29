@@ -16,7 +16,7 @@ body{
 
 #registration-form .image{
 	float:left;
-	background-image: url("/imagen/raza.jpg");
+	background-image: url("/imagen/frm.jpg");
 	height: 750px;
     width: 25%;
 	background-size: cover;

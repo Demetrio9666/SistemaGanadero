@@ -17,6 +17,7 @@
         <div class="container" id="registration-form">
             <div class="image"></div>
             <div class="frm">
+                <h1>Registar Ubicación</h1>
                 <form action="{{route('confUbicacion.store')}}" method="POST">
                     @csrf
                     <div class="form-group">

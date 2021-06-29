@@ -122,9 +122,7 @@
                     
                         <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/fichaAnimal')}}">Cancelar</a>
                         <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/fichaAnimal') }}" >Guardar</button>
-
-                
-                   
+  
                 </div>
             </form>
         </div>

@@ -4,29 +4,28 @@ html{
     min-height: 100%;
 }
 
-
 body{
 	background-color: transparent;
 }
 
 #registration-form{
-	max-width: 800px;
+	max-width: 1200px;
 	margin: 120px auto;
 }
 
 #registration-form .image{
 	float:left;
 	background-image: url("/imagen/raza.jpg");
-	height: 280px;
-    width: 50%;
+	height: 500px;
+    width: 100%;
 	background-size: cover;
-	background-position: 25%;
+	background-position: 50%;
 }
 
 #registration-form .frm{
 	float:right;
-	height: 280px;
-    width: 50%;
+	height: 500px;
+    width: 100%;
     min-width: 250px;
     padding: 0 35px;
     background-size: 100% 100%;
@@ -74,6 +73,6 @@ body{
 
 	#registration-form .btn{
 		width: 100%;
-		margin-top: 20px;
+		margin-top: 30px;
 	}
 }
