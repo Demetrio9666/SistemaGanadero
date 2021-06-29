@@ -18,19 +18,18 @@
                         <thead>
                             <tr>
                                 <th>Codigo Animal</th>
-                                <th>Foto</th>
                                 <th>Fecha Nacimiento</th>
                                 <th>Raza</th>
-                                <th>%</th>
+                                <th>% de Sangre</th>
                                 <th>Sexo</th>
+                                <th>Etapa</th>
                                 <th>Origen</th>
-                                <th>Area</th>
                                 <th>Edad-meses</th>
                                 <th>Salud</th>
+                                <th>Estado de Embarazo</th>
                                 <th>Estado</th>
-                                <th>Concedido</th>           
-                                <th>Padre</th>
-                                <th>Madre</th>                  
+                                <th>localizacion</th>
+                                <th>Concebido</th>                            
                             </tr>
                         </thead>
                         <tbody>

@@ -16,8 +16,8 @@ class CreateArtificialReproductionTable extends Migration
         Schema::create('artificial_reproduction', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->unsignedBigInteger('race_id')->nullable();
-            $table->foreign('race_id')->references('id')->on('race')->onDelete('set null')->onUpdate('cascada');
+            $table->unsignedBigInteger('race_id')->unique()->nullable();
+            $table->foreign('race_id')->references('id')->on('race')->onDelete('set null')->onUpdate('cascade');
 
             $table->string('reproduccion',10);
             $table->string('supplier',20);

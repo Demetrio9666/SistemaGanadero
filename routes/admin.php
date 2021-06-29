@@ -8,7 +8,7 @@ use App\Http\Controllers\VitaminController;
 use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\AntibioticController;
 use App\Http\Controllers\ArtificialReproductionController;
-
+use App\Http\Controllers\File_animaleController;
 //Route::get('/',[HomeController::class,'welcome']);
 
 
@@ -19,7 +19,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('admin.index');
 })->name('index_admin');
 
-Route::get('/fichaAnimal',[HomeController::class,'Registro_Animal']);
+//Route::get('/fichaAnimal',[HomeController::class,'Registro_Animal']);
 Route::get('/fichaParto',[HomeController::class,'Registro_Parto']);
 Route::get('/fichaTratamiento',[HomeController::class,'Registro_Tratamiento']);
 Route::get('/fichaReproduccion',[HomeController::class,'Registro_Reproduccion']);
@@ -31,16 +31,7 @@ Route::get('/controlPrenes',[HomeController::class,'Control_Prenes']);
 Route::get('/controlVacuna',[HomeController::class,'Control_Vacuna']);
 
 
-//Route::get('/confVacuna',[HomeController::class,'Conf_Vacuna']);
-//Route::get('/confUbicacion',[HomeController::class,'Conf_Ubicacion']);
-//Route::get('/confDespa',[HomeController::class,'Conf_Desparacitante']);
-//Route::get('/confVi',[HomeController::class,'Conf_Vitamina']);
-//Route::get('/confMate',[HomeController::class,'Conf_Pajuela']);
-//Route::get('/confAnt',[HomeController::class,'Conf_Antibiotico']);
-
-
-
-
+Route::resource('/fichaAnimal',File_animaleController::class);
 Route::resource('/confUbicacion',LocationController::class);
 Route::resource('/confRaza',RaceController::class);
 Route::resource('/confVi',VitaminController::class);
