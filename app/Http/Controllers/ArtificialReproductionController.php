@@ -77,9 +77,12 @@ class ArtificialReproductionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
+        $razas = Race::all();
+        
         $arti = Artificial_Reproduction::findOrFail($id);
-        return view('artificialR.edit-artificialR', compact('arti'));
+   
+        return view('artificialR.edit-artificialR', compact('arti','razas'));
     }
 
     /**
@@ -91,10 +94,10 @@ class ArtificialReproductionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $arti = new Artificial_Reproduction();
+        $arti = Artificial_Reproduction::findOrFail($id);
         $arti->date = $request->date;
         $arti->race_id = $request->race_id;
-        $arti->date_c = $request->date_c;
+        $arti->reproduccion = $request->reproduccion;
         $arti->supplier = $request->supplier;
         $arti->save(); 
         return redirect('/confMate');

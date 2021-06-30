@@ -10,13 +10,13 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/conf.css">
+    <link rel="stylesheet" type="text/css" href="/css/configuracion2.css">
     @endsection
     @section('content_header')
         <div class="container" id="registration-form">
             <div class="image"></div>
             <div class="frm">
+                <h1>Registrar</h1>
                 <form action="{{route('confMate.store')}}" method="POST">
                     @csrf
                     <div class="form-group">
@@ -35,7 +35,11 @@
                     </div>
                     <div class="form-group">
                         <label for="">Tipo de Material Genetico:</label>
-                        <input type="text" class="form-control" id="reproduccion" name="reproduccion">
+                        <select class="form-control" id="inputPassword4"  name="reproduccion">
+                            <option selected>...</option>
+                            <option>Pajuela</option>
+                            <option>Hembrional</option>
+                      </select>
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>

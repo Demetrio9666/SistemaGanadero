@@ -1,3 +1,4 @@
+
 html{
     background: url("background.jpg") no-repeat;
 	background-size: cover;
@@ -9,23 +10,23 @@ body{
 }
 
 #registration-form{
-	max-width: 1200px;
-	margin: 120px auto;
+	max-width: 800px;
+	margin: 90px auto;
 }
 
 #registration-form .image{
 	float:left;
 	background-image: url("/imagen/raza.jpg");
 	height: 500px;
-    width: 100%;
+	width: 50%;
 	background-size: cover;
-	background-position: 50%;
+	background-position: 25%;
 }
 
 #registration-form .frm{
 	float:right;
 	height: 500px;
-    width: 100%;
+    width: 50%;
     min-width: 250px;
     padding: 0 35px;
     background-size: 100% 100%;
@@ -73,6 +74,6 @@ body{
 
 	#registration-form .btn{
 		width: 100%;
-		margin-top: 30px;
+		margin-top: 20px;
 	}
 }

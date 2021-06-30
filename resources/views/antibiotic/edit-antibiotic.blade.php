@@ -11,14 +11,13 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/conf.css">
+    <link rel="stylesheet" type="text/css" href="/css/configuracion2.css">
     @endsection
     @section('content_header')
         <div class="container" id="registration-form">
             <div class="image"></div>
             <div class="frm">
-                <h1>Editar ubicación</h1>
+                <h1>Editar Antibiótico</h1>
                 <form action=" {{route('confAnt.update',$anti->id)}}" method="POST">
                     @csrf
                     @method('PUT')
