@@ -25,7 +25,7 @@
             <tbody>  
                 @foreach ($ubicacion as $i)          
                 <tr>
-                    <td>{{$i->location}}</td>
+                    <td>{{$i->location_d}}</td>
                     <td >{{$i->description}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('confUbicacion.edit',$i->id)}}" >Editar</a>
@@ -51,7 +51,7 @@
     @endsection
 </body>
     @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>

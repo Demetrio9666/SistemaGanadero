@@ -23,7 +23,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre de ubicación:</label>
-                        <input type="text" class="form-control" id="raza" name="location" value="{{$ubicacion->location}}" >
+                        <input type="text" class="form-control" id="raza" name="location_d" value="{{$ubicacion->location_d}}" >
                     </div>
                     <div class="form-group">
                         <label for="">Descripción:</label>

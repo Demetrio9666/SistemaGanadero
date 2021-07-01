@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Location;
+use App\Models\Race;
+use App\Models\Vaccine;
+use App\Models\Vaccine_control;
 
-class LocationController extends Controller
+class Vaccine_controlController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,13 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $ubicacion = Location::all();
-        return view('location.index-location',compact('ubicacion'));
+        $vacunaC= DB::table('vaccine_control')
+                    ->join('file_animale','file_animale.id','=','vaccine_control.animaleCode_id')
+                    ->join('vaccine','vaccine.id','=','vaccine_control.vaccine_id')
+                    ->select('vaccine_control.id','vaccine_control.date_vaccine','file_animale.animaleCode as animal','vaccine.vaccine as vacuna')
+                    ->get();
+
+        return view('vaccineC.index-vaccineC',compact('vacunaC'));
     }
 
     /**
@@ -25,7 +32,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        return view('location.create-location');
+        //
     }
 
     /**
@@ -36,14 +43,7 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        $ubicacion = new Location();
-        
-        $ubicacion->location_d = $request->location_d;
-        $ubicacion->description = $request->description;
-        $ubicacion->save(); 
-        
-        //return redirect()->route();
-        return redirect('/confUbicacion');
+        //
     }
 
     /**
@@ -54,7 +54,7 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        return view('location.edit-location',compact('id'));
+        //
     }
 
     /**
@@ -65,8 +65,7 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        $ubicacion = location::findOrFail($id);
-        return view('location.edit-location', compact('ubicacion'));
+        //
     }
 
     /**
@@ -78,11 +77,7 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ubicacion = Location::findOrFail($id);
-        $ubicacion->location_d = $request->location_d;
-        $ubicacion->description = $request->description;
-        $ubicacion->save(); 
-        return redirect('/confUbicacion'); 
+        //
     }
 
     /**
@@ -93,8 +88,6 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        $ubicacion = Location::findOrFail($id);
-        $ubicacion->delete();
-        return redirect('/confUbicacion')->with('eliminar','ok'); 
+        //
     }
 }

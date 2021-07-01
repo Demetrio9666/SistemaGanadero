@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\File_Animale;
 use App\Models\Location;
@@ -16,7 +17,14 @@ class File_animaleController extends Controller
     public function index()
     {
         
-        $animal = File_Animale::all();
+        $animal = DB::table('file_animale')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->join('location','file_animale.location_id','=','location.id')
+                    ->select('file_animale.id','file_animale.animalCode','file_animale.date_n','race.description as raza',
+                            'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
+                            'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
+                            ,'file_animale.conceived' )
+                    ->get();
         return view('file_animale.index-animale',compact('animal'));
     }
 
@@ -44,7 +52,6 @@ class File_animaleController extends Controller
         $animal->animalCode = $request->animalCode;
         $animal->date_n = $request->date_n;
         $animal->race_id = $request->race_id;
-        $animal->purity = $request->purity;
         $animal->sex = $request->sex;
         $animal->stage = $request->stage;
         $animal->source = $request->source;
@@ -80,8 +87,10 @@ class File_animaleController extends Controller
      */
     public function edit($id)
     {
+        $raza =Race::all();
+        $ubicacion=Location::all();
         $animal = File_Animale::findOrFail($id);
-        return view('file_animale.edit-animale', compact('animal'));
+        return view('file_animale.edit-animale', compact('animal','raza','ubicacion'));
     }
 
     /**
@@ -93,13 +102,13 @@ class File_animaleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $animal = new File_Animale();
+        $animal = File_Animale::findOrFail($id);
         
         $animal->animalCode = $request->animalCode;
         $animal->date_n = $request->date_n;
         $animal->race_id = $request->race_id;
-        $animal->purity = $request->purity;
         $animal->sex = $request->sex;
+        $animal->stage = $request->stage;
         $animal->stage = $request->stage;
         $animal->age_month = $request->age_month;
         $animal->health_condition = $request->health_condition;

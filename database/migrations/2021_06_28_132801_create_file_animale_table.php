@@ -15,20 +15,20 @@ class CreateFileAnimaleTable extends Migration
     {
         Schema::create('file_animale', function (Blueprint $table) {
             $table->id();
-            $table->string('animalCode',100)->unique();
+            $table->string('animalCode')->unique();
             $table->date('date_n');
             $table->unsignedBigInteger('race_id');
             $table->foreign('race_id')->references('id')->on('race');
-            $table->integer('purity');
             $table->string('sex',10);
-            $table->string('stage',10);
+            $table->string('stage',20);
+            $table->string('source',20);
             $table->integer('age_month');
-            $table->string('health_condition',10);
-            $table->string('gestation_state',10);
-            $table->string('actual_state',10);
+            $table->string('health_condition',20);
+            $table->string('gestation_state',20);
+            $table->string('actual_state',20);
             $table->unsignedBigInteger('location_id');
             $table->foreign('location_id')->references('id')->on('location');        
-            $table->string('conceived',10);   
+            $table->string('conceived',25);   
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre de la ubicación:</label>
-                        <input type="text" class="form-control" id="ubicacion" name="location" >
+                        <input type="text" class="form-control" id="location_d" name="location_d" >
                     </div>
                     <div class="form-group">
                         <label for="">Descripción:</label>

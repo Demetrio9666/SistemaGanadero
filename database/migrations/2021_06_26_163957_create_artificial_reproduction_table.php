@@ -17,7 +17,9 @@ class CreateArtificialReproductionTable extends Migration
             $table->id();
             $table->date('date');
             $table->unsignedBigInteger('race_id')->nullable();
-            $table->foreign('race_id')->references('id')->on('race')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('race_id')->references('id')->on('race')
+                   ->onDelete('set null')
+                   ->onUpdate('cascade');
 
             $table->string('reproduccion',10);
             $table->string('supplier',20);

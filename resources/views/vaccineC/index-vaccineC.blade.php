@@ -5,34 +5,33 @@
     @extends('adminlte::page')
     @section('title')
     @section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
     @endsection  
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('confMate/create')}}">Nuevo</a>
+    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('controlVacuna/create')}}">Nuevo</a>
     <div class="card">
         <div class="card-body">
           <table id="vi" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>
-                    <th>Fecha de Registro</th>
-                    <th>Raza</th>
-                    <th>Tipo de Material Genetico</th>
-                    <th>Proveedor</th>
+                    <th>Fecha de la Vacunacion</th>
+                    <th>Codigo del Animal</th>
+                    <th>Vacuna</th>
                     <th>Acción</th>
                 </tr>
             </thead>
             <tbody>  
-                @foreach ($arti as $i)          
+                @foreach ($vacunaC as $i)          
                 <tr>
-                    <td>{{$i->date}}</td>
-                    <td >{{$i->raza}}</td>
-                    <td>{{$i->reproduccion}}</td>
-                    <td >{{$i->supplier}}</td>
+                    <td>{{$i->date_vaccine}}</td>
+                    <td >{{$i->animalCode_id}}</td>
+                    <td>{{$i->vaccine_id}}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('confMate.edit',$i->id)}}" >Editar</a>
-                        <form action="{{route('confMate.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
+                        <a class="btn btn-primary" href="{{route('controlVacuna.edit',$i->id)}}" >Editar</a>
+                        <form action="{{route('controlVacuna.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                             @csrf
                             @method('DELETE') 
                             <input type="submit"  class="btn btn-danger" value="Eliminar">
@@ -43,10 +42,9 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Fecha de Registro</th>
-                    <th>Raza</th>
-                    <th>Tipo de Material Genetico</th>
-                    <th>Proveedor</th>
+                    <th>Fecha de la Vacunacion</th>
+                    <th>Codigo del Animal</th>
+                    <th>Vacuna</th>
                     <th>Acción</th>
                 </tr>
             </tfoot>
@@ -63,7 +61,7 @@
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
     <script>
-      $('#vi').DataTable({
+       $('#vi').DataTable({
          responsive: true,
          "language": {
             "lengthMenu": "Mostrar "+

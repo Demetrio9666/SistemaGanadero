@@ -21,7 +21,7 @@
                 @csrf
                 <div  class="col-md-6">
                     <label for="" class="form-label">Codigo Animal:</label>
-                    <input type="text" class="form-control" id="codigoAnimal" name="animalcode" >
+                    <input type="text" class="form-control" id="codigoAnimal" name="animalCode" >
                 </div>
                 <div  class="col-md-6">
                     <label for="">Fecha de Nacimiento:</label>
@@ -36,10 +36,6 @@
                         @endforeach
                     </select>
 
-                </div> 
-                <div  class="col-md-6">
-                    <label for="">Pureza:</label>
-                    <input type="int" class="form-control" id="pureza" name="purity">
                 </div> 
                 <div  class="col-md-6">
                     <label for="">Sexo:</label>
@@ -62,7 +58,7 @@
                 </div>
                 <div  class="col-md-6">
                     <label for="">Origen:</label>
-                    <select class="form-control" id="inputPassword4" name="health_condition">
+                    <select class="form-control" id="inputPassword4" name="source">
                         <option selected>...</option>
                         <option>Nacido</option>
                         <option>Comprado</option>
@@ -103,8 +99,8 @@
                     <label for="">Ubicacion:</label>
                     <select class="form-control" id="" name="location_id">
                             <option>Seleccione la Ubicacion</option>
-                        @foreach ( $ubicacion as $i )   
-                            <option value="{{$i->id}}">{{$i->locationn}}</option>
+                        @foreach ($ubicacion as $i )   
+                            <option value="{{$i->id}}">{{$i->location_d}}</option>
                         @endforeach
                     </select>
 

@@ -4,13 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ArtificialReproduction;
 
-class Race extends Model
+class Vaccine_control extends Model
 {
     use HasFactory;
-    //protected $fillable = ['id'];
-    protected $table = "race";
-
-
+    protected $table = "vaccine_control";
 }
