@@ -25,6 +25,7 @@ class VaccineController extends Controller
      */
     public function create()
     {
+       
         return view('vaccine.create-vaccine');
     }
 

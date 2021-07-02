@@ -131,6 +131,6 @@ class File_animaleController extends Controller
     {
         $animal = File_Animale::findOrFail($id);
         $animal->delete();
-        return redirect('/fichaAnimal')->with('eliminar','ok'); 
+        return redirect('/fichaAnimal')->with('eliminar','ok');
     }
 }

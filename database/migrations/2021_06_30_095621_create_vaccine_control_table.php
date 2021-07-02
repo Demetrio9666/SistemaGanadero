@@ -18,10 +18,13 @@ class CreateVaccineControlTable extends Migration
             $table->date('date_vaccine');
             $table->unsignedBigInteger('animalCode_id')->nullable();
             $table->foreign('animalCode_id')->references('id')->on('file_animale')
-                  ->onDelete('set null')->onUpdate('cascade');;
+                  ->onDelete('set null')->onUpdate('cascade');
+
             $table->unsignedBigInteger('vaccine_id')->nullable();
             $table->foreign('vaccine_id')->references('id')->on('vaccine')
                   ->onDelete('set null')->onUpdate('cascade');
+
+            $table->date('date_vr');
             $table->timestamps();
         });
     }

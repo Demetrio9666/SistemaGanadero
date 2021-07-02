@@ -47,9 +47,10 @@
                     <td >{{$i->conceived}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('fichaAnimal.edit',$i->id)}}" >Editar</a>
-                        <form action="{{route('fichaAnimal.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
-                            @csrf
+                        <form action="{{route('fichaAnimal.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                             @method('DELETE') 
+                            @csrf
+                            
                             <input type="submit"  class="btn btn-danger" value="Eliminar">
                         </form>                         
                     </td>  
@@ -118,24 +119,24 @@
                     'success'
                     )      
     </script>
-    @endif
-    <script>
-        $('.formulario-eliminar').submit(function(e){
-            e.preventDefault();
-              Swal.fire({
-                        title: 'Está seguro?',
-                        text: "Este registro se eliminara definitivamente",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: '¡Si, Eliminar!',
-                        concelButtonText: 'Cancelar'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        this.submit();
-                    }
-            }) 
-        });
-    </script>
+@endif
+<script>
+    $('.formulario-eliminar').submit(function(e){
+        e.preventDefault();
+          Swal.fire({
+                    title: 'Está seguro?',
+                    text: "Este registro se eliminara definitivamente",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Si, Eliminar!',
+                    concelButtonText: 'Cancelar'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+        }) 
+    });
+</script>
 @endsection

@@ -20,15 +20,18 @@
                     <th>Fecha de la Vacunacion</th>
                     <th>Codigo del Animal</th>
                     <th>Vacuna</th>
+                    <th>Fecha de re-vacunacion</th>
                     <th>Acción</th>
                 </tr>
             </thead>
             <tbody>  
                 @foreach ($vacunaC as $i)          
                 <tr>
+                    
                     <td>{{$i->date_vaccine}}</td>
-                    <td >{{$i->animalCode_id}}</td>
-                    <td>{{$i->vaccine_id}}</td>
+                    <td >{{$i->animal}}</td>
+                    <td>{{$i->vacuna}}</td>
+                    <td>{{$i->date_vr}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('controlVacuna.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('controlVacuna.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
@@ -45,6 +48,7 @@
                     <th>Fecha de la Vacunacion</th>
                     <th>Codigo del Animal</th>
                     <th>Vacuna</th>
+                    <th>Fecha de re-vacunacion</th>
                     <th>Acción</th>
                 </tr>
             </tfoot>

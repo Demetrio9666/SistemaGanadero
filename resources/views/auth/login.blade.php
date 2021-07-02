@@ -21,8 +21,9 @@
 		<div class="fixed top-0 right-0 px-6 py-4 sm:block">
 			<a href="{{ route('register') }}" class="ml-4 text-sm text-gray-900 underline">Registrarse</a>
 		</div>
-		
+		  
 			<x-jet-validation-errors class="mb-4" />
+			
 			@if (session('status'))
 				<div class="mb-4 font-medium text-sm text-green-600">
 					{{ session('status') }}
