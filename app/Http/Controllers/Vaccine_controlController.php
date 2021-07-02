@@ -19,12 +19,16 @@ class Vaccine_controlController extends Controller
     public function index()
     {
         $vacunaC= DB::table('vaccine_control')
-                    ->join('file_animale','file_animale.id','=' ,'vaccine_control.animalCode_id')
-                    ->join('vaccine','vaccine_id','=','vaccine_control.vaccine_id')
-                    ->select('vaccine_control.id','vaccine_control.date_vaccine','file_animale.animalCode as animal','vaccine.vaccine as vacuna','vaccine_control.date_vr')
-                    ->get();
+                ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
+                ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
+                ->select('vaccine_control.id','vaccine_control.date_vaccine','vaccine.vaccine_d as vacuna','file_animale.animalCode as animal','vaccine_control.date_vr' )
+                ->get();
+                
+        //$control = Vaccine_control::all();
+        
 
-        return view('vaccineC.index-vaccineC',compact('vacunaC'));
+         return view('vaccineC.index-vaccineC',compact('vacunaC'));
+        //return $vacunaC;
     }
 
     /**
@@ -34,6 +38,10 @@ class Vaccine_controlController extends Controller
      */
     public function create()
     {
+        $vacuna = DB::table('vaccine')
+        ->select('id','vaccine_d')
+        ->get();
+
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
@@ -43,9 +51,6 @@ class Vaccine_controlController extends Controller
                   )
                   
         ->get();
-
-
-        $vacuna = Vaccine::all();
         return view('vaccineC.create-vaccineC',compact('animal','vacuna'));
     }
 
@@ -57,13 +62,14 @@ class Vaccine_controlController extends Controller
      */
     public function store(Request $request)
     {
-        $vacuna = new Vaccine();
-        
-        $vacuna->vaccine = $request->vaccine;
-        $vacuna->date_e = $request->date_e;
-        $vacuna->date_c = $request->date_c;
-        $vacuna->supplier = $request->supplier;
-        $vacuna->save(); 
+        $vacunaC = new Vaccine_control();
+       
+
+        $vacunaC->date_vaccine = $request->date_vaccine;
+        $vacunaC->animalCode_id = $request->animalCode_id;
+        $vacunaC->vaccine_id = $request->vaccine_id;
+        $vacunaC->date_vr = $request->date_vr;
+        $vacunaC->save(); 
         
         //return redirect()->route();
         return redirect('/controlVacuna');
@@ -87,9 +93,19 @@ class Vaccine_controlController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $vacuna = Vaccine::findOrFail($id);
-        return view('vaccineC.edit-vaccineC', compact('vacuna'));
+    {   
+        $vacuna = Vaccine::all();
+        $vacunaC = Vaccine_control::findOrFail($id);
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode',
+                     'date_n',
+                     'age_month',
+                     'sex'
+                  )
+                  
+        ->get();
+        return view('vaccineC.edit-vaccineC', compact('vacunaC','vacuna','animal'));
     }
 
     /**
@@ -101,13 +117,13 @@ class Vaccine_controlController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $vacuna = Vaccine::findOrFail($id);
+        $vacunaC = Vaccine_control::findOrFail($id);
 
-        $vacuna->vaccine = $request->vaccine;
-        $vacuna->date_e = $request->date_e;
-        $vacuna->date_c = $request->date_c;
-        $vacuna->supplier = $request->supplier;
-        $vacuna->save(); 
+        $vacunaC->date_vaccine = $request->date_vaccine;
+        $vacunaC->animalCode_id = $request->animalCode_id;
+        $vacunaC->vaccine_id = $request->vaccine_id;
+        $vacunaC->date_vr = $request->date_vr;
+        $vacunaC->save(); 
         return redirect('/controlVacuna');
     }
 
@@ -119,8 +135,8 @@ class Vaccine_controlController extends Controller
      */
     public function destroy($id)
     {
-        $vacuna = Vaccine::findOrFail($id);
-        $vacuna->delete();
+        $vacunaC = Vaccine_control::findOrFail($id);
+        $vacunaC->delete();
         return redirect('/controlVacuna')->with('eliminar','ok'); 
     }
 }

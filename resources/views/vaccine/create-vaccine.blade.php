@@ -21,7 +21,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre de la Vacuna:</label>
-                        <input type="text" class="form-control" id="vacuna" name="vaccine">
+                        <input type="text" class="form-control" id="vaccine_d" name="vaccine_d">
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>

@@ -26,6 +26,8 @@ class File_animaleController extends Controller
                             ,'file_animale.conceived' )
                     ->get();
         return view('file_animale.index-animale',compact('animal'));
+        //return $animal;
+
     }
 
     /**

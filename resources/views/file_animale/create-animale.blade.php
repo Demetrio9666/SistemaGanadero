@@ -30,7 +30,7 @@
                 <div  class="col-md-6">
                     <label for="">Raza:</label>
                     <select class="form-control" id="razas" name="race_id">
-                            <option>Seleccione la Raza</option>
+                            <option> Seleccione la Raza</option>
                         @foreach ( $raza as $i )   
                             <option value="{{$i->id}}">{{$i->description}}</option>
                         @endforeach

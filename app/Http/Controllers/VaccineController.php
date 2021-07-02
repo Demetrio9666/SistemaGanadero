@@ -39,7 +39,7 @@ class VaccineController extends Controller
     {
         $vacuna = new Vaccine();
         
-        $vacuna->vaccine = $request->vaccine;
+        $vacuna->vaccine_d = $request->vaccine_d;
         $vacuna->date_e = $request->date_e;
         $vacuna->date_c = $request->date_c;
         $vacuna->supplier = $request->supplier;
@@ -82,7 +82,7 @@ class VaccineController extends Controller
     public function update(Request $request, $id)
     {
         $vacuna = Vaccine::findOrFail($id);
-        $vacuna->vaccine = $request->vaccine;
+        $vacuna->vaccine_d = $request->vaccine_d;
         $vacuna->date_e = $request->date_e;
         $vacuna->date_c = $request->date_c;
         $vacuna->supplier = $request->supplier;

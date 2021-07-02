@@ -7,7 +7,7 @@
 <body>
     @extends('adminlte::page')
     @section('css')
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
     <link rel="stylesheet" type="text/css" href="/css/registro.css">
@@ -16,29 +16,28 @@
     <div class="container" id="registration-form">
         <div class="image"></div>
         <div class="frm">
-            <h1>Registro de  Control de vacunacion </h1>
+            <h1>Registro de Animales</h1>
             <form action="{{route('controlVacuna.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Vacunacion:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_v" >
+                    <input type="date" class="form-control" id="fecha_r" name="date_vaccine" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Codigo Animal</label>
                         <div class="input-group mb-3">
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                 <span class="input-group-text" id="basic-addon1">Codigo</span>
-                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1" name="" id="codigo_animal" disabled=disabled >
+                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
                                 <input type="hidden" id="idcodi" name="animalCode_id">
                         </div>
                 </div>
                 <div class="form-group">
                     <label for="">Vacuna:</label>
-                    <select class="form-control" id="inputPassword4"  name="reproduccion">
-                        <option>Seleccione la Vacuna</option>
+                    <select class="form-control" id="razas"  name="vaccine_id">
+                        <option selected>Seleccione la Vacuna</option>
                         @foreach ($vacuna as $i )   
-                            <option value="{{$i->id}}">{{$i->vaccine}}-{{$i->supplier}}</option>
-                            
+                            <option value="{{$i->id}}">{{$i->vaccine_d}}</option>
                         @endforeach
                   </select>
                 </div>  
@@ -46,10 +45,14 @@
                     <label for="">Fecha de Segunda Docis:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date_vr" >
                 </div>
+
+
+
+                <div class="col-md-6-self-center" style="margin: 80px">
                     
-                <div class="form-group">
-                    <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/controlVacuna')}}">Cancelar</a>
-                    <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/controlVacuna') }}" >Guardar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/controlVacuna')}}">Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/controlVacuna') }}" >Guardar</button>
+  
                 </div>
             </form>
         </div>
@@ -69,10 +72,6 @@
                 $("#idcodi").val(col1);
                 $("#codigo_animal").val(col2);
            });
-
-          
-          
-        
 
    </script>
     @endsection
