@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVaccineControlTable extends Migration
+class CreateWeigthControlTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateVaccineControlTable extends Migration
      */
     public function up()
     {
-        Schema::create('vaccine_control', function (Blueprint $table) {
+        Schema::create('weigth_control', function (Blueprint $table) {
             $table->id();
-            $table->date('date_vaccine');
-            $table->unsignedBigInteger('animalCode_id');
+            $table->date('date_v');
+            $table-> unsignedBigInteger('animalCode_id');
             $table->foreign('animalCode_id')->references('id')->on('file_animale')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
-
-            $table->unsignedBigInteger('vaccine_id')->nullable();
-            $table->foreign('vaccine_id')->references('id')->on('vaccine')
-                  ->onDelete('set null')->onUpdate('cascade');
-
+            $table->float('weigtht');
             $table->date('date_vr');
             $table->timestamps();
         });
@@ -37,6 +33,6 @@ class CreateVaccineControlTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vaccine_control');
+        Schema::dropIfExists('weigth_control');
     }
 }

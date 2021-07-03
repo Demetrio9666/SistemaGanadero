@@ -10,6 +10,7 @@ use App\Http\Controllers\AntibioticController;
 use App\Http\Controllers\ArtificialReproductionController;
 use App\Http\Controllers\File_animaleController;
 use App\Http\Controllers\Vaccine_controlController;
+use App\Http\Controllers\Weigth_controlController;
 //Route::get('/',[HomeController::class,'welcome']);
 
 
@@ -27,11 +28,12 @@ Route::get('/fichaReproduccion',[HomeController::class,'Registro_Reproduccion'])
 
 
 Route::get('/controlDesparasitacion',[HomeController::class,'Control_Despara']);
-Route::get('/controlPeso',[HomeController::class,'Control_Peso']);
+//Route::get('/controlPeso',[HomeController::class,'Control_Peso']);
 Route::get('/controlPrenes',[HomeController::class,'Control_Prenes']);
 //Route::get('/controlVacuna',[HomeController::class,'Control_Vacuna']);
 
 
+Route::resource('/controlPeso',Weigth_controlController::class);
 Route::resource('/controlVacuna',Vaccine_controlController::class);
 Route::resource('/fichaAnimal',File_animaleController::class);
 Route::resource('/confUbicacion',LocationController::class);

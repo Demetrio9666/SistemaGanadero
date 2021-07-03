@@ -40,7 +40,7 @@
                 <div  class="col-md-6">
                     <label for="">Sexo:</label>
                     <select class="form-control" id="inputPassword4" name="sex">
-                        <option selected>...</option>
+                        <option selected>Seleccione</option>
                         <option>Macho</option>
                         <option>Hembra</option>
                   </select>
@@ -48,7 +48,7 @@
                 <div  class="col-md-6">
                     <label for="">Etapa de vida:</label>
                     <select class="form-control" id="inputPassword4" name="stage">
-                        <option selected>...</option>
+                        <option selected>Seleccione</option>
                         <option>Vaca</option>
                         <option>Toro</option>
                         <option>Ternero</option>
@@ -59,7 +59,7 @@
                 <div  class="col-md-6">
                     <label for="">Origen:</label>
                     <select class="form-control" id="inputPassword4" name="source">
-                        <option selected>...</option>
+                        <option selected>Seleccione</option>
                         <option>Nacido</option>
                         <option>Comprado</option>
                   </select>
@@ -71,7 +71,7 @@
                 <div  class="col-md-6">
                     <label for="">Estado de Salud:</label>
                     <select class="form-control" id="inputPassword4" name="health_condition">
-                        <option selected>...</option>
+                        <option selected>Seleccione</option>
                         <option>Sano</option>
                         <option>Enfermo</option>
                   </select>
@@ -79,7 +79,7 @@
                 <div  class="col-md-6">
                     <label for="">Embarazo:</label>
                     <select class="form-control" id="inputPassword4" name="gestation_state">
-                        <option selected>...</option>
+                        <option selected>Seleccione</option>
                         <option>Si</option>
                         <option>No</option>
                   </select>
@@ -88,7 +88,7 @@
                 <div  class="col-md-6">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option selected>...</option>
+                        <option selected>Seleccione</option>
                         <option>Disponible</option>
                         <option>Vendido</option>
                         <option>Faenado o Descarte</option>
@@ -108,7 +108,7 @@
                 <div class="col-md-6">
                     <label for="">Concebedido o creado:</label>
                     <select class="form-control" id="inputPassword4" name="conceived">
-                        <option selected>...</option>
+                        <option selected>Seleccione</option>
                         <option>Monta</option>
                         <option>Insiminacion Artificial</option>
                         <option>Embrional</option>

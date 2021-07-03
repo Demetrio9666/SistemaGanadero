@@ -31,7 +31,7 @@
                 <div  class="col-md-6">
                     <label for="">Raza:</label>
                     <select class="form-control" id="razas" name="race_id"  value="{{$animal->race_id}}">
-                            <option>Seleccione la Raza</option>
+                            <option selected>Seleccione la Raza</option>
                         @foreach ( $raza as $i )   
                             <option value="{{$i->id}}" @if($animal->race_id == $i->id ) selected @endif>{{$i->description}}</option>
                         @endforeach

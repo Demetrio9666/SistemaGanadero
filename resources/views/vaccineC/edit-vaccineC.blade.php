@@ -19,6 +19,7 @@
             <h1>Editar de  Control de vacunacion </h1>
             <form action="{{route('controlVacuna.update',$vacunaC->id)}}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
                     <label for="">Fecha de Vacunacion:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date_vaccine" value="{{$vacunaC->date_vaccine}}">
@@ -28,25 +29,24 @@
                         <div class="input-group mb-3">
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                 <span class="input-group-text" id="basic-addon1">Codigo</span>
-
+                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
+                                @foreach ($animal as $i)
+                                            @if ($vacunaC->animalCode_id == $i->id )
+                                                 value =" {{$i->animalCode}} "
+                                            @endif
+                                @endforeach>
+                               
+                               
                                 <input type="text" id="idcodi" name="animalCode_id" value="{{$vacunaC->animalCode_id}}">
-                                @foreach ( $animal as $i )
-
-                                        <label @if ($vacunaC->animalCode_id == $i->id ) selected @endif >{{$i->animalCode}}  </label>
-                                @endforeach
-                               
-                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
-                               
-                                
                                 
                         </div>
                 </div>
                 <div class="form-group">
                     <label for="">Vacuna:</label>
                     <select class="form-control" id="inputPassword4"  name="vaccine_id"   value="{{$vacunaC->vaccine_id}}">
-                        <option>Seleccione la Vacuna</option>
+                        <option selected>Seleccione la Vacuna</option>
                         @foreach ($vacuna as $i )   
-                            <option value="{{$i->id}}" @if($vacunaC->vaccine_id == $i->id ) selected @endif>{{$i->vaccine}}-{{$i->supplier}}</option>
+                            <option value="{{$i->id}}" @if($vacunaC->vaccine_id == $i->id ) selected @endif>{{$i->vaccine_d}}</option>
                             
                         @endforeach
                   </select>
