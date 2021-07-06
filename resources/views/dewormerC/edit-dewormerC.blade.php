@@ -16,49 +16,49 @@
     <div class="container" id="registration-form">
         <div class="image"></div>
         <div class="frm">
-            <h1>Editar Control de vacunacion </h1>
-            <form action="{{route('controlVacuna.update',$vacunaC->id)}}" method="POST">
+            <h1>Editar Control de desparasitación </h1>
+            <form action="{{route('controlDesparasitacion.update',$desC->id)}}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="">Fecha de Vacunacion:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vaccine" value="{{$vacunaC->date_vaccine}}">
+                    <label for="">Fecha de Desparasitación:</label>
+                    <input type="date" class="form-control" id="fecha_r" name="date_d" value="{{$desC->date_d}}">
                 </div>
                 <div class="form-group">
-                    <label for="" class="">Código Animal</label>
+                    <label for="" class="">Codigo Animal</label>
                         <div class="input-group mb-3">
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                 <span class="input-group-text" id="basic-addon1">Codigo</span>
                                 <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
                                 @foreach ($animal as $i)
-                                            @if ($vacunaC->animalCode_id == $i->id )
+                                            @if ($desC->animalCode_id == $i->id )
                                                  value =" {{$i->animalCode}} "
                                             @endif
                                 @endforeach>
                                
                                
-                                <input type="hidden" id="idcodi" name="animalCode_id" value="{{$vacunaC->animalCode_id}}">
+                                <input type="hidden" id="idcodi" name="animalCode_id" value="{{$desC->animalCode_id}}">
                                 
                         </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Vacuna:</label>
-                    <select class="form-control" id="inputPassword4"  name="vaccine_id"   value="{{$vacunaC->vaccine_id}}">
-                        <option selected>Seleccione la Vacuna</option>
-                        @foreach ($vacuna as $i )   
-                            <option value="{{$i->id}}" @if($vacunaC->vaccine_id == $i->id ) selected @endif>{{$i->vaccine_d}}</option>
-                            
+                    <label for="">Desparasitante:</label>
+                    <select class="form-control" id="inputPassword4"  name="deworming_id"   value="{{$desC->deworming_id}}">
+                        <option selected>Seleccione el Desparasitante</option>
+                        @foreach ($des as $i )   
+                            <option value="{{$i->id}}" @if($desC->deworming_id == $i->id ) selected @endif>{{$i->dewormer}}</option>       
                         @endforeach
                   </select>
                 </div>  
+
                 <div class="form-group">
-                    <label for="">Fecha de Segunda Docis:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vr" value="{{$vacunaC->date_vr}}">
+                    <label for="">Fecha de re-desparasitación:</label>
+                    <input type="date" class="form-control" id="fecha_r" name="date_vr" value="{{$desC->date_vr}}">
                 </div>
                     
                 <div class="form-group">
-                    <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/controlVacuna')}}">Cancelar</a>
-                    <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/controlVacuna') }}" >Guardar</button>
+                    <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/controlDesparasitacion')}}">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/controlDesparasitacion') }}" >Guardar</button>
                 </div>
             </form>
         </div>

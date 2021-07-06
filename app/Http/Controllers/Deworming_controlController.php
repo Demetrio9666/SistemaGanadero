@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\File_animale;
-use App\Models\Weigth_control;
-class Weigth_controlController extends Controller
+use App\Models\Dewormer;
+use App\Models\Deworming_control;
+
+class Deworming_controlController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +17,13 @@ class Weigth_controlController extends Controller
      */
     public function index()
     {
-        $pesoC = DB::table('weigth_control')
-                ->join('file_animale','weigth_control.animalCode_id','=','file_animale.id')
-                ->select('weigth_control.id','weigth_control.date_v','file_animale.animalCode as animal','weigth_control.weigtht','weigth_control.date_vr')
+        $desC = DB::table('deworming_control')
+                ->join('file_animale','deworming_control.animalCode_id','=','file_animale.id')
+                ->join('dewormer','deworming_control.deworming_id','=','dewormer.id')
+                ->select('deworming_control.id','deworming_control.date_d','file_animale.animalCode as animal','dewormer.dewormer as des','deworming_control.date_vr')
                 ->get();
-        return view('weigthC.index-weigthC',compact('pesoC'));
+        return view('dewormerC.index-dewormerC',compact('desC'));
+        //return $desC;
     }
 
     /**
@@ -29,6 +33,12 @@ class Weigth_controlController extends Controller
      */
     public function create()
     {
+        $des =  DB::table('dewormer')
+        ->select('id',
+                'dewormer'
+                )
+        ->get();
+
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
@@ -38,7 +48,7 @@ class Weigth_controlController extends Controller
                   )
                   
         ->get();
-        return view('weigthC.create-weigthC',compact('animal'));
+        return view('dewormerC.create-dewormerC',compact('animal','des'));
     }
 
     /**
@@ -49,15 +59,15 @@ class Weigth_controlController extends Controller
      */
     public function store(Request $request)
     {
-        $pesoC = new Weigth_control();
-       
-        $pesoC->date_v = $request->date_v;
-        $pesoC->animalCode_id = $request->animalCode_id;
-        $pesoC->weigtht = $request->weigtht;
-        $pesoC->date_vr = $request->date_vr;
-        $pesoC->save(); 
+        $desC = new Deworming_control();
+
+       $desC->date_d = $request->date_d;
+       $desC->animalCode_id = $request->animalCode_id;
+       $desC->deworming_id = $request->deworming_id;
+       $desC->date_vr = $request->date_vr;
+       $desC->save(); 
             //return redirect()->route();
-        return redirect('/controlPeso');
+        return redirect('/controlDesparasitacion');
     }
 
     /**
@@ -68,7 +78,7 @@ class Weigth_controlController extends Controller
      */
     public function show($id)
     {
-        return view('weigthC.edit-weigthC',compact('id'));
+        return view('dewormerC.edit-dewormerC',compact('id'));
     }
 
     /**
@@ -79,7 +89,8 @@ class Weigth_controlController extends Controller
      */
     public function edit($id)
     {
-        $pesoC = Weigth_control::findOrFail($id);
+        $des =  Dewormer::all();
+        $desC = Deworming_control::findOrFail($id);
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
@@ -89,7 +100,8 @@ class Weigth_controlController extends Controller
                   )
                   
         ->get();
-        return view('weigthC.edit-weigthC', compact('pesoC','animal'));
+
+        return view('dewormerC.edit-dewormerC', compact('desC','des','animal'));
     }
 
     /**
@@ -101,14 +113,16 @@ class Weigth_controlController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pesoC = Weigth_control::findOrFail($id);
-        $pesoC->date_v = $request->date_v;
-        $pesoC->animalCode_id = $request->animalCode_id;
-        $pesoC->weigtht = $request->weigtht;
-        $pesoC->date_vr = $request->date_vr;
-        $pesoC->save(); 
-       
-        return redirect('/controlPeso');
+        $desC = Deworming_control::findOrFail($id);
+
+        $desC->date_d = $request->date_d;
+        $desC->animalCode_id = $request->animalCode_id;
+        $desC->deworming_id = $request->deworming_id;
+        $desC->date_vr = $request->date_vr;
+      
+        $desC->save(); 
+        return redirect('/controlDesparasitacion');
+
     }
 
     /**
@@ -119,8 +133,8 @@ class Weigth_controlController extends Controller
      */
     public function destroy($id)
     {
-        $pesoC = Weigth_control::findOrFail($id);
-        $pesoC->delete();
-        return redirect('/controlPeso')->with('eliminar','ok'); 
+        $desC = Deworming_control::findOrFail($id);
+        $desC->delete();
+        return redirect('/controlDesparasitacion')->with('eliminar','ok'); 
     }
 }

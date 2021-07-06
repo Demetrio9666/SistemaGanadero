@@ -21,7 +21,7 @@
                 @csrf
                 @method('PUT')
                 <div  class="col-md-6">
-                    <label for="" class="form-label">Codigo Animal:</label>
+                    <label for="" class="form-label">Código Animal:</label>
                     <input type="text" class="form-control" id="codigoAnimal" name="animalCode" value="{{$animal->animalCode}}">
                 </div>
                 <div  class="col-md-6">

@@ -5,13 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\File_Animale;
-
-class Weigth_control extends Model
+use App\Models\Dewormer;
+class Deworming_control extends Model
 {
     use HasFactory;
-    protected $table = "weigth_control";
+    protected $table = "deworming_control";
+
+
 
     public function file_animale(){
         return $this->hasOne(File_Animale::class);
     }
+
+    public function dewormer(){
+        return $this->hasOne(Dewormer::class);
+    }
 }
+

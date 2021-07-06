@@ -20,7 +20,7 @@
             <form action="{{route('fichaAnimal.store')}}" method="POST" class="row g-3">
                 @csrf
                 <div  class="col-md-6">
-                    <label for="" class="form-label">Codigo Animal:</label>
+                    <label for="" class="form-label">Código Animal:</label>
                     <input type="text" class="form-control" id="codigoAnimal" name="animalCode" >
                 </div>
                 <div  class="col-md-6">

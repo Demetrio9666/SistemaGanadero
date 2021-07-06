@@ -17,7 +17,7 @@
                 <tr>
                     
                     <th>Fecha de Registro</th>
-                    <th>Codigo del Animal</th>
+                    <th>Código del Animal</th>
                     <th>Peso</th>
                     <th>Fecha de próximo control</th>
                     <th>Acción</th>
@@ -45,7 +45,7 @@
                 <tr>
                     
                     <th>Fecha de Registro</th>
-                    <th>Codigo del Animal</th>
+                    <th>Código del Animal</th>
                     <th>Peso</th>
                     <th>Fecha de próximo control</th>
                     <th>Acción</th>

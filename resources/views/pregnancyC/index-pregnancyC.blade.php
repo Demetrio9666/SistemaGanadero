@@ -9,69 +9,55 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
     @endsection  
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaAnimal/create')}}">Nuevo</a>
+    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('controlPrenes/create')}}">Nuevo</a>
     <div class="card">
         <div class="card-body">
           <table id="ubicaciont" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>
-                    <th>Código Animal</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Raza</th>
-                    <th>Sexo</th>
-                    <th>Etapa de vida </th>
-                    <th>Origen</th>
-                    <th>Edad-meses</th>
-                    <th>Salud</th>
-                    <th>Estado de Embarazo</th>
-                    <th>Estado Actual</th>
-                    <th>localizacion</th>
-                    <th>Concebido</th>    
+                    <th>Fecha de control</th>
+                    <th>Código del Animal</th>
+                    <th>Vitamina </th>
+                    <th>Alternativa 1</th>
+                    <th>Alternativa 2</th>
+                    <th>Observación</th>
+                    <th>Fecha de próximo control</th>
                     <th>Acción</th>
                 </tr>
             </thead>
-            <tbody>  
-                @foreach ($animal as $i)          
+            <tbody>
+                @foreach ($pre as $i)          
                 <tr>
-                    <td>{{$i->animalCode}}</td>
-                    <td >{{$i->date_n}}</td>
-                    <td >{{$i->raza}}</td>
-                    <td >{{$i->sex}}</td>
-                    <td >{{$i->stage}}</td>
-                    <td >{{$i->source}}</td>
-                    <td >{{$i->age_month}}</td>
-                    <td >{{$i->health_condition}}</td>
-                    <td >{{$i->gestation_state}}</td>
-                    <td >{{$i->actual_state}}</td>
-                    <td >{{$i->ubicacion}}</td>
-                    <td >{{$i->conceived}}</td>
+                    <td>{{$i->date_c}}</td>
+                    <td>{{$i->animal}}</td>
+                    <td >{{$i->vitamina}}</td>
+                    <td >{{$i->alt1}}</td>
+                    <td >{{$i->alt2}}</td>
+                    <td >{{$i->observation}}</td>
+                    <td >{{$i->date_rc}}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('fichaAnimal.edit',$i->id)}}" >Editar</a>
-                        <form action="{{route('fichaAnimal.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                        <a class="btn btn-primary d-grid gap-2 d-md-block " href="{{route('controlPrenes.edit',$i->id)}}" >Editar</a>
+                        <form action="{{route('controlPrenes.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                             @method('DELETE') 
                             @csrf
-                            
                             <input type="submit"  class="btn btn-danger" value="Eliminar">
                         </form>                         
                     </td>  
                 </tr>
-                @endforeach
+                @endforeach 
+       
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Código Animal</th>
-                    <th>Fecha Nacimiento</th>
-                    <th>Raza</th>
-                    <th>Sexo</th>
-                    <th>Etapa de vida </th>
-                    <th>Origen</th>
-                    <th>Edad-meses</th>
-                    <th>Salud</th>
-                    <th>Estado de Embarazo</th>
-                    <th>Estado Actual</th>
-                    <th>localizacion</th>
-                    <th>Concebido</th>    
+                    <th>Fecha de control</th>
+                    <th>Código del Animal</th>
+                    <th>Vitamina </th>
+                    <th>Alternativa 1</th>
+                    <th>Alternativa 2</th>
+                    <th>Observación</th>
+                    <th>Fecha de próximo control</th>
                     <th>Acción</th>
+                </tr>
                 </tr>
             </tfoot>
         </table>

@@ -10,7 +10,7 @@ use App\Models\Location;
 class File_Animale extends Model
 {
     use HasFactory;
-    protected $table = "File_animale";
+    protected $table = "file_animale";
 
     public function race(){
         return $this->hasOne(Race::class);

@@ -16,12 +16,12 @@
     <div class="container" id="registration-form">
         <div class="image"></div>
         <div class="frm">
-            <h1>Registro de Animales</h1>
-            <form action="{{route('controlVacuna.store')}}" method="POST">
+            <h1>Registro de Desparasitación</h1>
+            <form action="{{route('controlDesparasitacion.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="">Fecha de Vacunacion:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vaccine" >
+                    <label for="">Fecha de Desparasitación:</label>
+                    <input type="date" class="form-control" id="fecha_r" name="date_d" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -33,16 +33,16 @@
                         </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Vacuna:</label>
-                    <select class="form-control" id="razas"  name="vaccine_id">
-                        <option selected>Seleccione la Vacuna</option>
-                        @foreach ($vacuna as $i )   
-                            <option value="{{$i->id}}">{{$i->vaccine_d}}</option>
+                    <label for="">Desparasitante:</label>
+                    <select class="form-control" id="des"  name="deworming_id">
+                        <option selected>Seleccione el Desparasitante</option>
+                        @foreach ($des as $i )   
+                            <option value="{{$i->id}}">{{$i->dewormer}}</option>
                         @endforeach
                   </select>
                 </div>  
                 <div class="form-group">
-                    <label for="">Fecha de Segunda Docis:</label>
+                    <label for="">Fecha de re-desparasitación:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date_vr" >
                 </div>
 
@@ -50,9 +50,8 @@
 
                 <div class="col-md-6-self-center" style="margin: 80px">
                     
-                        <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/controlVacuna')}}">Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/controlVacuna') }}" >Guardar</button>
-  
+                        <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/controlDesparasitacion')}}">Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/controlDesparasitacion') }}" >Guardar</button>
                 </div>
             </form>
         </div>

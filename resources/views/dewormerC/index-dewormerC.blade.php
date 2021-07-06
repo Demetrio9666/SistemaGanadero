@@ -5,37 +5,37 @@
     @extends('adminlte::page')
     @section('title')
     @section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
     @endsection  
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('controlVacuna/create')}}">Nuevo</a>
+    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('controlDesparasitacion/create')}}">Nuevo</a>
     <div class="card">
         <div class="card-body">
-          <table id="ubicaciont" class="table table-striped table-bordered" style="width:100%">
+          <table id="desp" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>
-                    <th></th>
-                    <th>Fecha de la Vacunacion</th>
+                    <th>Fecha de Desparasitación</th>
                     <th>Código del Animal</th>
-                    <th>Vacuna</th>
-                    <th>Fecha de re-vacunacion</th>
+                    <th>Desparasitante</th>
+                    <th>Fecha de re-desparasitación</th>
                     <th>Acción</th>
                 </tr>
             </thead>
             <tbody>  
-                @foreach ($vacunaC as $i)          
+                @foreach ($desC as $i)          
                 <tr>
-                    <td>{{$i->id}}</td>
-                    <td>{{$i->date_vaccine}}</td>
+                    <td>{{$i->date_d}}</td>
                     <td >{{$i->animal}}</td>
-                    <td >{{$i->vacuna}}</td>
+                    <td>{{$i->des}}</td>
                     <td >{{$i->date_vr}}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('controlVacuna.edit',$i->id)}}" >Editar</a>
-                        <form action="{{route('controlVacuna.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
-                            @method('DELETE') 
+                        <a class="btn btn-primary" href="{{route('controlDesparasitacion.edit',$i->id)}}" >Editar</a>
+                        <form action="{{route('controlDesparasitacion.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                             @csrf
+                            @method('DELETE') 
                             <input type="submit"  class="btn btn-danger" value="Eliminar">
                         </form>                         
                     </td>  
@@ -44,11 +44,10 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th></th>
-                    <th>Fecha de la Vacunacion</th>
+                    <th>Fecha de Desparasitación</th>
                     <th>Código del Animal</th>
-                    <th>Vacuna</th>
-                    <th>Fecha de re-vacunacion</th>
+                    <th>Desparasitante</th>
+                    <th>Fecha de re-desparasitación</th>
                     <th>Acción</th>
                 </tr>
             </tfoot>
@@ -58,14 +57,14 @@
     @endsection
 </body>
     @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
     <script>
-       $('#ubicaciont').DataTable({
+       $('#desp').DataTable({
          responsive: true,
          "language": {
             "lengthMenu": "Mostrar "+
@@ -90,31 +89,31 @@
        });
     </script>
     @if (session('eliminar') == 'ok')
+        <script>
+             Swal.fire(
+                        '¡Eliminado!',
+                        'El registro fue eliminado.',
+                        'success'
+                        )      
+        </script>
+    @endif
     <script>
-         Swal.fire(
-                    '¡Eliminado!',
-                    'El registro fue eliminado.',
-                    'success'
-                    )      
+        $('.formulario-eliminar').submit(function(e){
+            e.preventDefault();
+              Swal.fire({
+                        title: 'Está seguro?',
+                        text: "Este registro se eliminara definitivamente",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '¡Si, Eliminar!',
+                        concelButtonText: 'Cancelar'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.submit();
+                    }
+            }) 
+        });
     </script>
-@endif
-<script>
-    $('.formulario-eliminar').submit(function(e){
-        e.preventDefault();
-          Swal.fire({
-                    title: 'Está seguro?',
-                    text: "Este registro se eliminara definitivamente",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: '¡Si, Eliminar!',
-                    concelButtonText: 'Cancelar'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    this.submit();
-                }
-        }) 
-    });
-</script>
-@endsection
+    @endsection

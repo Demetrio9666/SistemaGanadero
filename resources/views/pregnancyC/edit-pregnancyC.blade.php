@@ -17,48 +17,74 @@
         <div class="image"></div>
         <div class="frm">
             <h1>Editar Control de vacunacion </h1>
-            <form action="{{route('controlVacuna.update',$vacunaC->id)}}" method="POST">
+            <form action="{{route('controlPrenes.update',$pre->id)}}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
                     <label for="">Fecha de Vacunacion:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vaccine" value="{{$vacunaC->date_vaccine}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date_c" value="{{$pre->date_c}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
                         <div class="input-group mb-3">
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
-                                <span class="input-group-text" id="basic-addon1">Codigo</span>
+                                <span class="input-group-text" id="basic-addon1">Código</span>
                                 <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
                                 @foreach ($animal as $i)
-                                            @if ($vacunaC->animalCode_id == $i->id )
+                                            @if ($pre->animalCode_id == $i->id )
                                                  value =" {{$i->animalCode}} "
                                             @endif
                                 @endforeach>
                                
                                
-                                <input type="hidden" id="idcodi" name="animalCode_id" value="{{$vacunaC->animalCode_id}}">
+                                <input type="hidden" id="idcodi" name="animalCode_id" value="{{$pre->animalCode_id}}">
                                 
                         </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Vacuna:</label>
-                    <select class="form-control" id="inputPassword4"  name="vaccine_id"   value="{{$vacunaC->vaccine_id}}">
-                        <option selected>Seleccione la Vacuna</option>
-                        @foreach ($vacuna as $i )   
-                            <option value="{{$i->id}}" @if($vacunaC->vaccine_id == $i->id ) selected @endif>{{$i->vaccine_d}}</option>
+                    <label for="">Vitamina:</label>
+                    <select class="form-control" id="inputPassword4"  name="vitamin_id"   value="{{$pre->vitamin_id}}">
+                        <option selected>Seleccione la Vitamina</option>
+                        @foreach ($vitamina as $i )   
+                            <option value="{{$i->id}}" @if($pre->vitamin_id == $i->id ) selected @endif>{{$i->vitamin}}</option>
+                            
+                        @endforeach
+                  </select>
+                </div>  
+ 
+                <div class="form-group">
+                    <label for="">Alternativa 1 de Vitamina:</label>
+                    <select class="form-control" id="inputPassword4"  name="alternative1"   value="{{$pre->alternative1}}">
+                        <option selected>N/A</option>
+                        @foreach($vitamina as $i )   
+                        <option {{$i->id}}  @if($pre->alternative1 == $i->vitamin ) value= "{{$i->vitamin}}"  selected  @endif>{{$i->vitamin}}</option>
                             
                         @endforeach
                   </select>
                 </div>  
                 <div class="form-group">
-                    <label for="">Fecha de Segunda Docis:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vr" value="{{$vacunaC->date_vr}}">
+                    <label for="">Alternativa 2 de Vitamina:</label>
+                    <select class="form-control" id="inputPassword4"  name="alternative2"   value="{{$pre->alternative2}}">
+                        <option selected>N/A</option>
+                        @foreach ($vitamina as $i )   
+                        <option {{$i->id}}  @if($pre->alternative2 == $i->vitamin ) value= "{{$i->vitamin}}" selected  @endif>{{$i->vitamin}}</option>
+                            
+                        @endforeach
+                  </select>
+                </div>  
+                <div class="form-group">
+                    <label for="">Observación:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="observation">{{$pre->observation}}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Fecha de próximo control:</label>
+                    <input type="date" class="form-control" id="fecha_r" name="date_rc" value="{{$pre->date_rc}}">
                 </div>
                     
                 <div class="form-group">
-                    <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/controlVacuna')}}">Cancelar</a>
-                    <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/controlVacuna') }}" >Guardar</button>
+                    <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/controlPrenes')}}">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/controlPrenes') }}" >Guardar</button>
                 </div>
             </form>
         </div>
