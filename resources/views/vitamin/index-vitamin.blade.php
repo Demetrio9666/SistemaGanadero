@@ -27,7 +27,7 @@
             <tbody>  
                 @foreach ($vitamina as $i)          
                 <tr>
-                    <td>{{$i->vitamin}}</td>
+                    <td>{{$i->vitamin_d}}</td>
                     <td >{{$i->date_e}}</td>
                     <td>{{$i->date_c}}</td>
                     <td >{{$i->supplier}}</td>

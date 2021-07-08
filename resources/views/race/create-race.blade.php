@@ -21,7 +21,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre de la Raza:</label>
-                        <input type="text" class="form-control" id="raza" name="description" >
+                        <input type="text" class="form-control" id="raza" name="race_d" >
                     </div>
                     <div class="form-group">
                         <label for="">Porcentaje:</label>

@@ -27,7 +27,7 @@
             <tbody>  
                 @foreach ($anti as $i)          
                 <tr>
-                    <td>{{$i->antibiotic}}</td>
+                    <td>{{$i->antibiotic_d}}</td>
                     <td >{{$i->date_e}}</td>
                     <td>{{$i->date_c}}</td>
                     <td >{{$i->supplier}}</td>

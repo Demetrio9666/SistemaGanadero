@@ -28,7 +28,7 @@
             <tbody>  
                 @foreach ($raza as $i)          
                 <tr>
-                    <td >{{$i->description}}</td>
+                    <td >{{$i->race_d}}</td>
                     <td>{{$i->percentage}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('confRaza.edit',$i->id)}}" >Editar</a>

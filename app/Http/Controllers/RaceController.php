@@ -39,7 +39,7 @@ class RaceController extends Controller
     {
         $raza = new Race();
         
-        $raza->description = $request->description;
+        $raza->race_d = $request->race_d;
         $raza->percentage = $request->percentage;
         $raza->save(); 
         
@@ -81,7 +81,7 @@ class RaceController extends Controller
     public function update(Request $request, $id)
     {
         $raza = Race::findOrFail($id);
-        $raza->description = $request->description;
+        $raza->race_d = $request->race_d;
         $raza->percentage = $request->percentage;
         $raza->save();
         return redirect('/confRaza'); 

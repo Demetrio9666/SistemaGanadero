@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\File_animale;
 use App\Models\Pregnancy_control;
 use App\Models\Vitamin;
-use App\Models\Vitamin_for_pregnacy_control;
+
 
 
 class Pregnancy_controlController extends Controller
@@ -56,6 +56,9 @@ class Pregnancy_controlController extends Controller
                   )
                   ->where('sex','Hembra')
                   ->where('age_month','>=',24)
+                  ->where('actual_state','=','Disponible')
+                  ->where('stage','=','Vaca')
+                  
         ->get();
         return view('PregnancyC.create-PregnancyC',compact('vitamina','animal'));
     }

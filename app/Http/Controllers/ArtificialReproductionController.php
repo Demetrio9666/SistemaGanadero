@@ -19,7 +19,7 @@ class ArtificialReproductionController extends Controller
     {
         $arti= DB::table('artificial_reproduction')
                     ->join('race','race.id','=','artificial_reproduction.race_id')
-                    ->select('artificial_reproduction.id','artificial_reproduction.date','race.description  as raza','artificial_reproduction.reproduccion','artificial_reproduction.supplier')
+                    ->select('artificial_reproduction.id','artificial_reproduction.date','race.race_d  as raza','artificial_reproduction.reproduccion','artificial_reproduction.supplier')
                     ->get();
 
         //$arti = Artificial_Reproduction::all();

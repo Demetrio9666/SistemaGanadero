@@ -37,7 +37,7 @@ class AntibioticController extends Controller
     public function store(Request $request)
     {
         $anti = new Antibiotic();
-        $anti->antibiotic = $request->antibiotic;
+        $anti->antibiotic_d = $request->antibiotic_d;
         $anti->date_e = $request->date_e;
         $anti->date_c = $request->date_c;
         $anti->supplier = $request->supplier;
@@ -80,7 +80,7 @@ class AntibioticController extends Controller
     public function update(Request $request, $id)
     {
         $desp = Antibiotic::findOrFail($id);
-        $desp->antibiotic = $request->antibiotic;
+        $desp->antibiotic_d = $request->antibiotic_d;
         $desp->date_e = $request->date_e;
         $desp->date_c = $request->date_c;
         $desp->supplier = $request->supplier;

@@ -23,7 +23,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre del Desparacitante:</label>
-                        <input type="text" class="form-control" id="raza" name="dewormer" value="{{$desp->dewormer}}" >
+                        <input type="text" class="form-control" id="raza" name="dewormer_d" value="{{$desp->dewormer_d}}" >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>

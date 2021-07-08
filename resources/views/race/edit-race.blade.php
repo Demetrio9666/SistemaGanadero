@@ -23,7 +23,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre de la Raza:</label>
-                        <input type="text" class="form-control" id="raza" name="description" value="{{$raza->description}}" >
+                        <input type="text" class="form-control" id="raza" name="race_d" value="{{$raza->race_d}}" >
                     </div>
                     <div class="form-group">
                         <label for="">Porcentaje:</label>

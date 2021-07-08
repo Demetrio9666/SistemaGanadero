@@ -21,7 +21,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre del Desparacitante:</label>
-                        <input type="text" class="form-control" id="desp" name="dewormer" >
+                        <input type="text" class="form-control" id="desp" name="dewormer_d" >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>

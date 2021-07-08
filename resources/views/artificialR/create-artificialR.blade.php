@@ -28,7 +28,7 @@
                         <select class="form-control" id="razas" name="race_id">
                                 <option>Seleccione la Raza</option>
                             @foreach ( $razas as $i )   
-                                <option value="{{$i->id}}">{{$i->description}}</option>
+                                <option value="{{$i->id}}">{{$i->race_d}}</option>
                             @endforeach
                         </select>
     

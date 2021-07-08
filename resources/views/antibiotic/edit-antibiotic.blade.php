@@ -23,7 +23,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre del Antibiótico:</label>
-                        <input type="text" class="form-control" id="antibiotico" name="antibiotic" value="{{$anti->antibiotic}}" >
+                        <input type="text" class="form-control" id="antibiotico_d" name="antibiotic_d" value="{{$anti->antibiotic_d}}" >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>

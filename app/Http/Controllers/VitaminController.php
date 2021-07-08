@@ -38,7 +38,7 @@ class VitaminController extends Controller
     {
         $vitamina = new Vitamin();
         
-        $vitamina->vitamin = $request->vitamin;
+        $vitamina->vitamin_d = $request->vitamin_d;
         $vitamina->date_e = $request->date_e;
         $vitamina->date_c = $request->date_c;
         $vitamina->supplier = $request->supplier;
@@ -80,7 +80,7 @@ class VitaminController extends Controller
     public function update(Request $request, $id)
     {
         $vitamina = Vitamin::findOrFail($id);
-        $vitamina->vitamin = $request->vitamin;
+        $vitamina->vitamin_d = $request->vitamin_d;
         $vitamina->date_e = $request->date_e;
         $vitamina->date_c = $request->date_c;
         $vitamina->supplier = $request->supplier;

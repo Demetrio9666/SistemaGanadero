@@ -20,10 +20,10 @@ class File_animaleController extends Controller
         $animal = DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->join('location','file_animale.location_id','=','location.id')
-                    ->select('file_animale.id','file_animale.animalCode','file_animale.date_n','race.description as raza',
+                    ->select('file_animale.id','file_animale.animalCode','file_animale.date_n','race.race_d as raza',
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
-                            ,'file_animale.conceived' )
+                            ,'file_animale.conceived')
                     ->get();
         return view('file_animale.index-animale',compact('animal'));
         //return $animal;

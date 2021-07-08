@@ -15,7 +15,7 @@ class CreateVitaminTable extends Migration
     {
         Schema::create('vitamin', function (Blueprint $table) {
             $table->id();
-            $table->string('vitamin',20);
+            $table->string('vitamin_d',20);
             $table->date('date_e');
             $table->date('date_c');
             $table->string('supplier',20);

@@ -46,7 +46,7 @@
                     <select class="form-control" id="inputPassword4"  name="deworming_id"   value="{{$desC->deworming_id}}">
                         <option selected>Seleccione el Desparasitante</option>
                         @foreach ($des as $i )   
-                            <option value="{{$i->id}}" @if($desC->deworming_id == $i->id ) selected @endif>{{$i->dewormer}}</option>       
+                            <option value="{{$i->id}}" @if($desC->deworming_id == $i->id ) selected @endif>{{$i->dewormer_d}}</option>       
                         @endforeach
                   </select>
                 </div>  

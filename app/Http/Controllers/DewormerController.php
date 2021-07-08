@@ -37,7 +37,7 @@ class DewormerController extends Controller
     public function store(Request $request)
     {
         $desp = new Dewormer();
-        $desp->dewormer = $request->dewormer;
+        $desp->dewormer_d = $request->dewormer_d;
         $desp->date_e = $request->date_e;
         $desp->date_c = $request->date_c;
         $desp->supplier = $request->supplier;
@@ -80,7 +80,7 @@ class DewormerController extends Controller
     public function update(Request $request, $id)
     {
         $desp = Dewormer::findOrFail($id);
-        $desp->dewormer = $request->dewormer;
+        $desp->dewormer_d = $request->dewormer_d;
         $desp->date_e = $request->date_e;
         $desp->date_c = $request->date_c;
         $desp->supplier = $request->supplier;

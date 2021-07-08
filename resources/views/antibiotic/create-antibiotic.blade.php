@@ -21,7 +21,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre del Antibiótico:</label>
-                        <input type="text" class="form-control" id="antibiotico" name="antibiotic" >
+                        <input type="text" class="form-control" id="antibiotico" name="antibiotic_d" >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>

@@ -23,7 +23,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre de la Vitamina:</label>
-                        <input type="text" class="form-control" id="vitamina" name="vitamin" value="{{$vitamina->vitamin}}" >
+                        <input type="text" class="form-control" id="vitamina_d" name="vitamin_d" value="{{$vitamina->vitamin}}" >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>

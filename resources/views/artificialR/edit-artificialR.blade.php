@@ -29,7 +29,7 @@
                         <select class="form-control" id="razas" name="race_id"  value="{{$arti->race_id}}"  >
                                 <option>Seleccione la Raza</option>
                             @foreach ( $razas as $i )   
-                                <option value="{{$i->id}}" @if($arti->race_id == $i->id) selected @endif > {{$i->description}}</option>
+                                <option value="{{$i->id}}" @if($arti->race_id == $i->id) selected @endif > {{$i->race_d}}</option>
                             @endforeach
                         </select>
                     </div>

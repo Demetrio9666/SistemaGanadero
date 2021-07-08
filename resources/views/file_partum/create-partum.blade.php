@@ -16,12 +16,12 @@
     <div class="container" id="registration-form">
         <div class="image"></div>
         <div class="frm">
-            <h1>Registro de Desparasitación</h1>
-            <form action="{{route('controlDesparasitacion.store')}}" method="POST">
+            <h1>Registro control de Parto</h1>
+            <form action="{{route('fichaParto.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="">Fecha de Desparasitación:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_d" >
+                    <label for="">Fecha de Control:</label>
+                    <input type="date" class="form-control" id="fecha_r" name="date_c" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -32,31 +32,49 @@
                                 <input type="hidden" id="idcodi" name="animalCode_id">
                         </div>
                 </div>
+                
+                       
+                    
                 <div class="form-group">
-                    <label for="">Desparasitante:</label>
-                    <select class="form-control" id="des"  name="deworming_id">
-                        <option selected>Seleccione el Desparasitante</option>
-                        @foreach ($des as $i )   
-                            <option value="{{$i->id}}">{{$i->dewormer_d}}</option>
-                        @endforeach
-                  </select>
-                </div>  
-                <div class="form-group">
-                    <label for="">Fecha de re-desparasitación:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vr" >
+                    <label for="">Cant.Machos:</label>
+                    <input type="number" class="form-control" id="fecha_r" name="male" >
                 </div>
 
-
+                <div class="form-group">
+                    <label for="">Cant.Hembras:</label>
+                    <input type="number" class="form-control" id="fecha_r" name="female" >
+                </div>
+                <div class="form-group">
+                    <label for="">Cant.Muertos:</label>
+                    <input type="number" class="form-control" id="fecha_r" name="dead" >
+                </div>
+                <div class="form-group">
+                    <label for="">Estado de la Madre:</label>
+                    <select class="form-control" id="inputPassword4" name="mother_status">
+                        <option selected>Seleccione</option>
+                        <option>Viva</option>
+                        <option>Muerta</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Tipo de Parto:</label>
+                    <select class="form-control" id="inputPassword4" name="partum_type">
+                        <option selected>Seleccione</option>
+                        <option>Natural</option>
+                        <option>Cesárea</option>
+                  </select>
+                </div>
 
                 <div class="col-md-6-self-center" style="margin: 80px">
                     
-                        <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/controlDesparasitacion')}}">Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/controlDesparasitacion') }}" >Guardar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/fichaParto')}}">Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/fichaParto') }}" >Guardar</button>
+  
                 </div>
             </form>
         </div>
     </div>
-    @include("modal.modalAnimales")
+    @include("modal.modalAnimalesP")
     @endsection
     @section('js')
     <script>
