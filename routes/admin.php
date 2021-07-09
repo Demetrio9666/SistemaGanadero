@@ -15,6 +15,7 @@ use App\Http\Controllers\Deworming_controlController;
 use App\Http\Controllers\Pregnancy_controlController;
 use App\Http\Controllers\File_partumController;
 use App\Http\Controllers\File_treatmentController;
+use App\Http\Controllers\File_reproductionController;
 
 
 Route::get('/dashboard',[HomeController::class,'Dashboard']);
@@ -23,11 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('admin.index');
 })->name('index_admin');
 
-
-//Route::get('/fichaParto',[HomeController::class,'Registro_Parto']);
-//Route::get('/fichaTratamiento',[HomeController::class,'Registro_Tratamiento']);
-Route::get('/fichaReproduccion',[HomeController::class,'Registro_Reproduccion']);
-
+Route::resource('/fichaReproduccion',File_reproductionController::class);
 Route::resource('/fichaTratamiento',File_treatmentController::class);
 Route::resource('/fichaParto',File_partumController::class);
 Route::resource('/controlPrenes',Pregnancy_controlController::class);

@@ -38,7 +38,7 @@
                             <select class="form-control" id="vitamina1"  name="vitamin_id">
                                 <option selected>Seleccione la Vitamina</option>
                                 @foreach ($vitamina as $i )   
-                                    <option value="{{$i->id}}">{{$i->vitamin}}</option>
+                                    <option value="{{$i->id}}">{{$i->vitamin_d}}</option>
                                 @endforeach
                         </select>
                         </div>  
@@ -47,7 +47,7 @@
                             <select class="form-control" id="vitamina2"  name="alternative1">
                                 <option selected>N/A</option>
                                 @foreach ($vitamina as $i )   
-                                    <option {{$i->id}} value="{{$i->vitamin}}">{{$i->vitamin}}</option>
+                                    <option {{$i->id}} value="{{$i->vitamin_d}}">{{$i->vitamin_d}}</option>
                                 @endforeach
                         </select>
                         </div>  
@@ -56,7 +56,7 @@
                             <select class="form-control" id="vitamina3"  name="alternative2">
                                 <option selected>N/A</option>
                                 @foreach ($vitamina as $i )   
-                                    <option {{$i->id}} value="{{$i->vitamin}}">{{$i->vitamin}}</option>
+                                    <option {{$i->id}} value="{{$i->vitamin_d}}">{{$i->vitamin_d}}</option>
                                 @endforeach
                         </select>
                         </div>  

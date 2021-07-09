@@ -20,7 +20,11 @@ class Deworming_controlController extends Controller
         $desC = DB::table('deworming_control')
                 ->join('file_animale','deworming_control.animalCode_id','=','file_animale.id')
                 ->join('dewormer','deworming_control.deworming_id','=','dewormer.id')
-                ->select('deworming_control.id','deworming_control.date_d','file_animale.animalCode as animal','dewormer.dewormer as des','deworming_control.date_vr')
+                ->select('deworming_control.id',
+                         'deworming_control.date_d',
+                         'file_animale.animalCode as animal',
+                         'dewormer.dewormer_d as des',
+                         'deworming_control.date_vr')
                 ->get();
         return view('dewormerC.index-dewormerC',compact('desC'));
         //return $desC;
@@ -35,7 +39,7 @@ class Deworming_controlController extends Controller
     {
         $des =  DB::table('dewormer')
         ->select('id',
-                'dewormer'
+                'dewormer_d'
                 )
         ->get();
 

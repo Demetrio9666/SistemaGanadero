@@ -19,24 +19,14 @@ class Pregnancy_controlController extends Controller
      */
     public function index()
     {
-       /*$pre =DB::table('vitamin_for_pregnacy_control')
-            ->join('vitamin','vitamin_for_pregnacy_control.vitamin_id','=','vitamin.id')
-            ->join('pregnancy_control','vitamin_for_pregnacy_control.pregnancy_control_id','=','pregnancy_control.id')
-
-            ->table('vitamin_for_pregnacy_control.id','pregnancy_control.date_c','pregnancy_control.animalCode_id','vitamin.vitamin as vitamina1','vitamin.vitamin as vitamina2'
-                   ,'vitamin.vitamin as vitamina3')*/
-
         $pre = DB::table('pregnancy_control')
              ->join('vitamin','pregnancy_control.vitamin_id','=','vitamin.id')
              ->join('file_animale','pregnancy_control.animalCode_id','=','file_animale.id')
-             ->select('pregnancy_control.id','pregnancy_control.date_c','file_animale.animalCode as animal','vitamin.vitamin as vitamina',
+             ->select('pregnancy_control.id','pregnancy_control.date_c','file_animale.animalCode as animal','vitamin.vitamin_d as vitamina',
                         'pregnancy_control.alternative1 as alt1','pregnancy_control.alternative2  as alt2','pregnancy_control.observation',
                         'pregnancy_control.date_rc')
-             ->get();
-
-       
+             ->get();     
         return view('PregnancyC.index-PregnancyC',compact('pre'));
-        //return $pre;
     }
 
     /**
