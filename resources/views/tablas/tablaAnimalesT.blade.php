@@ -1,7 +1,6 @@
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
   </head>
   <body>
     <div class="card">
@@ -51,11 +50,12 @@
               </tr>
           </tfoot>
       </table>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-      <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-      <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-      <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-      <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+      <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+      <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+      <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
+      <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
+      <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
+      <script src="{{asset('js/dataTables.sweetalert2@11.min.js')}}"></script>
     <script>
        $('#table').DataTable({
          responsive: true,

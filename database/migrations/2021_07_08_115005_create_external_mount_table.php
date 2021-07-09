@@ -15,6 +15,7 @@ class CreateExternalMountTable extends Migration
     {
         Schema::create('external_mount', function (Blueprint $table) {
             $table->id();
+            $table->string('animalCode_Exte');
             $table->unsignedBigInteger('race_id')->nullable();
             $table->foreign('race_id')->references('id')->on('race')
                   ->onDelete('set null')->onUpdate('cascade');

@@ -1,15 +1,15 @@
+@extends('adminlte::page')
 <head>
+    @section('css')
     <link href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+    @endsection 
 </head>
   <body>
-    @extends('adminlte::page')
+    
     @section('title')
-    @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
-    @endsection  
+   
     @section('content_header')
     <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('confUbicacion/create')}}">Nuevo</a>
     <div class="card">

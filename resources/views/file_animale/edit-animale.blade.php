@@ -1,3 +1,4 @@
+@extends('adminlte::page')
 <head>
     <link href="{{asset('css/app.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -5,11 +6,9 @@
     <title>Registration Form</title>
 </head>
 <body>
-    @extends('adminlte::page')
+   
     @section('css')
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
+
     <link rel="stylesheet" type="text/css" href="/css/registro.css">
     @endsection
     @section('content_header')
@@ -47,7 +46,7 @@
                   </select>
                 </div> 
                 <div  class="col-md-6">
-                    <label for="">Etapa de vida:</label>
+                    <label for="">Etapa:</label>
                     <select class="form-control" id="inputPassword4" name="stage"  value="{{$animal->stage}}">
                         <option selected>...</option>
                         <option value="Vaca"   @if($animal->stage == "Vaca" ) selected @endif>Vaca</option>
@@ -92,12 +91,12 @@
                         <option selected>...</option>
                         <option value="Disponible" @if($animal->actual_state == "Disponible" ) selected @endif>Disponible</option>
                         <option value="Vendido"    @if($animal->actual_state == "Vendido" ) selected @endif>Vendido</option>
-                        <option value="Faenado o Descarte"   @if($animal->actual_state == "Faenado o Descarte" ) selected @endif>Faenado o Descarte</option>
+                        <option value="Inactivo"   @if($animal->actual_state == "Inactivo" ) selected @endif>Inactivo</option>
                         <option value="Reproduccion"  @if($animal->actual_state == "Reproduccion" ) selected @endif>Reproduccion</option>
                   </select>
                 </div>
                 <div  class="col-md-6">
-                    <label for="">Ubicacion:</label>
+                    <label for="">Ubicación:</label>
                     <select class="form-control" id="" name="location_id"   value="{{$animal->location_id}}">
                             <option>Seleccione la Ubicacion</option>
                         @foreach ($ubicacion as $i )   
@@ -107,7 +106,7 @@
 
                 </div> 
                 <div class="col-md-6">
-                    <label for="">Concebedido o creado:</label>
+                    <label for="">Concebedido:</label>
                     <select class="form-control" id="inputPassword4" name="conceived" value="{{$animal->conceived}}">
                         <option selected>...</option>
                         <option value="Monta"   @if( $animal->conceived == "Monta") selected @endif >Monta</option>

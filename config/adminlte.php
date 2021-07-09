@@ -224,17 +224,12 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
+     
         [
             'text' => 'blog',
             'url'  => '/dashboard',
             'can'  => 'manage-blog',
         ],
-
 
         [
             'text'=> 'Dashboard',

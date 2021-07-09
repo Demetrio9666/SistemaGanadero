@@ -25,7 +25,7 @@ class File_reproductionController extends Controller
              ->join('race as f','file_animale.race_id','=','f.id')
              ->Join('race as a','artificial_reproduction.race_id','=','a.id')
              ->select('file_reproduction.id',
-                     'file_reproduction.date_r',
+                     'file_reproduction.date_r as fecha_A',
                      'file_animale.animalCode as animalA',
                      'f.race_d as raza_h',  
                      'artificial_reproduction.reproduccion as tipo', 
@@ -34,37 +34,57 @@ class File_reproductionController extends Controller
                      ->whereNotNull('file_reproduction.artificial_id')
              ->get(); 
        // dd($re_A);
-        $re_NI = DB::table('file_reproduction')
-            ->join('file_animale','file_reproduction.animalCode_id','=','file_animale.id')
-            ->join('race as f','file_animale.race_id','=','f.id')
-            ->join('internal_mount','file_reproduction.internal_mount_id','=','internal_mount.id')
-            ->join('race as ri','internal_mount.race_id','=','ri.id')
-            ->select('file_reproduction.id',
-                     'file_reproduction.date_r',
-                     'file_animale.animalCode as animalNI_h', 
-                     'f.race_d as raza_h',
-                     'file_animale.age_month as edad',
-                     'file_animale.animalCode as animalNI_m',
-                     'f.race_d as raza_m '
-                     )
-                     ->whereNotNull('file_reproduction.internal_mount_id')
-             ->get(); 
 
-        $re_NE = DB::table('file_reproduction')
-             ->join('file_animale','file_reproduction.animalCode_id','=','file_animale.id')
-             ->leftJoin('external_mount','file_reproduction.external_mount_id','=','external_mount.id')
-             ->select('file_reproduction.id',
-                     'file_reproduction.date_r',
-                     'file_animale.animalCode as animalNE', 
-                     'external_mount.race_id as raza',
-                     'external_mount.hacienda_name as hacienda'
-                     )
-                     ->whereNotNull('file_reproduction.external_mount_id')
-             ->get(); 
-             
-             
+       $re_MI = DB::table('file_reproduction')
+              ->join('file_animale as hembra','file_reproduction.animalCode_id','=','hembra.id')
+              ->join('internal_mount','file_reproduction.internal_mount_id','=','internal_mount.id')
 
-        return view('file_reproduction.index-reproduction',compact('re_A','re_NI','re_NE'));
+              ->join('race as f','hembra.race_id','=','f.id')
+
+              ->join('file_animale as macho','internal_mount.animalCode_id','=','macho.id')
+
+              ->join('race as m','macho.race_id','=','m.id')
+
+              ->select('file_reproduction.id',
+                       'file_reproduction.date_r as fecha_MI',
+                       'hembra.animalCode as animal_h_MI',
+                       'f.race_d as raza_h_MI',
+                       'hembra.age_month as edad_h_MI',
+
+                       'macho.animalCode as animal_m_MI',
+                       'm.race_d as raza_m_MI',
+                       'macho.age_month as edad_m_MI'
+
+                      )
+                      ->whereNotNull('file_reproduction.internal_mount_id')
+              ->get();
+
+              
+
+              $re_ME = DB::table('file_reproduction')
+              ->join('file_animale as hembra_e','file_reproduction.animalCode_id','=','hembra_e.id')
+              ->join('external_mount','file_reproduction.external_mount_id','=','external_mount.id')
+
+              ->join('race as f_e','hembra_e.race_id','=','f_e.id')
+
+              ->join('race as m_e','external_mount.race_id','=','m_e.id')
+              ->select('file_reproduction.id',
+                        'file_reproduction.date_r as fecha_ME',
+                        'hembra_e.animalCode as animal_h_ME',
+                        'f_e.race_d as raza_h_ME',
+                        'hembra_e.age_month as edad_h_ME',
+                        'external_mount.animalCode_Exte',
+                        'm_e.race_d as raza_m_ME',
+                        'external_mount.hacienda_name')
+                        ->whereNotNull('file_reproduction.external_mount_id')
+
+             ->get();
+
+        
+              
+             
+        
+        return view('file_reproduction.index-reproduction',compact('re_A','re_MI','re_ME'));
     }
 
     /**

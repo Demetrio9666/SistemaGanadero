@@ -1,13 +1,16 @@
+@extends('adminlte::page')
 <head>
+    @section('css')
     <link href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+    @endsection 
+   
 </head>
   <body>
-    @extends('adminlte::page')
+    
     @section('title')
-    @section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
-    @endsection  
+    
     @section('content_header')
     <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaParto/create')}}">Nuevo</a>
     <div class="card">
@@ -37,7 +40,7 @@
                     <td >{{$i->partum_type}}</td>
                     <td>
                         <a class="btn btn-primary d-grid gap-2 d-md-block " href="{{route('fichaParto.edit',$i->id)}}" >Editar</a>
-                        <form action="{{route('fichaParto.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                        <form action="{{route('fichaParto.destroy',$i->id)}}"  class="d-inline  formulario-eliminar  "  method="POST">
                             @method('DELETE') 
                             @csrf
                             <input type="submit"  class="btn btn-danger" value="Eliminar">
@@ -66,12 +69,12 @@
     @endsection
 </body>
     @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+            <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+            <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
+            <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
+            <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
+            <script src="{{asset('js/dataTables.sweetalert2@11.min.js')}}"></script>
     <script>
        $('#ubicaciont').DataTable({
          responsive: true,
