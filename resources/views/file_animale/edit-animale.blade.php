@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 <head>
     <link href="{{asset('css/app.css')}}">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Registration Form</title>
@@ -8,7 +9,7 @@
 <body>
    
     @section('css')
-
+    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="/css/registro.css">
     @endsection
     @section('content_header')

@@ -4,6 +4,7 @@
     <link href="{{asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     @endsection 
 </head>
   <body>
@@ -11,7 +12,7 @@
     @section('title')
    
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('confDespa/create')}}">Nuevo</a>
+    <a type="button" class="btn-lg btn-success " style="margin: 10px" id="button-addon1" href="{{url('confDespa/create')}}"><i class="fas fa-plus-square"></i></a>
     <div class="card">
         <div class="card-body">
           <table id="desp" class="table table-striped table-bordered" style="width:100%">
@@ -32,11 +33,13 @@
                     <td>{{$i->date_c}}</td>
                     <td >{{$i->supplier}}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('confDespa.edit',$i->id)}}" >Editar</a>
+                        <a class="btn btn-primary" href="{{route('confDespa.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
                         <form action="{{route('confDespa.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                             @csrf
                             @method('DELETE') 
-                            <input type="submit"  class="btn btn-danger" value="Eliminar">
+                            <button type="submit"  class="btn btn-danger" value="Eliminar"  >
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
                         </form>                         
                     </td>  
                 </tr>
@@ -62,7 +65,7 @@
             <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
             <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
             <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
-            <script src="{{asset('js/dataTables.sweetalert2@11.min.js')}}"></script>
+            <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
     <script>
        $('#desp').DataTable({
          responsive: true,

@@ -4,6 +4,7 @@
     <link href="{{asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     @endsection 
 </head>
   <body>
@@ -11,180 +12,184 @@
     @section('title')
    
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaReproduccion/create')}}">Nuevo</a>
-    <div class="card">
-        <h1>Reproducción Artificial</h1>
-        <div class="card-body">
-          <table id="ubicaciont" class="table table-striped table-bordered" style="width:100%">
-            <thead>             
-                <tr>
-                    <th>Fecha de Registro</th>
-                    <th>Código del Animal</th>
-                    <th>Raza </th>
-                    <th>Tipo de Reproduccion Artificial</th>
-                    <th>Raza Material Genético</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($re_A as $i)          
-                <tr>
-                    <td>{{$i->fecha_A}}</td>
-                    <td>{{$i->animalA}}</td>
-                    <td>{{$i->raza_h}}</td>
-                    <td >{{$i->tipo}}</td>
-                    <td >{{$i->raza_m}}</td>
-                    <td>
-                        <a class="btn btn-primary  " href="{{route('fichaReproduccion.edit',$i->id)}}" >Editar</a>
-                        <form action="{{route('fichaReproduccion.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
-                            @method('DELETE') 
-                            @csrf
-                            <input type="submit"  class="btn btn-danger" value="Eliminar">
-                        </form>                         
-                    </td>  
-                </tr>
-                @endforeach 
-       
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Fecha de Registro</th>
-                    <th>Código del Animal</th>
-                    <th>Raza </th>
-                    <th>Tipo de Reproduccion Artificial</th>
-                    <th>Raza Material Genético</th>
-                    <th>Acción</th>
-                </tr>
-                </tr>
-            </tfoot>
-        </table>
+    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaReproduccion/create')}}"><i class="fas fa-plus-square"></i></a>
+
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Accordion Item #1
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse  collapse show " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="card">
+                    <h1 style="margin: 15px">Reproducción Artificial</h1>
+                    <div class="card-body">
+                      <table id="ubicaciont" class="table table-striped table-bordered" style="width:100%">
+                        <thead>             
+                            <tr>
+                                <th>Fecha de Registro</th>
+                                <th>Código del Animal</th>
+                                <th>Raza </th>
+                                <th>Tipo de Reproduccion Artificial</th>
+                                <th>Raza Material Genético</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($re_A as $i)          
+                            <tr>
+                                <td>{{$i->fecha_A}}</td>
+                                <td>{{$i->animalA}}</td>
+                                <td>{{$i->raza_h}}</td>
+                                <td >{{$i->tipo}}</td>
+                                <td >{{$i->raza_m}}</td>
+                                <td>
+                                    <a class="btn btn-primary  " href="{{route('fichaReproduccion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                                    <form action="{{route('fichaReproduccion.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                                        @method('DELETE') 
+                                        @csrf
+                                        <button type="submit"  class="btn btn-danger" value="Eliminar">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>                         
+                                </td>  
+                            </tr>
+                            @endforeach 
+                    </table>
+                    </div>
+                </div>
+             
+
+
+            </div>
+          </div>
         </div>
-    </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button btn-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Accordion Item #2
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="card">
+                    <h1 style="margin: 15px">Reproducción Monta Interna</h1>
+                    <div class="card-body">
+                      <table id="ubicaciont2" class="table table-striped table-bordered" style="width:100%">
+                        <thead>             
+                            <tr>
+                                <th>Fecha de Registro</th>
+                                <th>Código del Animal</th>
+                                <th>Raza </th>
+                                <th>Edad</th>
+                                <th>Código del Animal</th>
+                                <th>Raza</th>
+                                <th>Edad</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($re_MI as $i)          
+                            <tr>
+                                <td>{{$i->fecha_MI}}</td>
+                                <td>{{$i->animal_h_MI}}</td>
+                                <td>{{$i->raza_h_MI}}</td>
+                                <td >{{$i->edad_h_MI}}</td>
+                                <td>{{$i->animal_m_MI}}</td>
+                                <td>{{$i->raza_m_MI}}</td>
+                                <td>{{$i->edad_m_MI}}</td>
+                                <td>
+                                    <a class="btn btn-primary  " href="{{route('fichaReproduccion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                                    <form action="{{route('fichaReproduccion.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                                        @method('DELETE') 
+                                        @csrf
+                                        <button type="submit"  class="btn btn-danger" value="Eliminar">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>                         
+                                </td>  
+                            </tr>
+                            @endforeach 
+                   
+                        </tbody>
+                        
+                    </table>
+                    </div>
+                </div>
 
-
-    <div class="card">
-        <h1>Reproducción Monta Interna</h1>
-        <div class="card-body">
-          <table id="ubicaciont2" class="table table-striped table-bordered" style="width:100%">
-            <thead>             
-                <tr>
-                    <th>Fecha de Registro</th>
-                    <th>Código del Animal</th>
-                    <th>Raza </th>
-                    <th>Edad</th>
-                    <th>Código del Animal</th>
-                    <th>Raza</th>
-                    <th>Edad</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($re_MI as $i)          
-                <tr>
-                    <td>{{$i->fecha_MI}}</td>
-                    <td>{{$i->animal_h_MI}}</td>
-                    <td>{{$i->raza_h_MI}}</td>
-                    <td >{{$i->edad_h_MI}}</td>
-                    <td>{{$i->animal_m_MI}}</td>
-                    <td>{{$i->raza_m_MI}}</td>
-                    <td>{{$i->edad_m_MI}}</td>
-                    <td>
-                        <a class="btn btn-primary  " href="{{route('fichaReproduccion.edit',$i->id)}}" >Editar</a>
-                        <form action="{{route('fichaReproduccion.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
-                            @method('DELETE') 
-                            @csrf
-                            <input type="submit"  class="btn btn-danger" value="Eliminar">
-                        </form>                         
-                    </td>  
-                </tr>
-                @endforeach 
-       
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Fecha de Registro</th>
-                    <th>Código del Animal</th>
-                    <th>Raza </th>
-                    <th>Edad</th>
-                    <th>Código del Animal</th>
-                    <th>Raza</th>
-                    <th>Edad</th>
-                    <th>Acción</th>
-                </tr>
-                </tr>
-            </tfoot>
-        </table>
+            </div>
+          </div>
         </div>
-    </div>
-  
-
-    <div class="card">
-        <h1>Reproducción Monta Externa</h1>
-        <div class="card-body">
-          <table id="ubicaciont3" class="table table-striped table-bordered" style="width:100%">
-            <thead>             
-                <tr>
-                    <th>Fecha de Registro</th>
-                    <th>Código del Animal</th>
-                    <th>Raza </th>
-                    <th>Edad</th>
-                    <th>Código del Animal</th>
-                    <th>Raza</th>
-                    <th>Nombre de la Hacienda</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($re_ME as $i)          
-                <tr>
-                    <td>{{$i->fecha_ME}}</td>
-                    <td>{{$i->animal_h_ME}}</td>
-                    <td>{{$i->raza_h_ME}}</td>
-                    <td>{{$i->edad_h_ME}}</td>
-                    <td>{{$i->animalCode_Exte}}</td>
-                    <td>{{$i->raza_m_ME}}</td>
-                    <td >{{$i->hacienda_name}}</td>
-                    <td>
-                        <a class="btn btn-primary  " href="{{route('fichaReproduccion.edit',$i->id)}}" >Editar</a>
-                        <form action="{{route('fichaReproduccion.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
-                            @method('DELETE') 
-                            @csrf
-                            <input type="submit"  class="btn btn-danger" value="Eliminar">
-                        </form>                         
-                    </td>  
-                </tr>
-                @endforeach 
-       
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Fecha de Registro</th>
-                    <th>Código del Animal</th>
-                    <th>Raza </th>
-                    <th>Edad</th>
-                    <th>Código del Animal</th>
-                    <th>Raza</th>
-                    <th>Nombre de la Hacienda</th>
-                    <th>Acción</th>
-                </tr>
-                </tr>
-            </tfoot>
-        </table>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button btn-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Accordion Item #3
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="card">
+                    <h1 style="margin: 15px">Reproducción Monta Externa</h1>
+                    <div class="card-body">
+                      <table id="ubicaciont3" class="table table-striped table-bordered" style="width:100%">
+                        <thead>             
+                            <tr>
+                                <th>Fecha de Registro</th>
+                                <th>Código del Animal</th>
+                                <th>Raza </th>
+                                <th>Edad</th>
+                                <th>Código del Animal</th>
+                                <th>Raza</th>
+                                <th>Hacienda</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($re_ME as $i)          
+                            <tr>
+                                <td>{{$i->fecha_ME}}</td>
+                                <td>{{$i->animal_h_ME}}</td>
+                                <td>{{$i->raza_h_ME}}</td>
+                                <td>{{$i->edad_h_ME}}</td>
+                                <td>{{$i->animalCode_Exte}}</td>
+                                <td>{{$i->raza_m_ME}}</td>
+                                <td >{{$i->hacienda_name}}</td>
+                                <td>
+                                    <a class="btn btn-primary  " href="{{route('fichaReproduccion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                                    <form action="{{route('fichaReproduccion.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                                        @method('DELETE') 
+                                        @csrf
+                                        <button type="submit"  class="btn btn-danger" value="Eliminar">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>                         
+                                </td>  
+                            </tr>
+                            @endforeach 
+                   
+                        </tbody>
+                        
+                    </table>
+                    </div>
+                </div>
+            </div>
+          </div>
         </div>
-    </div>
-
-
-
+      </div>
 
     @endsection
+
 </body>
     @section('js')
             <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
             <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+            <script src="{{asset('bootstrap/bootstrap.min.js')}}"></script>
             <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
             <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
             <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
-            <script src="{{asset('js/dataTables.sweetalert2@11.min.js')}}"></script>
+            <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
     <script>
        $('#ubicaciont').DataTable({
          responsive: true,

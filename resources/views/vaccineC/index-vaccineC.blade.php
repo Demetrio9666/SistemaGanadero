@@ -4,6 +4,7 @@
         <link href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
         @endsection 
 </head>
   <body>
@@ -65,7 +66,7 @@
             <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
             <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
             <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
-            <script src="{{asset('js/dataTables.sweetalert2@11.min.js')}}"></script>
+            <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
     <script>
        $('#ubicaciont').DataTable({
          responsive: true,

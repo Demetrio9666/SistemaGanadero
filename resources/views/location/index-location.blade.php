@@ -4,6 +4,7 @@
     <link href="{{asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     @endsection 
 </head>
   <body>
@@ -51,12 +52,12 @@
     @endsection
 </body>
     @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+            <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+            <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+            <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
+            <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
+            <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
+            <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
     <script>
        $('#ubicaciont').DataTable({
          responsive: true,

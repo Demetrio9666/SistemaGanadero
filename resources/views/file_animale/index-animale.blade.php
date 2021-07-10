@@ -4,10 +4,11 @@
         <link href="{{asset('css/app.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
         @endsection 
 </head>
     @section('content_header')
-                <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaAnimal/create')}}">Nuevo</a>
+                <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaAnimal/create')}}"><i class="fas fa-plus-square"></i></a>
                 <div class="card">
                     <div class="card-body">
                         <table id="ubicaciont" class="table table-striped table-bordered" style="width:100%">
@@ -17,7 +18,7 @@
                                     <th>Fecha Nacimiento</th>
                                     <th>Raza</th>
                                     <th>Sexo</th>
-                                    <th>Etapa de vida </th>
+                                    <th>Etapa</th>
                                     <th>Origen</th>
                                     <th>Edad-meses</th>
                                     <th>Salud</th>
@@ -44,33 +45,17 @@
                                     <td >{{$i->ubicacion}}</td>
                                     <td >{{$i->conceived}}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="{{route('fichaAnimal.edit',$i->id)}}" >Editar</a>
+                                        <a class="btn btn-primary" href="{{route('fichaAnimal.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
                                         <form action="{{route('fichaAnimal.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                                             @method('DELETE') 
                                             @csrf
-                                            <input type="submit"  class="btn btn-danger" value="Eliminar">
+                                            <button type="submit"  class="btn btn-danger" value="Eliminar">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
                                         </form>                         
                                     </td>  
                                 </tr>
                                 @endforeach
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Código Animal</th>
-                                    <th>Fecha Nacimiento</th>
-                                    <th>Raza</th>
-                                    <th>Sexo</th>
-                                    <th>Etapa de vida </th>
-                                    <th>Origen</th>
-                                    <th>Edad-meses</th>
-                                    <th>Salud</th>
-                                    <th>Estado de Embarazo</th>
-                                    <th>Estado Actual</th>
-                                    <th>localizacion</th>
-                                    <th>Concebido</th>    
-                                    <th>Acción</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -82,7 +67,7 @@
             <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
             <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
             <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
-            <script src="{{asset('js/dataTables.sweetalert2@11.min.js')}}"></script>
+            <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
             <script>
             $('#ubicaciont').DataTable({
                 responsive: true,

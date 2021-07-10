@@ -5,6 +5,7 @@
     @section('css')
              <link rel="stylesheet" type="text/css" href="/css/registro.css">
              <link href="{{asset('css/app.css')}}">
+             <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     @endsection
     <title>Registration Form</title>
 </head>

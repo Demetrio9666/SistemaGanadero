@@ -94,7 +94,10 @@ class File_reproductionController extends Controller
      */
     public function create()
     {
-        //
+        $raza =Race::all();
+        $animal= File_animale::all();
+
+        return view('file_reproduction.create-reproduction',compact('raza','animal'));
     }
 
     /**
