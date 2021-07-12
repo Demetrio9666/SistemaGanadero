@@ -88,8 +88,8 @@
                                         <option selected>Seleccione</option>
                                         <option>Disponible</option>
                                         <option>Vendido</option>
-                                        <option>Faenado o Descarte</option>
                                         <option>Reproduccion</option>
+                                        <option>Inactivo</option>
                                 </select>
                                 </div>
                                 <div  class="col-md-6">

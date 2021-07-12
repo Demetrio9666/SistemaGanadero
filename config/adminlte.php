@@ -282,10 +282,26 @@ return [
                     'url'  => '/fichaTratamiento',
                     'icon'  => 'fas fa-folder',
                 ],
+
+
                 [
-                    'text' => 'Ficha Reproduccion',
-                    'url'  => '/fichaReproduccion',
+                    'text' => 'Fichas Reproduccion',
                     'icon'  => 'fas fa-venus',
+                    'submenu' =>[
+                        [
+                            'text' => 'Ficha Reproduccion Interna',
+                            'url'  => '/fichaReproduccion',
+                            'icon'  => '',
+                        ],
+
+                        [
+                            'text' => 'Ficha Reproduccion Externa',
+                            'url'  => '/confAnimalExterno',
+                            'icon' =>'',
+                        ],
+                      
+                    ],
+
                 ],
 
             ],
@@ -367,6 +383,10 @@ return [
                     'icon' =>'fas fa-vial',
                 ],
 
+
+
+                
+
                 [
                     'text' => 'Ubicacion Interna ',
                     'url'  => '/confUbicacion',
@@ -379,6 +399,7 @@ return [
                     'url'  => '/confRaza',
                     'icon' =>'fas fa-file-contract',
                 ],
+
 
             ],
         ],

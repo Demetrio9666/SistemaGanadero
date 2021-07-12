@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class File_reproduction extends Model
 {
     use HasFactory;
+    protected $table = "file_reproduction";
 }

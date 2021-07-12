@@ -20,7 +20,7 @@ class File_reproductionController extends Controller
     public function index()
     {   
         $re_A = DB::table('file_reproduction')
-             ->join('file_animale','file_reproduction.animalCode_id','=','file_animale.id')
+             ->join('file_animale','file_reproduction.animalCode_id_m','=','file_animale.id')
              ->join('artificial_reproduction','file_reproduction.artificial_id','=','artificial_reproduction.id')
              ->join('race as f','file_animale.race_id','=','f.id')
              ->Join('race as a','artificial_reproduction.race_id','=','a.id')
@@ -36,55 +36,37 @@ class File_reproductionController extends Controller
        // dd($re_A);
 
        $re_MI = DB::table('file_reproduction')
-              ->join('file_animale as hembra','file_reproduction.animalCode_id','=','hembra.id')
-              ->join('internal_mount','file_reproduction.internal_mount_id','=','internal_mount.id')
+              ->join('file_animale as M','file_reproduction.animalCode_id_m','=','M.id')
+              ->join('file_animale as P','file_reproduction.animalCode_id_p','=','P.id')
 
-              ->join('race as f','hembra.race_id','=','f.id')
+              ->join('race as RM','M.race_id','=','RM.id')
+              ->join('race as RP','P.race_id','=','RP.id')
 
-              ->join('file_animale as macho','internal_mount.animalCode_id','=','macho.id')
-
-              ->join('race as m','macho.race_id','=','m.id')
 
               ->select('file_reproduction.id',
                        'file_reproduction.date_r as fecha_MI',
-                       'hembra.animalCode as animal_h_MI',
-                       'f.race_d as raza_h_MI',
-                       'hembra.age_month as edad_h_MI',
 
-                       'macho.animalCode as animal_m_MI',
-                       'm.race_d as raza_m_MI',
-                       'macho.age_month as edad_m_MI'
+                       'M.animalCode as animal_h_MI',
+                       'RM.race_d as raza_h_MI',
+                       'M.sex as sexo_h',
+                       'M.age_month as edad_h',
+
+                       'P.animalCode as animal_m_MI',
+                       'RP.race_d as raza_m_MI',
+                       'P.sex as sexo_m',
+                       'P.age_month as edad_m'
+                    
 
                       )
-                      ->whereNotNull('file_reproduction.internal_mount_id')
+                      ->whereNotNull('file_reproduction.animalCode_id_p')
+                      
               ->get();
 
               
 
-              $re_ME = DB::table('file_reproduction')
-              ->join('file_animale as hembra_e','file_reproduction.animalCode_id','=','hembra_e.id')
-              ->join('external_mount','file_reproduction.external_mount_id','=','external_mount.id')
-
-              ->join('race as f_e','hembra_e.race_id','=','f_e.id')
-
-              ->join('race as m_e','external_mount.race_id','=','m_e.id')
-              ->select('file_reproduction.id',
-                        'file_reproduction.date_r as fecha_ME',
-                        'hembra_e.animalCode as animal_h_ME',
-                        'f_e.race_d as raza_h_ME',
-                        'hembra_e.age_month as edad_h_ME',
-                        'external_mount.animalCode_Exte',
-                        'm_e.race_d as raza_m_ME',
-                        'external_mount.hacienda_name')
-                        ->whereNotNull('file_reproduction.external_mount_id')
-
-             ->get();
-
         
-              
-             
         
-        return view('file_reproduction.index-reproduction',compact('re_A','re_MI','re_ME'));
+        return view('file_reproduction.index-reproduction',compact('re_A','re_MI'));
     }
 
     /**
@@ -94,10 +76,57 @@ class File_reproductionController extends Controller
      */
     public function create()
     {
+        $re_A = DB::table('file_reproduction')
+             ->join('file_animale','file_reproduction.animalCode_id_m','=','file_animale.id')
+             ->join('artificial_reproduction','file_reproduction.artificial_id','=','artificial_reproduction.id')
+             ->join('race as f','file_animale.race_id','=','f.id')
+             ->Join('race as a','artificial_reproduction.race_id','=','a.id')
+             ->select('file_reproduction.id',
+                     'file_reproduction.date_r as fecha_A',
+                     'file_animale.animalCode as animalA',
+                     'f.race_d as raza_h',  
+                     'artificial_reproduction.reproduccion as tipo', 
+                     'a.race_d as raza_m'
+                     )
+                     ->whereNotNull('file_reproduction.artificial_id')
+             ->get();
         $raza =Race::all();
-        $animal= File_animale::all();
 
-        return view('file_reproduction.create-reproduction',compact('raza','animal'));
+        $animalR= DB::table('file_animale')
+                ->join('race','file_animale.race_id','=','race.id')
+                ->select('file_animale.id',
+                'file_animale.animalCode',
+                'file_animale.age_month',
+                'race.race_d',
+                'file_animale.sex')
+                ->where('file_animale.age_month','>=',24)
+                ->where('file_animale.stage','=','Vaca')->orWhere('file_animale.stage','=','Toro')
+                ->get();
+
+
+        $interna= DB::table('internal_mount')
+        ->join('file_animale','internal_mount.animalCode_id','=','file_animale.id')
+        ->join('race','file_animale.race_id','=','race.id')
+        ->select('internal_mount.id',
+                'file_animale.animalCode',
+                'race.race_d',
+                'file_animale.age_month' )
+        ->get();
+
+       $arti= DB::table('artificial_Reproduction')
+       ->join('race','artificial_Reproduction.race_id','=','race.id')
+       ->select('artificial_Reproduction.id',
+       'race.race_d',
+       'artificial_Reproduction.reproduccion',
+       'artificial_Reproduction.supplier'
+       )
+       ->get();
+
+
+
+       
+
+        return view('file_reproduction.create-reproduction',compact('raza','animalR','interna','arti'));
     }
 
     /**
@@ -108,7 +137,14 @@ class File_reproductionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $re = new File_reproduction();
+        $re->date_r= $request->date_r;
+        $re->animalCode_id_m = $request->animalCode_id_m;
+        $re->animalCode_id_p = $request->animalCode_id_p;
+        $re->artificial_id = $request->artificial_id;
+        $re->save(); 
+        return redirect('/fichaReproduccion');
+
     }
 
     /**
@@ -119,7 +155,7 @@ class File_reproductionController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('file_reproduction.edit-reproduction',compact('id'));
     }
 
     /**
@@ -130,7 +166,55 @@ class File_reproductionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $re =  File_reproduction::findOrFail($id);
+        
+        $re_A = DB::table('file_reproduction')
+        ->join('file_animale','file_reproduction.animalCode_id_m','=','file_animale.id')
+        ->join('artificial_reproduction','file_reproduction.artificial_id','=','artificial_reproduction.id')
+        ->join('race as f','file_animale.race_id','=','f.id')
+        ->Join('race as a','artificial_reproduction.race_id','=','a.id')
+        ->select('file_reproduction.id',
+                'file_reproduction.date_r as fecha_A',
+                'file_animale.animalCode as animalA',
+                'f.race_d as raza_h',  
+                'artificial_reproduction.reproduccion as tipo', 
+                'a.race_d as raza_m'
+                )
+                ->whereNotNull('file_reproduction.artificial_id')
+        ->get();
+         $raza =Race::all();
+
+        $animalR= DB::table('file_animale')
+                ->join('race','file_animale.race_id','=','race.id')
+                ->select('file_animale.id',
+                'file_animale.animalCode',
+                'file_animale.age_month',
+                'race.race_d',
+                'file_animale.sex')
+                ->where('file_animale.age_month','>=',24)
+                ->where('file_animale.stage','=','Vaca')->orWhere('file_animale.stage','=','Toro')
+                ->get();
+
+
+        $interna= DB::table('internal_mount')
+        ->join('file_animale','internal_mount.animalCode_id','=','file_animale.id')
+        ->join('race','file_animale.race_id','=','race.id')
+        ->select('internal_mount.id',
+                'file_animale.animalCode',
+                'race.race_d',
+                'file_animale.age_month' )
+        ->get();
+
+        $arti= DB::table('artificial_Reproduction')
+        ->join('race','artificial_Reproduction.race_id','=','race.id')
+        ->select('artificial_Reproduction.id',
+        'race.race_d',
+        'artificial_Reproduction.reproduccion',
+        'artificial_Reproduction.supplier'
+        )
+        ->get();
+
+        return view('file_reproduction.edit-reproduction',compact('raza','animalR','interna','arti','re'));
     }
 
     /**
@@ -142,7 +226,15 @@ class File_reproductionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $re =  File_reproduction::findOrFail($id);
+        
+        
+        $re->date_r= $request->date_r;
+        $re->animalCode_id_m = $request->animalCode_id_m;
+        $re->animalCode_id_p = $request->animalCode_id_p;
+        $re->artificial_id = $request->artificial_id;
+        $re->save(); 
+        return redirect('/fichaReproduccion');
     }
 
     /**

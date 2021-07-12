@@ -18,13 +18,78 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Accordion Item #1
+              Reproduccion Interna por Monta
             </button>
           </h2>
           <div id="collapseOne" class="accordion-collapse  collapse show " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <div class="card">
-                    <h1 style="margin: 15px">Reproducción Artificial</h1>
+                    <h1 style="margin: 15px">Monta Interna</h1>
+                    <div class="card-body">
+                      <table id="ubicaciont2" class="table table-striped table-bordered" style="width:100%">
+                        <thead>             
+                            <tr>
+                                <th>Fecha de Registro</th>
+                                <th>Código del Animal</th>
+                                <th>Raza </th>
+                                <th>Edad</th>
+                                <th>Sexo</th>
+                                <th>Código del Animal</th>
+                                <th>Raza</th>
+                                <th>Edad</th>
+                                <th>Sexo</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($re_MI as $i)          
+                            <tr>
+                                <td>{{$i->fecha_MI}}</td>
+                                <td>{{$i->animal_h_MI}}</td>
+                                <td>{{$i->raza_h_MI}}</td>
+                                <td >{{$i->edad_h}}</td>
+                                <td >{{$i->sexo_h}}</td>
+                                <td>{{$i->animal_m_MI}}</td>
+                                <td>{{$i->raza_m_MI}}</td>
+                                <td>{{$i->edad_m}}</td>
+                                <td >{{$i->sexo_m}}</td>
+                                <td>
+                                    <a class="btn btn-primary  " href="{{route('fichaReproduccion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                                    <form action="{{route('fichaReproduccion.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                                        @method('DELETE') 
+                                        @csrf
+                                        <button type="submit"  class="btn btn-danger" value="Eliminar">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>                         
+                                </td>  
+                            </tr>
+                            @endforeach 
+                   
+                        </tbody>
+                        
+                    </table>
+                    </div>
+                </div>
+
+
+            </div>
+             
+
+
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button btn-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Reproduccion Artificial
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="card">
+                    <h1 style="margin: 15px">Artificial</h1>
                     <div class="card-body">
                       <table id="ubicaciont" class="table table-striped table-bordered" style="width:100%">
                         <thead>             
@@ -59,125 +124,11 @@
                             @endforeach 
                     </table>
                     </div>
-                </div>
-             
-
-
+                
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button btn-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Accordion Item #2
-            </button>
-          </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <div class="card">
-                    <h1 style="margin: 15px">Reproducción Monta Interna</h1>
-                    <div class="card-body">
-                      <table id="ubicaciont2" class="table table-striped table-bordered" style="width:100%">
-                        <thead>             
-                            <tr>
-                                <th>Fecha de Registro</th>
-                                <th>Código del Animal</th>
-                                <th>Raza </th>
-                                <th>Edad</th>
-                                <th>Código del Animal</th>
-                                <th>Raza</th>
-                                <th>Edad</th>
-                                <th>Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($re_MI as $i)          
-                            <tr>
-                                <td>{{$i->fecha_MI}}</td>
-                                <td>{{$i->animal_h_MI}}</td>
-                                <td>{{$i->raza_h_MI}}</td>
-                                <td >{{$i->edad_h_MI}}</td>
-                                <td>{{$i->animal_m_MI}}</td>
-                                <td>{{$i->raza_m_MI}}</td>
-                                <td>{{$i->edad_m_MI}}</td>
-                                <td>
-                                    <a class="btn btn-primary  " href="{{route('fichaReproduccion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                                    <form action="{{route('fichaReproduccion.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
-                                        @method('DELETE') 
-                                        @csrf
-                                        <button type="submit"  class="btn btn-danger" value="Eliminar">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>                         
-                                </td>  
-                            </tr>
-                            @endforeach 
-                   
-                        </tbody>
-                        
-                    </table>
-                    </div>
-                </div>
-
-            </div>
-          </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button btn-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Accordion Item #3
-            </button>
-          </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <div class="card">
-                    <h1 style="margin: 15px">Reproducción Monta Externa</h1>
-                    <div class="card-body">
-                      <table id="ubicaciont3" class="table table-striped table-bordered" style="width:100%">
-                        <thead>             
-                            <tr>
-                                <th>Fecha de Registro</th>
-                                <th>Código del Animal</th>
-                                <th>Raza </th>
-                                <th>Edad</th>
-                                <th>Código del Animal</th>
-                                <th>Raza</th>
-                                <th>Hacienda</th>
-                                <th>Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($re_ME as $i)          
-                            <tr>
-                                <td>{{$i->fecha_ME}}</td>
-                                <td>{{$i->animal_h_ME}}</td>
-                                <td>{{$i->raza_h_ME}}</td>
-                                <td>{{$i->edad_h_ME}}</td>
-                                <td>{{$i->animalCode_Exte}}</td>
-                                <td>{{$i->raza_m_ME}}</td>
-                                <td >{{$i->hacienda_name}}</td>
-                                <td>
-                                    <a class="btn btn-primary  " href="{{route('fichaReproduccion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                                    <form action="{{route('fichaReproduccion.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
-                                        @method('DELETE') 
-                                        @csrf
-                                        <button type="submit"  class="btn btn-danger" value="Eliminar">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>                         
-                                </td>  
-                            </tr>
-                            @endforeach 
-                   
-                        </tbody>
-                        
-                    </table>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
     @endsection
 
@@ -350,3 +301,6 @@
  });
 </script>
 @endsection
+
+
+
