@@ -86,16 +86,7 @@
                   </select>
                 </div>
 
-                <div  class="col-md-6">
-                    <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{$animal->actual_state}}">
-                        <option selected>...</option>
-                        <option value="Disponible" @if($animal->actual_state == "Disponible" ) selected @endif>Disponible</option>
-                        <option value="Vendido"    @if($animal->actual_state == "Vendido" ) selected @endif>Vendido</option>
-                        <option value="Inactivo"   @if($animal->actual_state == "Inactivo" ) selected @endif>Inactivo</option>
-                        <option value="Reproduccion"  @if($animal->actual_state == "Reproduccion" ) selected @endif>Reproduccion</option>
-                  </select>
-                </div>
+                
                 <div  class="col-md-6">
                     <label for="">Ubicación:</label>
                     <select class="form-control" id="" name="location_id"   value="{{$animal->location_id}}">
@@ -113,6 +104,17 @@
                         <option value="Monta"   @if( $animal->conceived == "Monta") selected @endif >Monta</option>
                         <option value="Insiminacion Artificial"   @if( $animal->conceived == "Insiminacion Artificial") selected @endif>Insiminacion Artificial</option>
                         <option value="Embrional"   @if( $animal->conceived == "Embrional") selected @endif>Embrional</option>
+                  </select>
+                </div>
+
+                <div  class="col-md-6">
+                    <label for="">Estado Actual:</label>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{$animal->actual_state}}">
+                        <option selected>...</option>
+                        <option value="Disponible" @if($animal->actual_state == "Disponible" ) selected @endif>Disponible</option>
+                        <option value="Vendido"    @if($animal->actual_state == "Vendido" ) selected @endif>Vendido</option>
+                        <option value="Inactivo"   @if($animal->actual_state == "Inactivo" ) selected @endif>Inactivo</option>
+                        <option value="Reproduccion"  @if($animal->actual_state == "Reproduccion" ) selected @endif>Reproduccion</option>
                   </select>
                 </div>
                 <div class="col-md-6-self-center" style="margin: 80px">

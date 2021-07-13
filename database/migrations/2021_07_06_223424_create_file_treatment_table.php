@@ -32,6 +32,7 @@ class CreateFileTreatmentTable extends Migration
                   ->onDelete('set null')->onUpdate('cascade');
                   
             $table->text('treatment');
+            $table->string('actual_state');
             $table->timestamps();
         });
     }

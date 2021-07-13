@@ -28,6 +28,8 @@ class CreateFileReproductionTable extends Migration
             $table->foreign('artificial_id')->references('id')->on('artificial_reproduction')
                   ->onDelete('set null')->onUpdate('cascade');
 
+            $table->string('actual_state');
+
             $table->timestamps();
             
         });

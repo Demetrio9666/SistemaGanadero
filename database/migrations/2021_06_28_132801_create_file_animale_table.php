@@ -25,10 +25,10 @@ class CreateFileAnimaleTable extends Migration
             $table->integer('age_month');
             $table->string('health_condition',20);
             $table->string('gestation_state',20);
-            $table->string('actual_state',20);
             $table->unsignedBigInteger('location_id');
             $table->foreign('location_id')->references('id')->on('location');        
             $table->string('conceived',25);   
+            $table->string('actual_state');
             $table->timestamps();
         });
     }

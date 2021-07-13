@@ -9,6 +9,7 @@
 </head>
     @section('content_header')
                 <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaAnimal/create')}}"><i class="fas fa-plus-square"></i></a>
+                <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaAnimal/create')}}"><i class="fas fa-recycle"></i></a>
                 <div class="card">
                     <div class="card-body">
                         <table id="ubicaciont" class="table table-striped table-bordered" style="width:100%">

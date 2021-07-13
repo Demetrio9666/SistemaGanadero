@@ -69,6 +69,14 @@
                     <label for="">Tratamiento:</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="treatment"></textarea>
                 </div>
+
+                <div  class="form-group">
+                    <label for="">Estado Actual:</label>
+                    <select class="form-control" id="inputPassword4" name="actual_state">
+                        <option>Disponible</option>
+                        <option>Inactivo</option>
+                     </select>
+                </div>
                 <div class="col-md-6-self-center" style="margin: 80px">
                         <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/fichaTratamiento')}}">Cancelar</a>
                         <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/fichaTratamiento') }}" >Guardar</button>

@@ -290,8 +290,23 @@ return [
                     'submenu' =>[
                         [
                             'text' => 'Ficha Reproduccion Interna',
-                            'url'  => '/fichaReproduccion',
                             'icon'  => '',
+
+                            'submenu' =>[
+                                [
+                                    'text' => 'Monta',
+                                    'url'  => '/fichaReproduccionM',
+                                    'icon'  => '',
+                                ],
+                                [
+                                    'text' => 'Artificial',
+                                    'url'  => '/fichaReproduccionA',
+                                    'icon'  => '',
+                                ],
+
+
+                                
+                            ],
                         ],
 
                         [

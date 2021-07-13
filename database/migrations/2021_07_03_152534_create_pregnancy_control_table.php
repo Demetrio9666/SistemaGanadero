@@ -32,7 +32,7 @@ class CreatePregnancyControlTable extends Migration
 
             $table->text('observation')->nullable();
             $table->date('date_rc');
-           
+            $table->string('actual_state');
 
             $table->timestamps();
         });

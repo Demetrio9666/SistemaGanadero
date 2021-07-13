@@ -53,6 +53,13 @@
                     <label for="">Fecha de Segunda Docis:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date_vr" value="{{$vacunaC->date_vr}}">
                 </div>
+                <div  class="form-group">
+                    <label for="">Estado Actual:</label>
+                    <select class="form-control" id="inputPassword4" name="actual_state">
+                        <option>Disponible</option>
+                        <option>Inactivo</option>
+                     </select>
+                </div> 
                     
                 <div class="form-group">
                     <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/controlVacuna')}}">Cancelar</a>

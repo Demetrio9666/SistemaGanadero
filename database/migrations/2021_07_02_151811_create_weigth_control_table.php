@@ -22,6 +22,7 @@ class CreateWeigthControlTable extends Migration
                   ->onUpdate('cascade');
             $table->float('weigtht');
             $table->date('date_vr');
+            $table->string('actual_state');
             $table->timestamps();
         });
     }

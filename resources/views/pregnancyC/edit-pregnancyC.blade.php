@@ -79,6 +79,13 @@
                     <label for="">Fecha de próximo control:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date_rc" value="{{$pre->date_rc}}">
                 </div>
+                <div  class="form-group">
+                    <label for="">Estado Actual:</label>
+                    <select class="form-control" id="inputPassword4" name="actual_state">
+                        <option>Disponible</option>
+                        <option>Inactivo</option>
+                     </select>
+                </div> 
                     
                 <div class="form-group">
                     <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/controlPrenes')}}">Cancelar</a>

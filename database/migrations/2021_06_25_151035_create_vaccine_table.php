@@ -15,10 +15,11 @@ class CreateVaccineTable extends Migration
     {
         Schema::create('vaccine', function (Blueprint $table) {
             $table->id();
-            $table->string('vaccine_d',20);
+            $table->string('vaccine_d');
             $table->date('date_e');
             $table->date('date_c');
             $table->string('supplier',20);
+            $table->string('actual_state');
             $table->timestamps();
         });
     }

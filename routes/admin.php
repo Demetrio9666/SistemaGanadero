@@ -15,7 +15,8 @@ use App\Http\Controllers\Deworming_controlController;
 use App\Http\Controllers\Pregnancy_controlController;
 use App\Http\Controllers\File_partumController;
 use App\Http\Controllers\File_treatmentController;
-use App\Http\Controllers\File_reproductionController;
+use App\Http\Controllers\File_reproductionMController;  
+use App\Http\Controllers\File_reproductionAController;  
 use App\Http\Controllers\External_mountController;
 
 Route::get('/dashboard',[HomeController::class,'Dashboard']);
@@ -26,7 +27,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 
 
 Route::resource('/confAnimalExterno',External_mountController::class);
-Route::resource('/fichaReproduccion',File_reproductionController::class);
+
+Route::resource('/fichaReproduccionM',File_reproductionMController::class);
+Route::resource('/fichaReproduccionA',File_reproductionAController::class);
+
 Route::resource('/fichaTratamiento',File_treatmentController::class);
 Route::resource('/fichaParto',File_partumController::class);
 Route::resource('/controlPrenes',Pregnancy_controlController::class);

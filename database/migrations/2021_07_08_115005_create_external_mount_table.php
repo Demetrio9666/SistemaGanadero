@@ -27,6 +27,7 @@ class CreateExternalMountTable extends Migration
             $table->string('age_month');
             $table->string('sex');
             $table->string('hacienda_name');
+            $table->string('actual_state');
             $table->timestamps();
         });
     }

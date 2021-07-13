@@ -147,6 +147,9 @@ class External_mountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+ 
+
     public function destroy($id)
     {
         $ext =  External_mount::findOrFail($id);

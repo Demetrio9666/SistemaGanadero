@@ -25,6 +25,7 @@ class CreateDewormingControlTable extends Migration
 
             $table->foreign('deworming_id')->references('id')->on('dewormer');
             $table->date('date_vr');
+            $table->string('actual_state');
             $table->timestamps();
         });
     }

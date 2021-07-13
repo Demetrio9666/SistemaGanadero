@@ -38,6 +38,13 @@
                     <label for="">Fecha de próximo control:</label>
                     <input type="date" class="form-control" id="fecha_rv" name="date_vr" >
                 </div>
+                <div  class="form-group">
+                    <label for="">Estado Actual:</label>
+                    <select class="form-control" id="inputPassword4" name="actual_state">
+                        <option>Disponible</option>
+                        <option>Inactivo</option>
+                     </select>
+                </div> 
 
 
 

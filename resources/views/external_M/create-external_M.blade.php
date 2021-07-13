@@ -79,6 +79,14 @@
                         <input type="text" class="form-control"  name="hacienda_name">
                     </div>
 
+                    <div  class="form-group">
+                        <label for="">Estado Actual:</label>
+                        <select class="form-control" id="inputPassword4" name="actual_state">
+                            <option>Disponible</option>
+                            <option>Inactivo</option>
+                         </select>
+                    </div>
+
                     <div class="form-group" style="margin: 50px">
                         <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confAnimalExterno')}}">Cancelar</a>
                         <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confAnimalExterno') }}" >Guardar</button>

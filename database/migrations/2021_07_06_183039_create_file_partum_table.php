@@ -23,6 +23,7 @@ class CreateFilePartumTable extends Migration
             $table->integer('dead')->nullable();
             $table->string('mother_status',10);
             $table->string('partum_type',10);
+            $table->string('actual_state');
             $table->timestamps();
         });
     }

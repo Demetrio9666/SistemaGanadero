@@ -16,8 +16,8 @@
     <div class="container" id="registration-form">
         <div class="image"></div>
         <div class="frm">
-            <h1>Ficha de Reproducción</h1>
-            <form action="{{route('fichaReproduccion.update', $re->id)}}" method="POST">
+            <h1>Ficha de Reproducción Artificial</h1>
+            <form action="{{route('fichaReproduccionA.update', $re->id)}}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
@@ -68,102 +68,7 @@
                 </div>
                 
 
-                <div class="form-group">
-                    <input type="hidden" id="idcodi2" name="animalCode_id_p"    value="{{$re->animalCode_id_p}}">
-                    <input type="hidden" id="idcodi_ar" name="artificial_id"    value="{{$re->artificial_id}}">
-                    <label for="inputEmail4" class="form-label">Tipo de Reproduccion</label>
-                    <select class="form-control" id="inputPassword4" name="estado" onChange="mostrar(this.value)">
-                      <option  id="0">seleccione</option>
-                      <option id="Monta Interna"  @if($re->artificial_id == "" ) @endif selected  >Monta Interna</option>
-                      <option id="Reproduccion Artificial" @if($re->animalCode_id_p == "" ) @endif selected>Artificial</option>
-                </select>
-                </div>
-
-                
-                <div class="form-group"  id="monta_interna"   value="{{$re->animalCode_id_p}}">
-                    <h1>Reproducción por Monta Interna</h1>
-                    
-                     <a type="button" class="btn btn-success" style="margin: 10px, color:#FFFFFF;" id="button-addon1" >Limpiar</a>
-                         <div class="input-group mb-3">
-                                <input type="hidden" id="idcodi2" name="animalCode_id_p"    value="{{$re->animalCode_id_p}}">
-                                <div  class="col-md-6">
-                                    <label>Codigo Animal:</label>
-                                    <input type="text" class="form-control" id="codigo_animal2"  disabled=disabled 
-                                     @foreach ($animalR as $i)
-                                            @if ($re->animalCode_id_p == $i->id )
-                                                value =" {{$i->animalCode}} "
-                                            @endif
-                                    @endforeach >
-                                </div>
-                                <div  class="col-md-6">
-                                    <label>Raza:</label>
-                                    <input type="text" class="form-control" id="raza2"  disabled=disabled 
-                                    @foreach ($animalR as $i)
-                                            @if ($re->animalCode_id_p == $i->id )
-                                                value =" {{$i->race_d}} "
-                                            @endif
-                                    @endforeach >
-                                </div>
-
-
-                                <div  class="col-md-6">
-                                    <label>Edad:</label>
-                                    <input type="text" class="form-control" id="edad2" name="age_month" disabled=disabled  
-                                    @foreach ($animalR as $i)
-                                            @if ($re->animalCode_id_p == $i->id )
-                                                value =" {{$i->age_month}} "
-                                            @endif
-                                    @endforeach  >
-                                </div>
-                                <div  class="col-md-6">
-                                    <label >Sexo:</label>
-                                    <input type="text" class="form-control" id="sexo2" name="sex" disabled=disabled 
-                                    @foreach ($animalR as $i)
-                                            @if ($re->animalCode_id_p == $i->id )
-                                                value =" {{$i->sex}} "
-                                            @endif
-                                    @endforeach>
-                                </div>
-                              
-                            
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                              <table id="table1" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>#</th> 
-                                        <th>Codigo Animal</th>
-                                        <th>Raza</th>
-                                        <th>Edad</th>
-                                        <th>Sexo</th>
-                                        <th>Acción</th>   
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                      @foreach ($animalR as $i)          
-                                      <tr>
-                                          <td>{{$i->id}}</td>
-                                          <td>{{$i->animalCode}}</td>
-                                          <td>{{$i->race_d}}</td>
-                                          <td>{{$i->age_month}}</td>
-                                          <td>{{$i->sex}}</td>
-                                          <td> <button type="button" class="btn btn-success btn   btselect2"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
-                                          
-                                        </tr>
-                                      @endforeach        
-                                </tbody>
-                            </table>
-                            </div>
-                        </div>
-                        
-
-                        
-                </div>
-
-                
-
-                <div class="form-group"  id="reproduccion_ar"   value="{{$re->artificial_id}}">
+                <div class="form-group"  id="reproduccion_ar"   >
                     <h1>Reproducción Artificial</h1>
                     <br>
                         <div class="input-group mb-3 ">
@@ -227,19 +132,16 @@
                                 </tbody>
                             </table>
                             </div>
-                        </div>
-
-                        
-
-                     
+                        </div>         
         
                 </div>
 
+            
 
                 
                 <div class="col-md-8-self-center" style="margin: 80px" >
-                    <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/fichaReproduccion')}}">Cancelar</a>
-                    <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/fichaReproduccion') }}" >Guardar</button>
+                    <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/fichaReproduccionA')}}">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/fichaReproduccionA') }}" >Guardar</button>
                 </div>
 
             </form>
@@ -366,10 +268,17 @@
                 }else if(id == "Artificial"){
                     $("#reproduccion_ar").show();
                     
+                    
                 }
- 
             }
 
+
+
+            
+            $(".btnlimpiar").on('click',function(){
+                $('#animalCode_id_p').val('');
+
+            });
    </script>
     @endsection
 </body>

@@ -105,7 +105,14 @@
                     <div class="form-group">
                         <label for="">Nombre Hacienda:</label>
                         <input type="text" class="form-control"  name="hacienda_name" value="{{$ext->hacienda_name}}">
-                    </div>  
+                    </div> 
+                    <div  class="form-group">
+                        <label for="">Estado Actual:</label>
+                        <select class="form-control" id="inputPassword4" name="actual_state">
+                            <option>Disponible</option>
+                            <option>Inactivo</option>
+                         </select>
+                    </div> 
                     
                     
                     <div class="form-group">

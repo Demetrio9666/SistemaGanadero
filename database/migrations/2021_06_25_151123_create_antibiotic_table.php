@@ -15,10 +15,11 @@ class CreateAntibioticTable extends Migration
     {
         Schema::create('antibiotic', function (Blueprint $table) {
             $table->id();
-            $table->string('antibiotic_d',20);
+            $table->string('antibiotic_d');
             $table->date('date_e');
             $table->date('date_c');
             $table->string('supplier',20);
+            $table->string('actual_state');
             $table->timestamps();
         });
     }

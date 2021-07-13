@@ -23,6 +23,7 @@ class CreateArtificialReproductionTable extends Migration
 
             $table->string('reproduccion',10);
             $table->string('supplier',20);
+            $table->string('actual_state');
             $table->timestamps();
         });
     }

@@ -83,16 +83,6 @@
                                 </div>
 
                                 <div  class="col-md-6">
-                                    <label for="">Estado Actual:</label>
-                                    <select class="form-control" id="inputPassword4" name="actual_state">
-                                        <option selected>Seleccione</option>
-                                        <option>Disponible</option>
-                                        <option>Vendido</option>
-                                        <option>Reproduccion</option>
-                                        <option>Inactivo</option>
-                                </select>
-                                </div>
-                                <div  class="col-md-6">
                                     <label for="">Ubicacion:</label>
                                     <select class="form-control" id="" name="location_id">
                                             <option>Seleccione la Ubicacion</option>
@@ -109,6 +99,15 @@
                                         <option>Monta</option>
                                         <option>Insiminacion Artificial</option>
                                         <option>Embrional</option>
+                                </select>
+                                </div>
+                                <div  class="col-md-6">
+                                    <label for="">Estado Actual:</label>
+                                    <select class="form-control" id="inputPassword4" name="actual_state">
+                                        <option>Disponible</option>
+                                        <option>Vendido</option>
+                                        <option>Reproduccion</option>
+                                        <option>Inactivo</option>
                                 </select>
                                 </div>
                                 <div class="col-md-6-self-center" style="margin: 80px">

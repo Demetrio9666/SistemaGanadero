@@ -26,6 +26,7 @@ class CreateVaccineControlTable extends Migration
                   ->onDelete('set null')->onUpdate('cascade');
 
             $table->date('date_vr');
+            $table->string('actual_state');
             $table->timestamps();
         });
     }
