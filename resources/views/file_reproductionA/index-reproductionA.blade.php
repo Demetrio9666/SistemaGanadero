@@ -26,6 +26,7 @@
                                 <th>Raza </th>
                                 <th>Tipo de Reproduccion Artificial</th>
                                 <th>Raza Material Genético</th>
+                                <th>Estado Actual</th> 
                                 <th>Acción</th>
                             </tr>
                         </thead>
@@ -37,6 +38,7 @@
                                 <td>{{$i->raza_h}}</td>
                                 <td >{{$i->tipo}}</td>
                                 <td >{{$i->raza_m}}</td>
+                                <td >{{$i->actual_state}}</td>
                                 <td>
                                     <a class="btn btn-primary  " href="{{route('fichaReproduccionA.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
                                     <form action="{{route('fichaReproduccionA.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">

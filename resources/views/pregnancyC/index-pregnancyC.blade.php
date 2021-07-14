@@ -25,6 +25,7 @@
                     <th>Alternativa 2</th>
                     <th>Observación</th>
                     <th>Fecha de próximo control</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -38,6 +39,7 @@
                     <td >{{$i->alt2}}</td>
                     <td >{{$i->observation}}</td>
                     <td >{{$i->date_rc}}</td>
+                    <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary d-grid gap-2 d-md-block " href="{{route('controlPrenes.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('controlPrenes.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">

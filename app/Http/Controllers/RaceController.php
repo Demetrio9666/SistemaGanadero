@@ -41,6 +41,7 @@ class RaceController extends Controller
         
         $raza->race_d = $request->race_d;
         $raza->percentage = $request->percentage;
+        $raza->actual_state =$request->actual_state;
         $raza->save(); 
         
         //return redirect()->route();
@@ -83,6 +84,7 @@ class RaceController extends Controller
         $raza = Race::findOrFail($id);
         $raza->race_d = $request->race_d;
         $raza->percentage = $request->percentage;
+        $raza->actual_state =$request->actual_state;
         $raza->save();
         return redirect('/confRaza'); 
     }

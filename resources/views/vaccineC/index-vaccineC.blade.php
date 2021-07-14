@@ -23,6 +23,7 @@
                     <th>Código del Animal</th>
                     <th>Vacuna</th>
                     <th>Fecha de re-vacunacion</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -34,6 +35,8 @@
                     <td >{{$i->animal}}</td>
                     <td >{{$i->vacuna}}</td>
                     <td >{{$i->date_vr}}</td>
+                    <td >{{$i->actual_state}}</td>
+
                     <td>
                         <a class="btn btn-primary" href="{{route('controlVacuna.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('controlVacuna.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">

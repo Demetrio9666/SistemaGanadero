@@ -22,6 +22,7 @@
                     <th>Fecha Elaboración</th>
                     <th>Fecha Caducidad </th>
                     <th>Proveedor</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                     <td >{{$i->date_e}}</td>
                     <td>{{$i->date_c}}</td>
                     <td >{{$i->supplier}}</td>
+                    <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('confVacuna.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('confVacuna.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">

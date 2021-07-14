@@ -26,6 +26,7 @@
                     <th>Antibiótico</th>
                     <th>Vitamina</th>
                     <th>Tratamiento</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -39,6 +40,7 @@
                     <td >{{$i->anti}}</td>
                     <td >{{$i->vi}}</td>
                     <td >{{$i->treatment}}</td>
+                    <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary  " href="{{route('fichaTratamiento.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('fichaTratamiento.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">

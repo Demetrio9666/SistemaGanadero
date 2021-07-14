@@ -24,8 +24,9 @@
                     <th>Cant.Machos </th>
                     <th>Cant.Hembras</th>
                     <th>Cant.Muertos</th>
-                    <th>Estado</th>
+                    <th>Estado Animal</th>
                     <th>Tipo de Parto</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -39,6 +40,7 @@
                     <td >{{$i->dead}}</td>
                     <td >{{$i->mother_status}}</td>
                     <td >{{$i->partum_type}}</td>
+                    <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary d-grid gap-2 d-md-block " href="{{route('fichaParto.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('fichaParto.destroy',$i->id)}}"  class="d-inline  formulario-eliminar  "  method="POST">
@@ -51,19 +53,7 @@
                 @endforeach 
        
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>Fecha de control</th>
-                    <th>Código del Animal</th>
-                    <th>Cant.Machos </th>
-                    <th>Cant.Hembras</th>
-                    <th>Cant.Muertos</th>
-                    <th>Estado</th>
-                    <th>Tipo de Parto</th>
-                    <th>Acción</th>
-                </tr>
-                </tr>
-            </tfoot>
+           
         </table>
         </div>
     </div>

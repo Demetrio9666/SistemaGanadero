@@ -28,8 +28,8 @@
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state">
-                            <option>Disponible</option>
-                            <option>Inactivo</option>
+                            <option value="Disponible">Disponible</option>
+                            <option value="Inactivo">Inactivo</option>
                          </select>
                     </div>   
                     <div class="form-group">

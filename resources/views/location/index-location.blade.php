@@ -20,6 +20,7 @@
                 <tr>
                     <th>Nombre de ubicación</th>
                     <th>Descripción</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                 <tr>
                     <td>{{$i->location_d}}</td>
                     <td >{{$i->description}}</td>
+                    <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('confUbicacion.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('confUbicacion.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
@@ -39,13 +41,7 @@
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot>
-                <tr>
-                    <th>Nombre de ubicación</th>
-                    <th>Descripción</th>
-                    <th>Acción</th>
-                </tr>
-            </tfoot>
+            
         </table>
         </div>
     </div>

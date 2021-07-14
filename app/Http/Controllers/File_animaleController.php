@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\File_Animale;
 use App\Models\Location;
 use App\Models\Race;
+use App\Http\Requests\StoreFile_animale;
 class File_animaleController extends Controller
 {
     /**
@@ -47,26 +48,27 @@ class File_animaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFile_animale $request)
     {
+
         $animal = new File_Animale();
         
-        $animal->animalCode = $request->animalCode;
-        $animal->date_n = $request->date_n;
-        $animal->race_id = $request->race_id;
-        $animal->sex = $request->sex;
-        $animal->stage = $request->stage;
-        $animal->source = $request->source;
-        $animal->age_month = $request->age_month;
-        $animal->health_condition = $request->health_condition;
-        $animal->gestation_state = $request->gestation_state;
+        $animal->animalCode = $request->codigo_animal;
+        $animal->date_n = $request->fecha_nacimiento;
+        $animal->race_id = $request->raza;
+        $animal->sex = $request->sexo;
+        $animal->stage = $request->etapa;
+        $animal->source = $request->origen;
+        $animal->age_month = $request->edad;
+        $animal->health_condition = $request->estado_de_salud;
+        $animal->gestation_state = $request->estado_de_gestacion;
         $animal->actual_state = $request->actual_state;
-        $animal->location_id = $request->location_id;
-        $animal->conceived = $request->conceived;
+        $animal->location_id = $request->localizacion;
+        $animal->conceived = $request->concebido;
         $animal->save(); 
         
         //return redirect()->route();
-        return redirect('/fichaAnimal');
+        return redirect('/fichaAnimal')->with('Validad','ok');
     }
 
     /**
@@ -106,18 +108,18 @@ class File_animaleController extends Controller
     {
         $animal = File_Animale::findOrFail($id);
         
-        $animal->animalCode = $request->animalCode;
-        $animal->date_n = $request->date_n;
-        $animal->race_id = $request->race_id;
-        $animal->sex = $request->sex;
-        $animal->stage = $request->stage;
-        $animal->stage = $request->stage;
-        $animal->age_month = $request->age_month;
-        $animal->health_condition = $request->health_condition;
-        $animal->gestation_state = $request->gestation_state;
+        $animal->animalCode = $request->codigo_animal;
+        $animal->date_n = $request->fecha_nacimiento;
+        $animal->race_id = $request->raza;
+        $animal->sex = $request->sexo;
+        $animal->stage = $request->etapa;
+        $animal->source = $request->origen;
+        $animal->age_month = $request->edad;
+        $animal->health_condition = $request->estado_de_salud;
+        $animal->gestation_state = $request->estado_de_gestacion;
         $animal->actual_state = $request->actual_state;
-        $animal->location_id = $request->location_id;
-        $animal->conceived = $request->conceived;
+        $animal->location_id = $request->localizacion;
+        $animal->conceived = $request->concebido;
         $animal->save(); 
       
         return redirect('/fichaAnimal'); 

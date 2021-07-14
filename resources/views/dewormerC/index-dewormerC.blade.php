@@ -22,6 +22,7 @@
                     <th>Código del Animal</th>
                     <th>Desparasitante</th>
                     <th>Fecha de re-desparasitación</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                     <td >{{$i->animal}}</td>
                     <td>{{$i->des}}</td>
                     <td >{{$i->date_vr}}</td>
+                    <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('controlDesparasitacion.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('controlDesparasitacion.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">

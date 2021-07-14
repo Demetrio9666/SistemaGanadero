@@ -40,6 +40,7 @@ class LocationController extends Controller
         
         $ubicacion->location_d = $request->location_d;
         $ubicacion->description = $request->description;
+        $ubicacion->actual_state =$request->actual_state;
         $ubicacion->save(); 
         
         //return redirect()->route();
@@ -81,6 +82,7 @@ class LocationController extends Controller
         $ubicacion = Location::findOrFail($id);
         $ubicacion->location_d = $request->location_d;
         $ubicacion->description = $request->description;
+        $ubicacion->actual_state =$request->actual_state;
         $ubicacion->save(); 
         return redirect('/confUbicacion'); 
     }

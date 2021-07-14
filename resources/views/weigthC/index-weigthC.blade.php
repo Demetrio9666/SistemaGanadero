@@ -23,6 +23,7 @@
                     <th>Código del Animal</th>
                     <th>Peso</th>
                     <th>Fecha de próximo control</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -33,6 +34,7 @@
                     <td >{{$i->animal}}</td>
                     <td >{{$i->weigtht}}</td>
                     <td >{{$i->date_vr}}</td>
+                    <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('controlPeso.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('controlPeso.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">

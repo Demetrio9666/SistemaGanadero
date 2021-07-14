@@ -22,6 +22,7 @@
                     <th>Fecha Elaboración</th>
                     <th>Fecha Caducidad </th>
                     <th>Proveedor</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                     <td >{{$i->date_e}}</td>
                     <td>{{$i->date_c}}</td>
                     <td >{{$i->supplier}}</td>
+                    <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('confAnt.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('confAnt.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
@@ -42,16 +44,7 @@
                     </td>  
                 </tr>
                 @endforeach
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Nombre del Antibiótico</th>
-                    <th>Fecha Elaboración</th>
-                    <th>Fecha Caducidad </th>
-                    <th>Proveedor</th>
-                    <th>Acción</th>
-                </tr>
-            </tfoot>
+           
         </table>
         </div>
     </div>

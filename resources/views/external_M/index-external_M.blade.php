@@ -28,6 +28,7 @@
                     <th>Edad</th>
                     <th>Sexo</th>
                     <th>Hacienda</th>
+                    <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -45,6 +46,8 @@
                     <td>{{$i->age_month}}</td>
                     <td>{{$i->sex}}</td>
                     <td>{{$i->hacienda_name}}</td>
+                    <td >{{$i->actual_state}}</td>
+
                     <td>
                         <a class="btn btn-primary" href="{{route('confAnimalExterno.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('confAnimalExterno.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">

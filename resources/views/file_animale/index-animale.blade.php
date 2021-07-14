@@ -24,9 +24,9 @@
                                     <th>Edad-meses</th>
                                     <th>Salud</th>
                                     <th>Estado de Embarazo</th>
-                                    <th>Estado Actual</th>
                                     <th>localizacion</th>
-                                    <th>Concebido</th>    
+                                    <th>Concebido</th> 
+                                    <th>Estado Actual</th>   
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -42,8 +42,8 @@
                                     <td >{{$i->age_month}}</td>
                                     <td >{{$i->health_condition}}</td>
                                     <td >{{$i->gestation_state}}</td>
-                                    <td >{{$i->actual_state}}</td>
                                     <td >{{$i->ubicacion}}</td>
+                                    <td >{{$i->actual_state}}</td>
                                     <td >{{$i->conceived}}</td>
                                     <td>
                                         <a class="btn btn-primary" href="{{route('fichaAnimal.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>

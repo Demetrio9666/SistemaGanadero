@@ -22,6 +22,7 @@
                 <tr>
                     <th>Nombre de la Raza</th>
                     <th>Porcentaje</th>
+                    <th>Estado Actual</th> 
                     <th>Accion</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                 <tr>
                     <td >{{$i->race_d}}</td>
                     <td>{{$i->percentage}}</td>
+                    <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{route('confRaza.edit',$i->id)}}" >Editar</a>
                         <form action="{{route('confRaza.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
