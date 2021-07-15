@@ -224,11 +224,20 @@ return [
     */
 
     'menu' => [
+       
+        [
+            'text' => 'Lista de Roles',
+            'url'  => '/rol',
+            'icon' =>'fas fa-users',
+           
+        ],
+
+        ['header' => 'DASHBOARDS'],
      
         [
             'text' => 'blog',
             'url'  => '/dashboard',
-            'can'  => 'manage-blog',
+            'ico'  => 'fas fa-tachometer-alt',
         ],
 
         [
@@ -246,11 +255,9 @@ return [
        //     'label'       => 4,
        //     'label_color' => 'success',
        // ],
+      
 
-
-
-
-        ['header' => 'account_settings'],
+        ['header' => 'AJUSTE DE CUENTA'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -262,7 +269,7 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
 
-
+        ['header' => 'CONTROLES'],
         [
             'text'    => 'Registros',
             'icon'    => 'fas fa-book',
@@ -311,7 +318,7 @@ return [
 
                         [
                             'text' => 'Ficha Reproduccion Externa',
-                            'url'  => '/confAnimalExterno',
+                            'url'  => '/fichaReproduccionEx',
                             'icon' =>'',
                         ],
                       

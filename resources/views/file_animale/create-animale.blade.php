@@ -289,6 +289,33 @@ function ValidarEdad(id){
 }
 
 
+     $("#btguardar").on('click',function(){
+        if( $("#codigoAnimal").val() == "" ){
+            Swal.fire({
+                    position: 'top-center',
+                    icon: 'warning',
+                    title: 'Notificación',
+                    text: 'Tiene datos Vacios',
+                    showConfirmButton: true,
+                    timer: 15000
+                })
+          }else {
+            Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Datos Almacenados',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+          }
+        
+
+
+     });
+         
+      
+
+
  </script>
                    
         

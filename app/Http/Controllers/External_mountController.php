@@ -80,7 +80,7 @@ class External_mountController extends Controller
         
         $ext->save(); 
 
-        return redirect('/confAnimalExterno');
+        return redirect('/fichaReproduccionEx');
     }
 
     /**
@@ -138,7 +138,7 @@ class External_mountController extends Controller
         
         $ext->save(); 
 
-        return redirect('/confAnimalExterno');
+        return redirect('/fichaReproduccionEx');
     }
 
     /**
@@ -154,7 +154,7 @@ class External_mountController extends Controller
     {
         $ext =  External_mount::findOrFail($id);
         $ext->delete();
-        return redirect('/confAnimalExterno')->with('eliminar','ok');
+        return redirect('/fichaReproduccionEx')->with('eliminar','ok');
 
     }
 }

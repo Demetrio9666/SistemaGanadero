@@ -15,7 +15,7 @@
             <div class="image"></div>
             <div class="frm">
                 <h1>Registar Ficha de Reproduccion Externo</h1>
-                <form action="{{route('confAnimalExterno.store')}}" method="POST">
+                <form action="{{route('fichaReproduccionEx.store')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="">Fecha de Registro:</label>
@@ -88,8 +88,8 @@
                     </div>
 
                     <div class="form-group" style="margin: 50px">
-                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confAnimalExterno')}}">Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confAnimalExterno') }}" >Guardar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/fichaReproduccionEx')}}">Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/fichaReproduccionEx') }}" >Guardar</button>
                     </div>
                 </form>
             </div>

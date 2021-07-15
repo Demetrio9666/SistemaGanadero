@@ -16,7 +16,7 @@
             <div class="image"></div>
             <div class="frm">
                 <h1>Editar Ficha de Reproduccion Externo</h1>
-                <form action=" {{route('confAnimalExterno.update',$ext->id)}}" method="POST">
+                <form action=" {{route('fichaReproduccionEx.update',$ext->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
@@ -116,8 +116,8 @@
                     
                     
                     <div class="form-group">
-                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/confAnimalExterno')}}" >Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/confAnimalExterno') }}" >Actualizar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/fichaReproduccionEx')}}" >Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/fichaReproduccionEx') }}" >Actualizar</button>
                     </div>
                 </form>
             </div>

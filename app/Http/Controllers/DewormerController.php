@@ -41,6 +41,7 @@ class DewormerController extends Controller
         $desp->date_e = $request->date_e;
         $desp->date_c = $request->date_c;
         $desp->supplier = $request->supplier;
+        $desp->actual_state = $request->actual_state;
         $desp->save(); 
     
         //return redirect()->route();

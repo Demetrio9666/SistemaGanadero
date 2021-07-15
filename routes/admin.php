@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DewormerController;
@@ -25,26 +26,25 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('admin.index');
 })->name('index_admin');
 
+Route::resource('rol',RoleController::class)->names('rol');
 
-Route::resource('/confAnimalExterno',External_mountController::class);
-
-Route::resource('/fichaReproduccionM',File_reproductionMController::class);
-Route::resource('/fichaReproduccionA',File_reproductionAController::class);
-
-Route::resource('/fichaTratamiento',File_treatmentController::class);
-Route::resource('/fichaParto',File_partumController::class);
-Route::resource('/controlPrenes',Pregnancy_controlController::class);
-Route::resource('/controlDesparasitacion',Deworming_controlController::class);
-Route::resource('/controlPeso',Weigth_controlController::class);
-Route::resource('/controlVacuna',Vaccine_controlController::class);
-Route::resource('/fichaAnimal',File_animaleController::class);
-Route::resource('/confUbicacion',LocationController::class);
-Route::resource('/confRaza',RaceController::class);
-Route::resource('/confVi',VitaminController::class);
-Route::resource('/confDespa',DewormerController::class);
-Route::resource('/confVacuna',VaccineController::class);
-Route::resource('/confAnt',AntibioticController::class);
-Route::resource('/confMate',ArtificialReproductionController::class);
+Route::resource('fichaReproduccionEx',External_mountController::class)->names('fichaReproduccionEx');
+Route::resource('fichaReproduccionM',File_reproductionMController::class)->names('fichaReproduccionM');
+Route::resource('fichaReproduccionA',File_reproductionAController::class)->names('fichaReproduccionA');
+Route::resource('fichaTratamiento',File_treatmentController::class)->names('fichaTratamiento');
+Route::resource('fichaParto',File_partumController::class)->names('fichaParto');
+Route::resource('controlPrenes',Pregnancy_controlController::class)->names('controlPrenes');
+Route::resource('controlDesparasitacion',Deworming_controlController::class)->names('controlDesparasitacion');
+Route::resource('controlPeso',Weigth_controlController::class)->names('controlPeso');
+Route::resource('controlVacuna',Vaccine_controlController::class)->names('controlVacuna');
+Route::resource('fichaAnimal',File_animaleController::class)->names('fichaAnimal');
+Route::resource('confUbicacion',LocationController::class)->names('confUbicacion');
+Route::resource('confRaza',RaceController::class)->names('confRaza');
+Route::resource('confVi',VitaminController::class)->names('confVi');
+Route::resource('confDespa',DewormerController::class)->names('confDespa');
+Route::resource('confVacuna',VaccineController::class)->names('confVacuna');
+Route::resource('confAnt',AntibioticController::class)->names('confAnt');
+Route::resource('confMate',ArtificialReproductionController::class)->names('confMate');
 
 
 //Route::get('/welcome',[HomeController::class,'welcome']);
