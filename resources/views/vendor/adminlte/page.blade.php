@@ -128,6 +128,8 @@
           }) 
       });
   </script>
+
+  
     @stack('js')
     @yield('js')
 @stop

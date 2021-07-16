@@ -349,7 +349,7 @@ return [
                     'icon'  => 'fas fa-vials',
                 ],
                 [
-                    'text' => 'Control Preñes ',
+                    'text' => 'Control Preñez ',
                     'url'  => '/controlPrenes',
                     'icon'  => 'fas fa-file-medical',
                 ],

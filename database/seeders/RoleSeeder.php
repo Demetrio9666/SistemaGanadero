@@ -20,97 +20,102 @@ class RoleSeeder extends Seeder
         $invitado = Role::create(['name'=>'invitado']);
 
 
-        Permission::create(['name'=>'fichaReproduccionEx.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaReproduccionEx.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaReproduccionEx.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaReproduccionEx.destroy'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Visualizar Ficha de Animales'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Ficha de Animales'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Ficha de Animales'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Ficha de Animales'])->syncRoles([$admin]);
 
-        Permission::create(['name'=>'fichaReproduccionM.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaReproduccionM.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaReproduccionM.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaReproduccionM.destroy'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Visualizar Ficha de Parto'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Ficha de Parto'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Ficha de Parto'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Ficha de Parto'])->syncRoles([$admin]);
 
-        Permission::create(['name'=>'fichaReproduccionA.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaReproduccionA.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaReproduccionA.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaReproduccionA.destroy'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Visualizar Ficha de Tratamiento'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Ficha de Tratamiento'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Ficha de Tratamiento'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Ficha de Tratamiento'])->syncRoles([$admin]);
 
-        Permission::create(['name'=>'fichaTratamiento.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaTratamiento.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaTratamiento.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaTratamiento.destroy'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Visualizar Ficha Reproducción por Monta Interna'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Ficha Reproducción por Monta Interna'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Ficha Reproducción por Monta Interna'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Ficha Reproducción por Monta Interna'])->syncRoles([$admin]);
 
-        Permission::create(['name'=>'fichaParto.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaParto.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaParto.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaParto.destroy'])->syncRoles([$admin]);
-
-        Permission::create(['name'=>'controlPrenes.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlPrenes.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlPrenes.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlPrenes.destroy'])->syncRoles([$admin]);
-
-        Permission::create(['name'=>'controlDesparasitacion.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlDesparasitacion.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlDesparasitacion.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlDesparasitacion.destroy'])->syncRoles([$admin]);
-
-        Permission::create(['name'=>'controlPeso.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlPeso.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlPeso.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlPeso.destroy'])->syncRoles([$admin]);
-
-        Permission::create(['name'=>'controlVacuna.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlVacuna.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlVacuna.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'controlVacuna.destroy'])->syncRoles([$admin]);
-
-        Permission::create(['name'=>'fichaAnimal.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaAnimal.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaAnimal.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'fichaAnimal.destroy'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Visualizar Ficha de Reproducción Artificial '])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Ficha de Reproducción Artificial '])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Ficha de Reproducción Artificial '])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Ficha de Reproducción Artificial '])->syncRoles([$admin]);
 
 
-        Permission::create(['name'=>'confUbicacion.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confUbicacion.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confUbicacion.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confUbicacion.destroy'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Visualizar Ficha Reproducción Externo '])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Fcha Reproducción Externo '])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Ficha Reproducción Externo '])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Ficha Reproducción Exerno '])->syncRoles([$admin]);
+
+      
+        Permission::create(['name'=>'Visualizar Control de Vacunación'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Control de Vacunación'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Control de Vacunación'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Control de Vacunación'])->syncRoles([$admin]);
+        
+        Permission::create(['name'=>'Visualizar Control de Peso'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Control de Peso'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Control de Peso'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Control de Peso'])->syncRoles([$admin]);
 
 
-        Permission::create(['name'=>'confRaza.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confRaza.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confRaza.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confRaza.destroy'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Visualizar Control de Desparasitación'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Control de Desparasitación'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Control de Desparasitación'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Control de Desparasitación'])->syncRoles([$admin]);
 
 
-        Permission::create(['name'=>'confVi.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confVi.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confVi.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confVi.destroy'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Visualizar Control Preñez'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Control Preñez'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Control Preñez'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Control Preñez'])->syncRoles([$admin]);
+
+       
+        Permission::create(['name'=>'Visualizar Configuración de Desparacitante'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Configuración de Desparacitante'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Configuración de Desparacitante'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Configuración de Desparacitante'])->syncRoles([$admin]);
+       
+        Permission::create(['name'=>'Visualizar Configuración de Vacunas'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Configuración de Vacunas'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Configuración de Vacunas'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Configuración de Vacunas'])->syncRoles([$admin]);
+      
+        Permission::create(['name'=>'Visualizar Configuración de Vitaminas'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Configuración de Vitaminas'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Configuración de Vitaminas'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Configuración de Vitaminas'])->syncRoles([$admin]);
+        
+
+        Permission::create(['name'=>'Visualizar Configuración de antibióticos'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Configuración de antibióticos'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Configuración de antibióticos'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Configuración de antibióticos'])->syncRoles([$admin]);
 
 
-        Permission::create(['name'=>'confDespa.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confDespa.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confDespa.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confDespa.destroy'])->syncRoles([$admin]);
+        
+        Permission::create(['name'=>'Visualizar Configuración de Material Genético'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Configuración de Material Genético'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Configuración de Material Genético'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Configuración de Material Genético'])->syncRoles([$admin]);
 
 
-        Permission::create(['name'=>'confVacuna.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confVacuna.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confVacuna.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confVacuna.destroy'])->syncRoles([$admin]);
+
+        Permission::create(['name'=>'Visualizar Configuración de Ubicación Interna'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Configuración de Ubicación Interna'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Configuración de Ubicación Interna'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Configuración de Ubicación Interna'])->syncRoles([$admin]);
 
 
-        Permission::create(['name'=>'confAnt.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confAnt.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confAnt.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confAnt.destroy'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Visualizar Configuración de Razas'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Crear      Configuración de Razas'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Editar     Configuración de Razas'])->syncRoles([$admin]);
+        Permission::create(['name'=>'Eliminar   Configuración de Razas'])->syncRoles([$admin]);
 
-
-        Permission::create(['name'=>'confMate.index'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confMate.create'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confMate.edit'])->syncRoles([$admin]);
-        Permission::create(['name'=>'confMate.destroy'])->syncRoles([$admin]);
 
         
     }

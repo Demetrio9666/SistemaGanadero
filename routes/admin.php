@@ -26,7 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('admin.index');
 })->name('index_admin');
 
-Route::resource('rol',RoleController::class)->names('rol');
 
 Route::resource('fichaReproduccionEx',External_mountController::class)->names('fichaReproduccionEx');
 Route::resource('fichaReproduccionM',File_reproductionMController::class)->names('fichaReproduccionM');
@@ -45,6 +44,6 @@ Route::resource('confDespa',DewormerController::class)->names('confDespa');
 Route::resource('confVacuna',VaccineController::class)->names('confVacuna');
 Route::resource('confAnt',AntibioticController::class)->names('confAnt');
 Route::resource('confMate',ArtificialReproductionController::class)->names('confMate');
-
+Route::resource('rol',RoleController::class)->names('rol');
 
 //Route::get('/welcome',[HomeController::class,'welcome']);

@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     @section('css')
              <link rel="stylesheet" type="text/css" href="/css/registro.css">
-             <link href="{{asset('css/app.css')}}">
-             <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     @endsection
     <title>Registration Form</title>
 </head>
@@ -134,7 +132,7 @@
                     </div>
 
 
-                    <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
+                   
                     
 <script>
 
@@ -289,7 +287,7 @@ function ValidarEdad(id){
 }
 
 
-     $("#btguardar").on('click',function(){
+ $("#btguardar").on('click',function(){
         if( $("#codigoAnimal").val() == "" ){
             Swal.fire({
                     position: 'top-center',
@@ -311,12 +309,22 @@ function ValidarEdad(id){
         
 
 
-     });
+ });
+ 
+ 
          
       
-
-
  </script>
+
+<script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Your work has been saved',
+    showConfirmButton: false,
+    timer: 1500
+})
+</script>
                    
         
 @endsection
