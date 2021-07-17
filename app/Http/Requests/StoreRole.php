@@ -26,8 +26,7 @@ class StoreRole extends FormRequest
         return [
             
             'Nombre del rol'=>'required',
-            'Permiso'=>'required',
-
+          
         ];
     }
 

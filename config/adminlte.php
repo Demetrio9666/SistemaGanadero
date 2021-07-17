@@ -224,6 +224,7 @@ return [
     */
 
     'menu' => [
+        ['header' => 'SEGURIDAD'],
        
         [
             'text' => 'Lista de Roles',
@@ -231,15 +232,18 @@ return [
             'icon' =>'fas fa-users',
            
         ],
+        [
+            'text' => 'Permisos',
+            'url'  => '/',
+            'icon' =>'fas fa-shield-alt',
+           
+        ],
+
+
 
         ['header' => 'DASHBOARDS'],
      
-        [
-            'text' => 'blog',
-            'url'  => '/dashboard',
-            'ico'  => 'fas fa-tachometer-alt',
-        ],
-
+    
         [
             'text'=> 'Dashboard',
             'url'=> '/dashboard',

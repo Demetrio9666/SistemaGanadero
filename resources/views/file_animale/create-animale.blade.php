@@ -9,9 +9,10 @@
 </head>
         @section('content_header')
                     <div class="container" id="registration-form">
+                        @include('messages.message')
                         <div class="image"></div>
                         <div class="frm">
-                            @include('messages.message')
+                            
                             <h1>Registro de Animales</h1>
                             <form action="{{route('fichaAnimal.store')}}" method="POST" class="row g-3" >
                                   @csrf

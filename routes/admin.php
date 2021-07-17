@@ -23,7 +23,7 @@ use App\Http\Controllers\External_mountController;
 Route::get('/dashboard',[HomeController::class,'Dashboard']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-  return view('admin.index');
+  return view('index');
 })->name('index_admin');
 
 
