@@ -20,7 +20,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="">Fecha de Vacunacion:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vaccine" value="{{$vacunaC->date_vaccine}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{$vacunaC->date}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -51,11 +51,11 @@
                 </div>  
                 <div class="form-group">
                     <label for="">Fecha de Segunda Docis:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vr" value="{{$vacunaC->date_vr}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{$vacunaC->date_r}}">
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{$vacunaC->actual_state}}">
                         <option>Disponible</option>
                         <option>Inactivo</option>
                      </select>

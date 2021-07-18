@@ -19,7 +19,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Vacunacion:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vaccine" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>

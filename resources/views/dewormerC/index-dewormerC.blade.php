@@ -26,17 +26,19 @@
             <tbody>  
                 @foreach ($desC as $i)          
                 <tr>
-                    <td>{{$i->date_d}}</td>
+                    <td>{{$i->date}}</td>
                     <td >{{$i->animal}}</td>
                     <td>{{$i->des}}</td>
-                    <td >{{$i->date_vr}}</td>
+                    <td >{{$i->date_r}}</td>
                     <td >{{$i->actual_state}}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('controlDesparasitacion.edit',$i->id)}}" >Editar</a>
+                        <a class="btn btn-primary" href="{{route('controlDesparasitacion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
                         <form action="{{route('controlDesparasitacion.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                             @csrf
                             @method('DELETE') 
-                            <input type="submit"  class="btn btn-danger" value="Eliminar">
+                            <button type="submit"  class="btn btn-danger" value="Eliminar">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
                         </form>                         
                     </td>  
                 </tr>

@@ -12,6 +12,7 @@
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Editar Tratamientos de animales</h1>
@@ -20,7 +21,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="">Fecha de Tratamiento:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{$tra->date_r}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{$tra->date}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -39,7 +40,7 @@
                 <div class="form-group">
                     <label for="">Enfermedad:</label>
                     <select class="form-control" id=""  name="disease"  value="{{$tra->disease}}">
-                        <option selected >Seleccione la causa</option>
+                        <option selected ></option>
                         <option value="Falta de Apetito" @if($tra->disease == "Falta de Apetito" ) selected @endif>Falta de Apetito</option>
                         <option value="Herida" @if($tra->disease == "Herida" ) selected @endif>Herida</option>
                         <option value="Otras causas" @if($tra->disease == "Otras causas" ) selected @endif>Otras causas</option>
@@ -53,7 +54,7 @@
                 <div class="form-group">
                     <label for=""> Antibióticos:</label>
                     <select class="form-control" id=""  name="antibiotic_id"   value="{{$tra->antibiotic_id}}">
-                        <option selected value="">Seleccione la Antibióticos</option>
+                        <option selected value=""></option>
                         @foreach ($anti as $i )   
                             <option value="{{$i->id}}" @if($tra->antibiotic_id == $i->id ) selected @endif>{{$i->antibiotic_d}}</option>
                         @endforeach
@@ -63,7 +64,7 @@
                 <div class="form-group">
                     <label for="">Vitamina:</label>
                     <select class="form-control" id=""  name="vitamin_id"   value="{{$tra->vitamin_id}}">
-                        <option selected value="" >Seleccione la Vitamina</option>
+                        <option selected value="" ></option>
                         @foreach ($vitamina as $i )   
                             <option value="{{$i->id}}" @if($tra->vitamin_id == $i->id ) selected @endif>{{$i->vitamin_d}}</option>
                         @endforeach
@@ -73,6 +74,13 @@
                 <div class="form-group">
                     <label for="">Tratamiento:</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="treatment"> {{$tra->treatment}}</textarea>
+                </div>
+                <div  class="form-group">
+                    <label for="">Estado Actual:</label>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{$tra->actual_state}}">
+                        <option>Disponible</option>
+                        <option>Inactivo</option>
+                     </select>
                 </div>
 
 

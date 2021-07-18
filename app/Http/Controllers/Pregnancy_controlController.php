@@ -22,7 +22,7 @@ class Pregnancy_controlController extends Controller
         $pre = DB::table('pregnancy_control')
              ->join('vitamin','pregnancy_control.vitamin_id','=','vitamin.id')
              ->join('file_animale','pregnancy_control.animalCode_id','=','file_animale.id')
-             ->select('pregnancy_control.id','pregnancy_control.date_c','file_animale.animalCode as animal','vitamin.vitamin_d as vitamina',
+             ->select('pregnancy_control.id','pregnancy_control.date','file_animale.animalCode as animal','vitamin.vitamin_d as vitamina',
                         'pregnancy_control.alternative1 as alt1','pregnancy_control.alternative2  as alt2','pregnancy_control.observation',
                         'pregnancy_control.date_rc')
              ->get();     
@@ -40,7 +40,7 @@ class Pregnancy_controlController extends Controller
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex'
                   )
@@ -63,7 +63,7 @@ class Pregnancy_controlController extends Controller
     {
         $pre = new Pregnancy_control();
        
-        $pre->date_c= $request->date_c;
+        $pre->date = $request->date;
         $pre->animalCode_id = $request->animalCode_id;
         $pre->vitamin_id = $request->vitamin_id;
         $pre->alternative1 = $request->alternative1;
@@ -98,7 +98,7 @@ class Pregnancy_controlController extends Controller
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex'
                   )
@@ -120,7 +120,7 @@ class Pregnancy_controlController extends Controller
     public function update(Request $request, $id)
     {
         $pre = Pregnancy_control::findOrFail($id);
-        $pre->date_c= $request->date_c;
+        $pre->date = $request->date;
         $pre->animalCode_id = $request->animalCode_id;
         $pre->vitamin_id = $request->vitamin_id;
         $pre->alternative1 = $request->alternative1;

@@ -19,7 +19,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Registro:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_v" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Fecha de próximo control:</label>
-                    <input type="date" class="form-control" id="fecha_rv" name="date_vr" >
+                    <input type="date" class="form-control" id="fecha_rv" name="date_r" >
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>

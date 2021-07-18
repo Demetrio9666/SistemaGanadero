@@ -21,7 +21,7 @@ class Vaccine_controlController extends Controller
         $vacunaC= DB::table('vaccine_control')
                 ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
                 ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
-                ->select('vaccine_control.id','vaccine_control.date_vaccine','vaccine.vaccine_d as vacuna','file_animale.animalCode as animal','vaccine_control.date_vr' )
+                ->select('vaccine_control.id','vaccine_control.date','vaccine.vaccine_d as vacuna','file_animale.animalCode as animal','vaccine_control.date_vr' )
                 ->get();
                 
         //$control = Vaccine_control::all();
@@ -45,7 +45,7 @@ class Vaccine_controlController extends Controller
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex'
                   )
@@ -65,7 +65,7 @@ class Vaccine_controlController extends Controller
         $vacunaC = new Vaccine_control();
        
 
-        $vacunaC->date_vaccine = $request->date_vaccine;
+        $vacunaC->date = $request->date;
         $vacunaC->animalCode_id = $request->animalCode_id;
         $vacunaC->vaccine_id = $request->vaccine_id;
         $vacunaC->date_vr = $request->date_vr;
@@ -99,7 +99,7 @@ class Vaccine_controlController extends Controller
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex'
                   )
@@ -119,7 +119,7 @@ class Vaccine_controlController extends Controller
     {
         $vacunaC = Vaccine_control::findOrFail($id);
 
-        $vacunaC->date_vaccine = $request->date_vaccine;
+        $vacunaC->date = $request->date;
         $vacunaC->animalCode_id = $request->animalCode_id;
         $vacunaC->vaccine_id = $request->vaccine_id;
         $vacunaC->date_vr = $request->date_vr;

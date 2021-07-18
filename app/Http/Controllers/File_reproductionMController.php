@@ -5,10 +5,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\File_animale;
 use App\Models\Race;
-use App\Models\File_reproduction;
-use App\Models\Artificial_Reproduction;
-use App\Models\External_mount;
-use App\Models\Internal_mount;
+use App\Models\File_reproduction_internal;
+use App\Http\Requests\StoreFile_reproductionM;
 
 class File_reproductionMController extends Controller
 {
@@ -19,18 +17,16 @@ class File_reproductionMController extends Controller
      */
     public function index()
     {
-        
-
-       $re_MI = DB::table('file_reproduction')
-              ->join('file_animale as M','file_reproduction.animalCode_id_m','=','M.id')
-              ->join('file_animale as P','file_reproduction.animalCode_id_p','=','P.id')
+       $re_MI = DB::table('file_reproduction_internal')
+              ->join('file_animale as M','file_reproduction_internal.animalCode_id_m','=','M.id')
+              ->join('file_animale as P','file_reproduction_internal.animalCode_id_p','=','P.id')
 
               ->join('race as RM','M.race_id','=','RM.id')
               ->join('race as RP','P.race_id','=','RP.id')
 
 
-              ->select('file_reproduction.id',
-                       'file_reproduction.date_r as fecha_MI',
+              ->select('file_reproduction_internal.id',
+                       'file_reproduction_internal.date as fecha_MI',
 
                        'M.animalCode as animal_h_MI',
                        'RM.race_d as raza_h_MI',
@@ -40,11 +36,11 @@ class File_reproductionMController extends Controller
                        'P.animalCode as animal_m_MI',
                        'RP.race_d as raza_m_MI',
                        'P.sex as sexo_m',
-                       'P.age_month as edad_m'
+                       'P.age_month as edad_m',
+                       'file_reproduction_internal.actual_state'
                     
 
                       )
-                      ->whereNotNull('file_reproduction.animalCode_id_p')
                       
               ->get();
 
@@ -62,37 +58,28 @@ class File_reproductionMController extends Controller
      */
     public function create()
     {
-        
         $raza =Race::all();
-
-        $animalR= DB::table('file_animale')
+        $animalRM= DB::table('file_animale')
                 ->join('race','file_animale.race_id','=','race.id')
                 ->select('file_animale.id',
                 'file_animale.animalCode',
                 'file_animale.age_month',
                 'race.race_d',
                 'file_animale.sex')
-                ->where('file_animale.age_month','>=',24)
-                ->where('file_animale.stage','=','Vaca')->orWhere('file_animale.stage','=','Toro')
+                ->Where('file_animale.stage','=','Toro')
+                ->get();
+        $animalRH= DB::table('file_animale')
+                ->join('race','file_animale.race_id','=','race.id')
+                ->select('file_animale.id',
+                'file_animale.animalCode',
+                'file_animale.age_month',
+                'race.race_d',
+                'file_animale.sex')
+                ->where('file_animale.stage','=','Vaca')
                 ->get();
 
 
-        $interna= DB::table('internal_mount')
-        ->join('file_animale','internal_mount.animalCode_id','=','file_animale.id')
-        ->join('race','file_animale.race_id','=','race.id')
-        ->select('internal_mount.id',
-                'file_animale.animalCode',
-                'race.race_d',
-                'file_animale.age_month' )
-
-      
-       ->get();
-
-
-
-       
-
-        return view('file_reproductionM.create-reproduction',compact('raza','animalR','interna'));
+        return view('file_reproductionM.create-reproduction',compact('raza','animalRM','animalRH'));
     }
 
     /**
@@ -101,13 +88,13 @@ class File_reproductionMController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFile_reproductionM $request)
     {
-        $re = new File_reproduction();
-        $re->date_r= $request->date_r;
+        $re = new File_reproduction_internal();
+        $re->date= $request->date;
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->animalCode_id_p = $request->animalCode_id_p;
-        $re->artificial_id = $request->artificial_id;
+        $re->actual_state = $request->actual_state;
         $re->save(); 
         return redirect('/fichaReproduccionM');
     }
@@ -131,33 +118,28 @@ class File_reproductionMController extends Controller
      */
     public function edit($id)
     {
-        $re =  File_reproduction::findOrFail($id);
+        $re =  File_reproduction_internal::findOrFail($id);
         $raza =Race::all();
-
-        $animalR= DB::table('file_animale')
+        $animalRM= DB::table('file_animale')
                 ->join('race','file_animale.race_id','=','race.id')
                 ->select('file_animale.id',
                 'file_animale.animalCode',
                 'file_animale.age_month',
                 'race.race_d',
                 'file_animale.sex')
-                ->where('file_animale.age_month','>=',24)
-                ->where('file_animale.stage','=','Vaca')->orWhere('file_animale.stage','=','Toro')
+                ->Where('file_animale.stage','=','Toro')
+                ->get();
+        $animalRH= DB::table('file_animale')
+                ->join('race','file_animale.race_id','=','race.id')
+                ->select('file_animale.id',
+                'file_animale.animalCode',
+                'file_animale.age_month',
+                'race.race_d',
+                'file_animale.sex')
+                ->where('file_animale.stage','=','Vaca')
                 ->get();
 
-
-        $interna= DB::table('internal_mount')
-        ->join('file_animale','internal_mount.animalCode_id','=','file_animale.id')
-        ->join('race','file_animale.race_id','=','race.id')
-        ->select('internal_mount.id',
-                'file_animale.animalCode',
-                'race.race_d',
-                'file_animale.age_month' )
-        ->get();
-
-
-
-        return view('file_reproductionM.edit-reproduction',compact('raza','animalR','interna','re'));
+        return view('file_reproductionM.edit-reproduction',compact('raza','animalRM','animalRH','re'));
     }
 
     /**
@@ -167,15 +149,16 @@ class File_reproductionMController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreFile_reproductionM $request, $id)
     {
-        $re =  File_reproduction::findOrFail($id);
+        $re =  File_reproduction_internal::findOrFail($id);
         
         
-        $re->date_r= $request->date_r;
+        $re->date= $request->date;
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->animalCode_id_p = $request->animalCode_id_p;
-        $re->artificial_id = $request->artificial_id;
+        $re->actual_state = $request->actual_state;
+        
         $re->save(); 
         return redirect('/fichaReproduccionM');
     }
@@ -188,7 +171,7 @@ class File_reproductionMController extends Controller
      */
     public function destroy($id)
     {
-        $re =  File_reproduction::findOrFail($id);
+        $re =  File_reproduction_internal::findOrFail($id);
         $re->delete();
         return redirect('/fichaReproduccionM')->with('eliminar','ok'); 
     }

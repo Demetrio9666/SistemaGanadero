@@ -146,6 +146,22 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+                'date'=>'fecha',
+                'animalCode_id'=>'codigo animal',
+                'animalCode_id_m' =>'codigo animal hembra',
+                'animalCode_id_p'=>'codigo animal macho',
+                'male'=>' cantidad de macho',
+                'female'=>'cantidad de hembra',
+                'dead'=>'cantidad de muerto',
+                'mother_status'=>'estado de la madre',
+                'partum_type'=>'tipo de parto',
+                'disease'=>'enfermedad',
+                'detail'=>'detalle',
+                'treatment'=>'tratamiento',
+                
+
+
+    ],
 
 ];

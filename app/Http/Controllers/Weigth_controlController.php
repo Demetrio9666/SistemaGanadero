@@ -17,7 +17,7 @@ class Weigth_controlController extends Controller
     {
         $pesoC = DB::table('weigth_control')
                 ->join('file_animale','weigth_control.animalCode_id','=','file_animale.id')
-                ->select('weigth_control.id','weigth_control.date_v','file_animale.animalCode as animal','weigth_control.weigtht','weigth_control.date_vr')
+                ->select('weigth_control.id','weigth_control.date','file_animale.animalCode as animal','weigth_control.weigtht','weigth_control.date_vr')
                 ->get();
         return view('weigthC.index-weigthC',compact('pesoC'));
     }
@@ -32,7 +32,7 @@ class Weigth_controlController extends Controller
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex'
                   )
@@ -51,7 +51,7 @@ class Weigth_controlController extends Controller
     {
         $pesoC = new Weigth_control();
        
-        $pesoC->date_v = $request->date_v;
+        $pesoC->date = $request->date;
         $pesoC->animalCode_id = $request->animalCode_id;
         $pesoC->weigtht = $request->weigtht;
         $pesoC->date_vr = $request->date_vr;
@@ -83,7 +83,7 @@ class Weigth_controlController extends Controller
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex'
                   )
@@ -102,7 +102,7 @@ class Weigth_controlController extends Controller
     public function update(Request $request, $id)
     {
         $pesoC = Weigth_control::findOrFail($id);
-        $pesoC->date_v = $request->date_v;
+        $pesoC->date = $request->date;
         $pesoC->animalCode_id = $request->animalCode_id;
         $pesoC->weigtht = $request->weigtht;
         $pesoC->date_vr = $request->date_vr;

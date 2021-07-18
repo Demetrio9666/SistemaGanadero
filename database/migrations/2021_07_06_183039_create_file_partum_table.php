@@ -15,7 +15,7 @@ class CreateFilePartumTable extends Migration
     {
         Schema::create('file_partum', function (Blueprint $table) {
             $table->id();
-            $table->date('date_c');
+            $table->date('date');
             $table-> unsignedBigInteger('animalCode_id');
             $table->foreign('animalCode_id')->references('id')->on('file_animale');
             $table->integer('male')->nullable();

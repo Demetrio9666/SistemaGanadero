@@ -15,7 +15,7 @@ class CreateVaccineControlTable extends Migration
     {
         Schema::create('vaccine_control', function (Blueprint $table) {
             $table->id();
-            $table->date('date_vaccine');
+            $table->date('date');
             $table->unsignedBigInteger('animalCode_id');
             $table->foreign('animalCode_id')->references('id')->on('file_animale')
                   ->onDelete('cascade')
@@ -25,7 +25,7 @@ class CreateVaccineControlTable extends Migration
             $table->foreign('vaccine_id')->references('id')->on('vaccine')
                   ->onDelete('set null')->onUpdate('cascade');
 
-            $table->date('date_vr');
+            $table->date('date_r');
             $table->string('actual_state');
             $table->timestamps();
         });

@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 
-                  @foreach ($animalR as $i)          
+                  @foreach ($animalRM as $i)          
                   <tr>
                       <td>{{$i->id}}</td>
                       <td>{{$i->animalCode}}</td>

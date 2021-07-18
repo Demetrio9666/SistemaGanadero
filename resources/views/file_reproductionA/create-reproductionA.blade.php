@@ -14,6 +14,7 @@
 <body>
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Ficha de Reproducción</h1>
@@ -21,7 +22,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Registro:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_r" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>

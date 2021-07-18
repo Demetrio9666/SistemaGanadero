@@ -20,7 +20,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="">Fecha de Desparasitación:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_d" value="{{$desC->date_d}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{$desC->date}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Codigo Animal</label>
@@ -51,11 +51,11 @@
 
                 <div class="form-group">
                     <label for="">Fecha de re-desparasitación:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vr" value="{{$desC->date_vr}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{$desC->date_r}}">
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{$desC->actual_state}}">
                         <option>Disponible</option>
                         <option>Inactivo</option>
                      </select>

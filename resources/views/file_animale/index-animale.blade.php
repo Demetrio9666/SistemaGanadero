@@ -31,7 +31,7 @@
                                 @foreach ($animal as $i)          
                                 <tr>
                                     <td>{{$i->animalCode}}</td>
-                                    <td >{{$i->date_n}}</td>
+                                    <td >{{$i->date}}</td>
                                     <td >{{$i->raza}}</td>
                                     <td >{{$i->sex}}</td>
                                     <td >{{$i->stage}}</td>

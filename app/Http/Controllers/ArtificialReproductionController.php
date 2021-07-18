@@ -19,7 +19,13 @@ class ArtificialReproductionController extends Controller
     {
         $arti= DB::table('artificial_reproduction')
                     ->join('race','race.id','=','artificial_reproduction.race_id')
-                    ->select('artificial_reproduction.id','artificial_reproduction.date','race.race_d  as raza','artificial_reproduction.reproduccion','artificial_reproduction.supplier')
+                    ->select('artificial_reproduction.id',
+                    'artificial_reproduction.date',
+                    'race.race_d  as raza',
+                    'artificial_reproduction.reproduccion',
+                    'artificial_reproduction.supplier',
+                    'artificial_reproduction.actual_state'
+                    )
                     ->get();
 
         //$arti = Artificial_Reproduction::all();
@@ -53,6 +59,7 @@ class ArtificialReproductionController extends Controller
         $arti->race_id = $request->race_id;
         $arti->reproduccion = $request->reproduccion;
         $arti->supplier = $request->supplier;
+        $arti->actual_state = $request->actual_state;
         $arti->save(); 
     
         //return redirect()->route();
@@ -99,6 +106,7 @@ class ArtificialReproductionController extends Controller
         $arti->race_id = $request->race_id;
         $arti->reproduccion = $request->reproduccion;
         $arti->supplier = $request->supplier;
+        $arti->actual_state = $request->actual_state;
         $arti->save(); 
         return redirect('/confMate');
     }

@@ -48,7 +48,7 @@
                     </div>      
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
-                        <select class="form-control" id="inputPassword4" name="actual_state">
+                        <select class="form-control" id="inputPassword4" name="actual_state" value="{{$arti->actual_state}}">
                             <option>Disponible</option>
                             <option>Inactivo</option>
                          </select>

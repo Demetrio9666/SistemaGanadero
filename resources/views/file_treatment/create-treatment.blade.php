@@ -12,6 +12,7 @@
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Registro Tratamientos de animales</h1>
@@ -19,7 +20,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Tratamiento:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_r" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -33,7 +34,7 @@
                 <div class="form-group">
                     <label for="">Enfermedad:</label>
                     <select class="form-control" id=""  name="disease">
-                        <option selected >Seleccione la causa</option>
+                        <option selected ></option>
                         <option value="Falta de Apetito">Falta de Apetito</option>
                         <option value="Herida">Herida</option>
                         <option value="Otras causas">Otras causas</option>
@@ -48,7 +49,7 @@
                 <div class="form-group">
                     <label for=""> Antibióticos:</label>
                     <select class="form-control" id=""  name="antibiotic_id">
-                        <option selected value="">Seleccione la Antibióticos</option>
+                        <option selected value=""></option>
                         @foreach ($anti as $i )   
                             <option value="{{$i->id}}">{{$i->antibiotic_d}}</option>
                         @endforeach
@@ -58,7 +59,7 @@
                 <div class="form-group">
                     <label for="">Vitamina:</label>
                     <select class="form-control" id=""  name="vitamin_id">
-                        <option selected value="" >Seleccione la Vitamina</option>
+                        <option selected value="" ></option>
                         @foreach ($vitamina as $i )   
                             <option value="{{$i->id}}">{{$i->vitamin_d}}</option>
                         @endforeach

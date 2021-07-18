@@ -7,6 +7,7 @@ use App\Models\Vitamin;
 use App\Models\File_animale;
 use App\Models\Antibiotic;
 use App\Models\File_treatment;
+use App\Http\Requests\StoreFile_treatment;
 class File_treatmentController extends Controller
 {
     /**
@@ -21,13 +22,14 @@ class File_treatmentController extends Controller
         ->join('file_animale','file_treatment.animalCode_id','=','file_animale.id')
         ->leftJoin('antibiotic','file_treatment.antibiotic_id','=','antibiotic.id')
         ->select('file_treatment.id',
-                 'file_treatment.date_r',
+                 'file_treatment.date',
                  'file_animale.animalCode as animal',
                  'file_treatment.disease',
                  'file_treatment.detail',
                  'antibiotic.antibiotic_d as anti',
                  'vitamin.vitamin_d as vi',
-                 'file_treatment.treatment'
+                 'file_treatment.treatment',
+                 'file_treatment.actual_state'
                 )
                 
                 
@@ -51,11 +53,12 @@ class File_treatmentController extends Controller
         $animalT  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex',
                      'actual_state',
-                     'health_condition'
+                     'health_condition',
+                     'actual_state'
                      
                   )
                   ->where('health_condition','=','Enfermo')
@@ -71,11 +74,11 @@ class File_treatmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFile_treatment $request)
     {
         $tra = new File_treatment();
        
-        $tra->date_r= $request->date_r;
+        $tra->date= $request->date;
         $tra->animalCode_id = $request->animalCode_id;
         $tra->vitamin_id = $request->vitamin_id;
         $tra->disease = $request->disease;
@@ -83,6 +86,9 @@ class File_treatmentController extends Controller
         $tra->antibiotic_id = $request->antibiotic_id;
         $tra->vitamin_id = $request->vitamin_id;
         $tra->treatment = $request->treatment;
+        $tra->actual_state = $request->actual_state;
+        
+
         $tra->save(); 
 
         return redirect('/fichaTratamiento');
@@ -113,15 +119,16 @@ class File_treatmentController extends Controller
         $animalT  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex',
                      'actual_state',
-                     'health_condition'
+                     'health_condition',
+                     'actual_state'
 
                   )
                   
-                  ->where('actual_state','=','Disponible')
+                  ->where('actual_state','=','Disponible')->Orwhere('actual_state','=','Reproduccion')
                   ->where('health_condition','=','Enfermo')
         ->get();
         return view('file_treatment.edit-treatment',compact('vitamina','animalT','anti','tra'));   
@@ -134,10 +141,10 @@ class File_treatmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreFile_treatment $request, $id)
     {
         $tra = File_treatment::findOrFail($id);
-        $tra->date_r= $request->date_r;
+        $tra->date= $request->date;
         $tra->animalCode_id = $request->animalCode_id;
         $tra->vitamin_id = $request->vitamin_id;
         $tra->disease = $request->disease;
@@ -145,6 +152,7 @@ class File_treatmentController extends Controller
         $tra->antibiotic_id = $request->antibiotic_id;
         $tra->vitamin_id = $request->vitamin_id;
         $tra->treatment = $request->treatment;
+        $tra->actual_state = $request->actual_state;
         $tra->save(); 
 
         return redirect('/fichaTratamiento');

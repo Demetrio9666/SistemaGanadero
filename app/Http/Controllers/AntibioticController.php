@@ -41,6 +41,7 @@ class AntibioticController extends Controller
         $anti->date_e = $request->date_e;
         $anti->date_c = $request->date_c;
         $anti->supplier = $request->supplier;
+        $anti->actual_state = $request->actual_state;
         $anti->save(); 
     
         //return redirect()->route();
@@ -79,12 +80,13 @@ class AntibioticController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $desp = Antibiotic::findOrFail($id);
-        $desp->antibiotic_d = $request->antibiotic_d;
-        $desp->date_e = $request->date_e;
-        $desp->date_c = $request->date_c;
-        $desp->supplier = $request->supplier;
-        $desp->save(); 
+        $anti = Antibiotic::findOrFail($id);
+        $anti->antibiotic_d = $request->antibiotic_d;
+        $anti->date_e = $request->date_e;
+        $anti->date_c = $request->date_c;
+        $anti->supplier = $request->supplier;
+        $anti->actual_state = $request->actual_state;
+        $anti->save(); 
         return redirect('/confAnt');
     }
 

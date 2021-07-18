@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Vaccine;
+use App\Models\File_animale;
+use App\Models\Race;
+use App\Models\File_reproduction_external;
 
-class VaccineController extends Controller
+class File_reproductionMEController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,26 @@ class VaccineController extends Controller
      */
     public function index()
     {
-        $vacuna = Vaccine::all();
-        return view('vaccine.index-vaccine',compact('vacuna'));
+        $raza = Race::all();
+        $ext =  DB::table('file_reproduction_external')
+        ->join('file_animale','external_mount.animalCode_id','=','file_animale.id')
+        ->join('race as R','file_animale.race_id','=','R.id')
+        ->join('race','external_mount.race_id','=','race.id')
+        ->select('external_mount.id',
+                    'external_mount.date_r',
+                    'file_animale.animalCode',
+                    'R.race_d as raza',
+                    'file_animale.age_month as edad',
+                    'file_animale.sex as sexo',
+
+                    'external_mount.animalCode_Exte',
+                    'race.race_d',
+                    'external_mount.age_month',
+                    'external_mount.sex',
+                    'external_mount.hacienda_name')
+        ->get();
+
+        return view('file_reproductionME.index-external_M',compact('raza','ext'));
     }
 
     /**
@@ -25,8 +45,7 @@ class VaccineController extends Controller
      */
     public function create()
     {
-       
-        return view('vaccine.create-vaccine');
+        //
     }
 
     /**
@@ -37,17 +56,7 @@ class VaccineController extends Controller
      */
     public function store(Request $request)
     {
-        $vacuna = new Vaccine();
-        
-        $vacuna->vaccine_d = $request->vaccine_d;
-        $vacuna->date_e = $request->date_e;
-        $vacuna->date_c = $request->date_c;
-        $vacuna->supplier = $request->supplier;
-        $vacuna->actual_state = $request->actual_state;
-        $vacuna->save(); 
-        
-        //return redirect()->route();
-        return redirect('/confVacuna');
+        //
     }
 
     /**
@@ -58,7 +67,7 @@ class VaccineController extends Controller
      */
     public function show($id)
     {
-        return view('vaccine.edit-vaccine',compact('id'));
+        //
     }
 
     /**
@@ -69,8 +78,7 @@ class VaccineController extends Controller
      */
     public function edit($id)
     {
-        $vacuna = Vaccine::findOrFail($id);
-        return view('vaccine.edit-vaccine', compact('vacuna'));
+        //
     }
 
     /**
@@ -82,14 +90,7 @@ class VaccineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $vacuna = Vaccine::findOrFail($id);
-        $vacuna->vaccine_d = $request->vaccine_d;
-        $vacuna->date_e = $request->date_e;
-        $vacuna->date_c = $request->date_c;
-        $vacuna->supplier = $request->supplier;
-        $vacuna->actual_state = $request->actual_state;
-        $vacuna->save(); 
-        return redirect('/confVacuna');
+        //
     }
 
     /**
@@ -100,8 +101,6 @@ class VaccineController extends Controller
      */
     public function destroy($id)
     {
-        $vacuna = Vaccine::findOrFail($id);
-        $vacuna->delete();
-        return redirect('/confVacuna')->with('eliminar','ok'); 
+        //
     }
 }

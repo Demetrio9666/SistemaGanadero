@@ -93,7 +93,7 @@
                     <tbody>  
                         @foreach ($P as $i)          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}></td>
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
                             <td >{{$i->name}}</td>
                         </tr>
                         @endforeach
@@ -116,7 +116,7 @@
                     <tbody>  
                         @foreach ($T as $i)          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}></td>
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
                             <td >{{$i->name}}</td>
                         </tr>
                         @endforeach
@@ -139,7 +139,7 @@
                     <tbody>  
                         @foreach ($R as $i)          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}></td>
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
                             <td >{{$i->name}}</td>
                         </tr>
                         @endforeach
@@ -162,7 +162,7 @@
                     <tbody>  
                         @foreach ($CV as $i)          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}></td>
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
                             <td >{{$i->name}}</td>
                         </tr>
                         @endforeach
@@ -185,7 +185,7 @@
                     <tbody>  
                         @foreach ($CP as $i)          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}></td>
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
                             <td >{{$i->name}}</td>
                         </tr>
                         @endforeach
@@ -209,7 +209,7 @@
                     <tbody>  
                         @foreach ($CD as $i)          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}></td>
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
                             <td >{{$i->name}}</td>
                         </tr>
                         @endforeach
@@ -232,7 +232,7 @@
                     <tbody>  
                         @foreach ($CPRE as $i)          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}></td>
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
                             <td >{{$i->name}}</td>
                         </tr>
                         @endforeach

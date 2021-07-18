@@ -21,7 +21,7 @@ class Deworming_controlController extends Controller
                 ->join('file_animale','deworming_control.animalCode_id','=','file_animale.id')
                 ->join('dewormer','deworming_control.deworming_id','=','dewormer.id')
                 ->select('deworming_control.id',
-                         'deworming_control.date_d',
+                         'deworming_control.date',
                          'file_animale.animalCode as animal',
                          'dewormer.dewormer_d as des',
                          'deworming_control.date_vr')
@@ -46,7 +46,7 @@ class Deworming_controlController extends Controller
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex'
                   )
@@ -65,7 +65,7 @@ class Deworming_controlController extends Controller
     {
         $desC = new Deworming_control();
 
-       $desC->date_d = $request->date_d;
+       $desC->date = $request->date;
        $desC->animalCode_id = $request->animalCode_id;
        $desC->deworming_id = $request->deworming_id;
        $desC->date_vr = $request->date_vr;
@@ -98,7 +98,7 @@ class Deworming_controlController extends Controller
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
-                     'date_n',
+                     'date',
                      'age_month',
                      'sex'
                   )
@@ -119,7 +119,7 @@ class Deworming_controlController extends Controller
     {
         $desC = Deworming_control::findOrFail($id);
 
-        $desC->date_d = $request->date_d;
+        $desC->date = $request->date;
         $desC->animalCode_id = $request->animalCode_id;
         $desC->deworming_id = $request->deworming_id;
         $desC->date_vr = $request->date_vr;

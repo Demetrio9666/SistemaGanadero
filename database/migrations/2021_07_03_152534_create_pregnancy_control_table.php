@@ -15,7 +15,7 @@ class CreatePregnancyControlTable extends Migration
     {
         Schema::create('pregnancy_control', function (Blueprint $table) {
             $table->id();
-            $table->date('date_c');
+            $table->date('date');
             $table-> unsignedBigInteger('animalCode_id');
             $table->foreign('animalCode_id')->references('id')->on('file_animale')
 			      ->onDelete('cascade')->onUpdate('cascade');
@@ -31,7 +31,7 @@ class CreatePregnancyControlTable extends Migration
             
 
             $table->text('observation')->nullable();
-            $table->date('date_rc');
+            $table->date('date_r');
             $table->string('actual_state');
 
             $table->timestamps();

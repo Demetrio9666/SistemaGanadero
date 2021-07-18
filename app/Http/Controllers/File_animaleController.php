@@ -21,7 +21,7 @@ class File_animaleController extends Controller
         $animal = DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->join('location','file_animale.location_id','=','location.id')
-                    ->select('file_animale.id','file_animale.animalCode','file_animale.date_n','race.race_d as raza',
+                    ->select('file_animale.id','file_animale.animalCode','file_animale.date','race.race_d as raza',
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
                             ,'file_animale.conceived')
@@ -54,7 +54,7 @@ class File_animaleController extends Controller
         $animal = new File_Animale();
         
         $animal->animalCode = $request->codigo_animal;
-        $animal->date_n = $request->fecha_nacimiento;
+        $animal->date = $request->fecha_nacimiento;
         $animal->race_id = $request->raza;
         $animal->sex = $request->sexo;
         $animal->stage = $request->etapa;
@@ -104,12 +104,12 @@ class File_animaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreFile_animale $request, $id)
     {
         $animal = File_Animale::findOrFail($id);
         
         $animal->animalCode = $request->codigo_animal;
-        $animal->date_n = $request->fecha_nacimiento;
+        $animal->date = $request->fecha_nacimiento;
         $animal->race_id = $request->raza;
         $animal->sex = $request->sexo;
         $animal->stage = $request->etapa;

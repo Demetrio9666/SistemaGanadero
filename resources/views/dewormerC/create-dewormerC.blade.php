@@ -19,7 +19,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Desparasitación:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_d" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -41,7 +41,7 @@
                 </div>  
                 <div class="form-group">
                     <label for="">Fecha de re-desparasitación:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vr" >
+                    <input type="date" class="form-control" id="fecha_r" name="date_r" >
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>

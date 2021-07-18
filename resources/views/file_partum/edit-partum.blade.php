@@ -12,6 +12,7 @@
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Editar control de Parto</h1>
@@ -20,7 +21,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="">Fecha de Control:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_c" value="{{$par->date_c}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{$par->date}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -52,7 +53,7 @@
                 <div class="form-group">
                     <label for="">Estado de la Madre:</label>
                     <select class="form-control" id="inputPassword4" name="mother_status" value="{{$par->mother_status}}">
-                        <option selected>Seleccione</option>
+                        <option selected></option>
                         <option value="Viva"  @if($par->mother_status == "Viva" ) selected @endif >Viva</option>
                         <option value="Muerta" @if($par->mother_status == "Muerta" ) selected @endif  >Muerta</option>
                   </select>
@@ -60,14 +61,14 @@
                 <div class="form-group">
                     <label for="">Tipo de Parto:</label>
                     <select class="form-control" id="inputPassword4" name="partum_type" value="{{$par->partum_type}}">
-                        <option selected>Seleccione</option>
+                        <option selected></option>
                         <option value="Natural"  @if($par->partum_type == "Natural" ) selected @endif  >Natural</option>
                         <option value="Cesárea"  @if($par->partum_type == "Cesárea" ) selected @endif >Cesárea</option>
                   </select>
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{$par->actual_state}}">
                         <option>Disponible</option>
                         <option>Inactivo</option>
                      </select>

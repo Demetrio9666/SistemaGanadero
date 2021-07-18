@@ -15,13 +15,13 @@ class CreateWeigthControlTable extends Migration
     {
         Schema::create('weigth_control', function (Blueprint $table) {
             $table->id();
-            $table->date('date_v');
+            $table->date('date');
             $table-> unsignedBigInteger('animalCode_id');
             $table->foreign('animalCode_id')->references('id')->on('file_animale')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->float('weigtht');
-            $table->date('date_vr');
+            $table->date('date_r');
             $table->string('actual_state');
             $table->timestamps();
         });

@@ -26,12 +26,12 @@
                 <tr>
                     <td>{{$i->id}}</td>
                     <td>{{$i->animalCode}}</td>
-                    <td>{{$i->date_n}}</td>
+                    <td>{{$i->date}}</td>
                     <td>{{$i->sex}}</td>
                     <td>{{$i->age_month}}</td>
                     <td>{{$i->actual_state}}</td>
                     <td>{{$i->health_condition}}</td>
-                    <td> <button type="button" class="btn btn-success btn-lg   btselect"  data-dismiss="modal">Seleccionar</button></td>
+                    <td> <button type="button" class="btn btn-success btn-lg   btselect"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
                     
                   </tr>
                 @endforeach        

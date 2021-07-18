@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDewormingControlTable extends Migration
+class CreateFileReproductionArtificialTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateDewormingControlTable extends Migration
      */
     public function up()
     {
-        Schema::create('deworming_control', function (Blueprint $table) {
+        Schema::create('file_reproduction_artificial', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table-> unsignedBigInteger('animalCode_id');
-            $table->foreign('animalCode_id')->references('id')->on('file_animale')
+            $table-> unsignedBigInteger('animalCode_id_m');
+            $table->foreign('animalCode_id_m')->references('id')->on('file_animale')
                   ->onDelete('cascade')->onUpdate('cascade');
-                  
-            $table-> unsignedBigInteger('deworming_id')
+
+            $table-> unsignedBigInteger('artificial_id')->nullable();
+            $table->foreign('artificial_id')->references('id')->on('artificial_reproduction')
                   ->onDelete('set null')->onUpdate('cascade');
 
-            $table->foreign('deworming_id')->references('id')->on('dewormer');
-            $table->date('date_r');
             $table->string('actual_state');
             $table->timestamps();
         });
@@ -37,6 +36,6 @@ class CreateDewormingControlTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deworming_control');
+        Schema::dropIfExists('file_reproduction_artificial');
     }
 }

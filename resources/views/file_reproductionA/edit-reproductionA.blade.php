@@ -22,7 +22,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="">Fecha de Registro:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{$re->date_r}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{$re->date}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -32,7 +32,7 @@
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                 <span class="input-group-text" id="basic-addon1">Codigo</span>
                                 <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
-                                @foreach ($animalR as $i)
+                                @foreach ($animalRH as $i)
                                         @if ($re->animalCode_id_m == $i->id )
                                             value =" {{$i->animalCode}} "
                                         @endif
@@ -40,7 +40,7 @@
 
                                 <span class="input-group-text" id="basic-addon1">Raza</span>
                                 <input type="text"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
-                                @foreach ($animalR as $i)
+                                @foreach ($animalRH as $i)
                                         @if ($re->animalCode_id_m == $i->id )
                                             value =" {{$i->race_d}} "
                                         @endif
@@ -49,7 +49,7 @@
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Edad:</label>
                                     <input type="text" class="form-control" id="edad" name="age_month" disabled=disabled 
-                                    @foreach ($animalR as $i)
+                                    @foreach ($animalRH as $i)
                                             @if ($re->animalCode_id_m == $i->id )
                                                 value =" {{$i->age_month}} "
                                             @endif
@@ -57,7 +57,8 @@
                                 </div>
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Sexo:</label>
-                                    <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled  @foreach ($animalR as $i)
+                                    <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled  
+                                    @foreach ($animalRH as $i)
                                             @if ($re->animalCode_id_m == $i->id )
                                                 value =" {{$i->sex}} "
                                             @endif
@@ -135,7 +136,13 @@
                         </div>         
         
                 </div>
-
+                <div  class="form-group">
+                    <label for="">Estado Actual:</label>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{$re->actual_state}}">
+                        <option>Disponible</option>
+                        <option>Inactivo</option>
+                     </select>
+                </div>
             
 
                 

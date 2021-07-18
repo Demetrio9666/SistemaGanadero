@@ -12,6 +12,7 @@
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Registro control de Parto</h1>
@@ -19,7 +20,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Control:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_c" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -49,7 +50,7 @@
                 <div class="form-group">
                     <label for="">Estado de la Madre:</label>
                     <select class="form-control" id="inputPassword4" name="mother_status">
-                        <option selected>Seleccione</option>
+                        <option selected></option>
                         <option>Viva</option>
                         <option>Muerta</option>
                   </select>
@@ -57,7 +58,7 @@
                 <div class="form-group">
                     <label for="">Tipo de Parto:</label>
                     <select class="form-control" id="inputPassword4" name="partum_type">
-                        <option selected>Seleccione</option>
+                        <option selected></option>
                         <option>Natural</option>
                         <option>Cesárea</option>
                   </select>

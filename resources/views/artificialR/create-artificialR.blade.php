@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label for="">Raza:</label>
                         <select class="form-control" id="razas" name="race_id">
-                                <option>Seleccione la Raza</option>
+                                <option></option>
                             @foreach ( $razas as $i )   
                                 <option value="{{$i->id}}">{{$i->race_d}}</option>
                             @endforeach
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <label for="">Tipo de Material Genetico:</label>
                         <select class="form-control" id="inputPassword4"  name="reproduccion">
-                            <option selected>...</option>
+                            <option selected></option>
                             <option>Pajuela</option>
                             <option>Hembrional</option>
                       </select>

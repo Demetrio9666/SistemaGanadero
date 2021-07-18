@@ -21,7 +21,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Fecha de Registro:</label>
-                        <input type="date" class="form-control" id="desp" name="date_r" value="{{$ext->date_r}}">
+                        <input type="date" class="form-control" id="desp" name="date" value="{{$ext->date}}">
                     </div>
 
                     <div class="form-group">
@@ -108,7 +108,7 @@
                     </div> 
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
-                        <select class="form-control" id="inputPassword4" name="actual_state">
+                        <select class="form-control" id="inputPassword4" name="actual_state"  value="{{$ext->actual_state}}">
                             <option>Disponible</option>
                             <option>Inactivo</option>
                          </select>

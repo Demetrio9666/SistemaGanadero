@@ -42,6 +42,8 @@ class VitaminController extends Controller
         $vitamina->date_e = $request->date_e;
         $vitamina->date_c = $request->date_c;
         $vitamina->supplier = $request->supplier;
+        $vitamina->actual_state = $request->actual_state;
+        
         $vitamina->save(); 
              //return redirect()->route();
         return redirect('/confVi');
@@ -84,6 +86,7 @@ class VitaminController extends Controller
         $vitamina->date_e = $request->date_e;
         $vitamina->date_c = $request->date_c;
         $vitamina->supplier = $request->supplier;
+        $vitamina->actual_state = $request->actual_state;
         $vitamina->save(); 
         return redirect('/confVi');
     }

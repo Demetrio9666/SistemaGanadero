@@ -24,7 +24,7 @@
                                       
                                 <div  class="col-md-6">
                                     <label for="">Fecha de Nacimiento:</label>
-                                    <input type="date" class="form-control" id="fecha" name="fecha_nacimiento"  value="{{old('fecha_nacimiento')}}">
+                                    <input type="date" class="form-control" id="fecha_n" name="fecha_nacimiento"  value="{{old('fecha_nacimiento')}}">
                                 </div>
                     
 

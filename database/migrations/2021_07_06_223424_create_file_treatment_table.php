@@ -15,7 +15,7 @@ class CreateFileTreatmentTable extends Migration
     {
         Schema::create('file_treatment', function (Blueprint $table) {
             $table->id();
-            $table->date('date_r');
+            $table->date('date');
             $table-> unsignedBigInteger('animalCode_id');
             $table->foreign('animalCode_id')->references('id')->on('file_animale')
                 ->onDelete('cascade')->onUpdate('cascade');

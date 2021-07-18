@@ -20,7 +20,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="">Fecha de Registro:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_v" value="{{$pesoC->date_v}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{$pesoC->date}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -45,11 +45,11 @@
                 
                 <div class="form-group">
                     <label for="">Fecha de próximo control:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vr" value="{{$pesoC->date_vr}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{$pesoC->date_r}}">
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{$pesoC->actual_state}}">
                         <option>Disponible</option>
                         <option>Inactivo</option>
                      </select>

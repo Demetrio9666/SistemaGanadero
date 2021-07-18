@@ -14,6 +14,7 @@
 <body>
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Ficha de Reproducción por Monta interna</h1>
@@ -22,7 +23,7 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="">Fecha de Registro:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{$re->date_r}}">
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{$re->date}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -32,7 +33,7 @@
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                 <span class="input-group-text" id="basic-addon1">Codigo</span>
                                 <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
-                                @foreach ($animalR as $i)
+                                @foreach ($animalRH as $i)
                                         @if ($re->animalCode_id_m == $i->id )
                                             value =" {{$i->animalCode}} "
                                         @endif
@@ -40,7 +41,7 @@
 
                                 <span class="input-group-text" id="basic-addon1">Raza</span>
                                 <input type="text"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
-                                @foreach ($animalR as $i)
+                                @foreach ($animalRH as $i)
                                         @if ($re->animalCode_id_m == $i->id )
                                             value =" {{$i->race_d}} "
                                         @endif
@@ -49,7 +50,7 @@
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Edad:</label>
                                     <input type="text" class="form-control" id="edad" name="age_month" disabled=disabled 
-                                    @foreach ($animalR as $i)
+                                    @foreach ($animalRH as $i)
                                             @if ($re->animalCode_id_m == $i->id )
                                                 value =" {{$i->age_month}} "
                                             @endif
@@ -57,7 +58,8 @@
                                 </div>
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Sexo:</label>
-                                    <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled  @foreach ($animalR as $i)
+                                    <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled  
+                                    @foreach ($animalRH as $i)
                                             @if ($re->animalCode_id_m == $i->id )
                                                 value =" {{$i->sex}} "
                                             @endif
@@ -70,12 +72,12 @@
                     <h1>Reproducción por Monta Interna</h1>
                     
                          <div class="input-group mb-3">
-                                <input type="text" id="idcodi2" name="animalCode_id_p"    value="{{$re->animalCode_id_p}}">
+                                <input type="hidden" id="idcodi2" name="animalCode_id_p"    value="{{$re->animalCode_id_p}}">
                                 
                                 <div  class="col-md-6">
                                     <label>Codigo Animal:</label>
                                     <input type="text" class="form-control" name="codigo_animal2" id="codigo_animal2"  disabled=disabled 
-                                     @foreach ($animalR as $i)
+                                     @foreach ($animalRM as $i)
                                             @if ($re->animalCode_id_p == $i->id )
                                                 value =" {{$i->animalCode}} "
                                             @endif
@@ -84,7 +86,7 @@
                                 <div  class="col-md-6">
                                     <label>Raza:</label>
                                     <input type="text" class="form-control" name ="raza2" id="raza2"  disabled=disabled 
-                                    @foreach ($animalR as $i)
+                                    @foreach ($animalRM as $i)
                                             @if ($re->animalCode_id_p == $i->id )
                                                 value =" {{$i->race_d}} "
                                             @endif
@@ -95,7 +97,7 @@
                                 <div  class="col-md-6">
                                     <label>Edad:</label>
                                     <input type="text" class="form-control" id="edad2" name="age_month"  name="age_month" disabled=disabled  
-                                    @foreach ($animalR as $i)
+                                    @foreach ($animalRM as $i)
                                             @if ($re->animalCode_id_p == $i->id )
                                                 value =" {{$i->age_month}} "
                                             @endif
@@ -104,7 +106,7 @@
                                 <div  class="col-md-6">
                                     <label >Sexo:</label>
                                     <input type="text" class="form-control" id="sexo2" name="sexo2" disabled=disabled 
-                                    @foreach ($animalR as $i)
+                                    @foreach ($animalRM as $i)
                                             @if ($re->animalCode_id_p == $i->id )
                                                 value =" {{$i->sex}} "
                                             @endif
@@ -127,7 +129,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                      @foreach ($animalR as $i)          
+                                      @foreach ($animalRM as $i)          
                                       <tr>
                                           <td>{{$i->id}}</td>
                                           <td>{{$i->animalCode}}</td>
@@ -148,7 +150,13 @@
                 </div>
 
                 
-
+                <div  class="form-group">
+                    <label for="">Estado Actual:</label>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{$re->actual_state}}">
+                        <option>Disponible</option>
+                        <option>Inactivo</option>
+                     </select>
+                </div>
                 
 
 

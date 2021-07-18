@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExternalMountTable extends Migration
+class CreateFileReproductionExternalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateExternalMountTable extends Migration
      */
     public function up()
     {
-        Schema::create('external_mount', function (Blueprint $table) {
+        Schema::create('file_reproduction_external', function (Blueprint $table) {
             $table->id();
-            $table->date('date_r');
+            $table->date('date');
             $table-> unsignedBigInteger('animalCode_id')->nullable();
             $table->foreign('animalCode_id')->references('id')->on('file_animale')
                     ->onDelete('set null')->onUpdate('cascade');
@@ -39,6 +39,6 @@ class CreateExternalMountTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('external_mount');
+        Schema::dropIfExists('file_reproduction_external');
     }
 }
