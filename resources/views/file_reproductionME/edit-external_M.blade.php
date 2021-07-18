@@ -13,6 +13,7 @@
     @endsection
     @section('content_header')
         <div class="container" id="registration-form">
+            @include('messages.message')
             <div class="image"></div>
             <div class="frm">
                 <h1>Editar Ficha de Reproduccion Externo</h1>
@@ -30,7 +31,7 @@
                                     <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                     <span class="input-group-text" id="basic-addon1">Codigo</span>
                                     <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
-                                    @foreach ($animalR as $i)
+                                    @foreach ($animaleEX as $i)
                                         @if ($ext->animalCode_id == $i->id )
                                             value =" {{$i->animalCode}} "
                                         @endif
@@ -38,7 +39,7 @@
     
                                     <span class="input-group-text" id="basic-addon1">Raza</span>
                                     <input type="text"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled
-                                    @foreach ($animalR as $i)
+                                    @foreach ($animaleEX as $i)
                                         @if ($ext->animalCode_id == $i->id )
                                             value =" {{$i->race_d}} "
                                         @endif
@@ -49,7 +50,7 @@
                                     <div  class="col-md-6">
                                         <label for="" class="form-label">Edad:</label>
                                         <input type="text" class="form-control" id="edad" name="age_month" disabled=disabled
-                                        @foreach ($animalR as $i)
+                                        @foreach ($animaleEX as $i)
                                             @if ($ext->animalCode_id == $i->id )
                                                 value =" {{$i->age_month}} "
                                             @endif
@@ -58,7 +59,7 @@
                                     <div  class="col-md-6">
                                         <label for="" class="form-label">Sexo:</label>
                                         <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled
-                                        @foreach ($animalR as $i)
+                                        @foreach ($animaleEX as $i)
                                             @if ($ext->animalCode_id == $i->id )
                                                 value =" {{$i->sex}} "
                                             @endif
@@ -122,7 +123,7 @@
                 </form>
             </div>
         </div>
-        @include("modal.modalAnimalesR")
+        @include("modal.modalAnimalesEX")
     @endsection
     @section('js')
     <script>

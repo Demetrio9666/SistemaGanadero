@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\File_animale;
 use App\Models\Dewormer;
 use App\Models\Deworming_control;
+use App\Http\Requests\StoreDewormerC;
 
 class Deworming_controlController extends Controller
 {
@@ -24,7 +25,8 @@ class Deworming_controlController extends Controller
                          'deworming_control.date',
                          'file_animale.animalCode as animal',
                          'dewormer.dewormer_d as des',
-                         'deworming_control.date_vr')
+                         'deworming_control.date_r',
+                         'deworming_control.actual_state')
                 ->get();
         return view('dewormerC.index-dewormerC',compact('desC'));
         //return $desC;
@@ -61,14 +63,16 @@ class Deworming_controlController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDewormerC $request)
     {
         $desC = new Deworming_control();
 
        $desC->date = $request->date;
        $desC->animalCode_id = $request->animalCode_id;
        $desC->deworming_id = $request->deworming_id;
-       $desC->date_vr = $request->date_vr;
+       $desC->date_r = $request->date_r;
+       $desC->actual_state = $request->actual_state;
+       
        $desC->save(); 
             //return redirect()->route();
         return redirect('/controlDesparasitacion');
@@ -115,14 +119,15 @@ class Deworming_controlController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreDewormerC $request, $id)
     {
         $desC = Deworming_control::findOrFail($id);
 
         $desC->date = $request->date;
         $desC->animalCode_id = $request->animalCode_id;
         $desC->deworming_id = $request->deworming_id;
-        $desC->date_vr = $request->date_vr;
+        $desC->date_r = $request->date_r;
+        $desC->actual_state = $request->actual_state;
       
         $desC->save(); 
         return redirect('/controlDesparasitacion');

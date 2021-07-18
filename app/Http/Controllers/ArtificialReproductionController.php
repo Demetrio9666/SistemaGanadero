@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Race;
 use App\Models\Artificial_Reproduction;
-
+use App\Http\Requests\StoreArtificial;
 
 class ArtificialReproductionController extends Controller
 {
@@ -52,7 +52,7 @@ class ArtificialReproductionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArtificial $request)
     {
         $arti = new Artificial_Reproduction();
         $arti->date = $request->date;
@@ -99,7 +99,7 @@ class ArtificialReproductionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreArtificial $request, $id)
     {
         $arti = Artificial_Reproduction::findOrFail($id);
         $arti->date = $request->date;

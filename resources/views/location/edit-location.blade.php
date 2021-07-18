@@ -13,6 +13,7 @@
     @endsection
     @section('content_header')
         <div class="container" id="registration-form">
+            @include('messages.message')
             <div class="image"></div>
             <div class="frm">
                 <h1>Editar ubicación</h1>

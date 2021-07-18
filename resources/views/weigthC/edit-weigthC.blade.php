@@ -12,6 +12,7 @@
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Editar de  Control de Peso </h1>
@@ -39,8 +40,8 @@
                         </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Peso:</label>
-                    <input type="text" class="form-control" id="peso" name="weigtht" value="{{$pesoC->weigtht}}">
+                    <label for="">Peso KG:</label>
+                    <input type="text" class="form-control" id="peso" name="weigtht" value="{{$pesoC->weigtht}}" onChange="ValidarPeso(this.value)">
                 </div>
                 
                 <div class="form-group">
@@ -77,6 +78,21 @@
                 $("#idcodi").val(col1);
                 $("#codigo_animal").val(col2);
            });
+           function ValidarPeso(id){
+            peso = document.getElementById("peso").value;
+            var RE = /^\d*(\.\d{1})?\d{0,1}$/;
+            if(RE.test(peso) ){
+                return true;
+            }else{
+                Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'FORMATO NO ACEPTADO EJEMPLO: 00.00 ',
+                        
+                    }) 
+                return false;
+            }
+        }
 
           
           

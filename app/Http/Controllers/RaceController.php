@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Race;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreRace;
 class RaceController extends Controller
 {
     /**
@@ -35,7 +35,7 @@ class RaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRace  $request)
     {
         $raza = new Race();
         
@@ -79,7 +79,7 @@ class RaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreRace  $request, $id)
     {
         $raza = Race::findOrFail($id);
         $raza->race_d = $request->race_d;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vitamin;
+use App\Http\Requests\StoreVitamin;
 
 class VitaminController extends Controller
 {
@@ -34,7 +35,7 @@ class VitaminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreVitamin $request)
     {
         $vitamina = new Vitamin();
         
@@ -79,7 +80,7 @@ class VitaminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreVitamin $request, $id)
     {
         $vitamina = Vitamin::findOrFail($id);
         $vitamina->vitamin_d = $request->vitamin_d;

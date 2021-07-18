@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Dewormer;
-
+use App\Http\Requests\StoreDewormer;
 class DewormerController extends Controller
 {
     /**
@@ -34,7 +34,7 @@ class DewormerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDewormer $request)
     {
         $desp = new Dewormer();
         $desp->dewormer_d = $request->dewormer_d;
@@ -78,7 +78,7 @@ class DewormerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreDewormer $request, $id)
     {
         $desp = Dewormer::findOrFail($id);
         $desp->dewormer_d = $request->dewormer_d;

@@ -18,7 +18,7 @@ use App\Http\Controllers\File_partumController;
 use App\Http\Controllers\File_treatmentController;
 use App\Http\Controllers\File_reproductionMController;  
 use App\Http\Controllers\File_reproductionAController;  
-//use App\Http\Controllers\External_mountController;
+use App\Http\Controllers\External_mountController;
 
 Route::get('/dashboard',[HomeController::class,'Dashboard']);
 
@@ -27,10 +27,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 })->name('index_admin');
 
 
-//Route::resource('fichaReproduccionEx',External_mountController::class)->names('fichaReproduccionEx');
-//Route::resource('fichaReproduccionM',File_reproductionMController::class)->names('fichaReproduccionM');
-//Route::resource('fichaReproduccionA',File_reproductionAController::class)->names('fichaReproduccionA');
-//Route::resource('fichaTratamiento',File_treatmentController::class)->names('fichaTratamiento');
+Route::resource('fichaReproduccionM',File_reproductionMController::class)->names('fichaReproduccionM');
+Route::resource('fichaReproduccionEx',External_mountController::class)->names('fichaReproduccionEx');
+Route::resource('fichaReproduccionA',File_reproductionAController::class)->names('fichaReproduccionA');
+Route::resource('fichaTratamiento',File_treatmentController::class)->names('fichaTratamiento');
 Route::resource('fichaParto',File_partumController::class)->names('fichaParto');
 Route::resource('controlPrenes',Pregnancy_controlController::class)->names('controlPrenes');
 Route::resource('controlDesparasitacion',Deworming_controlController::class)->names('controlDesparasitacion');

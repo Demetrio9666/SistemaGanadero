@@ -1,17 +1,18 @@
+@extends('adminlte::page')
 <head>
-    <link href="{{asset('css/app.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Registration Form</title>
 </head>
 <body>
-    @extends('adminlte::page')
+    
     @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
+    
     <link rel="stylesheet" type="text/css" href="/css/registro.css">
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Editar Control de vacunacion </h1>
@@ -33,8 +34,6 @@
                                                  value =" {{$i->animalCode}} "
                                             @endif
                                 @endforeach>
-                               
-                               
                                 <input type="hidden" id="idcodi" name="animalCode_id" value="{{$vacunaC->animalCode_id}}">
                                 
                         </div>
@@ -42,7 +41,7 @@
                 <div class="form-group">
                     <label for="">Vacuna:</label>
                     <select class="form-control" id="inputPassword4"  name="vaccine_id"   value="{{$vacunaC->vaccine_id}}">
-                        <option selected>Seleccione la Vacuna</option>
+                        <option selected></option>
                         @foreach ($vacuna as $i )   
                             <option value="{{$i->id}}" @if($vacunaC->vaccine_id == $i->id ) selected @endif>{{$i->vaccine_d}}</option>
                             

@@ -8,6 +8,7 @@ use App\Models\Race;
 use App\Models\Vaccine;
 use App\Models\Vaccine_control;
 use App\Models\File_animale;
+use App\Http\Requests\StoreVaccineC;
 
 class Vaccine_controlController extends Controller
 {
@@ -21,7 +22,13 @@ class Vaccine_controlController extends Controller
         $vacunaC= DB::table('vaccine_control')
                 ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
                 ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
-                ->select('vaccine_control.id','vaccine_control.date','vaccine.vaccine_d as vacuna','file_animale.animalCode as animal','vaccine_control.date_vr' )
+                ->select('vaccine_control.id'
+                        ,'vaccine_control.date'
+                        ,'vaccine.vaccine_d as vacuna'
+                        ,'file_animale.animalCode as animal',
+                        'vaccine_control.date_r',
+                         'vaccine_control.actual_state'
+                        )
                 ->get();
                 
         //$control = Vaccine_control::all();
@@ -60,7 +67,7 @@ class Vaccine_controlController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreVaccineC $request)
     {
         $vacunaC = new Vaccine_control();
        
@@ -68,7 +75,9 @@ class Vaccine_controlController extends Controller
         $vacunaC->date = $request->date;
         $vacunaC->animalCode_id = $request->animalCode_id;
         $vacunaC->vaccine_id = $request->vaccine_id;
-        $vacunaC->date_vr = $request->date_vr;
+        $vacunaC->date_r = $request->date_r;
+        $vacunaC->actual_state = $request->actual_state;
+        
         $vacunaC->save(); 
         
         //return redirect()->route();
@@ -115,14 +124,15 @@ class Vaccine_controlController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreVaccineC $request, $id)
     {
         $vacunaC = Vaccine_control::findOrFail($id);
 
         $vacunaC->date = $request->date;
         $vacunaC->animalCode_id = $request->animalCode_id;
         $vacunaC->vaccine_id = $request->vaccine_id;
-        $vacunaC->date_vr = $request->date_vr;
+        $vacunaC->date_r = $request->date_r;
+        $vacunaC->actual_state = $request->actual_state;
         $vacunaC->save(); 
         return redirect('/controlVacuna');
     }

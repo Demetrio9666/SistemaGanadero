@@ -12,6 +12,7 @@
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Registro control de Preñes</h1>
@@ -34,7 +35,7 @@
                         <div class="form-group">
                             <label for="">Vitamina:</label>
                             <select class="form-control" id="vitamina1"  name="vitamin_id">
-                                <option selected>Seleccione la Vitamina</option>
+                                <option selected></option>
                                 @foreach ($vitamina as $i )   
                                     <option value="{{$i->id}}">{{$i->vitamin_d}}</option>
                                 @endforeach
@@ -102,4 +103,3 @@
 
    </script>
     @endsection
-</body>

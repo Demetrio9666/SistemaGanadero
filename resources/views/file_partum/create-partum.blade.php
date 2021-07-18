@@ -20,15 +20,15 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Control:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
                         <div class="input-group mb-3">
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                 <span class="input-group-text" id="basic-addon1">Codigo</span>
-                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
-                                <input type="hidden" id="idcodi" name="animalCode_id">
+                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" name="codigo_animal" value="{{old('codigo_animal')}}" disabled=disabled >
+                                <input type="hidden" id="idcodi" name="animalCode_id"  value="{{old('animalCode_id')}}">
                         </div>
                 </div>
                 

@@ -12,6 +12,7 @@
 <body>
     @section('content_header')
         <div class="container" id="registration-form">
+            @include('messages.message')
             <div class="image"></div>
             <div class="frm">
                 <h1>Registar Ficha de Reproduccion Externo</h1>
@@ -24,7 +25,7 @@
                     <div class="form-group">
                         <label for="" class="">Código Animal</label>
                             <div class="input-group mb-3">
-                                    <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                                    <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimalEX" >Buscar</button>
                                     <span class="input-group-text" id="basic-addon1">Codigo</span>
                                     <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
     
@@ -52,7 +53,7 @@
                     <div class="col-md-6">
                         <label for="">Raza:</label>
                         <select class="form-control" id="razas" name="race_id">
-                                <option> Seleccione la Raza</option>
+                                <option></option>
                             @foreach ( $raza as $i )   
                                 <option value="{{$i->id}}">{{$i->race_d}}</option>
                             @endforeach
@@ -67,7 +68,7 @@
                     <div class="form-group">
                         <label for="">Sexo</label>
                         <select class="form-control" id="razas"  name="sex">
-                            <option>Seleccione</option>
+                            <option></option>
                             <option value="Hembra">Hembra</option>
                             <option value="Macho">Macho</option>
                         </select>
@@ -94,7 +95,7 @@
                 </form>
             </div>
         </div>
-        @include("modal.modalAnimalesR")
+        @include("modal.modalAnimalesEX")
     @endsection
    
     @section('js')

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\File_animale;
 use App\Models\Weigth_control;
+use App\Http\Requests\StoreWeigthC;
+
 class Weigth_controlController extends Controller
 {
     /**
@@ -17,7 +19,12 @@ class Weigth_controlController extends Controller
     {
         $pesoC = DB::table('weigth_control')
                 ->join('file_animale','weigth_control.animalCode_id','=','file_animale.id')
-                ->select('weigth_control.id','weigth_control.date','file_animale.animalCode as animal','weigth_control.weigtht','weigth_control.date_vr')
+                ->select('weigth_control.id'
+                ,'weigth_control.date',
+                'file_animale.animalCode as animal',
+                'weigth_control.weigtht',
+                'weigth_control.date_r',
+                'weigth_control.actual_state')
                 ->get();
         return view('weigthC.index-weigthC',compact('pesoC'));
     }
@@ -47,14 +54,16 @@ class Weigth_controlController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreWeigthC $request)
     {
         $pesoC = new Weigth_control();
        
         $pesoC->date = $request->date;
         $pesoC->animalCode_id = $request->animalCode_id;
         $pesoC->weigtht = $request->weigtht;
-        $pesoC->date_vr = $request->date_vr;
+        $pesoC->date_r = $request->date_r;
+        $pesoC-> actual_state = $request-> actual_state;
+
         $pesoC->save(); 
             //return redirect()->route();
         return redirect('/controlPeso');
@@ -99,13 +108,15 @@ class Weigth_controlController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreWeigthC $request, $id)
     {
         $pesoC = Weigth_control::findOrFail($id);
         $pesoC->date = $request->date;
         $pesoC->animalCode_id = $request->animalCode_id;
         $pesoC->weigtht = $request->weigtht;
-        $pesoC->date_vr = $request->date_vr;
+        $pesoC->date_r = $request->date_r;
+        $pesoC-> actual_state = $request-> actual_state;
+       
         $pesoC->save(); 
        
         return redirect('/controlPeso');

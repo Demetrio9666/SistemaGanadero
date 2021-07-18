@@ -12,6 +12,7 @@
     @endsection
     @section('content_header')
         <div class="container" id="registration-form">
+            @include('messages.message')
             <div class="image"></div>
             <div class="frm">
                 <h1>Registrar</h1>
@@ -24,7 +25,7 @@
                     <div class="form-group">
                         <label for="">Raza:</label>
                         <select class="form-control" id="razas" name="race_id">
-                                <option></option>
+                            <option selected></option>
                             @foreach ( $razas as $i )   
                                 <option value="{{$i->id}}">{{$i->race_d}}</option>
                             @endforeach

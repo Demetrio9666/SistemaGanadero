@@ -4,7 +4,7 @@
        
     @endsection 
 </head>
-  <body>
+
    
     @section('title')
      
@@ -55,6 +55,6 @@
         </div>
     </div>
     @endsection
-</body>
+
    
 @endsection

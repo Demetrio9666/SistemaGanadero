@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Race;
-use App\Models\External_mount;
+use App\Models\File_reproduction_external;
 use App\Models\File_animale;
+use App\Http\Requests\StoreFile_reproductionEX;
 class External_mountController extends Controller
 {
     /**
@@ -16,7 +17,27 @@ class External_mountController extends Controller
      */
     public function index()
     {   
-        
+        $raza = Race::all();
+        $ext =  DB::table('file_reproduction_external')
+                ->join('file_animale','file_reproduction_external.animalCode_id','=','file_animale.id')
+                ->join('race as R','file_animale.race_id','=','R.id')
+                ->join('race','file_reproduction_external.race_id','=','race.id')
+                ->select('file_reproduction_external.id',
+                            'file_reproduction_external.date',
+                            'file_animale.animalCode',
+                            'R.race_d as raza',
+                            'file_animale.age_month as edad',
+                            'file_animale.sex as sexo',
+
+                            'file_reproduction_external.animalCode_Exte',
+                            'race.race_d',
+                            'file_reproduction_external.age_month',
+                            'file_reproduction_external.sex',
+                            'file_reproduction_external.hacienda_name',
+                            'file_reproduction_external.actual_state')
+                ->get();
+
+        return view('file_reproductionME.index-external_M',compact('raza','ext'));
     }
 
     /**
@@ -27,18 +48,18 @@ class External_mountController extends Controller
     public function create()
     {
         $raza = Race::all();
-        $animalR= DB::table('file_animale')
-        ->join('race','file_animale.race_id','=','race.id')
-        ->select('file_animale.id',
-        'file_animale.animalCode',
-        'file_animale.age_month',
-        'race.race_d',
-        'file_animale.sex')
-        ->where('file_animale.age_month','>=',24)
+        $animaleEX= DB::table('file_animale')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->select('file_animale.id',
+                    'file_animale.animalCode',
+                    'file_animale.age_month',
+                    'race.race_d',
+                    'file_animale.sex')
+                    ->where('file_animale.stage','=','Vaca')->OrWhere('file_animale.stage','=','Toro')
         
         ->get();
-        gfgfg
-        return "hola";
+        
+        return view('file_reproductionME.create-external_M',compact('raza','animaleEX'));
     }
 
     /**
@@ -47,17 +68,19 @@ class External_mountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFile_reproductionEX $request)
     {
-        $ext = new External_mount();
+        $ext = new File_reproduction_external();
        
-        $ext->date_r= $request->date_r;
+        $ext->date= $request->date;
         $ext->animalCode_id = $request->animalCode_id;
         $ext->animalCode_Exte = $request->animalCode_Exte;
         $ext->race_id = $request->race_id;
         $ext->age_month = $request->age_month;
         $ext->sex = $request->sex;
         $ext->hacienda_name = $request->hacienda_name;
+        $ext->actual_state = $request->actual_state;
+        
         
         $ext->save(); 
 
@@ -72,7 +95,7 @@ class External_mountController extends Controller
      */
     public function show($id)
     {
-        return view('external_M.edit-external_M',compact('id'));
+        return view('file_reproductionME.edit-external_M',compact('id'));
     }
 
     /**
@@ -83,19 +106,21 @@ class External_mountController extends Controller
      */
     public function edit($id)
     {
-        $animalR= DB::table('file_animale')
-        ->join('race','file_animale.race_id','=','race.id')
-        ->select('file_animale.id',
-        'file_animale.animalCode',
-        'file_animale.age_month',
-        'race.race_d',
-        'file_animale.sex')
-        ->where('file_animale.age_month','>=',24)
+        $ext =  File_reproduction_external::findOrFail($id);
+        $raza = Race::all();
+        $animaleEX= DB::table('file_animale')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->select('file_animale.id',
+                    'file_animale.animalCode',
+                    'file_animale.age_month',
+                    'race.race_d',
+                    'file_animale.sex')
+                    ->where('file_animale.stage','=','Vaca')->OrWhere('file_animale.stage','=','Toro')
         
         ->get();
-        $ext =  External_mount::findOrFail($id);
+        
         $raza = Race::all();
-        return view('external_M..edit-external_M',compact('ext','raza','animalR'));
+        return view('file_reproductionME.edit-external_M',compact('ext','raza','animaleEX'));
     }
 
     /**
@@ -105,17 +130,18 @@ class External_mountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreFile_reproductionEX $request, $id)
     {
-        $ext =  External_mount::findOrFail($id);
+        $ext =  File_reproduction_external::findOrFail($id);
 
-        $ext->date_r= $request->date_r;
+        $ext->date= $request->date;
         $ext->animalCode_id = $request->animalCode_id;
         $ext->animalCode_Exte = $request->animalCode_Exte;
         $ext->race_id = $request->race_id;
         $ext->age_month = $request->age_month;
         $ext->sex = $request->sex;
         $ext->hacienda_name = $request->hacienda_name;
+        $ext->actual_state = $request->actual_state;
         
         $ext->save(); 
 
@@ -133,7 +159,7 @@ class External_mountController extends Controller
 
     public function destroy($id)
     {
-        $ext =  External_mount::findOrFail($id);
+        $ext =  File_reproduction_external::findOrFail($id);
         $ext->delete();
         return redirect('/fichaReproduccionEx')->with('eliminar','ok');
 

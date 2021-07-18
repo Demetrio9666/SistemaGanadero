@@ -13,6 +13,7 @@
     @endsection
     @section('content_header')
         <div class="container" id="registration-form">
+            @include('messages.message')
             <div class="image"></div>
             <div class="frm">
                 <h1>Editar Vacuna</h1>
@@ -21,7 +22,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre de la Vacuna:</label>
-                        <input type="text" class="form-control" id="vacuna" name="vaccine_d" value="{{$vacuna->vaccin_d}}" >
+                        <input type="text" class="form-control" id="vacuna" name="vaccine_d" value="{{$vacuna->vaccine_d}}" >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>

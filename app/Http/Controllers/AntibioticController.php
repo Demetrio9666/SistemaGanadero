@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Antibiotic;
+use App\Http\Requests\StoreAntibiotic;
 
 class AntibioticController extends Controller
 {
@@ -34,7 +35,7 @@ class AntibioticController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAntibiotic $request)
     {
         $anti = new Antibiotic();
         $anti->antibiotic_d = $request->antibiotic_d;
@@ -78,7 +79,7 @@ class AntibioticController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreAntibiotic $request, $id)
     {
         $anti = Antibiotic::findOrFail($id);
         $anti->antibiotic_d = $request->antibiotic_d;

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Location;
-
+use App\Http\Requests\StoreLocation;
 class LocationController extends Controller
 {
     /**
@@ -34,7 +34,7 @@ class LocationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreLocation $request)
     {
         $ubicacion = new Location();
         
@@ -77,7 +77,7 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreLocation $request, $id)
     {
         $ubicacion = Location::findOrFail($id);
         $ubicacion->location_d = $request->location_d;

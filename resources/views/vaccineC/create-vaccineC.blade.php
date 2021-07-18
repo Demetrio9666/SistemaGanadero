@@ -1,20 +1,20 @@
+@extends('adminlte::page')
 <head>
-    <link href="{{asset('css/app.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Registration Form</title>
 </head>
 <body>
-    @extends('adminlte::page')
+   
     @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="/css/registro.css">
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
-            <h1>Registro de Animales</h1>
+            <h1>Registro de Control Vacunacion</h1>
             <form action="{{route('controlVacuna.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
@@ -32,8 +32,8 @@
                 </div>
                 <div class="form-group">
                     <label for="">Vacuna:</label>
-                    <select class="form-control" id="razas"  name="vaccine_id">
-                        <option selected>Seleccione la Vacuna</option>
+                    <select class="form-control" id="razas"  name="vaccine_id" >
+                        <option selected></option>
                         @foreach ($vacuna as $i )   
                             <option value="{{$i->id}}">{{$i->vaccine_d}}</option>
                         @endforeach
@@ -41,7 +41,7 @@
                 </div>  
                 <div class="form-group">
                     <label for="">Fecha de Segunda Docis:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_vr" >
+                    <input type="date" class="form-control" id="fecha_r" name="date_r" >
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>

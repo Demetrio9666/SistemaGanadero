@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vaccine;
+use App\Http\Requests\StoreVaccine;
 
 class VaccineController extends Controller
 {
@@ -35,7 +36,7 @@ class VaccineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreVaccine $request)
     {
         $vacuna = new Vaccine();
         
@@ -80,7 +81,7 @@ class VaccineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreVaccine $request, $id)
     {
         $vacuna = Vaccine::findOrFail($id);
         $vacuna->vaccine_d = $request->vaccine_d;

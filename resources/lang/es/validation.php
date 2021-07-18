@@ -149,6 +149,7 @@ return [
     'attributes' => [
                 'date'=>'fecha',
                 'animalCode_id'=>'codigo animal',
+                'animalCode_Exte'=>'codigo animal externo',
                 'animalCode_id_m' =>'codigo animal hembra',
                 'animalCode_id_p'=>'codigo animal macho',
                 'male'=>' cantidad de macho',
@@ -159,8 +160,29 @@ return [
                 'disease'=>'enfermedad',
                 'detail'=>'detalle',
                 'treatment'=>'tratamiento',
-                
-
+                'artificial_id'=>'material genetico',
+                'race_id' => 'raza',
+                'sex' => 'sexo',
+                'hacienda_name' => 'nombre de la hacienda',
+                'age_month'=>'edad',
+                'date_r' => 'próxima fecha',
+                'vaccine_id' => 'vacuna',
+                'weigtht' => 'peso' ,
+                'deworming_id' => 'desparacitante',
+                'vitamin_id' => 'vitamina',
+                'observation' => 'observacion',
+                'date_e'=>'fecha de elaboración',
+                'date_c'=>'fecha de caducidad',
+                'supplier'=>'proveedor',
+                'vaccine_d'=>'nombre de la vacuna ',
+                'dewormer_d'=>'nombre del desparacitante',
+                'vitamin_d'=>'nombre de la vitamina',
+                'antibiotic_d'=>'nombre del antibiótico',
+                'reproduccion'=>'nombre del material genetico',
+                'location_d'=>'localización',
+                'description'=>'descripción',
+                'race_d'=>'raza',
+                'percentage'=>'porcentaje'
 
     ],
 

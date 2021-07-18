@@ -13,7 +13,7 @@ class StoreFile_reproductionEX extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class StoreFile_reproductionEX extends FormRequest
     public function rules()
     {
         return [
-            //
+
+            
+            'animalCode_id'=>'required',
+            'race_id'=>'required',
+            'age_month'=>'required'|'numeric',
+            'animalCode_Exte'=>'required',
+            'race_id'=>'required',
+            'sex'=>'required',
+            'hacienda_name'=>'required',
+
+
         ];
     }
 }

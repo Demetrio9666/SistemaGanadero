@@ -1,20 +1,21 @@
+@extends('adminlte::page')
 <head>
-    <link href="{{asset('css/app.css')}}">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Registration Form</title>
 </head>
-<body>
-    @extends('adminlte::page')
+
+    
     @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="/css/registro.css">
+        <link rel="stylesheet" type="text/css" href="/css/registro.css">
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
-            <h1>Editar Control de vacunacion </h1>
+            <h1>Editar Control de preñez </h1>
             <form action="{{route('controlPrenes.update',$pre->id)}}" method="POST">
                 @csrf
                 @method('PUT')
@@ -42,9 +43,9 @@
                 <div class="form-group">
                     <label for="">Vitamina:</label>
                     <select class="form-control" id="inputPassword4"  name="vitamin_id"   value="{{$pre->vitamin_id}}">
-                        <option selected>Seleccione la Vitamina</option>
+                        <option selected></option>
                         @foreach ($vitamina as $i )   
-                            <option value="{{$i->id}}" @if($pre->vitamin_id == $i->id ) selected @endif>{{$i->vitamin}}</option>
+                            <option value="{{$i->id}}" @if($pre->vitamin_id == $i->id ) selected @endif>{{$i->vitamin_d}}</option>
                             
                         @endforeach
                   </select>
@@ -109,11 +110,6 @@
                 $("#idcodi").val(col1);
                 $("#codigo_animal").val(col2);
            });
-
-          
-          
-        
-
    </script>
+
     @endsection
-</body>

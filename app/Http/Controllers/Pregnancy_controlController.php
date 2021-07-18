@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\File_animale;
 use App\Models\Pregnancy_control;
 use App\Models\Vitamin;
+use App\Http\Requests\StorePregnancyC;
 
 
 
@@ -22,9 +23,15 @@ class Pregnancy_controlController extends Controller
         $pre = DB::table('pregnancy_control')
              ->join('vitamin','pregnancy_control.vitamin_id','=','vitamin.id')
              ->join('file_animale','pregnancy_control.animalCode_id','=','file_animale.id')
-             ->select('pregnancy_control.id','pregnancy_control.date','file_animale.animalCode as animal','vitamin.vitamin_d as vitamina',
-                        'pregnancy_control.alternative1 as alt1','pregnancy_control.alternative2  as alt2','pregnancy_control.observation',
-                        'pregnancy_control.date_rc')
+             ->select('pregnancy_control.id',
+                      'pregnancy_control.date',
+                       'file_animale.animalCode as animal',
+                        'vitamin.vitamin_d as vitamina',
+                        'pregnancy_control.alternative1 as alt1',
+                        'pregnancy_control.alternative2  as alt2',
+                         'pregnancy_control.observation',
+                        'pregnancy_control.date_r',
+                        'pregnancy_control.actual_state')
              ->get();     
         return view('PregnancyC.index-PregnancyC',compact('pre'));
     }
@@ -44,8 +51,7 @@ class Pregnancy_controlController extends Controller
                      'age_month',
                      'sex'
                   )
-                  ->where('sex','Hembra')
-                  ->where('age_month','>=',24)
+                  
                   ->where('actual_state','=','Disponible')
                   ->where('stage','=','Vaca')
                   
@@ -59,7 +65,7 @@ class Pregnancy_controlController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePregnancyC $request)
     {
         $pre = new Pregnancy_control();
        
@@ -69,7 +75,9 @@ class Pregnancy_controlController extends Controller
         $pre->alternative1 = $request->alternative1;
         $pre->alternative2 = $request->alternative2;
         $pre->observation = $request->observation;
-        $pre->date_rc = $request->date_rc;
+        $pre->date_r = $request->date_r;
+        $pre->actual_state = $request->actual_state;
+        
         $pre->save(); 
 
         return redirect('/controlPrenes');
@@ -117,7 +125,7 @@ class Pregnancy_controlController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePregnancyC $request, $id)
     {
         $pre = Pregnancy_control::findOrFail($id);
         $pre->date = $request->date;
@@ -126,7 +134,8 @@ class Pregnancy_controlController extends Controller
         $pre->alternative1 = $request->alternative1;
         $pre->alternative2 = $request->alternative2;
         $pre->observation = $request->observation;
-        $pre->date_rc = $request->date_rc;
+        $pre->date_r = $request->date_r;
+        $pre->actual_state = $request->actual_state;
         $pre->save(); 
         return redirect('/controlPrenes');
     }

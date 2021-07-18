@@ -12,6 +12,7 @@
     @endsection
     @section('content_header')
     <div class="container" id="registration-form">
+        @include('messages.message')
         <div class="image"></div>
         <div class="frm">
             <h1>Editar Control de desparasitación </h1>
@@ -42,7 +43,7 @@
                 <div class="form-group">
                     <label for="">Desparasitante:</label>
                     <select class="form-control" id="inputPassword4"  name="deworming_id"   value="{{$desC->deworming_id}}">
-                        <option selected>Seleccione el Desparasitante</option>
+                        <option selected></option>
                         @foreach ($des as $i )   
                             <option value="{{$i->id}}" @if($desC->deworming_id == $i->id ) selected @endif>{{$i->dewormer_d}}</option>       
                         @endforeach
