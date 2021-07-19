@@ -25,6 +25,7 @@ class File_animaleController extends Controller
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
                             ,'file_animale.conceived')
+                            ->where('file_animale.actual_state', '=', 'Disponible' )->Orwhere('file_animale.actual_state', '=', 'Reproduccion')
                     ->get();
         return view('file_animale.index-animale',compact('animal'));
         //return $animal;

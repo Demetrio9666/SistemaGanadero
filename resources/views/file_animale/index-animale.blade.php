@@ -22,8 +22,8 @@
                                     <th>Salud</th>
                                     <th>Estado de Embarazo</th>
                                     <th>localizacion</th>
-                                    <th>Concebido</th> 
-                                    <th>Estado Actual</th>   
+                                    <th>Estado Actual</th> 
+                                    <th>Concebido</th>  
                                     <th>Acción</th>
                                 </tr>
                             </thead>

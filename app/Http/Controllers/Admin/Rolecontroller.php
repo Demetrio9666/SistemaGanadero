@@ -226,11 +226,13 @@ class Rolecontroller extends Controller
      */
     public function update(Request $request, Role $rol)
     {
-        //$role = Role::findOrFail($id);
-        //$role->update($request->all());
-
-        //return redirect()->route('rol.index')->with('Infor','ok');
-
+        $request->validate([
+                'name'=>'required',
+                'permissions'=>'required',
+            ]);
+        $rol->update($request->all());
+        $rol->permissions()->sync($request->permissions);
+        return redirect()->route('rol.index')->with('Infor','ok');
     }
 
     /**
@@ -239,9 +241,9 @@ class Rolecontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(Role $rol)
     {
-        $rol = Role::findOrFail($id);
+        
         $rol->delete();
         return redirect('/rol')->with('eliminar','ok');
 
