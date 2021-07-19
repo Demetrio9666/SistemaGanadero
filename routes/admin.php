@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\AnimalesInactivosController;
+
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DewormerController;
@@ -36,7 +38,10 @@ Route::resource('controlPrenes',Pregnancy_controlController::class)->names('cont
 Route::resource('controlDesparasitacion',Deworming_controlController::class)->names('controlDesparasitacion');
 Route::resource('controlPeso',Weigth_controlController::class)->names('controlPeso');
 Route::resource('controlVacuna',Vaccine_controlController::class)->names('controlVacuna');
+
 Route::resource('fichaAnimal',File_animaleController::class)->names('fichaAnimal');
+Route::resource('inactivos/fichaAnimales',AnimalesInactivosController::class)->names('inactivos.fichaAnimales');
+
 Route::resource('confUbicacion',LocationController::class)->names('confUbicacion');
 Route::resource('confRaza',RaceController::class)->names('confRaza');
 Route::resource('confVi',VitaminController::class)->names('confVi');

@@ -5,8 +5,7 @@
         <?php $__env->stopSection(); ?> 
 </head>
     <?php $__env->startSection('content_header'); ?>
-                <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="<?php echo e(url('fichaAnimal/create')); ?>"><i class="fas fa-plus-square"></i></a>
-                <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="<?php echo e(url('inactivos/fichaAnimales')); ?>"><i class="fas fa-recycle"></i></a>
+                <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="<?php echo e(url('/fichaAnimal')); ?>"><i class="fas fa-arrow-left"></i></a>
                 <div class="card">
                     <div class="card-body">
                         <table id="tabla" class="table table-striped table-bordered" style="width:100%">
@@ -43,8 +42,14 @@
                                     <td ><?php echo e($i->actual_state); ?></td>
                                     <td ><?php echo e($i->conceived); ?></td>
                                     <td>
-                                        <a class="btn btn-primary" href="<?php echo e(route('fichaAnimal.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
-                                                             
+                                        <a class="btn btn-primary" href="<?php echo e(route('inactivos.fichaAnimales.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
+                                        <form action="<?php echo e(route('inactivos.fichaAnimales.destroy',$i->id)); ?>"  class="d-inline  formulario-eliminar"  method="POST">
+                                            <?php echo method_field('DELETE'); ?> 
+                                            <?php echo csrf_field(); ?>
+                                            <button type="submit"  class="btn btn-danger" value="Eliminar">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>                         
                                     </td>  
                                 </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -58,4 +63,4 @@
             
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/file_animale/index-animale.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/file_animale/index-inactivo.blade.php ENDPATH**/ ?>

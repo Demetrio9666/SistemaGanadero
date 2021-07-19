@@ -5,8 +5,7 @@
         @endsection 
 </head>
     @section('content_header')
-                <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaAnimal/create')}}"><i class="fas fa-plus-square"></i></a>
-                <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaAnimales')}}"><i class="fas fa-recycle"></i></a>
+                <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('/fichaAnimal')}}"><i class="fas fa-arrow-left"></i></a>
                 <div class="card">
                     <div class="card-body">
                         <table id="tabla" class="table table-striped table-bordered" style="width:100%">
@@ -43,8 +42,14 @@
                                     <td >{{$i->actual_state}}</td>
                                     <td >{{$i->conceived}}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="{{route('fichaAnimal.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                                                             
+                                        <a class="btn btn-primary" href="{{route('inactivos.fichaAnimales.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                                        <form action="{{route('inactivos.fichaAnimales.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                                            @method('DELETE') 
+                                            @csrf
+                                            <button type="submit"  class="btn btn-danger" value="Eliminar">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>                         
                                     </td>  
                                 </tr>
                                 @endforeach

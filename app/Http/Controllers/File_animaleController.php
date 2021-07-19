@@ -8,6 +8,7 @@ use App\Models\File_Animale;
 use App\Models\Location;
 use App\Models\Race;
 use App\Http\Requests\StoreFile_animale;
+use App\Http\Requests\EditFile_animale;
 class File_animaleController extends Controller
 {
     /**
@@ -31,6 +32,7 @@ class File_animaleController extends Controller
         //return $animal;
 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -105,8 +107,9 @@ class File_animaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreFile_animale $request, $id)
+    public function update(EditFile_animale $request, $id)
     {
+       
         $animal = File_Animale::findOrFail($id);
         
         $animal->animalCode = $request->codigo_animal;
@@ -134,8 +137,6 @@ class File_animaleController extends Controller
      */
     public function destroy($id)
     {
-        $animal = File_Animale::findOrFail($id);
-        $animal->delete();
-        return redirect('/fichaAnimal')->with('eliminar','ok');
+       
     }
 }

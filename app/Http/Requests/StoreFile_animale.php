@@ -41,7 +41,7 @@ class StoreFile_animale extends FormRequest
     {
         return [
             
-                'codigo_animal'=>'required',
+                'codigo_animal'=>'required|unique:file_animale,animalCode,id',
                 'fecha_nacimiento'=>'required',
                 'raza'=>'required',
                 'sexo'=>'required',
