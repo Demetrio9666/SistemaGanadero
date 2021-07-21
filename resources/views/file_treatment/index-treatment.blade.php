@@ -10,7 +10,8 @@
     @section('title')
    
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaTratamiento/create')}}">Nuevo</a>
+    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaTratamiento/create')}}"><i class="fas fa-plus-square"></i></a>
+    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaTratamientos')}}"><i class="fas fa-recycle"></i></a>
     <div class="card">
         <div class="card-body">
           <table id="tabla" class="table table-striped table-bordered" style="width:100%">

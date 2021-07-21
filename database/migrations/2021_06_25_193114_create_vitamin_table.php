@@ -18,7 +18,7 @@ class CreateVitaminTable extends Migration
             $table->string('vitamin_d');
             $table->date('date_e');
             $table->date('date_c');
-            $table->string('supplier',20);
+            $table->string('supplier');
             $table->string('actual_state');
             $table->timestamps();
         });

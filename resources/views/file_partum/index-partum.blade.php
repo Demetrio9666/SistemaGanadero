@@ -10,7 +10,8 @@
     @section('title')
     
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaParto/create')}}">Nuevo</a>
+    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaParto/create')}}"><i class="fas fa-plus-square"></i></a>
+    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaPartos')}}"><i class="fas fa-recycle"></i></a>
     <div class="card">
         <div class="card-body">
           <table id="tabla" class="table table-striped table-bordered" style="width:100%">
@@ -40,13 +41,7 @@
                     <td >{{$i->actual_state}}</td>
                     <td>
                         <a class="btn btn-primary d-grid gap-2 d-md-block " href="{{route('fichaParto.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                        <form action="{{route('fichaParto.destroy',$i->id)}}"  class="d-inline  formulario-eliminar  "  method="POST">
-                            @method('DELETE') 
-                            @csrf
-                            <button type="submit"  class="btn btn-danger" value="Eliminar">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>                         
+                                               
                     </td>  
                 </tr>
                 @endforeach 

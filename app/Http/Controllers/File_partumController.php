@@ -30,7 +30,7 @@ class File_partumController extends Controller
                  'file_partum.mother_status',
                  'file_partum.partum_type',
                  'file_partum.actual_state'
-                )
+                )->where('file_partum.actual_state','=','Disponible')
                 
                 
         ->get();
@@ -167,8 +167,6 @@ class File_partumController extends Controller
      */
     public function destroy($id)
     {
-        $par =  File_partum::findOrFail($id);
-        $par->delete();
-        return redirect('/fichaParto')->with('eliminar','ok');
+       
     }
 }

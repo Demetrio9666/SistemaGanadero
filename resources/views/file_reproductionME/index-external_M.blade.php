@@ -9,7 +9,8 @@
     @section('title')
 
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaReproduccionEx/create')}}">Nuevo</a>
+    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaReproduccionEx/create')}}"><i class="fas fa-plus-square"></i></a>
+    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaReproduccionEx')}}"><i class="fas fa-recycle"></i></a> 
     <div class="card">
         <div class="card-body">
           <table id="tabla" class="table table-striped table-bordered" style="width:100%">
@@ -47,13 +48,7 @@
 
                     <td>
                         <a class="btn btn-primary" href="{{route('fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                        <form action="{{route('fichaReproduccionEx.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
-                            @csrf
-                            @method('DELETE') 
-                            <button type="submit"  class="btn btn-danger" value="Eliminar">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>
+                       
                           
                     </td>  
                 </tr>

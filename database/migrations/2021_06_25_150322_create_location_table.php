@@ -17,8 +17,8 @@ class CreateLocationTable extends Migration
             $table->id();
             $table->string('location_d');
             $table->string('description');
-            $table->timestamps();
             $table->string('actual_state');
+            $table->timestamps();
         });
     }
 

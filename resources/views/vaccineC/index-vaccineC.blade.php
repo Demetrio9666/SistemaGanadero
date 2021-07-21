@@ -9,7 +9,8 @@
     @section('title')
    
     @section('content_header')
-    <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href="{{url('controlVacuna/create')}}">Nuevo</a>
+    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('controlVacuna/create')}}"><i class="fas fa-plus-square"></i></a>
+    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/controlVacunas')}}"><i class="fas fa-recycle"></i></a>
     <div class="card">
         <div class="card-body">
           <table id="tabla" class="table table-striped table-bordered" style="width:100%">
@@ -36,13 +37,7 @@
 
                     <td>
                         <a class="btn btn-primary" href="{{route('controlVacuna.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                        <form action="{{route('controlVacuna.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
-                            @method('DELETE') 
-                            @csrf
-                            <button type="submit"  class="btn btn-danger" value="Eliminar">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>                         
+                                                
                     </td>  
                 </tr>
                 @endforeach
