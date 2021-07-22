@@ -8,6 +8,7 @@ use App\Models\Race;
 use App\Models\File_reproduction_external;
 use App\Models\File_animale;
 use App\Http\Requests\StoreFile_reproductionEX;
+
 class External_mountController extends Controller
 {
     /**
@@ -17,7 +18,14 @@ class External_mountController extends Controller
      */
     public function index()
     {   
-        $raza = Race::all();
+        $raza = DB::table('race')
+        ->select('race.id',
+                    'race.race_d',
+                    'race.percentage',
+                    'race.actual_state')
+                    ->where('race.actual_state','=','Disponible')
+                    ->get();
+
         $ext =  DB::table('file_reproduction_external')
                 ->join('file_animale','file_reproduction_external.animalCode_id','=','file_animale.id')
                 ->join('race as R','file_animale.race_id','=','R.id')
@@ -35,6 +43,7 @@ class External_mountController extends Controller
                             'file_reproduction_external.sex',
                             'file_reproduction_external.hacienda_name',
                             'file_reproduction_external.actual_state')
+                            ->where('file_reproduction_external.actual_state','=','Disponible')
                 ->get();
 
         return view('file_reproductionME.index-external_M',compact('raza','ext'));
@@ -47,7 +56,14 @@ class External_mountController extends Controller
      */
     public function create()
     {
-        $raza = Race::all();
+        $raza = DB::table('race')
+        ->select('race.id',
+                    'race.race_d',
+                    'race.percentage',
+                    'race.actual_state')
+                    ->where('race.actual_state','=','Disponible')
+                    ->get();
+
         $animaleEX= DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->select('file_animale.id',
@@ -55,9 +71,9 @@ class External_mountController extends Controller
                     'file_animale.age_month',
                     'race.race_d',
                     'file_animale.sex')
+                    ->where('file_animale.actual_state','=','Disponible')
                     ->where('file_animale.stage','=','Vaca')->OrWhere('file_animale.stage','=','Toro')
-        
-        ->get();
+                    ->get();
         
         return view('file_reproductionME.create-external_M',compact('raza','animaleEX'));
     }
@@ -107,7 +123,13 @@ class External_mountController extends Controller
     public function edit($id)
     {
         $ext =  File_reproduction_external::findOrFail($id);
-        $raza = Race::all();
+        $raza = DB::table('race')
+        ->select('race.id',
+                    'race.race_d',
+                    'race.percentage',
+                    'race.actual_state')
+                    ->where('race.actual_state','=','Disponible')
+                    ->get();
         $animaleEX= DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->select('file_animale.id',
@@ -115,6 +137,7 @@ class External_mountController extends Controller
                     'file_animale.age_month',
                     'race.race_d',
                     'file_animale.sex')
+                    ->where('file_animale.actual_state','=','Disponible')
                     ->where('file_animale.stage','=','Vaca')->OrWhere('file_animale.stage','=','Toro')
         
         ->get();
@@ -159,9 +182,7 @@ class External_mountController extends Controller
 
     public function destroy($id)
     {
-        $ext =  File_reproduction_external::findOrFail($id);
-        $ext->delete();
-        return redirect('/fichaReproduccionEx')->with('eliminar','ok');
+       
 
     }
 }

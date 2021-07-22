@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Race;
 
+use App\Models\Race;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRace;
+use Illuminate\Support\Facades\DB;
+
 class RaceController extends Controller
 {
     /**
@@ -14,9 +16,15 @@ class RaceController extends Controller
      */
     public function index()
     {
-        $raza = Race::all();
+        $raza = DB::table('race')
+        ->select('race.id',
+                    'race.race_d',
+                    'race.percentage',
+                    'race.actual_state')
+                    ->where('race.actual_state','=','Disponible')
+                    ->get();
         return view('race.index-race',compact('raza'));
-        //return $raza;
+        
     }
 
     /**
@@ -97,8 +105,6 @@ class RaceController extends Controller
      */
     public function destroy($id)
     {
-        $raza = Race::findOrFail($id);
-        $raza->delete();
-        return redirect('/confRaza')->with('eliminar','ok'); 
+      
     }
 }

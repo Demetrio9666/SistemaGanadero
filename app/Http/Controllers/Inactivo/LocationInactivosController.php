@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Inactivo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Location;
 
 class LocationInactivosController extends Controller
 {
@@ -14,7 +16,14 @@ class LocationInactivosController extends Controller
      */
     public function index()
     {
-        //
+        $ubicacion = DB::table('location')
+                    ->select('location.id',
+                    'location.location_d',
+                    'location.description',
+                    'location.actual_state')
+                    ->where('location.actual_state','=','Inactivo')
+                    ->get();
+        return view('location.index-inactivo',compact('ubicacion'));
     }
 
     /**
@@ -46,7 +55,7 @@ class LocationInactivosController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('location.edit-inactivo',compact('id'));
     }
 
     /**
@@ -57,7 +66,8 @@ class LocationInactivosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ubicacion = location::findOrFail($id);
+        return view('location.edit-inactivo', compact('ubicacion'));
     }
 
     /**
@@ -69,7 +79,11 @@ class LocationInactivosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ubicacion = Location::findOrFail($id);
+        
+        $ubicacion->actual_state =$request->actual_state;
+        $ubicacion->save(); 
+        return redirect('/confUbicacion'); 
     }
 
     /**

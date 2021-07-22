@@ -32,6 +32,7 @@ class Pregnancy_controlController extends Controller
                          'pregnancy_control.observation',
                         'pregnancy_control.date_r',
                         'pregnancy_control.actual_state')
+                        ->where('pregnancy_control.actual_state','=','Disponible')
              ->get();     
         return view('PregnancyC.index-PregnancyC',compact('pre'));
     }
@@ -148,8 +149,6 @@ class Pregnancy_controlController extends Controller
      */
     public function destroy($id)
     {
-        $pre = Pregnancy_control::findOrFail($id);
-        $pre->delete();
-        return redirect('/controlPrenes')->with('eliminar','ok');
+        
     }
 }

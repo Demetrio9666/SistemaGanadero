@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -6,17 +6,17 @@
 </head>
 <body>
   
-    @section('css')
+    <?php $__env->startSection('css'); ?>
     <link rel="stylesheet" type="text/css" href="/css/registro.css">
-    @endsection
-    @section('content_header')
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('content_header'); ?>
     <div class="container" id="registration-form">
-        @include('messages.message')
+        <?php echo $__env->make('messages.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <div class="image"></div>
         <div class="frm">
             <h1>Registro de Peso</h1>
-            <form action="{{route('controlPeso.store')}}" method="POST">
-                @csrf
+            <form action="<?php echo e(route('controlPeso.store')); ?>" method="POST">
+                <?php echo csrf_field(); ?>
                 <div class="form-group">
                     <label for="">Fecha de Registro:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date" >
@@ -47,16 +47,16 @@
                 </div> 
                 <div class="col-md-6-self-center" style="margin: 80px">
                     
-                        <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/controlPeso')}}">Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/controlPeso') }}" >Guardar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg"   href="<?php echo e(url('/controlPeso')); ?>">Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="<?php echo e(Redirect::to('/controlPeso')); ?>" >Guardar</button>
   
                 </div>
             </form>
         </div>
     </div>
-    @include("modal.modalAnimales")
-    @endsection
-    @section('js')
+    <?php echo $__env->make("modal.modalAnimales", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('js'); ?>
     <script>
         $('#modalanimal').on('shown.bs.modal', function () {
         $('#myInput2').trigger('focus')
@@ -88,5 +88,6 @@
            
 
    </script>
-    @endsection
+    <?php $__env->stopSection(); ?>
 </body>
+<?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/weigthC/create-weigthC.blade.php ENDPATH**/ ?>

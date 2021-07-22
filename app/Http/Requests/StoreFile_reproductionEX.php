@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFile_reproductionEX extends FormRequest
+class StoreFile_reproductionEx extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,13 @@ class StoreFile_reproductionEX extends FormRequest
     public function rules()
     {
         return [
-
-            
+            'date'=>'required',
             'animalCode_id'=>'required',
-            'race_id'=>'required',
-            'age_month'=>'required'|'numeric',
             'animalCode_Exte'=>'required',
             'race_id'=>'required',
             'sex'=>'required',
             'hacienda_name'=>'required',
-
-
+            'age_month'=>'required',
         ];
     }
 }

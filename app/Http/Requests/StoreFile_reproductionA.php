@@ -24,9 +24,10 @@ class StoreFile_reproductionA extends FormRequest
     public function rules()
     {
         return [
+            'date'=>'required',
             'animalCode_id_m' =>'required',
-            
             'artificial_id' =>'required',
+           
         
         ];
     }

@@ -15,7 +15,11 @@ class VitaminController extends Controller
      */
     public function index()
     {
-        $vitamina = Vitamin::all();
+        $vitamina= DB::table('vitamin')
+        ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
+        ->where('actual_state','=','Disponible')
+        ->get();
+        
         return view('vitamin.index-vitamin',compact('vitamina'));
     }
 
@@ -100,8 +104,6 @@ class VitaminController extends Controller
      */
     public function destroy($id)
     {
-        $vitamina = Vitamin::findOrFail($id);
-        $vitamina->delete();
-        return redirect('/confVi')->with('eliminar','ok');
+        
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Inactivo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Race;
+use Illuminate\Support\Facades\DB;
 
 class RaceInactivosController extends Controller
 {
@@ -14,7 +16,14 @@ class RaceInactivosController extends Controller
      */
     public function index()
     {
-        //
+        $raza = DB::table('race')
+        ->select('race.id',
+        'race.race_d',
+        'race.percentage',
+        'race.actual_state')
+        ->where('race.actual_state','=','Inactivo')
+        ->get();
+        return view('race.index-inactivo',compact('raza'));
     }
 
     /**
@@ -46,7 +55,7 @@ class RaceInactivosController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('race.edit-inactivo',compact('id'));
     }
 
     /**
@@ -57,7 +66,8 @@ class RaceInactivosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $raza = Race::findOrFail($id);
+        return view('race.edit-inactivo', compact('raza'));
     }
 
     /**
@@ -69,7 +79,10 @@ class RaceInactivosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $raza = Race::findOrFail($id);
+        $raza->actual_state =$request->actual_state;
+        $raza->save();
+        return redirect('inactivos/Razas'); 
     }
 
     /**
@@ -80,6 +93,8 @@ class RaceInactivosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $raza = Race::findOrFail($id);
+        $raza->delete();
+        return redirect('inactivos/Razas')->with('eliminar','ok'); 
     }
 }

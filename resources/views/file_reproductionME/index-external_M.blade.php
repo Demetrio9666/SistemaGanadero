@@ -38,7 +38,6 @@
                     <td>{{$i->raza}}</td>
                     <td>{{$i->edad}}</td>
                     <td>{{$i->sexo}}</td>
-
                     <td>{{$i->animalCode_Exte}}</td>
                     <td>{{$i->race_d}}</td>
                     <td>{{$i->age_month}}</td>

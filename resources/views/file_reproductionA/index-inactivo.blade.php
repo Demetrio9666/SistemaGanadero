@@ -1,13 +1,10 @@
 @extends('adminlte::page')
 <head>
     @section('css')
-   
     @endsection 
 </head>
 <body>
-
     @section('title')
-   
     @section('content_header')
     <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('/fichaReproduccionA')}}"><i class="fas fa-arrow-left"></i></a>
         
@@ -37,8 +34,8 @@
                                 <td >{{$i->raza_m}}</td>
                                 <td >{{$i->actual_state}}</td>
                                 <td>
-                                    <a class="btn btn-primary  " href="{{route('fichaReproduccionA.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                                    <form action="{{route('fichaReproduccionA.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                                    <a class="btn btn-primary  " href="{{route('inactivos.fichaReproduccionA.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                                    <form action="{{route('inactivos.fichaReproduccionA.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                                         @method('DELETE') 
                                         @csrf
                                         <button type="submit"  class="btn btn-danger" value="Eliminar">

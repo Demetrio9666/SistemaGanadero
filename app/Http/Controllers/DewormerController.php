@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Dewormer;
 use App\Http\Requests\StoreDewormer;
+use Illuminate\Support\Facades\DB;
+
 class DewormerController extends Controller
 {
     /**
@@ -14,7 +16,15 @@ class DewormerController extends Controller
      */
     public function index()
     {
-        $desp = Dewormer::all();
+        $desp = DB::table('dewormer')
+            ->select('dewormer.id',
+            'dewormer.dewormer_d',
+            'dewormer.date_e',
+            'dewormer.date_c',
+            'dewormer.supplier',
+            'dewormer.actual_state')
+            ->where('dewormer.actual_state','=','Disponible')
+            ->get();
         return view('dewormer.index-dewormer',compact('desp'));
     }
 

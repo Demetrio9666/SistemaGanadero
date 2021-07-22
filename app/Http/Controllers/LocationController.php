@@ -14,8 +14,14 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $ubicacion = Location::all();
-        return view('location.index-location',compact('ubicacion'));
+        $ubicacion = DB::table('location')
+                    ->select('location.id',
+                    'location.location_d',
+                    'location.description',
+                    'location.actual_state')
+                    ->where('location.actual_state','=','Disponible')
+                    ->get();
+        return view('location.index-inactivo',compact('ubicacion'));
     }
 
     /**

@@ -25,6 +25,7 @@ class Weigth_controlController extends Controller
                 'weigth_control.weigtht',
                 'weigth_control.date_r',
                 'weigth_control.actual_state')
+                ->where('weigth_control.actual_state','=','Disponible')
                 ->get();
         return view('weigthC.index-weigthC',compact('pesoC'));
     }
@@ -42,7 +43,7 @@ class Weigth_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )
+                  )->where('actual_state','=','Disponible')
                   
         ->get();
         return view('weigthC.create-weigthC',compact('animal'));
@@ -95,7 +96,7 @@ class Weigth_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )
+                  )->where('actual_state','=','Disponible')
                   
         ->get();
         return view('weigthC.edit-weigthC', compact('pesoC','animal'));
@@ -130,8 +131,6 @@ class Weigth_controlController extends Controller
      */
     public function destroy($id)
     {
-        $pesoC = Weigth_control::findOrFail($id);
-        $pesoC->delete();
-        return redirect('/controlPeso')->with('eliminar','ok'); 
+       
     }
 }

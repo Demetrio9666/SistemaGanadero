@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Antibiotic;
 use App\Http\Requests\StoreAntibiotic;
+use Illuminate\Support\Facades\DB;
 
 class AntibioticController extends Controller
 {
@@ -15,7 +16,15 @@ class AntibioticController extends Controller
      */
     public function index()
     {
-        $anti = Antibiotic::all();
+        $anti = DB::table('antibiotic')
+        ->select('antibiotic.id',
+                  'antibiotic.antibiotic_d',
+                  'antibiotic.date_e',
+                  'antibiotic.date_c',
+                  'antibiotic.supplier',
+                  'antibiotic.actual_state')
+                  ->where('antibiotic.actual_state','=','Disponible')
+       ->get();
         return view('antibiotic.index-antibiotic',compact('anti'));
     }
 
@@ -99,8 +108,6 @@ class AntibioticController extends Controller
      */
     public function destroy($id)
     {
-        $desp = Antibiotic::findOrFail($id);
-        $desp->delete();
-        return redirect('/confAnt')->with('eliminar','ok');
+       
     }
 }

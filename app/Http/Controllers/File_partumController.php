@@ -32,7 +32,6 @@ class File_partumController extends Controller
                  'file_partum.actual_state'
                 )->where('file_partum.actual_state','=','Disponible')
                 
-                
         ->get();
 
 

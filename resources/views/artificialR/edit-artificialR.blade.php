@@ -1,13 +1,13 @@
+@extends('adminlte::page')
 <head>
-    <link href="{{asset('css/app.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Registration Form</title>
 </head>
 <body>
-    @extends('adminlte::page')
+    
     @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
+    
     <link rel="stylesheet" type="text/css" href="/css/configuracion2.css">
     @endsection
     @section('content_header')
@@ -37,7 +37,7 @@
 
                         <select class="form-control" id="inputPassword4"  name="reproduccion"   value="{{$arti->reproduccion}}">
                         
-                           <option selected>...</option>
+                           <option selected></option>
                            <option value ="Pajuela" @if( $arti->reproduccion == "Pajuela") selected @endif>Pajuela</option>
                            <option value ="Hembrional" @if($arti->reproduccion == "Hembrional")selected @endif >Hembrional</option>
                             
@@ -50,8 +50,8 @@
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state" value="{{$arti->actual_state}}">
-                            <option>Disponible</option>
-                            <option>Inactivo</option>
+                            <option value="Disponible" @if( $arti->actual_state == "Disponible") selected @endif>Disponible</option>
+                            <option value="Inactivo" @if( $arti->actual_state == "Inactivo") selected @endif>Inactivo</option>
                          </select>
                     </div> 
                     <div class="form-group">

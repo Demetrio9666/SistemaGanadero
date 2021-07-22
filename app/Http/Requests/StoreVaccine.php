@@ -24,12 +24,10 @@ class StoreVaccine extends FormRequest
     public function rules()
     {
         return [
-       
-        'vaccine_d'=>'required',
-        'date_e'=>'required',
-        'date_c'=>'required',
-        'supplier'=>'required',
-
+            'vaccine_d'=>'required',
+            'date_e'=>'required',
+            'date_c'=>'required',
+            'supplier'=>'required',
         ];
     }
 }

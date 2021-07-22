@@ -47,8 +47,8 @@
                     <td >{{$i->actual_state}}</td>
 
                     <td>
-                        <a class="btn btn-primary" href="{{route('fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                        <form action="{{route('fichaReproduccionEx.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
+                        <a class="btn btn-primary" href="{{route('inactivos.fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                        <form action="{{route('inactivos.fichaReproduccionEx.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                             @csrf
                             @method('DELETE') 
                             <button type="submit"  class="btn btn-danger" value="Eliminar">

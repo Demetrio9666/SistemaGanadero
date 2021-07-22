@@ -28,14 +28,10 @@ class Vaccine_controlController extends Controller
                         ,'file_animale.animalCode as animal',
                         'vaccine_control.date_r',
                          'vaccine_control.actual_state'
-                        )
+                        )->where('vaccine_control.actual_state','=','disponible')
                 ->get();
                 
-        //$control = Vaccine_control::all();
-        
-
          return view('vaccineC.index-vaccineC',compact('vacunaC'));
-        //return $vacunaC;
     }
 
     /**
@@ -47,6 +43,7 @@ class Vaccine_controlController extends Controller
     {
         $vacuna = DB::table('vaccine')
         ->select('id','vaccine_d')
+        ->where('actual_state','=','Disponible')
         ->get();
 
         $animal  = DB::table('file_animale')
@@ -55,7 +52,7 @@ class Vaccine_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )
+                  )->where('actual_state','=','Disponible')
                   
         ->get();
         return view('vaccineC.create-vaccineC',compact('animal','vacuna'));
@@ -103,7 +100,10 @@ class Vaccine_controlController extends Controller
      */
     public function edit($id)
     {   
-        $vacuna = Vaccine::all();
+        $vacuna = DB::table('vaccine')
+        ->select('id','vaccine_d')
+        ->where('actual_state','=','Disponible')
+        ->get();
         $vacunaC = Vaccine_control::findOrFail($id);
         $animal  = DB::table('file_animale')
         ->select(    'id',
@@ -111,7 +111,7 @@ class Vaccine_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )
+                  )->where('actual_state','=','Disponible')
                   
         ->get();
         return view('vaccineC.edit-vaccineC', compact('vacunaC','vacuna','animal'));

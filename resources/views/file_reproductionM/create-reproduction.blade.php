@@ -3,11 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     @section('css')
-            <link href="{{asset('css/app.css')}}">
-            <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
             <link rel="stylesheet" type="text/css" href="/css/registroR.css">
-            <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
-            <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
     @endsection
     <title>Registration Form</title>
 </head>
@@ -17,7 +13,7 @@
         @include('messages.message')
         <div class="image"></div>
         <div class="frm">
-            <h1>Ficha de Reproducción</h1>
+            <h1>Ficha de Reproducción por Monta Interna</h1>
             <form action="{{route('fichaReproduccionM.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
@@ -77,7 +73,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                              <table id="table1" class="table table-striped table-bordered" style="width:100%">
+                              <table id="tabla" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>#</th> 
@@ -104,22 +100,15 @@
                             </table>
                             </div>
                         </div>
-                        
-
-                        
                 </div>
 
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option>Disponible</option>
-                        <option>Inactivo</option>
+                        <option value="Disponible">Disponible</option>
+                        <option value="Inactivo">Inactivo</option>
                      </select>
                 </div>
-
-
-
-
                 
                 <div class="col-md-8-self-center" style="margin: 80px" >
                     <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/fichaReproduccionM')}}">Cancelar</a>
@@ -135,70 +124,11 @@
     
     @endsection
     @section('js')
-    
-        <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
-        <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
-        <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
-        <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
-        <script src="{{asset('js/dataTables.sweetalert2@11.min.js')}}"></script>
-    
     <script>
         $('#modalanimal').on('shown.bs.modal', function () {
         $('#myInput2').trigger('focus')
       });
-
-      
-         $('#table1').DataTable({
-           responsive: true,
-    
-           "language": {
-                "lengthMenu": "Mostrar "+
-                `<select class="custom-select custom-selec-s form-control form-control-s">
-                        <option value = '10' >10</option> 
-                        <option  value = '25' >25</option>
-                        <option  value = '50' >50</option>
-                        <option  value = '100' >100</option>
-                        <option  value =  '-1'>All</option>
-                </select>`
-                +" Registro por Pagina",
-                "zeroRecords": "Resultados No encontrados -Disculpe",
-                "info": "Mostrando la página _PAGE_ de _PAGES_",
-                "infoEmpty": "No records available",
-                "infoFiltered": "(Filtrado de  _MAX_ Registros Totales)",
-                'search': "Buscar:",
-                'paginate':{
-                    'next':'Siguiente',
-                    'previous':'Anterior'
-                }
-            }
-         });
-
-         $('#table2').DataTable({
-           responsive: true,
-    
-           "language": {
-                "lengthMenu": "Mostrar "+
-                `<select class="custom-select custom-selec-s form-control form-control-s">
-                        <option value = '10' >10</option> 
-                        <option  value = '25' >25</option>
-                        <option  value = '50' >50</option>
-                        <option  value = '100' >100</option>
-                        <option  value =  '-1'>All</option>
-                </select>`
-                +" Registro por Pagina",
-                "zeroRecords": "Resultados No encontrados -Disculpe",
-                "info": "Mostrando la página _PAGE_ de _PAGES_",
-                "infoEmpty": "No records available",
-                "infoFiltered": "(Filtrado de  _MAX_ Registros Totales)",
-                'search': "Buscar:",
-                'paginate':{
-                    'next':'Siguiente',
-                    'previous':'Anterior'
-                }
-            }
-         });
-           $(".btselect").on('click',function(){
+      $(".btselect").on('click',function(){
                 var currentRow = $(this).closest("tr");
                 var col1=currentRow.find("td:eq(0)").text();
                 var col2=currentRow.find("td:eq(1)").text();
@@ -212,7 +142,6 @@
                 $("#edad").val(col4);
                 $("#sexo").val(col5);
            });
-
            $(".btselect2").on('click',function(){
                 var currentRow = $(this).closest("tr");
                 var col1=currentRow.find("td:eq(0)").text();
@@ -226,20 +155,6 @@
                 $("#raza2").val(col3);
                 $("#edad2").val(col4);
                 $("#sexo2").val(col5);
-           });
-           $(".btselect3").on('click',function(){
-                var currentRow = $(this).closest("tr");
-                var col1=currentRow.find("td:eq(0)").text();
-                var col2=currentRow.find("td:eq(1)").text();
-                var col3=currentRow.find("td:eq(2)").text();
-                var col4=currentRow.find("td:eq(3)").text();
-
-                
-                $("#idcodi_ar").val(col1);
-                $("#raza3").val(col2);
-                $("#material3").val(col3);
-                $("#proveedor3").val(col4);
-                
            });
 
    </script>

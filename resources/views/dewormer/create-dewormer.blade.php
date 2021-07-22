@@ -20,25 +20,25 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre del Desparacitante:</label>
-                        <input type="text" class="form-control" id="desp" name="dewormer_d" >
+                        <input type="text" class="form-control" id="desp" name="dewormer_d" value="{{old('dewormer_d')}}" >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>
-                        <input type="date" class="form-control" id="fecha_e" name="date_e">
+                        <input type="date" class="form-control" id="fecha_e" name="date_e" value="{{old('date_e')}}">
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Caducidad:</label>
-                        <input type="date" class="form-control" id="fecha_c" name="date_c">
+                        <input type="date" class="form-control" id="fecha_c" name="date_c" value="{{old('date_c')}}">
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier">
+                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{old('supplier')}}">
                     </div>  
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
-                        <select class="form-control" id="inputPassword4" name="actual_state">
-                            <option>Disponible</option>
-                            <option>Inactivo</option>
+                        <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                            <option value="Disponible">Disponible</option>
+                            <option value="Inactivo">Inactivo</option>
                          </select>
                     </div>     
                     <div class="form-group">

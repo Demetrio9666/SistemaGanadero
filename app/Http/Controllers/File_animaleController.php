@@ -18,7 +18,6 @@ class File_animaleController extends Controller
      */
     public function index()
     {
-        
         $animal = DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->join('location','file_animale.location_id','=','location.id')
@@ -40,8 +39,22 @@ class File_animaleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $raza =Race::all();
-        $ubicacion=Location::all();
+    {   $raza = DB::table('race')
+        ->select('race.id',
+                    'race.race_d',
+                    'race.percentage',
+                    'race.actual_state')
+                    ->where('race.actual_state','=','Disponible')
+                    ->get();
+
+         $ubicacion = DB::table('location')
+         ->select('location.id',
+                    'location.location_d',
+                    'location.description',
+                    'location.actual_state')
+                    ->where('location.actual_state','=','Disponible')
+                    ->get();
+
         return view('file_animale.create-animale',compact('raza','ubicacion'));
     }
 
@@ -94,8 +107,20 @@ class File_animaleController extends Controller
      */
     public function edit($id)
     {
-        $raza =Race::all();
-        $ubicacion=Location::all();
+        $raza = DB::table('race')
+        ->select('race.id',
+                    'race.race_d',
+                    'race.percentage',
+                    'race.actual_state')
+                    ->where('race.actual_state','=','Disponible')
+                    ->get();
+         $ubicacion = DB::table('location')
+         ->select('location.id',
+                    'location.location_d',
+                    'location.description',
+                    'location.actual_state')
+                    ->where('location.actual_state','=','Disponible')
+                    ->get();
         $animal = File_Animale::findOrFail($id);
         return view('file_animale.edit-animale', compact('animal','raza','ubicacion'));
     }

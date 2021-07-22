@@ -30,14 +30,10 @@ class File_treatmentController extends Controller
                  'vitamin.vitamin_d as vi',
                  'file_treatment.treatment',
                  'file_treatment.actual_state'
-                )
-                
+                )->where('file_treatment.actual_state','=','Disponible')    
                 
         ->get();
 
-
-        //$tra = File_treatment::all();
-    //return $tra;
       return view('file_treatment.index-treatment',compact('tra'));
     }
 
@@ -114,8 +110,23 @@ class File_treatmentController extends Controller
     public function edit($id)
     {
         $tra = File_treatment::findOrFail($id);
-        $anti = Antibiotic::all();
-        $vitamina = Vitamin::all();
+        $anti = DB::table('antibiotic')
+        ->select('antibiotic.id',
+                  'antibiotic.antibiotic_d',
+                  'antibiotic.date_e',
+                  'antibiotic.date_c',
+                  'antibiotic.supplier',
+                  'antibiotic.actual_state')
+                  ->where('antibiotic.actual_state','=','Disponible')
+       ->get();
+        $vitamina = DB::table('vitamin')
+        ->select('vitamin.id',
+        'vitamin.vitamin_d',
+        'vitamin.actual_state')
+        ->where('vitamin.actual_state','=','Disponible')
+        ->get();
+
+
         $animalT  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
@@ -125,9 +136,7 @@ class File_treatmentController extends Controller
                      'actual_state',
                      'health_condition',
                      'actual_state'
-
                   )
-                  
                   ->where('actual_state','=','Disponible')->Orwhere('actual_state','=','Reproduccion')
                   ->where('health_condition','=','Enfermo')
         ->get();
@@ -166,8 +175,6 @@ class File_treatmentController extends Controller
      */
     public function destroy($id)
     {
-        $tra = File_treatment::findOrFail($id);
-        $tra->delete();
-        return redirect('/fichaTratamiento')->with('eliminar','ok');
+       
     }
 }

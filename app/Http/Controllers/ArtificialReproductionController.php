@@ -25,7 +25,7 @@ class ArtificialReproductionController extends Controller
                     'artificial_reproduction.reproduccion',
                     'artificial_reproduction.supplier',
                     'artificial_reproduction.actual_state'
-                    )
+                    )->where('artificial_reproduction.actual_state','=','Disponible')
                     ->get();
 
         //$arti = Artificial_Reproduction::all();

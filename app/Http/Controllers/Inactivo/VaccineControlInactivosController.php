@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Inactivo;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Race;
+use App\Models\Vaccine;
+use App\Models\Vaccine_control;
+use App\Models\File_animale;
+
 
 class VaccineControlInactivosController extends Controller
 {
@@ -14,7 +20,19 @@ class VaccineControlInactivosController extends Controller
      */
     public function index()
     {
-        //
+        $vacunaC= DB::table('vaccine_control')
+        ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
+        ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
+        ->select('vaccine_control.id'
+                ,'vaccine_control.date'
+                ,'vaccine.vaccine_d as vacuna'
+                ,'file_animale.animalCode as animal',
+                'vaccine_control.date_r',
+                 'vaccine_control.actual_state'
+                )->where('vaccine_control.actual_state','=','disponible')
+        ->get();
+        
+ return view('vaccineC.index-inactivo',compact('vacunaC'));
     }
 
     /**
@@ -46,7 +64,7 @@ class VaccineControlInactivosController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('vaccineC.edit-inactivo',compact('id'));
     }
 
     /**
@@ -57,7 +75,21 @@ class VaccineControlInactivosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vacuna = DB::table('vaccine')
+        ->select('id','vaccine_d')
+        ->where('actual_state','=','Disponible')
+        ->get();
+        $vacunaC = Vaccine_control::findOrFail($id);
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode',
+                     'date',
+                     'age_month',
+                     'sex'
+                  )->where('actual_state','=','Disponible')
+                  
+        ->get();
+        return view('vaccineC.edit-inactivo', compact('vacunaC','vacuna','animal'));
     }
 
     /**
@@ -69,7 +101,10 @@ class VaccineControlInactivosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vacunaC = Vaccine_control::findOrFail($id);
+        $vacunaC->actual_state = $request->actual_state;
+        $vacunaC->save(); 
+        return redirect('inactivos/controlVacunas');
     }
 
     /**
@@ -80,6 +115,8 @@ class VaccineControlInactivosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vacunaC = Vaccine_control::findOrFail($id);
+        $vacunaC->delete();
+        return redirect('inactivos/controlVacunas')->with('eliminar','ok'); 
     }
 }

@@ -38,16 +38,10 @@ class File_reproductionMController extends Controller
                        'P.sex as sexo_m',
                        'P.age_month as edad_m',
                        'file_reproduction_internal.actual_state'
-                    
-
-                      )
+                      )->where('file_reproduction_internal.actual_state','=','Disponible')
                       
               ->get();
 
-              
-
-        
-        
         return view('file_reproductionM.index-reproduction',compact('re_MI'));
     }
 
@@ -58,7 +52,13 @@ class File_reproductionMController extends Controller
      */
     public function create()
     {
-        $raza =Race::all();
+        $raza = DB::table('race')
+        ->select('race.id',
+                    'race.race_d',
+                    'race.percentage',
+                    'race.actual_state')
+                    ->where('race.actual_state','=','Disponible')
+                    ->get();
         $animalRM= DB::table('file_animale')
                 ->join('race','file_animale.race_id','=','race.id')
                 ->select('file_animale.id',
@@ -119,7 +119,13 @@ class File_reproductionMController extends Controller
     public function edit($id)
     {
         $re =  File_reproduction_internal::findOrFail($id);
-        $raza =Race::all();
+        $raza = DB::table('race')
+        ->select('race.id',
+                    'race.race_d',
+                    'race.percentage',
+                    'race.actual_state')
+                    ->where('race.actual_state','=','Disponible')
+                    ->get();
         $animalRM= DB::table('file_animale')
                 ->join('race','file_animale.race_id','=','race.id')
                 ->select('file_animale.id',
@@ -171,8 +177,6 @@ class File_reproductionMController extends Controller
      */
     public function destroy($id)
     {
-        $re =  File_reproduction_internal::findOrFail($id);
-        $re->delete();
-        return redirect('/fichaReproduccionM')->with('eliminar','ok'); 
+        
     }
 }

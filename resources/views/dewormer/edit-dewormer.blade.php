@@ -1,14 +1,12 @@
-<head>
-    <link href="{{asset('css/app.css')}}">
+@extends('adminlte::page')
+ <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <title>Registration Form</title>
   </head>
   <body>
-    @extends('adminlte::page')
     @section('title')
     @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="/css/configuracion2.css">
     @endsection
     @section('content_header')
@@ -39,8 +37,8 @@
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state" value="{{$desp->actual_state}}">
-                            <option>Disponible</option>
-                            <option>Inactivo</option>
+                            <option value="Disponible" @if( $desp->actual_state == "Disponible") selected @endif>Disponible</option>
+                            <option value="Inactivo" @if( $desp->actual_state == "Inactivo") selected @endif>Inactivo</option>
                          </select>
                     </div>       
                     <div class="form-group">

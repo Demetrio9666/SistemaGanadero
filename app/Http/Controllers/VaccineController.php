@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vaccine;
 use App\Http\Requests\StoreVaccine;
+use Illuminate\Support\Facades\DB;
 
 class VaccineController extends Controller
 {
@@ -14,8 +15,17 @@ class VaccineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $vacuna = Vaccine::all();
+    {   
+        $vacuna = DB::table('vaccine')
+        ->select('id',
+                    'vaccine_d',
+                    'date_e',
+                    'date_c',
+                    'supplier',
+                    'actual_state')
+                    ->Where('actual_state','=','Disponible')
+        ->get();
+        
         return view('vaccine.index-vaccine',compact('vacuna'));
     }
 
@@ -101,8 +111,6 @@ class VaccineController extends Controller
      */
     public function destroy($id)
     {
-        $vacuna = Vaccine::findOrFail($id);
-        $vacuna->delete();
-        return redirect('/confVacuna')->with('eliminar','ok'); 
+        
     }
 }

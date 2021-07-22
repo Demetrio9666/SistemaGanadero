@@ -27,6 +27,7 @@ class Deworming_controlController extends Controller
                          'dewormer.dewormer_d as des',
                          'deworming_control.date_r',
                          'deworming_control.actual_state')
+                         ->where('deworming_control.actual_state','=','Disponible')
                 ->get();
         return view('dewormerC.index-dewormerC',compact('desC'));
         //return $desC;

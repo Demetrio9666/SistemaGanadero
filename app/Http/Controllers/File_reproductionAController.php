@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\File_animale;
@@ -8,8 +9,6 @@ use App\Models\Race;
 use App\Models\File_reproduction_artificial;
 use App\Models\Artificial_Reproduction;
 use App\Http\Requests\StoreFile_reproductionA;
-
-
 
 class File_reproductionAController extends Controller
 {
@@ -20,7 +19,13 @@ class File_reproductionAController extends Controller
      */
     public function index()
     {
-        $raza =Race::all();
+        $raza = DB::table('race')
+                ->select('race.id',
+                'race.race_d',
+                'race.percentage',
+                'race.actual_state')
+                ->where('race.actual_state','=','Disponible')
+        ->get();
         $re_A = DB::table('file_reproduction_artificial')
         ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
         ->join('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
@@ -34,6 +39,7 @@ class File_reproductionAController extends Controller
                 'a.race_d as raza_m',
                 'file_reproduction_artificial.actual_state'
                 )
+                ->where('file_reproduction_artificial.actual_state','=','Disponible')
                 
         ->get(); 
   // dd($re_A);
@@ -57,8 +63,18 @@ class File_reproductionAController extends Controller
                 'file_animale.sex')
                
                 ->where('file_animale.stage','=','Vaca')
+                ->where('file_animale.actual_state','=','Disponible')
                 ->get();
-        $raza =Race::all();
+
+        $raza = DB::table('race')
+                        ->select('race.id',
+                        'race.race_d',
+                        'race.percentage',
+                        'race.actual_state')
+                        ->where('race.actual_state','=','Disponible')
+                ->get();
+
+
         $re_A = DB::table('file_reproduction_artificial')
         ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
         ->join('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
@@ -70,7 +86,7 @@ class File_reproductionAController extends Controller
                 'f.race_d as raza_h',  
                 'artificial_reproduction.reproduccion as tipo', 
                 'a.race_d as raza_m'
-                )
+                )->where('file_reproduction_artificial.actual_state','=','Disponible')
         ->get(); 
         $arti= DB::table('artificial_Reproduction')
         ->join('race','artificial_Reproduction.race_id','=','race.id')
@@ -78,7 +94,7 @@ class File_reproductionAController extends Controller
         'race.race_d',
         'artificial_Reproduction.reproduccion',
         'artificial_Reproduction.supplier'
-        )
+        )->where('artificial_Reproduction.actual_state','=','Disponible')
         ->get();  
 
        
@@ -188,8 +204,6 @@ class File_reproductionAController extends Controller
      */
     public function destroy($id)
     {
-        $re =  File_reproduction_artificial::findOrFail($id);
-        $re->delete();
-        return redirect('/fichaReproduccionA')->with('eliminar','ok'); 
+       
     }
 }

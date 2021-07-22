@@ -3,11 +3,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     @section('css')
-            <link href="{{asset('css/app.css')}}">
-            <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
+
+
             <link rel="stylesheet" type="text/css" href="/css/registroR.css">
-            <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
-            <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+
     @endsection
     <title>Registration Form</title>
 </head>
@@ -71,7 +70,7 @@
                         
                         <div class="card">
                             <div class="card-body">
-                              <table id="table2" class="table table-striped table-bordered" style="width:100%">
+                              <table id="tabla" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>#</th> 
@@ -118,69 +117,11 @@
     
     @endsection
     @section('js')
-    
-        <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
-        <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
-        <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
-        <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
-        <script src="{{asset('js/dataTables.sweetalert2@11.min.js')}}"></script>
-    
     <script>
         $('#modalanimal').on('shown.bs.modal', function () {
         $('#myInput2').trigger('focus')
       });
 
-      
-         $('#table1').DataTable({
-           responsive: true,
-    
-           "language": {
-                "lengthMenu": "Mostrar "+
-                `<select class="custom-select custom-selec-s form-control form-control-s">
-                        <option value = '10' >10</option> 
-                        <option  value = '25' >25</option>
-                        <option  value = '50' >50</option>
-                        <option  value = '100' >100</option>
-                        <option  value =  '-1'>All</option>
-                </select>`
-                +" Registro por Pagina",
-                "zeroRecords": "Resultados No encontrados -Disculpe",
-                "info": "Mostrando la página _PAGE_ de _PAGES_",
-                "infoEmpty": "No records available",
-                "infoFiltered": "(Filtrado de  _MAX_ Registros Totales)",
-                'search': "Buscar:",
-                'paginate':{
-                    'next':'Siguiente',
-                    'previous':'Anterior'
-                }
-            }
-         });
-
-         $('#table2').DataTable({
-           responsive: true,
-    
-           "language": {
-                "lengthMenu": "Mostrar "+
-                `<select class="custom-select custom-selec-s form-control form-control-s">
-                        <option value = '10' >10</option> 
-                        <option  value = '25' >25</option>
-                        <option  value = '50' >50</option>
-                        <option  value = '100' >100</option>
-                        <option  value =  '-1'>All</option>
-                </select>`
-                +" Registro por Pagina",
-                "zeroRecords": "Resultados No encontrados -Disculpe",
-                "info": "Mostrando la página _PAGE_ de _PAGES_",
-                "infoEmpty": "No records available",
-                "infoFiltered": "(Filtrado de  _MAX_ Registros Totales)",
-                'search': "Buscar:",
-                'paginate':{
-                    'next':'Siguiente',
-                    'previous':'Anterior'
-                }
-            }
-         });
            $(".btselect").on('click',function(){
                 var currentRow = $(this).closest("tr");
                 var col1=currentRow.find("td:eq(0)").text();

@@ -89,8 +89,8 @@
                     </div>
 
                     <div class="form-group" style="margin: 50px">
-                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/fichaReproduccionEx')}}">Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/fichaReproduccionEx') }}" >Guardar</button>
+                        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('inactivos/fichaReproduccionEx')}}">Cancelar</a>
+                        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('inactivos/fichaReproduccionEx') }}" >Guardar</button>
                     </div>
                 </form>
             </div>

@@ -1,5 +1,5 @@
 <body>
-    <div class="modal fade" id="modalanimal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="modalanimalEx" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--modal-dialog modal-dialog-centered se cambiael tamaño   -->
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -10,13 +10,13 @@
               </button>
             </div>
             <div class="modal-body" style="width:100%">
-                <?php echo $__env->make('tablas.tablaAnimalesP', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                <?php echo $__env->make('tablas.tablaAnimalesEX', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
             <!--div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Guardar</button>
             </div-->
           </div>
-        </div>
+           </div>
              
       </div>
-  </body><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/modal/modalAnimalesP.blade.php ENDPATH**/ ?>
+  </body><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/modal/modalAnimalesEX.blade.php ENDPATH**/ ?>

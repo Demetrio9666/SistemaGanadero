@@ -30,9 +30,11 @@
                     <td >{{$i->race_d}}</td>
                     <td>{{$i->percentage}}</td>
                     <td >{{$i->actual_state}}</td>
+
                     <td>
                         <a class="btn btn-primary" href="{{route('confRaza.edit',$i->id)}}" ><i class="fas fa-edit"></i></a> 
                     </td>  
+                    
                 </tr>
                 @endforeach
             </tbody>
