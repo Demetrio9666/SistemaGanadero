@@ -10,7 +10,7 @@
               </button>
             </div>
             <div class="modal-body" style="width:100%">
-                <?php echo $__env->make('tablas.tablaAnimales', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                <?php echo $__env->make('tablas.tablaAnimalesR', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
             <!--div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Guardar</button>
@@ -19,4 +19,4 @@
            </div>
              
       </div>
-  </body><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/modal/modalAnimales.blade.php ENDPATH**/ ?>
+  </body><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/modal/modalAnimalesR.blade.php ENDPATH**/ ?>

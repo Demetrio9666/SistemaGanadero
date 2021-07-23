@@ -14,46 +14,47 @@ class DewormerSeeder extends Seeder
     public function run()
     {
         Dewormer::create([
-            'dewormer_d'=>'Benzimidazoles',
+           
+            'dewormer_d'=>'BENZIMIDAZOLES',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANYKAS',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Dewormer::create([
             'dewormer_d'=>'ECTOSIN',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANYKAS',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Dewormer::create([
             'dewormer_d'=>'MAGAP',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANYKAS',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Dewormer::create([
-            'dewormer_d'=>'Benzimi',
+            'dewormer_d'=>'BENZIMI',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANYKAS',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Dewormer::create([
-            'dewormer_d'=>'Dazoles',
+            'dewormer_d'=>'DAZOLES',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Inactivo',
+            'supplier'=>'ANYKAS',
+            'actual_state'=>'INACTIVO',
         ]);
         Dewormer::create([
-            'dewormer_d'=>'Zimidazoles',
+            'dewormer_d'=>'IMIDAZOLES',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANYKAS',
+            'actual_state'=>'DISPONIBLE',
         ]);
     }
 }

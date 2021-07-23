@@ -38,8 +38,8 @@
                         <select class="form-control" id="inputPassword4"  name="reproduccion"   value="{{$arti->reproduccion}}">
                         
                            <option selected></option>
-                           <option value ="Pajuela" @if( $arti->reproduccion == "Pajuela") selected @endif>Pajuela</option>
-                           <option value ="Hembrional" @if($arti->reproduccion == "Hembrional")selected @endif >Hembrional</option>
+                           <option value ="PAJUELA" @if( $arti->reproduccion == "PAJUELA") selected @endif>PAJUELA</option>
+                           <option value ="HEMBRIONAL" @if($arti->reproduccion == "HEMBRIONAL")selected @endif >HEMBRIONAL</option>
                             
                       </select>
                     </div>  
@@ -50,8 +50,8 @@
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state" value="{{$arti->actual_state}}">
-                            <option value="Disponible" @if( $arti->actual_state == "Disponible") selected @endif>Disponible</option>
-                            <option value="Inactivo" @if( $arti->actual_state == "Inactivo") selected @endif>Inactivo</option>
+                            <option value="DISPONIBLE" @if( $arti->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                            <option value="INACTIVO" @if( $arti->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
                          </select>
                     </div> 
                     <div class="form-group">

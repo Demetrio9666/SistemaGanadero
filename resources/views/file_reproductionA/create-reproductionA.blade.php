@@ -28,7 +28,7 @@
                         <div class="input-group mb-3">
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                 <span class="input-group-text" id="basic-addon1">Codigo</span>
-                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
+                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled  value="{{old('codigo_animal')}}">
 
                                 <span class="input-group-text" id="basic-addon1">Raza</span>
                                 <input type="text"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled >
@@ -37,11 +37,11 @@
                     
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Edad:</label>
-                                    <input type="text" class="form-control" id="edad" name="age_month" disabled=disabled >
+                                    <input type="text" class="form-control" id="edad" name="age_month" disabled=disabled  value="{{old('edad')}}">
                                 </div>
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Sexo:</label>
-                                    <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled>
+                                    <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled  value="{{old('sexo')}}">
                                 </div>
                         </div>
 
@@ -54,17 +54,17 @@
                                 <input type="hidden" id="idcodi_ar" name="artificial_id">
                                 <div class="col-md-6">
                                         <label>Raza:</label>
-                                        <input type="text" class="form-control" disabled=disabled id="raza3">
+                                        <input type="text" class="form-control" disabled=disabled id="raza3" value="{{old('raza3')}}">
                                 </div>
 
                                 <div class="col-md-6">
                                         <label>Tipo de Material Genetico:</label>
-                                        <input type="text" class="form-control" disabled=disabled id="material3">
+                                        <input type="text" class="form-control" disabled=disabled id="material3" value="{{old('material3')}}">
                                 </div>
 
                                 <div class="col-md-6">
                                         <label>Nombre del Proveedor:</label>
-                                        <input type="text" class="form-control" disabled=disabled id="proveedor3">
+                                        <input type="text" class="form-control" disabled=disabled id="proveedor3" value="{{old('proveedor3')}}">
                                 </div>
                         </div>
                         
@@ -98,9 +98,9 @@
                 
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option>Disponible</option>
-                        <option>Inactivo</option>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                        <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                        <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                      </select>
                 </div>
                 <div class="col-md-8-self-center" style="margin: 80px" >

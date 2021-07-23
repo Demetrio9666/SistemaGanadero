@@ -135,7 +135,7 @@ return view('file_reproductionA.index-inactivo',compact('re_A'));
         $re =  File_reproduction_artificial::findOrFail($id);
         $re->actual_state = $request->actual_state;
         $re->save(); 
-        return redirect('inactivos/Razas');
+        return redirect('inactivos/fichaReproduccionA');
     }
 
     /**

@@ -20,35 +20,35 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Fecha de Registro:</label>
-                        <input type="date" class="form-control" id="fecha_r" name="date" >
+                        <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}">
                     </div>
                     <div class="form-group">
                         <label for="">Raza:</label>
-                        <select class="form-control" id="razas" name="race_id">
+                        <select class="form-control" id="razas" name="race_id" value="{{old('race_id')}}">
                             <option selected></option>
                             @foreach ( $razas as $i )   
-                                <option value="{{$i->id}}">{{$i->race_d}}</option>
+                                <option value="{{$i->id}}" @if(old('race_id') == $i->id) {{'selected'}} @endif>{{$i->race_d}}</option>
                             @endforeach
                         </select>
     
                     </div>
                     <div class="form-group">
                         <label for="">Tipo de Material Genetico:</label>
-                        <select class="form-control" id="inputPassword4"  name="reproduccion">
+                        <select class="form-control" id="inputPassword4"  name="reproduccion" value="{{old('reproduccion')}}">
                             <option selected></option>
-                            <option>Pajuela</option>
-                            <option>Hembrional</option>
+                            <option value="PAJUELA" @if(old('reproduccion') == "PAJUELA") {{'selected'}} @endif>PAJUELA</option>
+                            <option value="HEMBRIONAL @if(old('reproduccion') == "HEMBRIONAL") {{'selected'}} @endif">HEMBRIONAL</option>
                       </select>
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier">
+                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{old('supplier')}}">
                     </div> 
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
-                        <select class="form-control" id="inputPassword4" name="actual_state">
-                            <option>Disponible</option>
-                            <option>Inactivo</option>
+                        <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                            <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                            <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                          </select>
                     </div>      
                     <div class="form-group">

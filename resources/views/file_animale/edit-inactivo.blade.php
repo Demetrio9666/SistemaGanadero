@@ -43,27 +43,27 @@
                     <label for="">Sexo:</label>
                     <select class="form-control" id="inputPassword4" name="sexo" value="{{$animal->sex}}" disabled=disabled>
                         <option selected></option>
-                        <option  value="Macho"   @if($animal->sex == "Macho" ) selected @endif>Macho</option>
-                        <option value="Hembra"   @if($animal->sex == "Hembra" ) selected @endif>Hembra</option>
+                        <option value="MACHO"   @if($animal->sex == "MACHO" ) selected @endif>MACHO</option>
+                        <option value="HEMBRA"   @if($animal->sex == "HEMBRA" ) selected @endif>HEMBRA</option>
                   </select>
                 </div> 
                 <div  class="col-md-6">
                     <label for="">Etapa:</label>
                     <select class="form-control" id="inputPassword4" name="etapa"  value="{{$animal->stage}}" disabled=disabled>
                         <option selected></option>
-                        <option value="Vaca"   @if($animal->stage == "Vaca" ) selected @endif>Vaca</option>
-                        <option value="Toro"   @if($animal->stage == "Toro" ) selected @endif>Toro</option>
-                        <option value="Ternero"   @if($animal->stage == "Ternero" ) selected @endif>Ternero</option>
-                        <option value="Vaquilla"   @if($animal->stage == "Vaquilla" ) selected @endif>Vaquilla</option>
-                        <option value="Novillo"   @if($animal->stage == "Novillo" ) selected @endif>Novillo</option>
+                        <option value="VACA"   @if($animal->stage == "VACA" ) selected @endif>VACA</option>
+                        <option value="TORO"   @if($animal->stage == "TORO" ) selected @endif>TORO</option>
+                        <option value="TERNERO"   @if($animal->stage == "TERNERO" ) selected @endif>TERNERO</option>
+                        <option value="VAQUILLA"   @if($animal->stage == "VAQUILLA" ) selected @endif>VAQUILLA</option>
+                        <option value="NOVILLO"   @if($animal->stage == "NOVILLO" ) selected @endif>NOVILLO</option>
                   </select>
                 </div>
                 <div  class="col-md-6">
                     <label for="">Origen:</label>
                     <select class="form-control" id="inputPassword4" name="origen" value="{{$animal->source}}" disabled=disabled>
                         <option selected></option>
-                        <option value="Nacido"   @if($animal->source == "Nacido" ) selected @endif>Nacido</option>
-                        <option value="Comprado"   @if($animal->source == "Comprado" ) selected @endif>Comprado</option>
+                        <option value="NACIDO"   @if($animal->source == "NACIDO" ) selected @endif>NACIDO</option>
+                        <option value="COMPRADO"   @if($animal->source == "COMPRADO" ) selected @endif>COMPRADO</option>
                   </select>
                 </div>
                 <div  class="col-md-6">
@@ -74,16 +74,16 @@
                     <label for="">Estado de Salud:</label>
                     <select class="form-control" id="inputPassword4" name="estado_de_salud" value="{{$animal->health_condition}}" disabled=disabled>
                         <option selected></option>
-                        <option value="Sano"   @if($animal->health_condition == "Sano" ) selected @endif>Sano</option>
-                        <option value="Enfermo"   @if($animal->health_condition == "Enfermo" ) selected @endif>Enfermo</option>
+                        <option value="SANO"   @if($animal->health_condition == "SANO" ) selected @endif>SANO</option>
+                        <option value="ENFERMO"   @if($animal->health_condition == "ENFERMO" ) selected @endif>ENFERMO</option>
                   </select>
                 </div>
                 <div  class="col-md-6">
                     <label for="">Embarazo:</label>
                     <select class="form-control" id="inputPassword4" name="estado_de_gestacion" value="{{$animal->gestation_state}}" disabled=disabled>
                         <option selected></option>
-                        <option value="Si"  @if($animal->gestation_state == "Si" ) selected @endif>Si</option>
-                        <option value="No"  @if($animal->gestation_state == "No" ) selected @endif>No</option>
+                        <option value="SI"  @if($animal->gestation_state == "SI" ) selected @endif>SI</option>
+                        <option value="NO"  @if($animal->gestation_state == "NO" ) selected @endif>NO</option>
                   </select>
                 </div>
 
@@ -102,9 +102,9 @@
                     <label for="">Concebedido:</label>
                     <select class="form-control" id="inputPassword4" name="concebido" value="{{$animal->conceived}}" disabled=disabled>
                         <option selected></option>
-                        <option value="Monta"   @if( $animal->conceived == "Monta") selected @endif >Monta</option>
-                        <option value="Insiminacion Artificial"   @if( $animal->conceived == "Insiminacion Artificial") selected @endif>Insiminacion Artificial</option>
-                        <option value="Embrional"   @if( $animal->conceived == "Embrional") selected @endif>Embrional</option>
+                        <option value="MONTA"   @if( $animal->conceived == "MONTA") selected @endif >MONTA</option>
+                        <option value="INSIMINACIÓN ARTIFICIAL"   @if( $animal->conceived == "INSIMINACIÓN ARTIFICIAL") selected @endif>INSIMINACIÓN ARTIFICIAL</option>
+                        <option value="EMBRIONAL"   @if( $animal->conceived == "EMBRIONAL") selected @endif>EMBRIONAL</option>
                   </select>
                 </div>
 
@@ -112,10 +112,10 @@
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{$animal->actual_state}}">
                         <option selected></option>
-                        <option value="Disponible" @if($animal->actual_state == "Disponible" ) selected @endif>Disponible</option>
-                        <option value="Vendido"    @if($animal->actual_state == "Vendido" ) selected @endif>Vendido</option>
-                        <option value="Inactivo"   @if($animal->actual_state == "Inactivo" ) selected @endif>Inactivo</option>
-                        <option value="Reproduccion"  @if($animal->actual_state == "Reproduccion" ) selected @endif>Reproduccion</option>
+                        <option value="DISPONIBLE" @if($animal->actual_state == "DISPONIBLE" ) selected @endif>DISPONIBLE</option>
+                        <option value="VENDIDO"    @if($animal->actual_state == "VENDIDO" ) selected @endif>VENDIDO</option>
+                        <option value="INACTIVO"   @if($animal->actual_state == "INACTIVO" ) selected @endif>INACTIVO</option>
+                        <option value="REPRODUCIÓN"  @if($animal->actual_state == "REPRODUCIÓN" ) selected @endif>REPRODUCIÓN</option>
                   </select>
                 </div>
                 <div class="col-md-6-self-center" style="margin: 80px">

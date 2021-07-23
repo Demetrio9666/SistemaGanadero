@@ -36,11 +36,11 @@
                         
                             <div  class="col-md-6">
                                 <label for="" class="form-label">Edad:</label>
-                                <input type="text" class="form-control" id="edad" name="age_month" disabled=disabled >
+                                <input type="text" class="form-control" id="edad" name="age_month" disabled=disabled value="{{old('edad')}}">
                             </div>
                             <div  class="col-md-6">
                                 <label for="" class="form-label">Sexo:</label>
-                                <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled>
+                                <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled value="{{old('sex')}}">
                             </div>
     
                             </div>
@@ -52,39 +52,39 @@
                     </div>
                     <div class="col-md-6">
                         <label for="">Raza:</label>
-                        <select class="form-control" id="razas" name="race_id">
+                        <select class="form-control" id="razas" name="race_id" value="{{old('race_id')}}">
                                 <option></option>
                             @foreach ( $raza as $i )   
-                                <option value="{{$i->id}}">{{$i->race_d}}</option>
+                                <option value="{{$i->id}}" @if(old('race_id') == $i->id) {{'selected'}} @endif>{{$i->race_d}}</option>
                             @endforeach
                         </select>
 
                     </div> 
                     <div class="form-group">
                         <label for="">Edad-meses:</label>
-                        <input type="int" class="form-control" name="age_month">
+                        <input type="int" class="form-control" name="age_month" value="{{old('age_month')}}">
                     </div>  
                     
                     <div class="form-group">
                         <label for="">Sexo</label>
-                        <select class="form-control" id="razas"  name="sex">
+                        <select class="form-control" id="razas"  name="sex" value="{{old('sex')}}">
                             <option></option>
-                            <option value="Hembra">Hembra</option>
-                            <option value="Macho">Macho</option>
+                            <option value="HEMBRA" @if(old('sex') == "HEMBRA") {{'selected'}} @endif>HEMBRA</option>
+                            <option value="MACHO" @if(old('sex') == "MACHO") {{'selected'}} @endif>MACHO</option>
                         </select>
                         
                     </div>       
 
                     <div class="form-group">
                         <label for="">Nombre de la Hacienda:</label>
-                        <input type="text" class="form-control"  name="hacienda_name">
+                        <input type="text" class="form-control"  name="hacienda_name" value="{{old('hacienda_name')}}">
                     </div>
 
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
-                        <select class="form-control" id="inputPassword4" name="actual_state">
-                            <option>Disponible</option>
-                            <option>Inactivo</option>
+                        <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                            <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                            <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                          </select>
                     </div>
 

@@ -20,17 +20,17 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre de la ubicación:</label>
-                        <input type="text" class="form-control" id="location_d" name="location_d" >
+                        <input type="text" class="form-control" id="location_d" name="location_d" value="{{old('location_d')}}">
                     </div>
                     <div class="form-group">
                         <label for="">Descripción:</label>
-                        <input type="int" class="form-control" id="descripcion" name="description">
+                        <input type="int" class="form-control" id="descripcion" name="description" value="{{old('description')}}">
                     </div> 
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
-                        <select class="form-control" id="inputPassword4" name="actual_state">
-                            <option>Disponible</option>
-                            <option>Inactivo</option>
+                        <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                            <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                            <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                          </select>
                     </div>    
                     <div class="form-group">

@@ -95,8 +95,8 @@
                         <label for="">Sexo</label>
                         <select class="form-control" id="razas"  name="sex" value="<?php echo e($ext->sex); ?>" disabled=disabled >
                             <option>Seleccione</option>
-                            <option value="Hembra" <?php if($ext->sex == "Hembra"): ?> selected <?php endif; ?>>Hembra</option>
-                            <option value="Macho" <?php if($ext->sex == "Macho"): ?> selected <?php endif; ?>>Macho</option>
+                            <option value="HEMBRA" <?php if($ext->sex == "HEMBRA"): ?> selected <?php endif; ?>>HEMBRA</option>
+                            <option value="MACHO" <?php if($ext->sex == "MACHO"): ?> selected <?php endif; ?>>MACHO</option>
                         </select>
                     </div>   
 
@@ -108,8 +108,8 @@
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state"  value="<?php echo e($ext->actual_state); ?>">
-                            <option value="Disponible" <?php if( $ext->actual_state == "Disponible"): ?> selected <?php endif; ?>>Disponible</option>
-                            <option value="Inactivo" <?php if( $ext->actual_state == "Inactivo"): ?> selected <?php endif; ?>>Inactivo</option>
+                            <option value="DISPONIBLE" <?php if( $ext->actual_state == "DISPONIBLE"): ?> selected <?php endif; ?>>DISPONIBLE</option>
+                            <option value="INACTIVO" <?php if( $ext->actual_state == "INACTIVO"): ?> selected <?php endif; ?>>INACTIVO</option>
                          </select>
                     </div> 
                     

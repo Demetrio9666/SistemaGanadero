@@ -41,20 +41,20 @@
                                     <label for="">Sexo:</label>
                                     <select class="form-control" id="opsexo" name="sexo"  value="{{old('sexo')}}" onChange="mostrar(this.value)">
                                         <option selected></option>
-                                        <option id ="Macho" value="Macho"  @if(old('sexo') == "Macho") {{'selected'}} @endif>Macho</option>
-                                        <option id="Hembra" value="Hembra" @if(old('sexo') == "Hembra") {{'selected'}} @endif>Hembra</option>
+                                        <option id ="MACHO" value="MACHO"  @if(old('sexo') == "MACHO") {{'selected'}} @endif>MACHO</option>
+                                        <option id="HEMBRA" value="HEMBRA" @if(old('sexo') == "HEMBRA") {{'selected'}} @endif>HEMBRA</option>
                                 </select>
                                 </div> 
                                 <div  class="col-md-6">
                                     <label for="">Etapa de vida:</label>
-                                    <select class="form-control" id="opetapa" name="etapa"  value="{{old('etapa')}}"  >
-                                        <option selected></option>
-                                        <option id ="T" value="Ternero" @if(old('etapa') == "Ternero") {{'selected'}}@endif style="display: none;">Ternero</option>
-                                        <option  id ="V" value="Vaca" @if(old('etapa') == "Vaca") {{'selected'}} @endif style="display: none;">Vaca</option>
-                                        <option id ="VA" value="Vaconilla"@if(old('etapa') == "Vaconilla") {{'selected'}}@endif style="display: none;">Vaconilla</option>
-                                        <option  id ="VACO" value="Vacona"@if(old('etapa') == "Vacona") {{'selected'}}@endif style="display: none;">Vacona</option>
-                                        <option id ="TO"value="Toro" @if(old('etapa') == "Toro") {{'selected'}} @endif style="display: none;" >Toro</option>
-                                        <option id="TORE" value="Torete"@if(old('etapa') == "Torete") {{'selected'}}@endif style="display: none;">Torete</option>
+                                    <select class="form-control" id="opetapa" name="etapa"  value="{{old('etapa')}}" onChange="validarSexo(this.value)" >
+                                        <option  selected ></option>
+                                        <option id ="T" value="TERNERO" @if(old('etapa') == "TERNERO") {{'selected'}}@endif style="display: none;">TERNERO</option>
+                                        <option id ="VA" value="VACONILLA"@if(old('etapa') == "VACONILLA") {{'selected'}}@endif style="display: none;">VACONILLA</option>
+                                        <option  id ="VACO" value="VACONA"@if(old('etapa') == "VACONA") {{'selected'}}@endif style="display: none;">VACONA</option>
+                                        <option  id ="V" value="VACA" @if(old('etapa') == "VACA") {{'selected'}} @endif style="display: none;">VACA</option>
+                                        <option id="TORE" value="TORETE"@if(old('etapa') == "TORETE") {{'selected'}}@endif style="display: none;">TORETE</option>
+                                        <option id ="TO"value="TORO" @if(old('etapa') == "TORO") {{'selected'}} @endif style="display: none;" >TORO</option>
                                 </select>
                                 </div>
                                
@@ -62,22 +62,22 @@
                                     <label for="">Origen:</label>
                                     <select class="form-control" id="origen" name="origen"  value="{{old('origen')}}">
                                         <option selected></option>
-                                        <option value="Nacido"@if(old('origen') == "Nacido") {{'selected'}}@endif>Nacido</option>
-                                        <option value="Comprado"@if(old('origen') == "Comprado") {{'selected'}}@endif>Comprado</option>
+                                        <option value="NACIDO"@if(old('origen') == "NACIDO") {{'selected'}}@endif>NACIDO</option>
+                                        <option value="COMPRADO"@if(old('origen') == "COMPRADO") {{'selected'}}@endif>COMPRADO</option>
                                 </select>
                                 </div>
                                
                                 <div  class="col-md-6">
                                     <label for="">Edad-Meses:</label>
-                                    <input type="int" class="form-control" id="edad" name="edad"  value="{{old('edad')}}" onChange="ValidarEdad(this.value)">
+                                    <input type="int" class="form-control" id="edad" name="edad"  value="{{old('edad')}}" onChange="ValidarEdad(this.value)" onChange="ValidarReEdad(this.value)">
                                 </div>
                               
                                 <div  class="col-md-6">
                                     <label for="">Estado de Salud:</label>
                                     <select class="form-control" id="salud" name="estado_de_salud"  value="{{old('estado_de_salud')}}">
                                         <option selected></option>
-                                        <option value="Sano"@if(old('estado_de_salud') == "Sano") {{'selected'}}@endif>Sano</option>
-                                        <option value="Enfermo"@if(old('estado_de_salud') == "Enfermo") {{'selected'}}@endif>Enfermo</option>
+                                        <option value="SANO"@if(old('estado_de_salud') == "SANO") {{'selected'}}@endif>SANO</option>
+                                        <option value="ENFERMO"@if(old('estado_de_salud') == "ENFERMO") {{'selected'}}@endif>ENFERMO</option>
                                 </select>
                                 </div>
                                
@@ -85,8 +85,8 @@
                                     <label for="">Embarazo:</label>
                                     <select class="form-control" id="embarazo" name="estado_de_gestacion"  value="{{old('estado_de_gestacion')}}">
                                         <option selected></option>
-                                        <option id="SI" value="Si"@if(old('estado_de_gestacion') == "Si") {{'selected'}}@endif style="display: none;">Si</option>
-                                        <option id="NO" value="No"@if(old('estado_de_gestacion') == "No") {{'selected'}}@endif style="display: none;">No</option>
+                                        <option id="SI" value="SI"@if(old('estado_de_gestacion') == "SI") {{'selected'}}@endif style="display: none;">SI</option>
+                                        <option id="NO" value="NO"@if(old('estado_de_gestacion') == "NO") {{'selected'}}@endif style="display: none;">NO</option>
                                 </select>
                                 </div>
                                
@@ -105,19 +105,19 @@
                                     <label for="">Concebedido o creado:</label>
                                     <select class="form-control" id="concedido" name="concebido" value="{{old('concebido')}}">
                                         <option selected></option>
-                                        <option value="Monta"@if(old('concebido') == "Monta") {{'selected'}} @endif>Monta</option>
-                                        <option value="Insiminacion Artificial"@if(old('concebido') == "Insiminacion Artificial") {{'selected'}} @endif>Insiminacion Artificial</option>
-                                        <option value="Embrional" @if(old('concebido') == "Embrional") {{'selected'}} @endif>Embrional</option>
+                                        <option value="MONTA"@if(old('concebido') == "MONTA") {{'selected'}} @endif>MONTA</option>
+                                        <option value="INSIMINACIÓN ARTIFICIAL"@if(old('concebido') == "INSIMINACIÓN ARTIFICIAL") {{'selected'}} @endif>INSIMINACIÓN ARTIFICIAL</option>
+                                        <option value="EMBRIONAL" @if(old('concebido') == "EMBRIONAL") {{'selected'}} @endif>EMBRIONAL</option>
                                 </select>
                                 </div>
                               
                                 <div  class="col-md-6">
                                     <label for="">Estado Actual:</label>
                                     <select class="form-control" id="estado" name="actual_state" value="{{old('actual_state')}}">
-                                        <option value="Disponible"@if(old('actual_state') == "Disponible") {{'selected'}} @endif>Disponible</option>
-                                        <option value="Vendido"@if(old('actual_state') == "Vendido") {{'selected'}} @endif>Vendido</option>
-                                        <option value="Reproduccion"@if(old('actual_state') == "Reproduccion") {{'selected'}} @endif>Reproduccion</option>
-                                        <option value="Inactivo"@if(old('actual_state') == "Inactivo") {{'selected'}} @endif>Inactivo</option>
+                                        <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                                        <option value="VENDIDO"@if(old('actual_state') == "VENDIDO") {{'selected'}} @endif>VENDIDO</option>
+                                        <option value="REPRODUCCIÓN"@if(old('actual_state') == "REPRODUCCIÓN") {{'selected'}} @endif>REPRODUCCIÓN</option>
+                                        <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                                 </select>
                                 </div>
                                 
@@ -138,7 +138,7 @@
 <script>
 
 function mostrar(id) {
-    if (id == "Hembra") {
+    if (id == "HEMBRA") {
         $("#T").show();
         $("#V").show();
         $("#VA").show();
@@ -163,8 +163,8 @@ function ValidarEdad(id){
     sexo = document.getElementById("opsexo").value;
     etapa = document.getElementById("opetapa").value;
     
-    if(sexo == "Macho"){
-        if(etapa == "Ternero"){
+    if(sexo == "MACHO"){
+        if(etapa == "TERNERO"){
             if(id < 0 ||  id  > 3){
                 
                 Swal.fire({
@@ -179,7 +179,7 @@ function ValidarEdad(id){
             else{
                 return true;
             }
-        }else if(etapa == "Torete"){
+        }else if(etapa == "TORETE"){
             if(id < 4 ||  id > 20){
                 Swal.fire({
                         icon: 'error',
@@ -195,12 +195,12 @@ function ValidarEdad(id){
                 return true;
             }
 
-        }else if(etapa == "Toro"){
+        }else if(etapa == "TORO"){
             if(id < 21 || id >600 ){
                 Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'TORO  RANGO DE EDAD ES 20 EN ADELANTE ',
+                        text: 'TORO  RANGO DE EDAD ES 20 MESES EN ADELANTE ',
                         
                     }) 
                
@@ -215,8 +215,8 @@ function ValidarEdad(id){
             return false;
         }
 
-    }else if (sexo == "Hembra"){
-        if(etapa == "Ternero"){
+    }else if (sexo == "HEMBRA"){
+        if(etapa == "TERNERO"){
             if(id < 0  ||  id > 10){
                 Swal.fire({
                         icon: 'error',
@@ -230,7 +230,7 @@ function ValidarEdad(id){
             }else{
                 return true;
             }
-        }else if(etapa == "Vaconilla"){
+        }else if(etapa == "VACONILLA"){
             if(id < 11  || id > 22){
                 Swal.fire({
                         icon: 'error',
@@ -246,7 +246,7 @@ function ValidarEdad(id){
                 return true;
             }
 
-        }else if(etapa == "Vacona"){
+        }else if(etapa == "VACONA"){
             if(id < 23  || id > 36){
                 Swal.fire({
                         icon: 'error',
@@ -262,12 +262,12 @@ function ValidarEdad(id){
                 return true;
             }
 
-        }else if(etapa == "Vaca"){
+        }else if(etapa == "VACA"){
             if(id  < 37 || id >600){
                 Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'VACA  RANGO DE EDAD ES 36 EN ADELANTE ',
+                        text: 'VACA  RANGO DE EDAD ES 36 MESES EN ADELANTE ',
                         
                     }) 
                
@@ -285,47 +285,12 @@ function ValidarEdad(id){
 
 
     }
+
 }
-
-
- $("#btguardar").on('click',function(){
-        if( $("#codigoAnimal").val() == "" ){
-            Swal.fire({
-                    position: 'top-center',
-                    icon: 'warning',
-                    title: 'Notificación',
-                    text: 'Tiene datos Vacios',
-                    showConfirmButton: true,
-                    timer: 15000
-                })
-          }else {
-            Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Datos Almacenados',
-                    showConfirmButton: false,
-                    timer: 1500
-                    })
-          }
-        
-
-
- });
- 
- 
-         
-      
+   
  </script>
 
-<script>
-    Swal.fire({
-    position: 'top-end',
-    icon: 'success',
-    title: 'Your work has been saved',
-    showConfirmButton: false,
-    timer: 1500
-})
-</script>
+
                    
         
 @endsection

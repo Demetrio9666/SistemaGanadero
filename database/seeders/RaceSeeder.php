@@ -15,65 +15,65 @@ class RaceSeeder extends Seeder
     {
         
         Race::create([
-            'race_d'=>'Gyr',
+            'race_d'=>'GYR',
             'percentage'=> 100,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Guzerat',
+            'race_d'=>'GUZERAT',
             'percentage'=> 100,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Holcen',
+            'race_d'=>' HOLCEN',
             'percentage'=> 100,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Yersey',
+            'race_d'=>'YERSEY',
             'percentage'=> 100,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Browsuit',
+            'race_d'=>'BROWSUIT',
             'percentage'=> 100,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
 
         Race::create([
-            'race_d'=>'Gyr-Guzerat',
+            'race_d'=>'GYR-GUZERAT',
             'percentage'=> 50,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Gyr-Holcen',
+            'race_d'=>'GYR-HOLCEN',
             'percentage'=> 50,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Gyr-Yersey',
+            'race_d'=>'GYR-YERSEY',
             'percentage'=> 50,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Gyr-Browsuit',
+            'race_d'=>'GYR-BROWSUIT',
             'percentage'=> 50,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Guzerat-Gyr',
+            'race_d'=>'GUZERAT-GYR',
             'percentage'=> 50,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Guzerat-Holcen',
+            'race_d'=>'GUZERAT-HOLCEN',
             'percentage'=> 50,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
         Race::create([
-            'race_d'=>'Guzerat-Yersey',
+            'race_d'=>'GUZERAT-YERSEY',
             'percentage'=> 50,
-            'actual_state'=>'Disponible'
+            'actual_state'=>'DISPONIBLE'
         ]);
     }
 }

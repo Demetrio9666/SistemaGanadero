@@ -35,7 +35,6 @@
                                             @endif
                                 @endforeach>
                                 <input type="hidden" id="idcodi" name="animalCode_id" value="{{$vacunaC->animalCode_id}}">
-                                
                         </div>
                 </div>
                 <div class="form-group">
@@ -55,11 +54,10 @@
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{$vacunaC->actual_state}}">
-                        <option value="Disponible" @if( $vacunaC->actual_state == "Disponible") selected @endif>Disponible</option>
-                        <option value="Inactivo" @if( $vacunaC->actual_state == "Inactivo") selected @endif>Inactivo</option>
+                        <option value="DISPONIBLE" @if( $vacunaC->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                        <option value="INACTIVO" @if( $vacunaC->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
                      </select>
                 </div> 
-                    
                 <div class="form-group">
                     <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/controlVacuna')}}">Cancelar</a>
                     <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/controlVacuna') }}" >Guardar</button>
@@ -82,11 +80,6 @@
                 $("#idcodi").val(col1);
                 $("#codigo_animal").val(col2);
            });
-
-          
-          
-        
-
    </script>
     @endsection
 </body>

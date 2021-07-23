@@ -39,7 +39,7 @@ class File_reproductionAController extends Controller
                 'a.race_d as raza_m',
                 'file_reproduction_artificial.actual_state'
                 )
-                ->where('file_reproduction_artificial.actual_state','=','Disponible')
+                ->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
                 
         ->get(); 
   // dd($re_A);
@@ -61,9 +61,10 @@ class File_reproductionAController extends Controller
                 'file_animale.age_month',
                 'race.race_d',
                 'file_animale.sex')
-               
-                ->where('file_animale.stage','=','Vaca')
-                ->where('file_animale.actual_state','=','Disponible')
+
+                ->where('file_animale.gestation_state','=','NO')
+                ->where('file_animale.stage','=','VACA')
+                ->where('file_animale.actual_state','=','DISPONIBLE')
                 ->get();
 
         $raza = DB::table('race')
@@ -71,7 +72,7 @@ class File_reproductionAController extends Controller
                         'race.race_d',
                         'race.percentage',
                         'race.actual_state')
-                        ->where('race.actual_state','=','Disponible')
+                        ->where('race.actual_state','=','DISPONIBLE')
                 ->get();
 
 
@@ -86,7 +87,7 @@ class File_reproductionAController extends Controller
                 'f.race_d as raza_h',  
                 'artificial_reproduction.reproduccion as tipo', 
                 'a.race_d as raza_m'
-                )->where('file_reproduction_artificial.actual_state','=','Disponible')
+                )->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
         ->get(); 
         $arti= DB::table('artificial_Reproduction')
         ->join('race','artificial_Reproduction.race_id','=','race.id')
@@ -94,7 +95,7 @@ class File_reproductionAController extends Controller
         'race.race_d',
         'artificial_Reproduction.reproduccion',
         'artificial_Reproduction.supplier'
-        )->where('artificial_Reproduction.actual_state','=','Disponible')
+        )->where('artificial_Reproduction.actual_state','=','DISPONIBLE')
         ->get();  
 
        
@@ -145,8 +146,9 @@ class File_reproductionAController extends Controller
         'file_animale.age_month',
         'race.race_d',
         'file_animale.sex')
-       
-        ->where('file_animale.stage','=','Vaca')
+                 ->where('file_animale.gestation_state','=','NO')
+                ->where('file_animale.stage','=','VACA')
+                ->where('file_animale.actual_state','=','DISPONIBLE')
         ->get();
         $raza =Race::all();
         $re_A = DB::table('file_reproduction_artificial')

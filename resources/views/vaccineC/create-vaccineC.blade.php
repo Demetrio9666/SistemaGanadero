@@ -32,22 +32,22 @@
                 </div>
                 <div class="form-group">
                     <label for="">Vacuna:</label>
-                    <select class="form-control" id="razas"  name="vaccine_id" >
+                    <select class="form-control" id="razas"  name="vaccine_id" value="{{old('vaccine_id')}}">
                         <option selected></option>
                         @foreach ($vacuna as $i )   
-                            <option value="{{$i->id}}">{{$i->vaccine_d}}</option>
+                            <option value="{{$i->id}}" @if(old('vaccine_id') == $i->id) {{'selected'}} @endif>{{$i->vaccine_d}}</option>
                         @endforeach
                   </select>
                 </div>  
                 <div class="form-group">
                     <label for="">Fecha de Segunda Docis:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_r" >
+                    <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{old('date_r')}}">
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option>Disponible</option>
-                        <option>Inactivo</option>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                        <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                        <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                      </select>
                 </div> 
 

@@ -14,53 +14,53 @@ class VitaminSeeder extends Seeder
     public function run()
     {
         Vitamin::create([
-            'vitamin_d'=>'Vitamina ABC',
+            'vitamin_d'=>'VITAMINA ABC',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vitamin::create([
-            'vitamin_d'=>'Vitamina C',
+            'vitamin_d'=>'VITAMINA C',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'Avas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vitamin::create([
-            'vitamin_d'=>'Vitamina D',
+            'vitamin_d'=>'VITAMINA D',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'Tores',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vitamin::create([
-            'vitamin_d'=>'Vitamina E',
+            'vitamin_d'=>'VITAMINA E',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'K',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vitamin::create([
-            'vitamin_d'=>'Vitamina K',
+            'vitamin_d'=>'VITAMINA K',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'Andyvast',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vitamin::create([
-            'vitamin_d'=>'Vitamina K',
+            'vitamin_d'=>'VITAMINA K12',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'Jproveedor',
-            'actual_state'=>'Inactivo',
+            'supplier'=>'ANDKAST',
+            'actual_state'=>'INACTIVO',
         ]);
         Vitamin::create([
-            'vitamin_d'=>'Complejo B',
+            'vitamin_d'=>'COMPLEJO B',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyPest',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
     }
 }

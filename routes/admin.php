@@ -2,6 +2,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+
+
 use App\Http\Controllers\Inactivo\AnimalesInactivosController;
 use App\Http\Controllers\Inactivo\ReproductionMInactivosController;
 use App\Http\Controllers\Inactivo\ReproductionMEInactivosController;
@@ -19,6 +22,7 @@ use App\Http\Controllers\Inactivo\PregnancyControlInactivosController;
 use App\Http\Controllers\Inactivo\DewormingControlInactivosController;
 use App\Http\Controllers\Inactivo\WeigthInactivosController;
 use App\Http\Controllers\Inactivo\VaccineControlInactivosController;
+
 
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\LocationController;
@@ -44,8 +48,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('index');
 })->name('index_admin');
 
+
 Route::resource('fichaAnimal',File_animaleController::class)->names('fichaAnimal');
 Route::resource('inactivos/fichaAnimales',AnimalesInactivosController::class)->names('inactivos.fichaAnimales');
+
 
 Route::resource('fichaReproduccionM',File_reproductionMController::class)->names('fichaReproduccionM');
 Route::resource('inactivos/fichaReproduccionM',ReproductionMInactivosController::class)->names('inactivos.fichaReproduccionM');
@@ -102,6 +108,9 @@ Route::resource('controlVacuna',Vaccine_controlController::class)->names('contro
 Route::resource('inactivos/controlVacunas',VaccineControlInactivosController::class)->names('inactivos.controlVacunas');
 
 
+
 Route::resource('rol',RoleController::class)->names('rol');
+Route::resource('usuarios',UserController::class)->names('usuarios');
+
 
 //Route::get('/welcome',[HomeController::class,'welcome']);

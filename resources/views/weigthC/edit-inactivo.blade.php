@@ -50,8 +50,8 @@
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{$pesoC->actual_state}}">
-                        <option value="Disponible" @if( $pesoC->actual_state == "Disponible") selected @endif>Disponible</option>
-                            <option value="Inactivo" @if( $pesoC->actual_state == "Inactivo") selected @endif>Inactivo</option>
+                        <option value="DISPONIBLE" @if( $pesoC->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                            <option value="INACTIVO" @if( $pesoC->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
                      </select>
                 </div> 
                     

@@ -34,11 +34,11 @@
                     
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Edad:</label>
-                                    <input type="text" class="form-control" id="edad" name="age_month" disabled=disabled >
+                                    <input type="text" class="form-control" id="edad" name="age_month" disabled=disabled value="{{old('age_month')}}">
                                 </div>
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Sexo:</label>
-                                    <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled>
+                                    <input type="text" class="form-control" id="sexo" name="sex" disabled=disabled value="{{old('sex')}}">
                                 </div>
                         </div>
 
@@ -49,24 +49,24 @@
                     <br>
                     
                         <div class="input-group mb-3">
-                                <input type="hidden" id="idcodi2" name="animalCode_id_p">
+                                <input type="hidden" id="idcodi2" name="animalCode_id_p" value="{{old('idcodi2')}}">
                                 <div  class="col-md-6">
                                     <label>Codigo Animal:</label>
-                                    <input type="text" class="form-control" id="codigo_animal2"  disabled=disabled >
+                                    <input type="text" class="form-control" id="codigo_animal2"  disabled=disabled value="{{old('codigo_animal2')}}">
                                 </div>
                                 <div  class="col-md-6">
                                     <label>Raza:</label>
-                                    <input type="text" class="form-control" id="raza2"  disabled=disabled >
+                                    <input type="text" class="form-control" id="raza2"  disabled=disabled value="{{old('raza2')}}">
                                 </div>
 
 
                                 <div  class="col-md-6">
                                     <label>Edad:</label>
-                                    <input type="text" class="form-control" id="edad2" name="age_month" disabled=disabled >
+                                    <input type="text" class="form-control" id="edad2" name="age_month" disabled=disabled value="{{old('edad2')}}">
                                 </div>
                                 <div  class="col-md-6">
                                     <label >Sexo:</label>
-                                    <input type="text" class="form-control" id="sexo2" name="sex" disabled=disabled>
+                                    <input type="text" class="form-control" id="sexo2" name="sex" disabled=disabled value="{{old('sexo2')}}">
                                 </div>
                               
                             
@@ -104,9 +104,9 @@
 
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option value="Disponible">Disponible</option>
-                        <option value="Inactivo">Inactivo</option>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                        <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                        <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                      </select>
                 </div>
                 

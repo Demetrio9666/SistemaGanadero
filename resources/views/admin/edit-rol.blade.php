@@ -1,11 +1,11 @@
+ @extends('adminlte::page')
 <head>
-    <link href="{{asset('css/app.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Registration Form</title>
 </head>
 <body>
-    @extends('adminlte::page')
+    
     @section('css')
     
     @endsection

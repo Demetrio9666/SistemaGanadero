@@ -1,13 +1,12 @@
+@extends('adminlte::page')
 <head>
-    <link href="{{asset('css/app.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Registration Form</title>
 </head>
 <body>
-    @extends('adminlte::page')
+  
     @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="/css/registro.css">
     @endsection
     @section('content_header')
@@ -54,23 +53,23 @@
                     <label for="">Estado de la Madre:</label>
                     <select class="form-control" id="inputPassword4" name="mother_status" value="{{$par->mother_status}}">
                         <option selected></option>
-                        <option value="Viva"  @if($par->mother_status == "Viva" ) selected @endif >Viva</option>
-                        <option value="Muerta" @if($par->mother_status == "Muerta" ) selected @endif  >Muerta</option>
+                        <option value="VIVA"  @if($par->mother_status == "VIVA" ) selected @endif >VIVA</option>
+                        <option value="MUERTA" @if($par->mother_status == "MUERTA" ) selected @endif  >MUERTA</option>
                   </select>
                 </div>
                 <div class="form-group">
                     <label for="">Tipo de Parto:</label>
                     <select class="form-control" id="inputPassword4" name="partum_type" value="{{$par->partum_type}}">
                         <option selected></option>
-                        <option value="Natural"  @if($par->partum_type == "Natural" ) selected @endif  >Natural</option>
-                        <option value="Cesárea"  @if($par->partum_type == "Cesárea" ) selected @endif >Cesárea</option>
+                        <option value="NATURAL"  @if($par->partum_type == "NATURAL" ) selected @endif  >NATURAL</option>
+                        <option value="CESÁREA"  @if($par->partum_type == "CESÁREA" ) selected @endif >CESÁREA</option>
                   </select>
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{$par->actual_state}}">
-                        <option value="Disponible" @if( $par->actual_state == "Disponible") selected @endif>Disponible</option>
-                        <option value="Inactivo" @if( $par->actual_state == "Inactivo") selected @endif>Inactivo</option>
+                        <option value="DISPONIBLE" @if( $par->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                        <option value="INACTIVO" @if( $par->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
                      </select>
                 </div> 
                 <div class="col-md-6-self-center" style="margin: 80px">

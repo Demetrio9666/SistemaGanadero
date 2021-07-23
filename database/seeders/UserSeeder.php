@@ -18,18 +18,18 @@ class UserSeeder extends Seeder
             'name'=>'Demetrio Gonzalez',
             'email'=>'demetrio2014gonzalez@gmail.com',
             'password'=> bcrypt('Demetrio96')
-        ])->assignRole('Admin');
+        ])->assignRole('ADMIN');
 
         User::create([
             'name'=>'Melanie Yagual',
             'email'=>'melanie@gmail.com',
             'password'=> bcrypt('1234')
-        ])->assignRole('Supervisor');
+        ])->assignRole('SUPERVISOR');
 
         User::create([
             'name'=>'Oswaldo Gonzalez',
             'email'=>'oswaldo2014gonzalez@gmail.com',
             'password'=> bcrypt('12345')
-        ])->assignRole('invitado');
+        ])->assignRole('INVITADO');
     }
 }

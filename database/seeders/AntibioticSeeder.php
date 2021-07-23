@@ -14,53 +14,53 @@ class AntibioticSeeder extends Seeder
     public function run()
     {
         Antibiotic::create([
-            'antibiotic_d'=>'Amoxicilina',
+            'antibiotic_d'=>'AMOXICINA',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Antibiotic::create([
-            'antibiotic_d'=>'Penicilina',
+            'antibiotic_d'=>'PENICILINA',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Antibiotic::create([
-            'antibiotic_d'=>'Cefalosporinas',
+            'antibiotic_d'=>'CEFALOSPORINAS',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Antibiotic::create([
-            'antibiotic_d'=>'Cefaclor',
+            'antibiotic_d'=>' CEFACLOR',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Antibiotic::create([
-            'antibiotic_d'=>'Azitromicina',
+            'antibiotic_d'=>'AZITROMICINA',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Antibiotic::create([
-            'antibiotic_d'=>'Eritromicina',
+            'antibiotic_d'=>'ERITROMICINA',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Antibiotic::create([
-            'antibiotic_d'=>'Cefalexina',
+            'antibiotic_d'=>' CEFALEXINA',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Inactivo',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'INACTIVO',
         ]);
     }
 }

@@ -25,7 +25,7 @@ class File_animaleController extends Controller
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
                             ,'file_animale.conceived')
-                            ->where('file_animale.actual_state', '=', 'Disponible' )->Orwhere('file_animale.actual_state', '=', 'Reproduccion')
+                            ->where('file_animale.actual_state', '=', 'DISPONIBLE' )->Orwhere('file_animale.actual_state', '=', 'REPRODUCCION')
                     ->get();
         return view('file_animale.index-animale',compact('animal'));
         //return $animal;
@@ -112,14 +112,14 @@ class File_animaleController extends Controller
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','Disponible')
+                    ->where('race.actual_state','=','DISPONIBLE')
                     ->get();
          $ubicacion = DB::table('location')
          ->select('location.id',
                     'location.location_d',
                     'location.description',
                     'location.actual_state')
-                    ->where('location.actual_state','=','Disponible')
+                    ->where('location.actual_state','=','DISPONIBLE')
                     ->get();
         $animal = File_Animale::findOrFail($id);
         return view('file_animale.edit-animale', compact('animal','raza','ubicacion'));
@@ -132,7 +132,7 @@ class File_animaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditFile_animale $request, $id)
+    public function update(Request $request, $id)
     {
        
         $animal = File_Animale::findOrFail($id);

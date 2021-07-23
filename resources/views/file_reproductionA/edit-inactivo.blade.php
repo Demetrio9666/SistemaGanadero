@@ -122,7 +122,7 @@
                                           <td>{{$i->race_d}}</td>
                                           <td>{{$i->reproduccion}}</td>
                                           <td>{{$i->supplier}}</td>
-                                          <td> <button type="button" class="btn btn-success btn-lg   btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
+                                          <td> <button type="button" class="btn btn-success btn-lg   btselect3"  data-dismiss="modal" disabled=disabled><i class="fas fa-check-circle"></i></button></td>
                                           
                                         </tr>
                                       @endforeach        
@@ -135,8 +135,8 @@
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{$re->actual_state}}">
-                        <option value="Disponible" @if( $re->actual_state == "Disponible") selected @endif>Disponible</option>
-                        <option value="Inactivo" @if( $re->actual_state == "Inactivo") selected @endif>Inactivo</option>
+                        <option value="DISPONIBLE"  @if( $re->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                        <option value="INACTIVO" @if( $re->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
                      </select>
                 </div>
             

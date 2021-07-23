@@ -37,8 +37,8 @@
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
-                            <option>Disponible</option>
-                            <option>Inactivo</option>
+                            <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                            <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                          </select>
                     </div>    
                     <div class="form-group">

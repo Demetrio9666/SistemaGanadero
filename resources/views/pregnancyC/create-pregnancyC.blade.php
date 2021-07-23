@@ -34,46 +34,46 @@
                 
                         <div class="form-group">
                             <label for="">Vitamina:</label>
-                            <select class="form-control" id="vitamina1"  name="vitamin_id">
+                            <select class="form-control" id="vitamina1"  name="vitamin_id" value="{{old('vitamin_id')}}">
                                 <option selected></option>
                                 @foreach ($vitamina as $i )   
-                                    <option value="{{$i->id}}">{{$i->vitamin_d}}</option>
+                                <option value="{{$i->id}}" @if(old('vitamin_id') == $i->id) {{'selected'}} @endif>{{$i->vitamin_d}}</option>
                                 @endforeach
                         </select>
                         </div>  
                         <div class="form-group">
                             <label for="">Alternativa 1 de Vitamina:</label>
-                            <select class="form-control" id="vitamina2"  name="alternative1">
+                            <select class="form-control" id="vitamina2"  name="alternative1" value="{{old('alternative1')}}">
                                 <option selected>N/A</option>
                                 @foreach ($vitamina as $i )   
-                                    <option {{$i->id}} value="{{$i->vitamin_d}}">{{$i->vitamin_d}}</option>
+                                <option value="{{$i->id}}" @if(old('alternative1') == $i->id) {{'selected'}} @endif>{{$i->vitamin_d}}</option>
                                 @endforeach
                         </select>
                         </div>  
                         <div class="form-group">
                             <label for="">Alternativa 2 de Vitamina:</label>
-                            <select class="form-control" id="vitamina3"  name="alternative2">
+                            <select class="form-control" id="vitamina3"  name="alternative2" value="{{old('alternative2')}}">
                                 <option selected>N/A</option>
                                 @foreach ($vitamina as $i )   
-                                    <option {{$i->id}} value="{{$i->vitamin_d}}">{{$i->vitamin_d}}</option>
+                                    <option value="{{$i->id}}" @if(old('alternative2') == $i->id) {{'selected'}} @endif>{{$i->vitamin_d}}</option>
                                 @endforeach
                         </select>
                         </div>  
                     
                 <div class="form-group">
                     <label for="">Observación:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="observation"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="observation" value="{{old('observation')}}"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="">Fecha de próximo control:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_r" >
+                    <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{old('date_r')}}">
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option value="Disponible">Disponible</option>
-                        <option value="Inactivo">Inactivo</option>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                        <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                            <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                      </select>
                 </div> 
                 <div class="col-md-6-self-center" style="margin: 80px">

@@ -129,7 +129,7 @@ class ReproductionMInactivosController extends Controller
         $re->actual_state = $request->actual_state;
         
         $re->save(); 
-        return redirect('inactivos/fichaReproduccionEx');
+        return redirect('inactivos/fichaReproduccionM');
     }
 
     /**

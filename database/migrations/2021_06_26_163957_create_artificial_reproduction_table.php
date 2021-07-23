@@ -22,7 +22,7 @@ class CreateArtificialReproductionTable extends Migration
                    ->onUpdate('cascade');
 
             $table->string('reproduccion',10);
-            $table->string('supplier',20);
+            $table->string('supplier');
             $table->string('actual_state');
             $table->timestamps();
         });

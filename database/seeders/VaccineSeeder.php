@@ -14,68 +14,74 @@ class VaccineSeeder extends Seeder
     public function run()
     {
         Vaccine::create([
-            'vaccine_d'=>'Brucelosis',
+            'vaccine_d'=>'BRUCELOSIS',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vaccine::create([
-            'vaccine_d'=>'Clostridiales',
+            'vaccine_d'=>'CLOSTRIDIALES',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'Viritis',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vaccine::create([
             'vaccine_d'=>'IBR-BVD ',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ABC',
-            'actual_state'=>'Disponible',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vaccine::create([
-            'vaccine_d'=>'Diarrea neonatal ',
+            'vaccine_d'=>'DIARREA NEONATAL',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKLA',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vaccine::create([
-            'vaccine_d'=>'Carbunclo bacteridiano ',
+            'vaccine_d'=>'CARBUNCLO BACTERIAL ',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vaccine::create([
-            'vaccine_d'=>'IBR-BVD, Leptospirosis,
-            Campylobacteriosis ',
+            'vaccine_d'=>'IBR-BVD',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vaccine::create([
-            'vaccine_d'=>'Campylobacteriosis',
+            'vaccine_d'=>'CAMPYLOBACTERIOSIS',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vaccine::create([
-            'vaccine_d'=>'Campylobacteriosis',
+            'vaccine_d'=>'CAMPYLOBACTERIOSIS TIPO B',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Disponible',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
         ]);
         Vaccine::create([
-            'vaccine_d'=>'Campylobacteriosis',
+            'vaccine_d'=>'CAMPYLOBACTERIOSIS TIPO A',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
-            'supplier'=>'AndyKas',
-            'actual_state'=>'Inactivo',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'DISPONIBLE',
+        ]);
+        Vaccine::create([
+            'vaccine_d'=>'CAMPYLOBACTERIOSIS TIPO AB',
+            'date_e'=> '2021-07-01',
+            'date_c'=> '2024-07-19',
+            'supplier'=>'ANDYKAST',
+            'actual_state'=>'INACTIVO',
         ]);
     }
 }

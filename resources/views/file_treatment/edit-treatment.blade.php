@@ -39,9 +39,9 @@
                     <label for="">Enfermedad:</label>
                     <select class="form-control" id=""  name="disease"  value="{{$tra->disease}}">
                         <option selected ></option>
-                        <option value="Falta de Apetito" @if($tra->disease == "Falta de Apetito" ) selected @endif>Falta de Apetito</option>
-                        <option value="Herida" @if($tra->disease == "Herida" ) selected @endif>Herida</option>
-                        <option value="Otras causas" @if($tra->disease == "Otras causas" ) selected @endif>Otras causas</option>
+                        <option value="FALTA DE APETITO" @if($tra->disease == "FALTA DE APETITO" ) selected @endif>FALTA DE APETITO</option>
+                        <option value="HERIDA" @if($tra->disease == "HERIDA" ) selected @endif>HERIDA</option>
+                        <option value="OTRAS CAUSAS" @if($tra->disease == "OTRAS CAUSAS" ) selected @endif>OTRAS CAUSAS</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -76,8 +76,8 @@
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{$tra->actual_state}}">
-                        <option value="Disponible" @if( $tra->actual_state == "Disponible") selected @endif>Disponible</option>
-                        <option value="Inactivo" @if( $tra->actual_state == "Inactivo") selected @endif>Inactivo</option>
+                        <option value="DISPONIBLE" @if( $tra->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                        <option value="INACTIVO" @if( $tra->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
                      </select>
                 </div>
 

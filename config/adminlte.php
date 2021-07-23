@@ -233,9 +233,9 @@ return [
            
         ],
         [
-            'text' => 'Permisos',
-            'url'  => '/',
-            'icon' =>'fas fa-shield-alt',
+            'text' => 'Usuarios',
+            'url'  => '/usuarios',
+            'icon' =>'fas fa-user-friends',
            
         ],
 
@@ -250,16 +250,6 @@ return [
 
 
         ],
-
-
-        //[
-        //    'text'        => 'pages',
-       //     'url'         => 'admin/pages',
-       //     'icon'        => 'far fa-fw fa-file',
-       //     'label'       => 4,
-       //     'label_color' => 'success',
-       // ],
-      
 
         ['header' => 'AJUSTE DE CUENTA'],
         [
@@ -305,14 +295,14 @@ return [
 
                             'submenu' =>[
                                 [
-                                    'text' => 'Monta',
+                                    'text' => 'Reproducción por Monta',
                                     'url'  => '/fichaReproduccionM',
-                                    'icon'  => '',
+                                    'icon'  => 'fas fa-genderless',
                                 ],
                                 [
-                                    'text' => 'Artificial',
+                                    'text' => 'Reproducción Artificial',
                                     'url'  => '/fichaReproduccionA',
-                                    'icon'  => '',
+                                    'icon'  => 'fas fa-genderless',
                                 ],
 
 
@@ -335,7 +325,7 @@ return [
 
         [
             'text'    => 'Controles',
-            'icon'    => 'fas fa-ad',
+            'icon'    => 'fas fa-book',
             'submenu' => [
                 [
                     'text' => 'Control Vacunas',
@@ -361,15 +351,10 @@ return [
 
             ],
         ],
-
-
-
         [
             'text'    => 'Configuracion',
             'icon'    => 'fas fa-cog',
             'submenu' => [
-
-
                 [
                     'text' =>'Medicamentos',
                     'icon' =>'fas fa-prescription-bottle-alt',
@@ -400,18 +385,11 @@ return [
 
                     ],
                 ],
-
-
-
                 [
                     'text' => 'Material Genetico ',
                     'url'  => '/confMate',
                     'icon' =>'fas fa-vial',
                 ],
-
-
-
-                
 
                 [
                     'text' => 'Ubicacion Interna ',
@@ -419,7 +397,6 @@ return [
                     'icon' =>'fas fa-map',
                 ],
 
-                
                 [
                     'text' => 'Razas ',
                     'url'  => '/confRaza',

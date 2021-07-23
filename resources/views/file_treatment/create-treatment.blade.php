@@ -33,25 +33,27 @@
                 </div>
                 <div class="form-group">
                     <label for="">Enfermedad:</label>
-                    <select class="form-control" id=""  name="disease">
+                    <select class="form-control" id=""  name="disease" value="{{old('disease')}}">
                         <option selected ></option>
-                        <option value="Falta de Apetito">Falta de Apetito</option>
-                        <option value="Herida">Herida</option>
-                        <option value="Otras causas">Otras causas</option>
+                        <option value="FALTA DE APETITO" @if(old('disease') == "FALTA DE APETITO") {{'selected'}}@endif>FALTA DE APETITO</option>
+                        <option value="HERIDA" @if(old('disease') == "HERIDA") {{'selected'}}@endif>HERIDA</option>
+                        <option value="OTRAS CAUSAS" @if(old('disease') == "OTRAS CAUSAS") {{'selected'}}@endif>OTRAS CAUSAS</option>
                   </select>
                 </div>
 
                 <div class="form-group">
                     <label for="">Detalle:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="detail"></textarea>
+                    <textarea class="form-control" id="detalle" rows="3" name="detail" onblur="upperCase()" >
+                    {!! old('detail') !!}
+                    </textarea>
                 </div>
                     
                 <div class="form-group">
                     <label for=""> Antibióticos:</label>
-                    <select class="form-control" id=""  name="antibiotic_id">
+                    <select class="form-control" id=""  name="antibiotic_id" value="{{old('antibiotic_id')}}">
                         <option selected value=""></option>
                         @foreach ($anti as $i )   
-                            <option value="{{$i->id}}">{{$i->antibiotic_d}}</option>
+                            <option value="{{$i->id}}" @if(old('antibiotic_id') == $i->id) {{'selected'}}@endif>{{$i->antibiotic_d}}</option>
                         @endforeach
                   </select>
                 </div>   
@@ -61,21 +63,24 @@
                     <select class="form-control" id=""  name="vitamin_id">
                         <option selected value="" ></option>
                         @foreach ($vitamina as $i )   
-                            <option value="{{$i->id}}">{{$i->vitamin_d}}</option>
+                            <option value="{{$i->id}}"@if(old('vitamin_id') == $i->id) {{'selected'}}@endif>{{$i->vitamin_d}}</option>
                         @endforeach
                   </select>
                 </div>  
 
                 <div class="form-group">
                     <label for="">Tratamiento:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="treatment"></textarea>
+                    <textarea class="form-control" id="tratamiento" rows="3" name="treatment" onblur="upperCase()" >
+                     {!! old('treatment') !!}
+                    </textarea>
+                   
                 </div>
 
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option>Disponible</option>
-                        <option>Inactivo</option>
+                        <option value="DISPONIBLE">DISPONIBLE</option>
+                        <option value="INACTIVO">INACTIVO</option>
                      </select>
                 </div>
                 <div class="col-md-6-self-center" style="margin: 80px">
@@ -100,6 +105,15 @@
                 $("#idcodi").val(col1);
                 $("#codigo_animal").val(col2);
            });
+
+           function upperCase() {
+                var x=document.getElementById("tratamiento").value
+                document.getElementById("tratamiento").value=x.toUpperCase()
+                var x=document.getElementById("detalle").value
+                document.getElementById("detalle").value=x.toUpperCase()
+            }
+
+    
 
    </script>
     @endsection

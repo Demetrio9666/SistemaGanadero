@@ -20,35 +20,35 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Desparasitación:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
                         <div class="input-group mb-3">
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                 <span class="input-group-text" id="basic-addon1">Codigo</span>
-                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
+                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled value="{{old('codigo_animal')}}" >
                                 <input type="hidden" id="idcodi" name="animalCode_id">
                         </div>
                 </div>
                 <div class="form-group">
                     <label for="">Desparasitante:</label>
-                    <select class="form-control" id="des"  name="deworming_id">
+                    <select class="form-control" id="des"  name="deworming_id" value="{{old('deworming_id')}}">
                         <option selected></option>
                         @foreach ($des as $i )   
-                            <option value="{{$i->id}}">{{$i->dewormer_d}}</option>
+                            <option value="{{$i->id}}" @if(old('deworming_id') == $i->id) {{'selected'}} @endif>{{$i->dewormer_d}}</option>
                         @endforeach
                   </select>
                 </div>  
                 <div class="form-group">
                     <label for="">Fecha de re-desparasitación:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date_r" >
+                    <input type="date" class="form-control" id="fecha_r" name="date_r"   value="{{old('date_r')}}">
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option>Disponible</option>
-                        <option>Inactivo</option>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                        <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                        <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                      </select>
                 </div> 
 

@@ -7,7 +7,6 @@
 <body>
     @extends('adminlte::page')
     @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="/css/configuracion.css">
     @endsection
     @section('content_header')
@@ -20,17 +19,17 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre de la Raza:</label>
-                        <input type="text" class="form-control" id="raza" name="race_d" >
+                        <input type="text" class="form-control" id="raza" name="race_d" value="{{old('race_d')}}">
                     </div>
                     <div class="form-group">
                         <label for="">Porcentaje:</label>
-                        <input type="int" class="form-control" id="porcentaje" name="percentage">
+                        <input type="int" class="form-control" id="porcentaje" name="percentage" value="{{old('percentage')}}">
                     </div>  
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
-                        <select class="form-control" id="inputPassword4" name="actual_state">
-                            <option value="Disponible">Disponible</option>
-                            <option value="Inactivo">Inactivo</option>
+                        <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                            <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                            <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                          </select>
                     </div>   
                     <div class="form-group">

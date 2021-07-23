@@ -95,8 +95,8 @@
                         <label for="">Sexo</label>
                         <select class="form-control" id="razas"  name="sex" value="{{$ext->sex}}" disabled=disabled >
                             <option>Seleccione</option>
-                            <option value="Hembra" @if($ext->sex == "Hembra") selected @endif>Hembra</option>
-                            <option value="Macho" @if($ext->sex == "Macho") selected @endif>Macho</option>
+                            <option value="HEMBRA" @if($ext->sex == "HEMBRA") selected @endif>HEMBRA</option>
+                            <option value="MACHO" @if($ext->sex == "MACHO") selected @endif>MACHO</option>
                         </select>
                     </div>   
 
@@ -108,8 +108,8 @@
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state"  value="{{$ext->actual_state}}">
-                            <option value="Disponible" @if( $ext->actual_state == "Disponible") selected @endif>Disponible</option>
-                            <option value="Inactivo" @if( $ext->actual_state == "Inactivo") selected @endif>Inactivo</option>
+                            <option value="DISPONIBLE" @if( $ext->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                            <option value="INACTIVO" @if( $ext->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
                          </select>
                     </div> 
                     

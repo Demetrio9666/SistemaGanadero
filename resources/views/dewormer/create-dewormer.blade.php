@@ -1,5 +1,4 @@
 <head>
-    <link href="{{asset('css/app.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Registration Form</title>
@@ -7,7 +6,6 @@
 <body>
     @extends('adminlte::page')
     @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="/css/configuracion2.css">
     @endsection
     @section('content_header')
@@ -37,8 +35,8 @@
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
-                            <option value="Disponible">Disponible</option>
-                            <option value="Inactivo">Inactivo</option>
+                            <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                            <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                          </select>
                     </div>     
                     <div class="form-group">

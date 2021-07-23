@@ -32,17 +32,17 @@
                 </div>
                 <div class="form-group">
                     <label for="">Peso KG:</label>
-                    <input type="decimal" class="form-control" id="peso" name="weigtht" onChange="ValidarPeso(this.value)"  >
+                    <input type="decimal" class="form-control" id="peso" name="weigtht" onChange="ValidarPeso(this.value)" value="{{old('weigtht')}}" >
                 </div>
                 <div class="form-group">
                     <label for="">Fecha de próximo control:</label>
-                    <input type="date" class="form-control" id="fecha_rv" name="date_r" >
+                    <input type="date" class="form-control" id="fecha_rv" name="date_r" value="{{old('date_r')}}">
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option value="Disponible">Disponible</option>
-                        <option value="Inactivo">Inactivo</option>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                        <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                            <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                      </select>
                 </div> 
                 <div class="col-md-6-self-center" style="margin: 80px">

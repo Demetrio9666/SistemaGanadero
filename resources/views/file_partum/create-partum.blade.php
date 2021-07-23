@@ -36,38 +36,38 @@
                     
                 <div class="form-group">
                     <label for="">Cant.Machos:</label>
-                    <input type="number" class="form-control" id="fecha_r" name="male" >
+                    <input type="number" class="form-control" id="fecha_r" name="male" value="{{old('male')}}">
                 </div>
 
                 <div class="form-group">
                     <label for="">Cant.Hembras:</label>
-                    <input type="number" class="form-control" id="fecha_r" name="female" >
+                    <input type="number" class="form-control" id="fecha_r" name="female" value="{{old('female')}}">
                 </div>
                 <div class="form-group">
                     <label for="">Cant.Muertos:</label>
-                    <input type="number" class="form-control" id="fecha_r" name="dead" >
+                    <input type="number" class="form-control" id="fecha_r" name="dead" value="{{old('dead')}}" >
                 </div>
                 <div class="form-group">
                     <label for="">Estado de la Madre:</label>
-                    <select class="form-control" id="inputPassword4" name="mother_status">
+                    <select class="form-control" id="inputPassword4" name="mother_status" value="{{old('mother_status')}}">
                         <option selected></option>
-                        <option>Viva</option>
-                        <option>Muerta</option>
+                        <option value="VIVA" @if(old('mother_status') == "VIVA") {{'selected'}} @endif>VIVA</option>
+                        <option value="MUERTA" @if(old('mother_status') == "MUERTA") {{'selected'}} @endif>MUERTA</option>
                   </select>
                 </div>
                 <div class="form-group">
                     <label for="">Tipo de Parto:</label>
-                    <select class="form-control" id="inputPassword4" name="partum_type">
+                    <select class="form-control" id="inputPassword4" name="partum_type" value="{{old('partum_type')}}">
                         <option selected></option>
-                        <option>Natural</option>
-                        <option>Cesárea</option>
+                        <option value="NATURAL" @if(old('partum_type') == "NATURAL") {{'selected'}} @endif>NATURAL</option>
+                        <option value="CESÁREA" @if(old('partum_type') == "CESÁREA") {{'selected'}} @endif>CESÁREA</option>
                   </select>
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
-                    <select class="form-control" id="inputPassword4" name="actual_state">
-                        <option>Disponible</option>
-                        <option>Inactivo</option>
+                    <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
+                        <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                        <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                      </select>
                 </div>
 

@@ -132,7 +132,7 @@
                                           <td>{{$i->race_d}}</td>
                                           <td>{{$i->age_month}}</td>
                                           <td>{{$i->sex}}</td>
-                                          <td> <button type="button" class="btn btn-success btn   btselect2"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
+                                          <td> <button type="button" class="btn btn-success btn   btselect2"  data-dismiss="modal" disabled=disabled ><i class="fas fa-check-circle"></i></button></td>
                                           
                                         </tr>
                                       @endforeach        
@@ -144,13 +144,13 @@
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{$re->actual_state}}">
-                        <option value="Disponible"  @if( $re->actual_state == "Disponible") selected @endif>Disponible</option>
-                        <option value="Inactivo" @if( $re->actual_state == "Inactivo") selected @endif>Inactivo</option>
+                        <option value="DISPONIBLE"  @if( $re->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                        <option value="INACTIVO" @if( $re->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
                      </select>
                 </div>
                 <div class="col-md-8-self-center" style="margin: 80px" >
-                    <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('inactivos/fichaReproduccionM')}}">Cancelar</a>
-                    <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('inactivos/fichaReproduccionM') }}" >Guardar</button>
+                    <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/inactivos/fichaReproduccionM')}}">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/inactivos/fichaReproduccionM') }}" >Guardar</button>
                 </div>
 
             </form>
