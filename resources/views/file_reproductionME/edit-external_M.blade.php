@@ -69,7 +69,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Codigo Animal Externo:</label>
-                        <input type="text" class="form-control" id="raza" name="animalCode_Exte" value="{{$ext->animalCode_Exte}}" >
+                        <input type="text" class="form-control" id="animalCode_Exte" name="animalCode_Exte" value="{{$ext->animalCode_Exte}}" onblur="upperCase()">
                     </div>
 
 
@@ -93,9 +93,9 @@
 
                     <div class="form-group">
                         <label for="">Sexo</label>
-                        <select class="form-control" id="razas"  name="sex" value="{{$ext->sex}}">
+                        <select class="form-control" id="sex"  name="sex" value="{{$ext->sex}}">
                             <option>Seleccione</option>
-                            <option value="HEMBRA" @if($ext->sex == "HEMBRA") selected @endif>HEMBRA</option>
+                            
                             <option value="MACHO" @if($ext->sex == "MACHO") selected @endif>MACHO</option>
                         </select>
                     </div>   
@@ -103,7 +103,7 @@
 
                     <div class="form-group">
                         <label for="">Nombre Hacienda:</label>
-                        <input type="text" class="form-control"  name="hacienda_name" value="{{$ext->hacienda_name}}">
+                        <input type="text" class="form-control" id="hacienda_name" name="hacienda_name" value="{{$ext->hacienda_name}}" onblur="upperCase()">
                     </div> 
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
@@ -142,6 +142,29 @@
                 $("#edad").val(col4);
                 $("#sexo").val(col5);
            });
+           function upperCase() {
+                var x=document.getElementById("hacienda_name").value
+                document.getElementById("hacienda_name").value=x.toUpperCase()
+                var x=document.getElementById("animalCode_Exte").value
+                document.getElementById("animalCode_Exte").value=x.toUpperCase()
+                
+            }
+
+            function ValidarEdad(id){
+                
+                if(id >=21){
+                    return true;
+                }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'SOLO PUEDE INGRESAR ANIMALES MAYORES O IGUALES A 21 MESES DE EDAD',
+                            })
+                            
+                            document.getElementById("age_month").value = ""
+                            return false;
+                }
+            }
     </script>
     @endsection
   </body>

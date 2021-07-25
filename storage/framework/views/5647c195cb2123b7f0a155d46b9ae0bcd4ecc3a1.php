@@ -39,7 +39,7 @@
                                 </div>  
                                 <div  class="col-md-6">
                                     <label for="">Sexo:</label>
-                                    <select class="form-control" id="opsexo" name="sexo"  value="<?php echo e(old('sexo')); ?>" onChange="mostrar(this.value)">
+                                    <select class="form-control" id="opsexo" name="sexo"  value="<?php echo e(old('sexo')); ?>" onChange="mostrar(this.value)"   >
                                         <option selected></option>
                                         <option id ="MACHO" value="MACHO"  <?php if(old('sexo') == "MACHO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>MACHO</option>
                                         <option id="HEMBRA" value="HEMBRA" <?php if(old('sexo') == "HEMBRA"): ?> <?php echo e('selected'); ?> <?php endif; ?>>HEMBRA</option>
@@ -69,7 +69,7 @@
                                
                                 <div  class="col-md-6">
                                     <label for="">Edad-Meses:</label>
-                                    <input type="int" class="form-control" id="edad" name="edad"  value="<?php echo e(old('edad')); ?>" onChange="ValidarEdad(this.value)" onChange="ValidarReEdad(this.value)">
+                                    <input type="int" class="form-control" id="edad" name="edad"  value="<?php echo e(old('edad')); ?>" onChange="ValidarEdad(this.value)" Disabled=disabled >
                                 </div>
                               
                                 <div  class="col-md-6">
@@ -138,7 +138,10 @@
 <script>
 
 function mostrar(id) {
+         document.getElementById("edad").disabled = true;   
+         
     if (id == "HEMBRA") {
+        document.getElementById("edad").disabled = false;   
         $("#T").show();
         $("#V").show();
         $("#VA").show();
@@ -147,7 +150,8 @@ function mostrar(id) {
         $("#NO").show();
         $("#TO").hide();
         $("#TORE").hide();
-    }else{
+    }else if(id == "MACHO"){
+        document.getElementById("edad").disabled = false;   
         $("#T").show();
         $("#V").hide();
         $("#VA").hide();
@@ -156,6 +160,8 @@ function mostrar(id) {
         $("#TO").show();
         $("#TORE").show();
         $("#NO").show();
+    }else{
+        edad.disabled = true
     }
 }
 
@@ -164,6 +170,7 @@ function ValidarEdad(id){
     etapa = document.getElementById("opetapa").value;
     
     if(sexo == "MACHO"){
+       
         if(etapa == "TERNERO"){
             if(id < 0 ||  id  > 3){
                 
@@ -173,7 +180,7 @@ function ValidarEdad(id){
                         text: 'TERNERO MACHO SU RANGO DE EDAD ES 1 A 3 MESES ',
                         
                     }) 
-                document.getElementById("edad").value = "";
+                document.getElementById("edad").value = ""
                 return false; 
             }
             else{
@@ -188,7 +195,7 @@ function ValidarEdad(id){
                         
                     }) 
                 
-                document.getElementById("edad").value = "";
+                document.getElementById("edad").value = ""
                 return false; 
             }
             else{
@@ -204,7 +211,7 @@ function ValidarEdad(id){
                         
                     }) 
                
-                document.getElementById("edad").value = "";
+                document.getElementById("edad").value = ""
                 return false;
             }
             else{
@@ -216,6 +223,7 @@ function ValidarEdad(id){
         }
 
     }else if (sexo == "HEMBRA"){
+       
         if(etapa == "TERNERO"){
             if(id < 0  ||  id > 10){
                 Swal.fire({
@@ -225,7 +233,7 @@ function ValidarEdad(id){
                         
                     }) 
                
-                document.getElementById("edad").value = "";
+                document.getElementById("edad").value = ""
                 return false;
             }else{
                 return true;
@@ -239,7 +247,7 @@ function ValidarEdad(id){
                         
                     }) 
                 
-                document.getElementById("edad").value = "";
+                document.getElementById("edad").value = ""
                 return false;
             }
             else{
@@ -255,7 +263,7 @@ function ValidarEdad(id){
                         
                     }) 
                 
-                document.getElementById("edad").value = "";
+                document.getElementById("edad").value = ""
                 return false;
             }
             else{
@@ -271,7 +279,7 @@ function ValidarEdad(id){
                         
                     }) 
                
-                document.getElementById("edad").value = "";
+                document.getElementById("edad").value = ""
                 return false;
             }
             else{
@@ -279,14 +287,19 @@ function ValidarEdad(id){
             }
 
         }else{
+            
+           
+            document.getElementById("edad").value = ""
             return false;
-            document.getElementById("edad").value = "";
         }
 
 
     }
 
 }
+
+
+
    
  </script>
 

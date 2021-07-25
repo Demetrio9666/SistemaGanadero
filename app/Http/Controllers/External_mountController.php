@@ -44,6 +44,7 @@ class External_mountController extends Controller
                             'file_reproduction_external.hacienda_name',
                             'file_reproduction_external.actual_state')
                             ->where('file_reproduction_external.actual_state','=','Disponible')
+                            
                 ->get();
 
         return view('file_reproductionME.index-external_M',compact('raza','ext'));
@@ -72,7 +73,7 @@ class External_mountController extends Controller
                     'race.race_d',
                     'file_animale.sex')
                     ->where('file_animale.actual_state','=','Disponible')
-                    ->where('file_animale.stage','=','Vaca')->OrWhere('file_animale.stage','=','Toro')
+                    ->where('file_animale.stage','=','Vaca')
                     ->get();
         
         return view('file_reproductionME.create-external_M',compact('raza','animaleEX'));
@@ -138,7 +139,7 @@ class External_mountController extends Controller
                     'race.race_d',
                     'file_animale.sex')
                     ->where('file_animale.actual_state','=','Disponible')
-                    ->where('file_animale.stage','=','Vaca')->OrWhere('file_animale.stage','=','Toro')
+                    ->where('file_animale.stage','=','Vaca')
         
         ->get();
         

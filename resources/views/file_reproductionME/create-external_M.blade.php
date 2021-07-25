@@ -3,8 +3,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     @section('css')
-    <link href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="/css/registroR.css">
     @endsection
     <title>Registration Form</title>
@@ -48,7 +46,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="">Codigo Animal Externo:</label>
-                        <input type="text" class="form-control" id="desp" name="animalCode_Exte" >
+                        <input type="text" class="form-control" id="animalCode_Exte" name="animalCode_Exte" onblur="upperCase()">
                     </div>
                     <div class="col-md-6">
                         <label for="">Raza:</label>
@@ -60,16 +58,18 @@
                         </select>
 
                     </div> 
-                    <div class="form-group">
-                        <label for="">Edad-meses:</label>
-                        <input type="int" class="form-control" name="age_month" value="{{old('age_month')}}">
-                    </div>  
+                   
+                    <div  class="col-md-6">
+                        <label for="">Edad-Meses:</label>
+                        <input type="int" class="form-control" id="age_month" name="age_month"  value="{{old('age_month')}}" onChange="Validar(this.value)" >
+                    </div>
+                    
                     
                     <div class="form-group">
                         <label for="">Sexo</label>
-                        <select class="form-control" id="razas"  name="sex" value="{{old('sex')}}">
+                        <select class="form-control" id="sex"  name="sex" value="{{old('sex')}}">
                             <option></option>
-                            <option value="HEMBRA" @if(old('sex') == "HEMBRA") {{'selected'}} @endif>HEMBRA</option>
+                            
                             <option value="MACHO" @if(old('sex') == "MACHO") {{'selected'}} @endif>MACHO</option>
                         </select>
                         
@@ -77,7 +77,7 @@
 
                     <div class="form-group">
                         <label for="">Nombre de la Hacienda:</label>
-                        <input type="text" class="form-control"  name="hacienda_name" value="{{old('hacienda_name')}}">
+                        <input type="text" class="form-control" id="hacienda_name" name="hacienda_name" value="{{old('hacienda_name')}}" onblur="upperCase()">
                     </div>
 
                     <div  class="form-group">
@@ -117,6 +117,35 @@
                 $("#edad").val(col4);
                 $("#sexo").val(col5);
            });
+
+
+           function Validar(id){
+                if(id <=21){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'SOLO ANIMALES MAYORES O IGUALES A 21 MESES DE EDAD ',
+                        
+                    }) 
+                   
+                    var x=document.getElementById("age_month").value ="";
+                    
+                }           
+                else{
+                    console.log('bien')
+                }
+            }
+
+
+           function upperCase() {
+                var x=document.getElementById("hacienda_name").value
+                document.getElementById("hacienda_name").value=x.toUpperCase()
+                var x=document.getElementById("animalCode_Exte").value
+                document.getElementById("animalCode_Exte").value=x.toUpperCase()
+                
+            }
+
+           
     </script>
     @endsection
 </body>

@@ -1,0 +1,11 @@
+.table thead{
+    background-color: rgb(77, 188, 240);
+}
+.table th{
+    background-color: rgb(20, 22, 23);
+    
+}
+.titulo {
+    text-align: center;
+    color: rgb(2, 2, 2);
+}

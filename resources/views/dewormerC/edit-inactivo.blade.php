@@ -62,8 +62,8 @@
                 </div> 
                     
                 <div class="form-group">
-                    <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/controlDesparasitacion')}}">Cancelar</a>
-                    <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/controlDesparasitacion') }}" >Guardar</button>
+                    <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/inactivos/controlDesparasitaciones')}}">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('inactivos/controlDesparasitaciones') }}" >Guardar</button>
                 </div>
             </form>
         </div>

@@ -20,11 +20,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre de la Vacuna:</label>
-                        <input type="text" class="form-control" id="vaccine_d" name="vaccine_d" value="{{old('vaccine_d')}}">
+                        <input type="text" class="form-control" id="vaccine_d" name="vaccine_d" value="{{old('vaccine_d')}}" onblur="upperCase()">
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>
-                        <input type="date" class="form-control" id="fecha_e" name="date_e" value="{{old('date_e')}}">
+                        <input type="date" class="form-control" id="fecha_e" name="date_e" value="{{old('date_e')}}" >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Caducidad:</label>
@@ -32,7 +32,7 @@
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{old('supplier')}}">
+                        <input type="text" class="form-control" id="supplier" name="supplier" value="{{old('supplier')}}" onblur="upperCase()">
                     </div>   
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
@@ -50,5 +50,14 @@
         </div>
     @endsection
     @section('js')
+    <script>
+        function upperCase() {
+               var x=document.getElementById("vaccine_d").value
+               document.getElementById("vaccine_d").value=x.toUpperCase()
+               var x=document.getElementById("supplier").value
+               document.getElementById("supplier").value=x.toUpperCase()
+           }
+
+   </script>
     @endsection
 </body>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vitamin;
 use App\Http\Requests\StoreVitamin;
+use Illuminate\Support\Facades\DB;
 
 class VitaminController extends Controller
 {
@@ -17,7 +18,7 @@ class VitaminController extends Controller
     {
         $vitamina= DB::table('vitamin')
         ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
-        ->where('actual_state','=','Disponible')
+        ->where('actual_state','=','DISPONIBLE')
         ->get();
         
         return view('vitamin.index-vitamin',compact('vitamina'));

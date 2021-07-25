@@ -20,16 +20,16 @@ class Vaccine_controlController extends Controller
     public function index()
     {
         $vacunaC= DB::table('vaccine_control')
-                ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
-                ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
-                ->select('vaccine_control.id'
-                        ,'vaccine_control.date'
-                        ,'vaccine.vaccine_d as vacuna'
-                        ,'file_animale.animalCode as animal',
-                        'vaccine_control.date_r',
-                         'vaccine_control.actual_state'
-                        )->where('vaccine_control.actual_state','=','disponible')
-                ->get();
+                    ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
+                    ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
+                    ->select('vaccine_control.id'
+                            ,'vaccine_control.date'
+                            ,'vaccine.vaccine_d as vacuna'
+                            ,'file_animale.animalCode as animal',
+                            'vaccine_control.date_r',
+                            'vaccine_control.actual_state'
+                            )->where('vaccine_control.actual_state','=','DISPONIBLE')
+                    ->get();
                 
          return view('vaccineC.index-vaccineC',compact('vacunaC'));
     }

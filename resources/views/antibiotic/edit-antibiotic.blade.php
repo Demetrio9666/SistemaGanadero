@@ -22,7 +22,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre del Antibiótico:</label>
-                        <input type="text" class="form-control" id="antibiotico_d" name="antibiotic_d" value="{{$anti->antibiotic_d}}" >
+                        <input type="text" class="form-control" id="antibiotic_d" name="antibiotic_d" value="{{$anti->antibiotic_d}}" onblur="upperCase()">
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>
@@ -34,14 +34,14 @@
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{$anti->supplier}}" >
+                        <input type="text" class="form-control" id="supplier" name="supplier" value="{{$anti->supplier}}" onblur="upperCase()" >
                     </div>   
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state" value="{{$anti->actual_state}}">
                             <option selected></option>
-                            <option value="Disponible" @if($anti->actual_state == "Disponible") selected @endif>Disponible</option>
-                            <option value="Inactivo" @if($anti->actual_state == "Inactivo") selected @endif>Inactivo</option>
+                            <option value="DISPONIBLE" @if($anti->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                            <option value="INACTIVO" @if($anti->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
                          </select>
                     </div>        
                     <div class="form-group">
@@ -53,5 +53,14 @@
         </div>
     @endsection
     @section('js')
+    <script>
+        function upperCase() {
+               var x=document.getElementById("antibiotic_d").value
+               document.getElementById("antibiotic_d").value=x.toUpperCase()
+               var x=document.getElementById("supplier").value
+               document.getElementById("supplier").value=x.toUpperCase()
+           }
+
+   </script>
     @endsection
   </body>

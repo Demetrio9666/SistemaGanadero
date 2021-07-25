@@ -14,13 +14,13 @@
             @include('messages.message')
             <div class="image"></div>
             <div class="frm">
-                <h1>Editar Desparacitante</h1>
+                <h1>Editar Desparacitantes</h1>
                 <form action=" {{route('confDespa.update',$desp->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre del Desparacitante:</label>
-                        <input type="text" class="form-control" id="raza" name="dewormer_d" value="{{$desp->dewormer_d}}" >
+                        <input type="text" class="form-control" id="dewormer_d" name="dewormer_d" value="{{$desp->dewormer_d}}" onblur="upperCase()">
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>
@@ -32,7 +32,7 @@
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{$desp->supplier}}" >
+                        <input type="text" class="form-control" id="supplier" name="supplier" value="{{$desp->supplier}}" onblur="upperCase()">
                     </div>    
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
@@ -50,5 +50,14 @@
         </div>
     @endsection
     @section('js')
+    <script>
+        function upperCase() {
+               var x=document.getElementById("dewormer_d").value
+               document.getElementById("dewormer_d").value=x.toUpperCase()
+               var x=document.getElementById("supplier").value
+               document.getElementById("supplier").value=x.toUpperCase()
+           }
+
+   </script>
     @endsection
   </body>

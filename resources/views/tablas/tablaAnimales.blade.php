@@ -8,7 +8,7 @@
 <body>
   <div class="card">
     <div class="card-body">
-      <table id="table" class="table table-striped table-bordered" style="width:100%">
+      <table id="tabla" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr> 
                 <th>#</th>
@@ -54,7 +54,7 @@
             <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
             <script src="{{asset('js/dataTables.sweetalert2@11.min.js')}}"></script>
   <script>
-     $('#table').DataTable({
+     $('#tabla').DataTable({
        responsive: true,
 
        "language": {

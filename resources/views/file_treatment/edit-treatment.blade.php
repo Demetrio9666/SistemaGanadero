@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Detalle:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="detail">{{$tra->detail}}</textarea>
+                    <textarea class="form-control"  id="detalle" rows="3" name="detail" onblur="upperCase()">{{$tra->detail}} </textarea>
                 </div>
 
                 <div class="form-group">
@@ -71,7 +71,7 @@
 
                 <div class="form-group">
                     <label for="">Tratamiento:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="treatment"> {{$tra->treatment}}</textarea>
+                    <textarea class="form-control" id="tratamiento" rows="3" name="treatment" onblur="upperCase()"> {{$tra->treatment}}</textarea>
                 </div>
                 <div  class="form-group">
                     <label for="">Estado Actual:</label>
@@ -104,6 +104,12 @@
                 $("#idcodi").val(col1);
                 $("#codigo_animal").val(col2);
            });
+           function upperCase() {
+                var x=document.getElementById("tratamiento").value
+                document.getElementById("tratamiento").value=x.toUpperCase()
+                var x=document.getElementById("detalle").value
+                document.getElementById("detalle").value=x.toUpperCase()
+            }
 
    </script>
     @endsection

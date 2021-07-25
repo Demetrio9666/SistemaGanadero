@@ -19,7 +19,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Vacunacion:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -78,6 +78,8 @@
                 $("#codigo_animal").val(col2);
            });
 
+
+          
    </script>
     @endsection
 </body>

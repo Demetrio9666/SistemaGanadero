@@ -23,7 +23,7 @@ class DewormerInactivosController extends Controller
             'dewormer.date_c',
             'dewormer.supplier',
             'dewormer.actual_state')
-            ->where('dewormer.actual_state','=','Inactivo')
+            ->where('dewormer.actual_state','=','INACTIVO')
             ->get();
         return view('dewormer.index-inactivo',compact('desp'));
     }
@@ -57,7 +57,7 @@ class DewormerInactivosController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('dewormer.edit-inactivo',compact('id'));
     }
 
     /**
@@ -82,7 +82,7 @@ class DewormerInactivosController extends Controller
     public function update(Request $request, $id)
     {
         $desp = Dewormer::findOrFail($id);
-        $desp->supplier = $request->supplier;
+        $desp->actual_state = $request->actual_state;
         $desp->save(); 
         return redirect('inactivos/Desparasitantes');
     }
@@ -95,6 +95,8 @@ class DewormerInactivosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $desp = Dewormer::findOrFail($id);
+        $desp->delete();
+        return redirect('inactivos/Desparasitantes')->with('eliminar','ok');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Http\Requests\StoreLocation;
+use Illuminate\Support\Facades\DB;
 class LocationController extends Controller
 {
     /**
@@ -21,7 +22,7 @@ class LocationController extends Controller
                     'location.actual_state')
                     ->where('location.actual_state','=','Disponible')
                     ->get();
-        return view('location.index-inactivo',compact('ubicacion'));
+        return view('location.index-location',compact('ubicacion'));
     }
 
     /**
@@ -101,8 +102,6 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        $ubicacion = Location::findOrFail($id);
-        $ubicacion->delete();
-        return redirect('/confUbicacion')->with('eliminar','ok'); 
+        
     }
 }

@@ -9,10 +9,14 @@
 @endif
 
 @section('adminlte_css')
-    <link href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+    <link href="{{asset('css/app.css')}}"> 
+    <link rel="stylesheet" type="text/css" href="{{('/css/tabla.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
+    
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('Buttons-1.7.1/css/buttons.bootstrap4.min.css')}}">
+    
     @stack('css')
     @yield('css')
 @stop
@@ -70,17 +74,30 @@
 
 @section('adminlte_js')
     <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+
+
+    
     <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/sweetalert2.all.min.js')}}"></script> 
     <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('datatables/dataTables.responsive.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
+    <script src="{{asset('JSZip-2.5.0/jszip.min.js')}}"></script>
+    <script src="{{asset('pdfmake-0.1.36/pdfmake.min.js')}}"></script>
+    <script src="{{asset('pdfmake-0.1.36/vfs_fonts.js')}}"></script>
+    <script src="{{asset('Buttons-1.7.1/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('Buttons-1.7.1/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('Buttons-1.7.1/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('Buttons-1.7.1/js/buttons.bootstrap4.min.js')}}"></script>
+    
+
+    
     <script>
         $('#tabla').DataTable({
-          responsive: true,
+            responsive: true,
           "language": {
              "lengthMenu": "Mostrar "+
-             `<select class="custom-select custom-selec-sm form-control form-control-sm">
+             `<select class="custom-select custom-selec form-control form-control">
                      <option value = '10' >10</option> 
                      <option  value = '25' >25</option>
                      <option  value = '50' >50</option>
@@ -97,8 +114,35 @@
                  'next':'Siguiente',
                  'previous':'Anterior'
              }
-         }
+         },
+        /* dom: 'Bfrtilp',
+         buttons:[
+             {
+                 extend:'excel',
+                 text: '<i class="fas fa-file-excel"></i>',
+                 titleAttr:'Exportar a Excel',
+                 className:'btn btn-success',
+                 excelStyles: {                // Add an excelStyles definition
+                              template: 'blue_medium',  // Apply the 'blue_medium' template
+                    },
+             },
+             {
+                 extend:'pdfHtml5',
+                 text: '<i class="fas fa-file-pdf"></i>',
+                 titleAttr:'Exportar a PDF',
+                 className:'btn btn-danger'
+             },
+             {
+                 extend:'print',
+                 text: '<i class="fas fa-print"></i>',
+                 titleAttr:'Imprimir',
+                 className:'btn btn-warning'
+             },
+         ],*/
+
         });
+
+
      </script>
       @if (session('eliminar') == 'ok')
       <script>

@@ -19,7 +19,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre del Antibiótico:</label>
-                        <input type="text" class="form-control" id="antibiotico" name="antibiotic_d"  value="{{old('antibiotic_d')}}">
+                        <input type="text" class="form-control" id="antibiotic_d" name="antibiotic_d"  value="{{old('antibiotic_d')}}" onblur="upperCase()">
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>
@@ -31,13 +31,13 @@
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{old('supplier')}}">
+                        <input type="text" class="form-control" id="supplier" name="supplier" value="{{old('supplier')}}" onblur="upperCase()">
                     </div>  
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
-                            <option value="Disponible">Disponible</option>
-                            <option value="Inactivo">Inactivo</option>
+                            <option value="DISPONIBLE">DISPONIBLE</option>
+                            <option value="INACTIVO">INACTIVO</option>
                          </select>
                     </div>     
                     <div class="form-group">
@@ -49,5 +49,14 @@
         </div>
     @endsection
     @section('js')
+    <script>
+        function upperCase() {
+               var x=document.getElementById("antibiotic_d").value
+               document.getElementById("antibiotic_d").value=x.toUpperCase()
+               var x=document.getElementById("supplier").value
+               document.getElementById("supplier").value=x.toUpperCase()
+           }
+
+   </script>
     @endsection
 </body>

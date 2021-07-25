@@ -83,7 +83,7 @@ class LocationInactivosController extends Controller
         
         $ubicacion->actual_state =$request->actual_state;
         $ubicacion->save(); 
-        return redirect('/confUbicacion'); 
+        return redirect('/inactivos/Ubicaciones'); 
     }
 
     /**
@@ -94,6 +94,8 @@ class LocationInactivosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ubicacion = Location::findOrFail($id);
+        $ubicacion->delete();
+        return redirect('/inactivos/Ubicaciones')->with('eliminar','ok'); 
     }
 }

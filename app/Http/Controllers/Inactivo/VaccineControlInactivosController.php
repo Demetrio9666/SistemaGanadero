@@ -28,11 +28,11 @@ class VaccineControlInactivosController extends Controller
                 ,'vaccine.vaccine_d as vacuna'
                 ,'file_animale.animalCode as animal',
                 'vaccine_control.date_r',
-                 'vaccine_control.actual_state'
-                )->where('vaccine_control.actual_state','=','disponible')
+                'vaccine_control.actual_state'
+                )->where('vaccine_control.actual_state','=','INACTIVO')
         ->get();
-        
- return view('vaccineC.index-inactivo',compact('vacunaC'));
+    
+        return view('vaccineC.index-inactivo',compact('vacunaC'));
     }
 
     /**

@@ -95,7 +95,7 @@
                         <label for="">Sexo</label>
                         <select class="form-control" id="razas"  name="sex" value="{{$ext->sex}}" disabled=disabled >
                             <option>Seleccione</option>
-                            <option value="HEMBRA" @if($ext->sex == "HEMBRA") selected @endif>HEMBRA</option>
+                            
                             <option value="MACHO" @if($ext->sex == "MACHO") selected @endif>MACHO</option>
                         </select>
                     </div>   

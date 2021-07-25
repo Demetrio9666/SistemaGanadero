@@ -20,7 +20,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre de la Vacuna:</label>
-                        <input type="text" class="form-control" id="vacuna" name="vaccine_d" value="{{$vacuna->vaccine_d}}" >
+                        <input type="text" class="form-control" id="vaccine_d" name="vaccine_d" value="{{$vacuna->vaccine_d}}" onblur="upperCase()">
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>
@@ -32,7 +32,7 @@
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{$vacuna->supplier}}" >
+                        <input type="text" class="form-control" id="supplier" name="supplier" value="{{$vacuna->supplier}}" onblur="upperCase()">
                     </div>  
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
@@ -50,5 +50,14 @@
         </div>
     @endsection
     @section('js')
+    <script>
+        function upperCase() {
+               var x=document.getElementById("vaccine_d").value
+               document.getElementById("vaccine_d").value=x.toUpperCase()
+               var x=document.getElementById("supplier").value
+               document.getElementById("supplier").value=x.toUpperCase()
+           }
+
+   </script>
     @endsection
   </body>

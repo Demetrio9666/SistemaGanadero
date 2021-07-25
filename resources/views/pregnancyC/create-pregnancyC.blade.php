@@ -20,7 +20,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Registro:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}">
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -62,7 +62,9 @@
                     
                 <div class="form-group">
                     <label for="">Observación:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="observation" value="{{old('observation')}}"></textarea>
+                    <textarea class="form-control" id="observation" rows="3" name="observation" value="{{old('observation')}}" onblur="upperCase()">
+                    {!! old('observation') !!}
+                    </textarea>
                 </div>
 
                 <div class="form-group">
@@ -100,6 +102,13 @@
                 $("#idcodi").val(col1);
                 $("#codigo_animal").val(col2);
            });
+
+           function upperCase() {
+                var x=document.getElementById("observation").value
+                document.getElementById("observation").value=x.toUpperCase()
+                
+            }
+
 
    </script>
     @endsection

@@ -45,7 +45,7 @@
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier"   value="{{$arti->supplier}}">
+                        <input type="text" class="form-control" id="proveedor" name="supplier"   value="{{$arti->supplier}}"onblur="upperCase()">
                     </div>      
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
@@ -63,5 +63,12 @@
         </div>
     @endsection
     @section('js')
+    <script>
+        function upperCase() {
+                var x=document.getElementById("proveedor").value
+                document.getElementById("proveedor").value=x.toUpperCase()
+               
+            }
+    </script>
     @endsection
 </body>

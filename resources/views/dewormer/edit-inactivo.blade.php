@@ -20,7 +20,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre del Desparacitante:</label>
-                        <input type="text" class="form-control" id="raza" name="dewormer_d" value="{{$desp->dewormer_d}}" disabled=disabled >
+                        <input type="text" class="form-control" id="dewormer_d" name="dewormer_d" value="{{$desp->dewormer_d}}" disabled=disabled >
                     </div>
                     <div class="form-group">
                         <label for="">Fecha Elaboración:</label>
@@ -32,7 +32,7 @@
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{$desp->supplier}}" disabled=disabled>
+                        <input type="text" class="form-control" id="supplier" name="supplier" value="{{$desp->supplier}}" disabled=disabled>
                     </div>    
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>

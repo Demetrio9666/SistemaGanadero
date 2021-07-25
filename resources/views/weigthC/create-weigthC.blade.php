@@ -19,7 +19,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Fecha de Registro:</label>
-                    <input type="date" class="form-control" id="fecha_r" name="date" >
+                    <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}" >
                 </div>
                 <div class="form-group">
                     <label for="" class="">Código Animal</label>
@@ -82,6 +82,7 @@
                         text: 'FORMATO NO ACEPTADO EJEMPLO: 00.00 ',
                         
                     }) 
+                    document.getElementById("peso").value ="";
                 return false;
             }
         }

@@ -28,8 +28,8 @@
                     <td >{{$i->description}}</td>
                     <td >{{$i->actual_state}}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('confUbicacion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                        <form action="{{route('confUbicacion.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
+                        <a class="btn btn-primary" href="{{route('inactivos.Ubicaciones.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                        <form action="{{route('inactivos.Ubicaciones.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                             @csrf
                             @method('DELETE') 
                             <button type="submit"  class="btn btn-danger" value="Eliminar">

@@ -23,7 +23,7 @@ class DewormerController extends Controller
             'dewormer.date_c',
             'dewormer.supplier',
             'dewormer.actual_state')
-            ->where('dewormer.actual_state','=','Disponible')
+            ->where('dewormer.actual_state','=','DISPONIBLE')
             ->get();
         return view('dewormer.index-dewormer',compact('desp'));
     }
@@ -88,13 +88,14 @@ class DewormerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreDewormer $request, $id)
+    public function update(Request $request, $id)
     {
         $desp = Dewormer::findOrFail($id);
         $desp->dewormer_d = $request->dewormer_d;
         $desp->date_e = $request->date_e;
         $desp->date_c = $request->date_c;
         $desp->supplier = $request->supplier;
+        $desp->actual_state = $request->actual_state;
         $desp->save(); 
         return redirect('/confDespa');
     }
@@ -107,8 +108,6 @@ class DewormerController extends Controller
      */
     public function destroy($id)
     {
-        $desp = Dewormer::findOrFail($id);
-        $desp->delete();
-        return redirect('/confDespa')->with('eliminar','ok');
+        
     }
 }

@@ -37,12 +37,12 @@
                         <select class="form-control" id="inputPassword4"  name="reproduccion" value="{{old('reproduccion')}}">
                             <option selected></option>
                             <option value="PAJUELA" @if(old('reproduccion') == "PAJUELA") {{'selected'}} @endif>PAJUELA</option>
-                            <option value="HEMBRIONAL @if(old('reproduccion') == "HEMBRIONAL") {{'selected'}} @endif">HEMBRIONAL</option>
+                            <option value="HEMBRIONAL" @if(old('reproduccion') == "HEMBRIONAL") {{'selected'}} @endif >HEMBRIONAL</option>
                       </select>
                     </div>  
                     <div class="form-group">
                         <label for="">Proveedor:</label>
-                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{old('supplier')}}">
+                        <input type="text" class="form-control" id="proveedor" name="supplier" value="{{old('supplier')}}" onblur="upperCase()">
                     </div> 
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
@@ -60,5 +60,12 @@
         </div>
     @endsection
     @section('js')
+    <script>
+        function upperCase() {
+                var x=document.getElementById("proveedor").value
+                document.getElementById("proveedor").value=x.toUpperCase()
+               
+            }
+    </script>
     @endsection
 </body>

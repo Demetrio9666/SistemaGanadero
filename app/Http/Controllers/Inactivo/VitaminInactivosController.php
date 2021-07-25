@@ -18,7 +18,7 @@ class VitaminInactivosController extends Controller
     {
         $vitamina= DB::table('vitamin')
                     ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
-                    ->where('actual_state','=','Disponible')
+                    ->where('actual_state','=','INACTIVO')
                     ->get();
         
         return view('vitamin.index-inactivo',compact('vitamina'));

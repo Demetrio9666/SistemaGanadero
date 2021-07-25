@@ -20,11 +20,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nombre de la ubicación:</label>
-                        <input type="text" class="form-control" id="location_d" name="location_d" value="{{old('location_d')}}">
+                        <input type="text" class="form-control" id="location_d" name="location_d" value="{{old('location_d')}}" onblur="upperCase()">
                     </div>
                     <div class="form-group">
                         <label for="">Descripción:</label>
-                        <input type="int" class="form-control" id="descripcion" name="description" value="{{old('description')}}">
+                        <input type="int" class="form-control" id="descripcion" name="description" value="{{old('description')}}" onblur="upperCase()">
                     </div> 
                     <div  class="form-group">
                         <label for="">Estado Actual:</label>
@@ -42,5 +42,14 @@
         </div>
     @endsection
     @section('js')
+    <script>
+         function upperCase() {
+                var x=document.getElementById("location_d").value
+                document.getElementById("location_d").value=x.toUpperCase()
+                var x=document.getElementById("descripcion").value
+                document.getElementById("descripcion").value=x.toUpperCase()
+            }
+
+    </script>
     @endsection
 </body>

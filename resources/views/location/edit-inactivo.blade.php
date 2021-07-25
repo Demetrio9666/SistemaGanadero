@@ -21,7 +21,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Nombre de ubicación:</label>
-                        <input type="text" class="form-control" id="raza" name="location_d" value="{{$ubicacion->location_d}}" disabled=disabled >
+                        <input type="text" class="form-control" id="raza" name="location_d" value="{{$ubicacion->location_d}}" disabled=disabled  >
                     </div>
                     <div class="form-group">
                         <label for="">Descripción:</label>
@@ -43,5 +43,6 @@
         </div>
     @endsection
     @section('js')
+  
     @endsection
   </body>
