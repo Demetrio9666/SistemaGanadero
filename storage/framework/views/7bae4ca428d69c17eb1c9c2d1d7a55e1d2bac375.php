@@ -9,8 +9,8 @@
                 <a type="button" class="btn-lg btn-warning " style="margin: 10px" id="button-addon1" href="<?php echo e(url('inactivos/fichaAnimales')); ?>"><i class="fas fa-trash"></i></a>
                 
                 <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="<?php echo e(url('inactivos/fichaAnimales')); ?>"><i class="fas fa-file-excel"></i></a>
-                <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="<?php echo e(url('inactivos/fichaAnimales')); ?>"><i class="fas fa-file-pdf"></i></i></a>
-                <a type="button" class="btn-lg btn-warning float-right"  id="button-addon1" href="<?php echo e(url('inactivos/fichaAnimales')); ?>"><i class="fas fa-print"></i></a>
+                <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="<?php echo e(url('descarga-pdf')); ?>"><i class="fas fa-file-pdf"></i></a>
+               
 
                 
                
@@ -29,7 +29,7 @@
                                     <th>Edad-meses</th>
                                     <th>Salud</th>
                                     <th>Embarazo</th>
-                                    <th>localizacion</th>
+                                    <th>localización</th>
                                     <th>Estado Actual</th> 
                                     <th>Concebido</th>  
                                     <th>Acción</th>

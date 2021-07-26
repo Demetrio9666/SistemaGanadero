@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('datatables/dataTables.bootstrap4.min.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('datatables/responsive.bootstrap4.min.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('Buttons-1.7.1/css/buttons.bootstrap4.min.css')); ?>">
+   
     
     <?php echo $__env->yieldPushContent('css'); ?>
     <?php echo $__env->yieldContent('css'); ?>

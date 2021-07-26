@@ -20,7 +20,7 @@
                                     <th>Edad-meses</th>
                                     <th>Salud</th>
                                     <th>Embarazo</th>
-                                    <th>localizacion</th>
+                                    <th>localización</th>
                                     <th>Estado Actual</th> 
                                     <th>Concebido</th>  
                                     <th>Acción</th>

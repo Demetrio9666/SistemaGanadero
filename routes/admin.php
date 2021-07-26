@@ -24,6 +24,10 @@ use App\Http\Controllers\Inactivo\WeigthInactivosController;
 use App\Http\Controllers\Inactivo\VaccineControlInactivosController;
 
 
+use App\Http\Controllers\PDF\PDFController;
+
+
+
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DewormerController;
@@ -51,6 +55,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 
 Route::resource('fichaAnimal',File_animaleController::class)->names('fichaAnimal');
 Route::resource('inactivos/fichaAnimales',AnimalesInactivosController::class)->names('inactivos.fichaAnimales');
+Route::get('descarga-pdf',[File_animaleController::class,'PDFanimal']);
+
+
+
 
 
 Route::resource('fichaReproduccionM',File_reproductionMController::class)->names('fichaReproduccionM');

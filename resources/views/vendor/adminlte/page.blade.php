@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Buttons-1.7.1/css/buttons.bootstrap4.min.css')}}">
+   
     
     @stack('css')
     @yield('css')
