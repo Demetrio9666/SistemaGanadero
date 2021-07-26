@@ -17,7 +17,7 @@
                 <tr>
                     <th>Fecha de Registro</th>
                     <th>Raza</th>
-                    <th>Tipo de Material Genetico</th>
+                    <th>Tipo de Material Genético</th>
                     <th>Proveedor</th>
                     <th>Estado Actual</th> 
                     <th>Acción</th>

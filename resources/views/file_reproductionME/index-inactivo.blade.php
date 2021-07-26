@@ -21,7 +21,7 @@
                     <th>Raza</th>
                     <th>Edad</th>
                     <th>Sexo</th>
-                    <th>Codigo Externo</th>
+                    <th>Código Externo</th>
                     <th>Raza</th>
                     <th>Edad</th>
                     <th>Sexo</th>

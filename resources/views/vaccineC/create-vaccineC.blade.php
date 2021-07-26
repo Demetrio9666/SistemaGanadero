@@ -14,11 +14,11 @@
         @include('messages.message')
         <div class="image"></div>
         <div class="frm">
-            <h1>Registro de Control Vacunacion</h1>
+            <h1>Registro de Control Vacunación</h1>
             <form action="{{route('controlVacuna.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="">Fecha de Vacunacion:</label>
+                    <label for="">Fecha de Vacunación:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}">
                 </div>
                 <div class="form-group">

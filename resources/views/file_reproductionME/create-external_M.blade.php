@@ -45,7 +45,7 @@
     
                     </div>
                     <div class="col-md-6">
-                        <label for="">Codigo Animal Externo:</label>
+                        <label for="">Código Animal Externo:</label>
                         <input type="text" class="form-control" id="animalCode_Exte" name="animalCode_Exte" onblur="upperCase()">
                     </div>
                     <div class="col-md-6">

@@ -33,7 +33,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="">Tipo de Material Genetico:</label>
+                        <label for="">Tipo de Material Genético:</label>
 
                         <select class="form-control" id="inputPassword4"  name="reproduccion"   value="{{$arti->reproduccion}}" disabled=disabled>
                         

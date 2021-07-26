@@ -13,12 +13,12 @@
         @include('messages.message')
         <div class="image"></div>
         <div class="frm">
-            <h1>Editar Control de vacunacion </h1>
+            <h1>Editar Control de Vacunación </h1>
             <form action="{{route('inactivos.controlVacunas.update',$vacunaC->id)}}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="">Fecha de Vacunacion:</label>
+                    <label for="">Fecha de Vacunación:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date" value="{{$vacunaC->date}}" disabled=disabled>
                 </div>
                 <div class="form-group">

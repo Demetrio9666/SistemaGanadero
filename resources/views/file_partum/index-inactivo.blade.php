@@ -10,6 +10,7 @@
     
     <div class="card">
         <div class="card-body">
+            <div class="titulo "><h1>Fichas de Partos</h1></div>
           <table id="tabla" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>

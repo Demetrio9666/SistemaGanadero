@@ -55,7 +55,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 
 Route::resource('fichaAnimal',File_animaleController::class)->names('fichaAnimal');
 Route::resource('inactivos/fichaAnimales',AnimalesInactivosController::class)->names('inactivos.fichaAnimales');
-Route::get('descarga-pdf',[File_animaleController::class,'PDFanimal']);
+Route::get('descarga-pdf',[File_animaleController::class,'PDF']);
+Route::get('exportar-excel',[File_animaleController::class,'Excel']);
 
 
 

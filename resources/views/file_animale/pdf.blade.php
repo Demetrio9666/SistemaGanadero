@@ -1,8 +1,7 @@
-<head>
+ <head>
     <style>
         .table thead{
-                     background-color: rgb(98, 198, 245);
-                     
+                     background-color: rgb(98, 198, 245);              
         }
         .table{
            /*border: 1px solid*/

@@ -10,15 +10,15 @@
         
             <div class="accordion-body">
                 <div class="card">
-                    <h1 style="margin: 15px">Artificial</h1>
                     <div class="card-body">
+                        <div class="titulo "><h1>Fichas de Reproducción Artificial</h1></div>
                       <table id="tabla" class="table table-striped table-bordered" style="width:100%">
                         <thead>             
                             <tr>
                                 <th>Fecha de Registro</th>
                                 <th>Código del Animal</th>
                                 <th>Raza </th>
-                                <th>Tipo de Reproduccion Artificial</th>
+                                <th>Tipo de Reproducción Artificial</th>
                                 <th>Raza Material Genético</th>
                                 <th>Estado Actual</th> 
                                 <th>Acción</th>

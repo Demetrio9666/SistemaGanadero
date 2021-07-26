@@ -10,6 +10,7 @@
     <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('/confVacuna')}}"><i class="fas fa-arrow-left"></i></a>
     <div class="card">
         <div class="card-body">
+            <div class="titulo "><h1>Registros de Vacunas</h1></div>
           <table id="tabla" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>

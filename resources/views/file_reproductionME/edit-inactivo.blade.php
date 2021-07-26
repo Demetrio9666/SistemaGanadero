@@ -68,7 +68,7 @@
     
                     </div>
                     <div class="form-group">
-                        <label for="">Codigo Animal Externo:</label>
+                        <label for="">Código Animal Externo:</label>
                         <input type="text" class="form-control" id="raza" name="animalCode_Exte" value="{{$ext->animalCode_Exte}}" disabled=disabled  >
                     </div>
 

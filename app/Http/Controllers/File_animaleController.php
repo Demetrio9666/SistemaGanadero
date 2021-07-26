@@ -10,6 +10,8 @@ use App\Models\Race;
 use App\Http\Requests\StoreFile_animale;
 use App\Http\Requests\EditFile_animale;
 use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\File_AnimalesExport;
 
 class File_animaleController extends Controller
 {
@@ -34,7 +36,7 @@ class File_animaleController extends Controller
 
     }
 
-    public function PDFanimal(){
+    public function PDF(){
                     $animal = DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->join('location','file_animale.location_id','=','location.id')
@@ -55,6 +57,11 @@ class File_animaleController extends Controller
 }
 
     
+public function Excel() 
+    {
+        return Excel::download(new File_AnimalesExport, 'fichaAnimales.xlsx');
+    }
+
 
 
     /**

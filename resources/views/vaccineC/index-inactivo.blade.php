@@ -13,14 +13,15 @@
     
     <div class="card">
         <div class="card-body">
+            <div class="titulo "><h1>Fichas de Controles de Vacunaciones</h1></div>
           <table id="tabla" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>
                     <th></th>
-                    <th>Fecha de la Vacunacion</th>
+                    <th>Fecha de la Vacunación</th>
                     <th>Código del Animal</th>
                     <th>Vacuna</th>
-                    <th>Fecha de re-vacunacion</th>
+                    <th>Fecha de re-vacunación</th>
                     <th>Estado Actual</th> 
                     <th>Acción</th>
                 </tr>
