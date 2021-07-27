@@ -52,72 +52,122 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('index');
 })->name('index_admin');
 
-
-Route::resource('fichaAnimal',File_animaleController::class)->names('fichaAnimal');
+//FICHA ANIMALES
 Route::resource('inactivos/fichaAnimales',AnimalesInactivosController::class)->names('inactivos.fichaAnimales');
-Route::get('descarga-pdf',[File_animaleController::class,'PDF']);
-Route::get('exportar-excel',[File_animaleController::class,'Excel']);
+Route::resource('fichaAnimal',File_animaleController::class)->names('fichaAnimal');
+Route::get('descarga-pdf-fichaAnimal',[File_animaleController::class,'PDF']);
+Route::get('exportar-excel-fichaAnimal',[File_animaleController::class,'Excel']);
 
 
-
-
-
-Route::resource('fichaReproduccionM',File_reproductionMController::class)->names('fichaReproduccionM');
-Route::resource('inactivos/fichaReproduccionM',ReproductionMInactivosController::class)->names('inactivos.fichaReproduccionM');
-
-Route::resource('fichaReproduccionEx',External_mountController::class)->names('fichaReproduccionEx');
-Route::resource('inactivos/fichaReproduccionEx',ReproductionMEInactivosController::class)->names('inactivos.fichaReproduccionEx');
-
-Route::resource('fichaReproduccionA',File_reproductionAController::class)->names('fichaReproduccionA');
-Route::resource('inactivos/fichaReproduccionA',ReproductionAInactivosController::class)->names('inactivos.fichaReproduccionA');
-
-Route::resource('fichaTratamiento',File_treatmentController::class)->names('fichaTratamiento');
-Route::resource('inactivos/fichaTratamientos',TreatmentInactivosController::class)->names('inactivos.fichaTratamientos');
-
-Route::resource('fichaParto',File_partumController::class)->names('fichaParto');
+//FICHA DE PARTOS
 Route::resource('inactivos/fichaPartos',PartumInactivosController::class)->names('inactivos.fichaPartos');
+Route::resource('fichaParto',File_partumController::class)->names('fichaParto');
+Route::get('descarga-pdf-fichaParto',[File_partumController::class,'PDF']);
+Route::get('exportar-excel-fichaParto',[File_partumController::class,'Excel']);
 
 
-Route::resource('confUbicacion',LocationController::class)->names('confUbicacion');
+
+//FICHA REPRODUCCION POR MONTA NATURAL INTERNA
+Route::resource('inactivos/fichaReproduccionM',ReproductionMInactivosController::class)->names('inactivos.fichaReproduccionM');
+Route::resource('fichaReproduccionM',File_reproductionMController::class)->names('fichaReproduccionM');
+Route::get('descarga-pdf-fichaReproduccionM',[File_reproductionMController::class,'PDF']);
+Route::get('exportar-excel-fichaReproduccionM',[File_reproductionMController::class,'Excel']);
+
+
+//FICHA DE REPRODUCCION POR MONTA NATURAL EXTERNA
+Route::resource('inactivos/fichaReproduccionEx',ReproductionMEInactivosController::class)->names('inactivos.fichaReproduccionEx');
+Route::resource('fichaReproduccionEx',External_mountController::class)->names('fichaReproduccionEx');
+Route::get('descarga-pdf-fichaReproduccionEx',[External_mountController::class,'PDF']);
+Route::get('exportar-excel-fichaReproduccionEx',[External_mountController::class,'Excel']);
+
+
+//FICHA DE REPRODUCCION ARTIFICIAL
+Route::resource('inactivos/fichaReproduccionA',ReproductionAInactivosController::class)->names('inactivos.fichaReproduccionA');
+Route::resource('fichaReproduccionA',File_reproductionAController::class)->names('fichaReproduccionA');
+Route::get('descarga-pdf-fichaReproduccionA',[File_reproductionAController::class,'PDF']);
+Route::get('exportar-excel-fichaReproduccionA',[File_reproductionAController::class,'Excel']);
+
+
+//FICHA DE TRATAMIENTOS
+Route::resource('inactivos/fichaTratamientos',TreatmentInactivosController::class)->names('inactivos.fichaTratamientos');
+Route::resource('fichaTratamiento',File_treatmentController::class)->names('fichaTratamiento');
+Route::get('descarga-pdf-fichaTratamiento',[File_treatmentController::class,'PDF']);
+Route::get('exportar-excel-fichaTratamiento',[File_treatmentController::class,'Excel']);
+
+
+//CONFI UBICACION
 Route::resource('inactivos/Ubicaciones',LocationInactivosController::class)->names('inactivos.Ubicaciones');
+Route::resource('confUbicacion',LocationController::class)->names('confUbicacion');
+Route::get('descarga-pdf-confUbicacion',[LocationController::class,'PDF']);
+Route::get('exportar-excel-confUbicacion',[LocationController::class,'Excel']);
 
-
-Route::resource('confRaza',RaceController::class)->names('confRaza');
+//CONFI RAZAS
 Route::resource('inactivos/Razas',RaceInactivosController::class)->names('inactivos.Razas');
+Route::resource('confRaza',RaceController::class)->names('confRaza');
+Route::get('descarga-pdf-confRaza',[RaceController::class,'PDF']);
+Route::get('exportar-excel-confRaza',[RaceController::class,'Excel']);
 
-Route::resource('confVi',VitaminController::class)->names('confVi');
+
+//CONFI VITAMINAS
 Route::resource('inactivos/Vitaminas',VitaminInactivosController::class)->names('inactivos.Vitaminas');
+Route::resource('confVi',VitaminController::class)->names('confVi');
+Route::get('descarga-pdf-confVi',[VitaminController::class,'PDF']);
+Route::get('exportar-excel-confVi',[VitaminController::class,'Excel']);
 
-Route::resource('confDespa',DewormerController::class)->names('confDespa');
+//CONFI DESPARACITANTES
 Route::resource('inactivos/Desparasitantes',DewormerInactivosController::class)->names('inactivos.Desparasitantes');
+Route::resource('confDespa',DewormerController::class)->names('confDespa');
+Route::get('descarga-pdf-confDespa',[DewormerController::class,'PDF']);
+Route::get('exportar-excel-confDespa',[DewormerController::class,'Excel']);
 
-
-Route::resource('confVacuna',VaccineController::class)->names('confVacuna');
+//CONFI DE VACUNAS
 Route::resource('inactivos/Vacunas',VaccineInactivosController::class)->names('inactivos.Vacunas');
+Route::resource('confVacuna',VaccineController::class)->names('confVacuna');
+Route::get('descarga-pdf-confVacuna',[VaccineController::class,'PDF']);
+Route::get('exportar-excel-confVacuna',[VaccineController::class,'Excel']);
 
 
-Route::resource('confAnt',AntibioticController::class)->names('confAnt');
+//CONFI DE ANTIBIOTICOS
 Route::resource('inactivos/Antibioticos',AntibioticInactivosController::class)->names('inactivos.Antibioticos');
+Route::resource('confAnt',AntibioticController::class)->names('confAnt');
+Route::get('descarga-pdf-confAnt',[AntibioticController::class,'PDF']);
+Route::get('exportar-excel-confAnt',[AntibioticController::class,'Excel']);
 
 
-Route::resource('confMate',ArtificialReproductionController::class)->names('confMate');
+//CONFI DE MATERIALES GENETICOS
 Route::resource('inactivos/Materiales',ArtificialInactivosController::class)->names('inactivos.Materiales');
+Route::resource('confMate',ArtificialReproductionController::class)->names('confMate');
+Route::get('descarga-pdf-confMate',[ArtificialReproductionController::class,'PDF']);
+Route::get('exportar-excel-confMate',[ArtificialReproductionController::class,'Excel']);
 
-
-Route::resource('controlPrenes',Pregnancy_controlController::class)->names('controlPrenes');
+//CONTROL DE PREÑES
 Route::resource('inactivos/controlPrenes',PregnancyControlInactivosController::class)->names('inactivos.controlPrenes');
+Route::resource('controlPrenes',Pregnancy_controlController::class)->names('controlPrenes');
+Route::get('descarga-pdf-controlPrenes',[Pregnancy_controlController::class,'PDF']);
+Route::get('exportar-excel-controlPrenes',[Pregnancy_controlController::class,'Excel']);
 
-Route::resource('controlDesparasitacion',Deworming_controlController::class)->names('controlDesparasitacion');
+
+//CONTROL DE DESPARACITACION
 Route::resource('inactivos/controlDesparasitaciones',DewormingControlInactivosController::class)->names('inactivos.controlDesparasitaciones');
+Route::resource('controlDesparasitacion',Deworming_controlController::class)->names('controlDesparasitacion');
+Route::get('descarga-pdf-controlDesparasitacion',[Deworming_controlController::class,'PDF']);
+Route::get('exportar-excel-controlDesparasitacion',[Deworming_controlController::class,'Excel']);
 
-Route::resource('controlPeso',Weigth_controlController::class)->names('controlPeso');
+
+//CONTROL DE PESO
 Route::resource('inactivos/controlPesos',WeigthInactivosController::class)->names('inactivos.controlPesos');
+Route::resource('controlPeso',Weigth_controlController::class)->names('controlPeso');
+Route::get('descarga-pdf-controlPeso',[Weigth_controlController::class,'PDF']);
+Route::get('exportar-excel-controlPeso',[Weigth_controlController::class,'Excel']);
 
-Route::resource('controlVacuna',Vaccine_controlController::class)->names('controlVacuna');
+//CONTROL DE VACUNAS
 Route::resource('inactivos/controlVacunas',VaccineControlInactivosController::class)->names('inactivos.controlVacunas');
+Route::resource('controlVacuna',Vaccine_controlController::class)->names('controlVacuna');
+Route::get('descarga-pdf-controlVacuna',[Vaccine_controlController::class,'PDF']);
+Route::get('exportar-excel-controlVacuna',[Vaccine_controlController::class,'Excel']);
 
 
-
+//SEGURIDAD
 Route::resource('rol',RoleController::class)->names('rol');
 Route::resource('usuarios',UserController::class)->names('usuarios');
 

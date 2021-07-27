@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Race;
 use App\Models\Artificial_Reproduction;
 use App\Http\Requests\StoreArtificial;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ArtificialReproductionExport;
 
 class ArtificialReproductionController extends Controller
 {
@@ -20,19 +23,37 @@ class ArtificialReproductionController extends Controller
         $arti= DB::table('artificial_reproduction')
                     ->join('race','race.id','=','artificial_reproduction.race_id')
                     ->select('artificial_reproduction.id',
-                    'artificial_reproduction.date',
-                    'race.race_d  as raza',
-                    'artificial_reproduction.reproduccion',
-                    'artificial_reproduction.supplier',
-                    'artificial_reproduction.actual_state'
+                            'artificial_reproduction.date',
+                            'race.race_d  as raza',
+                            'artificial_reproduction.reproduccion',
+                            'artificial_reproduction.supplier',
+                            'artificial_reproduction.actual_state'
                     )->where('artificial_reproduction.actual_state','=','Disponible')
-                    ->get();
+                ->get();
 
-        //$arti = Artificial_Reproduction::all();
-
-       //return $arti;
        return view('artificialR.index-artificialR',compact('arti'));
     }
+
+    public function PDF(){
+        $arti= DB::table('artificial_reproduction')
+                ->join('race','race.id','=','artificial_reproduction.race_id')
+                ->select('artificial_reproduction.id',
+                            'artificial_reproduction.date',
+                            'race.race_d  as raza',
+                            'artificial_reproduction.reproduccion',
+                            'artificial_reproduction.supplier',
+                            'artificial_reproduction.actual_state'
+                )->where('artificial_reproduction.actual_state','=','Disponible')
+            ->get();
+            $pdf = PDF::loadView('artificialR.pdf',compact('arti'));
+            return $pdf->setPaper('a4','landscape')->download('MaterialGenetico.pdf');
+
+
+    }
+    public function Excel() {
+        return Excel::download(new ArtificialReproductionExport, 'MaterialGenetico.xlsx');
+    }
+
 
     /**
      * Show the form for creating a new resource.

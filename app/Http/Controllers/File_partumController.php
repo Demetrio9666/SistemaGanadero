@@ -8,6 +8,9 @@ use App\Models\File_animale;
 use App\Models\File_partum;
 use App\Models\Vitamin;
 use App\Http\Requests\StoreFile_partum;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\File_partumExport;
 
 class File_partumController extends Controller
 {
@@ -19,25 +22,43 @@ class File_partumController extends Controller
     public function index()
     {
         $par = DB::table('file_partum')
-        
+            ->join('file_animale','file_partum.animalCode_id','=','file_animale.id')
+            ->select('file_partum.id',
+                    'file_partum.date',
+                    'file_animale.animalCode as animal',
+                    'file_partum.male',
+                    'file_partum.female',
+                    'file_partum.dead',
+                    'file_partum.mother_status',
+                    'file_partum.partum_type',
+                    'file_partum.actual_state'
+                    )->where('file_partum.actual_state','=','Disponible')
+                    
+            ->get();
+
+      return view('file_partum.index-partum',compact('par'));
+    }
+    public function PDF(){
+        $par = DB::table('file_partum')
         ->join('file_animale','file_partum.animalCode_id','=','file_animale.id')
         ->select('file_partum.id',
-                 'file_partum.date',
-                 'file_animale.animalCode as animal',
-                 'file_partum.male',
-                 'file_partum.female',
-                 'file_partum.dead',
-                 'file_partum.mother_status',
-                 'file_partum.partum_type',
-                 'file_partum.actual_state'
+                'file_partum.date',
+                'file_animale.animalCode as animal',
+                'file_partum.male',
+                'file_partum.female',
+                'file_partum.dead',
+                'file_partum.mother_status',
+                'file_partum.partum_type',
+                'file_partum.actual_state'
                 )->where('file_partum.actual_state','=','Disponible')
                 
         ->get();
+        $pdf = PDF::loadView('file_partum.pdf',compact('par'));
+        return $pdf->setPaper('a4','landscape')->download('FichaPartos.pdf');
+    }
 
-
-        //$tra = File_treatment::all();
-    //return $tra;
-      return view('file_partum.index-partum',compact('par'));
+    public function Excel(){
+        return Excel::download(new File_partumExport, 'FichaPartos.xlsx');
     }
 
     /**

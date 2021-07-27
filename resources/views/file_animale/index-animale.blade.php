@@ -8,8 +8,8 @@
                 <a type="button" class="btn-lg btn-success " style="margin: 10px" id="button-addon1" href="{{url('fichaAnimal/create')}}"><i class="fas fa-plus-square"></i></a>
                 <a type="button" class="btn-lg btn-warning " style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaAnimales')}}"><i class="fas fa-trash"></i></a>
                 
-                <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel')}}"><i class="fas fa-file-excel"></i></a>
-                <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf')}}"><i class="fas fa-file-pdf"></i></a>
+                <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel-fichaAnimal')}}"><i class="fas fa-file-excel"></i></a>
+                <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf-fichaAnimal')}}"><i class="fas fa-file-pdf"></i></a>
                 <div class="card">
                     <div class="card-body">
                         <div class="titulo "><h1>Fichas de Animales</h1></div>

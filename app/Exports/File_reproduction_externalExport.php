@@ -2,10 +2,10 @@
 
 namespace App\Exports;
 
-use Illuminate\Support\Facades\DB;
-use App\Models\File_Animale;
-use App\Models\Location;
+use App\Models\File_reproduction_external;
 use App\Models\Race;
+use App\Models\File_animale;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -13,43 +13,51 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class File_AnimalesExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class File_reproduction_externalExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        $animal = DB::table('file_animale')
-                    ->join('race','file_animale.race_id','=','race.id')
-                    ->join('location','file_animale.location_id','=','location.id')
-                    ->select('file_animale.id as ID','file_animale.animalCode as Codigo Animal','file_animale.date as Fecha de Nacimiento','race.race_d as Raza',
-                            'file_animale.sex as Sexo','file_animale.stage as Etapa','file_animale.source as Origen','file_animale.age_month as Edad-Meses',
-                            'file_animale.health_condition as Estado de Salud','file_animale.gestation_state as Embarazo','file_animale.actual_state as Estado Actual','location.location_d as Localizacion'
-                            ,'file_animale.conceived as Concevido')
-                            ->where('file_animale.actual_state', '=', 'DISPONIBLE' )->Orwhere('file_animale.actual_state', '=', 'REPRODUCCION')
-                    ->get();
-        return $animal;
+        $ext =  DB::table('file_reproduction_external')
+        ->join('file_animale','file_reproduction_external.animalCode_id','=','file_animale.id')
+        ->join('race as R','file_animale.race_id','=','R.id')
+        ->join('race','file_reproduction_external.race_id','=','race.id')
+        ->select('file_reproduction_external.id',
+                    'file_reproduction_external.date',
+                    'file_animale.animalCode',
+                    'R.race_d as raza',
+                    'file_animale.age_month as edad',
+                    'file_animale.sex as sexo',
+
+                    'file_reproduction_external.animalCode_Exte',
+                    'race.race_d',
+                    'file_reproduction_external.age_month',
+                    'file_reproduction_external.sex',
+                    'file_reproduction_external.hacienda_name',
+                    'file_reproduction_external.actual_state')
+                    ->where('file_reproduction_external.actual_state','=','Disponible')
+                    
+        ->get();
+        return $ext;
     }
     public function headings():array{
         return[
             'ID',
+            'Fecha de Registro',
             'Codigo Animal',
-            'Fecha de Nacimiento',
             'Raza',
+            'Edad',
             'Sexo',
-            'Etapa',
-            'Origen',
-            'Edad-Meses',
-            'Estado de Salud',
-            'Embarazo',
+            'Codigo Animal Exteno',
+            'Raza',
+            'Edad',
+            'Sexo',
+            'Hacienda',
             'Estado Actual',
-            'Localizacion',
-            'Concevido',
-
         ];
     }
-
     public function columnWidths(): array
     {
         return [
@@ -65,11 +73,10 @@ class File_AnimalesExport implements FromCollection ,WithHeadings,WithColumnWidt
             'J'=>10, 
             'K'=>11.22, 
             'L'=>10.67, 
-            'M'=>22.12,   
+             
                      
         ];
     }
-
     public function styles(Worksheet $sheet)
     {
        $sheet->getStyle('A1')->getFont()->setBold(true);
@@ -84,9 +91,7 @@ class File_AnimalesExport implements FromCollection ,WithHeadings,WithColumnWidt
        $sheet->getStyle('J1')->getFont()->setBold(true);
        $sheet->getStyle('K1')->getFont()->setBold(true);
        $sheet->getStyle('L1')->getFont()->setBold(true);
-       $sheet->getStyle('M1')->getFont()->setBold(true);
+      
     }
-
-
 
 }

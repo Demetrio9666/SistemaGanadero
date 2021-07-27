@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Antibiotic;
 use App\Http\Requests\StoreAntibiotic;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AntibioticosExport;
 
 class AntibioticController extends Controller
 {
@@ -27,6 +30,28 @@ class AntibioticController extends Controller
        ->get();
         return view('antibiotic.index-antibiotic',compact('anti'));
     }
+
+    public function PDF(){
+        $anti = DB::table('antibiotic')
+        ->select('antibiotic.id',
+                  'antibiotic.antibiotic_d',
+                  'antibiotic.date_e',
+                  'antibiotic.date_c',
+                  'antibiotic.supplier',
+                  'antibiotic.actual_state')
+                  ->where('antibiotic.actual_state','=','Disponible')
+       ->get();
+       $pdf = PDF::loadView('antibiotic.pdf',compact('anti'));
+       return $pdf->setPaper('a4','landscape')->download('RegistrosAntibioticos.pdf');
+
+    }
+
+    public function Excel(){
+        return Excel::download(new AntibioticosExport, 'RegistrosAntibioticos.xlsx');
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

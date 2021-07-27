@@ -13,6 +13,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\File_AnimalesExport;
 
+
 class File_animaleController extends Controller
 {
     /**
@@ -51,17 +52,16 @@ class File_animaleController extends Controller
 
         //return $pdf->download('codingdriver.pdf');
         //return $pdf->setPaper('a4','landscape')->stream('fichaAnimal.pdf');
-        return $pdf->setPaper('a4','landscape')->stream('fichaAnimal.pdf');
+        return $pdf->setPaper('a4','landscape')->download('FichaAnimal.pdf');
 
        // return view('file_animale.pdf',compact('animal'));
 }
 
     
-public function Excel() 
+    public function Excel() 
     {
-        return Excel::download(new File_AnimalesExport, 'fichaAnimales.xlsx');
+        return Excel::download(new File_AnimalesExport, 'FichaAnimal.xlsx');
     }
-
 
 
     /**

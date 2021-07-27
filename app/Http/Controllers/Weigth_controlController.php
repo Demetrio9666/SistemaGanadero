@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\File_animale;
 use App\Models\Weigth_control;
 use App\Http\Requests\StoreWeigthC;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Weigth_controlExport;
 
 class Weigth_controlController extends Controller
 {
@@ -29,6 +32,27 @@ class Weigth_controlController extends Controller
                 ->get();
         return view('weigthC.index-weigthC',compact('pesoC'));
     }
+    public function PDF(){
+        $pesoC = DB::table('weigth_control')
+                ->join('file_animale','weigth_control.animalCode_id','=','file_animale.id')
+                ->select('weigth_control.id'
+                ,'weigth_control.date',
+                'file_animale.animalCode as animal',
+                'weigth_control.weigtht',
+                'weigth_control.date_r',
+                'weigth_control.actual_state')
+                ->where('weigth_control.actual_state','=','Disponible')
+                ->get();
+        $pdf = PDF::loadView('weigthC.pdf',compact('pesoC'));
+        return $pdf->setPaper('a4','landscape')->download('ControlPeso.pdf');
+    }
+    public function Excel(){
+        return Excel::download(new Weigth_controlExport, 'RegistrosAntibioticos.xlsx');
+    }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

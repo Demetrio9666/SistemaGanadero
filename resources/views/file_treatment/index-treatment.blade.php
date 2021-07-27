@@ -12,8 +12,8 @@
     @section('content_header')
     <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaTratamiento/create')}}"><i class="fas fa-plus-square"></i></a>
     <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaTratamientos')}}"><i class="fas fa-recycle"></i></a>
-    <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel')}}"><i class="fas fa-file-excel"></i></a>
-    <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf')}}"><i class="fas fa-file-pdf"></i></a>
+    <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel-fichaTratamiento')}}"><i class="fas fa-file-excel"></i></a>
+    <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf-fichaTratamiento')}}"><i class="fas fa-file-pdf"></i></a>
     <div class="card">
         <div class="card-body">
             <div class="titulo "><h1>Fichas de Tratamientos</h1></div>

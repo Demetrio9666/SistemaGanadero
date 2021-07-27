@@ -6,6 +6,9 @@ use App\Models\Race;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRace;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RaceExport;
 
 class RaceController extends Controller
 {
@@ -26,6 +29,38 @@ class RaceController extends Controller
         return view('race.index-race',compact('raza'));
         
     }
+    public function PDF(){
+        $raza = DB::table('race')
+        ->select('race.id',
+                    'race.race_d',
+                    'race.percentage',
+                    'race.actual_state')
+                    ->where('race.actual_state','=','Disponible')
+                    ->get();
+        $pdf = PDF::loadView('race.pdf',compact('raza'));
+        return $pdf->setPaper('a4','landscape')->download('RegistroRazas.pdf');
+        
+    }
+
+    public function Excel(){
+        return Excel::download(new RaceExport, 'RegistroRazas.xlsx');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Vitamin;
 use App\Http\Requests\StoreVitamin;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\VitaminExport;
 
 class VitaminController extends Controller
 {
@@ -17,12 +20,30 @@ class VitaminController extends Controller
     public function index()
     {
         $vitamina= DB::table('vitamin')
-        ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
-        ->where('actual_state','=','DISPONIBLE')
-        ->get();
+                    ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
+                    ->where('actual_state','=','DISPONIBLE')
+                    ->get();
         
         return view('vitamin.index-vitamin',compact('vitamina'));
     }
+    public function PDF(){
+        $vitamina= DB::table('vitamin')
+                    ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
+                    ->where('actual_state','=','DISPONIBLE')
+                    ->get(); 
+        $pdf = PDF::loadView('vitamin.pdf',compact('vitamina'));
+        return $pdf->setPaper('a4','landscape')->download('RegistrosVitaminas.pdf');
+    }
+    public function Excel(){
+        return Excel::download(new VitaminExport, 'RegistrosVitaminas.xlsx');
+    }
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

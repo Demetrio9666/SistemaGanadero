@@ -8,6 +8,10 @@ use App\Models\File_animale;
 use App\Models\Antibiotic;
 use App\Models\File_treatment;
 use App\Http\Requests\StoreFile_treatment;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\File_treatmentExport;
+
 class File_treatmentController extends Controller
 {
     /**
@@ -36,6 +40,39 @@ class File_treatmentController extends Controller
 
       return view('file_treatment.index-treatment',compact('tra'));
     }
+    public function PDF(){
+        $tra = DB::table('file_treatment')
+        ->leftJoin('vitamin','file_treatment.vitamin_id','=','vitamin.id')
+        ->join('file_animale','file_treatment.animalCode_id','=','file_animale.id')
+        ->leftJoin('antibiotic','file_treatment.antibiotic_id','=','antibiotic.id')
+        ->select('file_treatment.id',
+                 'file_treatment.date',
+                 'file_animale.animalCode as animal',
+                 'file_treatment.disease',
+                 'file_treatment.detail',
+                 'antibiotic.antibiotic_d as anti',
+                 'vitamin.vitamin_d as vi',
+                 'file_treatment.treatment',
+                 'file_treatment.actual_state'
+                )->where('file_treatment.actual_state','=','Disponible')    
+                
+        ->get();
+        $pdf = PDF::loadView('file_treatment.pdf',compact('tra'));
+        return $pdf->setPaper('a4','landscape')->download('FichaTratamiento.pdf');
+    }
+    public function Excel() {
+        return Excel::download(new File_treatmentExport, 'FichaTratamiento.xlsx');
+    }
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

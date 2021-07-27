@@ -11,8 +11,8 @@
     @section('content_header')
     <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaReproduccionA/create')}}"><i class="fas fa-plus-square"></i></a>
     <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaReproduccionA')}}"><i class="fas fa-recycle"></i></a>
-    <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel')}}"><i class="fas fa-file-excel"></i></a>
-    <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf')}}"><i class="fas fa-file-pdf"></i></a>    
+    <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel-fichaReproduccionA')}}"><i class="fas fa-file-excel"></i></a>
+    <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf-fichaReproduccionA')}}"><i class="fas fa-file-pdf"></i></a>    
             <div class="accordion-body">
                 <div class="card">
                     <div class="card-body">

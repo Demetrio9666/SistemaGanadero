@@ -29,7 +29,7 @@ class StorePregnancyC extends FormRequest
             'animalCode_id' => 'required',
             'vitamin_id' => 'required',
      
-            'observation' => 'required',
+            'observation' => 'max:50',
             'date_r' => 'required',
             
 

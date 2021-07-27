@@ -46,7 +46,7 @@
                             <select class="form-control" id="vitamina2"  name="alternative1" value="{{old('alternative1')}}">
                                 <option selected>N/A</option>
                                 @foreach ($vitamina as $i )   
-                                <option value="{{$i->id}}" @if(old('alternative1') == $i->id) {{'selected'}} @endif>{{$i->vitamin_d}}</option>
+                                <option value="{{$i->vitamin_d}}" @if(old('alternative1') == $i->id) {{'selected'}} @endif>{{$i->vitamin_d}}</option>
                                 @endforeach
                         </select>
                         </div>  
@@ -55,7 +55,7 @@
                             <select class="form-control" id="vitamina3"  name="alternative2" value="{{old('alternative2')}}">
                                 <option selected>N/A</option>
                                 @foreach ($vitamina as $i )   
-                                    <option value="{{$i->id}}" @if(old('alternative2') == $i->id) {{'selected'}} @endif>{{$i->vitamin_d}}</option>
+                                    <option value="{{$i->vitamin_d}}" @if(old('alternative2') == $i->id) {{'selected'}} @endif>{{$i->vitamin_d}}</option>
                                 @endforeach
                         </select>
                         </div>  

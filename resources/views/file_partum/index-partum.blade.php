@@ -12,15 +12,15 @@
     @section('content_header')
     <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaParto/create')}}"><i class="fas fa-plus-square"></i></a>
     <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaPartos')}}"><i class="fas fa-recycle"></i></a>
-    <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel')}}"><i class="fas fa-file-excel"></i></a>
-    <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf')}}"><i class="fas fa-file-pdf"></i></a>
+    <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel-fichaParto')}}"><i class="fas fa-file-excel"></i></a>
+    <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf-fichaParto')}}"><i class="fas fa-file-pdf"></i></a>
     <div class="card">
         <div class="card-body">
             <div class="titulo "><h1>Fichas de Partos</h1></div>
           <table id="tabla" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>
-                    <th>Fecha de control</th>
+                    <th>Fecha</th>
                     <th>Código del Animal</th>
                     <th>Cant.Machos </th>
                     <th>Cant.Hembras</th>

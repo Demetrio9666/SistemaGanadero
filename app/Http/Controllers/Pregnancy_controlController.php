@@ -8,7 +8,9 @@ use App\Models\File_animale;
 use App\Models\Pregnancy_control;
 use App\Models\Vitamin;
 use App\Http\Requests\StorePregnancyC;
-
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Pregnancy_controlExport;
 
 
 class Pregnancy_controlController extends Controller
@@ -36,6 +38,33 @@ class Pregnancy_controlController extends Controller
              ->get();     
         return view('PregnancyC.index-PregnancyC',compact('pre'));
     }
+
+    public function PDF(){
+        $pre = DB::table('pregnancy_control')
+        ->join('vitamin','pregnancy_control.vitamin_id','=','vitamin.id')
+        ->join('file_animale','pregnancy_control.animalCode_id','=','file_animale.id')
+        ->select('pregnancy_control.id',
+                 'pregnancy_control.date',
+                  'file_animale.animalCode as animal',
+                   'vitamin.vitamin_d as vitamina',
+                   'pregnancy_control.alternative1 as alt1',
+                   'pregnancy_control.alternative2  as alt2',
+                    'pregnancy_control.observation',
+                   'pregnancy_control.date_r',
+                   'pregnancy_control.actual_state')
+                   ->where('pregnancy_control.actual_state','=','Disponible')
+        ->get();    
+        $pdf = PDF::loadView('PregnancyC.pdf',compact('pre'));
+        return $pdf->setPaper('a4','landscape')->download('ControlPreñes.pdf');
+
+    }
+    public function Excel(){
+        return Excel::download(new Pregnancy_controlExport, 'ControlPreñes.xlsx');
+    }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

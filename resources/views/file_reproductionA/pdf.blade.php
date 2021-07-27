@@ -58,7 +58,6 @@
             <table id="tabla" class="table table-striped table-bordered" style="width:100%">
                
                 <thead>            
-                    <tr>
                         <tr>
                             <th>Fecha de Registro</th>
                             <th>Código del Animal</th>
@@ -67,8 +66,6 @@
                             <th>Raza Material Genético</th>
                             <th>Estado Actual</th> 
                         </tr> 
-                       
-                    </tr>
                 </thead>
                 <tbody>  
                     @foreach ($re_A as $i)         

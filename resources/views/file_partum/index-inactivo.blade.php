@@ -14,7 +14,7 @@
           <table id="tabla" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>
-                    <th>Fecha de control</th>
+                    <th>Fecha</th>
                     <th>Código del Animal</th>
                     <th>Cant.Machos </th>
                     <th>Cant.Hembras</th>

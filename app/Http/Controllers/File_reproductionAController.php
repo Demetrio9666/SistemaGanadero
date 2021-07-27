@@ -9,6 +9,9 @@ use App\Models\Race;
 use App\Models\File_reproduction_artificial;
 use App\Models\Artificial_Reproduction;
 use App\Http\Requests\StoreFile_reproductionA;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\File_reproduction_artificialExport;
 
 class File_reproductionAController extends Controller
 {
@@ -19,13 +22,27 @@ class File_reproductionAController extends Controller
      */
     public function index()
     {
-        $raza = DB::table('race')
-                ->select('race.id',
-                'race.race_d',
-                'race.percentage',
-                'race.actual_state')
-                ->where('race.actual_state','=','Disponible')
-        ->get();
+       
+        $re_A = DB::table('file_reproduction_artificial')
+                    ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
+                    ->join('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
+                    ->join('race as f','file_animale.race_id','=','f.id')
+                    ->Join('race as a','artificial_reproduction.race_id','=','a.id')
+                    ->select('file_reproduction_artificial.id',
+                            'file_reproduction_artificial.date as fecha_A',
+                            'file_animale.animalCode as animalA',
+                            'f.race_d as raza_h',  
+                            'artificial_reproduction.reproduccion as tipo', 
+                            'a.race_d as raza_m',
+                            'file_reproduction_artificial.actual_state'
+                            )
+                            ->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
+                            
+                    ->get(); 
+  
+        return view('file_reproductionA.index-reproductionA',compact('re_A'));
+    }
+    public function PDF(){
         $re_A = DB::table('file_reproduction_artificial')
         ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
         ->join('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
@@ -42,10 +59,16 @@ class File_reproductionAController extends Controller
                 ->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
                 
         ->get(); 
-  // dd($re_A);
-   
-   return view('file_reproductionA.index-reproductionA',compact('re_A'));
+        $pdf = PDF::loadView('file_reproductionA.pdf',compact('re_A'));
+        return $pdf->setPaper('a4','landscape')->download('FichaReproduccionArtificial.pdf');
+
     }
+    public function Excel(){
+        return Excel::download(new File_reproduction_artificialExport, 'FichaReproduccionArtificial.xlsx');
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

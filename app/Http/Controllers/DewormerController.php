@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Dewormer;
 use App\Http\Requests\StoreDewormer;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DewormerExport;
 
 class DewormerController extends Controller
 {
@@ -18,15 +21,39 @@ class DewormerController extends Controller
     {
         $desp = DB::table('dewormer')
             ->select('dewormer.id',
-            'dewormer.dewormer_d',
-            'dewormer.date_e',
-            'dewormer.date_c',
-            'dewormer.supplier',
-            'dewormer.actual_state')
-            ->where('dewormer.actual_state','=','DISPONIBLE')
+                    'dewormer.dewormer_d',
+                    'dewormer.date_e',
+                    'dewormer.date_c',
+                    'dewormer.supplier',
+                    'dewormer.actual_state')
+                    ->where('dewormer.actual_state','=','DISPONIBLE')
             ->get();
         return view('dewormer.index-dewormer',compact('desp'));
     }
+
+    public function PDF(){
+        $desp = DB::table('dewormer')
+        ->select('dewormer.id',
+                'dewormer.dewormer_d',
+                'dewormer.date_e',
+                'dewormer.date_c',
+                'dewormer.supplier',
+                'dewormer.actual_state')
+                ->where('dewormer.actual_state','=','DISPONIBLE')
+        ->get();
+        $pdf = PDF::loadView('dewormer.pdf',compact('desp'));
+        return $pdf->setPaper('a4','landscape')->download('RegistrosDesparasitantes.pdf');
+    }
+    public function Excel(){
+        return Excel::download(new DewormerExport, 'RegistrosDesparasitantes.xlsx');
+    }
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

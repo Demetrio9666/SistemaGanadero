@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Http\Requests\StoreLocation;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\LocationExport;
+
 class LocationController extends Controller
 {
     /**
@@ -24,6 +28,22 @@ class LocationController extends Controller
                     ->get();
         return view('location.index-location',compact('ubicacion'));
     }
+    public function PDF(){
+        $ubicacion = DB::table('location')
+                    ->select('location.id',
+                    'location.location_d',
+                    'location.description',
+                    'location.actual_state')
+                    ->where('location.actual_state','=','Disponible')
+                    ->get();
+        $pdf = PDF::loadView('location.pdf',compact('ubicacion'));
+        return $pdf->setPaper('a4','landscape')->download('RegistroLocalizaciones.pdf');
+    }
+    public function Excel(){
+        return Excel::download(new LocationExport, 'RegistroLocalizaciones.xlsx');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

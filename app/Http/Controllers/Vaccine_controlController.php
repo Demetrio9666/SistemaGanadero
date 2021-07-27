@@ -9,6 +9,9 @@ use App\Models\Vaccine;
 use App\Models\Vaccine_control;
 use App\Models\File_animale;
 use App\Http\Requests\StoreVaccineC;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Vaccine_controlExport;
 
 class Vaccine_controlController extends Controller
 {
@@ -32,6 +35,24 @@ class Vaccine_controlController extends Controller
                     ->get();
                 
          return view('vaccineC.index-vaccineC',compact('vacunaC'));
+    }
+    public function PDF(){
+        $vacunaC= DB::table('vaccine_control')
+                    ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
+                    ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
+                    ->select('vaccine_control.id'
+                            ,'vaccine_control.date'
+                            ,'vaccine.vaccine_d as vacuna'
+                            ,'file_animale.animalCode as animal',
+                            'vaccine_control.date_r',
+                            'vaccine_control.actual_state'
+                            )->where('vaccine_control.actual_state','=','DISPONIBLE')
+                    ->get();
+        $pdf = PDF::loadView('vaccineC.pdf',compact('vacunaC'));
+        return $pdf->setPaper('a4','landscape')->download('ControlVacunas.pdf');
+    }
+    public function Excel(){
+        return Excel::download(new Vaccine_controlExport, 'ControlVacunas.xlsx');
     }
 
     /**

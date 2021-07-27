@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <label for=""> Antibióticos:</label>
                     <select class="form-control" id=""  name="antibiotic_id" value="{{old('antibiotic_id')}}">
-                        <option selected value=""></option>
+                        <option selected value="">N/A</option>
                         @foreach ($anti as $i )   
                             <option value="{{$i->id}}" @if(old('antibiotic_id') == $i->id) {{'selected'}}@endif>{{$i->antibiotic_d}}</option>
                         @endforeach
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <label for="">Vitamina:</label>
                     <select class="form-control" id=""  name="vitamin_id">
-                        <option selected value="" ></option>
+                        <option selected value="" >N/A</option>
                         @foreach ($vitamina as $i )   
                             <option value="{{$i->id}}"@if(old('vitamin_id') == $i->id) {{'selected'}}@endif>{{$i->vitamin_d}}</option>
                         @endforeach

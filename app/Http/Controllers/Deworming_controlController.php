@@ -8,6 +8,9 @@ use App\Models\File_animale;
 use App\Models\Dewormer;
 use App\Models\Deworming_control;
 use App\Http\Requests\StoreDewormerC;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Deworming_controlExport;
 
 class Deworming_controlController extends Controller
 {
@@ -32,6 +35,32 @@ class Deworming_controlController extends Controller
         return view('dewormerC.index-dewormerC',compact('desC'));
         //return $desC;
     }
+    public function PDF(){
+        $desC = DB::table('deworming_control')
+                ->join('file_animale','deworming_control.animalCode_id','=','file_animale.id')
+                ->join('dewormer','deworming_control.deworming_id','=','dewormer.id')
+                ->select('deworming_control.id',
+                         'deworming_control.date',
+                         'file_animale.animalCode as animal',
+                         'dewormer.dewormer_d as des',
+                         'deworming_control.date_r',
+                         'deworming_control.actual_state')
+                         ->where('deworming_control.actual_state','=','Disponible')
+                ->get();
+                $pdf = PDF::loadView('dewormerC.pdf',compact('desC'));
+                return $pdf->setPaper('a4','landscape')->download('ControlDesparacitacion.pdf');
+
+    }
+
+    public function Excel(){
+        return Excel::download(new Deworming_controlExport, 'ControlDesparacitacion.xlsx');
+    }
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -3,10 +3,7 @@
         .table thead{
                      background-color: rgb(98, 198, 245);              
         }
-        .table{
-           /*border: 1px solid*/
-            
-        }
+
         .table td{
             text-align: center;
             border-bottom: 1px solid black;
@@ -15,8 +12,6 @@
         tbody tr:nth-child(even){
             background: rgb(215, 231, 241);
         }
-
-
         header{
             position: fixed;
             top: 0cm;
@@ -46,9 +41,6 @@
             text-align: center;
             line-height: 30px;
         }
-    
-      
-
     </style>
     
 </head>
@@ -58,11 +50,9 @@
         <div class="card-body">
             <div class="titulo "><h1>Fichas de Partos</h1></div>
             <table id="tabla" class="table table-striped table-bordered" style="width:100%">
-               
                 <thead>            
-                    <tr>
                         <tr>
-                            <th>Fecha de control</th>
+                            <th>Fecha</th>
                             <th>Código del Animal</th>
                             <th>Cant.Machos </th>
                             <th>Cant.Hembras</th>
@@ -71,8 +61,6 @@
                             <th>Tipo de Parto</th>
                             <th>Estado Actual</th> 
                         </tr> 
-                       
-                    </tr>
                 </thead>
                 <tbody>  
                     @foreach ($par as $i)          

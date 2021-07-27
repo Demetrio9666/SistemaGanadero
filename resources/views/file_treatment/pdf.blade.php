@@ -60,7 +60,6 @@
             <table id="tabla" class="table table-striped table-bordered" style="width:100%">
                
                 <thead>            
-                    <tr>
                         <tr>
                             <th>Fecha de Tratamiento</th>
                             <th>Código del Animal</th>
@@ -71,8 +70,6 @@
                             <th>Tratamiento</th>
                             <th>Estado Actual</th> 
                         </tr> 
-                       
-                    </tr>
                 </thead>
                 <tbody>  
                     @foreach ($tra as $i)         
