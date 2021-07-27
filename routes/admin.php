@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\HomeController;
+//use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -24,7 +24,7 @@ use App\Http\Controllers\Inactivo\WeigthInactivosController;
 use App\Http\Controllers\Inactivo\VaccineControlInactivosController;
 
 
-use App\Http\Controllers\PDF\PDFController;
+use App\Http\Controllers\Dashboard\DashboardController;
 
 
 
@@ -46,11 +46,21 @@ use App\Http\Controllers\File_reproductionMController;
 use App\Http\Controllers\File_reproductionAController;  
 use App\Http\Controllers\External_mountController;
 
-Route::get('/dashboard',[HomeController::class,'Dashboard']);
+Route::get('/dashboard',[DashboardController::class,'Dashboard']);
+
+
+
+
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('index');
 })->name('index_admin');
+
+Route::get('descarga-pdf-confRaza',[RaceController::class,'PDF']);
+Route::get('exportar-excel-confRaza',[RaceController::class,'Excel']);
+
 
 //FICHA ANIMALES
 Route::resource('inactivos/fichaAnimales',AnimalesInactivosController::class)->names('inactivos.fichaAnimales');
@@ -111,8 +121,8 @@ Route::get('exportar-excel-confRaza',[RaceController::class,'Excel']);
 //CONFI VITAMINAS
 Route::resource('inactivos/Vitaminas',VitaminInactivosController::class)->names('inactivos.Vitaminas');
 Route::resource('confVi',VitaminController::class)->names('confVi');
-Route::get('descarga-pdf-confVi',[VitaminController::class,'PDF']);
-Route::get('exportar-excel-confVi',[VitaminController::class,'Excel']);
+Route::get('descarga-pdf-confVi',[DewormerController::class,'PDF']);
+Route::get('exportar-excel-confVi',[DewormerController::class,'Excel']);
 
 //CONFI DESPARACITANTES
 Route::resource('inactivos/Desparasitantes',DewormerInactivosController::class)->names('inactivos.Desparasitantes');
