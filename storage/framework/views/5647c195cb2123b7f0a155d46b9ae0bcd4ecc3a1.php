@@ -18,7 +18,7 @@
                                   <?php echo csrf_field(); ?>
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Código Animal:</label>
-                                    <input type="text" class="form-control" id="codigoAnimal" name="codigo_animal" value="<?php echo e(old('codigo_animal')); ?>">
+                                    <input type="text" class="form-control" id="codigoAnimal" name="codigo_animal" value="<?php echo e(old('codigo_animal')); ?>" onblur="upperCase()">
                                 </div>
                                
                                       
@@ -229,7 +229,7 @@ function ValidarEdad(id){
                 Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'TERNERO HEMBRA  SU RANGO DE EDAD ES 1 A 10 MESES ',
+                        text: 'TERNERO HEMBRA  SU RANGO DE EDAD ES 0 A 10 MESES ',
                         
                     }) 
                
@@ -243,7 +243,7 @@ function ValidarEdad(id){
                 Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'VACONILLA HEMBRA  SU RANGO DE EDAD ES 1 A 10 MESES ',
+                        text: 'VACONILLA HEMBRA  SU RANGO DE EDAD ES 11 A 22 MESES ',
                         
                     }) 
                 
@@ -297,7 +297,12 @@ function ValidarEdad(id){
     }
 
 }
-
+            function upperCase() {
+                var x=document.getElementById("codigoAnimal").value
+                document.getElementById("codigoAnimal").value=x.toUpperCase()
+                
+                
+            }
 
 
    

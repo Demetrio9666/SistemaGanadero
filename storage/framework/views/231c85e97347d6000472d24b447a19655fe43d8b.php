@@ -12,59 +12,63 @@
           <!-- small box -->
           <div class="small-box bg-primary" >
             <div class="inner">
-              <h3>150</h3>
+              <h3><?php echo e($disponible); ?></h3>
 
               <p>Disponibles</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!--a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a-->
           </div>
         </div>
+
+
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>53</h3>
+              <h3><?php echo e($vendidos); ?></h3>
 
               <p>Vendidos</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!--a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a-->
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
-              <h3>44</h3>
-
-              <p>Embarazos</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
+       
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?php echo e($reproduccion); ?></h3>
 
-              <p>Emfermos</p>
+              <p>Reproducción</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!--a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a-->
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3><?php echo e($total); ?></h3>
+
+              <p>Total</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <!--a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a-->
           </div>
         </div>
         <!--section class="col-lg-7 connectedSortable">

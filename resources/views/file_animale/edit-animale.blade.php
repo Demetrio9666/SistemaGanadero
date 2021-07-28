@@ -23,7 +23,7 @@
                 @method('PUT')
                 <div  class="col-md-6">
                     <label for="" class="form-label">Código Animal:</label>
-                    <input type="text" class="form-control" id="codigoAnimal" name="codigo_animal" value="{{$animal->animalCode}}">
+                    <input type="text" class="form-control" id="codigoAnimal" name="codigo_animal" value="{{$animal->animalCode}}" onblur="upperCase()">
                 </div>
                 <div  class="col-md-6">
                     <label for="">Fecha de Nacimiento:</label>
@@ -132,5 +132,14 @@
     
     @endsection
     @section('js')
+    <script>
+          function upperCase() {
+                var x=document.getElementById("codigoAnimal").value
+                document.getElementById("codigoAnimal").value=x.toUpperCase()
+                
+                
+            }
+
+    </script>
     @endsection
 </body>
