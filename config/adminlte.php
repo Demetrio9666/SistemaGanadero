@@ -187,7 +187,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'admin',
+    'dashboard_url' => '',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -246,7 +246,20 @@ return [
     
         [
             'text'=> 'Dashboard',
-            'url'=> '/dashboard',
+            'icon'=> 'fas fa-tachometer-alt',
+            'submenu' => [
+                    [
+                    'text' => 'General',
+                    'url'=> '/dashboard',
+                    'icon' => 'fas fa-chart-line',
+                    ],
+                    [
+                        'text' => 'Reproducción',
+                        'url'=> '/dashboard-reproduccion',
+                        'icon' => 'fas fa-chart-line',
+                    ],
+                       
+               ],
 
 
         ],
@@ -286,11 +299,11 @@ return [
 
 
                 [
-                    'text' => 'Fichas Reproduccion',
+                    'text' => 'Fichas Reproducción',
                     'icon'  => 'fas fa-venus',
                     'submenu' =>[
                         [
-                            'text' => 'Ficha Reproduccion Interna',
+                            'text' => 'Ficha Reproducción Interna',
                             'icon'  => '',
 
                             'submenu' =>[
@@ -311,7 +324,7 @@ return [
                         ],
 
                         [
-                            'text' => 'Ficha Reproduccion Externa',
+                            'text' => 'Ficha Reproducción Externa',
                             'url'  => '/fichaReproduccionEx',
                             'icon' =>'',
                         ],

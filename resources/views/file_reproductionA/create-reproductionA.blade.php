@@ -16,7 +16,7 @@
         @include('messages.message')
         <div class="image"></div>
         <div class="frm">
-            <h1>Ficha de Reproducción</h1>
+            <h1>Ficha de Reproducción Artificial </h1>
             <form action="{{route('fichaReproduccionA.store')}}" method="POST">
                 @csrf
                 <div class="form-group">

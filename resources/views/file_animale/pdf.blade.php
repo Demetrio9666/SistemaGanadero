@@ -3,10 +3,7 @@
         .table thead{
                      background-color: rgb(98, 198, 245);              
         }
-        .table{
-           /*border: 1px solid*/
-            
-        }
+
         .table td{
             text-align: center;
             border-bottom: 1px solid black;
@@ -15,7 +12,6 @@
         tbody tr:nth-child(even){
             background: rgb(215, 231, 241);
         }
-
 
         header{
             position: fixed;
@@ -28,8 +24,6 @@
             text-align: center;
             line-height: 30px;
             font-size:1em;
-           
-            
         }
         .titulo{
             text-align: center;
@@ -40,15 +34,12 @@
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 50px;
+            height: 24px;
             background-color:  rgb(77, 188, 240);
             color: black;
             text-align: center;
-            line-height: 30px;
+            line-height: 10px;
         }
-    
-      
-
     </style>
     
 </head>

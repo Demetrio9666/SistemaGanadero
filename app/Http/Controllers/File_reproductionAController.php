@@ -78,16 +78,16 @@ class File_reproductionAController extends Controller
     public function create()
     {
         $animalRH= DB::table('file_animale')
-                ->join('race','file_animale.race_id','=','race.id')
-                ->select('file_animale.id',
-                'file_animale.animalCode',
-                'file_animale.age_month',
-                'race.race_d',
-                'file_animale.sex')
+                        ->join('race','file_animale.race_id','=','race.id')
+                        ->select('file_animale.id',
+                        'file_animale.animalCode',
+                        'file_animale.age_month',
+                        'race.race_d',
+                        'file_animale.sex')
 
-                ->where('file_animale.gestation_state','=','NO')
-                ->where('file_animale.stage','=','VACA')
-                ->where('file_animale.actual_state','=','DISPONIBLE')
+                        ->where('file_animale.gestation_state','=','NO')
+                        ->where('file_animale.stage','=','VACA')
+                        ->where('file_animale.actual_state','=','DISPONIBLE')
                 ->get();
 
         $raza = DB::table('race')

@@ -47,7 +47,7 @@ use App\Http\Controllers\File_reproductionAController;
 use App\Http\Controllers\External_mountController;
 
 Route::get('/dashboard',[DashboardController::class,'Dashboard']);
-
+Route::get('/dashboard-reproduccion',[DashboardController::class,'DashboardReproduccion']);
 
 
 

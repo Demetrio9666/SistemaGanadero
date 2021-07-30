@@ -47,9 +47,10 @@
                                 </div> 
                                 <div  class="col-md-6">
                                     <label for="">Etapa de vida:</label>
-                                    <select class="form-control" id="opetapa" name="etapa"  value="{{old('etapa')}}" onChange="validarSexo(this.value)" >
+                                    <select class="form-control" id="opetapa" name="etapa"  value="{{old('etapa')}}" onChange="validarEdadyEtapa(this.value)" >
                                         <option  selected ></option>
-                                        <option id ="T" value="TERNERO" @if(old('etapa') == "TERNERO") {{'selected'}}@endif style="display: none;">TERNERO</option>
+                                        <option id ="TH" value="TERNERA" @if(old('etapa') == "TERNERA") {{'selected'}}@endif style="display: none;">TERNERA</option>
+                                        <option id ="TM" value="TERNERO" @if(old('etapa') == "TERNERO") {{'selected'}}@endif style="display: none;">TERNERO</option>
                                         <option id ="VA" value="VACONILLA"@if(old('etapa') == "VACONILLA") {{'selected'}}@endif style="display: none;">VACONILLA</option>
                                         <option  id ="VACO" value="VACONA"@if(old('etapa') == "VACONA") {{'selected'}}@endif style="display: none;">VACONA</option>
                                         <option  id ="V" value="VACA" @if(old('etapa') == "VACA") {{'selected'}} @endif style="display: none;">VACA</option>
@@ -83,7 +84,7 @@
                                
                                 <div  class="col-md-6">
                                     <label for="">Embarazo:</label>
-                                    <select class="form-control" id="embarazo" name="estado_de_gestacion"  value="{{old('estado_de_gestacion')}}">
+                                    <select class="form-control" id="embarazo" name="estado_de_gestacion"  value="{{old('estado_de_gestacion')}}" onChange="validarEmbarazo(this.value)">
                                         <option selected></option>
                                         <option id="SI" value="SI"@if(old('estado_de_gestacion') == "SI") {{'selected'}}@endif style="display: none;">SI</option>
                                         <option id="NO" value="NO"@if(old('estado_de_gestacion') == "NO") {{'selected'}}@endif style="display: none;">NO</option>
@@ -114,10 +115,10 @@
                                 <div  class="col-md-6">
                                     <label for="">Estado Actual:</label>
                                     <select class="form-control" id="estado" name="actual_state" value="{{old('actual_state')}}">
-                                        <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
-                                        <option value="VENDIDO"@if(old('actual_state') == "VENDIDO") {{'selected'}} @endif>VENDIDO</option>
-                                        <option value="REPRODUCCIÓN"@if(old('actual_state') == "REPRODUCCIÓN") {{'selected'}} @endif>REPRODUCCIÓN</option>
-                                        <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
+                                        <option id="DISPONIBLE" value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif style="display: none;">DISPONIBLE</option>
+                                        <option id="VENDIDO" value="VENDIDO"@if(old('actual_state') == "VENDIDO") {{'selected'}} @endif style="display: none;">VENDIDO</option>
+                                        <option id="REPRODUCCIÓN" value="REPRODUCCIÓN"@if(old('actual_state') == "REPRODUCCIÓN") {{'selected'}} @endif style="display: none;">REPRODUCCIÓN</option>
+                                        <option id="INACTIVO" value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif style="display: none;">INACTIVO</option>
                                 </select>
                                 </div>
                                 
@@ -138,11 +139,12 @@
 <script>
 
 function mostrar(id) {
-         document.getElementById("edad").disabled = true;   
-         
+        document.getElementById("edad").disabled = true;   
+         etapa = document.getElementById("opetapa").value;
     if (id == "HEMBRA") {
         document.getElementById("edad").disabled = false;   
-        $("#T").show();
+        $("#TH").show();
+        $("#TM").hide();
         $("#V").show();
         $("#VA").show();
         $("#VACO").show();
@@ -152,14 +154,15 @@ function mostrar(id) {
         $("#TORE").hide();
     }else if(id == "MACHO"){
         document.getElementById("edad").disabled = false;   
-        $("#T").show();
+        $("#TH").hide();
+        $("#TM").show();
         $("#V").hide();
         $("#VA").hide();
         $("#VACO").hide();
-        $("#SI").hide();
+       $("#SI").hide();
         $("#TO").show();
         $("#TORE").show();
-        $("#NO").show();
+       $("#NO").show();
     }else{
         edad.disabled = true
     }
@@ -224,12 +227,12 @@ function ValidarEdad(id){
 
     }else if (sexo == "HEMBRA"){
        
-        if(etapa == "TERNERO"){
+        if(etapa == "TERNERA"){
             if(id < 0  ||  id > 10){
                 Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'TERNERO HEMBRA  SU RANGO DE EDAD ES 0 A 10 MESES ',
+                        text: 'TERNERA SU RANGO DE EDAD ES 0 A 10 MESES ',
                         
                     }) 
                
@@ -243,7 +246,7 @@ function ValidarEdad(id){
                 Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'VACONILLA HEMBRA  SU RANGO DE EDAD ES 11 A 22 MESES ',
+                        text: 'VACONILLA SU RANGO DE EDAD ES 11 A 22 MESES ',
                         
                     }) 
                 
@@ -259,7 +262,7 @@ function ValidarEdad(id){
                 Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'VACONA HEMBRA  SU RANGO DE EDAD ES 23 A 36 MESES ',
+                        text: 'VACONA SU RANGO DE EDAD ES 23 A 36 MESES ',
                         
                     }) 
                 
@@ -304,8 +307,153 @@ function ValidarEdad(id){
                 
             }
 
+function validarEmbarazo(id){
+    if( id == "SI"){
+        $("#DISPONIBLE").show();
+        $("#VENDIDO").show();
+        $("#INACTIVO").show();
+        $("#REPRODUCCIÓN").hide();
 
-   
+    }else{
+        $("#DISPONIBLE").show();
+        $("#VENDIDO").show();
+        $("#INACTIVO").show();
+        $("#REPRODUCCIÓN").show();
+    }
+}
+
+
+function validarEdadyEtapa(id){
+    sexo = document.getElementById("opsexo").value;
+    edad = document.getElementById("edad").value;
+    if(sexo == "MACHO"){
+        if(id == "TM"){
+            if(edad < 0 ||  edad  > 3){
+                return true;
+            }else{
+                Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'TERNERO MACHO SU RANGO DE EDAD ES 1 A 3 MESES ',
+                            
+                        }) 
+                    document.getElementById("edad").value = ""
+                    return false; 
+            }
+
+        }else if(id == "TORE" ){
+            if(edad < 4 ||  edad > 20){
+                return true;
+            }else{
+                Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'TORETE MACHO SU RANGO DE EDAD ES 4 A 20 MESES ',
+                            
+                        }) 
+                    
+                    document.getElementById("edad").value = ""
+                    return false; 
+            }
+
+        }else if(id == "TORO"){
+                if(edad < 21 || edad >600){
+                    return true;
+                }else{
+                    Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'TORO  RANGO DE EDAD ES 20 MESES EN ADELANTE ',
+                            
+                        }) 
+                
+                    document.getElementById("edad").value = ""
+                    return false;
+                }
+        
+        }else{
+            return false;
+        }
+
+
+    }else if(sexo == "HEMBRA"){
+
+        if(id == "TH"){
+                if(edad < 0  ||  edad > 10){
+                    return true;
+                }else{
+                        Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'TERNERA SU RANGO DE EDAD ES 0 A 10 MESES ',
+                                
+                            }) 
+                    
+                        document.getElementById("edad").value = ""
+                        return false;
+                }
+        }else if( id  =="VA"){
+                    if(edad < 11  || edad > 22){
+                        return true;
+                    }else{
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'VACONILLA SU RANGO DE EDAD ES 11 A 22 MESES ',
+                        
+                    }) 
+                
+                        document.getElementById("edad").value = ""
+                        return false;
+                    }
+
+        }else if(id == "VACO" ){
+                    if(edad < 23  || edad > 36){
+                        return true;
+                    }else{
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'VACONA SU RANGO DE EDAD ES 23 A 36 MESES ',
+                        
+                    }) 
+                
+                        document.getElementById("edad").value = ""
+                        return false;
+                    }
+
+        }else if(id == "V"){
+                if(edad  < 37 || edad >600){
+                        return true;
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'VACA  RANGO DE EDAD ES 36 MESES EN ADELANTE ',
+                        
+                    }) 
+               
+                        document.getElementById("edad").value = ""
+                        return false;
+                }
+
+        }else{
+            return false;
+        }
+
+    }else{
+        return false;
+    }
+
+
+
+  
+       
+
+       
+
+
+}
  </script>
 
 

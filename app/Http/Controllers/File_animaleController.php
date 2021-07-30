@@ -51,8 +51,8 @@ class File_animaleController extends Controller
         $pdf = PDF::loadView('file_animale.pdf',compact('animal'));
 
         //return $pdf->download('codingdriver.pdf');
-        //return $pdf->setPaper('a4','landscape')->stream('fichaAnimal.pdf');
-        return $pdf->setPaper('a4','landscape')->download('FichaAnimal.pdf');
+       // return $pdf->setPaper('a4','landscape')->stream('FichaAnimal.pdf');
+       return $pdf->setPaper('a4','landscape')->download('FichaAnimal.pdf');
 
        // return view('file_animale.pdf',compact('animal'));
 }

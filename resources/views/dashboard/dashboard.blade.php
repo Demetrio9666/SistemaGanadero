@@ -15,7 +15,7 @@
             <div class="inner">
               <h3>{{$disponible}}</h3>
 
-              <p>Disponibles</p>
+              <p>Animales Disponibles</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -32,7 +32,7 @@
             <div class="inner">
               <h3>{{$vendidos}}</h3>
 
-              <p>Vendidos</p>
+              <p>Animales Vendidos</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -49,7 +49,7 @@
             <div class="inner">
               <h3>{{$reproduccion}}</h3>
 
-              <p>Reproducción</p>
+              <p>Animales Reproducción</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
@@ -64,14 +64,15 @@
             <div class="inner">
               <h3>{{$total}}</h3>
 
-              <p>Total</p>
+              <p>Total de Animales</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
             <!--a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a-->
           </div>
-        </div>
+       </div>
+    
         <!--section class="col-lg-7 connectedSortable">
             <div class="card">
                 <div class="card-header">
@@ -82,6 +83,7 @@
                 </div>
             </div>
             <section-->
+
          <section section class="col-lg-6 connectedSortable">
             <div class="card card-dark">
                 <div class="card-header">
@@ -92,13 +94,15 @@
                 </div>
                 <div class="card-body">
                   <div class="chart">
-                    <canvas id="barChart" style="height:230px; min-height:230px"></canvas>
+                    <canvas id="barChart" style="height:330px; min-height:430px"></canvas>
                   </div>
                </div>
 
             </div>
            
          </section>
+
+
          <section section class="col-lg-6 connectedSortable">
             
                 <div class="card card-dark">
@@ -109,15 +113,12 @@
                       </div>
                       <div class="card-body">
                         <div class="chart">
-                          <canvas id="barChart2" style="height:230px; min-height:230px"></canvas>
+                          <canvas id="barChart2" style="height:330px; min-height:430px"></canvas>
                         </div>
                      </div>
-                 </div>
-
-            
-            
-
+                 </div> 
          </section>
+    </div>
             
         
         
@@ -126,21 +127,22 @@
     <script type="text/javascript" src="{{asset('Chartjs/Chart.js')}}"></script>
     <script>
         var ctx = document.getElementById('barChart').getContext('2d');
+        var cData = JSON.parse(`<?php echo $datas; ?>`)
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Toro', 'Torete', 'Ternero', 'Vaca', 'Vacona', 'Vaconilla','Ternero'],
+                labels: ['Toro', 'Torete', 'Ternero', 'Vaca', 'Vacona', 'Vaconilla','Ternera'],
                 datasets: [{
-                    
-                    data: [12, 19, 3, 5, 2, 3,8],
+                    label: 'Ganado',
+                    data: cData,
                     backgroundColor: [
                         'rgba(12, 45, 246, 0.97)',
-                        'rgba(40, 70, 255, 0.67)',
-                        'rgba(0, 208, 248, 0.94)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(121, 12, 246, 1)',
+                        'rgba(0, 170, 252, 1)',
+                        'rgba(252, 0, 252, 1)',
+                        'rgba(255, 168, 255, 0.93)',
+                        'rgba(234, 246, 101, 0.93)',
+                        'rgba(172, 246, 195, 0.93)',
                     ],
                  
                     borderWidth: 1
@@ -154,14 +156,16 @@
                 }
             }
         });
+
         var ctx = document.getElementById('barChart2').getContext('2d');
+        var cData = JSON.parse(`<?php echo $datas2; ?>`)
         var myChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: ['Macho', 'Hembra'],
                 datasets: [{
                     
-                    data: [12, 19],
+                    data: cData,
                     backgroundColor: [
                         'rgba(12, 45, 246, 0.97)',
                         'rgba(250, 0, 198, 0.74)',
@@ -180,6 +184,9 @@
             }
         });
         </script>
+
+       
+        
 
     @endsection
 </body>

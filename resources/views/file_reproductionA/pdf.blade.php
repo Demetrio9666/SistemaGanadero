@@ -38,11 +38,11 @@
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 50px;
+            height: 24px;
             background-color:  rgb(77, 188, 240);
             color: black;
             text-align: center;
-            line-height: 30px;
+            line-height: 10px;
         }
     
       
@@ -56,7 +56,7 @@
         <div class="card-body">
             <div class="titulo "><h1>Fichas de Reproducción Artificial</h1></div>
             <table id="tabla" class="table table-striped table-bordered" style="width:100%">
-               
+    
                 <thead>            
                         <tr>
                             <th>Fecha de Registro</th>
@@ -76,6 +76,7 @@
                         <td >{{$i->tipo}}</td>
                         <td >{{$i->raza_m}}</td>
                         <td >{{$i->actual_state}}</td>
+                        
                     </tr>
                     @endforeach
                 </tbody>
@@ -83,5 +84,5 @@
         </div>
     </div>
 
-<footer><p><strong>SoftGanadoBOVINO</strong></p></footer>
+     <footer><p><strong>SoftGanadoBOVINO</strong></p></footer>
 </body>
