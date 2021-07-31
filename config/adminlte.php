@@ -281,7 +281,7 @@ return [
        ['header' => 'AJUSTE DE CUENTA'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => '/perfil',
             'icon' => 'fas fa-fw fa-user',
           
         ],

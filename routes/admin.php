@@ -45,12 +45,14 @@ use App\Http\Controllers\File_treatmentController;
 use App\Http\Controllers\File_reproductionMController;  
 use App\Http\Controllers\File_reproductionAController;  
 use App\Http\Controllers\External_mountController;
+use App\Http\Controllers\Admin\ProfielController;
+
+
+Route::get('/perfil',[ProfielController::class,'index']);
+
 
 Route::get('/dashboard',[DashboardController::class,'Dashboard']);
 Route::get('/dashboard-reproduccion',[DashboardController::class,'DashboardReproduccion']);
-
-
-
 
 
 
