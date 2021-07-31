@@ -12,11 +12,14 @@ use App\Exports\VaccineExport;
 
 class VaccineController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct(){
+        $this->middleware('can:Visualizar Configuración de Vacunas')->only('index');
+        $this->middleware('can:Crear      Configuración de Vacunas')->only('create','store');
+        $this->middleware('can:Editar     Configuración de Vacunas')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Configuración de Vacunas')->only('delete');
+    }
+
     public function index()
     {   
         $vacuna = DB::table('vaccine')

@@ -12,11 +12,13 @@ use App\Exports\LocationExport;
 
 class LocationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Ubicación Interna')->only('index');
+        $this->middleware('can:Crear      Ubicación Interna')->only('create','store');
+        $this->middleware('can:Editar     Ubicación Interna')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Ubicación Interna')->only('delete');
+    }
+
     public function index()
     {
         $ubicacion = DB::table('location')

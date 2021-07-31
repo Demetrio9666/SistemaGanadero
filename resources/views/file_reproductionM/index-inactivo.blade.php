@@ -41,14 +41,18 @@
                                 <td >{{$i->sexo_m}}</td>
                                 <td >{{$i->actual_state}}</td>
                                 <td>
+                                   
                                     <a class="btn btn-primary  " href="{{route('inactivos.fichaReproduccionM.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                                    @can('Eliminar   Ficha Reproducción por Monta Interna')
                                     <form action="{{route('inactivos.fichaReproduccionM.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                                         @method('DELETE') 
                                         @csrf
                                         <button type="submit"  class="btn btn-danger" value="Eliminar">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
-                                    </form>                         
+                                    </form> 
+                                        
+                                    @endcan                  
                                 </td>  
                             </tr>
                             @endforeach 

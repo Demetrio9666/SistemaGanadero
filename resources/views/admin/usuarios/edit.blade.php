@@ -18,8 +18,18 @@
                         <center>
                             <h2> {{$usuario->name}}</h2>
                         </center>
-                        
-                        
+                        <h5>Listado de Roles</h5>
+                        {!! Form::model($usuario, ['route' => ['usuarios.update',$usuario],'method'=>'put']) !!}
+                            @foreach ($roles as $role )
+                                <div>
+                                    <label>
+                                        {!! Form::checkbox('roles[]', $role->id, null, ['class'=> 'mr-1']) !!}
+                                        {{$role->name}}
+                                    </label>
+                                </div>
+                            @endforeach
+                            {!! Form::submit('Asignación', ['class'=>'btn btn-primary mt-2']) !!}
+                        {!! Form::close() !!}
 
                         
                     </div>

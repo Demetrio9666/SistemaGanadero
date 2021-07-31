@@ -13,11 +13,14 @@ use App\Exports\File_reproduction_internalExport;
 
 class File_reproductionMController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Ficha Reproducción por Monta Interna')->only('index');
+        $this->middleware('can:Crear      Ficha Reproducción por Monta Interna')->only('create','store');
+        $this->middleware('can:Editar     Ficha Reproducción por Monta Interna')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Ficha Reproducción por Monta Interna')->only('delete');
+    }
+
+
     public function index()
     {
        $re_MI = DB::table('file_reproduction_internal')

@@ -13,11 +13,13 @@ use App\Exports\ArtificialReproductionExport;
 
 class ArtificialReproductionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Configuración de Material Genético')->only('index');
+        $this->middleware('can:Crear      Configuración de Material Genético')->only('create','store');
+        $this->middleware('can:Editar     Configuración de Material Genético')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Configuración de Material Genético')->only('delete');
+    }
+
     public function index()
     {
         $arti= DB::table('artificial_reproduction')

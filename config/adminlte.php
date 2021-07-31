@@ -224,39 +224,53 @@ return [
     */
 
     'menu' => [
-        ['header' => 'SEGURIDAD'],
+        ['header' => 'SEGURIDAD',
+         'can'    => 'Visualizar Roles',
+        ],
        
         [
             'text' => 'Lista de Roles',
             'url'  => '/rol',
             'icon' =>'fas fa-users',
+            'can'  => 'Visualizar Roles',
            
         ],
         [
             'text' => 'Usuarios',
             'url'  => '/usuarios',
             'icon' =>'fas fa-user-friends',
+            'can' =>'Visualizar Usuarios',
            
         ],
 
 
 
-        ['header' => 'DASHBOARDS'],
+        ['header' => 'DASHBOARDS',
+         'can'=>'Visualizar Dashboards',
+
+        ],
      
     
         [
             'text'=> 'Dashboard',
             'icon'=> 'fas fa-tachometer-alt',
+            'can'=>'Visualizar Dashboards',
+           
             'submenu' => [
                     [
                     'text' => 'General',
                     'url'=> '/dashboard',
                     'icon' => 'fas fa-chart-line',
+                    'can'=>'Visualizar Dashboards',
+                    'shift' => 'ml-4',
                     ],
+
                     [
                         'text' => 'Reproducción',
                         'url'=> '/dashboard-reproduccion',
                         'icon' => 'fas fa-chart-line',
+                        'can'=>'Visualizar Dashboards',
+                        'shift' => 'ml-4',
                     ],
                        
                ],
@@ -264,69 +278,99 @@ return [
 
         ],
 
-        ['header' => 'AJUSTE DE CUENTA'],
+       ['header' => 'AJUSTE DE CUENTA'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
+          
         ],
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+           
         ],
 
-        ['header' => 'CONTROLES'],
+        ['header' => 'REGISTROS Y CONTROLES',
+         
+        ],
         [
             'text'    => 'Registros',
             'icon'    => 'fas fa-book',
+            
+            
             'submenu' => [
                 [
                     'text' => 'Ficha Animales',
                     'url'  => '/fichaAnimal',
                     'icon'  => 'fas fa-paw',
+                    'can' => 'Visualizar Ficha de Animales',
+                    'shift' => 'ml-4',
                 ],
                 [
                     'text' => 'Ficha Partos',
                     'url'  => '/fichaParto',
                     'icon'  => 'fas fa-ambulance',
+                    'can' => 'Visualizar Ficha de Parto',
+                    'shift' => 'ml-4',
                 ],
                 [
                     'text' => 'Ficha Tratamiento',
                     'url'  => '/fichaTratamiento',
                     'icon'  => 'fas fa-folder',
+                    'can' => 'Visualizar Ficha de Tratamiento',
+                    'shift' => 'ml-4',
                 ],
 
 
                 [
                     'text' => 'Fichas Reproducción',
                     'icon'  => 'fas fa-venus',
+                    'can'=>'Visualizar Ficha Reproducción por Monta Interna',
+                    'shift' => 'ml-4',
                     'submenu' =>[
                         [
-                            'text' => 'Ficha Reproducción Interna',
+                            'text' => 'Ficha Interna',
                             'icon'  => '',
+                            'icon_color' => 'primary',
+                            'can' => 'Visualizar Ficha Reproducción por Monta Interna',
+                            'shift' => 'ml-5',
 
                             'submenu' =>[
                                 [
-                                    'text' => 'Reproducción por Monta',
-                                    'url'  => '/fichaReproduccionM',
-                                    'icon'  => 'fas fa-genderless',
-                                ],
-                                [
-                                    'text' => 'Reproducción Artificial',
+                                    'text' => 'Artificial',
                                     'url'  => '/fichaReproduccionA',
                                     'icon'  => 'fas fa-genderless',
+                                    'icon_color' => 'primary',
+                                    'can' => 'Visualizar Ficha de Reproducción Artificial',
+                                    'shift' => 'ml-5',
+                                   
                                 ],
 
 
+                                [
+                                    'text' => 'Natural',
+                                    'url'  => '/fichaReproduccionM',
+                                    'icon'  => 'fas fa-genderless',
+                                    'icon_color' => 'primary',
+                                    'can' => 'Visualizar Ficha Reproducción por Monta Interna',
+                                    'shift' => 'ml-5',
+                                   
+                                ],
+
+                              
                                 
                             ],
                         ],
 
                         [
-                            'text' => 'Ficha Reproducción Externa',
+                            'text' => 'Ficha Externa',
                             'url'  => '/fichaReproduccionEx',
                             'icon' =>'',
+                            'icon_color' => 'primary',
+                            'can'=> 'Visualizar Ficha Reproducción Externo',
+                            'shift' => 'ml-5',
                         ],
                       
                     ],
@@ -339,60 +383,81 @@ return [
         [
             'text'    => 'Controles',
             'icon'    => 'fas fa-book',
+           
             'submenu' => [
                 [
                     'text' => 'Control Vacunas',
                     'url'  => '/controlVacuna',
                     'icon'  => 'fas fa-syringe',
+                    'can' =>'Visualizar Control de Vacunación',
+                    'shift' => 'ml-4',
                 ],
                 [
                     'text' => 'Control Peso ',
                     'url'  => '/controlPeso',
                     'icon'  => 'fas fa-weight',
+                    'can' =>'Visualizar Control de Peso',
+                    'shift' => 'ml-4',
                 ],
                 [
                     'text' => 'Control Desparacitacion ',
                     'url'  => '/controlDesparasitacion',
                     'icon'  => 'fas fa-vials',
+                    'can' =>'Visualizar Control de Desparasitación',
+                    'shift' => 'ml-4',
                 ],
                 [
                     'text' => 'Control Preñez ',
                     'url'  => '/controlPrenes',
                     'icon'  => 'fas fa-file-medical',
+                    'can' =>'Visualizar Control Preñez',
+                    'shift' => 'ml-4',
                 ],
 
 
             ],
         ],
         [
-            'text'    => 'Configuracion',
+            'text'    => 'Configuración',
             'icon'    => 'fas fa-cog',
+            'can' =>'Visualizar Configuración de Desparacitante',
+          
             'submenu' => [
                 [
                     'text' =>'Medicamentos',
                     'icon' =>'fas fa-prescription-bottle-alt',
+                    'can' =>'Visualizar Configuración de Desparacitante',
+                    'shift' => 'ml-3',
                     'submenu' =>[
                         [
                             'text' => 'Desparacitantes',
                             'url'  => '/confDespa',
                             'icon'  => 'fas fa-vial',
+                            'can' =>'Visualizar Configuración de Desparacitante',
+                            'shift' => 'ml-5',
                         ],
 
                         [
                             'text' => 'Vacunas',
                             'url'  => '/confVacuna',
                             'icon'  => 'fas fa-syringe',
+                            'can' =>'Visualizar Configuración de Vacunas',
+                            'shift' => 'ml-5',
                         ],
                         [
                             'text' =>'Vitaminas',
                             'url' =>'/confVi',
                             'icon'=>'fas fa-pills',
+                            'can' =>'Visualizar Configuración de Vitaminas',
+                            'shift' => 'ml-5',
                         ],
 
                         [
                             'text'=> 'Antibióticos',
                             'url' => '/confAnt',
                             'icon' => 'fas fa-shield-virus',
+                            'can' =>'Visualizar Configuración de antibióticos',
+                            'shift' => 'ml-5',
                         ],
 
 
@@ -402,18 +467,24 @@ return [
                     'text' => 'Material Genetico ',
                     'url'  => '/confMate',
                     'icon' =>'fas fa-vial',
+                    'can' =>'Visualizar Configuración de Material Genético',
+                    'shift' => 'ml-3',
                 ],
 
                 [
                     'text' => 'Ubicacion Interna ',
                     'url'  => '/confUbicacion',
                     'icon' =>'fas fa-map',
+                    'can' =>'Visualizar Configuración de Ubicación Interna',
+                    'shift' => 'ml-3',
                 ],
 
                 [
                     'text' => 'Razas ',
                     'url'  => '/confRaza',
                     'icon' =>'fas fa-file-contract',
+                    'can' =>'Visualizar Configuración de Razas',
+                    'shift' => 'ml-3',
                 ],
 
 

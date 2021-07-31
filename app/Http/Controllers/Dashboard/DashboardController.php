@@ -11,6 +11,11 @@ use App\Models\Race;
 
 class DashboardController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:Visualizar Dashboards')->only('Dashboard','DashboardReproduccion');
+       
+    }
+
     public function Dashboard(){
     
         $disponible = File_Animale::whereIn('actual_state',['DISPONIBLE'])->count();

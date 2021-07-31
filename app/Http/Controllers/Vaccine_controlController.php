@@ -15,11 +15,13 @@ use App\Exports\Vaccine_controlExport;
 
 class Vaccine_controlController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Control de Vacunación')->only('index');
+        $this->middleware('can:Crear      Control de Vacunación')->only('create','store');
+        $this->middleware('can:Editar     Control de Vacunación')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Control de Vacunación')->only('delete');
+    }
+    
     public function index()
     {
         $vacunaC= DB::table('vaccine_control')

@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\DB;
 
 class Rolecontroller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    
+   
+        public function __construct(){
+                $this->middleware('can:Visualizar Roles')->only('index');
+                $this->middleware('can:Crear      Roles')->only('create','store');
+                $this->middleware('can:Editar     Roles')->only('show','edit','update');
+                $this->middleware('can:Eliminar   Roles')->only('delete');
+        }
 
     public function index()
     {

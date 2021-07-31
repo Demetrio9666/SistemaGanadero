@@ -16,11 +16,14 @@ use App\Exports\File_AnimalesExport;
 
 class File_animaleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Ficha de Animales')->only('index');
+        $this->middleware('can:Crear      Ficha de Animales')->only('create','store');
+        $this->middleware('can:Editar     Ficha de Animales')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Ficha de Animales')->only('delete');
+    }
+
+
     public function index()
     {
         $animal = DB::table('file_animale')

@@ -47,7 +47,9 @@
                     <td >{{$i->actual_state}}</td>
 
                     <td>
+                      
                         <a class="btn btn-primary" href="{{route('inactivos.fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                        @can('Eliminar   Ficha Reproducción Exerno')
                         <form action="{{route('inactivos.fichaReproduccionEx.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                             @csrf
                             @method('DELETE') 
@@ -55,6 +57,8 @@
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </form>
+                            
+                        @endcan
                           
                     </td>  
                 </tr>

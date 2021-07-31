@@ -14,11 +14,15 @@ use App\Exports\File_partumExport;
 
 class File_partumController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Ficha de Parto')->only('index');
+        $this->middleware('can:Crear      Ficha de Parto')->only('create','store');
+        $this->middleware('can:Editar     Ficha de Parto')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Ficha de Parto')->only('delete');
+    }
+
+
+
     public function index()
     {
         $par = DB::table('file_partum')

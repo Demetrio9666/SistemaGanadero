@@ -13,11 +13,14 @@ use App\Exports\Weigth_controlExport;
 
 class Weigth_controlController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct(){
+        $this->middleware('can:Visualizar Control de Peso')->only('index');
+        $this->middleware('can:Crear      Control de Peso')->only('create','store');
+        $this->middleware('can:Editar     Control de Peso')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Control de Peso')->only('delete');
+    }
+
     public function index()
     {
         $pesoC = DB::table('weigth_control')

@@ -15,11 +15,13 @@ use App\Exports\Pregnancy_controlExport;
 
 class Pregnancy_controlController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Control Preñez')->only('index');
+        $this->middleware('can:Crear      Control Preñez')->only('create','store');
+        $this->middleware('can:Editar     Control Preñez')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Control Preñez')->only('delete');
+    }
+
     public function index()
     {
         $pre = DB::table('pregnancy_control')

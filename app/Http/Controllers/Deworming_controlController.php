@@ -14,11 +14,13 @@ use App\Exports\Deworming_controlExport;
 
 class Deworming_controlController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Control de Desparasitación')->only('index');
+        $this->middleware('can:Crear      Control de Desparasitación')->only('create','store');
+        $this->middleware('can:Editar     Control de Desparasitación')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Control de Desparasitación')->only('delete');
+    }
+
     public function index()
     {
         $desC = DB::table('deworming_control')

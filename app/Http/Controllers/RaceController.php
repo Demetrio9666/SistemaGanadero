@@ -12,11 +12,13 @@ use App\Exports\RaceExport;
 
 class RaceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Configuración de Razas')->only('index');
+        $this->middleware('can:Crear      Configuración de Razas')->only('create','store');
+        $this->middleware('can:Editar     Configuración de Razas')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Configuración de Razas')->only('delete');
+    }
+
     public function index()
     {
         $raza = DB::table('race')

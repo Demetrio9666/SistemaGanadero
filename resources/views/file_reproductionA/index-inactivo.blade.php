@@ -35,13 +35,16 @@
                                 <td >{{$i->actual_state}}</td>
                                 <td>
                                     <a class="btn btn-primary  " href="{{route('inactivos.fichaReproduccionA.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                                    <form action="{{route('inactivos.fichaReproduccionA.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
-                                        @method('DELETE') 
-                                        @csrf
-                                        <button type="submit"  class="btn btn-danger" value="Eliminar">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>                         
+                                    @can('Eliminar   Ficha de Reproducción Artificial')
+                                            <form action="{{route('inactivos.fichaReproduccionA.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                                                @method('DELETE') 
+                                                @csrf
+                                                <button type="submit"  class="btn btn-danger" value="Eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>      
+                                    @endcan
+                                                      
                                 </td>  
                             </tr>
                             @endforeach 

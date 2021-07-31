@@ -12,11 +12,14 @@ use App\Exports\VitaminExport;
 
 class VitaminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct(){
+        $this->middleware('can:Visualizar Configuración de Vitaminas')->only('index');
+        $this->middleware('can:Crear      Configuración de Vitaminas')->only('create','store');
+        $this->middleware('can:Editar     Configuración de Vitaminas')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Configuración de Vitaminas')->only('delete');
+    }
+
     public function index()
     {
         $vitamina= DB::table('vitamin')
@@ -39,17 +42,6 @@ class VitaminController extends Controller
     }
 
 
-
-
-
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('vitamin.create-vitamin');

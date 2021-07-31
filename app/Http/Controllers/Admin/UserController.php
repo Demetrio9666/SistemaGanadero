@@ -8,14 +8,17 @@ use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 //use App\Model\User;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Usuarios')->only('index');
+       // $this->middleware('can:Crear      Usuarios')->only('create','store');
+        $this->middleware('can:Editar Usuarios')->only('show','edit','update');
+        $this->middleware('can:Eliminar Usuarios')->only('delete');
+    }
+
     public function index()
     {
         $usuario = DB::table('users')
@@ -44,8 +47,9 @@ class UserController extends Controller
      */
     public function edit(User $usuario )
     {
+        $roles = Role::all();
         //$usuario = User::findOrFail($id);
-        return view('admin.usuarios.edit',compact('usuario'));
+        return view('admin.usuarios.edit',compact('usuario','roles'));
     }
 
     /**
@@ -55,9 +59,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request )
+    public function update(Request $request, User $usuario )
     {
-        //
+        $usuario->roles()->sync($request->roles);
+
+        return redirect()->route('usuarios.index');
     }
 
     /**

@@ -12,11 +12,13 @@ use App\Exports\DewormerExport;
 
 class DewormerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:Visualizar Configuración de Desparacitante')->only('index');
+        $this->middleware('can:Crear      Configuración de Desparacitante')->only('create','store');
+        $this->middleware('can:Editar     Configuración de Desparacitante')->only('show','edit','update');
+        $this->middleware('can:Eliminar   Configuración de Desparacitante')->only('delete');
+    }
+
     public function index()
     {
         $desp = DB::table('dewormer')
