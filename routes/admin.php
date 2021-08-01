@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -48,7 +47,7 @@ use App\Http\Controllers\External_mountController;
 use App\Http\Controllers\Admin\ProfielController;
 
 
-Route::get('/perfil',[ProfielController::class,'index']);
+//Route::get('/perfil',[ProfielController::class,'index']);
 
 
 Route::get('/dashboard',[DashboardController::class,'Dashboard']);

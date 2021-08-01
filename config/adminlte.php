@@ -242,9 +242,14 @@ return [
             'can' =>'Visualizar Usuarios',
            
         ],
-
-
-
+        ['header' => 'AJUSTE DE CUENTA'],
+        [
+            'text' => 'profile',
+            'url'  => 'user/profile',
+            'icon' => 'fas fa-fw fa-user',
+          
+        ],
+      
         ['header' => 'DASHBOARDS',
          'can'=>'Visualizar Dashboards',
 
@@ -278,19 +283,7 @@ return [
 
         ],
 
-       ['header' => 'AJUSTE DE CUENTA'],
-        [
-            'text' => 'profile',
-            'url'  => '/perfil',
-            'icon' => 'fas fa-fw fa-user',
-          
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-           
-        ],
+   
 
         ['header' => 'REGISTROS Y CONTROLES',
          

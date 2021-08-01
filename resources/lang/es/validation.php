@@ -182,7 +182,8 @@ return [
                 'location_d'=>'localización',
                 'description'=>'descripción',
                 'race_d'=>'raza',
-                'percentage'=>'porcentaje'
+                'percentage'=>'porcentaje',
+                'password'=>'contraseña'
 
     ],
 

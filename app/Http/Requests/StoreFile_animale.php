@@ -42,6 +42,7 @@ class StoreFile_animale extends FormRequest
         return [
             
                 'codigo_animal'=>'required|unique:file_animale,animalCode,id',
+                'file'=>'required|image|max:2048',
                 'fecha_nacimiento'=>'required',
                 'raza'=>'required',
                 'sexo'=>'required',

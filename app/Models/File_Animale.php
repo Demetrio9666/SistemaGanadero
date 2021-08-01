@@ -11,7 +11,7 @@ class File_Animale extends Model
 {
     use HasFactory;
     protected $table = "file_animale";
-
+    protected $fillable =['url'];
     public function race(){
         return $this->hasOne(Race::class);
     }

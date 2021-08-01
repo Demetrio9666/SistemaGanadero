@@ -16,6 +16,7 @@ class CreateFileAnimaleTable extends Migration
         Schema::create('file_animale', function (Blueprint $table) {
             $table->id();
             $table->string('animalCode')->unique();
+            $table->string('url');
             $table->date('date');
             $table->unsignedBigInteger('race_id');
             $table->foreign('race_id')->references('id')->on('race');

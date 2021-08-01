@@ -12,7 +12,7 @@ use App\Http\Requests\EditFile_animale;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\File_AnimalesExport;
-
+use Illuminate\Support\Facades\Storage;
 
 class File_animaleController extends Controller
 {
@@ -22,8 +22,6 @@ class File_animaleController extends Controller
         $this->middleware('can:Editar     Ficha de Animales')->only('show','edit','update');
         $this->middleware('can:Eliminar   Ficha de Animales')->only('delete');
     }
-
-
     public function index()
     {
         $animal = DB::table('file_animale')
@@ -104,6 +102,11 @@ class File_animaleController extends Controller
         $animal = new File_Animale();
         
         $animal->animalCode = $request->codigo_animal;
+
+        $imagen = $request->file('file')->store('public/imagenes');
+        $url = Storage::url($imagen);
+        
+        $animal->url = $url;
         $animal->date = $request->fecha_nacimiento;
         $animal->race_id = $request->raza;
         $animal->sex = $request->sexo;
@@ -119,6 +122,7 @@ class File_animaleController extends Controller
         
         //return redirect()->route();
         return redirect('/fichaAnimal')->with('Validad','ok');
+
     }
 
     /**
