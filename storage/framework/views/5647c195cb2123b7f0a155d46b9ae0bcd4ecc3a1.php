@@ -3,8 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <?php $__env->startSection('css'); ?>
-            
-             <link rel="stylesheet" type="text/css" href="/css/registro.css">
+    
+             <link rel="stylesheet" type="text/css" href="/css/imagen.css">
+             
     <?php $__env->stopSection(); ?>
     <title>Registration Form</title>
 </head>
@@ -22,10 +23,24 @@
                         <!--div class="image"></div-->
                         <div class="frm">
                         
-                            <form action="<?php echo e(route('fichaAnimal.store')); ?>" method="POST" class="row g-3" enctype="multipart/form-data">
+                            <form action="<?php echo e(route('fichaAnimal.store')); ?>" method="POST" class="row g-3" enctype="multipart/form-data"   >
+                                                                                                   
                                   <?php echo csrf_field(); ?>
+                                 <center>
+                                    <div style="margin-top: 19px; ">
+                                        <div class="card " style="width: 200px">
+                                            <div id="imagenPreview"  ></div>
+                                    </div>
+                                        <!--input type="file" name="file" accept="image/*" id="imagen" -->
+                                        
+                                           
+                                            <input class="form-control form-control-sm" id="imagen" type="file" name="file">
+                                          
+                                 </center>
+                            
+                                
+                                     
                                  
-                                  
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Código Animal:</label>
                                     <input type="text" class="form-control  " id="codigoAnimal" name="codigo_animal" value="<?php echo e(old('codigo_animal')); ?>" onblur="upperCase()">
@@ -131,277 +146,120 @@
                                         <option id="INACTIVO" value="INACTIVO"<?php if(old('actual_state') == "INACTIVO"): ?> <?php echo e('selected'); ?> <?php endif; ?> style="display: none;">INACTIVO</option>
                                 </select>
                                 </div>
-
-
-                                <div class="col-md-6">
-                                    <div id="imagenPreview">
-
-                                    </div>
-                                  <input type="file" name="file" accept="image/*" id="imagen" >
-                                </div>
-                                
-
-                                <div class="col-md-6" style="margin: 60px">
+                                <center>
+                                    <div class="col-md-6" style="margin: 60px">
                                     
                                         <a type="button"  class="btn btn-secondary btn-lg"   href="<?php echo e(url('/fichaAnimal')); ?>">Cancelar</a>
                                         <button type="sutmit" id="btguardar" class="btn btn-success btn-lg"  style="margin: 10px" href="<?php echo e(Redirect::to('/fichaAnimal')); ?>" >Guardar</button>
                 
-                                </div>
+                                    </div>
+
+                                </center>
+                                
                             </form>
+                          
+                       
                         </div>
                     </div>
 
 
         </div>          
- 
+        <?php $__env->stopSection(); ?>  
         
+<?php $__env->startSection('js'); ?>
+        <script>
 
-<script>
-
-    function mostrar(id) {
-            document.getElementById("edad").disabled = true;   
-            etapa = document.getElementById("opetapa").value;
-        if (id == "HEMBRA") {
-            document.getElementById("edad").disabled = false;   
-            $("#TH").show();
-            $("#TM").hide();
-            $("#V").show();
-            $("#VA").show();
-            $("#VACO").show();
-            $("#SI").show();
-            $("#NO").show();
-            $("#TO").hide();
-            $("#TORE").hide();
-        }else if(id == "MACHO"){
-            document.getElementById("edad").disabled = false;   
-            $("#TH").hide();
-            $("#TM").show();
-            $("#V").hide();
-            $("#VA").hide();
-            $("#VACO").hide();
-        $("#SI").hide();
-            $("#TO").show();
-            $("#TORE").show();
-        $("#NO").show();
-        }else{
-            edad.disabled = true
-        }
-    }
-
-    function ValidarEdad(id){
-        sexo = document.getElementById("opsexo").value;
-        etapa = document.getElementById("opetapa").value;
-        
-        if(sexo == "MACHO"){
-        
-            if(etapa == "TERNERO"){
-                if(id < 0 ||  id  > 3){
-                    
-                    Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'TERNERO MACHO SU RANGO DE EDAD ES 1 A 3 MESES ',
-                            
-                        }) 
-                    document.getElementById("edad").value = ""
-                    return false; 
+            function mostrar(id) {
+                    document.getElementById("edad").disabled = true;   
+                    etapa = document.getElementById("opetapa").value;
+                if (id == "HEMBRA") {
+                    document.getElementById("edad").disabled = false;   
+                    $("#TH").show();
+                    $("#TM").hide();
+                    $("#V").show();
+                    $("#VA").show();
+                    $("#VACO").show();
+                    $("#SI").show();
+                    $("#NO").show();
+                    $("#TO").hide();
+                    $("#TORE").hide();
+                }else if(id == "MACHO"){
+                    document.getElementById("edad").disabled = false;   
+                    $("#TH").hide();
+                    $("#TM").show();
+                    $("#V").hide();
+                    $("#VA").hide();
+                    $("#VACO").hide();
+                $("#SI").hide();
+                    $("#TO").show();
+                    $("#TORE").show();
+                $("#NO").show();
+                }else{
+                    edad.disabled = true
                 }
-                else{
-                    return true;
-                }
-            }else if(etapa == "TORETE"){
-                if(id < 4 ||  id > 20){
-                    Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'TORETE MACHO SU RANGO DE EDAD ES 4 A 20 MESES ',
-                            
-                        }) 
-                    
-                    document.getElementById("edad").value = ""
-                    return false; 
-                }
-                else{
-                    return true;
-                }
-
-            }else if(etapa == "TORO"){
-                if(id < 21 || id >600 ){
-                    Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'TORO  RANGO DE EDAD ES 20 MESES EN ADELANTE ',
-                            
-                        }) 
-                
-                    document.getElementById("edad").value = ""
-                    return false;
-                }
-                else{
-                    return true;
-                }
-
-            }else{
-                return false;
             }
 
-        }else if (sexo == "HEMBRA"){
-        
-            if(etapa == "TERNERA"){
-                if(id < 0  ||  id > 10){
-                    Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'TERNERA SU RANGO DE EDAD ES 0 A 10 MESES ',
-                            
-                        }) 
+            function ValidarEdad(id){
+                sexo = document.getElementById("opsexo").value;
+                etapa = document.getElementById("opetapa").value;
                 
-                    document.getElementById("edad").value = ""
-                    return false;
-                }else{
-                    return true;
-                }
-            }else if(etapa == "VACONILLA"){
-                if(id < 11  || id > 22){
-                    Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'VACONILLA SU RANGO DE EDAD ES 11 A 22 MESES ',
-                            
-                        }) 
-                    
-                    document.getElementById("edad").value = ""
-                    return false;
-                }
-                else{
-                    return true;
-                }
-
-            }else if(etapa == "VACONA"){
-                if(id < 23  || id > 36){
-                    Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'VACONA SU RANGO DE EDAD ES 23 A 36 MESES ',
-                            
-                        }) 
-                    
-                    document.getElementById("edad").value = ""
-                    return false;
-                }
-                else{
-                    return true;
-                }
-
-            }else if(etapa == "VACA"){
-                if(id  < 37 || id >600){
-                    Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'VACA  RANGO DE EDAD ES 36 MESES EN ADELANTE ',
-                            
-                        }) 
+                if(sexo == "MACHO"){
                 
-                    document.getElementById("edad").value = ""
-                    return false;
-                }
-                else{
-                    return true;
-                }
+                    if(etapa == "TERNERO"){
+                        if(id < 0 ||  id  > 3){
+                            
+                            Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'TERNERO MACHO SU RANGO DE EDAD ES 1 A 3 MESES ',
+                                    
+                                }) 
+                            document.getElementById("edad").value = ""
+                            return false; 
+                        }
+                        else{
+                            return true;
+                        }
+                    }else if(etapa == "TORETE"){
+                        if(id < 4 ||  id > 20){
+                            Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'TORETE MACHO SU RANGO DE EDAD ES 4 A 20 MESES ',
+                                    
+                                }) 
+                            
+                            document.getElementById("edad").value = ""
+                            return false; 
+                        }
+                        else{
+                            return true;
+                        }
 
-            }else{
-                
-            
-                document.getElementById("edad").value = ""
-                return false;
-            }
-
-
-        }
-
-    }
-                
-    function upperCase() {
-        var x=document.getElementById("codigoAnimal").value
-        document.getElementById("codigoAnimal").value=x.toUpperCase()
-                    
-    }
-
-    function validarEmbarazo(id){
-        if( id == "SI"){
-            $("#DISPONIBLE").show();
-            $("#VENDIDO").show();
-            $("#INACTIVO").show();
-            $("#REPRODUCCIÓN").hide();
-
-        }else{
-            $("#DISPONIBLE").show();
-            $("#VENDIDO").show();
-            $("#INACTIVO").show();
-            $("#REPRODUCCIÓN").show();
-        }
-    }
-
-
-    function validarEdadyEtapa(id){
-        sexo = document.getElementById("opsexo").value;
-        edad = document.getElementById("edad").value;
-        if(sexo == "MACHO"){
-            if(id == "TM"){
-                if(edad < 0 ||  edad  > 3){
-                    return true;
-                }else{
-                    Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'TERNERO MACHO SU RANGO DE EDAD ES 1 A 3 MESES ',
-                                
-                            }) 
-                        document.getElementById("edad").value = ""
-                        return false; 
-                }
-
-            }else if(id == "TORE" ){
-                if(edad < 4 ||  edad > 20){
-                    return true;
-                }else{
-                    Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'TORETE MACHO SU RANGO DE EDAD ES 4 A 20 MESES ',
-                                
-                            }) 
+                    }else if(etapa == "TORO"){
+                        if(id < 21 || id >600 ){
+                            Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'TORO  RANGO DE EDAD ES 20 MESES EN ADELANTE ',
+                                    
+                                }) 
                         
-                        document.getElementById("edad").value = ""
-                        return false; 
-                }
+                            document.getElementById("edad").value = ""
+                            return false;
+                        }
+                        else{
+                            return true;
+                        }
 
-            }else if(id == "TORO"){
-                    if(edad < 21 || edad >600){
-                        return true;
                     }else{
-                        Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'TORO  RANGO DE EDAD ES 20 MESES EN ADELANTE ',
-                                
-                            }) 
-                    
-                        document.getElementById("edad").value = ""
                         return false;
                     }
-            
-            }else{
-                return false;
-            }
 
-
-        }else if(sexo == "HEMBRA"){
-
-            if(id == "TH"){
-                    if(edad < 0  ||  edad > 10){
-                        return true;
-                    }else{
+                }else if (sexo == "HEMBRA"){
+                
+                    if(etapa == "TERNERA"){
+                        if(id < 0  ||  id > 10){
                             Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...',
@@ -411,89 +269,245 @@
                         
                             document.getElementById("edad").value = ""
                             return false;
-                    }
-            }else if( id  =="VA"){
-                        if(edad < 11  || edad > 22){
-                            return true;
                         }else{
+                            return true;
+                        }
+                    }else if(etapa == "VACONILLA"){
+                        if(id < 11  || id > 22){
                             Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'VACONILLA SU RANGO DE EDAD ES 11 A 22 MESES ',
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'VACONILLA SU RANGO DE EDAD ES 11 A 22 MESES ',
+                                    
+                                }) 
                             
-                        }) 
-                    
                             document.getElementById("edad").value = ""
                             return false;
                         }
-
-            }else if(id == "VACO" ){
-                        if(edad < 23  || edad > 36){
+                        else{
                             return true;
-                        }else{
+                        }
+
+                    }else if(etapa == "VACONA"){
+                        if(id < 23  || id > 36){
                             Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'VACONA SU RANGO DE EDAD ES 23 A 36 MESES ',
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'VACONA SU RANGO DE EDAD ES 23 A 36 MESES ',
+                                    
+                                }) 
                             
-                        }) 
-                    
                             document.getElementById("edad").value = ""
                             return false;
                         }
-
-            }else if(id == "V"){
-                    if(edad  < 37 || edad >600){
+                        else{
                             return true;
+                        }
+
+                    }else if(etapa == "VACA"){
+                        if(id  < 37 || id >600){
+                            Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'VACA  RANGO DE EDAD ES 36 MESES EN ADELANTE ',
+                                    
+                                }) 
+                        
+                            document.getElementById("edad").value = ""
+                            return false;
+                        }
+                        else{
+                            return true;
+                        }
+
                     }else{
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'VACA  RANGO DE EDAD ES 36 MESES EN ADELANTE ',
-                            
-                        }) 
-                
-                            document.getElementById("edad").value = ""
-                            return false;
+                        
+                    
+                        document.getElementById("edad").value = ""
+                        return false;
                     }
 
-            }else{
-                return false;
+
+                }
+
+            }
+                        
+            function upperCase() {
+                var x=document.getElementById("codigoAnimal").value
+                document.getElementById("codigoAnimal").value=x.toUpperCase()
+                            
             }
 
-        }else{
-            return false;
-        }
+            function validarEmbarazo(id){
+                if( id == "SI"){
+                    $("#DISPONIBLE").show();
+                    $("#VENDIDO").show();
+                    $("#INACTIVO").show();
+                    $("#REPRODUCCIÓN").hide();
+
+                }else{
+                    $("#DISPONIBLE").show();
+                    $("#VENDIDO").show();
+                    $("#INACTIVO").show();
+                    $("#REPRODUCCIÓN").show();
+                }
+            }
+
+
+            function validarEdadyEtapa(id){
+                sexo = document.getElementById("opsexo").value;
+                edad = document.getElementById("edad").value;
+                if(sexo == "MACHO"){
+                    if(id == "TM"){
+                        if(edad < 0 ||  edad  > 3){
+                            return true;
+                        }else{
+                            Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'TERNERO MACHO SU RANGO DE EDAD ES 1 A 3 MESES ',
+                                        
+                                    }) 
+                                document.getElementById("edad").value = ""
+                                return false; 
+                        }
+
+                    }else if(id == "TORE" ){
+                        if(edad < 4 ||  edad > 20){
+                            return true;
+                        }else{
+                            Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'TORETE MACHO SU RANGO DE EDAD ES 4 A 20 MESES ',
+                                        
+                                    }) 
+                                
+                                document.getElementById("edad").value = ""
+                                return false; 
+                        }
+
+                    }else if(id == "TORO"){
+                            if(edad < 21 || edad >600){
+                                return true;
+                            }else{
+                                Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'TORO  RANGO DE EDAD ES 20 MESES EN ADELANTE ',
+                                        
+                                    }) 
+                            
+                                document.getElementById("edad").value = ""
+                                return false;
+                            }
+                    
+                    }else{
+                        return false;
+                    }
+
+
+                }else if(sexo == "HEMBRA"){
+
+                    if(id == "TH"){
+                            if(edad < 0  ||  edad > 10){
+                                return true;
+                            }else{
+                                    Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'TERNERA SU RANGO DE EDAD ES 0 A 10 MESES ',
+                                            
+                                        }) 
+                                
+                                    document.getElementById("edad").value = ""
+                                    return false;
+                            }
+                    }else if( id  =="VA"){
+                                if(edad < 11  || edad > 22){
+                                    return true;
+                                }else{
+                                    Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'VACONILLA SU RANGO DE EDAD ES 11 A 22 MESES ',
+                                    
+                                }) 
+                            
+                                    document.getElementById("edad").value = ""
+                                    return false;
+                                }
+
+                    }else if(id == "VACO" ){
+                                if(edad < 23  || edad > 36){
+                                    return true;
+                                }else{
+                                    Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'VACONA SU RANGO DE EDAD ES 23 A 36 MESES ',
+                                    
+                                }) 
+                            
+                                    document.getElementById("edad").value = ""
+                                    return false;
+                                }
+
+                    }else if(id == "V"){
+                            if(edad  < 37 || edad >600){
+                                    return true;
+                            }else{
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'VACA  RANGO DE EDAD ES 36 MESES EN ADELANTE ',
+                                    
+                                }) 
+                        
+                                    document.getElementById("edad").value = ""
+                                    return false;
+                            }
+
+                    }else{
+                        return false;
+                    }
+
+                }else{
+                    return false;
+                }
 
 
 
-    
+            
+                
+
+                
+
+
+            }
+            
+            document.getElementById("imagen").onchange=function(e){
+                let reader= new FileReader();
+                reader.readAsDataURL(e.target.files[0]);
+                reader.onload=function(){
+                    let imagenPreview=document.getElementById("imagenPreview");
+                        image=document.createElement("img");
+                        image.src=reader.result;
+
+                        imagenPreview.innerHTML='';
+                        imagenPreview.append(image);
+
+                }
+            }
+            
+           
+
+
+           
+        </script>
+         
         
 
-        
-
-
-    }
-    
-    document.getElementById("imagen").onchange=function(e){
-        let reader= new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
-        reader.onload=function(){
-            let imagenPreview=document.getElementById("imagenPreview");
-                image=document.createElement("img");
-                image.src=reader.result;
-
-                imagenPreview.innerHTML='';
-                imagenPreview.append(image);
-
-        }
-    }
-        
-</script>
-
-
-                   
-        
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/file_animale/create-animale.blade.php ENDPATH**/ ?>
