@@ -37,12 +37,7 @@
                                         </div>
                                 </div>
                                   
-                                    <input class= "form-control form-control-sm"  id="imagen" type="file" name="file" > 
-                                    <input type="text" value="{{$animal->url}}">
-                                    
-                                   
-                               
-                                           
+                                    <input class= "form-control form-control-sm"  id="imagen" type="file" name="file" >      
                              </center>
                             <div  class="col-md-6">
                                 <label for="" class="form-label">Código Animal:</label>

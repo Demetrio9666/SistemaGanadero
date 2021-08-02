@@ -5,11 +5,19 @@
         @endsection 
 </head>
     @section('content_header')
-                <a type="button" class="btn-lg btn-success " style="margin: 10px" id="button-addon1" href="{{url('fichaAnimal/create')}}"><i class="fas fa-plus-square"></i></a>
-                <a type="button" class="btn-lg btn-warning " style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaAnimales')}}"><i class="fas fa-trash"></i></a>
-                
-                <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel-fichaAnimal')}}"><i class="fas fa-file-excel"></i></a>
-                <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf-fichaAnimal')}}"><i class="fas fa-file-pdf"></i></a>
+    <div class="card card-dark">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="fas fa-book-open"></i>
+              Registros Activos</h3>
+
+        </div>
+        <div class="col-lg-3 col-6">
+                <a type="button" title="Agregar nuevo registro" class="btn-lg btn-success " style="margin: 10px" id="button-addon1" href="{{url('fichaAnimal/create')}}"><i class="fas fa-plus-square"></i></a>
+                <a type="button" title="Registros inactivos" class="btn-lg btn-warning " style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaAnimales')}}"><i class="fas fa-trash"></i></a>
+                <a type="button" title="Descarga reportes en Excel" class="btn-lg btn-success " style="margin: 10px"  id="button-addon1" href="{{url('exportar-excel-fichaAnimal')}}"><i class="fas fa-file-excel"></i></a>
+                <a type="button" title="Descarga reportes en PDF" class="btn-lg btn-danger "  id="button-addon1" href="{{url('descarga-pdf-fichaAnimal')}}"><i class="fas fa-file-pdf"></i></a>
+        </div>
                 <div class="card">
                     <div class="card-body">
                         <div class="titulo "><h1>Fichas de Animales</h1></div>
@@ -60,6 +68,8 @@
                         </table>
                     </div>
                 </div>
+        </div>
+    
     @endsection
 
 @section('js')

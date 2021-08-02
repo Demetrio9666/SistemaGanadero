@@ -19,12 +19,12 @@ class AnimalesInactivosController extends Controller
     public function index()
     {
         $animal = DB::table('file_animale')
-        ->join('race','file_animale.race_id','=','race.id')
-        ->join('location','file_animale.location_id','=','location.id')
-        ->select('file_animale.id','file_animale.animalCode','file_animale.date','race.race_d as raza',
-                'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
-                'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
-                ,'file_animale.conceived')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->join('location','file_animale.location_id','=','location.id')
+                    ->select('file_animale.id','file_animale.animalCode','file_animale.url','file_animale.date','race.race_d as raza',
+                            'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
+                            'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
+                            ,'file_animale.conceived')
                 ->where('file_animale.actual_state', '=', 'Inactivo' )
         ->get();
         return view('file_animale.index-inactivo',compact('animal'));

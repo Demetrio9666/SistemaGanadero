@@ -5,7 +5,16 @@
         @endsection 
 </head>
     @section('content_header')
+    <div class="card card-dark">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="fas fa-book-open"></i>
+              Registros Inactivos</h3>
+
+             </div>
+             <div class="col-lg-3 col-6">
                 <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('/fichaAnimal')}}"><i class="fas fa-arrow-left"></i></a>
+             </div>
                 <div class="card">
                     <div class="card-body">
                         <div class="titulo "><h1>Fichas de Animales</h1></div>
@@ -33,7 +42,7 @@
                                 <tr>
                                     <td>{{$i->animalCode}}</td>
                                     <td>
-                                        <img src="{{asset($i->url)}}" width="150px">
+                                        <img src="{{asset($i->url)}}" width="50px"  height="50px">
                                     </td>
                                     <td >{{$i->date}}</td>
                                     <td >{{$i->raza}}</td>
@@ -62,6 +71,7 @@
                         </table>
                     </div>
                 </div>
+    </div>
     @endsection
 
 @section('js')

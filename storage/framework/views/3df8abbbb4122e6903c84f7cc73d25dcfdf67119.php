@@ -38,9 +38,7 @@
                                 </div>
                                   
                                     <input class= "form-control form-control-sm"  id="imagen" type="file" name="file" > 
-                                    <input type="text" value="<?php echo e($animal->url); ?>">
                                     
-                                   
                                
                                            
                              </center>
