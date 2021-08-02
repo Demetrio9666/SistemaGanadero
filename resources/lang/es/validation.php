@@ -183,7 +183,8 @@ return [
                 'description'=>'descripción',
                 'race_d'=>'raza',
                 'percentage'=>'porcentaje',
-                'password'=>'contraseña'
+                'password'=>'contraseña',
+                'file'=>'foto'
 
     ],
 

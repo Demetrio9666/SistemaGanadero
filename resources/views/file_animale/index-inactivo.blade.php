@@ -13,6 +13,7 @@
                             <thead>             
                                 <tr>
                                     <th>Código Animal</th>
+                                    <th>Foto</th>
                                     <th>Fecha Nacimiento</th>
                                     <th>Raza</th>
                                     <th>Sexo</th>
@@ -31,6 +32,9 @@
                                 @foreach ($animal as $i)          
                                 <tr>
                                     <td>{{$i->animalCode}}</td>
+                                    <td>
+                                        <img src="{{asset($i->url)}}" width="150px">
+                                    </td>
                                     <td >{{$i->date}}</td>
                                     <td >{{$i->raza}}</td>
                                     <td >{{$i->sex}}</td>

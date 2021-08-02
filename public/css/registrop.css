@@ -1,5 +1,5 @@
 
-/*body{
+body{
 	
 	background-color: transparent;
 }
@@ -11,17 +11,17 @@
 
 #registration-form .image{
 	float:left;
-	background-image: url("../imagen/imagenF.jpg");
-	height: 750px;
-    width: 25%;
+	background-image: url("../imagen/portada.jpg");
+	height: 1010px;
+    width: 10%;
 	background-size: cover;
-	background-position: 35%;
+	background-position: 7%;
 }
 
 #registration-form .frm{
 	float:right;
-	height: 750px;
-    width: 75%;
+	height: 1010px;
+    width: 90%;
     min-width: 250px;
     padding: 0 35px;
     background-size: 100% 100%;
@@ -72,5 +72,5 @@
 		margin-top: 80px;
 	}
     
-}*/
+}
 

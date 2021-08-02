@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\File_Animale;
 use App\Models\Location;
@@ -13,6 +14,8 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\File_AnimalesExport;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class File_animaleController extends Controller
 {
@@ -27,7 +30,7 @@ class File_animaleController extends Controller
         $animal = DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->join('location','file_animale.location_id','=','location.id')
-                    ->select('file_animale.id','file_animale.animalCode','file_animale.date','race.race_d as raza',
+                    ->select('file_animale.id','file_animale.animalCode','file_animale.url','file_animale.date','race.race_d as raza',
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
                             ,'file_animale.conceived')
@@ -103,10 +106,19 @@ class File_animaleController extends Controller
         
         $animal->animalCode = $request->codigo_animal;
 
-        $imagen = $request->file('file')->store('public/imagenes');
-        $url = Storage::url($imagen);
-        
-        $animal->url = $url;
+        //$imagen = $request->file('file')->store('public/imagenes');
+        //$url = Storage::url($imagen);
+        $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
+
+        $ruta = storage_path() . '\app\public\imagenes/' .$nombre;
+
+        Image::make($request->file('file'))
+              ->resize(182 ,190 ,function($constraint){
+                $constraint->aspectRatio();
+        })
+        ->save($ruta);
+
+        $animal->url = '/storage/imagenes/'.$nombre;
         $animal->date = $request->fecha_nacimiento;
         $animal->race_id = $request->raza;
         $animal->sex = $request->sexo;
@@ -160,6 +172,7 @@ class File_animaleController extends Controller
                     ->where('location.actual_state','=','DISPONIBLE')
                     ->get();
         $animal = File_Animale::findOrFail($id);
+      
         return view('file_animale.edit-animale', compact('animal','raza','ubicacion'));
     }
 
@@ -174,7 +187,7 @@ class File_animaleController extends Controller
     {
        
         $animal = File_Animale::findOrFail($id);
-        
+
         $animal->animalCode = $request->codigo_animal;
         $animal->date = $request->fecha_nacimiento;
         $animal->race_id = $request->raza;
@@ -187,9 +200,32 @@ class File_animaleController extends Controller
         $animal->actual_state = $request->actual_state;
         $animal->location_id = $request->localizacion;
         $animal->conceived = $request->concebido;
-        $animal->save(); 
+
+        if($request->hasFile('file')){
+            $destino = $animal->url;
+            //storage/imagenes/o6OjntwgUcpexels-lucas-allmann-4
+            $url_replazo = str_replace('storage','public',$destino);
+              //public/imagenes/o6OjntwgUcpexels-lucas-allmann-4
+               Storage::delete( $url_replazo);
+                $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
+
+                $ruta = storage_path() . '\app\public\imagenes/' .$nombre ;
+        
+                Image::make($request->file('file'))
+                      ->resize(182 ,190 ,function($constraint){
+                        $constraint->aspectRatio();
+                })
+                ->save($ruta);
+               
+                $animal->url = '/storage/imagenes/'.$nombre;
+                $animal->update();
+          
+        }
+       
+    
+        $animal->update(); 
       
-        return redirect('/fichaAnimal'); 
+      return redirect('/fichaAnimal'); 
     }
 
     /**

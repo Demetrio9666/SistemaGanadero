@@ -3,9 +3,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     @section('css')
-    
+             <link rel="stylesheet" type="text/css" href="/css/registrop.css">
              <link rel="stylesheet" type="text/css" href="/css/imagen.css">
-             
     @endsection
     <title>Registration Form</title>
 </head>
@@ -19,27 +18,17 @@
 
              </div>
                     <div class="container" id="registration-form">
-                        
-                        <!--div class="image"></div-->
+                        <div class="image"></div>
                         <div class="frm">
-                        
-                            <form action="{{route('fichaAnimal.store')}}" method="POST" class="row g-3" enctype="multipart/form-data"   >
-                                                                                                   
+                            <form action="{{route('fichaAnimal.store')}}" method="POST" class="row g-3" enctype="multipart/form-data"   >                                                     
                                   @csrf
                                  <center>
                                     <div style="margin-top: 19px; ">
                                         <div class="card " style="width: 200px">
                                             <div id="imagenPreview"  ></div>
                                     </div>
-                                        <!--input type="file" name="file" accept="image/*" id="imagen" -->
-                                        
-                                           
-                                            <input class="form-control form-control-sm" id="imagen" type="file" name="file">
-                                          
+                                        <input class="form-control form-control-sm" id="imagen" type="file" name="file">        
                                  </center>
-                            
-                                
-                                     
                                  
                                 <div  class="col-md-6">
                                     <label for="" class="form-label">Código Animal:</label>
@@ -147,7 +136,7 @@
                                 </select>
                                 </div>
                                 <center>
-                                    <div class="col-md-6" style="margin: 60px">
+                                    <div class="col-md-6" style="margin: 40px">
                                     
                                         <a type="button"  class="btn btn-secondary btn-lg"   href="{{url('/fichaAnimal')}}">Cancelar</a>
                                         <button type="sutmit" id="btguardar" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/fichaAnimal') }}" >Guardar</button>

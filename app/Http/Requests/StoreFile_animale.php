@@ -7,21 +7,6 @@ use Illuminate\Validation\Factory as Validacion;
 class StoreFile_animale extends FormRequest
 {
 
-
-
-    public function __construct(Validacion $validacion)
-    {
-        $validacion->extend(
-            'Vhembra',
-            function($attribute,$value,$parameters){
-                if($attribute == ""){
-
-                }
-
-                return false;
-            }
-        );
-    }
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -42,7 +27,7 @@ class StoreFile_animale extends FormRequest
         return [
             
                 'codigo_animal'=>'required|unique:file_animale,animalCode,id',
-                'file'=>'required|image|max:2048',
+                'file'=>'required|image',
                 'fecha_nacimiento'=>'required',
                 'raza'=>'required',
                 'sexo'=>'required',

@@ -17,6 +17,7 @@
                             <thead>            
                                 <tr>
                                     <th>Código Animal</th>
+                                    <th>Foto</th>
                                     <th>Fecha Nacimiento</th>
                                     <th>Raza</th>
                                     <th>Sexo</th>
@@ -35,6 +36,9 @@
                                 <?php $__currentLoopData = $animal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                                 <tr>
                                     <td><?php echo e($i->animalCode); ?></td>
+                                    <td>
+                                        <img src="<?php echo e(asset($i->url)); ?>" width="50px" height="50px">
+                                    </td>
                                     <td ><?php echo e($i->date); ?></td>
                                     <td ><?php echo e($i->raza); ?></td>
                                     <td ><?php echo e($i->sex); ?></td>
