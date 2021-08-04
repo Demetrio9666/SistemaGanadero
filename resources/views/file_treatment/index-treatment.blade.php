@@ -1,23 +1,27 @@
-@extends('adminlte::page')
+@extends('layouts.baseTablas')
 
-<head>
-    @section('css')
-        
-    @endsection 
-</head>
-  <body>
-    
-    @section('title')
-   
-    @section('content_header')
-    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('fichaTratamiento/create')}}"><i class="fas fa-plus-square"></i></a>
-    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/fichaTratamientos')}}"><i class="fas fa-recycle"></i></a>
-    <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel-fichaTratamiento')}}"><i class="fas fa-file-excel"></i></a>
-    <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf-fichaTratamiento')}}"><i class="fas fa-file-pdf"></i></a>
-    <div class="card">
-        <div class="card-body">
-            <div class="titulo "><h1>Fichas de Tratamientos</h1></div>
-          <table id="tabla" class="table table-striped table-bordered" style="width:100%">
+@section('nombre_card')
+        Registros de Tratamientos Activos
+@endsection
+
+@section('boton_registro')
+"{{url('fichaTratamiento/create')}}"
+@endsection
+@section('boton_reciclaje')
+"{{url('inactivos/fichaTratamientos')}}"
+@endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-fichaTratamiento')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-fichaTratamiento')}}"
+@endsection
+
+@section('nombre_tabla')
+Fichas de Tratamientos
+@endsection
+@section('tabla')
+        <table id="tabla" class="table table-striped table-bordered" style="width:100%">
             <thead>             
                 <tr>
                     <th>Fecha de Tratamiento</th>
@@ -43,19 +47,10 @@
                     <td >{{$i->treatment}}</td>
                     <td >{{$i->actual_state}}</td>
                     <td>
-                        <a class="btn btn-primary  " href="{{route('fichaTratamiento.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                                                
+                        <a class="btn btn-primary  " href="{{route('fichaTratamiento.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>                      
                     </td>  
                 </tr>
                 @endforeach 
-       
             </tbody>
-           
         </table>
-        </div>
-    </div>
-    @endsection
-</body>
-    @section('js')
-            
 @endsection

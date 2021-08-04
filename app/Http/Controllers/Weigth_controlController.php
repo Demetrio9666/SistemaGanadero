@@ -50,7 +50,7 @@ class Weigth_controlController extends Controller
         return $pdf->setPaper('a4','landscape')->download('ControlPeso.pdf');
     }
     public function Excel(){
-        return Excel::download(new Weigth_controlExport, 'RegistrosAntibioticos.xlsx');
+        return Excel::download(new Weigth_controlExport, 'ControlPeso.xlsx');
     }
 
 
@@ -64,7 +64,7 @@ class Weigth_controlController extends Controller
      */
     public function create()
     {
-        $animal  = DB::table('file_animale')
+        $animal = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
                      'date',

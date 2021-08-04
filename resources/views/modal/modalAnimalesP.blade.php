@@ -10,7 +10,7 @@
               </button>
             </div>
             <div class="modal-body" style="width:100%">
-                @include('tablas.tablaAnimalesP')
+                @include('tablas.tablaAnimales')
             </div>
             <!--div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Guardar</button>

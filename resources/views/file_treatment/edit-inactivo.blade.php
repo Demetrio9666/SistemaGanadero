@@ -25,7 +25,7 @@
                     <label for="" class="">Código Animal</label>
                         <div class="input-group mb-3">
                                 <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
-                                <span class="input-group-text" id="basic-addon1">Código</span>
+                         
                                 <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
                                 @foreach ($animalT as $i)
                                             @if ($tra->animalCode_id == $i->id )

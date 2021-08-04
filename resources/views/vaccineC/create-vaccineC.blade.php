@@ -1,85 +1,54 @@
-@extends('adminlte::page')
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>Registration Form</title>
-</head>
-<body>
-   
-    @section('css')
-    <link rel="stylesheet" type="text/css" href="/css/registro.css">
-    @endsection
-    @section('content_header')
-    <div class="container" id="registration-form">
-        @include('messages.message')
-        <div class="image"></div>
-        <div class="frm">
-            <h1>Registro de Control Vacunación</h1>
-            <form action="{{route('controlVacuna.store')}}" method="POST">
-                @csrf
-                <div class="form-group">
+@extends('vaccineC.base')
+@section('nombre_regitro')
+Registro Control Vacunación
+@endsection
+@section('formulario')
+<form action="{{route('controlVacuna.store')}}" method="POST">
+    @csrf
+    <div class="row">
+            <div class="col-md-6">
+                
                     <label for="">Fecha de Vacunación:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}">
-                </div>
-                <div class="form-group">
-                    <label for="" class="">Código Animal</label>
-                        <div class="input-group mb-3">
-                                <button class="btn btn-outline-info" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
-                                <span class="input-group-text" id="basic-addon1">Codigo</span>
-                                <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
+            </div>
+                <div class="col-md-6"> 
+                    <div class="input-group mb-3" style="margin: 33px">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                                <input type="text" placeholder="Código Animal"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
                                 <input type="hidden" id="idcodi" name="animalCode_id">
-                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="col-md-6">
                     <label for="">Vacuna:</label>
                     <select class="form-control" id="razas"  name="vaccine_id" value="{{old('vaccine_id')}}">
                         <option selected></option>
                         @foreach ($vacuna as $i )   
                             <option value="{{$i->id}}" @if(old('vaccine_id') == $i->id) {{'selected'}} @endif>{{$i->vaccine_d}}</option>
                         @endforeach
-                  </select>
+                </select>
                 </div>  
-                <div class="form-group">
+                <div class="col-md-6">
                     <label for="">Fecha de Segunda Docis:</label>
                     <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{old('date_r')}}">
                 </div>
-                <div  class="form-group">
+                <div  class="col-md-6">
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
                         <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
                         <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
-                     </select>
+                    </select>
                 </div> 
-
-
-
-                <div class="col-md-6-self-center" style="margin: 80px">
-                    
-                        <a type="submit" class="btn btn-secondary btn-lg"   href="{{url('/controlVacuna')}}">Cancelar</a>
-                        <button type="submit" class="btn btn-success btn-lg"  style="margin: 10px" href="{{ Redirect::to('/controlVacuna') }}" >Guardar</button>
-  
+            
+            
+            <center>
+                <div class="col-md-6 " style="margin: 40px">
+                    <a type="submit" class="btn btn-secondary btn"   href="{{url('/controlVacuna')}}">Cancelar</a>
+                    <button type="submit" class="btn btn-success btn"  style="margin: 10px" href="{{ Redirect::to('/controlVacuna') }}" >Guardar</button>
                 </div>
+            </center>
+    </div>      
             </form>
-        </div>
-    </div>
-    @include("modal.modalAnimales")
-    @endsection
-    @section('js')
-    <script>
-        $('#modalanimal').on('shown.bs.modal', function () {
-        $('#myInput2').trigger('focus')
-      });
 
-           $(".btselect").on('click',function(){
-                var currentRow = $(this).closest("tr");
-                var col1=currentRow.find("td:eq(0)").text();
-                var col2=currentRow.find("td:eq(1)").text();
-                $("#idcodi").val(col1);
-                $("#codigo_animal").val(col2);
-           });
-
-
-          
-   </script>
-    @endsection
-</body>
+    
+    
+@endsection

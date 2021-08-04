@@ -49,9 +49,9 @@ class RoleSeeder extends Seeder
 
 
         Permission::create(['name'=>'Visualizar Ficha Reproducción Externo'])->syncRoles([$admin,$supervisor,$invitado]);
-        Permission::create(['name'=>'Crear      Fcha Reproducción Externo'])->syncRoles([$admin,$supervisor,$invitado]);
-        Permission::create(['name'=>'Editar     Ficha Reproducción Externo'])->syncRoles([$admin,$supervisor,$invitado]);
-        Permission::create(['name'=>'Eliminar   Ficha Reproducción Exerno'])->syncRoles([$admin,$supervisor]);
+        Permission::create(['name'=>'Crear Ficha Reproducción Externo'])->syncRoles([$admin,$supervisor,$invitado]);
+        Permission::create(['name'=>'Editar Ficha Reproducción Externo'])->syncRoles([$admin,$supervisor,$invitado]);
+        Permission::create(['name'=>'Eliminar Ficha Reproducción Exerno'])->syncRoles([$admin,$supervisor]);
 
       
         Permission::create(['name'=>'Visualizar Control de Vacunación'])->syncRoles([$admin,$supervisor]);

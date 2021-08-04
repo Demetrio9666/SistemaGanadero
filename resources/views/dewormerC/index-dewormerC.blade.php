@@ -1,53 +1,54 @@
-@extends('adminlte::page')
-<head>
-    @section('css')
+@extends('layouts.baseTablas')
 
-    @endsection 
-</head>
-  <body>
+@section('nombre_card')
+Registros de Controle de Desparacitaciones Activas
+@endsection
+
+@section('boton_registro')
+"{{url('controlDesparasitacion/create')}}"
+@endsection
+@section('boton_reciclaje')
+"{{url('inactivos/controlDesparasitaciones')}}"
+@endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-controlDesparasitacion')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-controlDesparasitacion')}}"
+@endsection
+
+@section('nombre_tabla')
+Ficha de Controles de Desparacitaciones
+@endsection
+@section('tabla')
+<table id="tabla" class="table table-striped table-bordered" style="width:100%">
+    <thead>             
+        <tr>
+            <th>Fecha de Desparasitación</th>
+            <th>Código del Animal</th>
+            <th>Desparasitante</th>
+            <th>Fecha de próxima desparasitación</th>
+            <th>Estado Actual</th> 
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>  
+        @foreach ($desC as $i)          
+        <tr>
+            <td>{{$i->date}}</td>
+            <td >{{$i->animal}}</td>
+            <td>{{$i->des}}</td>
+            <td >{{$i->date_r}}</td>
+            <td >{{$i->actual_state}}</td>
+            <td>
+                <a class="btn btn-primary" href="{{route('controlDesparasitacion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                                      
+            </td>  
+        </tr>
+        @endforeach
+    </tbody>
     
-    @section('title')
-   
-    @section('content_header')
-    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('controlDesparasitacion/create')}}"><i class="fas fa-plus-square"></i></a>
-    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('inactivos/controlDesparasitaciones')}}"><i class="fas fa-recycle"></i></a>
-    <a type="button" class="btn-lg btn-success float-right"  id="button-addon1" href="{{url('exportar-excel-controlDesparasitacion')}}"><i class="fas fa-file-excel"></i></a>
-    <a type="button" class="btn-lg btn-danger float-right"  id="button-addon1" href="{{url('descarga-pdf-controlDesparasitacion')}}"><i class="fas fa-file-pdf"></i></a>
-    <div class="card">
-        <div class="card-body">
-            <div class="titulo "><h1>Registros de Control de Desparacitaciones</h1></div>
-          <table id="tabla" class="table table-striped table-bordered" style="width:100%">
-            <thead>             
-                <tr>
-                    <th>Fecha de Desparasitación</th>
-                    <th>Código del Animal</th>
-                    <th>Desparasitante</th>
-                    <th>Fecha de re-desparasitación</th>
-                    <th>Estado Actual</th> 
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>  
-                @foreach ($desC as $i)          
-                <tr>
-                    <td>{{$i->date}}</td>
-                    <td >{{$i->animal}}</td>
-                    <td>{{$i->des}}</td>
-                    <td >{{$i->date_r}}</td>
-                    <td >{{$i->actual_state}}</td>
-                    <td>
-                        <a class="btn btn-primary" href="{{route('controlDesparasitacion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                                              
-                    </td>  
-                </tr>
-                @endforeach
-            </tbody>
-            
-        </table>
-        </div>
-    </div>
-    @endsection
-</body>
-    @section('js')
-          
-    @endsection
+</table>
+@endsection
+
+

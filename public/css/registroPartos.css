@@ -1,4 +1,3 @@
-
 body{
 	
 	background-color: transparent;
@@ -11,17 +10,17 @@ body{
 
 #registration-form .image{
 	float:left;
-	background-image: url("../imagen/portada.jpg");
-	height: 1010px;
-    width: 10%;
+	background-image: url("../imagen/tratamiento.jpg");
+	height: 450px;
+    width: 30%;
 	background-size: cover;
-	background-position: 7%;
+	background-position: 90%;
 }
 
 #registration-form .frm{
 	float:right;
-	height: 1010px;
-    width: 90%;
+	height: 450px;
+    width: 70%;
     min-width: 250px;
     padding: 0 35px;
     background-size: 100% 100%;

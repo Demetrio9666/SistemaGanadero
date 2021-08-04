@@ -1,75 +1,80 @@
-@extends('adminlte::page')
-<head>
-    @section('css')
-     
-    @endsection 
-</head>
-  <body>
+@extends('layouts.baseTablasInactivas')
+
+@section('nombre_card')
+Registros de Reproducción por Monta Natural Externas Inactivas
+@endsection
+@section('boton_atras')
+"{{url('/fichaReproduccionEx')}}"
+@endsection
+@section('nombre_tabla')
+Fichas de Reproducción por Monta Natural Externa
+@endsection
+@section('tabla')
+<table id="tabla" class="table table-striped table-bordered" style="width:100%">
+    <thead>             
+        <tr>
+            <th>Fecha de Registro</th>
+            <th>Codigo Animal</th>
+            <th>Raza</th>
+            <th>Edad</th>
+            <th>Sexo</th>
+            <th>Código Externo</th>
+            <th>Raza</th>
+            <th>Edad</th>
+            <th>Sexo</th>
+            <th>Hacienda</th>
+            <th>Estado Actual</th> 
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>  
+        @foreach ($ext as $i)          
+        <tr>
+            <td >{{$i->date}}</td>
+            <td>{{$i->animalCode}}</td>
+            <td>{{$i->raza}}</td>
+            <td>{{$i->edad}}</td>
+            <td>{{$i->sexo}}</td>
+            <td>{{$i->animalCode_Exte}}</td>
+            <td>{{$i->race_d}}</td>
+            <td>{{$i->age_month}}</td>
+            <td>{{$i->sex}}</td>
+            <td>{{$i->hacienda_name}}</td>
+            <td >{{$i->actual_state}}</td>
+            <td>
+              
+                <a class="btn btn-primary" href="{{route('inactivos.fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                @can('Eliminar   Ficha Reproducción Exerno')
+                <form action="{{route('inactivos.fichaReproduccionEx.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
+                    @csrf
+                    @method('DELETE') 
+                    <button type="submit"  class="btn btn-danger" value="Eliminar">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+                    
+                @endcan
+                  
+            </td>  
+        </tr>
+        @endforeach
+    </tbody>
    
-    @section('title')
+</table>
+@endsection
 
-    @section('content_header')
-    <a type="button" class="btn-lg btn-success" style="margin: 10px" id="button-addon1" href="{{url('/fichaReproduccionEx')}}"><i class="fas fa-arrow-left"></i></a>
-    
-    <div class="card">
-        <div class="card-body">
-          <table id="tabla" class="table table-striped table-bordered" style="width:100%">
-            <thead>             
-                <tr>
-                    <th>Fecha de Registro</th>
-                    <th>Codigo Animal</th>
-                    <th>Raza</th>
-                    <th>Edad</th>
-                    <th>Sexo</th>
-                    <th>Código Externo</th>
-                    <th>Raza</th>
-                    <th>Edad</th>
-                    <th>Sexo</th>
-                    <th>Hacienda</th>
-                    <th>Estado Actual</th> 
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>  
-                @foreach ($ext as $i)          
-                <tr>
-                    <td >{{$i->date}}</td>
-                    <td>{{$i->animalCode}}</td>
-                    <td>{{$i->raza}}</td>
-                    <td>{{$i->edad}}</td>
-                    <td>{{$i->sexo}}</td>
 
-                    <td>{{$i->animalCode_Exte}}</td>
-                    <td>{{$i->race_d}}</td>
-                    <td>{{$i->age_month}}</td>
-                    <td>{{$i->sex}}</td>
-                    <td>{{$i->hacienda_name}}</td>
-                    <td >{{$i->actual_state}}</td>
 
-                    <td>
-                      
-                        <a class="btn btn-primary" href="{{route('inactivos.fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                        @can('Eliminar   Ficha Reproducción Exerno')
-                        <form action="{{route('inactivos.fichaReproduccionEx.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
-                            @csrf
-                            @method('DELETE') 
-                            <button type="submit"  class="btn btn-danger" value="Eliminar">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>
-                            
-                        @endcan
-                          
-                    </td>  
-                </tr>
-                @endforeach
-            </tbody>
-           
-        </table>
-        </div>
-    </div>
-    @endsection
-</body>
-    @section('js')
-          
-    @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+   

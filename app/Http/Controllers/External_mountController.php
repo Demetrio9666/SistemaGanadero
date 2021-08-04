@@ -16,10 +16,11 @@ class External_mountController extends Controller
 {
     public function __construct(){
         $this->middleware('can:Visualizar Ficha Reproducción Externo')->only('index');
-        $this->middleware('can:Crear      Ficha Reproducción Externo')->only('create','store');
-        $this->middleware('can:Editar     Ficha Reproducción Externo')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Ficha Reproducción Externo')->only('delete');
+        $this->middleware('can:Crear Ficha Reproducción Externo')->only('create','store');
+        $this->middleware('can:Editar Ficha Reproducción Externo')->only('show','edit','update');
+        $this->middleware('can:Eliminar Ficha Reproducción Externo')->only('delete');
     }
+
 
     public function index()
     {   

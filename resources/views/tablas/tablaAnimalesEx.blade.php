@@ -26,7 +26,7 @@
                     <td>{{$i->age_month}}</td>
                     <td>{{$i->sex}}</td>
                      
-                      <td> <button type="button" class="btn btn-success btn-lg   btselect"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
+                      <td> <button type="button" class="btn btn-success btn   btselect"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
                       
                     </tr>
                   @endforeach        

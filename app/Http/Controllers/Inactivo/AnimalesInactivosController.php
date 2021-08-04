@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\File_Animale;
 use App\Models\Location;
 use App\Models\Race;
+use Illuminate\Support\Facades\Storage;
 
 class AnimalesInactivosController extends Controller
 {
@@ -100,6 +101,12 @@ class AnimalesInactivosController extends Controller
     public function destroy($id)
     {
         $animal = File_Animale::findOrFail($id);
+
+
+        $destino = $animal->url;
+        $url_replazo = str_replace('storage','public',$destino);
+        Storage::delete( $url_replazo);
+
         $animal->delete();
         return redirect('inactivos/fichaAnimales')->with('eliminar','ok');
     }

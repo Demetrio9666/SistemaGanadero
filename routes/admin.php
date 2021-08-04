@@ -122,8 +122,8 @@ Route::get('exportar-excel-confRaza',[RaceController::class,'Excel']);
 //CONFI VITAMINAS
 Route::resource('inactivos/Vitaminas',VitaminInactivosController::class)->names('inactivos.Vitaminas');
 Route::resource('confVi',VitaminController::class)->names('confVi');
-Route::get('descarga-pdf-confVi',[DewormerController::class,'PDF']);
-Route::get('exportar-excel-confVi',[DewormerController::class,'Excel']);
+Route::get('descarga-pdf-confVi',[VitaminController::class,'PDF']);
+Route::get('exportar-excel-confVi',[VitaminController::class,'Excel']);
 
 //CONFI DESPARACITANTES
 Route::resource('inactivos/Desparasitantes',DewormerInactivosController::class)->names('inactivos.Desparasitantes');

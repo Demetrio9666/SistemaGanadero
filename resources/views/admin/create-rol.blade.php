@@ -9,12 +9,17 @@
     
     @endsection
     @section('content_header')
+    <div class="card card-dark">
+        <div class="card-header">
+          <h3 class="card-title">
+            <i class="fas fa-book"></i>
+            Registrar roles </h3>
+
+         </div>
         <div class="container" id="registration-form">
             <div class="card">
                 <div class="card-body">
                     <div class="frm">
-                        
-                        <h1 style="margin: 50px" >Registrar roles</h1>
                         @error('Nombre_del_rol')
                         <div class="alert alert-danger">
                             <p>Corrige los siguientes errores:</p>
@@ -36,6 +41,7 @@
             </div>
             
         </div>
+    </div>
     @endsection
     @section('js')
     @endsection

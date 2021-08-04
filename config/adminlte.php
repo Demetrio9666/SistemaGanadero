@@ -224,6 +224,12 @@ return [
     */
 
     'menu' => [
+        [
+            'text' => 'profile',
+            'url'  => 'user/profile',
+            'icon' => 'fas fa-fw fa-user',
+          
+        ],
         ['header' => 'SEGURIDAD',
          'can'    => 'Visualizar Roles',
         ],
@@ -242,13 +248,8 @@ return [
             'can' =>'Visualizar Usuarios',
            
         ],
-        ['header' => 'AJUSTE DE CUENTA'],
-        [
-            'text' => 'profile',
-            'url'  => 'user/profile',
-            'icon' => 'fas fa-fw fa-user',
-          
-        ],
+       
+       
       
         ['header' => 'DASHBOARDS',
          'can'=>'Visualizar Dashboards',

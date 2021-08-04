@@ -54,8 +54,6 @@
     </ul>
     <div class="tab-content" id="animal">
         
-
-    
         <div class="tab-pane fade show active" id="t1" role="tabpanel" aria-labelledby="tab2">
             <div class="card">
                 <div class="card-body">
@@ -407,11 +405,13 @@
             </div>
         </div>
     </div>
-
-    <div class="form-group">
-        <a type="submit" class="btn btn-secondary btn-lg" href="{{url('/rol')}}">Cancelar</a>
-        <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('/rol') }}" >Guardar</button>
-    </div>
+    <center>
+        <div class="form-group">
+            <a type="submit" class="btn btn-secondary btn" href="{{url('/rol')}}">Cancelar</a>
+            <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/rol') }}" >Guardar</button>
+        </div>
+    </center>
+   
 </div>
 
 
