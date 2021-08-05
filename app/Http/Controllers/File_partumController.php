@@ -73,7 +73,7 @@ class File_partumController extends Controller
     public function create()
     {
        
-        $animalP  = DB::table('file_animale')
+        $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
                      'date',
@@ -89,7 +89,7 @@ class File_partumController extends Controller
                   ->whereIn('actual_state',['DISPONIBLE','REPRODUCCION'])
                   
         ->get();
-        return view('file_partum.create-partum',compact('animalP'));
+        return view('file_partum.create-partum',compact('animal'));
     }
 
     /**
@@ -136,7 +136,7 @@ class File_partumController extends Controller
     public function edit($id)
     { 
         $par =  File_partum::findOrFail($id);
-        $animalP  = DB::table('file_animale')
+        $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
                      'date',
@@ -154,7 +154,7 @@ class File_partumController extends Controller
         ->get();
                   
         
-        return view('file_partum.edit-partum',compact('animalP','par'));
+        return view('file_partum.edit-partum',compact('animal','par'));
 
     }
 
