@@ -1,9 +1,10 @@
 
 
 <div class="form-group">
-    {!! Form::label('name', 'Nombre del Rol:') !!}
-    {!! Form::text('name',null,['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el nombre del rol']) !!}
-
+    {{-- {!! Form::label('name', 'Nombre del Rol:') !!}
+    {!! Form::text('name',null,['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el nombre del rol','id'=>'rol']) !!}--}}
+   
+    
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
         <a class="nav-link active" id="tab1" data-toggle="tab" href="#t1" role="tab" aria-controls="Ficha de Animales" aria-selected="true">Ficha de Animales </a>
@@ -39,18 +40,30 @@
             <a class="nav-link" id="tab10" data-toggle="tab" href="#t11" role="tab" aria-controls="Antibióticos" aria-selected="false">Vitamina</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="tab10" data-toggle="tab" href="#t12" role="tab" aria-controls="Material Genético" aria-selected="false">Antibióticos</a>
+            <a class="nav-link" id="tab11" data-toggle="tab" href="#t12" role="tab" aria-controls="Material Genético" aria-selected="false">Antibióticos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="tab10" data-toggle="tab" href="#t13" role="tab" aria-controls="Ubicación Interna" aria-selected="false">Material Genético</a>
+            <a class="nav-link" id="tab12" data-toggle="tab" href="#t13" role="tab" aria-controls="Ubicación Interna" aria-selected="false">Material Genético</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="tab10" data-toggle="tab" href="#t14" role="tab" aria-controls="Razas" aria-selected="false">Ubicación</a>
+            <a class="nav-link" id="tab13" data-toggle="tab" href="#t14" role="tab" aria-controls="Razas" aria-selected="false">Ubicación</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="tab10" data-toggle="tab" href="#t15" role="tab" aria-controls="Razas" aria-selected="false">Razas</a>
+            <a class="nav-link" id="tab14" data-toggle="tab" href="#t15" role="tab" aria-controls="dashboard" aria-selected="false">Razas</a>
         </li>
-    
+        <li class="nav-item">
+            <a class="nav-link" id="tab15" data-toggle="tab" href="#t16" role="tab" aria-controls="rol" aria-selected="false">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab16" data-toggle="tab" href="#t17" role="tab" aria-controls="rolUsuario" aria-selected="false">Rol</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab17" data-toggle="tab" href="#t18" role="tab" aria-controls="usuario" aria-selected="false">Asignación Permisos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab17" data-toggle="tab" href="#t19" role="tab" aria-controls="usuario" aria-selected="false">Usuario</a>
+        </li>
+        
     </ul>
     <div class="tab-content" id="animal">
         
@@ -65,10 +78,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($A as $i)          
+                        @foreach ($fichaAnimales as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
 
                         @endforeach
@@ -89,10 +102,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($P as $i)          
+                        @foreach ($fichaParto as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -112,10 +125,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($T as $i)          
+                        @foreach ($fichaTratamiento as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -135,10 +148,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($R as $i)          
+                        @foreach ($reproduccion as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -158,10 +171,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CV as $i)          
+                        @foreach ($controlVacuna as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -181,10 +194,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CP as $i)          
+                        @foreach ($controlPeso as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -205,10 +218,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CD as $i)          
+                        @foreach ($controlDesp as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -228,10 +241,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CPRE as $i)          
+                        @foreach ($controlPrenes as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -251,10 +264,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CDES as $i)          
+                        @foreach ($confDesp as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -274,10 +287,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CONFV as $i)          
+                        @foreach ($confVacuna as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -297,10 +310,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CONFVI as $i)          
+                        @foreach ($confVitamina as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -321,10 +334,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CONFAN as $i)          
+                        @foreach ($confAntibiotico as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -345,10 +358,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CONFMG as $i)          
+                        @foreach ($confMaterial as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -368,10 +381,10 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CONFU as $i)          
+                        @foreach ($confUbicacion as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -392,10 +405,102 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($CONFRA as $i)          
+                        @foreach ($confRaza as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->name}}</td>
+                            <td >{{$i->description}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="t16" role="tabpanel" aria-labelledby="contact-tab10">
+            <div class="card">
+                <div class="card-body">
+                <table id="" class="table"  >
+                    <thead>             
+                        <tr>
+                            <th >Acción</th>
+                            <th >Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>  
+                        @foreach ($dashboard as $i)          
+                        <tr >
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
+                            <td >{{$i->description}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="t17" role="tabpanel" aria-labelledby="contact-tab10">
+            <div class="card">
+                <div class="card-body">
+                <table id="" class="table"  >
+                    <thead>             
+                        <tr>
+                            <th >Acción</th>
+                            <th >Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>  
+                        @foreach ($roles as $i)          
+                        <tr >
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
+                            <td >{{$i->description}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="t18" role="tabpanel" aria-labelledby="contact-tab10">
+            <div class="card">
+                <div class="card-body">
+                <table id="" class="table"  >
+                    <thead>             
+                        <tr>
+                            <th >Acción</th>
+                            <th >Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>  
+                        @foreach ($rolUsuario as $i)          
+                        <tr >
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
+                            <td >{{$i->description}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="t19" role="tabpanel" aria-labelledby="contact-tab10">
+            <div class="card">
+                <div class="card-body">
+                <table id="" class="table"  >
+                    <thead>             
+                        <tr>
+                            <th >Acción</th>
+                            <th >Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>  
+                        @foreach ($usuario as $i)          
+                        <tr >
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
+                            <td >{{$i->description}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -414,6 +519,12 @@
    
 </div>
 
-
+<script>
+     function upperCase() {
+                var x=document.getElementById("name").value
+                document.getElementById("name").value=x.toUpperCase()
+                             
+            }
+</script>
 
 

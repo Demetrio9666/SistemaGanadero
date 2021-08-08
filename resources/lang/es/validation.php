@@ -184,7 +184,9 @@ return [
                 'race_d'=>'raza',
                 'percentage'=>'porcentaje',
                 'password'=>'contraseña',
-                'file'=>'foto'
+                'file'=>'foto',
+                'name'=>'nombre del rol',
+                'permissions'=>'permiso'
 
     ],
 
