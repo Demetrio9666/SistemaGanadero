@@ -14,10 +14,10 @@ class VitaminController extends Controller
 {
     
     public function __construct(){
-        $this->middleware('can:Visualizar Configuración de Vitaminas')->only('index');
-        $this->middleware('can:Crear      Configuración de Vitaminas')->only('create','store');
-        $this->middleware('can:Editar     Configuración de Vitaminas')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Configuración de Vitaminas')->only('delete');
+        $this->middleware('can:confVi.index')->only('index');
+        $this->middleware('can:confVi.create')->only('create','store');
+        $this->middleware('can:confVi.edit')->only('show','edit','update');
+        $this->middleware('can:confVi.destroy')->only('delete');
     }
 
     public function index()

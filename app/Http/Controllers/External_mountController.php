@@ -15,10 +15,10 @@ use App\Exports\File_reproduction_externalExport;
 class External_mountController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Ficha Reproducción Externo')->only('index');
-        $this->middleware('can:Crear Ficha Reproducción Externo')->only('create','store');
-        $this->middleware('can:Editar Ficha Reproducción Externo')->only('show','edit','update');
-        $this->middleware('can:Eliminar Ficha Reproducción Externo')->only('delete');
+        $this->middleware('can:fichaReproduccionEx.index')->only('index');
+        $this->middleware('can:fichaReproduccionEx.create')->only('create','store');
+        $this->middleware('can:fichaReproduccionEx.edit')->only('show','edit','update');
+        $this->middleware('can:fichaReproduccionEx.destroy')->only('delete');
     }
 
 
@@ -34,7 +34,6 @@ class External_mountController extends Controller
                             'R.race_d as raza',
                             'file_animale.age_month as edad',
                             'file_animale.sex as sexo',
-
                             'file_reproduction_external.animalCode_Exte',
                             'race.race_d',
                             'file_reproduction_external.age_month',

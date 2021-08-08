@@ -14,10 +14,10 @@ use App\Exports\ArtificialReproductionExport;
 class ArtificialReproductionController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Configuración de Material Genético')->only('index');
-        $this->middleware('can:Crear      Configuración de Material Genético')->only('create','store');
-        $this->middleware('can:Editar     Configuración de Material Genético')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Configuración de Material Genético')->only('delete');
+        $this->middleware('can:confMate.index')->only('index');
+        $this->middleware('can:confMate.create')->only('create','store');
+        $this->middleware('can:confMate.edit')->only('show','edit','update');
+        $this->middleware('can:confMate.destroy')->only('delete');
     }
 
     public function index()

@@ -15,10 +15,10 @@ class Weigth_controlController extends Controller
 {
     
     public function __construct(){
-        $this->middleware('can:Visualizar Control de Peso')->only('index');
-        $this->middleware('can:Crear      Control de Peso')->only('create','store');
-        $this->middleware('can:Editar     Control de Peso')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Control de Peso')->only('delete');
+        $this->middleware('can:controlPeso.index')->only('index');
+        $this->middleware('can:controlPeso.create')->only('create','store');
+        $this->middleware('can:controlPeso.edit')->only('show','edit','update');
+        $this->middleware('can:controlPeso.destroy')->only('delete');
     }
 
     public function index()

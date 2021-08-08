@@ -13,10 +13,10 @@ use App\Exports\AntibioticosExport;
 class AntibioticController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Configuración de antibióticos')->only('index');
-        $this->middleware('can:Crear      Configuración de antibióticos')->only('create','store');
-        $this->middleware('can:Editar     Configuración de antibióticos')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Configuración de antibióticos')->only('delete');
+        $this->middleware('can:confAnt.index')->only('index');
+        $this->middleware('can:confAnt.create')->only('create','store');
+        $this->middleware('can:confAnt.edit')->only('show','edit','update');
+        $this->middleware('can:confAnt.destroy')->only('delete');
     }
 
     public function index()

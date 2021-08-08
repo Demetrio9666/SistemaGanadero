@@ -16,10 +16,10 @@ use App\Exports\Pregnancy_controlExport;
 class Pregnancy_controlController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Control Preñez')->only('index');
-        $this->middleware('can:Crear      Control Preñez')->only('create','store');
-        $this->middleware('can:Editar     Control Preñez')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Control Preñez')->only('delete');
+        $this->middleware('can:controlPrenes.index')->only('index');
+        $this->middleware('can:controlPrenes.create')->only('create','store');
+        $this->middleware('can:controlPrenes.edit')->only('show','edit','update');
+        $this->middleware('can:controlPrenes.destroy')->only('delete');
     }
 
     public function index()

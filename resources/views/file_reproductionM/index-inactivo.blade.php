@@ -42,7 +42,7 @@ Fichas de Reproducción por Monta Natural Interna
             <td>
                
                 <a class="btn btn-primary  " href="{{route('inactivos.fichaReproduccionM.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                @can('Eliminar   Ficha Reproducción por Monta Interna')
+                @can('fichaReproduccionM.destroy')
                 <form action="{{route('inactivos.fichaReproduccionM.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                     @method('DELETE') 
                     @csrf

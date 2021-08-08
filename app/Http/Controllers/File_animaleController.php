@@ -20,10 +20,10 @@ use Illuminate\Support\Str;
 class File_animaleController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Ficha de Animales')->only('index');
-        $this->middleware('can:Crear      Ficha de Animales')->only('create','store');
-        $this->middleware('can:Editar     Ficha de Animales')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Ficha de Animales')->only('delete');
+        $this->middleware('can:fichaAnimal.index')->only('index');
+        $this->middleware('can:fichaAnimal.create')->only('create','store');
+        $this->middleware('can:fichaAnimal.edit')->only('show','edit','update');
+        $this->middleware('can:fichaAnimal.destroy')->only('delete');
     }
     public function index()
     {

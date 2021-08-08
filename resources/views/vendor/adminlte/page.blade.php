@@ -75,7 +75,7 @@
 
 @section('adminlte_js')
     <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
-
+    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
 
     
     <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>

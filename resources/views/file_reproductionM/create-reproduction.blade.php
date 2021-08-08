@@ -8,7 +8,10 @@ Registro de Reproducción Natural
     <div class="row">
             <div class="col-md-6">
                 <label for="">Fecha de Registro:</label>
-                <input type="date" class="form-control" id="fecha_r" name="date" >
+                <input type="date" class="form-control {{$errors->has('date') ? 'is-invalid':''}}" id="fecha_r" name="date" >
+                @error('date')
+                <div class="invalid-feedback">{{$message}}</div>
+                 @enderror
             </div>
             <br>
             <div class="form-group">
@@ -17,7 +20,7 @@ Registro de Reproducción Natural
                     <div class="input-group mb-3">
                             <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                             
-                            <input type="text" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled  value="{{old('codigo_animal')}}">
+                            <input type="text" class="{{$errors->has('animalCode_id_m') ? 'is-invalid':''}}"placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled  value="{{old('codigo_animal')}}">
 
                             <input type="text" placeholder="Raza"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza"  disabled=disabled >
 
@@ -29,7 +32,9 @@ Registro de Reproducción Natural
                         
                             
                                 <input type="text"  placeholder="Sexo" aria-label="Example text with button addon" aria-describedby="button-addon1" id="sexo" name="sex" disabled=disabled  value="{{old('sexo')}}">
-                        
+                                @error('animalCode_id_m')
+                                <div class="invalid-feedback">{{$message}}</div>
+                                 @enderror
                     </div>
 
             </div>
@@ -38,7 +43,7 @@ Registro de Reproducción Natural
                 <h5>Animal Macho</h5>
                 <br>
                     
-                            <input type="hidden" id="idcodi2" name="animalCode_id_p" value="{{old('idcodi2')}}">
+                            <input type="hidden" id="idcodi2" class="{{$errors->has('animalCode_id_p') ? 'is-invalid':''}}" name="animalCode_id_p" value="{{old('idcodi2')}}">
                             <div class="col-md-3">
                                 <label>Codigo Animal:</label>
                                 <input type="text" class="form-control" id="codigo_animal2"  disabled=disabled value="{{old('codigo_animal2')}}">
@@ -55,6 +60,9 @@ Registro de Reproducción Natural
                                 <label >Sexo:</label>
                                 <input type="text" class="form-control" id="sexo2" name="sex" disabled=disabled value="{{old('sexo2')}}">
                             </div>
+                            @error('animalCode_id_p')
+                                   <div class="invalid-feedback">{{$message}}</div>
+                             @enderror
                             <br>      
                             <h1></h1>
                             <br>

@@ -16,10 +16,10 @@ use App\Exports\Vaccine_controlExport;
 class Vaccine_controlController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Control de Vacunación')->only('index');
-        $this->middleware('can:Crear      Control de Vacunación')->only('create','store');
-        $this->middleware('can:Editar     Control de Vacunación')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Control de Vacunación')->only('delete');
+        $this->middleware('can:controlVacuna.index')->only('index');
+        $this->middleware('can:controlVacuna.create')->only('create','store');
+        $this->middleware('can:controlVacuna.edit')->only('show','edit','update');
+        $this->middleware('can:controlVacuna.destroy')->only('delete');
     }
     
     public function index()

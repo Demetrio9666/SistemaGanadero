@@ -13,10 +13,10 @@ use App\Exports\LocationExport;
 class LocationController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Configuración de Ubicación Interna')->only('index');
-        $this->middleware('can:Crear      Configuración de Ubicación Interna')->only('create','store');
-        $this->middleware('can:Editar     Configuración de Ubicación Interna')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Configuración de Ubicación Interna')->only('delete');
+        $this->middleware('can:confUbicacion.index')->only('index');
+        $this->middleware('can:confUbicacion.create')->only('create','store');
+        $this->middleware('can:confUbicacion.edit')->only('show','edit','update');
+        $this->middleware('can:confUbicacion.destroy')->only('delete');
     }
 
     public function index()

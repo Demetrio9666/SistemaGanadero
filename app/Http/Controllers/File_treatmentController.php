@@ -15,10 +15,10 @@ use App\Exports\File_treatmentExport;
 class File_treatmentController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Ficha de Tratamiento')->only('index');
-        $this->middleware('can:Crear      Ficha de Tratamiento')->only('create','store');
-        $this->middleware('can:Editar     Ficha de Tratamiento')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Ficha de Tratamiento')->only('delete');
+        $this->middleware('can:fichaTratamiento.index')->only('index');
+        $this->middleware('can:fichaTratamiento.create')->only('create','store');
+        $this->middleware('can:fichaTratamiento.edit')->only('show','edit','update');
+        $this->middleware('can:fichaTratamiento.destroy')->only('delete');
     }
 
     public function index()

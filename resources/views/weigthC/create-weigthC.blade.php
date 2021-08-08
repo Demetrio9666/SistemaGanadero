@@ -8,23 +8,35 @@
     <div class="row">
         <div class="col-md-6">
             <label for="">Fecha de Registro:</label>
-            <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}" >
+            <input type="date" class="form-control {{$errors->has('date') ? 'is-invalid':''}}" id="fecha_r" name="date" value="{{old('date')}}" >
+            @error('date')
+                                <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
         </div>
         <div class="col-md-6">
           
                 <div class="input-group mb-3" style="margin: 40px">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
-                        <input type="text" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
+                        <input type="text" class="{{$errors->has('date') ? 'is-invalid':''}}" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
                         <input type="hidden" id="idcodi" name="animalCode_id">
+                        @error('date')
+                                <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
                 </div>
         </div>
         <div class="col-md-6">
             <label for="">Peso KG:</label>
-            <input type="decimal" class="form-control" id="peso" name="weigtht" onChange="ValidarPeso(this.value)" value="{{old('weigtht')}}" >
+            <input type="decimal" class="form-control {{$errors->has('date') ? 'is-invalid':''}}" id="peso" name="weigtht" onChange="ValidarPeso(this.value)" value="{{old('weigtht')}}" >
+            @error('date')
+                <div class="invalid-feedback">{{$message}}</div>
+            @enderror
         </div>
         <div class="col-md-6">
             <label for="">Fecha de próximo control:</label>
-            <input type="date" class="form-control" id="fecha_rv" name="date_r" value="{{old('date_r')}}">
+            <input type="date" class="form-control {{$errors->has('date') ? 'is-invalid':''}}" id="fecha_rv" name="date_r" value="{{old('date_r')}}">
+            @error('date')
+                                <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
         </div>
         <div  class="col-md-6">
             <label for="">Estado Actual:</label>

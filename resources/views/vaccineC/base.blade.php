@@ -3,16 +3,12 @@
 <link rel="stylesheet" type="text/css" href="/css/registroControlVacuna.css">
 @endsection
 @section('content_header')
-       @include('messages.message')
- 
         <div class="card card-dark">
             <div class="card-header">
               <h3 class="card-title">
                 <i class="fas fa-book"></i>
                   @yield('nombre_regitro')  </h3>
-
              </div>
-        
                <div class="container" id="registration-form">
                     <div class="image"></div>
                     <div class="frm">

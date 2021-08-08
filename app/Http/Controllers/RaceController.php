@@ -13,10 +13,10 @@ use App\Exports\RaceExport;
 class RaceController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Configuración de Razas')->only('index');
-        $this->middleware('can:Crear      Configuración de Razas')->only('create','store');
-        $this->middleware('can:Editar     Configuración de Razas')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Configuración de Razas')->only('delete');
+        $this->middleware('can:confRaza.index')->only('index');
+        $this->middleware('can:confRaza.create')->only('create','store');
+        $this->middleware('can:confRaza.edit')->only('show','edit','update');
+        $this->middleware('can:confRaza.destroy')->only('delete');
     }
 
     public function index()

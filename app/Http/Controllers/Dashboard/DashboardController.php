@@ -12,7 +12,7 @@ use App\Models\Race;
 class DashboardController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Dashboards')->only('Dashboard','DashboardReproduccion');
+        $this->middleware('can:dashboard.index')->only('Dashboard','DashboardReproduccion');
        
     }
 

@@ -8,16 +8,20 @@ Registro Reproducción Artificial
     <div class="row">
             <div class="col-md-6">
                 <label for="">Fecha de Registro:</label>
-                <input type="date" class="form-control" id="fecha_r" name="date" >
+                <input type="date" class="form-control {{$errors->has('date') ? 'is-invalid':''}}" id="fecha_r" name="date" >
+                @error('date')
+                <div class="invalid-feedback">{{$message}}</div>
+            @enderror
             </div>
             <br>
             <div class="form-group">
                 <h5>Animal Hembra</h5>
                 <br>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3 " >
                             <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                         
-                            <input type="text" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled  value="{{old('codigo_animal')}}">
+                            <input type="text" class="{{$errors->has('animalCode_id_m') ? 'is-invalid':''}}" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled  value="{{old('codigo_animal')}}">
+                           
 
                             <input type="text" placeholder="Raza"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled >
 
@@ -29,7 +33,9 @@ Registro Reproducción Artificial
                         
                             
                                 <input type="text"  placeholder="Sexo" aria-label="Example text with button addon" aria-describedby="button-addon1" id="sexo" name="sex" disabled=disabled  value="{{old('sexo')}}">
-                        
+                                @error('animalCode_id_m')
+                                     <div class="invalid-feedback">{{$message}}</div>
+                                @enderror
                     </div>
 
             </div>
@@ -37,22 +43,28 @@ Registro Reproducción Artificial
         
                         <h5>Material Genético</h5>
                         <br>
-                        <input type="hidden" id="idcodi_ar" name="artificial_id">
-                        <div class="col-md-3">
-                                <label>Raza:</label>
-                                <input type="text" class="form-control" disabled=disabled id="raza3" value="{{old('raza3')}}">
+                        <div class="input-group mb-3" >
+                                <input type="hidden" id="idcodi_ar" name="artificial_id" class="{{$errors->has('artificial_id') ? 'is-invalid':''}}" >
+                                <div class="col-md-3">
+                                        <label>Raza:</label>
+                                        <input type="text" class="form-control {{$errors->has('artificial_id') ? 'is-invalid':''}}  " name="raza3" disabled=disabled id="raza3" value="{{old('raza3')}}">
+                                    
+                                </div>
+                                <br>   
+                                <div class="col-md-3">
+                                        <label>Tipo de Material Genetico:</label>
+                                        <input type="text" class="form-control {{$errors->has('artificial_id') ? 'is-invalid':''}}" disabled=disabled id="material3" value="{{old('material3')}}">
+                                </div>
+                                <br>   
+                                <div class="col-md-3">
+                                        <label>Nombre del Proveedor:</label>
+                                        <input type="text" class="form-control {{$errors->has('artificial_id') ? 'is-invalid':''}}" disabled=disabled id="proveedor3" value="{{old('proveedor3')}}">
+                                </div>
+                                @error('artificial_id')
+                                    <div class="invalid-feedback">{{$message}}</div>
+                                @enderror
+                     
                         </div>
-                        <br>   
-                        <div class="col-md-3">
-                                <label>Tipo de Material Genetico:</label>
-                                <input type="text" class="form-control" disabled=disabled id="material3" value="{{old('material3')}}">
-                        </div>
-                        <br>   
-                        <div class="col-md-3">
-                                <label>Nombre del Proveedor:</label>
-                                <input type="text" class="form-control" disabled=disabled id="proveedor3" value="{{old('proveedor3')}}">
-                        </div>
-
                     <br>      
                     <h1></h1>
                     <br>

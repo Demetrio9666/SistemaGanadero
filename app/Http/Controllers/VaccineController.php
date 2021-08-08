@@ -14,10 +14,10 @@ class VaccineController extends Controller
 {
     
     public function __construct(){
-        $this->middleware('can:Visualizar Configuración de Vacunas')->only('index');
-        $this->middleware('can:Crear      Configuración de Vacunas')->only('create','store');
-        $this->middleware('can:Editar     Configuración de Vacunas')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Configuración de Vacunas')->only('delete');
+        $this->middleware('can:confVacuna.index')->only('index');
+        $this->middleware('can:confVacuna.create')->only('create','store');
+        $this->middleware('can:confVacuna.edit')->only('show','edit','update');
+        $this->middleware('can:confVacuna.destroy')->only('delete');
     }
 
     public function index()

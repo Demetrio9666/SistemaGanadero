@@ -16,10 +16,10 @@ use App\Exports\File_reproduction_artificialExport;
 class File_reproductionAController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Ficha de Reproducción Artificial')->only('index');
-        $this->middleware('can:Crear      Ficha de Reproducción Artificial')->only('create','store');
-        $this->middleware('can:Editar     Ficha de Reproducción Artificial')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Ficha de Reproducción Artificial')->only('delete');
+        $this->middleware('can:fichaReproduccionA.index')->only('index');
+        $this->middleware('can:fichaReproduccionA.create')->only('create','store');
+        $this->middleware('can:fichaReproduccionA.edit')->only('show','edit','update');
+        $this->middleware('can:fichaReproduccionA.destroy')->only('delete');
     }
 
 

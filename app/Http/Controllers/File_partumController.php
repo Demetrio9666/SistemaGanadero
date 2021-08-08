@@ -15,10 +15,10 @@ use App\Exports\File_partumExport;
 class File_partumController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Ficha de Parto')->only('index');
-        $this->middleware('can:Crear      Ficha de Parto')->only('create','store');
-        $this->middleware('can:Editar     Ficha de Parto')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Ficha de Parto')->only('delete');
+        $this->middleware('can:fichaParto.index')->only('index');
+        $this->middleware('can:fichaParto.create')->only('create','store');
+        $this->middleware('can:fichaParto.edit')->only('show','edit','update');
+        $this->middleware('can:fichaParto.destroy')->only('delete');
     }
 
 

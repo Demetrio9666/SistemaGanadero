@@ -33,7 +33,7 @@ Fichas de Reproducción Artificial
             <td >{{$i->actual_state}}</td>
             <td>
                 <a class="btn btn-primary  " href="{{route('inactivos.fichaReproduccionA.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                @can('Eliminar   Ficha de Reproducción Artificial')
+                @can('fichaReproduccionA.destroy')
                         <form action="{{route('inactivos.fichaReproduccionA.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                             @method('DELETE') 
                             @csrf

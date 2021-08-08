@@ -13,10 +13,10 @@ use App\Exports\DewormerExport;
 class DewormerController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Configuración de Desparacitante')->only('index');
-        $this->middleware('can:Crear      Configuración de Desparacitante')->only('create','store');
-        $this->middleware('can:Editar     Configuración de Desparacitante')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Configuración de Desparacitante')->only('delete');
+        $this->middleware('can:confDespa.index')->only('index');
+        $this->middleware('can:confDespa.create')->only('create','store');
+        $this->middleware('can:confDespa.edit')->only('show','edit','update');
+        $this->middleware('can:confDespa.destroy')->only('delete');
     }
 
     public function index()

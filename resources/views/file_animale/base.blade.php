@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 @section('css')
-        <link rel="stylesheet" type="text/css" href="/css/registroAnimal.css">
+        <link rel="stylesheet" type="text/css" href="/css/registroAnimal1.css">
         <link rel="stylesheet" type="text/css" href="/css/imagen.css">
 @endsection
 @section('content_header')
-       @include('messages.message')
+      {{-- @include('messages.message')--}}
  
         <div class="card card-dark">
             <div class="card-header">
@@ -356,5 +356,7 @@
 
                 }
             }
+
+          
         </script>
 @endsection

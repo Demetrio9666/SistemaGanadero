@@ -15,10 +15,10 @@ use App\Exports\Deworming_controlExport;
 class Deworming_controlController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Control de Desparasitación')->only('index');
-        $this->middleware('can:Crear      Control de Desparasitación')->only('create','store');
-        $this->middleware('can:Editar     Control de Desparasitación')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Control de Desparasitación')->only('delete');
+        $this->middleware('can:controlDesparasitacion.index')->only('index');
+        $this->middleware('can:controlDesparasitacion.create')->only('create','store');
+        $this->middleware('can:controlDesparasitacion.edit')->only('show','edit','update');
+        $this->middleware('can:controlDesparasitacion.destroy')->only('delete');
     }
 
     public function index()

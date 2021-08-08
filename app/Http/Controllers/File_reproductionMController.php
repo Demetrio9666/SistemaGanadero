@@ -14,10 +14,10 @@ use App\Exports\File_reproduction_internalExport;
 class File_reproductionMController extends Controller
 {
     public function __construct(){
-        $this->middleware('can:Visualizar Ficha Reproducción por Monta Interna')->only('index');
-        $this->middleware('can:Crear      Ficha Reproducción por Monta Interna')->only('create','store');
-        $this->middleware('can:Editar     Ficha Reproducción por Monta Interna')->only('show','edit','update');
-        $this->middleware('can:Eliminar   Ficha Reproducción por Monta Interna')->only('delete');
+        $this->middleware('can:fichaReproduccionM.index')->only('index');
+        $this->middleware('can:fichaReproduccionM.create')->only('create','store');
+        $this->middleware('can:fichaReproduccionM.edit')->only('show','edit','update');
+        $this->middleware('can:fichaReproduccionM.destroy')->only('delete');
     }
 
 
