@@ -157,6 +157,8 @@
                             <option id="REPRODUCCIÓN" value="REPRODUCCIÓN"@if(old('actual_state') == "REPRODUCCIÓN") {{'selected'}} @endif style="display: none;">REPRODUCCIÓN</option>
                             <option id="INACTIVO" value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif style="display: none;">INACTIVO</option>
                        </select>
+                       
+                    
                     @error('actual_state')
                          <div class="invalid-feedback">{{$message}}</div>
                     @enderror
@@ -170,6 +172,9 @@
                         </div>
 
                     </center>
+
+                  
+                    
             </form>
 
 @endsection

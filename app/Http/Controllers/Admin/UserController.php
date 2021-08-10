@@ -5,16 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-//use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreUser;
 use App\Models\User;
-//use App\Model\User;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
     public function __construct(){
         $this->middleware('can:usuarios.index')->only('index');
-       // $this->middleware('can:usuarios.create')->only('create','store');
+        $this->middleware('can:usuarios.create')->only('create','store');
         $this->middleware('can:usuarios.edit')->only('show','edit','update');
         $this->middleware('can:usuarios.destroy')->only('delete');
     }
@@ -26,6 +25,25 @@ class UserController extends Controller
                 ->get();
         return view('admin.usuarios.index',compact('usuario'));
        
+    }
+
+    public function create(){
+        return view('admin.usuarios.create');
+    }
+
+    public function store(StoreUser $request){
+        $usuario = new User();
+
+        $usuario->name = $request->nombreU;
+        $usuario->email = $request->correoU;
+        $usuario->password = bcrypt($request->password);
+        $usuario->save(); 
+        $usuario->roles()->sync([3]);
+
+
+
+        return redirect('/usuarios');
+
     }
 
     /**

@@ -26,6 +26,7 @@
             
             <?php echo e(Auth::user()->name); ?>
 
+            
         </span>
     </a>
 
@@ -47,6 +48,7 @@
 
                     <?php if(config('adminlte.usermenu_desc')): ?>
                         <small><?php echo e(Auth::user()->adminlte_desc()); ?></small>
+                        
                     <?php endif; ?>
                 </p>
             </li>

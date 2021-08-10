@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Spatie\Permission\Models\Role;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -25,7 +26,16 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
+            'password' =>[$this->passwordRules(),
+                            'required',
+                            'string',
+                            'min:8',             // must be at least 10 characters in length
+                            'regex:/[a-z]/',      // must contain at least one lowercase letter
+                            'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                            'regex:/[0-9]/',      // must contain at least one digit
+                            'regex:/[@$!%*#?&]/',
+                        ], 
+            'password_confirmation'=>'required|same:password',
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
@@ -34,10 +44,13 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-            ]), function (User $user) {
-                $this->createTeam($user);
+                
+            ]), function (User $user ) {
+                $user->roles()->sync([3]);
+                //$this->createTeam($user);
             });
         });
+        
     }
 
     /**

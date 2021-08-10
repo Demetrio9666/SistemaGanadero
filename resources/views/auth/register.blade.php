@@ -4,33 +4,45 @@
             <x-jet-authentication-card-logo />
         </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+        
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <div>
+            <div class="form-group">
                 <x-jet-label for="name" value="{{ __('Nombre') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-input id="name" class="block mt-1 w-full {{$errors->has('name') ? 'is-invalid':''}}" type="text" name="name" :value="old('name')"  />
+                @error('name')
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
             </div>
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div class="form-group">
+                <x-jet-label for="email" value="{{ __('Correo') }}" />
+                <x-jet-input id="email" class="block mt-1 w-full {{$errors->has('email') ? 'is-invalid':''}}" type="email" name="email" :value="old('email')"  />
+                @error('email')
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
             </div>
 
-            <div class="mt-4">
+            <div class="form-group">
                 <x-jet-label for="password" value="{{ __('Contraseña') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-jet-input id="password" class="block mt-1 w-full {{$errors->has('password') ? 'is-invalid':''}}" type="password" name="password"  />
+                @error('password')
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
             </div>
 
-            <div class="mt-4">
+            <div class="form-group">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirmar Contraseña') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full {{$errors->has('password_confirmation') ? 'is-invalid':''}}" type="password" name="password_confirmation"  />
+                @error('password_confirmation')
+                    <div class="invalid-feedback">{{$message}}</div>
+                @enderror
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
+                <div class="form-group">
                     <x-jet-label for="terms">
                         <div class="flex items-center">
                             <x-jet-checkbox name="terms" id="terms"/>

@@ -1,5 +1,5 @@
-@extends('adminlte::page')
-@section('content_header')
+
+<?php $__env->startSection('content_header'); ?>
 
 <section section class="col-lg-12 connectedSortable">
     <div class="card card-dark">
@@ -22,4 +22,5 @@
 
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/index.blade.php ENDPATH**/ ?>

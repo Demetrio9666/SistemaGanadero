@@ -13,10 +13,13 @@
 	 <link rel="stylesheet" type="text/css" href="css/styles.css">
  </head>
 <body>
+	
 	<x-guest-layout>
-		<!--div class="fixed top-0 right-0 px-6 py-4 sm:block">
-			<a href="{{ route('register') }}" class="ml-4 text-sm text-gray-900 underline">Registrarse</a>
-		</div-->
+		<div class="fixed top-0 right-0 px-6 py-4 sm:block">
+			<!--a href="{{ route('register') }}" class="ml-4 text-sm text-gray-900 underline">Registrarse</a-->
+			<a  class="btn btn-success " style="margin: 10px" id="button-addon1" href="{{ route('register') }}" >Registrar</a>
+			
+		</div>
 		  
 			<x-jet-validation-errors class="mb-4" />
 			
@@ -43,14 +46,14 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text" for="email" value="{{ __('Email') }}"><i class="fas fa-envelope"></i></span>
 									</div>
-									<input class="form-control"  id="email" placeholder="mail" type="email" name="email" :value="old('email')" required autofocus>
+									<input class="form-control"  id="email" placeholder="correo" type="email" name="email" :value="old('email')" required autofocus>
 								</div>
 					
 								<div class="input-group form-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="password" for="password" value="{{ __('Password') }}"><i class="fas fa-key"></i></span>
 									</div>
-									<input type="password" class="form-control" placeholder="password" type="password" name="password" required autocomplete="current-password">
+									<input type="password" class="form-control" placeholder="contraseña" type="password" name="password" required autocomplete="current-password">
 								</div>
 					
 								<div class="row align-items-center remember">

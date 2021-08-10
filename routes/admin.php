@@ -183,4 +183,5 @@ Route::resource('rol',RoleController::class)->names('rol');
 Route::resource('usuarios',UserController::class)->names('usuarios');
 
 
-//Route::get('/welcome',[HomeController::class,'welcome']);
+
+

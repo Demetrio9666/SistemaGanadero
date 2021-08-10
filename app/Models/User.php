@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -63,12 +64,19 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-   public function adminlte_image(){
-       return 'https://picsum.photos/300/300';
-   }
+   //public function adminlte_image(){
+   //    return 'https://picsum.photos/300/300';
+  // }
 
-   public function adminlte_desc(){
-       return'Administrador';
+  // $usuario->roles()->sync($request->roles);
+    // $this->getRoleNames();
+   public function adminlte_desc() {
+            $rol= $this->roles->pluck('name');
+            $super= str_replace('"','',$rol);
+            $super2= str_replace('[','',$super);
+            $super3= str_replace(']','',$super2);
+     return $super3;
+     
    }
 
 }

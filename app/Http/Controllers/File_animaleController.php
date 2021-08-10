@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\File_Animale;
 use App\Models\Location;
 use App\Models\Race;
+use App\Models\User;
 use App\Http\Requests\StoreFile_animale;
 use App\Http\Requests\EditFile_animale;
 use Barryvdh\DomPDF\Facade as PDF;

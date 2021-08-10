@@ -5,6 +5,7 @@
 @endsection
 
 @section('boton_registro')
+"{{url('usuarios/create')}}"
 @endsection
 @section('boton_reciclaje')
 @endsection
