@@ -17,6 +17,8 @@ use App\Exports\File_AnimalesExport;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+use Spatie\Activitylog\Models\Activity;
+
 
 class File_animaleController extends Controller
 {
@@ -132,6 +134,18 @@ class File_animaleController extends Controller
         $animal->location_id = $request->localizacion;
         $animal->conceived = $request->concebido;
         $animal->save(); 
+       
+        //$actvividad = new  Activity();
+        //$actvividad->log_name = $request->usuario;
+        //$actvividad->description =('Registro de ficha de animales');
+        activity()
+            ->performedOn($someContentModel)
+            ->log('Registro de ficha de animale');
+
+        //$actvividad->save();
+
+
+
         
         //return redirect()->route();
         return redirect('/fichaAnimal')->with('Validad','ok');

@@ -19,7 +19,7 @@
                         <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                         <input type="text" class="{{$errors->has('date') ? 'is-invalid':''}}" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
                         <input type="hidden" id="idcodi" name="animalCode_id">
-                        @error('date')
+                        @error('animalCode_id')
                                 <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                 </div>
@@ -27,14 +27,14 @@
         <div class="col-md-6">
             <label for="">Peso KG:</label>
             <input type="decimal" class="form-control {{$errors->has('date') ? 'is-invalid':''}}" id="peso" name="weigtht" onChange="ValidarPeso(this.value)" value="{{old('weigtht')}}" >
-            @error('date')
+            @error('weigtht')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
         </div>
         <div class="col-md-6">
             <label for="">Fecha de próximo control:</label>
             <input type="date" class="form-control {{$errors->has('date') ? 'is-invalid':''}}" id="fecha_rv" name="date_r" value="{{old('date_r')}}">
-            @error('date')
+            @error('date_r')
                                 <div class="invalid-feedback">{{$message}}</div>
                         @enderror
         </div>

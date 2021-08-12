@@ -6,20 +6,32 @@ Registar Desparacitante
 <form action="{{route('confDespa.store')}}" method="POST">
     @csrf
     <div class="form-group">
-        <label for="">Nombre del Desparacitante:</label>
-        <input type="text" class="form-control" id="dewormer_d" name="dewormer_d" value="{{old('dewormer_d')}}"  onblur="upperCase()">
+        <label for="">Nombre del Desparasitante:</label>
+        <input type="text" class="form-control {{$errors->has('dewormer_d') ? 'is-invalid':''}}" id="dewormer_d" name="dewormer_d" value="{{old('dewormer_d')}}"  onblur="upperCase()">
+        @error('dewormer_d')
+             <div class="invalid-feedback">{{$message}}</div>
+        @enderror
     </div>
     <div class="form-group">
         <label for="">Fecha Elaboración:</label>
-        <input type="date" class="form-control" id="fecha_e" name="date_e" value="{{old('date_e')}}"  >
+        <input type="date" class="form-control {{$errors->has('date_e') ? 'is-invalid':''}}" id="fecha_e" name="date_e" value="{{old('date_e')}}"  >
+        @error('date_e')
+           <div class="invalid-feedback">{{$message}}</div>
+        @enderror
     </div>
     <div class="form-group">
         <label for="">Fecha Caducidad:</label>
-        <input type="date" class="form-control" id="fecha_c" name="date_c" value="{{old('date_c')}}" >
+        <input type="date" class="form-control {{$errors->has('date_c') ? 'is-invalid':''}}" id="fecha_c" name="date_c" value="{{old('date_c')}}" >
+        @error('date_c')
+            <div class="invalid-feedback">{{$message}}</div>
+        @enderror
     </div>  
     <div class="form-group">
         <label for="">Proveedor:</label>
-        <input type="text" class="form-control" id="supplier" name="supplier" value="{{old('supplier')}}"  onblur="upperCase()">
+        <input type="text" class="form-control {{$errors->has('supplier') ? 'is-invalid':''}}" id="supplier" name="supplier" value="{{old('supplier')}}"  onblur="upperCase()">
+        @error('supplier')
+             <div class="invalid-feedback">{{$message}}</div>
+        @enderror
     </div>  
     <div  class="form-group">
         <label for="">Estado Actual:</label>

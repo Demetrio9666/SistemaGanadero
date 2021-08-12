@@ -7,11 +7,17 @@
     @csrf
     <div class="form-group">
         <label for="">Nombre de la Raza:</label>
-        <input type="text" class="form-control" id="raza" name="race_d" value="{{old('race_d')}}">
+        <input type="text" class="form-control {{$errors->has('race_d') ? 'is-invalid':''}}" id="raza" name="race_d" value="{{old('race_d')}}">
+        @error('race_d')
+             <div class="invalid-feedback">{{$message}}</div>
+        @enderror
     </div>
     <div class="form-group">
-        <label for="">Porcentaje:</label>
-        <input type="int" class="form-control" id="porcentaje" name="percentage" value="{{old('percentage')}}">
+        <label for="">Porcentaje %:</label>
+        <input type="int" class="form-control {{$errors->has('percentage') ? 'is-invalid':''}}" id="porcentaje" name="percentage" value="{{old('percentage')}}">
+        @error('percentage')
+             <div class="invalid-feedback">{{$message}}</div>
+        @enderror
     </div>  
     <div  class="form-group">
         <label for="">Estado Actual:</label>

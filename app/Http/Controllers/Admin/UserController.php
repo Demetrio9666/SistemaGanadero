@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreUser;
+//use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+//use App\Model\User;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -39,6 +41,7 @@ class UserController extends Controller
         $usuario->password = bcrypt($request->password);
         $usuario->save(); 
         $usuario->roles()->sync([3]);
+       
 
 
 
@@ -81,7 +84,8 @@ class UserController extends Controller
     {
         $usuario->roles()->sync($request->roles);
 
-        return redirect()->route('usuarios.index');
+        //return redirect()->route('usuarios.index');
+        return redirect('/usuarios');
     }
 
     /**

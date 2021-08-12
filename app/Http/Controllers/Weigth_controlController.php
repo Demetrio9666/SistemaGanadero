@@ -10,6 +10,7 @@ use App\Http\Requests\StoreWeigthC;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\Weigth_controlExport;
+use Spatie\Activitylog\Models\Activity;
 
 class Weigth_controlController extends Controller
 {
@@ -93,8 +94,19 @@ class Weigth_controlController extends Controller
         $pesoC-> actual_state = $request-> actual_state;
 
         $pesoC->save(); 
-            //return redirect()->route();
+         
+
+        activity()
+            ->causedBy(Weigth_control::weigth_control())
+            ->performedOn($weigth_control)
+           
+            ->log('Registro de ficha de animale ');
+
+
+
         return redirect('/controlPeso');
+
+
     }
 
     /**

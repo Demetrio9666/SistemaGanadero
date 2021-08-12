@@ -3,8 +3,6 @@
         <link rel="stylesheet" type="text/css" href="/css/registroRaza.css">
     @endsection
     @section('content_header')
-    @include('messages.message')
- 
         <div class="card card-dark">
                 <div class="card-header">
                 <h3 class="card-title">

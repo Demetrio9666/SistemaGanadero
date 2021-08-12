@@ -258,7 +258,7 @@ class Rolecontroller extends Controller
     public function update(Request $request, Role $rol)
     {
         $request->validate([
-                'name'=>'required|unique:roles,name,id',
+                'name'=>'required',
                 'permissions'=>'required',
             ]);
         $rol->update($request->all());

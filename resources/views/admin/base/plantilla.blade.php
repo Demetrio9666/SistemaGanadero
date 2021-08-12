@@ -1,10 +1,6 @@
 
 
 <div class="form-group">
-    {{-- {!! Form::label('name', 'Nombre del Rol:') !!}
-    {!! Form::text('name',null,['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el nombre del rol','id'=>'rol']) !!}--}}
-   
-    
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
         <a class="nav-link active" id="tab1" data-toggle="tab" href="#t1" role="tab" aria-controls="Ficha de Animales" aria-selected="true">Ficha de Animales </a>
@@ -512,8 +508,8 @@
     </div>
     <center>
         <div class="form-group">
-            <a type="submit" class="btn btn-secondary btn" href="{{url('/rol')}}">Cancelar</a>
-            <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/rol') }}" >Guardar</button>
+            <button type="submit" class="btn btn-secondary btn"href="{{ Redirect::to('/rol/index') }}">Cancelar</button>
+            <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/rol/index') }}" >Guardar</button>
         </div>
     </center>
    

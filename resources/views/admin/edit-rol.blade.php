@@ -32,8 +32,10 @@
                         </div>
                         @enderror
                         {!! Form::model($rol,['route'=>['rol.update',$rol],'method'=>'put']) !!}
-                            <label for="" class="form-label">Nombre del Rol:</label>
-                            <input type="text" class="form-control {{$errors->has('name') ? 'is-invalid':''}}" id="name" name="name" value="{{$rol->name}}" onblur="upperCase()">
+                            {!! Form::label('name', 'Nombre del Rol:') !!}
+                            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del rol','id'=>'rol']) !!}
+                            <!--label for="" class="form-label">Nombre del Rol:</label>
+                            <input type="text" class="form-control " id="name" name="name" value="{{$rol->name}}" onblur="upperCase()"-->
                             @include('admin.base.plantilla')
                         {!! Form::close() !!}
                         

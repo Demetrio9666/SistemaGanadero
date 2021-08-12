@@ -12,6 +12,8 @@ use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
@@ -22,9 +24,12 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+
+    use LogsActivity;
     
     protected $table = "users";
 
+   
     /**
      * The attributes that are mass assignable.
      *
@@ -33,6 +38,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+    
+    protected static $logAttributes = ['name', 'email'];
+  
 
     /**
      * The attributes that should be hidden for arrays.

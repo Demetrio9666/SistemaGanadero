@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\File_treatmentExport;
 
+
 class File_treatmentController extends Controller
 {
     public function __construct(){

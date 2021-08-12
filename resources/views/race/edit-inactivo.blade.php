@@ -11,7 +11,7 @@
         <input type="text" class="form-control" id="raza" name="race_d" value="{{$raza->race_d}}" disabled=disabled >
     </div>
     <div class="form-group">
-        <label for="">Porcentaje:</label>
+        <label for="">Porcentaje %:</label>
         <input type="int" class="form-control" id="porcentaje" name="percentage" value="{{$raza->percentage}}" disabled=disabled>
     </div>      
     <div  class="form-group">

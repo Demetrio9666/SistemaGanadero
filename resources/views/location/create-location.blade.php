@@ -7,11 +7,17 @@
     @csrf
     <div class="form-group">
         <label for="">Nombre de la ubicación:</label>
-        <input type="text" class="form-control" id="location_d" name="location_d" value="{{old('location_d')}}" onblur="upperCase()">
+        <input type="text" class="form-control {{$errors->has('location_d') ? 'is-invalid':''}}" id="location_d" name="location_d" value="{{old('location_d')}}" onblur="upperCase()">
+        @error('location_d')
+             <div class="invalid-feedback">{{$message}}</div>
+        @enderror
     </div>
     <div class="form-group">
         <label for="">Descripción:</label>
-        <input type="int" class="form-control" id="descripcion" name="description" value="{{old('description')}}" onblur="upperCase()">
+        <input type="int" class="form-control {{$errors->has('description') ? 'is-invalid':''}}" id="descripcion" name="description" value="{{old('description')}}" onblur="upperCase()">
+        @error('description')
+             <div class="invalid-feedback">{{$message}}</div>
+        @enderror
     </div> 
     <div  class="form-group">
         <label for="">Estado Actual:</label>

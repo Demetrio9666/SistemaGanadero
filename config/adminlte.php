@@ -248,6 +248,12 @@ return [
             'can' =>'usuarios.index',
            
         ],
+        [
+            'text'=>'Actividad de Usuario',
+            'url'=>'',
+            'icon'=>'',
+            
+        ],
        
        
       
@@ -414,7 +420,7 @@ return [
         [
             'text'    => 'Configuración',
             'icon'    => 'fas fa-cog',
-            'can' =>'Visualizar Configuración de Desparacitante',
+            'can' =>'confDespa.index',
           
             'submenu' => [
                 [
