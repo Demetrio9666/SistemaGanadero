@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Vaccine;
-
+use Spatie\Activitylog\Models\Activity;
 
 class VaccineInactivosController extends Controller
 {
@@ -86,6 +86,24 @@ class VaccineInactivosController extends Controller
         $vacuna = Vaccine::findOrFail($id);
         $vacuna->actual_state = $request->actual_state;
         $vacuna->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO VACUNA INACTIVO';
+        $actvividad->data = $vacuna->vaccine_d;
+        $actvividad->subject_type =('App\Models\Vaccine');
+        
+
+        $actvividad->save();
         return redirect('inactivos/Vacunas');
     }
 
@@ -95,9 +113,25 @@ class VaccineInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $vacuna = Vaccine::findOrFail($id);
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='REGISTRO VACUNA';
+        $actvividad->data = $vacuna->vaccine_d;
+        $actvividad->subject_type =('App\Models\Vaccine');
+        
+        $actvividad->save();
         $vacuna->delete();
         return redirect('inactivos/Vacunas')->with('eliminar','ok'); 
     }

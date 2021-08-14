@@ -27,6 +27,6 @@ Editar ubicación Inactiva
             <button type="submit" class="btn btn-success btn" href="{{ Redirect::to('/inactivos/Ubicaciones') }}" >Actualizar</button>
         </div>
     </center>    
-   
+    @include('layouts.base-usuario')
 </form>
 @endsection

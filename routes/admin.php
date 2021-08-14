@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\LogController;
 
 
 use App\Http\Controllers\Inactivo\AnimalesInactivosController;
@@ -59,9 +60,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
   return view('index');
 })->name('index_admin');
 
-Route::get('descarga-pdf-confRaza',[RaceController::class,'PDF']);
-Route::get('exportar-excel-confRaza',[RaceController::class,'Excel']);
 
+Route::get('actividad-usuario',[logController::class,'index']);
 
 //FICHA ANIMALES
 Route::resource('inactivos/fichaAnimales',AnimalesInactivosController::class)->names('inactivos.fichaAnimales');
@@ -117,7 +117,6 @@ Route::resource('inactivos/Razas',RaceInactivosController::class)->names('inacti
 Route::resource('confRaza',RaceController::class)->names('confRaza');
 Route::get('descarga-pdf-confRaza',[RaceController::class,'PDF']);
 Route::get('exportar-excel-confRaza',[RaceController::class,'Excel']);
-
 
 //CONFI VITAMINAS
 Route::resource('inactivos/Vitaminas',VitaminInactivosController::class)->names('inactivos.Vitaminas');

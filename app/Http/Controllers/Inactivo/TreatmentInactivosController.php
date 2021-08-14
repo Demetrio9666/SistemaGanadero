@@ -9,6 +9,7 @@ use App\Models\Vitamin;
 use App\Models\File_animale;
 use App\Models\Antibiotic;
 use App\Models\File_treatment;
+use Spatie\Activitylog\Models\Activity;
 
 class TreatmentInactivosController extends Controller
 {
@@ -125,7 +126,37 @@ class TreatmentInactivosController extends Controller
     {
         $tra = File_treatment::findOrFail($id);
         $tra->actual_state = $request->actual_state;
+        
         $tra->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='FICHA TRATAMIENTO INACTIVO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($tra->animalCode_id == $i->id){
+                    $animal_Code= $i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\File_treatment');
+    
+        $actvividad->save();
 
         return redirect('inactivos/fichaTratamientos');
     }
@@ -136,9 +167,38 @@ class TreatmentInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $tra = File_treatment::findOrFail($id);
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='FICHA TRATAMIENTO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($tra->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+            }
+        }
+        
+        $actvividad->data = $animal_Code;
+        $actvividad->subject_type =('App\Models\File_treatment');
+    
+        $actvividad->save();
+
         $tra->delete();
         return redirect('inactivos/fichaTratamientos')->with('eliminar','ok');
     }

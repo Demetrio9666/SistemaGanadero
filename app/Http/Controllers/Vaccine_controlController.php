@@ -12,6 +12,7 @@ use App\Http\Requests\StoreVaccineC;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\Vaccine_controlExport;
+use Spatie\Activitylog\Models\Activity;
 
 class Vaccine_controlController extends Controller
 {
@@ -26,7 +27,7 @@ class Vaccine_controlController extends Controller
     {
         $vacunaC= DB::table('vaccine_control')
                     ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
-                    ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
+                    ->leftJoin('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
                     ->select('vaccine_control.id'
                             ,'vaccine_control.date'
                             ,'vaccine.vaccine_d as vacuna'
@@ -41,7 +42,7 @@ class Vaccine_controlController extends Controller
     public function PDF(){
         $vacunaC= DB::table('vaccine_control')
                     ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
-                    ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
+                    ->leftJoin('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
                     ->select('vaccine_control.id'
                             ,'vaccine_control.date'
                             ,'vaccine.vaccine_d as vacuna'
@@ -99,6 +100,35 @@ class Vaccine_controlController extends Controller
         $vacunaC->actual_state = $request->actual_state;
         
         $vacunaC->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='CONTROL VACUNACION';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\Vaccine_control');
+    
+        $actvividad->save();
         
         //return redirect()->route();
         return redirect('/controlVacuna');
@@ -157,6 +187,35 @@ class Vaccine_controlController extends Controller
         $vacunaC->date_r = $request->date_r;
         $vacunaC->actual_state = $request->actual_state;
         $vacunaC->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='CONTROL VACUNACION';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\Vaccine_control');
+    
+        $actvividad->save();
         return redirect('/controlVacuna');
     }
 
@@ -168,8 +227,6 @@ class Vaccine_controlController extends Controller
      */
     public function destroy($id)
     {
-        $vacunaC = Vaccine_control::findOrFail($id);
-        $vacunaC->delete();
-        return redirect('/controlVacuna')->with('eliminar','ok'); 
+       
     }
 }

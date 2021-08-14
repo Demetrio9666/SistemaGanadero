@@ -47,5 +47,6 @@ Editar Material Genético Inactivo
             <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/inactivos/Materiales') }}" >Guardar</button>
         </div>
     </center>    
+    @include('layouts.base-usuario')
 </form>
 @endsection

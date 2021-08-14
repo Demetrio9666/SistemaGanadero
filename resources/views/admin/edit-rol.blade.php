@@ -37,6 +37,7 @@
                             <!--label for="" class="form-label">Nombre del Rol:</label>
                             <input type="text" class="form-control " id="name" name="name" value="{{$rol->name}}" onblur="upperCase()"-->
                             @include('admin.base.plantilla')
+                            @include('layouts.base-usuario')
                         {!! Form::close() !!}
                         
 

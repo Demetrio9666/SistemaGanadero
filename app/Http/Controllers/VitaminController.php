@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\VitaminExport;
+use Spatie\Activitylog\Models\Activity;
 
 class VitaminController extends Controller
 {
@@ -64,7 +65,24 @@ class VitaminController extends Controller
         $vitamina->actual_state = $request->actual_state;
         
         $vitamina->save(); 
-             //return redirect()->route();
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='REGISTRO VITAMINA';
+        $actvividad->data = $request->vitamin_d;
+        $actvividad->subject_type =('App\Models\Vitamin');
+        
+        $actvividad->save();
+      
         return redirect('/confVi');
     }
 
@@ -107,6 +125,23 @@ class VitaminController extends Controller
         $vitamina->supplier = $request->supplier;
         $vitamina->actual_state = $request->actual_state;
         $vitamina->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO VITAMINA';
+        $actvividad->data = $request->vitamin_d;
+        $actvividad->subject_type =('App\Models\Vitamin');
+        
+        $actvividad->save();
         return redirect('/confVi');
     }
 

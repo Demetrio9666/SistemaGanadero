@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Antibiotic;
+use Spatie\Activitylog\Models\Activity;
 
 class AntibioticInactivosController extends Controller
 {
@@ -86,6 +87,22 @@ class AntibioticInactivosController extends Controller
         $anti = Antibiotic::findOrFail($id);
         $anti->actual_state = $request->actual_state;
         $anti->save(); 
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO ANTIBIOTICO INACTIVO';
+        $actvividad->data = $anti->antibiotic_d;
+        $actvividad->subject_type =('App\Models\Antibiotic');
+        
+        $actvividad->save();
         return redirect('inactivos/Antibioticos');
     }
 
@@ -95,10 +112,26 @@ class AntibioticInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        $desp = Antibiotic::findOrFail($id);
-        $desp->delete();
+        $anti = Antibiotic::findOrFail($id);
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='REGISTRO ANTIBIOTICO';
+        $actvividad->data = $anti->antibiotic_d;
+        $actvividad->subject_type =('App\Models\Antibiotic');
+        
+        $actvividad->save();
+        $anti->delete();
         return redirect('inactivos/Antibioticos')->with('eliminar','ok');
     }
 }

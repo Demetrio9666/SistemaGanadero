@@ -124,4 +124,8 @@
                             <button type="submit" class="btn btn-success"  style="margin: 10px" href="{{ Redirect::to('/fichaAnimal') }}" >Guardar</button>
                     </div>
             </center>
+            @include('layouts.base-usuario')
+                  
+        </form>
+      
 @endsection

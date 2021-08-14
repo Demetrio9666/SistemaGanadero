@@ -30,6 +30,7 @@ Registros de Ubicaciones
                 <form action="{{route('inactivos.Ubicaciones.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                     @csrf
                     @method('DELETE') 
+                    @include('layouts.base-usuario')
                     <button type="submit"  class="btn btn-danger" value="Eliminar">
                         <i class="fas fa-trash-alt"></i>
                     </button>

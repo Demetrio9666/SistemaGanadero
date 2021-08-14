@@ -46,6 +46,7 @@ Editar Material Genético
             <a type="submit" class="btn btn-secondary btn" href="{{url('/confMate')}}">Cancelar</a>
             <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/confMate') }}" >Guardar</button>
         </div>
-    </center>    
+    </center> 
+    @include('layouts.base-usuario')  
 </form>
 @endsection

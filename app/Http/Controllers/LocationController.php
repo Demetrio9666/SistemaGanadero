@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LocationExport;
+use Spatie\Activitylog\Models\Activity;
 
 class LocationController extends Controller
 {
@@ -71,6 +72,24 @@ class LocationController extends Controller
         $ubicacion->description = $request->description;
         $ubicacion->actual_state =$request->actual_state;
         $ubicacion->save(); 
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='REGISTRO UBICACION';
+
+
+        $actvividad->data = $request->location_d.'-'.$request->description;
+        $actvividad->subject_type =('App\Models\Location');
+        
+        $actvividad->save();
         
         //return redirect()->route();
         return redirect('/confUbicacion');
@@ -113,6 +132,24 @@ class LocationController extends Controller
         $ubicacion->description = $request->description;
         $ubicacion->actual_state =$request->actual_state;
         $ubicacion->save(); 
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO UBICACION';
+
+
+        $actvividad->data = $request->location_d.'-'.$request->description;
+        $actvividad->subject_type =('App\Models\Location');
+        
+        $actvividad->save();
         return redirect('/confUbicacion'); 
     }
 

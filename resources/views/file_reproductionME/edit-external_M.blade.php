@@ -110,7 +110,7 @@ Editar Reproducción Natural Externa
         </center>
 
     </div>
-    
+    @include('layouts.base-usuario')
 </form>
 
 @endsection

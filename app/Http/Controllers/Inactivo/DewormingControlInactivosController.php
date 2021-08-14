@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\File_animale;
 use App\Models\Dewormer;
 use App\Models\Deworming_control;
+use Spatie\Activitylog\Models\Activity;
 
 class DewormingControlInactivosController extends Controller
 {
@@ -20,7 +21,7 @@ class DewormingControlInactivosController extends Controller
     {
         $desC = DB::table('deworming_control')
         ->join('file_animale','deworming_control.animalCode_id','=','file_animale.id')
-        ->join('dewormer','deworming_control.deworming_id','=','dewormer.id')
+        ->leftJoin('dewormer','deworming_control.deworming_id','=','dewormer.id')
         ->select('deworming_control.id',
                  'deworming_control.date',
                  'file_animale.animalCode as animal',
@@ -98,8 +99,38 @@ class DewormingControlInactivosController extends Controller
     {
         $desC = Deworming_control::findOrFail($id);
         $desC->actual_state = $request->actual_state;
-      
+        
+
         $desC->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+ 
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='CONTROL DESPARASITACION INACTIVO';
+ 
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\Deworming_control');
+    
+        $actvividad->save();
         return redirect('inactivos/controlDesparasitaciones');
     }
 
@@ -109,9 +140,38 @@ class DewormingControlInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $desC = Deworming_control::findOrFail($id);
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+ 
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='CONTROL DESPARASITACION';
+ 
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($desC->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\Deworming_control');
+    
+        $actvividad->save();
         $desC->delete();
         return redirect('inactivos/controlDesparasitaciones')->with('eliminar','ok'); 
     }

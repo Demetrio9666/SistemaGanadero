@@ -32,7 +32,7 @@
             <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/confUbicacion') }}" >Guardar</button>
         </div>
     </center> 
-    
+    @include('layouts.base-usuario')
 </form>
 
 @endsection

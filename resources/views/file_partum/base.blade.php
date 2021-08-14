@@ -16,7 +16,7 @@
                     <div class="frm">
 
                         @yield('formulario')
-                        
+                                                
                     </div>
                 </div>
         </div> 

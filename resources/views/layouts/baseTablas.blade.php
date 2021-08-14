@@ -17,6 +17,7 @@
                 <div class="card-body">
                         <div class="titulo "><h1> @yield('nombre_tabla')</h1></div>
                         @yield('tabla')
+                        @yield('usuario')
                 </div>
             </div>
         </div>

@@ -31,13 +31,17 @@ class File_animaleController extends Controller
     public function index()
     {
         $animal = DB::table('file_animale')
-                    ->join('race','file_animale.race_id','=','race.id')
-                    ->join('location','file_animale.location_id','=','location.id')
+                    ->leftJoin('race','file_animale.race_id','=','race.id')
+                    ->leftJoin('location','file_animale.location_id','=','location.id')
                     ->select('file_animale.id','file_animale.animalCode','file_animale.url','file_animale.date','race.race_d as raza',
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
                             ,'file_animale.conceived')
-                            ->where('file_animale.actual_state', '=', 'DISPONIBLE' )->Orwhere('file_animale.actual_state', '=', 'REPRODUCCION')
+                            ->where('file_animale.actual_state', '=', 'DISPONIBLE' )
+                            ->orwhere('file_animale.actual_state', '=','REPRODUCIÓN')
+                            ->orwhere('file_animale.actual_state', '=','VENDIDO')
+                            
+                            
                     ->get();
         return view('file_animale.index-animale',compact('animal'));
         //return $animal;
@@ -46,8 +50,8 @@ class File_animaleController extends Controller
 
     public function PDF(){
                     $animal = DB::table('file_animale')
-                    ->join('race','file_animale.race_id','=','race.id')
-                    ->join('location','file_animale.location_id','=','location.id')
+                    ->leftJoin('race','file_animale.race_id','=','race.id')
+                    ->leftJoin('location','file_animale.location_id','=','location.id')
                     ->select('file_animale.id','file_animale.animalCode','file_animale.date','race.race_d as raza',
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
@@ -135,19 +139,23 @@ class File_animaleController extends Controller
         $animal->conceived = $request->concebido;
         $animal->save(); 
        
-        //$actvividad = new  Activity();
-        //$actvividad->log_name = $request->usuario;
-        //$actvividad->description =('Registro de ficha de animales');
-        activity()
-            ->performedOn($someContentModel)
-            ->log('Registro de ficha de animale');
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
 
-        //$actvividad->save();
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
 
-
-
-        
-        //return redirect()->route();
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='FICHA ANIMAL';
+        $actvividad->data =$animal->animalCode;
+        $actvividad->subject_type =('App\Models\File_Animale');
+    
+        $actvividad->save();
+      
         return redirect('/fichaAnimal')->with('Validad','ok');
 
     }
@@ -239,6 +247,23 @@ class File_animaleController extends Controller
        
     
         $animal->update(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='FICHA ANIMAL';
+        $actvividad->data =$animal->animalCode;
+        $actvividad->subject_type =('App\Models\File_Animale');
+    
+        $actvividad->save();
       
       return redirect('/fichaAnimal'); 
     }

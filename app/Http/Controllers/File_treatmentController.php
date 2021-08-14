@@ -11,7 +11,7 @@ use App\Http\Requests\StoreFile_treatment;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\File_treatmentExport;
-
+use Spatie\Activitylog\Models\Activity;
 
 class File_treatmentController extends Controller
 {
@@ -68,20 +68,7 @@ class File_treatmentController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  /////////////////////////////////////////////////////////////////////////////////////////7
     public function create()
     {   
         $anti = Antibiotic::all();
@@ -126,6 +113,34 @@ class File_treatmentController extends Controller
         
 
         $tra->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='FICHA TRATAMIENTO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+            }
+        }
+        
+        $actvividad->data = $animal_Code;
+        $actvividad->subject_type =('App\Models\File_treatment');
+    
+        $actvividad->save();
 
         return redirect('/fichaTratamiento');
     }
@@ -176,9 +191,11 @@ class File_treatmentController extends Controller
                      'actual_state',
                      'health_condition',
                      'actual_state'
+                     
                   )
-                  ->where('actual_state','=','Disponible')->Orwhere('actual_state','=','Reproduccion')
                   ->where('health_condition','=','Enfermo')
+                  ->where('actual_state','=','Disponible')->orwhere('actual_state','=','Reproduccion')
+                  
         ->get();
         return view('file_treatment.edit-treatment',compact('vitamina','animalT','anti','tra'));   
     }
@@ -203,6 +220,33 @@ class File_treatmentController extends Controller
         $tra->treatment = $request->treatment;
         $tra->actual_state = $request->actual_state;
         $tra->save(); 
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='FICHA TRATAMIENTO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+            }
+        }
+        
+        $actvividad->data = $animal_Code;
+        $actvividad->subject_type =('App\Models\File_treatment');
+    
+        $actvividad->save();
 
         return redirect('/fichaTratamiento');
     }

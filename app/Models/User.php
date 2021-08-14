@@ -85,6 +85,7 @@ class User extends Authenticatable
             $super3= str_replace(']','',$super2);
      return $super3;
      
+     
    }
 
 }

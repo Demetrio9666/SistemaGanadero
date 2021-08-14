@@ -54,6 +54,6 @@ Editar Control de Vacunación
        
 
     </div>
-    
+    @include('layouts.base-usuario')
 </form>
 @endsection

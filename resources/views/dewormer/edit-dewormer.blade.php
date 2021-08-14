@@ -35,6 +35,7 @@ Editar Desparacitante
             <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/confDespa') }}" >Guardar</button>
         </div>
     </center>
+    @include('layouts.base-usuario')
 </form>
 @endsection
 

@@ -9,7 +9,7 @@ use App\Models\Race;
 use App\Models\Vaccine;
 use App\Models\Vaccine_control;
 use App\Models\File_animale;
-
+use Spatie\Activitylog\Models\Activity;
 
 class VaccineControlInactivosController extends Controller
 {
@@ -22,7 +22,7 @@ class VaccineControlInactivosController extends Controller
     {
         $vacunaC= DB::table('vaccine_control')
         ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
-        ->join('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
+        ->leftJoin('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
         ->select('vaccine_control.id'
                 ,'vaccine_control.date'
                 ,'vaccine.vaccine_d as vacuna'
@@ -104,6 +104,36 @@ class VaccineControlInactivosController extends Controller
         $vacunaC = Vaccine_control::findOrFail($id);
         $vacunaC->actual_state = $request->actual_state;
         $vacunaC->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='CONTROL VACUNACION INACTIVO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\Vaccine_control');
+    
+        $actvividad->save();
+
         return redirect('inactivos/controlVacunas');
     }
 
@@ -113,9 +143,38 @@ class VaccineControlInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $vacunaC = Vaccine_control::findOrFail($id);
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='CONTROL VACUNACION INACTIVO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($vacunaC->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\Vaccine_control');
+    
+        $actvividad->save();
         $vacunaC->delete();
         return redirect('inactivos/controlVacunas')->with('eliminar','ok'); 
     }

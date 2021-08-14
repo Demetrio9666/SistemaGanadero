@@ -48,11 +48,8 @@ Editar Peso de Animales
                 <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/controlPeso') }}" >Guardar</button>
             </div>
         </center>
-
-        
-
     </div>
-    
+    @include('layouts.base-usuario')
 </form>
 @endsection
 

@@ -14,9 +14,9 @@
                             <div class="col-md-6">
                                     <div class="input-group mb-3" style="margin: 40px">
                                             <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" disabled=disabled>Buscar</button>
-                                            <input type="text" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
+                                            <input type="text" aria-label="Example text with button addon" aria-describedby="button-addon1" name="codigo_animal" id="codigo_animal" disabled=disabled 
                                             
-                                                       @foreach ($animalP as $i)
+                                                       @foreach ($animal as $i)
                                                                     @if ($par->animalCode_id == $i->id )
                                                                         value =" {{$i->animalCode}} "
                                                                     @endif
@@ -66,6 +66,7 @@
                                     <button type="submit" class="btn btn-success "  style="margin: 10px" href="{{ Redirect::to('/inactivos/fichaPartos') }}" >Guardar</button>
                                 </div>
                             </center>
+                            @include('layouts.base-usuario')
                            
                         </form>
                     </div>

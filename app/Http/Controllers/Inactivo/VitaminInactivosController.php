@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Vitamin;
+use Spatie\Activitylog\Models\Activity;
 
 class VitaminInactivosController extends Controller
 {
@@ -80,6 +81,22 @@ class VitaminInactivosController extends Controller
         $vitamina = Vitamin::findOrFail($id);
         $vitamina->actual_state = $request->actual_state;
         $vitamina->save(); 
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO VITAMINA INACTIVO';
+        $actvividad->data = $vitamina->vitamin_d;
+        $actvividad->subject_type =('App\Models\Vitamin');
+        
+        $actvividad->save();
         return redirect('inactivos/Vitaminas');
     }
 
@@ -89,9 +106,25 @@ class VitaminInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $vitamina = Vitamin::findOrFail($id);
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='REGISTRO VITAMINA';
+        $actvividad->data = $vitamina->vitamin_d;
+        $actvividad->subject_type =('App\Models\Vitamin');
+        
+        $actvividad->save();
         $vitamina->delete();
         return redirect('inactivos/Vitaminas')->with('eliminar','ok');
     }

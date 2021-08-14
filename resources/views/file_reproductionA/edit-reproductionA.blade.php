@@ -137,6 +137,7 @@ Editar Reproducción Artificial
     </center>
     
 </div>
+@include('layouts.base-usuario')
 </form>
 
 @endsection

@@ -250,9 +250,9 @@ return [
         ],
         [
             'text'=>'Actividad de Usuario',
-            'url'=>'',
-            'icon'=>'',
-            
+            'url'=>'/actividad-usuario',
+            'icon'=>'fas fa-suitcase',
+
         ],
        
        

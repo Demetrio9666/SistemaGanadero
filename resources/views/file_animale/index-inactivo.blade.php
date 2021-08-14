@@ -52,6 +52,8 @@ Fichas de Animales
                         <form action="{{route('inactivos.fichaAnimales.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                             @method('DELETE') 
                             @csrf
+                            @include('layouts.base-usuario')
+                                       
                             <button type="submit"  class="btn btn-danger" value="Eliminar">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
@@ -61,4 +63,5 @@ Fichas de Animales
                 @endforeach
             </tbody>
         </table>
+       
 @endsection

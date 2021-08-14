@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -9,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DewormerExport;
+use Spatie\Activitylog\Models\Activity;
 
 class DewormerController extends Controller
 {
@@ -50,13 +50,6 @@ class DewormerController extends Controller
         return Excel::download(new DewormerExport, 'RegistrosDesparasitantes.xlsx');
     }
 
-
-
-
-
-
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -82,7 +75,23 @@ class DewormerController extends Controller
         $desp->supplier = $request->supplier;
         $desp->actual_state = $request->actual_state;
         $desp->save(); 
-    
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='REGISTRO DESPARASITANTE';
+        $actvividad->data = $request->dewormer_d;
+        $actvividad->subject_type =('App\Models\Dewormer');
+        
+        $actvividad->save();
         //return redirect()->route();
         return redirect('/confDespa');
     }
@@ -125,7 +134,25 @@ class DewormerController extends Controller
         $desp->date_c = $request->date_c;
         $desp->supplier = $request->supplier;
         $desp->actual_state = $request->actual_state;
+
         $desp->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO DESPARASITANTE';
+        $actvividad->data = $request->dewormer_d;
+        $actvividad->subject_type =('App\Models\Dewormer');
+        
+        $actvividad->save();
         return redirect('/confDespa');
     }
 

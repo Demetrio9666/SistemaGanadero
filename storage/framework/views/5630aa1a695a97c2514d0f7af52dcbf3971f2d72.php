@@ -46,7 +46,7 @@ unset($__errorArgs, $__bag); ?>
             <button type="submit" class="btn btn-success btn"  href="<?php echo e(Redirect::to('/confUbicacion')); ?>" >Guardar</button>
         </div>
     </center> 
-    
+    <?php echo $__env->make('layouts.base-usuario', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </form>
 
 <?php $__env->stopSection(); ?>

@@ -55,6 +55,6 @@ Editar Control de Desparasitación Inactivo
         </center> 
        
     </div>
-
+    @include('layouts.base-usuario')
 </form>
 @endsection

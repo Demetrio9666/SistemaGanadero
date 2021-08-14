@@ -35,7 +35,7 @@ Editar Vitamina Inactiva
                 <button type="submit" class="btn btn-success btn" href="{{ Redirect::to('inactivos/Vitaminas') }}" >Actualizar</button>
             </div>
     </center>    
-    
+    @include('layouts.base-usuario')
 </form>
 @endsection
 

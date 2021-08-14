@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\File_animale;
 use App\Models\File_partum;
 use App\Models\Vitamin;
+use Spatie\Activitylog\Models\Activity;
 
 class PartumInactivosController extends Controller
 {
@@ -78,7 +79,7 @@ class PartumInactivosController extends Controller
     public function edit($id)
     {
         $par =  File_partum::findOrFail($id);
-        $animalP  = DB::table('file_animale')
+        $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
                      'date',
@@ -93,7 +94,7 @@ class PartumInactivosController extends Controller
                   ->where('gestation_state','=','Si')
                   ->where('actual_state','=','Disponible')->orwhere('actual_state','=','Reproduccion')
                   ->get();
-        return view('file_partum.edit-inactivo',compact('animalP','par'));
+        return view('file_partum.edit-inactivo',compact('animal','par'));
     }
 
     /**
@@ -110,6 +111,35 @@ class PartumInactivosController extends Controller
         
         $par->save(); 
 
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='FICHA PARTO INACTIVO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($par->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+       
+        $actvividad->subject_type =('App\Models\File_partum');
+    
+        $actvividad->save();
+
         return redirect('/fichaParto');
     }
 
@@ -119,10 +149,41 @@ class PartumInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $par =  File_partum::findOrFail($id);
+       
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='FICHA PARTO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($par->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\File_partum');
+    
+        $actvividad->save();
         $par->delete();
+
+
         return redirect('/fichaParto')->with('eliminar','ok');
     }
 }

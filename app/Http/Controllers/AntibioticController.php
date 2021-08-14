@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\AntibioticosExport;
+use Spatie\Activitylog\Models\Activity;
 
 class AntibioticController extends Controller
 {
@@ -80,6 +81,23 @@ class AntibioticController extends Controller
         $anti->supplier = $request->supplier;
         $anti->actual_state = $request->actual_state;
         $anti->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='REGISTRO ANTIBIOTICO';
+        $actvividad->data = $request->antibiotic_d;
+        $actvividad->subject_type =('App\Models\Antibiotic');
+        
+        $actvividad->save();
     
         //return redirect()->route();
         return redirect('/confAnt');
@@ -124,6 +142,23 @@ class AntibioticController extends Controller
         $anti->supplier = $request->supplier;
         $anti->actual_state = $request->actual_state;
         $anti->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO ANTIBIOTICO';
+        $actvividad->data = $request->antibiotic_d;
+        $actvividad->subject_type =('App\Models\Antibiotic');
+        
+        $actvividad->save();
         return redirect('/confAnt');
     }
 

@@ -11,6 +11,7 @@ use App\Http\Requests\StoreDewormerC;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\Deworming_controlExport;
+use Spatie\Activitylog\Models\Activity;
 
 class Deworming_controlController extends Controller
 {
@@ -25,7 +26,7 @@ class Deworming_controlController extends Controller
     {
         $desC = DB::table('deworming_control')
                 ->join('file_animale','deworming_control.animalCode_id','=','file_animale.id')
-                ->join('dewormer','deworming_control.deworming_id','=','dewormer.id')
+                ->leftJoin('dewormer','deworming_control.deworming_id','=','dewormer.id')
                 ->select('deworming_control.id',
                          'deworming_control.date',
                          'file_animale.animalCode as animal',
@@ -40,7 +41,7 @@ class Deworming_controlController extends Controller
     public function PDF(){
         $desC = DB::table('deworming_control')
                 ->join('file_animale','deworming_control.animalCode_id','=','file_animale.id')
-                ->join('dewormer','deworming_control.deworming_id','=','dewormer.id')
+                ->leftJoin('dewormer','deworming_control.deworming_id','=','dewormer.id')
                 ->select('deworming_control.id',
                          'deworming_control.date',
                          'file_animale.animalCode as animal',
@@ -57,12 +58,6 @@ class Deworming_controlController extends Controller
     public function Excel(){
         return Excel::download(new Deworming_controlExport, 'ControlDesparacitacion.xlsx');
     }
-
-
-
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -106,6 +101,35 @@ class Deworming_controlController extends Controller
        $desC->actual_state = $request->actual_state;
        
        $desC->save(); 
+
+       $actvividad = new  Activity();
+       $actvividad->log_name = $request->usuario;
+       $actvividad->email = $request->correo;
+
+       $super= str_replace('"','',$request->rol);
+       $super2= str_replace('[','',$super);
+       $super3= str_replace(']','',$super2);
+
+       $actvividad->rol =$super3 ;
+       $actvividad->subject_id =$request->id;
+       $actvividad->description =('CREAR');
+       $actvividad->view ='CONTROL DESPARASITACION';
+
+       $animal  = DB::table('file_animale')
+       ->select(    'id',
+                    'animalCode'  
+                 )->get();
+       foreach($animal as $i ){
+           if($request->animalCode_id == $i->id){
+                   $animal_Code=$i->animalCode;
+                   $actvividad->data = $animal_Code;
+           }
+       }
+       
+       
+       $actvividad->subject_type =('App\Models\Deworming_control');
+   
+       $actvividad->save();
             //return redirect()->route();
         return redirect('/controlDesparasitacion');
     }
@@ -162,6 +186,36 @@ class Deworming_controlController extends Controller
         $desC->actual_state = $request->actual_state;
       
         $desC->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='CONTROL DESPARASITACION';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                        'animalCode'  
+                    )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\Deworming_control');
+    
+        $actvividad->save();
+
         return redirect('/controlDesparasitacion');
 
     }
@@ -174,8 +228,6 @@ class Deworming_controlController extends Controller
      */
     public function destroy($id)
     {
-        $desC = Deworming_control::findOrFail($id);
-        $desC->delete();
-        return redirect('/controlDesparasitacion')->with('eliminar','ok'); 
+       
     }
 }

@@ -18,16 +18,20 @@ class CreateFileAnimaleTable extends Migration
             $table->string('animalCode')->unique();
             $table->string('url');
             $table->date('date');
-            $table->unsignedBigInteger('race_id');
-            $table->foreign('race_id')->references('id')->on('race');
+            $table->unsignedBigInteger('race_id')->nullable();
+            $table->foreign('race_id')->references('id')->on('race')
+                            ->onDelete('set null')
+                            ->onUpdate('cascade');
             $table->string('sex',10);
             $table->string('stage',20);
             $table->string('source',20);
             $table->integer('age_month');
             $table->string('health_condition',20);
             $table->string('gestation_state',20);
-            $table->unsignedBigInteger('location_id');
-            $table->foreign('location_id')->references('id')->on('location');        
+            $table->unsignedBigInteger('location_id')->nullable();
+            $table->foreign('location_id')->references('id')->on('location')
+            ->onDelete('set null')
+            ->onUpdate('cascade');     
             $table->string('conceived',25);   
             $table->string('actual_state');
             $table->timestamps();

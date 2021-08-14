@@ -55,14 +55,6 @@ class Weigth_controlController extends Controller
     }
 
 
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $animal = DB::table('file_animale')
@@ -95,17 +87,36 @@ class Weigth_controlController extends Controller
 
         $pesoC->save(); 
          
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
 
-        activity()
-            ->causedBy(Weigth_control::weigth_control())
-            ->performedOn($weigth_control)
-           
-            ->log('Registro de ficha de animale ');
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='CONTROL PESO';
 
-
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\Weigth_control');
+    
+        $actvividad->save();
+       
         return redirect('/controlPeso');
-
 
     }
 
@@ -158,6 +169,35 @@ class Weigth_controlController extends Controller
         $pesoC-> actual_state = $request-> actual_state;
        
         $pesoC->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='CONTROL PESO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\Weigth_control');
+    
+        $actvividad->save();
        
         return redirect('/controlPeso');
     }

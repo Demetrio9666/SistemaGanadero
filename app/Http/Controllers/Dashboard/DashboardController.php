@@ -29,7 +29,7 @@ class DashboardController extends Controller
         $vaca = File_Animale::whereIn('stage',['VACA'])->count();
         $vacona = File_Animale::whereIn('stage',['VACONA'])->count();
         $vaconilla = File_Animale::whereIn('stage',['VACONILLA'])->count();
-        $terneroH = File_Animale::where('sex','=','HEMBRA') ->whereIn('stage',['TERNERO'])->count();
+        $terneroH = File_Animale::where('sex','=','HEMBRA') ->whereIn('stage',['TERNERA'])->count();
 
         $data = [$toro,$torete,$terneroM,$vaca,$vacona,$vaconilla,$terneroH];
         $datas= json_encode($data);

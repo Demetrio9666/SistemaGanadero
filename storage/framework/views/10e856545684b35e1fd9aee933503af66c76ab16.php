@@ -17,6 +17,7 @@
                 <div class="card-body">
                         <div class="titulo "><h1> <?php echo $__env->yieldContent('nombre_tabla'); ?></h1></div>
                         <?php echo $__env->yieldContent('tabla'); ?>
+                        <?php echo $__env->yieldContent('usuario'); ?>
                 </div>
             </div>
         </div>

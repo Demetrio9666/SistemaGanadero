@@ -10,6 +10,7 @@ use App\Http\Requests\StoreArtificial;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ArtificialReproductionExport;
+use Spatie\Activitylog\Models\Activity;
 
 class ArtificialReproductionController extends Controller
 {
@@ -84,6 +85,33 @@ class ArtificialReproductionController extends Controller
         $arti->supplier = $request->supplier;
         $arti->actual_state = $request->actual_state;
         $arti->save(); 
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='REGISTRO MATERIAL GENETICO';
+
+        $raza  = DB::table('race')
+        ->select(    'id',
+                     'race_d'  
+                  )->get();
+        foreach($raza as $i ){
+            if($request->race_id == $i->id){
+                    $race_dd=$i->race_d;
+            }
+        }
+
+        $actvividad->data = $race_dd.'-'.$request->reproduccion.'-'.$request->supplier;
+        $actvividad->subject_type =('App\Models\Artificial_Reproduction');
+        
+        $actvividad->save();
     
         //return redirect()->route();
         return redirect('/confMate');
@@ -131,6 +159,33 @@ class ArtificialReproductionController extends Controller
         $arti->supplier = $request->supplier;
         $arti->actual_state = $request->actual_state;
         $arti->save(); 
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO MATERIAL GENETICO';
+
+        $raza  = DB::table('race')
+        ->select(    'id',
+                     'race_d'  
+                  )->get();
+        foreach($raza as $i ){
+            if($request->race_id == $i->id){
+                    $race_dd=$i->race_d;
+            }
+        }
+
+        $actvividad->data = $race_dd.'-'.$request->reproduccion.'-'.$request->supplier;
+        $actvividad->subject_type =('App\Models\Artificial_Reproduction');
+        
+        $actvividad->save();
         return redirect('/confMate');
     }
 
@@ -142,8 +197,6 @@ class ArtificialReproductionController extends Controller
      */
     public function destroy($id)
     {
-        $arti = Artificial_Reproduction::findOrFail($id);
-        $arti->delete();
-        return redirect('/confMate')->with('eliminar','ok');
+        
     }
 }

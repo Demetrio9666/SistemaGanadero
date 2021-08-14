@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Race;
 use App\Models\Artificial_Reproduction;
+use Spatie\Activitylog\Models\Activity;
 
 class ArtificialInactivosController extends Controller
 {
@@ -93,6 +94,33 @@ class ArtificialInactivosController extends Controller
         $arti = Artificial_Reproduction::findOrFail($id);
         $arti->actual_state = $request->actual_state;
         $arti->save(); 
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO MATERIAL GENETICO INACTIVO';
+
+        $raza  = DB::table('race')
+        ->select(    'id',
+                     'race_d'  
+                  )->get();
+        foreach($raza as $i ){
+            if($arti->race_id == $i->id){
+                    $race_dd=$i->race_d;
+            }
+        }
+
+        $actvividad->data = $race_dd.'-'.$arti->reproduccion.'-'.$arti->supplier;
+        $actvividad->subject_type =('App\Models\Artificial_Reproduction');
+        
+        $actvividad->save();
         return redirect('/inactivos/Materiales');
     }
 
@@ -102,9 +130,36 @@ class ArtificialInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $arti = Artificial_Reproduction::findOrFail($id);
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='REGISTRO MATERIAL GENETICO';
+
+        $raza  = DB::table('race')
+        ->select(    'id',
+                     'race_d'  
+                  )->get();
+        foreach($raza as $i ){
+            if($arti->race_id == $i->id){
+                    $race_dd=$i->race_d;
+            }
+        }
+
+        $actvividad->data = $race_dd.'-'.$arti->reproduccion.'-'.$arti->supplier;
+        $actvividad->subject_type =('App\Models\Artificial_Reproduction');
+        
+        $actvividad->save();
         $arti->delete();
         return redirect('/inactivos/Materiales')->with('eliminar','ok');
     }

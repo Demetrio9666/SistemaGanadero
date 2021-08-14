@@ -17,7 +17,8 @@ class CreateFilePartumTable extends Migration
             $table->id();
             $table->date('date');
             $table-> unsignedBigInteger('animalCode_id');
-            $table->foreign('animalCode_id')->references('id')->on('file_animale');
+            $table->foreign('animalCode_id')->references('id')->on('file_animale')
+                    ->onDelete('cascade')->onUpdate('cascade');
             $table->integer('male')->nullable();
             $table->integer('female')->nullable();
             $table->integer('dead')->nullable();

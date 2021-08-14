@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\File_animale;
 use App\Models\Race;
 use App\Models\File_reproduction_internal;
+use Spatie\Activitylog\Models\Activity;
 
 class ReproductionMInactivosController extends Controller
 {
@@ -129,6 +130,35 @@ class ReproductionMInactivosController extends Controller
         $re->actual_state = $request->actual_state;
         
         $re->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL INTERNA INACTIVO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id_m == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\File_reproduction_internal');
+    
+        $actvividad->save();
         return redirect('inactivos/fichaReproduccionM');
     }
 
@@ -138,9 +168,38 @@ class ReproductionMInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
         $re =  File_reproduction_internal::findOrFail($id);
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL INTERNA ';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($re->animalCode_id_m == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\File_reproduction_internal');
+    
+        $actvividad->save();
         $re->delete();
         return redirect('inactivos/fichaReproduccionEx')->with('eliminar','ok'); 
     }

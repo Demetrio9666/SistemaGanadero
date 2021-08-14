@@ -9,6 +9,7 @@ use App\Models\File_animale;
 use App\Models\Race;
 use App\Models\File_reproduction_artificial;
 use App\Models\Artificial_Reproduction;
+use Spatie\Activitylog\Models\Activity;
 
 class ReproductionAInactivosController extends Controller
 {
@@ -27,9 +28,9 @@ class ReproductionAInactivosController extends Controller
         ->get();
         $re_A = DB::table('file_reproduction_artificial')
                 ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
-                ->join('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
-                ->join('race as f','file_animale.race_id','=','f.id')
-                ->Join('race as a','artificial_reproduction.race_id','=','a.id')
+                ->leftJoin('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
+                ->leftJoin('race as f','file_animale.race_id','=','f.id')
+                ->leftJoin('race as a','artificial_reproduction.race_id','=','a.id')
                 ->select('file_reproduction_artificial.id',
                         'file_reproduction_artificial.date as fecha_A',
                         'file_animale.animalCode as animalA',
@@ -135,6 +136,35 @@ return view('file_reproductionA.index-inactivo',compact('re_A'));
         $re =  File_reproduction_artificial::findOrFail($id);
         $re->actual_state = $request->actual_state;
         $re->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='FICHA REPRODUCCION ARTIFICIAL INACTIVO';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id_m == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\File_reproduction_artificial');
+    
+        $actvividad->save();
         return redirect('inactivos/fichaReproduccionA');
     }
 
@@ -144,9 +174,39 @@ return view('file_reproductionA.index-inactivo',compact('re_A'));
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $re =  File_reproduction_artificial::findOrFail($id);
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='FICHA REPRODUCCION ARTIFICIAL ';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($re->animalCode_id_m == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\File_reproduction_artificial');
+    
+        $actvividad->save();
+
         $re->delete();
         return redirect('/fichaReproduccionA')->with('eliminar','ok'); 
     }

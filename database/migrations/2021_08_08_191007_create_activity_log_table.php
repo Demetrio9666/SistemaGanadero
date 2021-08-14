@@ -14,8 +14,11 @@ class CreateActivityLogTable extends Migration
         Schema::connection(config('activitylog.database_connection'))->create(config('activitylog.table_name'), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('log_name')->nullable();
+            $table->string('email')->nullable();
             $table->string('rol')->nullable();
             $table->text('description');
+            $table->string('view')->nullable();;
+            $table->string('data')->nullable();;
             $table->nullableMorphs('subject', 'subject');
             $table->nullableMorphs('causer', 'causer');
             $table->json('properties')->nullable();

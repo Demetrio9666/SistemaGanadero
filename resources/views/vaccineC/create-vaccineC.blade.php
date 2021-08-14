@@ -61,8 +61,6 @@ Registro Control Vacunación
                 </div>
             </center>
     </div>      
-            </form>
-
-    
-    
+    @include('layouts.base-usuario')
+</form>
 @endsection

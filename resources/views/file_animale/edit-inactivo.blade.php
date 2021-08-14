@@ -124,5 +124,6 @@
 
                 </div>
                 </center>
+                @include('layouts.base-usuario')
             </form>
 @endsection

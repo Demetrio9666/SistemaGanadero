@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\RaceExport;
+use Spatie\Activitylog\Models\Activity;
 
 class RaceController extends Controller
 {
@@ -48,22 +49,6 @@ class RaceController extends Controller
         return Excel::download(new RaceExport, 'RegistroRazas.xlsx');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -88,8 +73,25 @@ class RaceController extends Controller
         $raza->percentage = $request->percentage;
         $raza->actual_state =$request->actual_state;
         $raza->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='REGISTRO RAZA';
+
+        $actvividad->data = $request->race_d.'-'.$request->percentage.'%';
+        $actvividad->subject_type =('App\Models\Race');
         
-        //return redirect()->route();
+        $actvividad->save();
+        
         return redirect('/confRaza');
     }
 
@@ -131,6 +133,23 @@ class RaceController extends Controller
         $raza->percentage = $request->percentage;
         $raza->actual_state =$request->actual_state;
         $raza->save();
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO RAZA';
+
+        $actvividad->data = $request->race_d.'-'.$request->percentage.'%';
+        $actvividad->subject_type =('App\Models\Race');
+        
+        $actvividad->save();
         return redirect('/confRaza'); 
     }
 

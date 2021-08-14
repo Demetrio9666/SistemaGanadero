@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\VaccineExport;
+use Spatie\Activitylog\Models\Activity;
 
 class VaccineController extends Controller
 {
@@ -84,6 +85,23 @@ class VaccineController extends Controller
         $vacuna->supplier = $request->supplier;
         $vacuna->actual_state = $request->actual_state;
         $vacuna->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='REGISTRO VACUNA';
+        $actvividad->data = $request->vaccine_d;
+        $actvividad->subject_type =('App\Models\Vaccine');
+        
+        $actvividad->save();
         
         //return redirect()->route();
         return redirect('/confVacuna');
@@ -128,6 +146,23 @@ class VaccineController extends Controller
         $vacuna->supplier = $request->supplier;
         $vacuna->actual_state = $request->actual_state;
         $vacuna->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO VACUNA';
+        $actvividad->data = $request->vaccine_d;
+        $actvividad->subject_type =('App\Models\Vaccine');
+        
+        $actvividad->save();
         return redirect('/confVacuna');
     }
 

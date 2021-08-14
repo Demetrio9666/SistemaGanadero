@@ -81,7 +81,7 @@ Editar Control de preñez
         </center>   
         
     </div>
-    
+    @include('layouts.base-usuario')
 </form>
 @endsection
 

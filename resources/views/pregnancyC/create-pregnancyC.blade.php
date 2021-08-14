@@ -74,7 +74,7 @@ Registro Control de Preñes
         
 
     </div>
-    
+    @include('layouts.base-usuario')
 </form>
 @endsection
 

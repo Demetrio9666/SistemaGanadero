@@ -25,7 +25,7 @@ Editar Tratamientos de animales
                             <input type="hidden" id="idcodi" name="animalCode_id" value="{{$tra->animalCode_id}}">
                     </div>
             </div>        
-            <div class="col-md-6">
+            <div class="form-group">
                 <label for="">Enfermedad:</label>
                 <select class="form-control" id=""  name="disease"  value="{{$tra->disease}}">
                     <option selected ></option>
@@ -42,7 +42,7 @@ Editar Tratamientos de animales
             <div class="col-md-6">
                 <label for=""> Antibióticos:</label>
                 <select class="form-control" id=""  name="antibiotic_id"   value="{{$tra->antibiotic_id}}">
-                    <option selected value="N/A">N/A</option>
+                    <option selected value="">N/A</option>
                     @foreach ($anti as $i )   
                         <option value="{{$i->id}}" @if($tra->antibiotic_id == $i->id ) selected @endif>{{$i->antibiotic_d}}</option>
                     @endforeach
@@ -52,7 +52,7 @@ Editar Tratamientos de animales
             <div class="col-md-6">
                 <label for="">Vitamina:</label>
                 <select class="form-control" id=""  name="vitamin_id"   value="{{$tra->vitamin_id}}">
-                    <option selected value="N/A" >N/A</option>
+                    <option selected value="" >N/A</option>
                     @foreach ($vitamina as $i )   
                         <option value="{{$i->id}}" @if($tra->vitamin_id == $i->id ) selected @endif>{{$i->vitamin_d}}</option>
                     @endforeach
@@ -79,6 +79,7 @@ Editar Tratamientos de animales
            </center>
            
     </div>
+    @include('layouts.base-usuario')
 </form>
 @endsection
 

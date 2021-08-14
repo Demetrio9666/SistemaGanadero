@@ -33,6 +33,7 @@
         <a type="submit" class="btn btn-secondary btn-lg" href="{{url('inactivos/Antibioticos')}}" >Cancelar</a>
         <button type="submit" class="btn btn-success btn-lg"  href="{{ Redirect::to('inactivos/Antibioticos') }}" >Actualizar</button>
     </div>
+    @include('layouts.base-usuario')
 </form>
 @endsection
 

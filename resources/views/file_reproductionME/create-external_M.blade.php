@@ -18,7 +18,7 @@ Registro de Reproducción Natural Externa
                 <br>
                     <div class="input-group mb-3">
                             <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimalEX" >Buscar</button>
-                            <input type="text" class="{{$errors->has('animalCode_id') ? 'is-invalid':''}}" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
+                            <input type="text" class="{{$errors->has('animalCode_id') ? 'is-invalid':''}}" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1" name="codigo_animal" id="codigo_animal" disabled=disabled >
                             <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled >
                             <input type="hidden" id="idcodi" name="animalCode_id">
                             <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1" id="edad" name="age_month" disabled=disabled value="{{old('edad')}}">
@@ -89,6 +89,7 @@ Registro de Reproducción Natural Externa
                 </div>
             </center>
     </div>
+    @include('layouts.base-usuario')
 </form>
 
 @endsection

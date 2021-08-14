@@ -37,6 +37,7 @@
                                    <div class="invalid-feedback">{{$message}}</div>
                              @enderror
                             @include('admin.base.plantilla')
+                            @include('layouts.base-usuario')
                         {!! Form::close() !!}
         
                     </div>

@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 @section('css')
         <link rel="stylesheet" type="text/css" href="/css/registroTratamientos.css">
-        
 @endsection
 @section('content_header')
         <div class="card card-dark">
@@ -23,7 +22,7 @@
             </div> 
  @include("modal.modalAnimalesT")
 @endsection
-
+@section('js')
         <script>
            $('#modalanimal').on('shown.bs.modal', function () {
                  $('#myInput2').trigger('focus')
@@ -46,3 +45,4 @@
             }
 
         </script>
+@endsection

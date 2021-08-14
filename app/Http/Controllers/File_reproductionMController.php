@@ -10,6 +10,7 @@ use App\Http\Requests\StoreFile_reproductionM;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\File_reproduction_internalExport;
+use Spatie\Activitylog\Models\Activity;
 
 class File_reproductionMController extends Controller
 {
@@ -72,7 +73,7 @@ class File_reproductionMController extends Controller
                        'P.sex as sexo_m',
                        'P.age_month as edad_m',
                        'file_reproduction_internal.actual_state'
-                      )->where('file_reproduction_internal.actual_state','=','Disponible')
+                      )->where('file_reproduction_internal.actual_state','=','REPRODUCCION')
                       
               ->get();
               $pdf = PDF::loadView('file_reproductionM.pdf',compact('re_MI'));
@@ -103,7 +104,9 @@ class File_reproductionMController extends Controller
                 'file_animale.age_month',
                 'race.race_d',
                 'file_animale.sex')
+                ->Where('file_animale.actual_state','=','REPRODUCIÓN')
                 ->Where('file_animale.stage','=','Toro')
+                
                 ->get();
         $animalRH= DB::table('file_animale')
                 ->join('race','file_animale.race_id','=','race.id')
@@ -112,7 +115,9 @@ class File_reproductionMController extends Controller
                 'file_animale.age_month',
                 'race.race_d',
                 'file_animale.sex')
+                ->Where('file_animale.actual_state','=','REPRODUCIÓN')
                 ->where('file_animale.stage','=','Vaca')
+                
                 ->get();
 
 
@@ -133,6 +138,35 @@ class File_reproductionMController extends Controller
         $re->animalCode_id_p = $request->animalCode_id_p;
         $re->actual_state = $request->actual_state;
         $re->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL INTERNA';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id_m == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\File_reproduction_internal');
+    
+        $actvividad->save();
         return redirect('/fichaReproduccionM');
     }
 
@@ -163,24 +197,27 @@ class File_reproductionMController extends Controller
                     'race.actual_state')
                     ->where('race.actual_state','=','Disponible')
                     ->get();
-        $animalRM= DB::table('file_animale')
-                ->join('race','file_animale.race_id','=','race.id')
-                ->select('file_animale.id',
-                'file_animale.animalCode',
-                'file_animale.age_month',
-                'race.race_d',
-                'file_animale.sex')
-                ->Where('file_animale.stage','=','Toro')
-                ->get();
-        $animalRH= DB::table('file_animale')
-                ->join('race','file_animale.race_id','=','race.id')
-                ->select('file_animale.id',
-                'file_animale.animalCode',
-                'file_animale.age_month',
-                'race.race_d',
-                'file_animale.sex')
-                ->where('file_animale.stage','=','Vaca')
-                ->get();
+            $animalRM= DB::table('file_animale')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->select('file_animale.id',
+                    'file_animale.animalCode',
+                    'file_animale.age_month',
+                    'race.race_d',
+                    'file_animale.sex')
+                    ->Where('file_animale.actual_state','=','REPRODUCIÓN')
+                    ->Where('file_animale.stage','=','Toro')
+                    ->get();
+            $animalRH= DB::table('file_animale')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->select('file_animale.id',
+                    'file_animale.animalCode',
+                    'file_animale.age_month',
+                    'race.race_d',
+                    'file_animale.sex')
+                    ->Where('file_animale.actual_state','=','REPRODUCIÓN')
+                    ->where('file_animale.stage','=','Vaca')
+                    
+                    ->get();
 
         return view('file_reproductionM.edit-reproduction',compact('raza','animalRM','animalRH','re'));
     }
@@ -202,7 +239,36 @@ class File_reproductionMController extends Controller
         $re->animalCode_id_p = $request->animalCode_id_p;
         $re->actual_state = $request->actual_state;
         
-        $re->save(); 
+        $re->save();
+        
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL INTERNA';
+
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animal as $i ){
+            if($request->animalCode_id_m == $i->id){
+                    $animal_Code=$i->animalCode;
+                    $actvividad->data = $animal_Code;
+            }
+        }
+        
+        
+        $actvividad->subject_type =('App\Models\File_reproduction_internal');
+    
+        $actvividad->save();
         return redirect('/fichaReproduccionM');
     }
 

@@ -47,7 +47,7 @@ Registro Control de Desparasitación
             <button type="submit" class="btn btn-success btn"  style="margin: 10px" href="{{ Redirect::to('/controlDesparasitacion') }}" >Guardar</button>
     </div>
     </center>
-       
+    @include('layouts.base-usuario')
     </form>
     </div>
     

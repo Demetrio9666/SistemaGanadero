@@ -35,7 +35,7 @@
             <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/confVacuna') }}" >Actualizar</button>
         </div>
     </center>  
-   
+    @include('layouts.base-usuario')
 </form>
 @endsection
 

@@ -52,7 +52,7 @@ Editar Peso de Animales Inactivas
         
 
     </div>
-    
+    @include('layouts.base-usuario')
 </form>
 @endsection
 

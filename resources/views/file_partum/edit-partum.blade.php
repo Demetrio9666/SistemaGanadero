@@ -16,7 +16,7 @@
                                                     <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                                     <span class="input-group-text" id="basic-addon1">Código</span>
                                                     <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
-                                                    @foreach ($animalP as $i)
+                                                    @foreach ($animal as $i)
                                                                 @if ($par->animalCode_id == $i->id )
                                                                     value =" {{$i->animalCode}} "
                                                                 @endif
@@ -67,7 +67,9 @@
                                                 <button type="submit" class="btn btn-success "  style="margin: 10px" href="{{ Redirect::to('/fichaParto') }}" >Guardar</button>
                                         </div>
                                 </center>
+                                @include('layouts.base-usuario')
                             </form>
+                            
                     </div>
 
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Dewormer;
+use Spatie\Activitylog\Models\Activity;
 
 class DewormerInactivosController extends Controller
 {
@@ -84,6 +85,23 @@ class DewormerInactivosController extends Controller
         $desp = Dewormer::findOrFail($id);
         $desp->actual_state = $request->actual_state;
         $desp->save(); 
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO DESPARASITANTE INACTIVO';
+        $actvividad->data = $request->dewormer_d;
+        $actvividad->subject_type =('App\Models\Dewormer');
+        
+        $actvividad->save();
         return redirect('inactivos/Desparasitantes');
     }
 

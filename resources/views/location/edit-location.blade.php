@@ -27,6 +27,6 @@ Editar ubicación
             <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/confUbicacion') }}" >Actualizar</button>
         </div>
     </center>
- 
+    @include('layouts.base-usuario')
 </form>
 @endsection
