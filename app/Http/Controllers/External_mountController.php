@@ -77,13 +77,6 @@ class External_mountController extends Controller
     }
 
 
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $raza = DB::table('race')
@@ -93,6 +86,7 @@ class External_mountController extends Controller
                     'race.actual_state')
                     ->where('race.actual_state','=','Disponible')
                     ->get();
+        
 
         $animaleEX= DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
@@ -101,19 +95,14 @@ class External_mountController extends Controller
                     'file_animale.age_month',
                     'race.race_d',
                     'file_animale.sex')
-                    ->where('file_animale.actual_state','=','REPRODUCIÓN')
+                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
                     ->where('file_animale.stage','=','Vaca')
                     ->get();
         
         return view('file_reproductionME.create-external_M',compact('raza','animaleEX'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(StoreFile_reproductionEX $request)
     {
         $ext = new File_reproduction_external();
@@ -161,23 +150,13 @@ class External_mountController extends Controller
         return redirect('/fichaReproduccionEx');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         return view('file_reproductionME.edit-external_M',compact('id'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $ext =  File_reproduction_external::findOrFail($id);
@@ -203,13 +182,6 @@ class External_mountController extends Controller
         return view('file_reproductionME.edit-external_M',compact('ext','raza','animaleEX'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(StoreFile_reproductionEX $request, $id)
     {
         $ext =  File_reproduction_external::findOrFail($id);
@@ -257,18 +229,4 @@ class External_mountController extends Controller
         return redirect('/fichaReproduccionEx');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
- 
-
-    public function destroy($id)
-    {
-       
-
-    }
 }

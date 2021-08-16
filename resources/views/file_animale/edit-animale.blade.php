@@ -114,7 +114,7 @@
                     <option value="DISPONIBLE" @if($animal->actual_state == "DISPONIBLE" ) selected @endif>DISPONIBLE</option>
                     <option value="VENDIDO"    @if($animal->actual_state == "VENDIDO" ) selected @endif>VENDIDO</option>
                     <option value="INACTIVO"   @if($animal->actual_state == "INACTIVO" ) selected @endif>INACTIVO</option>
-                    <option value="REPRODUCIÓN"  @if($animal->actual_state == "REPRODUCIÓN" ) selected @endif>REPRODUCIÓN</option>
+                    <option value="REPRODUCCIÓN"  @if($animal->actual_state == "REPRODUCCIÓN" ) selected @endif>REPRODUCIÓN</option>
             </select>
             </div>
             <center>

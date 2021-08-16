@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class LogController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:actividad.index')->only('index');
+       
+    }
    
     public function index()
     {

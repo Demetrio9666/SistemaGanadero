@@ -59,6 +59,9 @@
         <li class="nav-item">
             <a class="nav-link" id="tab17" data-toggle="tab" href="#t19" role="tab" aria-controls="usuario" aria-selected="false">Usuario</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="tab18" data-toggle="tab" href="#t20" role="tab" aria-controls="actividad" aria-selected="false">Actividad de Usuario</a>
+        </li>
         
     </ul>
     <div class="tab-content" id="animal">
@@ -494,6 +497,29 @@
                     </thead>
                     <tbody>  
                         @foreach ($usuario as $i)          
+                        <tr >
+                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
+                            <td >{{$i->description}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="t20" role="tabpanel" aria-labelledby="contact-tab10">
+            <div class="card">
+                <div class="card-body">
+                <table id="" class="table"  >
+                    <thead>             
+                        <tr>
+                            <th >Acción</th>
+                            <th >Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>  
+                        @foreach ($actividad as $i)          
                         <tr >
                             <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
                             <td >{{$i->description}}</td>

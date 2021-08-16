@@ -301,6 +301,9 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=>'usuarios.destroy',
                             'description'=>'Eliminar Usuarios'])->syncRoles([$admin]);
 
+        Permission::create(['name'=>'actividad.index',
+                            'description'=>'Visualizar Actividad de Usuario'])->syncRoles([$admin]);
+
        
         
     }

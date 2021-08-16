@@ -110,11 +110,15 @@ class Rolecontroller extends Controller
                 ->select('id','description')
                 ->whereBetween('id',[75,78])
                 ->get();
+        $actividad  = DB::table('permissions')
+                ->select('id','description')
+                ->where('id',79)
+                ->get();
         
         
         return view('admin.create-rol',compact('fichaAnimales','fichaParto','fichaTratamiento',
                     'reproduccion','controlVacuna','controlPeso','controlDesp','controlPrenes','confDesp','confVacuna','confVitamina',
-                   'confAntibiotico','confMaterial','confMaterial','confUbicacion','confRaza','dashboard','roles','rolUsuario','usuario'));
+                   'confAntibiotico','confMaterial','confMaterial','confUbicacion','confRaza','dashboard','roles','rolUsuario','usuario','actividad'));
     }
 
     /**
@@ -241,11 +245,15 @@ class Rolecontroller extends Controller
                 ->select('id','description')
                 ->whereBetween('id',[75,78])
                 ->get();
+        $actividad  = DB::table('permissions')
+                ->select('id','description')
+                ->where('id',79)
+                ->get();
 
 
         return view('admin.edit-rol',compact('fichaAnimales','fichaParto','fichaTratamiento',
                           'reproduccion','controlVacuna','controlPeso','controlDesp','controlPrenes','confDesp','confVacuna','confVitamina',
-                          'confAntibiotico','confMaterial','confMaterial','confUbicacion','confRaza','dashboard','roles','rolUsuario','usuario','rol'));             
+                          'confAntibiotico','confMaterial','confMaterial','confUbicacion','confRaza','dashboard','roles','rolUsuario','usuario','rol','actividad'));             
     }
 
     /**

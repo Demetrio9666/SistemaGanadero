@@ -204,7 +204,7 @@ class File_reproductionMController extends Controller
                     'file_animale.age_month',
                     'race.race_d',
                     'file_animale.sex')
-                    ->Where('file_animale.actual_state','=','REPRODUCIÓN')
+                    ->Where('file_animale.actual_state','=','REPRODUCCIÓN')
                     ->Where('file_animale.stage','=','Toro')
                     ->get();
             $animalRH= DB::table('file_animale')
@@ -214,7 +214,7 @@ class File_reproductionMController extends Controller
                     'file_animale.age_month',
                     'race.race_d',
                     'file_animale.sex')
-                    ->Where('file_animale.actual_state','=','REPRODUCIÓN')
+                    ->Where('file_animale.actual_state','=','REPRODUCCIÓN')
                     ->where('file_animale.stage','=','Vaca')
                     
                     ->get();

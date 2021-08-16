@@ -20,7 +20,7 @@ Asignación de Roles
                 <a type="button"  class="btn btn-secondary mt-2"   href="{{url('/usuarios')}}">Cancelar</a>
                 {!! Form::submit('Asignación', ['class'=>'btn btn-success mt-2 ']) !!}
             </center>
-            
+            @include('layouts.base-usuario')
         {!! Form::close() !!}
 @endsection
 

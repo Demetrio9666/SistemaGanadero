@@ -23,8 +23,8 @@ Fichas de Animales
                     <th>Edad-meses</th>
                     <th>Salud</th>
                     <th>Embarazo</th>
-                    <th>localización</th>
                     <th>Estado Actual</th> 
+                    <th>localización</th>
                     <th>Concebido</th>  
                     <th>Acción</th>
                 </tr>
@@ -44,8 +44,8 @@ Fichas de Animales
                     <td ><?php echo e($i->age_month); ?></td>
                     <td ><?php echo e($i->health_condition); ?></td>
                     <td ><?php echo e($i->gestation_state); ?></td>
-                    <td ><?php echo e($i->ubicacion); ?></td>
                     <td ><?php echo e($i->actual_state); ?></td>
+                    <td ><?php echo e($i->ubicacion); ?></td>
                     <td ><?php echo e($i->conceived); ?></td>
                     <td>
                         <a class="btn btn-primary" href="<?php echo e(route('inactivos.fichaAnimales.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>

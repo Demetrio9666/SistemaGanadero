@@ -86,11 +86,12 @@ class File_reproductionAController extends Controller
                         'file_animale.age_month',
                         'race.race_d',
                         'file_animale.sex')
-                        ->where('file_animale.actual_state','=','REPRODUCIÓN')
+                        ->where('file_animale.actual_state','=','REPRODUCCIÓN')
                         ->where('file_animale.stage','=','VACA','AND','file_animale.gestation_state','=','NO')
-                        
-     
                 ->get();
+
+
+        
 
         $raza = DB::table('race')
                         ->select('race.id',
@@ -101,7 +102,7 @@ class File_reproductionAController extends Controller
                 ->get();
 
 
-       /* $re_A = DB::table('file_reproduction_artificial')
+       $re_A = DB::table('file_reproduction_artificial')
                         ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
                         ->join('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
                         ->join('race as f','file_animale.race_id','=','f.id')
@@ -113,7 +114,8 @@ class File_reproductionAController extends Controller
                                 'artificial_reproduction.reproduccion as tipo', 
                                 'a.race_d as raza_m'
                                 )->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
-                        ->get(); */
+                        ->get();
+
         $arti= DB::table('artificial_Reproduction')
                         ->join('race','artificial_Reproduction.race_id','=','race.id')
                         ->select('artificial_Reproduction.id',
@@ -193,6 +195,7 @@ class File_reproductionAController extends Controller
     public function edit($id)
     {
         $re =  File_reproduction_artificial::findOrFail($id);
+
         $animalRH= DB::table('file_animale')
                         ->join('race','file_animale.race_id','=','race.id')
                         ->select('file_animale.id',
@@ -200,12 +203,13 @@ class File_reproductionAController extends Controller
                         'file_animale.age_month',
                         'race.race_d',
                         'file_animale.sex')
-                        ->where('file_animale.actual_state','=','REPRODUCIÓN')
+                        ->where('file_animale.actual_state','=','REPRODUCCIÓN')
                         ->where('file_animale.stage','=','VACA','AND','file_animale.gestation_state','=','NO')
                         
      
                 ->get();
         $raza =Race::all();
+
         $re_A = DB::table('file_reproduction_artificial')
                     ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
                     ->join('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
@@ -239,18 +243,17 @@ class File_reproductionAController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreFile_reproductionA $request, $id)
+    public function update(Request $request, $id)
     {
         $re =  File_reproduction_artificial::findOrFail($id);
-        
         
         $re->date= $request->date;
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->artificial_id = $request->artificial_id;
         $re->actual_state = $request->actual_state;
         
-        $re->save(); 
-
+        $re->save();
+        
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;

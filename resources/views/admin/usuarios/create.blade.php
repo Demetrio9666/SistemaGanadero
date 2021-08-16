@@ -41,6 +41,6 @@
             <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/usuarios') }}" >Guardar</button>
         </div>
     </center>
-
+    @include('layouts.base-usuario')
 </form>
 @endsection

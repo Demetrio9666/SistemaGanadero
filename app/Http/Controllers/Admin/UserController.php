@@ -10,6 +10,7 @@ use App\Http\Requests\StoreUser;
 use App\Models\User;
 //use App\Model\User;
 use Spatie\Permission\Models\Role;
+use Spatie\Activitylog\Models\Activity;
 
 class UserController extends Controller
 {
@@ -41,9 +42,25 @@ class UserController extends Controller
         $usuario->password = bcrypt($request->password);
         $usuario->save(); 
         $usuario->roles()->sync([3]);
+
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('CREAR');
+        $actvividad->view ='REGISTRO USUARIO';
+
+        $actvividad->data = $request->nombreU.'-'.$request->correoU;
+        $actvividad->subject_type =(' App\Models\User');
+        
+        $actvividad->save();
        
-
-
 
         return redirect('/usuarios');
 
@@ -85,6 +102,23 @@ class UserController extends Controller
         $usuario->roles()->sync($request->roles);
 
         //return redirect()->route('usuarios.index');
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ACTUALIZAR');
+        $actvividad->view ='REGISTRO USUARIO';
+
+        $actvividad->data = $usuario->name.'-'.$usuario->email;
+        $actvividad->subject_type =(' App\Models\User');
+        
+        $actvividad->save();
         return redirect('/usuarios');
     }
 
@@ -94,8 +128,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id )
+    public function destroy(Request $request , $id )
     {
-        //
+        $usuario = User::findOrFail($id);
+        $actvividad = new  Activity();
+        $actvividad->log_name = $request->usuario;
+        $actvividad->email = $request->correo;
+
+        $super= str_replace('"','',$request->rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$request->id;
+        $actvividad->description =('ELIMINAR');
+        $actvividad->view ='REGISTRO USUARIO';
+
+        $actvividad->data = $usuario->name.'-'.$usuario->email;
+        $actvividad->subject_type =(' App\Models\User');
+        
+        $actvividad->save();
+        $usuario->delete();
+        return redirect('/usuarios')->with('eliminar','ok');
     }
 }

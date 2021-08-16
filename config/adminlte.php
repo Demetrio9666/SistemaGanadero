@@ -252,6 +252,7 @@ return [
             'text'=>'Actividad de Usuario',
             'url'=>'/actividad-usuario',
             'icon'=>'fas fa-suitcase',
+            'can'=>'actividad.index',
 
         ],
        

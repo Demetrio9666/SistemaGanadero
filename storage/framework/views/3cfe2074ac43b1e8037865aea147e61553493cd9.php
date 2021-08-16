@@ -18,19 +18,17 @@
             </thead>
             <tbody>
                 
-                  <?php $__currentLoopData = $animalRH; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
-                  <tr>
-                      <td><?php echo e($i->id); ?></td>
-                      <td><?php echo e($i->animalCode); ?></td>
-                      <td><?php echo e($i->race_d); ?></td>
-                      <td><?php echo e($i->age_month); ?></td>
-                      <td><?php echo e($i->sex); ?></td>
-                     
-                      
-                      <td> <button type="button" class="btn btn-success btn-lg   btselect"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
-                      
-                    </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>        
+                    <?php $__currentLoopData = $animalRH; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
+                    <tr>
+                        <td><?php echo e($i->id); ?></td>
+                        <td><?php echo e($i->animalCode); ?></td>
+                        <td><?php echo e($i->race_d); ?></td>
+                        <td><?php echo e($i->age_month); ?></td>
+                        <td><?php echo e($i->sex); ?></td>
+                        <td> <button type="button" class="btn btn-success btn-lg   btselect"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
+                        
+                      </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>        
                  
             </tbody>
             <tfoot>

@@ -27,21 +27,21 @@
        $('#modalanimal').on('shown.bs.modal', function () {
         $('#myInput2').trigger('focus')
       });
-
-           $(".btselect").on('click',function(){
-                var currentRow = $(this).closest("tr");
-                var col1=currentRow.find("td:eq(0)").text();
-                var col2=currentRow.find("td:eq(1)").text();
-                var col3=currentRow.find("td:eq(2)").text();
-                var col4=currentRow.find("td:eq(3)").text();
-                var col5=currentRow.find("td:eq(4)").text();
-                
-                $("#idcodi").val(col1);
-                $("#codigo_animal").val(col2);
-                $("#raza").val(col3);
-                $("#edad").val(col4);
-                $("#sexo").val(col5);
-           });
+      $(".btselect").on('click',function(){
+             var currentRow = $(this).closest("tr");
+             var col1=currentRow.find("td:eq(0)").text();
+             var col2=currentRow.find("td:eq(1)").text();
+             var col3=currentRow.find("td:eq(2)").text();
+             var col4=currentRow.find("td:eq(3)").text();
+             var col5=currentRow.find("td:eq(4)").text();
+             
+             $("#idcodi").val(col1);
+             $("#codigo_animal").val(col2);
+             $("#raza").val(col3);
+             $("#edad").val(col4);
+             $("#sexo").val(col5);
+        });
+         
 
            $(".btselect3").on('click',function(){
                 var currentRow = $(this).closest("tr");
@@ -58,7 +58,7 @@
                 
            });
 </script>
-
 <?php $__env->stopSection(); ?>
- 
+
+
 <?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/file_reproductionA/base.blade.php ENDPATH**/ ?>

@@ -37,9 +37,9 @@ class File_animaleController extends Controller
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
                             ,'file_animale.conceived')
-                            ->where('file_animale.actual_state', '=', 'DISPONIBLE' )
-                            ->orwhere('file_animale.actual_state', '=','REPRODUCIÓN')
-                            ->orwhere('file_animale.actual_state', '=','VENDIDO')
+                            ->where('file_animale.actual_state','=','DISPONIBLE')
+                            ->orwhere('file_animale.actual_state','=','REPRODUCCIÓN')
+                            ->orwhere('file_animale.actual_state','=','VENDIDO')
                             
                             
                     ->get();
@@ -56,7 +56,7 @@ class File_animaleController extends Controller
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
                             ,'file_animale.conceived')
-                            ->where('file_animale.actual_state', '=', 'DISPONIBLE' )->Orwhere('file_animale.actual_state', '=', 'REPRODUCCION')
+                            ->where('file_animale.actual_state','=','DISPONIBLE' )->Orwhere('file_animale.actual_state','=','REPRODUCCIÓN')
                     ->get();
                 
         $pdf = PDF::loadView('file_animale.pdf',compact('animal'));
