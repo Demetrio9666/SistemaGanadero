@@ -79,17 +79,56 @@ class File_reproductionAController extends Controller
      */
     public function create()
     {
-        $animalRH= DB::table('file_animale')
+
+        $re_A = DB::table('file_reproduction_artificial')
+                ->select(
+                        'animalCode_id_m',
+                        )->where('actual_state','=','DISPONIBLE')
+                ->get();
+
+        
+       /* $animalRH= DB::table('file_animale')
                         ->join('race','file_animale.race_id','=','race.id')
                         ->select('file_animale.id',
                         'file_animale.animalCode',
                         'file_animale.age_month',
                         'race.race_d',
                         'file_animale.sex')
-                        ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                        ->where('file_animale.stage','=','VACA','AND','file_animale.gestation_state','=','NO')
-                ->get();
+                        ->where(function($query){
+                                            $query = DB::table('file_reproduction_artificial')
+                                            ->select(
+                                                    'animalCode_id_m',
+                                                    )->where('file_animale.animalCode','!=','file_reproduction_artificial.animalCode_id_m')
+                                                     //->where('file_reproduction_artificial.actual_state','=','DISPONIBLE');
+                                            -
+            
+                          })
+                        //->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                        //->where('file_animale.stage','=','VACA','AND','file_animale.gestation_state','=','NO')
+                       ->get();*/
 
+
+
+                      
+
+                       $animalRH= DB::table('file_animale')
+                                    ->join('race','file_animale.race_id','=','race.id')
+                                    ->select('file_animale.id',
+                                    'file_animale.animalCode',
+                                    'file_animale.age_month',
+                                    'race.race_d',
+                                    'file_animale.sex')
+                                    //->where('file_animale.animalCode','!=')
+                                        /*->where(function($query){
+                                                            $query->select( 'animalCode_id_m')
+                                                            ->from('file_reproduction_artificial')
+                                                            ->where('file_animale.animalCode','!=','file_reproduction_artificial.animalCode_id_m')
+                                                            ->get();
+                                                            //->where('file_reproduction_artificial.actual_state','=','DISPONIBLE');
+                                            })*/
+                          ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                          ->where('file_animale.stage','=','VACA','AND','file_animale.gestation_state','=','NO')
+                      ->get();
 
         
 
@@ -102,19 +141,8 @@ class File_reproductionAController extends Controller
                 ->get();
 
 
-       $re_A = DB::table('file_reproduction_artificial')
-                        ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
-                        ->join('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
-                        ->join('race as f','file_animale.race_id','=','f.id')
-                        ->Join('race as a','artificial_reproduction.race_id','=','a.id')
-                        ->select('file_reproduction_artificial.id',
-                                'file_reproduction_artificial.date as fecha_A',
-                                'file_animale.animalCode as animalA',
-                                'f.race_d as raza_h',  
-                                'artificial_reproduction.reproduccion as tipo', 
-                                'a.race_d as raza_m'
-                                )->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
-                        ->get();
+      
+
 
         $arti= DB::table('artificial_Reproduction')
                         ->join('race','artificial_Reproduction.race_id','=','race.id')
@@ -127,6 +155,7 @@ class File_reproductionAController extends Controller
 
        
         return view('file_reproductionA.create-reproductionA',compact('raza','animalRH','arti'));
+       //return $animalRH;
     }
 
     /**
@@ -253,7 +282,7 @@ class File_reproductionAController extends Controller
         $re->actual_state = $request->actual_state;
         
         $re->save();
-        
+
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
