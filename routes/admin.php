@@ -66,7 +66,7 @@ Route::get('actividad-usuario',[logController::class,'index']);
 //FICHA ANIMALES
 Route::resource('inactivos/fichaAnimales',AnimalesInactivosController::class)->names('inactivos.fichaAnimales');
 Route::resource('fichaAnimal',File_animaleController::class)->names('fichaAnimal');
-Route::get('descarga-pdf-fichaAnimal',[File_animaleController::class,'PDF']);
+Route::get('descarga-pdf-fichaAnimal',[File_animaleController::class,'PDF'])->name('fichaAnimal.PDF');
 Route::get('exportar-excel-fichaAnimal',[File_animaleController::class,'Excel']);
 
 

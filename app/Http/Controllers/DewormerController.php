@@ -9,6 +9,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DewormerExport;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 
 class DewormerController extends Controller
 {
@@ -44,6 +45,28 @@ class DewormerController extends Controller
                 ->where('dewormer.actual_state','=','DISPONIBLE')
         ->get();
         $pdf = PDF::loadView('dewormer.pdf',compact('desp'));
+
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('name');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='REGISTRO DESPARASITANTE';
+        $actvividad->data ='RegistrosDesparasitantes.pdf';
+        $actvividad->subject_type =('App\Models\Dewormer');
+        
+        $actvividad->save();
+
         return $pdf->setPaper('a4','landscape')->download('RegistrosDesparasitantes.pdf');
     }
     public function Excel(){

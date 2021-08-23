@@ -43,4 +43,5 @@ Fichas de Animales
     </tbody>
 </table>
 @endsection
-
+<form>
+</form>

@@ -27,4 +27,5 @@ Registros de Control de Desparacitaciones
     </tbody>
 </table>
 @endsection
-
+<form>
+</form>

@@ -28,3 +28,5 @@ Fichas de Controles de Pesos
     </tbody>
 </table>
 @endsection
+<form>
+</form>

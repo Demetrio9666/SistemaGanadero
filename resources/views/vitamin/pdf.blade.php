@@ -27,3 +27,5 @@ Registros de Vitaminas
     </tbody>
 </table>
 @endsection
+<form>
+</form>

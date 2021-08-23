@@ -33,3 +33,5 @@ Fichas de Partos
     </tbody>
 </table>
 @endsection
+<form>
+</form>

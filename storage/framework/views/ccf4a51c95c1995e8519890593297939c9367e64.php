@@ -43,6 +43,7 @@ Fichas de Animales
     </tbody>
 </table>
 <?php $__env->stopSection(); ?>
-
+<form>
+</form>
 
 <?php echo $__env->make('layouts.pdf', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/file_animale/pdf.blade.php ENDPATH**/ ?>

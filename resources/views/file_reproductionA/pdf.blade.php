@@ -29,3 +29,5 @@ Fichas de Reproducción Artificial
     </tbody>
 </table>
 @endsection
+<form>
+</form>

@@ -39,3 +39,5 @@ Fichas de Reproducción por Monta Natural Externa
     </tbody>
 </table>
 @endsection
+<form>
+</form>

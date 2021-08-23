@@ -13,6 +13,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\Vaccine_controlExport;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 
 class Vaccine_controlController extends Controller
 {
@@ -52,6 +53,31 @@ class Vaccine_controlController extends Controller
                             )->where('vaccine_control.actual_state','=','DISPONIBLE')
                     ->get();
         $pdf = PDF::loadView('vaccineC.pdf',compact('vacunaC'));
+
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('name');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='CONTROL VACUNACION';
+
+        
+        $actvividad->data = 'ControlVacunas.pdf';
+   
+        
+        $actvividad->subject_type =('App\Models\Vaccine_control');
+    
+        $actvividad->save();
         return $pdf->setPaper('a4','landscape')->download('ControlVacunas.pdf');
     }
     public function Excel(){

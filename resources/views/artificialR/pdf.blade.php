@@ -27,4 +27,5 @@ Registros de Materiales Genéticos
     </tbody>
 </table>
 @endsection
-
+<form>
+</form>

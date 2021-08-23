@@ -38,3 +38,5 @@ Fichas de Reproducción por Monta Natural Interna
     </tbody>
 </table>
 @endsection
+<form>
+</form>

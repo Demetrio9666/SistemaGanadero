@@ -34,3 +34,5 @@ Fichas de Control de Preñes
     </tbody>
 </table>
 @endsection
+<form>
+</form>

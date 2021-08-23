@@ -27,3 +27,5 @@ Fichas de Controles de Vacunaciones
     </tbody>
 </table>
 @endsection
+<form>
+</form>

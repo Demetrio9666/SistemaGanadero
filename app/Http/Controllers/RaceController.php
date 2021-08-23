@@ -10,6 +10,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\RaceExport;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 
 class RaceController extends Controller
 {
@@ -41,6 +42,27 @@ class RaceController extends Controller
                     ->where('race.actual_state','=','Disponible')
                     ->get();
         $pdf = PDF::loadView('race.pdf',compact('raza'));
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('name');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='REGISTRO RAZA';
+
+        $actvividad->data = 'RegistroRazas.pdf';
+        $actvividad->subject_type =('App\Models\Race');
+        
+        $actvividad->save();
         return $pdf->setPaper('a4','landscape')->download('RegistroRazas.pdf');
         
     }

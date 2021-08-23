@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\Deworming_controlExport;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 
 class Deworming_controlController extends Controller
 {
@@ -51,6 +52,28 @@ class Deworming_controlController extends Controller
                          ->where('deworming_control.actual_state','=','Disponible')
                 ->get();
                 $pdf = PDF::loadView('dewormerC.pdf',compact('desC'));
+
+                $actvividad = new  Activity();
+                $user = Auth::user()->name;
+                $id = Auth::user()->id;
+                $rol = Auth::user()->roles->pluck('name');
+                $correo = Auth::user()->email;
+                $actvividad->log_name = $user;
+                $actvividad->email = $correo;
+         
+                $super= str_replace('"','',$rol);
+                $super2= str_replace('[','',$super);
+                $super3= str_replace(']','',$super2);
+         
+                $actvividad->rol =$super3 ;
+                $actvividad->subject_id =$id;
+                $actvividad->description =('DESCARGA');
+                $actvividad->data = 'ControlDesparacitacion.pdf';
+                $actvividad->view ='CONTROL DESPARASITACION';
+
+                $actvividad->subject_type =('App\Models\Deworming_control');
+            
+                $actvividad->save();
                 return $pdf->setPaper('a4','landscape')->download('ControlDesparacitacion.pdf');
 
     }

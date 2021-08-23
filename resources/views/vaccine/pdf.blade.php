@@ -27,4 +27,5 @@ Registros de Vacunas
     </tbody>
 </table>
 @endsection
-    
+<form>
+</form>  

@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\File_treatmentExport;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 
 class File_treatmentController extends Controller
 {
@@ -61,6 +62,27 @@ class File_treatmentController extends Controller
                 
         ->get();
         $pdf = PDF::loadView('file_treatment.pdf',compact('tra'));
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('name');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA TRATAMIENTO';
+        $actvividad->data = 'FichaTratamiento.pdf';
+        $actvividad->subject_type =('App\Models\File_treatment');
+    
+        $actvividad->save();
+
         return $pdf->setPaper('a4','landscape')->download('FichaTratamiento.pdf');
     }
     public function Excel() {

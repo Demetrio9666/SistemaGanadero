@@ -32,3 +32,5 @@ Fichas de Tratamientos
                 </tbody>
             </table>
 @endsection
+<form>
+</form>

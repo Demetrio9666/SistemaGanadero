@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 
 
 class File_animaleController extends Controller
@@ -48,7 +49,7 @@ class File_animaleController extends Controller
 
     }
 
-    public function PDF(){
+    public function PDF(Request $request){
                     $animal = DB::table('file_animale')
                     ->leftJoin('race','file_animale.race_id','=','race.id')
                     ->leftJoin('location','file_animale.location_id','=','location.id')
@@ -62,9 +63,32 @@ class File_animaleController extends Controller
         $pdf = PDF::loadView('file_animale.pdf',compact('animal'));
 
         //return $pdf->download('codingdriver.pdf');
-       // return $pdf->setPaper('a4','landscape')->stream('FichaAnimal.pdf');
-       return $pdf->setPaper('a4','landscape')->download('FichaAnimal.pdf');
+       
+       
+       $actvividad = new  Activity();
+       $user = Auth::user()->name;
+       $id = Auth::user()->id;
+       $rol = Auth::user()->roles->pluck('name');
+       $correo = Auth::user()->email;
+       $actvividad->log_name = $user;
+       $actvividad->email = $correo;
 
+       $super= str_replace('"','',$rol);
+       $super2= str_replace('[','',$super);
+       $super3= str_replace(']','',$super2);
+
+       $actvividad->rol =$super3;
+       $actvividad->subject_id =$id;
+       $actvividad->description =('DESCARGA');
+       $actvividad->view ='FICHA ANIMAL';
+       $actvividad->data ='FichaAnimal.pdf';
+       $actvividad->subject_type =('App\Models\File_Animale');
+   
+       //return $actvividad;
+       $actvividad->save();
+
+       return $pdf->setPaper('a4','landscape')->download('FichaAnimal.pdf');
+       //return $pdf->setPaper('a4','landscape')->stream('FichaAnimal.pdf');
        // return view('file_animale.pdf',compact('animal'));
 }
 

@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\File_reproduction_artificialExport;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
 
 class File_reproductionAController extends Controller
 {
@@ -62,6 +63,27 @@ class File_reproductionAController extends Controller
                             
                     ->get(); 
         $pdf = PDF::loadView('file_reproductionA.pdf',compact('re_A'));
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('name');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA REPRODUCCION ARTIFICIAL';
+        $actvividad->data='FichaReproduccionArtificial.pdf';
+        $actvividad->subject_type =('App\Models\File_reproduction_artificial');
+    
+        $actvividad->save();
+
         return $pdf->setPaper('a4','landscape')->download('FichaReproduccionArtificial.pdf');
 
     }

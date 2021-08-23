@@ -23,3 +23,5 @@ Registros de Ubicaciones
     </tbody>
 </table>
 @endsection
+<form>
+</form>

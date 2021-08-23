@@ -23,3 +23,5 @@ Registros de Razas
     </tbody>
 </table>
 @endsection
+<form>
+</form>

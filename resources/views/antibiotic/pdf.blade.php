@@ -27,3 +27,5 @@ Registros de Antibióticos
     </tbody>
 </table>
 @endsection
+<form>
+</form>
