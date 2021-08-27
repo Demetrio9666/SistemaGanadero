@@ -40,7 +40,10 @@ Fichas de Controles de Pesos
             <td >{{$i->date_r}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('controlPeso.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>                      
+                <center>
+                    <a class="btn btn-primary" href="{{route('controlPeso.edit',$i->id)}}" ><i class="fas fa-edit"></i></a> 
+                </center>
+                                     
             </td>  
         </tr>
         @endforeach

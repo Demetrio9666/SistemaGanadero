@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="col-md-6">
                                         <div class="input-group mb-3" style="margin: 40px">
-                                                    <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                                                    <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                                     <span class="input-group-text" id="basic-addon1">Código</span>
                                                     <input type="text"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
                                                     @foreach ($animal as $i)

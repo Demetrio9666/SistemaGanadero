@@ -66,7 +66,7 @@ class File_reproductionAController extends Controller
         $actvividad = new  Activity();
         $user = Auth::user()->name;
         $id = Auth::user()->id;
-        $rol = Auth::user()->roles->pluck('name');
+        $rol = Auth::user()->roles->pluck('rol');
         $correo = Auth::user()->email;
         $actvividad->log_name = $user;
         $actvividad->email = $correo;
@@ -84,7 +84,7 @@ class File_reproductionAController extends Controller
     
         $actvividad->save();
 
-        return $pdf->setPaper('a4','landscape')->download('FichaReproduccionArtificial.pdf');
+        return $pdf->setPaper('a4','landscape')->download('FichaReproduccionArtificial-'.date('Y-m-d H:i:s').'.pdf');
 
     }
     public function Excel(){
@@ -140,16 +140,9 @@ class File_reproductionAController extends Controller
                                     'file_animale.age_month',
                                     'race.race_d',
                                     'file_animale.sex')
-                                    //->where('file_animale.animalCode','!=')
-                                        /*->where(function($query){
-                                                            $query->select( 'animalCode_id_m')
-                                                            ->from('file_reproduction_artificial')
-                                                            ->where('file_animale.animalCode','!=','file_reproduction_artificial.animalCode_id_m')
-                                                            ->get();
-                                                            //->where('file_reproduction_artificial.actual_state','=','DISPONIBLE');
-                                            })*/
                           ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                          ->where('file_animale.stage','=','VACA','AND','file_animale.gestation_state','=','NO')
+                          ->where('file_animale.stage','=','VACA')
+                         
                       ->get();
 
         
@@ -162,8 +155,6 @@ class File_reproductionAController extends Controller
                         ->where('race.actual_state','=','DISPONIBLE')
                 ->get();
 
-
-      
 
 
         $arti= DB::table('artificial_Reproduction')

@@ -41,7 +41,10 @@ Registros de Antibióticos
             <td ><?php echo e($i->supplier); ?></td>
             <td ><?php echo e($i->actual_state); ?></td>
             <td>
-                <a class="btn btn-primary" href="<?php echo e(route('confAnt.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
+                <center>
+                    <a class="btn btn-primary" href="<?php echo e(route('confAnt.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
+                </center>
+               
                                       
             </td>  
         </tr>

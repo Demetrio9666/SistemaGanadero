@@ -40,7 +40,10 @@ Fichas de Controles de Pesos
             <td ><?php echo e($i->date_r); ?></td>
             <td ><?php echo e($i->actual_state); ?></td>
             <td>
-                <a class="btn btn-primary" href="<?php echo e(route('controlPeso.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>                      
+                <center>
+                    <a class="btn btn-primary" href="<?php echo e(route('controlPeso.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a> 
+                </center>
+                                     
             </td>  
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

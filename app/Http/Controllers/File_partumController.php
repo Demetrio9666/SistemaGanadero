@@ -64,7 +64,7 @@ class File_partumController extends Controller
         $actvividad = new  Activity();
         $user = Auth::user()->name;
         $id = Auth::user()->id;
-        $rol = Auth::user()->roles->pluck('name');
+        $rol = Auth::user()->roles->pluck('rol');
         $correo = Auth::user()->email;
         $actvividad->log_name = $user;
         $actvividad->email = $correo;
@@ -81,7 +81,7 @@ class File_partumController extends Controller
         $actvividad->subject_type =('App\Models\File_partum');
     
         $actvividad->save();
-        return $pdf->setPaper('a4','landscape')->download('FichaPartos.pdf');
+        return $pdf->setPaper('a4','landscape')->download('FichaPartos-'.date('Y-m-d H:i:s').'.pdf');
     }
 
     public function Excel(){

@@ -43,6 +43,6 @@
                 document.getElementById("tratamiento").value=x.toUpperCase()
                             
             }
-
+           
         </script>
 @endsection

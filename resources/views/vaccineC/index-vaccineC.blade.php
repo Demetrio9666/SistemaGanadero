@@ -28,7 +28,7 @@ Fichas de Controles de Vacunaciones
             <th>Fecha de la Vacunación</th>
             <th>Código del Animal</th>
             <th>Vacuna</th>
-            <th>Fecha de re-vacunacion</th>
+            <th>Fecha de segunda docis</th>
             <th>Estado Actual</th> 
             <th>Acción</th>
         </tr>
@@ -43,7 +43,10 @@ Fichas de Controles de Vacunaciones
             <td >{{$i->actual_state}}</td>
 
             <td>
-                <a class="btn btn-primary" href="{{route('controlVacuna.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                <center>
+                    <a class="btn btn-primary" href="{{route('controlVacuna.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                </center>
+              
                                         
             </td>  
         </tr>

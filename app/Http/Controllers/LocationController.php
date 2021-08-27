@@ -45,7 +45,7 @@ class LocationController extends Controller
         $actvividad = new  Activity();
         $user = Auth::user()->name;
         $id = Auth::user()->id;
-        $rol = Auth::user()->roles->pluck('name');
+        $rol = Auth::user()->roles->pluck('rol');
         $correo = Auth::user()->email;
         $actvividad->log_name = $user;
         $actvividad->email = $correo;
@@ -63,7 +63,7 @@ class LocationController extends Controller
         
         $actvividad->save();
 
-        return $pdf->setPaper('a4','landscape')->download('RegistroLocalizaciones.pdf');
+        return $pdf->setPaper('a4','landscape')->download('RegistroLocalizaciones-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
         return Excel::download(new LocationExport, 'RegistroLocalizaciones.xlsx');

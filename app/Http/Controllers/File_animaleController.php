@@ -64,11 +64,11 @@ class File_animaleController extends Controller
 
         //return $pdf->download('codingdriver.pdf');
        
-       
+       ///segunda forma de enviar el rol 
        $actvividad = new  Activity();
        $user = Auth::user()->name;
        $id = Auth::user()->id;
-       $rol = Auth::user()->roles->pluck('name');
+       $rol = Auth::user()->roles->pluck('rol');
        $correo = Auth::user()->email;
        $actvividad->log_name = $user;
        $actvividad->email = $correo;
@@ -85,9 +85,9 @@ class File_animaleController extends Controller
        $actvividad->subject_type =('App\Models\File_Animale');
    
        //return $actvividad;
-       $actvividad->save();
-
-       return $pdf->setPaper('a4','landscape')->download('FichaAnimal.pdf');
+       //$actvividad->save();
+       //return date('Y-m-d H:i:s');
+       return $pdf->setPaper('a4','landscape')->download('FichaAnimal-'.date('Y-m-d H:i:s').'.pdf');
        //return $pdf->setPaper('a4','landscape')->stream('FichaAnimal.pdf');
        // return view('file_animale.pdf',compact('animal'));
 }

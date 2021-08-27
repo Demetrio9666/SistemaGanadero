@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'email'=>'demetrio2014gonzalez@gmail.com',
             'password'=> bcrypt('Demetrio96@')
         ])->assignRole('ADMINISTRADOR');
+          
 
         User::create([
             'name'=>'Melanie Yagual',

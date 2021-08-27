@@ -50,7 +50,7 @@ class AntibioticController extends Controller
        $actvividad = new  Activity();
        $user = Auth::user()->name;
        $id = Auth::user()->id;
-       $rol = Auth::user()->roles->pluck('name');
+       $rol = Auth::user()->roles->pluck('rol');
        $correo = Auth::user()->email;
        $actvividad->log_name = $user;
        $actvividad->email = $correo;
@@ -68,12 +68,33 @@ class AntibioticController extends Controller
        
        $actvividad->save();
 
-       return $pdf->setPaper('a4','landscape')->download('RegistrosAntibioticos.pdf');
+       return $pdf->setPaper('a4','landscape')->download('RegistrosAntibioticos-'.date('Y-m-d H:i:s').'.pdf');
 
     }
 
     public function Excel(){
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='REGISTRO ANTIBIOTICO';
+        $actvividad->data = 'RegistrosAntibioticos.xlsx';
+        $actvividad->subject_type =('App\Models\Antibiotic');
+        
+        $actvividad->save();
         return Excel::download(new AntibioticosExport, 'RegistrosAntibioticos.xlsx');
+
     }
 
 

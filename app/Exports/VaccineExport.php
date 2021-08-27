@@ -43,11 +43,11 @@ class VaccineExport implements FromCollection ,WithHeadings,WithColumnWidths, Wi
     {
         return [
             'A'=>5,
-            'B'=>13,
-            'C'=>18,
+            'B'=>22,
+            'C'=>24,
             'D'=>15,
-            'E'=>10, 
-            'F'=>10.89,            
+            'E'=>15, 
+            'F'=>15,            
         ];
     }
     public function styles(Worksheet $sheet)

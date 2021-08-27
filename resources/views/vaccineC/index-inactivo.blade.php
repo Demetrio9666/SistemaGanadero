@@ -17,7 +17,7 @@ Fichas de Controles de Vacunaciones
             <th>Fecha de la Vacunación</th>
             <th>Código del Animal</th>
             <th>Vacuna</th>
-            <th>Fecha de re-vacunación</th>
+            <th>Fecha de segunda docis</th>
             <th>Estado Actual</th> 
             <th>Acción</th>
         </tr>
@@ -32,6 +32,7 @@ Fichas de Controles de Vacunaciones
             <td >{{$i->date_r}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
+                
                 <a class="btn btn-primary" href="{{route('inactivos.controlVacunas.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
                 <form action="{{route('inactivos.controlVacunas.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                     @method('DELETE') 

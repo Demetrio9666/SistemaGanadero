@@ -82,7 +82,7 @@ class File_reproductionMController extends Controller
               $actvividad = new  Activity();
                 $user = Auth::user()->name;
                 $id = Auth::user()->id;
-                $rol = Auth::user()->roles->pluck('name');
+                $rol = Auth::user()->roles->pluck('rol');
                 $correo = Auth::user()->email;
                 $actvividad->log_name = $user;
                 $actvividad->email = $correo;
@@ -99,7 +99,7 @@ class File_reproductionMController extends Controller
                 $actvividad->subject_type =('App\Models\File_reproduction_internal');
             
                 $actvividad->save();
-              return $pdf->setPaper('a4','landscape')->download('FichaReproduccionMontaNaturalInterno.pdf');
+              return $pdf->setPaper('a4','landscape')->download('FichaReproduccionMontaNaturalInterno-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
         return Excel::download(new File_reproduction_internalExport, 'FichaReproduccionMontaNaturalInterno.xlsx');
@@ -126,8 +126,8 @@ class File_reproductionMController extends Controller
                 'file_animale.age_month',
                 'race.race_d',
                 'file_animale.sex')
-                ->Where('file_animale.actual_state','=','REPRODUCIÓN')
-                ->Where('file_animale.stage','=','Toro')
+                ->Where('file_animale.actual_state','=','REPRODUCCIÓN')
+                ->Where('file_animale.stage','=','TORO')
                 
                 ->get();
         $animalRH= DB::table('file_animale')
@@ -137,12 +137,12 @@ class File_reproductionMController extends Controller
                 'file_animale.age_month',
                 'race.race_d',
                 'file_animale.sex')
-                ->Where('file_animale.actual_state','=','REPRODUCIÓN')
-                ->where('file_animale.stage','=','Vaca')
+                ->Where('file_animale.actual_state','=','REPRODUCCIÓN')
+                ->where('file_animale.stage','=','VACA')
                 
                 ->get();
 
-
+          
         return view('file_reproductionM.create-reproduction',compact('raza','animalRM','animalRH'));
     }
 

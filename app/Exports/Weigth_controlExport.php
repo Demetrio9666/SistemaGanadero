@@ -45,11 +45,11 @@ class Weigth_controlExport implements FromCollection ,WithHeadings,WithColumnWid
     {
         return [
             'A'=>5,
-            'B'=>13,
+            'B'=>15.33,
             'C'=>18,
             'D'=>15,
-            'E'=>10, 
-            'F'=>10.89,            
+            'E'=>21.89, 
+            'F'=>15,            
         ];
     }
     public function styles(Worksheet $sheet)

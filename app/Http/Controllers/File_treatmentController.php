@@ -65,7 +65,7 @@ class File_treatmentController extends Controller
         $actvividad = new  Activity();
         $user = Auth::user()->name;
         $id = Auth::user()->id;
-        $rol = Auth::user()->roles->pluck('name');
+        $rol = Auth::user()->roles->pluck('rol');
         $correo = Auth::user()->email;
         $actvividad->log_name = $user;
         $actvividad->email = $correo;
@@ -83,7 +83,7 @@ class File_treatmentController extends Controller
     
         $actvividad->save();
 
-        return $pdf->setPaper('a4','landscape')->download('FichaTratamiento.pdf');
+        return $pdf->setPaper('a4','landscape')->download('FichaTratamiento-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel() {
         return Excel::download(new File_treatmentExport, 'FichaTratamiento.xlsx');
@@ -107,7 +107,7 @@ class File_treatmentController extends Controller
                      
                   )
                   ->where('health_condition','=','Enfermo')
-                  ->where('actual_state','=','Disponible')->orwhere('actual_state','=','Reproduccion')
+                  ->where('actual_state','=','Disponible')
                   
         ->get();
         return view('file_treatment.create-treatment',compact('vitamina','animalT','anti'));
@@ -216,7 +216,7 @@ class File_treatmentController extends Controller
                      
                   )
                   ->where('health_condition','=','Enfermo')
-                  ->where('actual_state','=','Disponible')->orwhere('actual_state','=','Reproduccion')
+                  ->where('actual_state','=','Disponible')
                   
         ->get();
         return view('file_treatment.edit-treatment',compact('vitamina','animalT','anti','tra'));   

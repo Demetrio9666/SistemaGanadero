@@ -51,7 +51,7 @@ Fichas de Reproducción por Monta Natural Interna
             <td >{{$i->sexo_m}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-                <a class="btn btn-primary  " href="{{route('fichaReproduccionM.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                <center> <a class="btn btn-primary  " href="{{route('fichaReproduccionM.edit',$i->id)}}" ><i class="fas fa-edit"></i></a></center>
                                         
             </td>  
         </tr>

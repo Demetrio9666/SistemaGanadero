@@ -79,7 +79,7 @@ class User extends Authenticatable
   // $usuario->roles()->sync($request->roles);
     // $this->getRoleNames();
    public function adminlte_desc() {
-            $rol= $this->roles->pluck('name');
+            $rol= $this->roles->pluck('rol');
             $super= str_replace('"','',$rol);
             $super2= str_replace('[','',$super);
             $super3= str_replace(']','',$super2);

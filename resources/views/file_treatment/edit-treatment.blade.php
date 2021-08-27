@@ -9,12 +9,12 @@ Editar Tratamientos de animales
     <div class="row">
              <div class="col-md-6">
                 <label for="">Fecha de Tratamiento:</label>
-                <input type="date" class="form-control" id="fecha_r" name="date" value="{{$tra->date}}">
+                <input type="date" class="form-control" id="fecha" name="date" value="{{$tra->date}}">
             </div>
             <div class="col-md-6">
                 
                     <div class="input-group mb-3" style="margin: 40px">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                            <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                            
                             <input type="text"  placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
                             @foreach ($animalT as $i)
@@ -81,6 +81,22 @@ Editar Tratamientos de animales
     </div>
     @include('layouts.base-usuario')
 </form>
+<script>
+      ////bloqueo de fechas futuras
+      var today = new Date();
+          var dd = today.getDate();
+          var mm = today.getMonth()+1;
+          var yyyy = today.getFullYear();
+          if(dd<10){
+                  dd='0'+dd
+              } 
+              if(mm<10){
+                  mm='0'+mm
+              } 
+
+          today = yyyy+'-'+mm+'-'+dd;
+          document.getElementById("fecha").setAttribute("max", today);
+</script>
 @endsection
 
 

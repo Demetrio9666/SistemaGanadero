@@ -6,7 +6,7 @@
 <form action="{{route('usuarios.store')}}" method="POST">
     @csrf
     <div class="form-group">
-        <label for="">Nombre:</label>
+        <label for="">Nombre y Apellido:</label>
         <input type="text" class="form-control {{$errors->has('nombreU') ? 'is-invalid':''}}" id="nombre" name="nombreU" value="{{old('nombre')}}">
         
         @error('nombreU')
@@ -14,7 +14,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="">Correo:</label>
+        <label for="">Correo Electrónico:</label>
         <input type="mail" class="form-control {{$errors->has('correoU') ? 'is-invalid':''}}" id="email" name="correoU" value="{{old('correoU')}}">
         @error('correoU')
              <div class="invalid-feedback">{{$message}}</div>

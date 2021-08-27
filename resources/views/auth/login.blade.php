@@ -10,7 +10,7 @@
  
 	 <!--Custom styles-->
 	 
-	 <link rel="stylesheet" type="text/css" href="css/styles.css">
+	 <link rel="stylesheet" type="text/css" href="css/styles1.css">
  </head>
 <body>
 	
@@ -28,10 +28,23 @@
 					{{ session('status') }}
 				</div>
 			@endif
-	
+			
+			<div class="contenedor">
+				<div class="image"></div>
+				<div class="letra">
+					<h1 class="titulo"><strong>SoftGanadoBOVINO</strong></h1>
+				</div>
+				
+			</div>
+				
+			
 			<div class="container">
+				
 				<div class="d-flex justify-content-center h-100">
+			
 					<div class="card">
+						
+						
 						<div class="card-header">
 							<h3>Iniciar</h3>
 							<div class="d-flex justify-content-end social_icon">
@@ -46,7 +59,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text" for="email" value="{{ __('Email') }}"><i class="fas fa-envelope"></i></span>
 									</div>
-									<input class="form-control"  id="email" placeholder="correo" type="email" name="email" :value="old('email')" required autofocus>
+									<input class="form-control"  id="email" placeholder="correo electrónico" type="email" name="email" :value="old('email')" required autofocus>
 								</div>
 					
 								<div class="input-group form-group">

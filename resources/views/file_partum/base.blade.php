@@ -37,5 +37,57 @@
                         $("#codigo_animal").val(col2);
                 });
 
+                function cantidadM(id){
+                    //cantidadMachos = document.getElementById("cantidadMacho").value;
+                        if(id >= 0 && id <=10){
+                                 return true;
+                         
+                            
+                        }else{
+                            Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'No se acepta valores negativos y mayores a 11',
+                                    
+                                }) 
+                                document.getElementById("cantidadMacho").value ="";
+                            return false;
+                        }
+                }
+                function cantidadH(id){
+                    //cantidadMachos = document.getElementById("cantidadMacho").value;
+                        if(id >= 0 && id <=10){
+                                 return true;
+                         
+                            
+                        }else{
+                            Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'No se acepta valores negativos y mayores a 11',
+                                    
+                                }) 
+                                document.getElementById("cantidadHembra").value ="";
+                            return false;
+                        }
+                }
+                function cantidadMU(id){
+                    //cantidadMachos = document.getElementById("cantidadMacho").value;
+                        if(id >= 0 && id <=10){
+                                 return true;
+                         
+                            
+                        }else{
+                            Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'No se acepta valores negativos y mayores a 11',
+                                    
+                                }) 
+                                document.getElementById("cantidadMuertos").value ="";
+                            return false;
+                        }
+                }
+
              </script>
         @endsection

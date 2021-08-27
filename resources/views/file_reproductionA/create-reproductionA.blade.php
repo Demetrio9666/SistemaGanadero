@@ -18,7 +18,7 @@ Registro Reproducción Artificial
                 <h5>Animal Hembra</h5>
                 <br>
                     <div class="input-group mb-3 " >
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                            <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                         
                             <input type="text" class="{{$errors->has('animalCode_id_m') ? 'is-invalid':''}}" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled  value="{{old('codigo_animal')}}">
                            
@@ -28,7 +28,7 @@ Registro Reproducción Artificial
                             <input type="hidden" id="idcodi" name="animalCode_id_m">
                 
                         
-                                <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1" name="age_month" disabled=disabled  value="{{old('edad')}}">
+                                <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="edad" name="age_month" disabled=disabled  value="{{old('edad')}}">
                         
                         
                             

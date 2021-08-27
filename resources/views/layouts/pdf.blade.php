@@ -21,7 +21,7 @@
         top: 0cm;
         left: 0cm;
         right: 0cm;
-        height: 39px;
+        height: 42px;
         background-color:  rgb(77, 188, 240);
         color: black;
         text-align: center;
@@ -43,7 +43,16 @@
         text-align: center;
         line-height: 30px;
     }
-    
+    #izquierda{
+        position: absolute;
+        right: 8%;
+        top: 17%;
+    }
+    #derecha{
+        position: absolute;
+        left: 8%;
+        top: 17%;
+    }
 </style>
 <body>
     
@@ -54,7 +63,9 @@
         <div class="card-body">
             
             <div class="titulo "><h1> @yield('nombre_tabla')</h1></div>
-            <label>Impreso por : {{auth()->user()->name}}</label>
+            <label id="derecha">Impreso por : {{auth()->user()->name}}</label>
+            <br>
+            <label id="izquierda">Fecha:{{ date('Y-m-d H:i:s') }}</label>
             
             @yield('tabla')
         </div>

@@ -56,7 +56,7 @@ class Deworming_controlController extends Controller
                 $actvividad = new  Activity();
                 $user = Auth::user()->name;
                 $id = Auth::user()->id;
-                $rol = Auth::user()->roles->pluck('name');
+                $rol = Auth::user()->roles->pluck('rol');
                 $correo = Auth::user()->email;
                 $actvividad->log_name = $user;
                 $actvividad->email = $correo;
@@ -68,13 +68,13 @@ class Deworming_controlController extends Controller
                 $actvividad->rol =$super3 ;
                 $actvividad->subject_id =$id;
                 $actvividad->description =('DESCARGA');
-                $actvividad->data = 'ControlDesparacitacion.pdf';
+                $actvividad->data = 'ControlDesparacitacion';
                 $actvividad->view ='CONTROL DESPARASITACION';
 
                 $actvividad->subject_type =('App\Models\Deworming_control');
             
                 $actvividad->save();
-                return $pdf->setPaper('a4','landscape')->download('ControlDesparacitacion.pdf');
+                return $pdf->setPaper('a4','landscape')->download('ControlDesparacitacion-'.date('Y-m-d H:i:s').'.pdf');
 
     }
 

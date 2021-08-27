@@ -43,10 +43,10 @@ class AntibioticosExport implements FromCollection ,WithHeadings,WithColumnWidth
     {
         return [
             'A'=>5,
-            'B'=>13,
+            'B'=>20,
             'C'=>18,
-            'D'=>15,
-            'E'=>10, 
+            'D'=>18,
+            'E'=>20, 
             'F'=>10.89,            
         ];
     }

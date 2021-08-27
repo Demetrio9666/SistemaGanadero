@@ -40,7 +40,7 @@ Fichas de Reproducción por Monta Natural Interna
             <td >{{$i->sexo_m}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-               
+                <center>
                 <a class="btn btn-primary  " href="{{route('inactivos.fichaReproduccionM.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
                 @can('fichaReproduccionM.destroy')
                 <form action="{{route('inactivos.fichaReproduccionM.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
@@ -52,7 +52,9 @@ Fichas de Reproducción por Monta Natural Interna
                     </button>
                 </form> 
                     
-                @endcan                  
+                @endcan    
+                
+            </center>
             </td>  
         </tr>
         @endforeach 

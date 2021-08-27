@@ -42,7 +42,7 @@ class VitaminExport implements FromCollection ,WithHeadings,WithColumnWidths, Wi
             'C'=>18,
             'D'=>15,
             'E'=>10, 
-            'F'=>10.89,            
+            'F'=>15,            
         ];
     }
     public function styles(Worksheet $sheet)

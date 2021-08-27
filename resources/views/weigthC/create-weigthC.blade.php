@@ -16,7 +16,7 @@
         <div class="col-md-6">
           
                 <div class="input-group mb-3" style="margin: 40px">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                        <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                         <input type="text" class="{{$errors->has('date') ? 'is-invalid':''}}" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
                         <input type="hidden" id="idcodi" name="animalCode_id">
                         @error('animalCode_id')
@@ -26,7 +26,7 @@
         </div>
         <div class="col-md-6">
             <label for="">Peso KG:</label>
-            <input type="decimal" class="form-control {{$errors->has('date') ? 'is-invalid':''}}" id="peso" name="weigtht" onChange="ValidarPeso(this.value)" value="{{old('weigtht')}}" >
+            <input type="decimal" class="form-control {{$errors->has('weigtht') ? 'is-invalid':''}}" id="peso" name="weigtht" onChange="ValidarPeso(this.value)" value="{{old('weigtht')}}" >
             @error('weigtht')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -54,5 +54,6 @@
     </div>
     @include('layouts.base-usuario')
 </form>
+
 @endsection
 

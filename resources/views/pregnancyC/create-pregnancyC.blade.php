@@ -12,7 +12,7 @@ Registro Control de Preñes
         </div>
         <div class="col-md-6">
             <div class="input-group mb-3" style="margin: 40px">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                    <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                     <input type="text" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" name="codigo_animal" value="{{old('codigo_animal')}}" disabled=disabled >
                     <input type="hidden" id="idcodi" name="animalCode_id"  value="{{old('animalCode_id')}}"  >
             </div>

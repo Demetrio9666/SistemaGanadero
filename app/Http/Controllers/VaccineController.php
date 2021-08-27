@@ -51,7 +51,7 @@ class VaccineController extends Controller
         $actvividad = new  Activity();
         $user = Auth::user()->name;
         $id = Auth::user()->id;
-        $rol = Auth::user()->roles->pluck('name');
+        $rol = Auth::user()->roles->pluck('rol');
         $correo = Auth::user()->email;
         $actvividad->log_name = $user;
         $actvividad->email = $correo;
@@ -69,7 +69,7 @@ class VaccineController extends Controller
         
         $actvividad->save();
 
-        return $pdf->setPaper('a4','landscape')->download('RegistrosVacunas.pdf');
+        return $pdf->setPaper('a4','landscape')->download('RegistrosVacunas-'.date('Y-m-d H:i:s').'.pdf');
     }
 
     public function Excel(){

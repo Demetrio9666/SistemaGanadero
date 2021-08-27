@@ -1,6 +1,6 @@
 @extends('adminlte::page')
     @section('css')
-        <link rel="stylesheet" type="text/css" href="/css/registroPartos.css">
+        <link rel="stylesheet" type="text/css" href="/css/registroPartos1.css">
     @endsection
     @section('content_header') 
         <div class="card card-dark">
@@ -45,8 +45,8 @@
                     }else{
                         Swal.fire({
                                 icon: 'error',
-                                title: 'Oops...',
-                                text: 'FORMATO NO ACEPTADO EJEMPLO: 00.00 ',
+                                title: 'Error',
+                                text: 'Formato no aceptado ejemplo 00.00 ',
                                 
                             }) 
                             document.getElementById("peso").value ="";

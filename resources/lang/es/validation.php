@@ -185,11 +185,15 @@ return [
                 'percentage'=>'porcentaje',
                 'password'=>'contraseña',
                 'file'=>'foto',
-                'name'=>'nombre del rol',
+                'rol'=>'nombre del rol',
+                'name'=>'nombre y apellido',
                 'permissions'=>'permiso',
+                'email'=>'correo electrónico',
                 'nombreU'=>'usuario',
-                'correoU'=>'correo',
+                'correoU'=>'correo electrónico',
+                'password_confirmation'=>'confirmación de la contraseña',
                 'confirmacionU'=>'confirmación de la contraseña'
+                
 
     ],
 

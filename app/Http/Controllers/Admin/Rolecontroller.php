@@ -132,7 +132,7 @@ class Rolecontroller extends Controller
         
 
         $role = Role::create([
-           'name' =>$request->name
+           'name' =>$request->rol
         ]);
        // $rol->permissions()->attach($request->permiso);
         
@@ -266,7 +266,7 @@ class Rolecontroller extends Controller
     public function update(Request $request, Role $rol)
     {
         $request->validate([
-                'name'=>'required',
+                'rol'=>'required',
                 'permissions'=>'required',
             ]);
         $rol->update($request->all());
