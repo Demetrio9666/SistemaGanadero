@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Fichas de Controles de Vacunaciones
+Fichas de Controles de Vacunaciones Activos
 @endsection
 
 @section('tabla')

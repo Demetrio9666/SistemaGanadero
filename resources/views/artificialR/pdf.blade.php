@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Registros de Materiales Genéticos
+Registros de Materiales Genéticos Activos
 @endsection
 
 @section('tabla')

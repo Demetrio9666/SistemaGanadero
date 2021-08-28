@@ -62,6 +62,7 @@ class File_treatmentController extends Controller
                 
         ->get();
         $pdf = PDF::loadView('file_treatment.pdf',compact('tra'));
+
         $actvividad = new  Activity();
         $user = Auth::user()->name;
         $id = Auth::user()->id;
@@ -78,15 +79,36 @@ class File_treatmentController extends Controller
         $actvividad->subject_id =$id;
         $actvividad->description =('DESCARGA');
         $actvividad->view ='FICHA TRATAMIENTO';
-        $actvividad->data = 'FichaTratamiento.pdf';
+        $actvividad->data = 'FichasTratamientosActivos.pdf';
         $actvividad->subject_type =('App\Models\File_treatment');
     
         $actvividad->save();
 
-        return $pdf->setPaper('a4','landscape')->download('FichaTratamiento-'.date('Y-m-d H:i:s').'.pdf');
+        return $pdf->setPaper('a4','landscape')->download('FichasTratamientosActivos-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel() {
-        return Excel::download(new File_treatmentExport, 'FichaTratamiento-'.date('Y-m-d H:i:s').'.xlsx');
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA TRATAMIENTO';
+        $actvividad->data = 'FichasTratamientosActivos.xlsx';
+        $actvividad->subject_type =('App\Models\File_treatment');
+    
+        $actvividad->save();
+
+        return Excel::download(new File_treatmentExport, 'FichasTratamientosActivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

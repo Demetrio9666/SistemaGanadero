@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Fichas de Partos
+Fichas de Partos Activos
 @endsection
 
 @section('tabla')

@@ -10,6 +10,10 @@ use App\Models\File_animale;
 use App\Models\Antibiotic;
 use App\Models\File_treatment;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\File_treatmentInactivoExport;
 
 class TreatmentInactivosController extends Controller
 {
@@ -33,40 +37,81 @@ class TreatmentInactivosController extends Controller
                  'vitamin.vitamin_d as vi',
                  'file_treatment.treatment',
                  'file_treatment.actual_state'
-                )->where('file_treatment.actual_state','=','Inactivo')    
+                )->where('file_treatment.actual_state','=','INACTIVO')    
                 
         ->get();
 
       return view('file_treatment.index-inactivo',compact('tra'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+  
+    public function PDF(){
+        $tra = DB::table('file_treatment')
+        ->leftJoin('vitamin','file_treatment.vitamin_id','=','vitamin.id')
+        ->join('file_animale','file_treatment.animalCode_id','=','file_animale.id')
+        ->leftJoin('antibiotic','file_treatment.antibiotic_id','=','antibiotic.id')
+        ->select('file_treatment.id',
+                 'file_treatment.date',
+                 'file_animale.animalCode as animal',
+                 'file_treatment.disease',
+                 'file_treatment.detail',
+                 'antibiotic.antibiotic_d as anti',
+                 'vitamin.vitamin_d as vi',
+                 'file_treatment.treatment',
+                 'file_treatment.actual_state'
+                )->where('file_treatment.actual_state','=','INACTIVO')    
+                
+        ->get();
+        $pdf = PDF::loadView('file_treatment.pdf-inactivo',compact('tra'));
+
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA TRATAMIENTO';
+        $actvividad->data = 'FichasTratamientosInactivos.pdf';
+        $actvividad->subject_type =('App\Models\File_treatment');
+    
+        $actvividad->save();
+
+        return $pdf->setPaper('a4','landscape')->download('FichasTratamientosInactivos-'.date('Y-m-d H:i:s').'.pdf');
+    }
+    public function Excel() {
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA TRATAMIENTO';
+        $actvividad->data = 'FichasTratamientosInactivos.xlsx';
+        $actvividad->subject_type =('App\Models\File_treatment');
+    
+        $actvividad->save();
+
+        return Excel::download(new File_treatmentInactivoExport, 'FichasTratamientosInactivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('file_treatment.edit-inactivo',compact('id'));

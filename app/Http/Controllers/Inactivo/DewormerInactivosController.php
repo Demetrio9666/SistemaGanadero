@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Dewormer;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\DewormerInactivoExport;
 
 class DewormerInactivosController extends Controller
 {
@@ -29,33 +33,67 @@ class DewormerInactivosController extends Controller
         return view('dewormer.index-inactivo',compact('desp'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function PDF(){
+        $desp = DB::table('dewormer')
+        ->select('dewormer.id',
+                'dewormer.dewormer_d',
+                'dewormer.date_e',
+                'dewormer.date_c',
+                'dewormer.supplier',
+                'dewormer.actual_state')
+                ->where('dewormer.actual_state','=','INACTIVO')
+        ->get();
+        $pdf = PDF::loadView('dewormer.pdf-inactivo',compact('desp'));
+
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='REGISTRO DESPARASITANTE';
+        $actvividad->data ='RegistrosDesparasitantesInactivos.pdf';
+        $actvividad->subject_type =('App\Models\Dewormer');
+        
+        $actvividad->save();
+
+        return $pdf->setPaper('a4','landscape')->download('RegistrosDesparasitantesInactivos-'.date('Y-m-d H:i:s').'.pdf');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function Excel(){
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='REGISTRO DESPARASITANTE';
+        $actvividad->data ='RegistrosDesparasitantesInactivo.pdf';
+        $actvividad->subject_type =('App\Models\Dewormer');
+        
+        $actvividad->save();
+
+        return Excel::download(new DewormerInactivoExport, 'RegistrosDesparasitantesInactivo'.date('Y-m-d H:i:s').'.xlsx');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('dewormer.edit-inactivo',compact('id'));

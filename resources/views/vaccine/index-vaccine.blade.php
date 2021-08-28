@@ -1,7 +1,7 @@
 @extends('layouts.baseTablas')
 
 @section('nombre_card')
-Registros de Vacunas Activas
+Registros de Vacunas Activos
 @endsection
 
 @section('boton_registro')
@@ -18,7 +18,7 @@ Registros de Vacunas Activas
 @endsection
 
 @section('nombre_tabla')
-Registros de Vacunas
+Registros de Vacunas Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

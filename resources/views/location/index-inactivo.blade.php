@@ -1,13 +1,19 @@
 @extends('layouts.baseTablasInactivas')
 
 @section('nombre_card')
-Registros de Ubicaciones Inactivas
+Registros de Ubicaciones Inactivos
 @endsection
 @section('boton_atras')
 "{{url('/confUbicacion')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-Ubicaciones-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-Ubicaciones-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Registros de Ubicaciones
+Registros de Ubicaciones Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

@@ -9,6 +9,10 @@ use App\Models\File_animale;
 use App\Models\Pregnancy_control;
 use App\Models\Vitamin;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\Pregnancy_controlInactivoExport;
 
 class PregnancyControlInactivosController extends Controller
 {
@@ -31,38 +35,80 @@ class PregnancyControlInactivosController extends Controller
                          'pregnancy_control.observation',
                         'pregnancy_control.date_r',
                         'pregnancy_control.actual_state')
-                        ->where('pregnancy_control.actual_state','=','Inactivo')
+                        ->where('pregnancy_control.actual_state','=','INACTIVO')
              ->get();     
         return view('PregnancyC.index-inactivo',compact('pre'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function PDF(){
+        $pre = DB::table('pregnancy_control')
+        ->join('vitamin','pregnancy_control.vitamin_id','=','vitamin.id')
+        ->join('file_animale','pregnancy_control.animalCode_id','=','file_animale.id')
+        ->select('pregnancy_control.id',
+                 'pregnancy_control.date',
+                  'file_animale.animalCode as animal',
+                   'vitamin.vitamin_d as vitamina',
+                   'pregnancy_control.alternative1 as alt1',
+                   'pregnancy_control.alternative2  as alt2',
+                    'pregnancy_control.observation',
+                   'pregnancy_control.date_r',
+                   'pregnancy_control.actual_state')
+                   ->where('pregnancy_control.actual_state','=','INACTIVO')
+        ->get();    
+        $pdf = PDF::loadView('PregnancyC.pdf-inactivo',compact('pre'));
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='CONTROL PREÑES';
+       
+        $actvividad->data = 'ControlesPreñesInactivos.pdf';
+     
+        $actvividad->subject_type =('App\Models\Pregnancy_control');
+    
+        $actvividad->save();
+        return $pdf->setPaper('a4','landscape')->download('ControlesPreñesInactivos-'.date('Y-m-d H:i:s').'.pdf');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function Excel(){
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='CONTROL PREÑES';
+       
+        $actvividad->data = 'ControlesPreñesInactivos.xlsx';
+     
+        $actvividad->subject_type =('App\Models\Pregnancy_control');
+    
+        $actvividad->save();
+
+        return Excel::download(new Pregnancy_controlInactivoExport, 'ControlesPreñesInactivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('pregnancyC.edit-inactivo',compact('id'));

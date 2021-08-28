@@ -9,6 +9,10 @@ use App\Models\File_animale;
 use App\Models\Race;
 use App\Models\File_reproduction_internal;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\File_reproduction_internalInactivoExport;
 
 class ReproductionMInactivosController extends Controller
 {
@@ -40,40 +44,87 @@ class ReproductionMInactivosController extends Controller
                        'P.sex as sexo_m',
                        'P.age_month as edad_m',
                        'file_reproduction_internal.actual_state'
-                      )->where('file_reproduction_internal.actual_state','=','Inactivo')
+                      )->where('file_reproduction_internal.actual_state','=','INACTIVO')
                       
               ->get();
 
         return view('file_reproductionM.index-inactivo',compact('re_MI'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function PDF(){
+        $re_MI = DB::table('file_reproduction_internal')
+              ->join('file_animale as M','file_reproduction_internal.animalCode_id_m','=','M.id')
+              ->join('file_animale as P','file_reproduction_internal.animalCode_id_p','=','P.id')
+
+              ->join('race as RM','M.race_id','=','RM.id')
+              ->join('race as RP','P.race_id','=','RP.id')
+
+
+              ->select('file_reproduction_internal.id',
+                       'file_reproduction_internal.date as fecha_MI',
+
+                       'M.animalCode as animal_h_MI',
+                       'RM.race_d as raza_h_MI',
+                       'M.sex as sexo_h',
+                       'M.age_month as edad_h',
+
+                       'P.animalCode as animal_m_MI',
+                       'RP.race_d as raza_m_MI',
+                       'P.sex as sexo_m',
+                       'P.age_month as edad_m',
+                       'file_reproduction_internal.actual_state'
+                      )->where('file_reproduction_internal.actual_state','=','INACTIVO')
+                      
+              ->get();
+              $pdf = PDF::loadView('file_reproductionM.pdf',compact('re_MI'));
+
+              $actvividad = new  Activity();
+                $user = Auth::user()->name;
+                $id = Auth::user()->id;
+                $rol = Auth::user()->roles->pluck('rol');
+                $correo = Auth::user()->email;
+                $actvividad->log_name = $user;
+                $actvividad->email = $correo;
+        
+                $super= str_replace('"','',$rol);
+                $super2= str_replace('[','',$super);
+                $super3= str_replace(']','',$super2);
+        
+                $actvividad->rol =$super3 ;
+                $actvividad->subject_id =$id;
+                $actvividad->description =('DESCARGA');
+                $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL INTERNA';
+                $actvividad->data = 'FichaReproduccionesMontasNaturalesInternasActivos.pdf';
+                $actvividad->subject_type =('App\Models\File_reproduction_internal');
+            
+                $actvividad->save();
+              return $pdf->setPaper('a4','landscape')->download('FichaReproduccionesMontasNaturalesInternasActivos-'.date('Y-m-d H:i:s').'.pdf');
+    }
+    public function Excel(){
+        $actvividad = new  Activity();
+                $user = Auth::user()->name;
+                $id = Auth::user()->id;
+                $rol = Auth::user()->roles->pluck('rol');
+                $correo = Auth::user()->email;
+                $actvividad->log_name = $user;
+                $actvividad->email = $correo;
+        
+                $super= str_replace('"','',$rol);
+                $super2= str_replace('[','',$super);
+                $super3= str_replace(']','',$super2);
+        
+                $actvividad->rol =$super3 ;
+                $actvividad->subject_id =$id;
+                $actvividad->description =('DESCARGA');
+                $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL INTERNA';
+                $actvividad->data = 'FichaReproduccionesMontasNaturalesInternasActivos.xlsx';
+                $actvividad->subject_type =('App\Models\File_reproduction_internal');
+            
+                $actvividad->save();
+
+        return Excel::download(new File_reproduction_internalInactivoExport, 'FichaReproduccionesMontasNaturalesInternasActivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('file_reproductionM.edit-inactivo',compact('id'));

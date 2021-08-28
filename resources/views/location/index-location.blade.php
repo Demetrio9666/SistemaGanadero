@@ -1,7 +1,7 @@
 @extends('layouts.baseTablas')
 
 @section('nombre_card')
-Registros de Ubicaciones Activas
+Registros de Ubicaciones Activos
 @endsection
 
 @section('boton_registro')
@@ -18,7 +18,7 @@ Registros de Ubicaciones Activas
 @endsection
 
 @section('nombre_tabla')
-Registros de Ubicaciones
+Registros de Ubicaciones Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

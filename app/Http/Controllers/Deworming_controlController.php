@@ -68,18 +68,40 @@ class Deworming_controlController extends Controller
                 $actvividad->rol =$super3 ;
                 $actvividad->subject_id =$id;
                 $actvividad->description =('DESCARGA');
-                $actvividad->data = 'ControlDesparacitacion';
+                $actvividad->data = 'ControlesDesparacitacionesActivos';
                 $actvividad->view ='CONTROL DESPARASITACION';
 
                 $actvividad->subject_type =('App\Models\Deworming_control');
             
                 $actvividad->save();
-                return $pdf->setPaper('a4','landscape')->download('ControlDesparacitacion-'.date('Y-m-d H:i:s').'.pdf');
+                return $pdf->setPaper('a4','landscape')->download('ControlesDesparacitacionesActivos-'.date('Y-m-d H:i:s').'.pdf');
 
     }
 
     public function Excel(){
-        return Excel::download(new Deworming_controlExport, 'ControlDesparacitacion'.date('Y-m-d H:i:s').'.xlsx');
+
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->data = 'ControlesDesparacitacionesActivos.xlsx';
+        $actvividad->view ='CONTROL DESPARASITACION';
+
+        $actvividad->subject_type =('App\Models\Deworming_control');
+    
+        $actvividad->save();
+        return Excel::download(new Deworming_controlExport, 'ControlesDesparacitacionesActivos'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

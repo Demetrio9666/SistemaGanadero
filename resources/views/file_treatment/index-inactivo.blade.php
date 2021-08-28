@@ -6,8 +6,14 @@
 @section('boton_atras')
 "{{url('/fichaTratamiento')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-fichaTratamientos-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-fichaTratamientos-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Fichas de Tratamientos
+Fichas de Tratamientos Inactivos
 @endsection
 @section('tabla')
     <table id="tabla" class="table table-striped table-bordered" style="width:100%">

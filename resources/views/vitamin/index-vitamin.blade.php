@@ -1,7 +1,7 @@
 @extends('layouts.baseTablas')
 
 @section('nombre_card')
-Registros de Vitaminas Activas
+Registros de Vitaminas Activos
 @endsection
 
 @section('boton_registro')
@@ -18,7 +18,7 @@ Registros de Vitaminas Activas
 @endsection
 
 @section('nombre_tabla')
-Registros de Vitaminas
+Registros de Vitaminas Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

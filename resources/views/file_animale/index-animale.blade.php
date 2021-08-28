@@ -16,7 +16,7 @@
 @endsection
 
 @section('nombre_tabla')
-        Fichas de Animales
+Fichas de Animales Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

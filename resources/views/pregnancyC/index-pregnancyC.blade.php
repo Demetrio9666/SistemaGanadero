@@ -1,7 +1,7 @@
 @extends('layouts.baseTablas')
 
 @section('nombre_card')
-Registros de Controles de Preñes Activas
+Registros de Controles de Preñes Activos
 @endsection
 
 @section('boton_registro')
@@ -18,7 +18,7 @@ Registros de Controles de Preñes Activas
 @endsection
 
 @section('nombre_tabla')
-Fichas de Control de Preñes
+Fichas de Control de Preñes Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

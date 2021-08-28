@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Vaccine;
 use App\Http\Requests\StoreVaccine;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade as PDF;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\VaccineExport;
 use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class VaccineController extends Controller
 {
@@ -48,6 +48,7 @@ class VaccineController extends Controller
                     ->Where('actual_state','=','Disponible')
         ->get();
         $pdf = PDF::loadView('vaccine.pdf',compact('vacuna'));
+
         $actvividad = new  Activity();
         $user = Auth::user()->name;
         $id = Auth::user()->id;
@@ -64,16 +65,37 @@ class VaccineController extends Controller
         $actvividad->subject_id =$id;
         $actvividad->description =('DESCARGA');
         $actvividad->view ='REGISTRO VACUNA';
-        $actvividad->data = 'RegistrosVacunas.pdf';
+        $actvividad->data = 'RegistrosVacunasActivos.pdf';
         $actvividad->subject_type =('App\Models\Vaccine');
         
         $actvividad->save();
 
-        return $pdf->setPaper('a4','landscape')->download('RegistrosVacunas-'.date('Y-m-d H:i:s').'.pdf');
+        return $pdf->setPaper('a4','landscape')->download('RegistrosVacunasActivos-'.date('Y-m-d H:i:s').'.pdf');
     }
 
     public function Excel(){
-        return Excel::download(new VaccineExport, 'RegistrosVacunas-'.date('Y-m-d H:i:s').'.xlsx');
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='REGISTRO VACUNA';
+        $actvividad->data = 'RegistrosVacunasActivos.xlsx';
+        $actvividad->subject_type =('App\Models\Vaccine');
+        
+        $actvividad->save();
+
+        return Excel::download(new VaccineExport, 'RegistrosVacunasActivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

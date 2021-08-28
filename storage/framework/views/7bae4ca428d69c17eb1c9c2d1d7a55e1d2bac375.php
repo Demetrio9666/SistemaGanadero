@@ -16,7 +16,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('nombre_tabla'); ?>
-        Fichas de Animales
+Fichas de Animales Activos
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('tabla'); ?>
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

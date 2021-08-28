@@ -1,13 +1,19 @@
 @extends('layouts.baseTablasInactivas')
 
 @section('nombre_card')
-Registros de Reproducción por Monta Natural Externas Inactivas
+Registros de Reproducción por Monta Natural Externas Inactivos
 @endsection
 @section('boton_atras')
 "{{url('/fichaReproduccionEx')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-fichaReproduccionEx-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-fichaReproduccionEx-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Fichas de Reproducción por Monta Natural Externa
+Fichas de Reproducción por Monta Natural Externa Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

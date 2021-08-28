@@ -1,13 +1,19 @@
 @extends('layouts.baseTablasInactivas')
 
 @section('nombre_card')
-Registros de Controles de Pesos Inactivas
+Registros de Controles de Pesos Inactivos
 @endsection
 @section('boton_atras')
 "{{url('/controlPeso')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-controlPesos-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-controlPesos-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Fichas de Controles de Pesos
+Fichas de Controles de Pesos Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

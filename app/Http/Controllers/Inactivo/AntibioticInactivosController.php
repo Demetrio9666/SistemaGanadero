@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Antibiotic;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\AntibioticosInactivoExport;
 
 class AntibioticInactivosController extends Controller
 {
@@ -25,39 +29,74 @@ class AntibioticInactivosController extends Controller
                           'antibiotic.date_c',
                           'antibiotic.supplier',
                           'antibiotic.actual_state')
-                          ->where('antibiotic.actual_state','=','Inactivo')
+                          ->where('antibiotic.actual_state','=','INACTIVO')
             ->get();
 
         return view('antibiotic.index-inactivo',compact('anti'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function PDF(){
+        $anti = DB::table('antibiotic')
+        ->select('antibiotic.id',
+                  'antibiotic.antibiotic_d',
+                  'antibiotic.date_e',
+                  'antibiotic.date_c',
+                  'antibiotic.supplier',
+                  'antibiotic.actual_state')
+                  ->where('antibiotic.actual_state','=','INACTIVO')
+       ->get();
+       $pdf = PDF::loadView('antibiotic.pdf-inactivo',compact('anti'));
+       
+       $actvividad = new  Activity();
+       $user = Auth::user()->name;
+       $id = Auth::user()->id;
+       $rol = Auth::user()->roles->pluck('rol');
+       $correo = Auth::user()->email;
+       $actvividad->log_name = $user;
+       $actvividad->email = $correo;
+
+       $super= str_replace('"','',$rol);
+       $super2= str_replace('[','',$super);
+       $super3= str_replace(']','',$super2);
+
+       $actvividad->rol =$super3 ;
+       $actvividad->subject_id =$id;
+       $actvividad->description =('DESCARGA');
+       $actvividad->view ='REGISTRO ANTIBIOTICO';
+       $actvividad->data = 'RegistrosAntibioticosInactivos.pdf';
+       $actvividad->subject_type =('App\Models\Antibiotic');
+       
+       $actvividad->save();
+
+       return $pdf->setPaper('a4','landscape')->download('RegistrosAntibioticosInactivos-'.date('Y-m-d H:i:s').'.pdf');
+
+    }
+    public function Excel(){
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='REGISTRO ANTIBIOTICO';
+        $actvividad->data = 'RegistrosAntibioticosInactivos.xlsx';
+        $actvividad->subject_type =('App\Models\Antibiotic');
+        
+        $actvividad->save();
+        return Excel::download(new AntibioticosInactivoExport,'RegistrosAntibioticosInactivos-'.date('Y-m-d H:i:s').'.xlsx');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function show($id)
     {
         return view('antibiotic.edit-inactivo',compact('id'));

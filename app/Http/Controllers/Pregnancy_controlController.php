@@ -58,6 +58,7 @@ class Pregnancy_controlController extends Controller
                    ->where('pregnancy_control.actual_state','=','Disponible')
         ->get();    
         $pdf = PDF::loadView('PregnancyC.pdf',compact('pre'));
+
         $actvividad = new  Activity();
         $user = Auth::user()->name;
         $id = Auth::user()->id;
@@ -75,16 +76,40 @@ class Pregnancy_controlController extends Controller
         $actvividad->description =('DESCARGA');
         $actvividad->view ='CONTROL PREÑES';
        
-        $actvividad->data = 'ControlPreñes.pdf';
+        $actvividad->data = 'ControlesPreñesActivos.pdf';
      
         $actvividad->subject_type =('App\Models\Pregnancy_control');
     
         $actvividad->save();
-        return $pdf->setPaper('a4','landscape')->download('ControlPreñes-'.date('Y-m-d H:i:s').'.pdf');
+
+        return $pdf->setPaper('a4','landscape')->download('ControlesPreñesActivos-'.date('Y-m-d H:i:s').'.pdf');
 
     }
     public function Excel(){
-        return Excel::download(new Pregnancy_controlExport, 'ControlPreñes-'.date('Y-m-d H:i:s').'.xlsx');
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='CONTROL PREÑES';
+       
+        $actvividad->data = 'ControlesPreñesActivos.xlsx';
+     
+        $actvividad->subject_type =('App\Models\Pregnancy_control');
+    
+        $actvividad->save();
+
+        return Excel::download(new Pregnancy_controlExport, 'ControlesPreñesActivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

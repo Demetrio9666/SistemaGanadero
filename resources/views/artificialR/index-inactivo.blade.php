@@ -6,8 +6,14 @@ Registros de Materiales Genéticos Inactivas
 @section('boton_atras')
 "{{url('/confMate')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-Materiales-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-Materiales-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Registros de Materiales
+Registros de Materiales Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

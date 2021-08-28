@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Fichas de Reproducción por Monta Natural Interna
+Fichas de Reproducción por Monta Natural Interna Activos
 @endsection
 
 @section('tabla')

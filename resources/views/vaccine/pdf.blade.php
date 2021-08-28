@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Registros de Vacunas
+Registros de Vacunas Activos
 @endsection
 
 @section('tabla')

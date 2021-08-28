@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Registros de Antibióticos
+Registros de Antibióticos Activos
 @endsection
 
 @section('tabla')

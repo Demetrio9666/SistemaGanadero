@@ -8,11 +8,12 @@ use App\Models\Race;
 use App\Models\File_reproduction_external;
 use App\Models\File_animale;
 use App\Http\Requests\StoreFile_reproductionEX;
+use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\File_reproduction_externalExport;
 use Spatie\Activitylog\Models\Activity;
-use Illuminate\Support\Facades\Auth;
+
 
 class External_mountController extends Controller
 {
@@ -88,15 +89,36 @@ class External_mountController extends Controller
         $actvividad->subject_id =$id;
         $actvividad->description =('DESCARGA');
         $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL EXTERNA ';
-        $actvividad->data = 'FichaReproduccionMontaNaturalExterna.pdf';
+        $actvividad->data = 'FichasReproduccionesMontasNaturalesExternasActivos.pdf';
         $actvividad->subject_type =('App\Models\File_reproduction_external');
     
         $actvividad->save();
 
-        return $pdf->setPaper('a4','landscape')->download('FichaReproduccionMontaNaturalExterna-'.date('Y-m-d H:i:s').'.pdf');
+        return $pdf->setPaper('a4','landscape')->download('FichasReproduccionesMontasNaturalesExternasActivos-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
-        return Excel::download(new File_reproduction_externalExport, 'FichaReproduccionMontaNaturalExterna'.date('Y-m-d H:i:s').'.xlsx');
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL EXTERNA ';
+        $actvividad->data = 'FichasReproduccionesMontasNaturalesExternasActivos.xlsx';
+        $actvividad->subject_type =('App\Models\File_reproduction_external');
+    
+        $actvividad->save();
+
+        return Excel::download(new File_reproduction_externalExport, 'FichasReproduccionesMontasNaturalesExternasActivos'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

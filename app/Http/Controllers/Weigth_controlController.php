@@ -66,12 +66,12 @@ class Weigth_controlController extends Controller
         $actvividad->subject_id =$id;
         $actvividad->description =('DESCARGA');
         $actvividad->view ='CONTROL PESO';
-        $actvividad->data = 'ControlPeso.pdf';
+        $actvividad->data = 'ControlesPesosActivos.pdf';
         $actvividad->subject_type =('App\Models\Weigth_control');
     
         $actvividad->save();
 
-        return $pdf->setPaper('a4','landscape')->download('ControlPeso-'.date('Y-m-d H:i:s').'.pdf');
+        return $pdf->setPaper('a4','landscape')->download('ControlesPesosActivos-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
         $actvividad = new  Activity();
@@ -90,11 +90,11 @@ class Weigth_controlController extends Controller
         $actvividad->subject_id =$id;
         $actvividad->description =('DESCARGA');
         $actvividad->view ='CONTROL PESO';
-        $actvividad->data = 'ControlPeso.xlsx';
+        $actvividad->data ='ControlesPesosActivos.xlsx';
         $actvividad->subject_type =('App\Models\Weigth_control');
     
         $actvividad->save();
-        return Excel::download(new Weigth_controlExport, 'ControlPeso-'.date('Y-m-d H:i:s').'.xlsx');
+        return Excel::download(new Weigth_controlExport, 'ControlesPesosActivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

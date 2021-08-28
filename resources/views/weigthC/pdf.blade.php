@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Fichas de Controles de Pesos
+Fichas de Controles de Pesos Activos
 @endsection
 
 @section('tabla')

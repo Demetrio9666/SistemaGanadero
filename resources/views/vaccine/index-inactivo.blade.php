@@ -1,13 +1,19 @@
 @extends('layouts.baseTablasInactivas')
 
 @section('nombre_card')
-Registros de Vacunas Inactivas
+Registros de Vacunas Inactivos
 @endsection
 @section('boton_atras')
 "{{url('/confVacuna')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-Vacunas-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-Vacunas-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Registros de Vacunas
+Registros de Vacunas Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

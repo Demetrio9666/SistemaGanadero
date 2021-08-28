@@ -9,6 +9,10 @@ use App\Models\Race;
 use App\Models\File_reproduction_external;
 use App\Models\File_animale;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\File_reproduction_externalInactivoExport;
 
 class ReproductionMEInactivosController extends Controller
 {
@@ -43,39 +47,83 @@ class ReproductionMEInactivosController extends Controller
                             'file_reproduction_external.sex',
                             'file_reproduction_external.hacienda_name',
                             'file_reproduction_external.actual_state')
-                            ->where('file_reproduction_external.actual_state','=','Inactivo')
+                            ->where('file_reproduction_external.actual_state','=','INACTIVO')
                 ->get();
 
         return view('file_reproductionME.index-inactivo',compact('raza','ext'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function PDF(){
+        $ext =  DB::table('file_reproduction_external')
+        ->join('file_animale','file_reproduction_external.animalCode_id','=','file_animale.id')
+        ->leftJoin('race as R','file_animale.race_id','=','R.id')
+        ->leftJoin('race','file_reproduction_external.race_id','=','race.id')
+        ->select('file_reproduction_external.id',
+                    'file_reproduction_external.date',
+                    'file_animale.animalCode',
+                    'R.race_d as raza',
+                    'file_animale.age_month as edad',
+                    'file_animale.sex as sexo',
+
+                    'file_reproduction_external.animalCode_Exte',
+                    'race.race_d',
+                    'file_reproduction_external.age_month',
+                    'file_reproduction_external.sex',
+                    'file_reproduction_external.hacienda_name',
+                    'file_reproduction_external.actual_state')
+                    ->where('file_reproduction_external.actual_state','=','INACTIVO')
+                    
+        ->get();
+        $pdf = PDF::loadView('file_reproductionME.pdf-inactivo',compact('ext'));
+
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL EXTERNA ';
+        $actvividad->data = 'FichasReproduccionesMontasNaturalesExternasInactios.pdf';
+        $actvividad->subject_type =('App\Models\File_reproduction_external');
+    
+        $actvividad->save();
+
+        return $pdf->setPaper('a4','landscape')->download('FichasReproduccionesMontasNaturalesExternasInactios-'.date('Y-m-d H:i:s').'.pdf');
+    }
+    public function Excel(){
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL EXTERNA ';
+        $actvividad->data = 'FichasReproduccionesMontasNaturalesExternasInactios.xlsx';
+        $actvividad->subject_type =('App\Models\File_reproduction_external');
+    
+        $actvividad->save();
+
+        return Excel::download(new File_reproduction_externalInactivoExport, 'FichasReproduccionesMontasNaturalesExternasInactios'.date('Y-m-d H:i:s').'.xlsx');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('file_reproductionME.edit-inactivo',compact('id'));

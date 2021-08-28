@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Fichas de Control de Preñes
+Fichas de Control de Preñes Activos
 @endsection
 
 @section('tabla')

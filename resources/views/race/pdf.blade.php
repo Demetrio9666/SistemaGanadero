@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Registros de Razas
+Registros de Razas Activas
 @endsection
 
 @section('tabla')

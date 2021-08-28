@@ -6,8 +6,14 @@ Registros de Reproducción por Monta Natural Interna Inactivo
 @section('boton_atras')
 "{{url('/fichaReproduccionM')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-fichaReproduccionM-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-fichaReproduccionM-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Fichas de Reproducción por Monta Natural Interna
+Fichas de Reproducción por Monta Natural Interna Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

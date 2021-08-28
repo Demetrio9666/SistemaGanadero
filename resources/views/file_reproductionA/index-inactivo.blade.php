@@ -6,8 +6,14 @@ Registros de Reproducción Artificial Inactivos
 @section('boton_atras')
 "{{url('/fichaReproduccionA')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-fichaReproduccionA-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-fichaReproduccionA-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Fichas de Reproducción Artificial
+Fichas de Reproducción Artificial Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

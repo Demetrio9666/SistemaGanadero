@@ -6,8 +6,14 @@ Registros de Desparacitantes Activas
 @section('boton_atras')
 "{{url('/confDespa')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-Desparasitantes-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-Desparasitantes-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Registros de Desparacitantes
+Registros de Desparacitantes Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

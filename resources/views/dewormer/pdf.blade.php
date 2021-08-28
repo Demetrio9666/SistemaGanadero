@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Registros de Desparacitantes
+Registros de Desparacitantes Activos
 @endsection
 
 @section('tabla')
@@ -27,3 +27,5 @@ Registros de Desparacitantes
     </tbody>
 </table>
 @endsection
+<form>
+</form>

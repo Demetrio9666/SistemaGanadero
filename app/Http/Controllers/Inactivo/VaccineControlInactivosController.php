@@ -10,6 +10,10 @@ use App\Models\Vaccine;
 use App\Models\Vaccine_control;
 use App\Models\File_animale;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\Vaccine_controlInactivoExport;
 
 class VaccineControlInactivosController extends Controller
 {
@@ -35,33 +39,70 @@ class VaccineControlInactivosController extends Controller
         return view('vaccineC.index-inactivo',compact('vacunaC'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function PDF(){
+        $vacunaC= DB::table('vaccine_control')
+                    ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
+                    ->leftJoin('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
+                    ->select('vaccine_control.id'
+                            ,'vaccine_control.date'
+                            ,'vaccine.vaccine_d as vacuna'
+                            ,'file_animale.animalCode as animal',
+                            'vaccine_control.date_r',
+                            'vaccine_control.actual_state'
+                            )->where('vaccine_control.actual_state','=','INACTIVO')
+                    ->get();
+        $pdf = PDF::loadView('vaccineC.pdf-inactivo',compact('vacunaC'));
+
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='CONTROL VACUNACION';
+        $actvividad->data = 'ControlesVacunasInactivo.pdf';
+   
+        
+        $actvividad->subject_type =('App\Models\Vaccine_control');
+    
+        $actvividad->save();
+        return $pdf->setPaper('a4','landscape')->download('ControlesVacunasInactivo-'.date('Y-m-d H:i:s').'.pdf');
+    }
+    public function Excel(){
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='CONTROL VACUNACION';
+        $actvividad->data = 'ControlesVacunasInactivo.xlsx';
+   
+        $actvividad->subject_type =('App\Models\Vaccine_control');
+    
+        $actvividad->save();
+
+        return Excel::download(new Vaccine_controlInactivoExport, 'ControlesVacunasInactivo-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('vaccineC.edit-inactivo',compact('id'));

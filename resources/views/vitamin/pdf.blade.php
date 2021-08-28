@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Registros de Vitaminas
+Registros de Vitaminas Activos
 @endsection
 
 @section('tabla')

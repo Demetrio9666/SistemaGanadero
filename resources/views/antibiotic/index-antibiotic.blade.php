@@ -18,7 +18,7 @@ Registros de Antibióticos Activas
 @endsection
 
 @section('nombre_tabla')
-Registros de Antibióticos
+Registros de Antibióticos Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

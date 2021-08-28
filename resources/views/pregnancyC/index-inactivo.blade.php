@@ -1,13 +1,19 @@
 @extends('layouts.baseTablasInactivas')
 
 @section('nombre_card')
-Registros de Controles de Preñes Inactivas
+Registros de Controles de Preñes Inactivos
 @endsection
 @section('boton_atras')
 "{{url('/controlPrenes')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-controlPrenes-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-controlPrenes-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Fichas de Control de Preñes
+Fichas de Control de Preñes Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

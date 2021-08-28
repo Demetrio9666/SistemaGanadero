@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Race;
 use App\Models\Artificial_Reproduction;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\ArtificialReproductionInactivoExport;
 
 class ArtificialInactivosController extends Controller
 {
@@ -35,33 +39,73 @@ class ArtificialInactivosController extends Controller
        return view('artificialR.index-inactivo',compact('arti'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function PDF(){
+        $re_A = DB::table('file_reproduction_artificial')
+                    ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
+                    ->leftJoin('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
+                    ->leftJoin('race as f','file_animale.race_id','=','f.id')
+                    ->leftJoin('race as a','artificial_reproduction.race_id','=','a.id')
+                    ->select('file_reproduction_artificial.id',
+                            'file_reproduction_artificial.date as fecha_A',
+                            'file_animale.animalCode as animalA',
+                            'f.race_d as raza_h',  
+                            'artificial_reproduction.reproduccion as tipo', 
+                            'a.race_d as raza_m',
+                            'file_reproduction_artificial.actual_state'
+                            )
+                            ->where('file_reproduction_artificial.actual_state','=','INACTIVO')
+                            
+                    ->get(); 
+        $pdf = PDF::loadView('file_reproductionA.pdf-inactivo',compact('re_A'));
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA REPRODUCCION ARTIFICIAL';
+        $actvividad->data='FichasReproduccionesArtificialesInactivos.pdf';
+        $actvividad->subject_type =('App\Models\File_reproduction_artificial');
+    
+        $actvividad->save();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        return $pdf->setPaper('a4','landscape')->download('FichasReproduccionesArtificialesInactivos-'.date('Y-m-d H:i:s').'.pdf');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    }
+    public function Excel() {
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='REGISTRO MATERIAL GENETICO';
+        $actvividad->data ='MaterialesGeneticoInactivos.xlsx';
+        $actvividad->subject_type =('App\Models\Artificial_Reproduction');
+        
+        $actvividad->save();
+        
+        return Excel::download(new ArtificialReproductionInactivoExport, 'MaterialesGeneticoInactivos'.date('Y-m-d H:i:s').'.xlsx');
+    }
+    
     public function show($id)
     {
         return view('artificialR.edit-inactivo',compact('id'));

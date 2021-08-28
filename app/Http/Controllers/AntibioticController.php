@@ -89,11 +89,11 @@ class AntibioticController extends Controller
         $actvividad->subject_id =$id;
         $actvividad->description =('DESCARGA');
         $actvividad->view ='REGISTRO ANTIBIOTICO';
-        $actvividad->data = 'RegistrosAntibioticos.xlsx';
+        $actvividad->data = 'RegistrosAntibioticosActivos.xlsx';
         $actvividad->subject_type =('App\Models\Antibiotic');
         
         $actvividad->save();
-        return Excel::download(new AntibioticosExport, 'RegistrosAntibioticos-'.date('Y-m-d H:i:s').'.xlsx');
+        return Excel::download(new AntibioticosExport, 'RegistrosAntibioticosActivos-'.date('Y-m-d H:i:s').'.xlsx');
 
     }
 

@@ -18,7 +18,7 @@ Registros de Controle de Desparacitaciones Activas
 @endsection
 
 @section('nombre_tabla')
-Ficha de Controles de Desparacitaciones
+Ficha de Controles de Desparacitaciones Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

@@ -6,8 +6,14 @@ Registros de Controles de Vacunaciones Inactivos
 @section('boton_atras')
 "{{url('/controlVacuna')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-controlVacunas-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-controlVacunas-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Fichas de Controles de Vacunaciones
+Fichas de Controles de Vacunaciones Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

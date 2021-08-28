@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Fichas de Animales
+Fichas de Animales Activos
 @endsection
 
 @section('tabla')

@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Fichas de Reproducción Artificial
+Fichas de Reproducción Artificial Activos
 @endsection
 
 @section('tabla')

@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Registros de Ubicaciones
+Registros de Ubicaciones Activos
 @endsection
 
 @section('tabla')

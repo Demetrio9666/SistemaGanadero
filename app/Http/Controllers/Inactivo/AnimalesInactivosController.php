@@ -13,6 +13,7 @@ use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\File_AnimalesInactivoExport;
 
 class AnimalesInactivosController extends Controller
 {
@@ -46,10 +47,7 @@ class AnimalesInactivosController extends Controller
                 ->where('file_animale.actual_state','=','INACTIVO')
         ->get();
     
-        $pdf = PDF::loadView('file_animale.pdf',compact('animal'));
-
-        //return $pdf->download('codingdriver.pdf');
-
+        $pdf = PDF::loadView('file_animale.pdf-inactivo',compact('animal'));
         ///segunda forma de enviar el rol 
         $actvividad = new  Activity();
         $user = Auth::user()->name;
@@ -67,15 +65,35 @@ class AnimalesInactivosController extends Controller
         $actvividad->subject_id =$id;
         $actvividad->description =('DESCARGA');
         $actvividad->view ='FICHA ANIMAL';
-        $actvividad->data ='FichaAnimal.pdf';
+        $actvividad->data ='FichaAnimalesInactivos.pdf';
         $actvividad->subject_type =('App\Models\File_Animale');
 
-        //return $actvividad;
-        //$actvividad->save();
-        //return date('Y-m-d H:i:s');
-        return $pdf->setPaper('a4','landscape')->download('FichaAnimalInactivo-'.date('Y-m-d H:i:s').'.pdf');
-        //return $pdf->setPaper('a4','landscape')->stream('FichaAnimal.pdf');
-        // return view('file_animale.pdf',compact('animal'));
+        return $pdf->setPaper('a4','landscape')->download('FichaAnimalesInactivos-'.date('Y-m-d H:i:s').'.pdf');
+        
+    }
+    public function Excel() 
+    {
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+ 
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+ 
+        $actvividad->rol =$super3;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA ANIMAL';
+        $actvividad->data ='FichasAnimalesInactivo.xlsx';
+        $actvividad->subject_type =('App\Models\File_Animale');
+        $actvividad->save();
+
+        return Excel::download(new File_AnimalesInactivoExport, 'FichasAnimalesInactivo-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     public function show($id)

@@ -18,7 +18,7 @@
 @endsection
 
 @section('nombre_tabla')
-Fichas de Tratamientos
+Fichas de Tratamientos Activos
 @endsection
 @section('tabla')
         <table id="tabla" class="table table-striped table-bordered" style="width:100%">

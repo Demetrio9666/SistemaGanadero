@@ -59,16 +59,38 @@ class RaceController extends Controller
         $actvividad->description =('DESCARGA');
         $actvividad->view ='REGISTRO RAZA';
 
-        $actvividad->data = 'RegistroRazas.pdf';
+        $actvividad->data = 'RegistrosRazasActivos.pdf';
         $actvividad->subject_type =('App\Models\Race');
         
         $actvividad->save();
-        return $pdf->setPaper('a4','landscape')->download('RegistroRazas-'.date('Y-m-d H:i:s').'.pdf');
+        return $pdf->setPaper('a4','landscape')->download('RegistrosRazasActivos-'.date('Y-m-d H:i:s').'.pdf');
         
     }
 
     public function Excel(){
-        return Excel::download(new RaceExport, 'RegistroRazas-'.date('Y-m-d H:i:s').'.xlsx');
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='REGISTRO RAZA';
+
+        $actvividad->data = 'RegistrosRazasActivos.xlsx';
+        $actvividad->subject_type =('App\Models\Race');
+        
+        $actvividad->save();
+
+        return Excel::download(new RaceExport, 'RegistrosRazasActivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

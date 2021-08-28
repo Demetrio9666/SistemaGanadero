@@ -9,6 +9,10 @@ use App\Models\File_animale;
 use App\Models\File_partum;
 use App\Models\Vitamin;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\File_partumInactivoExport;
 
 class PartumInactivosController extends Controller
 {
@@ -31,40 +35,77 @@ class PartumInactivosController extends Controller
                  'file_partum.mother_status',
                  'file_partum.partum_type',
                  'file_partum.actual_state'
-                )->where('file_partum.actual_state','=','Inactivo')
+                )->where('file_partum.actual_state','=','INACTIVO')
                 
                 
         ->get();
         return view('file_partum.index-inactivo',compact('par'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function PDF(){
+        $par = DB::table('file_partum')
+        ->join('file_animale','file_partum.animalCode_id','=','file_animale.id')
+        ->select('file_partum.id',
+                'file_partum.date',
+                'file_animale.animalCode as animal',
+                'file_partum.male',
+                'file_partum.female',
+                'file_partum.dead',
+                'file_partum.mother_status',
+                'file_partum.partum_type',
+                'file_partum.actual_state'
+                )->where('file_partum.actual_state','=','INACTIVO')
+                
+        ->get();
+        $pdf = PDF::loadView('file_partum.pdf-inactivo',compact('par'));
+
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA PARTO';
+        $actvividad->data = 'FichasPartosInactivos.pdf';
+        $actvividad->subject_type =('App\Models\File_partum');
+    
+        $actvividad->save();
+        return $pdf->setPaper('a4','landscape')->download('FichasPartosInactivos-'.date('Y-m-d H:i:s').'.pdf');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function Excel(){
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA PARTO';
+        $actvividad->data = 'FichasPartosInactivos.xlsx';
+        $actvividad->subject_type =('App\Models\File_partum');
+    
+        $actvividad->save();
+        return Excel::download(new File_partumInactivoExport, 'FichasPartosInactivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('file_partum.edit-inactivo',compact('id'));

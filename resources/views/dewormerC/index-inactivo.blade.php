@@ -6,8 +6,14 @@ Registros de Controles de Desparacitaciones Inactivas
 @section('boton_atras')
 "{{url('/controlDesparasitacion')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-controlDesparasitaciones-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-controlDesparasitaciones-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Fichas de Controles de Desparacitaciones
+Fichas de Controles de Desparacitaciones Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

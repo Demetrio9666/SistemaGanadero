@@ -74,7 +74,7 @@ class File_reproductionMController extends Controller
                        'P.sex as sexo_m',
                        'P.age_month as edad_m',
                        'file_reproduction_internal.actual_state'
-                      )->where('file_reproduction_internal.actual_state','=','REPRODUCCION')
+                      )->where('file_reproduction_internal.actual_state','=','Disponible')
                       
               ->get();
               $pdf = PDF::loadView('file_reproductionM.pdf',compact('re_MI'));
@@ -95,14 +95,35 @@ class File_reproductionMController extends Controller
                 $actvividad->subject_id =$id;
                 $actvividad->description =('DESCARGA');
                 $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL INTERNA';
-                $actvividad->data = 'FichaReproduccionMontaNaturalInterno.pdf';
+                $actvividad->data = 'FichaReproduccionesMontasNaturalesInternasActivos.pdf';
                 $actvividad->subject_type =('App\Models\File_reproduction_internal');
             
                 $actvividad->save();
-              return $pdf->setPaper('a4','landscape')->download('FichaReproduccionMontaNaturalInterno-'.date('Y-m-d H:i:s').'.pdf');
+              return $pdf->setPaper('a4','landscape')->download('FichaReproduccionesMontasNaturalesInternasActivos-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
-        return Excel::download(new File_reproduction_internalExport, 'FichaReproduccionMontaNaturalInterno-'.date('Y-m-d H:i:s').'.xlsx');
+        $actvividad = new  Activity();
+                $user = Auth::user()->name;
+                $id = Auth::user()->id;
+                $rol = Auth::user()->roles->pluck('rol');
+                $correo = Auth::user()->email;
+                $actvividad->log_name = $user;
+                $actvividad->email = $correo;
+        
+                $super= str_replace('"','',$rol);
+                $super2= str_replace('[','',$super);
+                $super3= str_replace(']','',$super2);
+        
+                $actvividad->rol =$super3 ;
+                $actvividad->subject_id =$id;
+                $actvividad->description =('DESCARGA');
+                $actvividad->view ='FICHA REPRODUCCION MONTA NATURAL INTERNA';
+                $actvividad->data = 'FichaReproduccionesMontasNaturalesInternasActivos.xlsx';
+                $actvividad->subject_type =('App\Models\File_reproduction_internal');
+            
+                $actvividad->save();
+
+        return Excel::download(new File_reproduction_internalExport, 'FichaReproduccionesMontasNaturalesInternasActivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

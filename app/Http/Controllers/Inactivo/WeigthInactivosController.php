@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use App\Models\File_animale;
 use App\Models\Weigth_control;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Inactivo\Weigth_controlInactivoExport;
 
 class WeigthInactivosController extends Controller
 {
@@ -26,38 +30,71 @@ class WeigthInactivosController extends Controller
                     'weigth_control.weigtht',
                     'weigth_control.date_r',
                     'weigth_control.actual_state')
-                    ->where('weigth_control.actual_state','=','Inactivo')
+                    ->where('weigth_control.actual_state','=','INACTIVO')
                     ->get();
         return view('weigthC.index-inactivo',compact('pesoC'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function PDF(){
+        $pesoC = DB::table('weigth_control')
+                ->join('file_animale','weigth_control.animalCode_id','=','file_animale.id')
+                ->select('weigth_control.id'
+                ,'weigth_control.date',
+                'file_animale.animalCode as animal',
+                'weigth_control.weigtht',
+                'weigth_control.date_r',
+                'weigth_control.actual_state')
+                ->where('weigth_control.actual_state','=','INACTIVO')
+                ->get();
+        $pdf = PDF::loadView('weigthC.pdf-inactivo',compact('pesoC'));
+
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='CONTROL PESO';
+        $actvividad->data = 'ControlesPesosInactivos.pdf';
+        $actvividad->subject_type =('App\Models\Weigth_control');
+    
+        $actvividad->save();
+
+        return $pdf->setPaper('a4','landscape')->download('ControlesPesosInactivos-'.date('Y-m-d H:i:s').'.pdf');
+    }
+    public function Excel(){
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3 ;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='CONTROL PESO';
+        $actvividad->data ='ControlesPesosInactivos.xlsx';
+        $actvividad->subject_type =('App\Models\Weigth_control');
+    
+        $actvividad->save();
+        return Excel::download(new Weigth_controlInactivoExport, 'ControlesPesosInactivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('weigthC.edit-inactivo',compact('id'));

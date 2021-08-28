@@ -1,13 +1,19 @@
 @extends('layouts.baseTablasInactivas')
 
 @section('nombre_card')
-Registros de Vitaminas Inactivas
+Registros de Vitaminas Inactivos
 @endsection
 @section('boton_atras')
 "{{url('/confVi')}}"
 @endsection
+@section('boton_reporte_excel')
+"{{url('exportar-excel-Vitaminas-Inactivos')}}"
+@endsection
+@section('boton_reporte_pdf')
+"{{url('descarga-pdf-Vitaminas-Inactivos')}}"
+@endsection
 @section('nombre_tabla')
-Registros de Vitaminas
+Registros de Vitaminas Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

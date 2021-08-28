@@ -1,7 +1,7 @@
 @extends('layouts.baseTablas')
 
 @section('nombre_card')
-Registros de Razas Activas
+Registros de Razas Activos
 @endsection
 
 @section('boton_registro')
@@ -18,7 +18,7 @@ Registros de Razas Activas
 @endsection
 
 @section('nombre_tabla')
-Registros de Razas
+Registros de Razas Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">
