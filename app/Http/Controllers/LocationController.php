@@ -66,7 +66,7 @@ class LocationController extends Controller
         return $pdf->setPaper('a4','landscape')->download('RegistroLocalizaciones-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
-        return Excel::download(new LocationExport, 'RegistroLocalizaciones.xlsx');
+        return Excel::download(new LocationExport, 'RegistroLocalizaciones-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

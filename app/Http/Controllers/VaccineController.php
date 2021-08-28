@@ -73,7 +73,7 @@ class VaccineController extends Controller
     }
 
     public function Excel(){
-        return Excel::download(new VaccineExport, 'RegistrosVacunas.xlsx');
+        return Excel::download(new VaccineExport, 'RegistrosVacunas-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

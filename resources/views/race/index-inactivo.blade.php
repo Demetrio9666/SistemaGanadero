@@ -26,7 +26,8 @@ Registros de Razas
             <td>{{$i->percentage}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('inactivos.Razas.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                <center>
+                    <a class="btn btn-primary" href="{{route('inactivos.Razas.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
                 <form action="{{route('inactivos.Razas.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
                     @csrf
                     @method('DELETE') 
@@ -35,6 +36,8 @@ Registros de Razas
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </form>
+                </center>
+                
                   
             </td>  
         </tr>

@@ -93,7 +93,7 @@ class AntibioticController extends Controller
         $actvividad->subject_type =('App\Models\Antibiotic');
         
         $actvividad->save();
-        return Excel::download(new AntibioticosExport, 'RegistrosAntibioticos.xlsx');
+        return Excel::download(new AntibioticosExport, 'RegistrosAntibioticos-'.date('Y-m-d H:i:s').'.xlsx');
 
     }
 

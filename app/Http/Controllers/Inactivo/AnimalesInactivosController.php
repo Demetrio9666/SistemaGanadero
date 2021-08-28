@@ -10,6 +10,9 @@ use App\Models\Location;
 use App\Models\Race;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AnimalesInactivosController extends Controller
 {
@@ -32,33 +35,49 @@ class AnimalesInactivosController extends Controller
         return view('file_animale.index-inactivo',compact('animal'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function PDF(Request $request){
+        $animal = DB::table('file_animale')
+        ->leftJoin('race','file_animale.race_id','=','race.id')
+        ->leftJoin('location','file_animale.location_id','=','location.id')
+        ->select('file_animale.id','file_animale.animalCode','file_animale.date','race.race_d as raza',
+                'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
+                'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
+                ,'file_animale.conceived')
+                ->where('file_animale.actual_state','=','INACTIVO')
+        ->get();
+    
+        $pdf = PDF::loadView('file_animale.pdf',compact('animal'));
+
+        //return $pdf->download('codingdriver.pdf');
+
+        ///segunda forma de enviar el rol 
+        $actvividad = new  Activity();
+        $user = Auth::user()->name;
+        $id = Auth::user()->id;
+        $rol = Auth::user()->roles->pluck('rol');
+        $correo = Auth::user()->email;
+        $actvividad->log_name = $user;
+        $actvividad->email = $correo;
+
+        $super= str_replace('"','',$rol);
+        $super2= str_replace('[','',$super);
+        $super3= str_replace(']','',$super2);
+
+        $actvividad->rol =$super3;
+        $actvividad->subject_id =$id;
+        $actvividad->description =('DESCARGA');
+        $actvividad->view ='FICHA ANIMAL';
+        $actvividad->data ='FichaAnimal.pdf';
+        $actvividad->subject_type =('App\Models\File_Animale');
+
+        //return $actvividad;
+        //$actvividad->save();
+        //return date('Y-m-d H:i:s');
+        return $pdf->setPaper('a4','landscape')->download('FichaAnimalInactivo-'.date('Y-m-d H:i:s').'.pdf');
+        //return $pdf->setPaper('a4','landscape')->stream('FichaAnimal.pdf');
+        // return view('file_animale.pdf',compact('animal'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('file_animale.edit-inactivo',compact('id'));

@@ -102,7 +102,7 @@ return [
     */
 
     'classes_auth_card' => 'bg-gradient-dark',
-    'classes_auth_header' => '/',
+    'classes_auth_header' => '',
     'classes_auth_body' => 'bg-gradient-dark',
     'classes_auth_footer' => 'text-center',
     'classes_auth_icon' => 'text-light',
@@ -187,7 +187,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => '',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -224,6 +224,12 @@ return [
     */
 
     'menu' => [
+        [
+            'text'=>date('Y-m-d H:i:s'),
+            'url'=>'#',
+            'topnav'=>true
+
+        ],
         [
             'text' => 'profile',
             'url'  => 'user/profile',

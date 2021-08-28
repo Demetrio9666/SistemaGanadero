@@ -39,7 +39,7 @@ class Deworming_controlExport implements FromCollection ,WithHeadings,WithColumn
             'Fecha de Control',
             'Codigo Animal',
             'Desparacitante',
-            'Fecha re-desparasitacion',
+            'Fecha segunda Docis',
             'Estado Actual',
         ];
     }
@@ -47,11 +47,11 @@ class Deworming_controlExport implements FromCollection ,WithHeadings,WithColumn
     {
         return [
             'A'=>5,
-            'B'=>13,
-            'C'=>18,
-            'D'=>15,
-            'E'=>10, 
-            'F'=>10.89,            
+            'B'=>19,
+            'C'=>25,
+            'D'=>29,
+            'E'=>20, 
+            'F'=>19,            
         ];
     }
     public function styles(Worksheet $sheet)

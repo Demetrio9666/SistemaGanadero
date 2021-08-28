@@ -79,7 +79,7 @@ class Deworming_controlController extends Controller
     }
 
     public function Excel(){
-        return Excel::download(new Deworming_controlExport, 'ControlDesparacitacion.xlsx');
+        return Excel::download(new Deworming_controlExport, 'ControlDesparacitacion'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

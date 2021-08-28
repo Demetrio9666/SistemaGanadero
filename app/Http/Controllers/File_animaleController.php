@@ -57,7 +57,9 @@ class File_animaleController extends Controller
                             'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
                             'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
                             ,'file_animale.conceived')
-                            ->where('file_animale.actual_state','=','DISPONIBLE' )->Orwhere('file_animale.actual_state','=','REPRODUCCIÓN')
+                            ->where('file_animale.actual_state','=','DISPONIBLE' )
+                            ->Orwhere('file_animale.actual_state','=','REPRODUCCIÓN')
+                            ->Orwhere('file_animale.actual_state','=','VENDIDO')
                     ->get();
                 
         $pdf = PDF::loadView('file_animale.pdf',compact('animal'));
@@ -95,7 +97,7 @@ class File_animaleController extends Controller
     
     public function Excel() 
     {
-        return Excel::download(new File_AnimalesExport, 'FichaAnimal.xlsx');
+        return Excel::download(new File_AnimalesExport, 'FichaAnimal-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

@@ -1,5 +1,8 @@
 
 <link rel="stylesheet" type="text/css" href="css/styles1.css">
+<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
+<link href="{{asset('../vendor/fontawesome-free/css/fontawesome.min.css')}}">
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
@@ -13,7 +16,7 @@
             </div>
             
         </div>
-
+        
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -34,14 +37,26 @@
                 @enderror
             </div>
 
+            <!--div class="form-group">
+                <label>Contraseña</label>
+                <x-jet-label for="password" value="{{ __('Contraseña') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full {{$errors->has('password') ? 'is-invalid':''}}"   />
+                
+            </div-->
             <div class="form-group">
                 <label>Contraseña</label>
-                <!--x-jet-label for="password" value="{{ __('Contraseña') }}" /-->
-                <x-jet-input id="password" class="block mt-1 w-full {{$errors->has('password') ? 'is-invalid':''}}" type="password" name="password"  />
-                @error('password')
-                    <div class="invalid-feedback" style="color:#FF0000;"><i>{{$message}}</i></div>
-                @enderror
+                <div class="input-group mb-3">
+                    <x-jet-input id="password"  class="form-control {{$errors->has('password') ? 'is-invalid':''}}"  aria-label="Recipient's username" aria-describedby="button-addon2" type="password" name="password" />
+                   
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button" id="button-addon2" onclick="mostrarContrasena()"  >Mostar</button>
+                    </div>
+                  </div>
+                  @error('password')
+                        <div class="invalid-feedback" style="color:#FF0000;"><i>{{$message}}</i></div>
+                  @enderror
             </div>
+            
 
             <div class="form-group">
                 <label>Confirmar Contraseña</label>
@@ -81,3 +96,14 @@
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
+<script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
+<script>
+    function mostrarContrasena(){
+        var tipo = document.getElementById("password");
+        if(tipo.type == "password"){
+            tipo.type = "text";
+        }else{
+            tipo.type = "password";
+        }
+    }
+  </script>

@@ -96,7 +96,7 @@ class External_mountController extends Controller
         return $pdf->setPaper('a4','landscape')->download('FichaReproduccionMontaNaturalExterna-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
-        return Excel::download(new File_reproduction_externalExport, 'FichaReproduccionMontaNaturalExterna.xlsx');
+        return Excel::download(new File_reproduction_externalExport, 'FichaReproduccionMontaNaturalExterna'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

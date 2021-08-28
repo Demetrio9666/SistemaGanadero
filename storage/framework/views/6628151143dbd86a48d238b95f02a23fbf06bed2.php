@@ -9,6 +9,8 @@
             </div>
             <div class="col-lg-3 col-6">
                 <a type="button" class="btn btn-success" style="margin: 10px" id="button-addon1" href=<?php echo $__env->yieldContent('boton_atras'); ?>><i class="fas fa-arrow-left"></i></a>
+                <a type="button" title="Descarga reportes en Excel" class="btn btn-success " style="margin: 10px"  id="button-addon1" href=<?php echo $__env->yieldContent('boton_reporte_excel'); ?>><i class="fas fa-file-excel"></i></a>
+                <a type="button" title="Descarga reportes en PDF" class="btn btn-danger "  id="button-addon1" href=<?php echo $__env->yieldContent('boton_reporte_pdf'); ?>><i class="fas fa-file-pdf"></i></a>  
             </div>
             <div class="card">
                 <div class="card-body">

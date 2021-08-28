@@ -68,7 +68,7 @@ class RaceController extends Controller
     }
 
     public function Excel(){
-        return Excel::download(new RaceExport, 'RegistroRazas.xlsx');
+        return Excel::download(new RaceExport, 'RegistroRazas-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

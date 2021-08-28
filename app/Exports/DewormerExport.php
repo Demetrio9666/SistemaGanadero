@@ -45,11 +45,11 @@ class DewormerExport implements FromCollection ,WithHeadings,WithColumnWidths, W
     {
         return [
             'A'=>5,
-            'B'=>13,
-            'C'=>18,
-            'D'=>15,
-            'E'=>10, 
-            'F'=>10.89, 
+            'B'=>25,
+            'C'=>19,
+            'D'=>19,
+            'E'=>20, 
+            'F'=>15, 
             
                      
         ];

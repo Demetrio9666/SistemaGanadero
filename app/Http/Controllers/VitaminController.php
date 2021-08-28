@@ -61,7 +61,7 @@ class VitaminController extends Controller
         return $pdf->setPaper('a4','landscape')->download('RegistrosVitaminas-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
-        return Excel::download(new VitaminExport, 'RegistrosVitaminas.xlsx');
+        return Excel::download(new VitaminExport, 'RegistrosVitaminas-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

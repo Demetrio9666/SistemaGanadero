@@ -44,10 +44,10 @@ class AntibioticosExport implements FromCollection ,WithHeadings,WithColumnWidth
         return [
             'A'=>5,
             'B'=>20,
-            'C'=>18,
-            'D'=>18,
+            'C'=>19,
+            'D'=>19,
             'E'=>20, 
-            'F'=>10.89,            
+            'F'=>15,            
         ];
     }
     public function styles(Worksheet $sheet)

@@ -85,7 +85,7 @@ class File_partumController extends Controller
     }
 
     public function Excel(){
-        return Excel::download(new File_partumExport, 'FichaPartos.xlsx');
+        return Excel::download(new File_partumExport, 'FichaPartos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

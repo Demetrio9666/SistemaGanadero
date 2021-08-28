@@ -70,7 +70,7 @@ class DewormerController extends Controller
         return $pdf->setPaper('a4','landscape')->download('RegistrosDesparasitantes-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
-        return Excel::download(new DewormerExport, 'RegistrosDesparasitantes.xlsx');
+        return Excel::download(new DewormerExport, 'RegistrosDesparasitantes'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

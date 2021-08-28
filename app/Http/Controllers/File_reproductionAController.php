@@ -88,7 +88,7 @@ class File_reproductionAController extends Controller
 
     }
     public function Excel(){
-        return Excel::download(new File_reproduction_artificialExport, 'FichaReproduccionArtificial.xlsx');
+        return Excel::download(new File_reproduction_artificialExport, 'FichaReproduccionArtificial-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

@@ -78,7 +78,7 @@ class ArtificialReproductionController extends Controller
 
     }
     public function Excel() {
-        return Excel::download(new ArtificialReproductionExport, 'MaterialGenetico.xlsx');
+        return Excel::download(new ArtificialReproductionExport, 'MaterialGenetico'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

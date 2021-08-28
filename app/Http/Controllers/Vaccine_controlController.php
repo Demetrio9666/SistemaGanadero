@@ -81,7 +81,7 @@ class Vaccine_controlController extends Controller
         return $pdf->setPaper('a4','landscape')->download('ControlVacunas-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
-        return Excel::download(new Vaccine_controlExport, 'ControlVacunas.xlsx');
+        return Excel::download(new Vaccine_controlExport, 'ControlVacunas-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

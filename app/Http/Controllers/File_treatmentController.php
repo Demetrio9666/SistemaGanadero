@@ -86,7 +86,7 @@ class File_treatmentController extends Controller
         return $pdf->setPaper('a4','landscape')->download('FichaTratamiento-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel() {
-        return Excel::download(new File_treatmentExport, 'FichaTratamiento.xlsx');
+        return Excel::download(new File_treatmentExport, 'FichaTratamiento-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

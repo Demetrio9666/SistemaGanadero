@@ -102,7 +102,7 @@ class File_reproductionMController extends Controller
               return $pdf->setPaper('a4','landscape')->download('FichaReproduccionMontaNaturalInterno-'.date('Y-m-d H:i:s').'.pdf');
     }
     public function Excel(){
-        return Excel::download(new File_reproduction_internalExport, 'FichaReproduccionMontaNaturalInterno.xlsx');
+        return Excel::download(new File_reproduction_internalExport, 'FichaReproduccionMontaNaturalInterno-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

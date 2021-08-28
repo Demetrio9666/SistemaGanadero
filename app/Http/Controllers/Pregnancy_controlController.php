@@ -84,7 +84,7 @@ class Pregnancy_controlController extends Controller
 
     }
     public function Excel(){
-        return Excel::download(new Pregnancy_controlExport, 'ControlPreñes.xlsx');
+        return Excel::download(new Pregnancy_controlExport, 'ControlPreñes-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
 

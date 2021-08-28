@@ -56,11 +56,11 @@ class File_partumExport implements FromCollection ,WithHeadings,WithColumnWidths
             'B'=>13,
             'C'=>18,
             'D'=>15,
-            'E'=>10, 
-            'F'=>10.89, 
-            'G'=>12, 
-            'H'=>11, 
-            'I'=>14,        
+            'E'=>15, 
+            'F'=>15, 
+            'G'=>19, 
+            'H'=>22, 
+            'I'=>16,        
         ];
     }
     public function styles(Worksheet $sheet)

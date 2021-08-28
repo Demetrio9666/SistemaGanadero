@@ -38,7 +38,10 @@ Registros de Razas
             <td >{{$i->actual_state}}</td>
 
             <td>
-                <a class="btn btn-primary" href="{{route('confRaza.edit',$i->id)}}" ><i class="fas fa-edit"></i></a> 
+                <center>
+                    <a class="btn btn-primary" href="{{route('confRaza.edit',$i->id)}}" ><i class="fas fa-edit"></i></a> 
+                </center>
+               
             </td>  
             
         </tr>
