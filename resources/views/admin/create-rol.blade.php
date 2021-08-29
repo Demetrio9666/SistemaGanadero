@@ -32,12 +32,12 @@
                         @enderror
                         {!! Form::open(['route' => 'rol.store']) !!}
                              <label for="" class="form-label">Nombre del Rol:</label>
-                             <input type="text" class="form-control {{$errors->has('rol') ? 'is-invalid':''}}" id="name" name="rol"  onblur="upperCase()">
+                             <input type="text" class="form-control {{$errors->has('rol')?'is-invalid':''}}" id="rol" name="rol"  onblur="upperCase()">
                              @error('rol')
                                    <div class="invalid-feedback">{{$message}}</div>
                              @enderror
                             @include('admin.base.plantilla')
-                            @include('layouts.base-usuario')
+                            
                         {!! Form::close() !!}
         
                     </div>

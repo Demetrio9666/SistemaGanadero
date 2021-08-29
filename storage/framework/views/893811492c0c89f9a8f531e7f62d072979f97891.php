@@ -77,13 +77,13 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($fichaAnimales as $i)          
+                        <?php $__currentLoopData = $fichaAnimales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
 
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -101,12 +101,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($fichaParto as $i)          
+                        <?php $__currentLoopData = $fichaParto; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -124,12 +124,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($fichaTratamiento as $i)          
+                        <?php $__currentLoopData = $fichaTratamiento; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -147,12 +147,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($reproduccion as $i)          
+                        <?php $__currentLoopData = $reproduccion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -170,12 +170,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($controlVacuna as $i)          
+                        <?php $__currentLoopData = $controlVacuna; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -193,12 +193,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($controlPeso as $i)          
+                        <?php $__currentLoopData = $controlPeso; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -217,12 +217,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($controlDesp as $i)          
+                        <?php $__currentLoopData = $controlDesp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -240,12 +240,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($controlPrenes as $i)          
+                        <?php $__currentLoopData = $controlPrenes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -263,12 +263,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($confDesp as $i)          
+                        <?php $__currentLoopData = $confDesp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -286,12 +286,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($confVacuna as $i)          
+                        <?php $__currentLoopData = $confVacuna; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -309,12 +309,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($confVitamina as $i)          
+                        <?php $__currentLoopData = $confVitamina; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -333,12 +333,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($confAntibiotico as $i)          
+                        <?php $__currentLoopData = $confAntibiotico; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -357,12 +357,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($confMaterial as $i)          
+                        <?php $__currentLoopData = $confMaterial; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -380,12 +380,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($confUbicacion as $i)          
+                        <?php $__currentLoopData = $confUbicacion; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -404,12 +404,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($confRaza as $i)          
+                        <?php $__currentLoopData = $confRaza; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -427,12 +427,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($dashboard as $i)          
+                        <?php $__currentLoopData = $dashboard; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -450,12 +450,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($roles as $i)          
+                        <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -473,12 +473,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($rolUsuario as $i)          
+                        <?php $__currentLoopData = $rolUsuario; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -496,12 +496,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($usuario as $i)          
+                        <?php $__currentLoopData = $usuario; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -519,12 +519,12 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        @foreach ($actividad as $i)          
+                        <?php $__currentLoopData = $actividad; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
                         <tr >
-                            <td> {!! Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']) !!}</td>
-                            <td >{{$i->description}}</td>
+                            <td> <?php echo Form::checkbox('permissions[]', $i->id, null, ['class'=>'mr-1 ']); ?></td>
+                            <td ><?php echo e($i->description); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 
                 </table>
@@ -534,8 +534,8 @@
     </div>
     <center>
         <div class="form-group">
-            <a type="button"  class="btn btn-secondary "   href="{{url('/rol')}}">Cancelar</a>
-            <button type="submit" class="btn btn-success btn"  href="{{ Redirect::to('/rol') }}" >Guardar</button>
+            <a type="button"  class="btn btn-secondary "   href="<?php echo e(url('/rol')); ?>">Cancelar</a>
+            <button type="submit" class="btn btn-success btn"  href="<?php echo e(Redirect::to('/rol')); ?>" >Guardar</button>
         </div>
     </center>
    
@@ -550,3 +550,4 @@
 </script>
 
 
+<?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/admin/base/plantilla.blade.php ENDPATH**/ ?>

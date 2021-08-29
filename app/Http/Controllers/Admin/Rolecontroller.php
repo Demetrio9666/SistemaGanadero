@@ -131,16 +131,16 @@ class Rolecontroller extends Controller
     {
         
 
-        $role = Role::create([
-           'name' =>$request->rol
+        $rol = Role::create([
+           'rol' =>$request->rol
         ]);
        // $rol->permissions()->attach($request->permiso);
         
        //se crea un nuevo rol
-       // $rol = Role::create([$request->Nombre_del_rol]);
+        //$role = Role::create([$request->rol]);
         //se asigna el permiso
         
-        $role->permissions()->sync($request->permissions);
+        $rol->permissions()->sync($request->permissions);
         
 
         return redirect()->route('rol.index')->with('Infor','ok');
