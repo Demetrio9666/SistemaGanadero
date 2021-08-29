@@ -8,11 +8,11 @@ Fichas de Reproducción por Monta Natural Interna Inactivos
     <thead>            
             <tr>
                 <th>Fecha de Registro</th>
-                <th>Código del Animal</th>
+                <th>Código del Animal Hembra</th>
                 <th>Raza </th>
                 <th>Edad</th>
                 <th>Sexo</th>
-                <th>Código del Animal</th>
+                <th>Código del Animal Macho</th>
                 <th>Raza</th>
                 <th>Edad</th>
                 <th>Sexo</th>

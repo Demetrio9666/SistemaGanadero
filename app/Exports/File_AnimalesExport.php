@@ -63,7 +63,7 @@ class File_AnimalesExport implements FromCollection ,WithHeadings,WithColumnWidt
             'H'=>11, 
             'I'=>14, 
             'J'=>10, 
-            'K'=>11.22, 
+            'K'=>15, 
             'L'=>10.67, 
             'M'=>22.12,   
                      

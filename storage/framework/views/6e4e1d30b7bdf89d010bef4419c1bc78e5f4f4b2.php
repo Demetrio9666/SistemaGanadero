@@ -43,7 +43,10 @@ Fichas de Reproducción Artificial Activos
             <td ><?php echo e($i->raza_m); ?></td>
             <td ><?php echo e($i->actual_state); ?></td>
             <td>
-                <a class="btn btn-primary  " href="<?php echo e(route('fichaReproduccionA.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
+                <center>
+                    <a class="btn btn-primary  " href="<?php echo e(route('fichaReproduccionA.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
+                </center>
+                
                                         
             </td>  
         </tr>

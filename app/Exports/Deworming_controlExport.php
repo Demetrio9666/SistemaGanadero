@@ -51,7 +51,7 @@ class Deworming_controlExport implements FromCollection ,WithHeadings,WithColumn
             'C'=>25,
             'D'=>29,
             'E'=>20, 
-            'F'=>19,            
+            'F'=>15,            
         ];
     }
     public function styles(Worksheet $sheet)

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\Inactivo;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\File_animale;
@@ -14,7 +14,7 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class File_reproduction_artificialExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class File_reproduction_artificialInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -34,7 +34,7 @@ class File_reproduction_artificialExport implements FromCollection ,WithHeadings
                             'a.race_d as raza_m',
                             'file_reproduction_artificial.actual_state'
                             )
-                            ->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
+                            ->where('file_reproduction_artificial.actual_state','=','INACTIVO')
                             
                     ->get(); 
         return $re_A;
@@ -73,7 +73,4 @@ class File_reproduction_artificialExport implements FromCollection ,WithHeadings
        $sheet->getStyle('G1')->getFont()->setBold(true);
       
     }
-
-
-
 }

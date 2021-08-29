@@ -60,7 +60,7 @@ class File_partumExport implements FromCollection ,WithHeadings,WithColumnWidths
             'F'=>15, 
             'G'=>19, 
             'H'=>22, 
-            'I'=>16,        
+            'I'=>15,        
         ];
     }
     public function styles(Worksheet $sheet)

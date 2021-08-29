@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\Inactivo;
 
 use Illuminate\Support\Facades\DB;
-use App\Models\File_animale;
-use App\Models\Pregnancy_control;
+use App\Models\File_treatment;
 use App\Models\Vitamin;
+use App\Models\File_animale;
+use App\Models\Antibiotic;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -13,40 +14,43 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class Pregnancy_controlExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class File_treatmentInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        $pre = DB::table('pregnancy_control')
-             ->join('vitamin','pregnancy_control.vitamin_id','=','vitamin.id')
-             ->join('file_animale','pregnancy_control.animalCode_id','=','file_animale.id')
-             ->select('pregnancy_control.id',
-                      'pregnancy_control.date',
-                       'file_animale.animalCode as animal',
-                        'vitamin.vitamin_d as vitamina',
-                        'pregnancy_control.alternative1 as alt1',
-                        'pregnancy_control.alternative2  as alt2',
-                         'pregnancy_control.observation',
-                        'pregnancy_control.date_r',
-                        'pregnancy_control.actual_state')
-                        ->where('pregnancy_control.actual_state','=','Disponible')
-             ->get();   
-             return $pre;
+        $tra = DB::table('file_treatment')
+        ->leftJoin('vitamin','file_treatment.vitamin_id','=','vitamin.id')
+        ->join('file_animale','file_treatment.animalCode_id','=','file_animale.id')
+        ->leftJoin('antibiotic','file_treatment.antibiotic_id','=','antibiotic.id')
+        ->select('file_treatment.id',
+                 'file_treatment.date',
+                 'file_animale.animalCode as animal',
+                 'file_treatment.disease',
+                 'file_treatment.detail',
+                 'antibiotic.antibiotic_d as anti',
+                 'vitamin.vitamin_d as vi',
+                 'file_treatment.treatment',
+                 'file_treatment.actual_state'
+                )->where('file_treatment.actual_state','=','INACTIVO')    
+                
+        ->get();
+        return $tra;
     }
     public function headings():array{
         return[
             'ID',
-            'Fecha de Control',
+            'Fecha de Registro',
             'Codigo Animal',
+            'Enfermedad',
+            'Detalle',
+            'Antibiotico',
             'Vitamina',
-            'Alternativa 1 de Vitamina',
-            'Alternativa 2 de Vitamina',
-            'Observacion',
-            'Fecha Proximo Control',
-            'Estado Actual',
+            'Tratamiento',
+            'Estado Actual'
+
         ];
     }
     public function columnWidths(): array
@@ -60,8 +64,8 @@ class Pregnancy_controlExport implements FromCollection ,WithHeadings,WithColumn
             'F'=>10.89, 
             'G'=>12, 
             'H'=>11, 
-            'I'=>15, 
-                     
+            'I'=>14, 
+            'J'=>15,          
         ];
     }
     public function styles(Worksheet $sheet)
@@ -75,5 +79,6 @@ class Pregnancy_controlExport implements FromCollection ,WithHeadings,WithColumn
        $sheet->getStyle('G1')->getFont()->setBold(true);
        $sheet->getStyle('H1')->getFont()->setBold(true);
        $sheet->getStyle('I1')->getFont()->setBold(true);
+       $sheet->getStyle('J1')->getFont()->setBold(true);
     }
 }

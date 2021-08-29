@@ -2,7 +2,9 @@
 
 namespace App\Exports\Inactivo;
 
-use App\Models\Antibiotic;
+use App\Models\Deworming_control;
+use App\Models\File_animale;
+use App\Models\Dewormer;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
@@ -11,31 +13,33 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class AntibioticosInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class Deworming_controlInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        $anti = DB::table('antibiotic')
-        ->select('antibiotic.id',
-                  'antibiotic.antibiotic_d',
-                  'antibiotic.date_e',
-                  'antibiotic.date_c',
-                  'antibiotic.supplier',
-                  'antibiotic.actual_state')
-                  ->where('antibiotic.actual_state','=','INACTIVO')
-       ->get();
-       return $anti;
+        $desC = DB::table('deworming_control')
+        ->join('file_animale','deworming_control.animalCode_id','=','file_animale.id')
+        ->join('dewormer','deworming_control.deworming_id','=','dewormer.id')
+        ->select('deworming_control.id',
+                 'deworming_control.date',
+                 'file_animale.animalCode as animal',
+                 'dewormer.dewormer_d as des',
+                 'deworming_control.date_r',
+                 'deworming_control.actual_state')
+                 ->where('deworming_control.actual_state','=','INACTIVO')
+        ->get();
+        return $desC;
     }
     public function headings():array{
         return[
             'ID',
-            'Nombre del Antibiotico',
-            'Fecha de Elaboracion',
-            'Fecha de Caducidad',
-            'Proveedor',
+            'Fecha de Control',
+            'Codigo Animal',
+            'Desparacitante',
+            'Fecha segunda Docis',
             'Estado Actual',
         ];
     }
@@ -43,9 +47,9 @@ class AntibioticosInactivoExport implements FromCollection ,WithHeadings,WithCol
     {
         return [
             'A'=>5,
-            'B'=>20,
-            'C'=>19,
-            'D'=>19,
+            'B'=>19,
+            'C'=>25,
+            'D'=>29,
             'E'=>20, 
             'F'=>15,            
         ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\Inactivo;
 
 use App\Models\File_reproduction_external;
 use App\Models\Race;
@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class File_reproduction_externalExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class File_reproduction_externalInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -37,7 +37,7 @@ class File_reproduction_externalExport implements FromCollection ,WithHeadings,W
                     'file_reproduction_external.sex',
                     'file_reproduction_external.hacienda_name',
                     'file_reproduction_external.actual_state')
-                    ->where('file_reproduction_external.actual_state','=','Disponible')
+                    ->where('file_reproduction_external.actual_state','=','INACTIVO')
                     
         ->get();
         return $ext;
@@ -93,5 +93,4 @@ class File_reproduction_externalExport implements FromCollection ,WithHeadings,W
        $sheet->getStyle('L1')->getFont()->setBold(true);
       
     }
-
 }

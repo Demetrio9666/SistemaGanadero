@@ -10,7 +10,7 @@ use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\Inactivo\Vaccine_controlInactivoExport;
+use App\Exports\Inactivo\VaccineInactivoExport;
 
 class VaccineInactivosController extends Controller
 {
@@ -92,7 +92,7 @@ class VaccineInactivosController extends Controller
         
         $actvividad->save();
 
-        return Excel::download(new VaccineExport,'RegistrosVacunasInactivos-'.date('Y-m-d H:i:s').'.xlsx');
+        return Excel::download(new VaccineInactivoExport,'RegistrosVacunasInactivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     public function show($id)

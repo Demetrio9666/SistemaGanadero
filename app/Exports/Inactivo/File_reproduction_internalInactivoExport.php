@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\Inactivo;
 
-use App\Models\File_reproduction_external;
-use App\Models\Race;
-use App\Models\File_animale;
 use Illuminate\Support\Facades\DB;
+use App\Models\File_animale;
+use App\Models\Race;
+use App\Models\File_reproduction_internal;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -13,34 +13,38 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class File_reproduction_externalExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class File_reproduction_internalInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        $ext =  DB::table('file_reproduction_external')
-        ->join('file_animale','file_reproduction_external.animalCode_id','=','file_animale.id')
-        ->join('race as R','file_animale.race_id','=','R.id')
-        ->join('race','file_reproduction_external.race_id','=','race.id')
-        ->select('file_reproduction_external.id',
-                    'file_reproduction_external.date',
-                    'file_animale.animalCode',
-                    'R.race_d as raza',
-                    'file_animale.age_month as edad',
-                    'file_animale.sex as sexo',
+        $re_MI = DB::table('file_reproduction_internal')
+              ->join('file_animale as M','file_reproduction_internal.animalCode_id_m','=','M.id')
+              ->join('file_animale as P','file_reproduction_internal.animalCode_id_p','=','P.id')
 
-                    'file_reproduction_external.animalCode_Exte',
-                    'race.race_d',
-                    'file_reproduction_external.age_month',
-                    'file_reproduction_external.sex',
-                    'file_reproduction_external.hacienda_name',
-                    'file_reproduction_external.actual_state')
-                    ->where('file_reproduction_external.actual_state','=','Disponible')
-                    
-        ->get();
-        return $ext;
+              ->join('race as RM','M.race_id','=','RM.id')
+              ->join('race as RP','P.race_id','=','RP.id')
+
+
+              ->select('file_reproduction_internal.id',
+                       'file_reproduction_internal.date as fecha_MI',
+
+                       'M.animalCode as animal_h_MI',
+                       'RM.race_d as raza_h_MI',
+                       'M.sex as sexo_h',
+                       'M.age_month as edad_h',
+
+                       'P.animalCode as animal_m_MI',
+                       'RP.race_d as raza_m_MI',
+                       'P.sex as sexo_m',
+                       'P.age_month as edad_m',
+                       'file_reproduction_internal.actual_state'
+                      )->where('file_reproduction_internal.actual_state','=','INACTIVO')
+                      
+              ->get();
+              return $re_MI;
     }
     public function headings():array{
         return[
@@ -50,11 +54,10 @@ class File_reproduction_externalExport implements FromCollection ,WithHeadings,W
             'Raza',
             'Edad',
             'Sexo',
-            'Codigo Animal Exteno',
+            'Codigo Animal',
             'Raza',
             'Edad',
             'Sexo',
-            'Hacienda',
             'Estado Actual',
         ];
     }
@@ -71,9 +74,8 @@ class File_reproduction_externalExport implements FromCollection ,WithHeadings,W
             'H'=>11, 
             'I'=>14, 
             'J'=>10, 
-            'K'=>11.22, 
-            'L'=>15, 
-             
+            'K'=>15, 
+               
                      
         ];
     }
@@ -90,8 +92,5 @@ class File_reproduction_externalExport implements FromCollection ,WithHeadings,W
        $sheet->getStyle('I1')->getFont()->setBold(true);
        $sheet->getStyle('J1')->getFont()->setBold(true);
        $sheet->getStyle('K1')->getFont()->setBold(true);
-       $sheet->getStyle('L1')->getFont()->setBold(true);
-      
     }
-
 }

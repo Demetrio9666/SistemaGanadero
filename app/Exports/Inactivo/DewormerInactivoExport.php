@@ -2,52 +2,56 @@
 
 namespace App\Exports\Inactivo;
 
-use App\Models\Antibiotic;
-use Illuminate\Support\Facades\DB;
+use App\Models\Dewormer;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class AntibioticosInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class DewormerInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        $anti = DB::table('antibiotic')
-        ->select('antibiotic.id',
-                  'antibiotic.antibiotic_d',
-                  'antibiotic.date_e',
-                  'antibiotic.date_c',
-                  'antibiotic.supplier',
-                  'antibiotic.actual_state')
-                  ->where('antibiotic.actual_state','=','INACTIVO')
-       ->get();
-       return $anti;
+        $desp = DB::table('dewormer')
+            ->select('dewormer.id',
+                    'dewormer.dewormer_d',
+                    'dewormer.date_e',
+                    'dewormer.date_c',
+                    'dewormer.supplier',
+                    'dewormer.actual_state')
+                    ->where('dewormer.actual_state','=','INACTIVO')
+            ->get();  
+        return $desp; 
     }
     public function headings():array{
         return[
             'ID',
-            'Nombre del Antibiotico',
+            'Nombre del Desparacitante',
             'Fecha de Elaboracion',
             'Fecha de Caducidad',
             'Proveedor',
             'Estado Actual',
+          
+
         ];
     }
     public function columnWidths(): array
     {
         return [
             'A'=>5,
-            'B'=>20,
+            'B'=>25,
             'C'=>19,
             'D'=>19,
             'E'=>20, 
-            'F'=>15,            
+            'F'=>15, 
+            
+                     
         ];
     }
     public function styles(Worksheet $sheet)
@@ -58,5 +62,6 @@ class AntibioticosInactivoExport implements FromCollection ,WithHeadings,WithCol
        $sheet->getStyle('D1')->getFont()->setBold(true);
        $sheet->getStyle('E1')->getFont()->setBold(true);
        $sheet->getStyle('F1')->getFont()->setBold(true);
+  
     }
 }

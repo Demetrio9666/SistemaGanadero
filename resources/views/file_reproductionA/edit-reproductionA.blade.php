@@ -18,7 +18,7 @@ Editar Reproducción Artificial
             <div class="input-group mb-3">
                     <input type="hidden" id="idcodi" name="animalCode_id_m"  value="{{$re->animalCode_id_m}}">
 
-                    <button class="btnbtn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                    <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                     
                     <input type="text" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
                     @foreach ($animalRH as $i)
@@ -110,7 +110,15 @@ Editar Reproducción Artificial
                               <td>{{$i->race_d}}</td>
                               <td>{{$i->reproduccion}}</td>
                               <td>{{$i->supplier}}</td>
-                              <td> <button type="button" class="btn btn-success btn btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
+                              
+                                <td> 
+                                    <center>
+                                        <button type="button" class="btn btn-success btn btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button>
+                                    </center>
+                                    
+                                </td>
+                              
+                             
                               
                             </tr>
                           @endforeach        

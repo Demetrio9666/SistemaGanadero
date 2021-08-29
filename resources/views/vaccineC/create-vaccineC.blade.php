@@ -16,7 +16,7 @@ Registro Control Vacunación
             </div>
                 <div class="col-md-6"> 
                     <div class="input-group mb-3" style="margin: 33px">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                                <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
                                 <input type="text" class="{{$errors->has('animalCode_id') ? 'is-invalid':''}}" placeholder="Código Animal"   aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
                                 <input type="hidden" id="idcodi" name="animalCode_id">
                                 @error('animalCode_id')

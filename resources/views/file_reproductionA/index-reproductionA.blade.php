@@ -43,7 +43,10 @@ Fichas de Reproducción Artificial Activos
             <td >{{$i->raza_m}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-                <a class="btn btn-primary  " href="{{route('fichaReproduccionA.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                <center>
+                    <a class="btn btn-primary  " href="{{route('fichaReproduccionA.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                </center>
+                
                                         
             </td>  
         </tr>

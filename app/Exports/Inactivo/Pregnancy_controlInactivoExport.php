@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\Inactivo;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\File_animale;
@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class Pregnancy_controlExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class Pregnancy_controlInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -32,7 +32,7 @@ class Pregnancy_controlExport implements FromCollection ,WithHeadings,WithColumn
                          'pregnancy_control.observation',
                         'pregnancy_control.date_r',
                         'pregnancy_control.actual_state')
-                        ->where('pregnancy_control.actual_state','=','Disponible')
+                        ->where('pregnancy_control.actual_state','=','INACTIVO')
              ->get();   
              return $pre;
     }

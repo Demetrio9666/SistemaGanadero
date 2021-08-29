@@ -2,8 +2,9 @@
 
 namespace App\Exports\Inactivo;
 
-use App\Models\Antibiotic;
 use Illuminate\Support\Facades\DB;
+use App\Models\Weigth_control;
+use App\Models\File_animale;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -11,31 +12,32 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class AntibioticosInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class Weigth_controlInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        $anti = DB::table('antibiotic')
-        ->select('antibiotic.id',
-                  'antibiotic.antibiotic_d',
-                  'antibiotic.date_e',
-                  'antibiotic.date_c',
-                  'antibiotic.supplier',
-                  'antibiotic.actual_state')
-                  ->where('antibiotic.actual_state','=','INACTIVO')
-       ->get();
-       return $anti;
+        $pesoC = DB::table('weigth_control')
+        ->join('file_animale','weigth_control.animalCode_id','=','file_animale.id')
+        ->select('weigth_control.id'
+        ,'weigth_control.date',
+        'file_animale.animalCode as animal',
+        'weigth_control.weigtht',
+        'weigth_control.date_r',
+        'weigth_control.actual_state')
+        ->where('weigth_control.actual_state','=','INACTIVO')
+        ->get();
+        return $pesoC;
     }
     public function headings():array{
         return[
             'ID',
-            'Nombre del Antibiotico',
-            'Fecha de Elaboracion',
-            'Fecha de Caducidad',
-            'Proveedor',
+            'Fecha de Registro',
+            'Codigo Animal',
+            'Peso',
+            'Fecha de Proximo Control',
             'Estado Actual',
         ];
     }
@@ -43,10 +45,10 @@ class AntibioticosInactivoExport implements FromCollection ,WithHeadings,WithCol
     {
         return [
             'A'=>5,
-            'B'=>20,
-            'C'=>19,
-            'D'=>19,
-            'E'=>20, 
+            'B'=>15.33,
+            'C'=>18,
+            'D'=>15,
+            'E'=>21.89, 
             'F'=>15,            
         ];
     }

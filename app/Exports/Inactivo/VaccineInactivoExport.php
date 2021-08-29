@@ -2,8 +2,8 @@
 
 namespace App\Exports\Inactivo;
 
-use App\Models\Antibiotic;
 use Illuminate\Support\Facades\DB;
+use App\Models\Vaccine;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -11,28 +11,28 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class AntibioticosInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class VaccineInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        $anti = DB::table('antibiotic')
-        ->select('antibiotic.id',
-                  'antibiotic.antibiotic_d',
-                  'antibiotic.date_e',
-                  'antibiotic.date_c',
-                  'antibiotic.supplier',
-                  'antibiotic.actual_state')
-                  ->where('antibiotic.actual_state','=','INACTIVO')
-       ->get();
-       return $anti;
+        $vacuna = DB::table('vaccine')
+        ->select('id',
+                    'vaccine_d',
+                    'date_e',
+                    'date_c',
+                    'supplier',
+                    'actual_state')
+                    ->Where('actual_state','=','INACTIVO')
+        ->get();
+        return $vacuna;
     }
     public function headings():array{
         return[
             'ID',
-            'Nombre del Antibiotico',
+            'Nombre de la Vacuna',
             'Fecha de Elaboracion',
             'Fecha de Caducidad',
             'Proveedor',
@@ -43,10 +43,10 @@ class AntibioticosInactivoExport implements FromCollection ,WithHeadings,WithCol
     {
         return [
             'A'=>5,
-            'B'=>20,
-            'C'=>19,
-            'D'=>19,
-            'E'=>20, 
+            'B'=>22,
+            'C'=>24,
+            'D'=>15,
+            'E'=>15, 
             'F'=>15,            
         ];
     }

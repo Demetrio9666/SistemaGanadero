@@ -88,7 +88,11 @@ Registro Reproducción Artificial
                                     <td>{{$i->race_d}}</td>
                                     <td>{{$i->reproduccion}}</td>
                                     <td>{{$i->supplier}}</td>
-                                    <td> <button type="button" class="btn btn-success btn   btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>   
+                                    
+                                        <td> 
+                                            <center><button type="button" class="btn btn-success btn   btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></center></td>   
+                                    
+                                    
                                     </tr>
                                 @endforeach        
                             </tbody>

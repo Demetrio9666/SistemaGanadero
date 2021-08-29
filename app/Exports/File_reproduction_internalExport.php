@@ -74,7 +74,7 @@ class File_reproduction_internalExport implements FromCollection ,WithHeadings,W
             'H'=>11, 
             'I'=>14, 
             'J'=>10, 
-            'K'=>11.22, 
+            'K'=>15, 
                
                      
         ];

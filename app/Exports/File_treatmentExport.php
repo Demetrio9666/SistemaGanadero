@@ -65,7 +65,7 @@ class File_treatmentExport implements FromCollection ,WithHeadings,WithColumnWid
             'G'=>12, 
             'H'=>11, 
             'I'=>14, 
-            'J'=>10,          
+            'J'=>15,          
         ];
     }
     public function styles(Worksheet $sheet)

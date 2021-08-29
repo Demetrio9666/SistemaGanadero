@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\Inactivo;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Race;
@@ -14,7 +14,7 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class Vaccine_controlExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
+class Vaccine_controlInactivoExport implements FromCollection ,WithHeadings,WithColumnWidths, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -30,7 +30,7 @@ class Vaccine_controlExport implements FromCollection ,WithHeadings,WithColumnWi
                              'vaccine.vaccine_d as vacuna',
                             'vaccine_control.date_r',
                             'vaccine_control.actual_state'
-                            )->where('vaccine_control.actual_state','=','DISPONIBLE')
+                            )->where('vaccine_control.actual_state','=','INACTIVO')
                     ->get();
         return $vacunaC;
     }
