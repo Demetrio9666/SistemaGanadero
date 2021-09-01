@@ -248,9 +248,13 @@ class File_animaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditFile_animale $request, $id)
     {
-       
+        $this->validate(request(), [
+            'codigo_animal' => ['required','unique:file_animale,animalCode,'.$id]
+            
+        ]);
+
         $animal = File_Animale::findOrFail($id);
 
         $animal->animalCode = $request->codigo_animal;

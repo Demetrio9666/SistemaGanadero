@@ -25,9 +25,9 @@ class EditFile_animale extends FormRequest
      */
     public function rules()
     {
-        $file_animale = 'file_animale';
         return [
-            //'codigo_animal' => 'required','unique:file_animale,animalCode'.$this->file_animale->get('animalCode'),
+           
+            'file'=>'required|image',
             'fecha_nacimiento'=>'required',
             'raza'=>'required',
             'sexo'=>'required',
