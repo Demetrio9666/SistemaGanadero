@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 @section('css')
-    
+
 @endsection
 @section('content_header')
-        <div class="card card-dark">
+        <div class="card card-dark" style="margin: 17%">
             <div class="card-header">
               <h3 class="card-title">
                 <i class="fas fa-book"></i>

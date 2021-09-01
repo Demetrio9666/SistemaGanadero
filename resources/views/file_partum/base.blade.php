@@ -1,6 +1,6 @@
 @extends('adminlte::page')
     @section('css')
-        <link rel="stylesheet" type="text/css" href="/css/registroPartos1.css">
+        <link rel="stylesheet" type="text/css" href="/css/registroPartos11.css">
     @endsection
     @section('content_header')
         <div class="card card-dark">

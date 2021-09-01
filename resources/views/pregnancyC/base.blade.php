@@ -1,6 +1,6 @@
 @extends('adminlte::page')
     @section('css')
-        <link rel="stylesheet" type="text/css" href="/css/registroControlPrenes.css">
+        <link rel="stylesheet" type="text/css" href="/css/registroControlPrenes1.css">
     @endsection
     @section('content_header')
     @include('messages.message')

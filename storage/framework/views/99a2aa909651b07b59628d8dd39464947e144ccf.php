@@ -1,6 +1,6 @@
 
 <?php $__env->startSection('css'); ?>
-        <link rel="stylesheet" type="text/css" href="/css/registroAnimal1.css">
+        <link rel="stylesheet" type="text/css" href="/css/registroAnimal2.css">
         <link rel="stylesheet" type="text/css" href="/css/imagen.css">
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_header'); ?>

@@ -57,7 +57,10 @@ Fichas de Animales Activos
             <td >{{$i->ubicacion}}</td>
             <td >{{$i->conceived}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('fichaAnimal.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                <center>
+                    <a class="btn btn-primary" href="{{route('fichaAnimal.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                </center>
+                
                                      
             </td>  
         </tr>

@@ -1,6 +1,6 @@
 @extends('race.base')
 @section('nombre_regitro')
-         Registro de Animales
+         Registro de raza
 @endsection
 @section('formulario')
 <form action="{{route('confRaza.store')}}" method="POST">

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 @section('css')
-        <link rel="stylesheet" type="text/css" href="/css/registroUbicacion.css">
+        <link rel="stylesheet" type="text/css" href="/css/registroUbicacion1.css">
         <link rel="stylesheet" type="text/css" href="/css/imagen.css">
 @endsection
 @section('content_header')

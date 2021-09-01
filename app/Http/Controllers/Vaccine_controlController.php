@@ -180,20 +180,7 @@ class Vaccine_controlController extends Controller
 
         foreach($vacunaCC as $i){
             if($i->animalCode_id == $request->animalCode_id){
-               if( $i->vaccine_id == $request->vaccine_id ){
-                       /* $vacunaC= DB::table('vaccine_control')
-                                ->join('file_animale','vaccine_control.animalCode_id','=','file_animale.id')
-                                ->leftJoin('vaccine','vaccine_control.vaccine_id','=','vaccine.id')
-                                ->select('vaccine_control.id'
-                                        ,'vaccine_control.date'
-                                        ,'vaccine.vaccine_d as vacuna'
-                                        ,'file_animale.animalCode as animal',
-                                        'vaccine_control.date_r',
-                                        'vaccine_control.actual_state'
-                                        )->where('vaccine_control.actual_state','=','DISPONIBLE')
-                                ->get();*/
-                                
-        
+               if( $i->vaccine_id == $request->vaccine_id ){      
                      $codigo= $request->codigo_animal;
                      $vacuna =$request->vaccine_id;
                 //return with('Existe','o');
@@ -326,7 +313,7 @@ class Vaccine_controlController extends Controller
 
         $vacunaC = Vaccine_control::findOrFail($id);
 
-        foreach($vacunaCC as $i){
+        /*foreach($vacunaCC as $i){
             if($i->animalCode_id == $request->animalCode_id){
                if( $i->vaccine_id == $request->vaccine_id ){
                     if($i->date == $request->date){
@@ -343,17 +330,104 @@ class Vaccine_controlController extends Controller
                 
                }
             }
+        }*/
+        foreach($vacunaCC as $i){
+      
+                   /* if(($i->date != $request->date || $i->date_r != $request->date_r || $i->actual_state !=  $request->actual_state) && ($i->animalCode_id == $request->animalCode_id && $i->vaccine_id == $request->vaccine_id)){
+                        $codigo= $request->codigo_animal;
+                        $vacuna =$request->vaccine_id;
+                        return view('mensajes.controlVacunaEdit',compact('codigo','vacuna','vacunaCC')); 
+                    }*/
+                 /*   if ($i->animalCode_id != $request->animalCode_id && $i->vaccine_id == $request->vaccine_id) {
+                        break;
+                    }
+                    else if($i->date != $request->date && $i->vaccine_id == $request->vaccine_id && $i->animalCode_id == $request->animalCode_id){
+                       break;
+                    }else if($i->date_r != $request->date_r  && $i->vaccine_id == $request->vaccine_id && $i->animalCode_id == $request->animalCode_id){
+                       break;
+                    }else if($i->actual_state !=  $request->actual_state && $i->vaccine_id == $request->vaccine_id && $i->animalCode_id == $request->animalCode_id ) {
+                       break;
+                    }else if ($i->vaccine_id == $request->vaccine_id && $i->animalCode_id == $request->animalCode_id){
+                        $codigo= $request->codigo_animal;
+                        $vacuna =$request->vaccine_id;
+                        return view('mensajes.controlVacunaEdit',compact('codigo','vacuna','vacunaCC')); 
+                    }*/
+
+                    /*if($i->date == $request->date){
+                        if($i->vaccine_id == $request->vaccine_id && $i->animalCode_id == $request->animalCode_id){
+                            break;
+                        }
+                    }else if($i->date_r == $request->date_r){
+                        if($i->vaccine_id == $request->vaccine_id && $i->animalCode_id == $request->animalCode_id){
+                            break;
+                        }
+                    }else if($i->actual_state ==  $request->actual_state){
+                        if($i->vaccine_id == $request->vaccine_id && $i->animalCode_id == $request->animalCode_id){
+                            break;
+                        }
+                    }else if($i->animalCode_id == $request->animalCode_id){
+                         $codigoV = $request->animalCode_id;
+                         foreach($vacunaCC as $i2){
+                            if($i2->animalCode_id == $codigoV && $i2->vaccine_id==$request->vaccine_id){
+                                $codigo= $request->codigo_animal;
+                                $vacuna =$request->vaccine_id;
+                                return view('mensajes.controlVacunaEdit',compact('codigo','vacuna','vacunaCC')); 
+                            }
+                         }
+                    }else if ($i->vaccine_id != $request->vaccine_id && $i->animalCode_id != $request->animalCode_id) {
+                        break;
+                    }else{
+                        break;
+                    }*/
+                    /*foreach($vacunaCC as $i){
+                        if($i->animalCode_id == $request->animalCode_id && $i->vaccine_id == $request->vaccine_id){
+                               return 'no cambio nada';
+                               
+                             //return view('mensajes.controlVacuna',compact('codigo','vacuna','vacunaCC')); 
+                            // return redirect('/controlVacuna')-with('validacion','ok');
+                            
+                           
+                        }
+                        if($i->animalCode_id != $request->animalCode_id){
+                            $verificarCodigo= $request->animalCode_id;
+                            foreach($vacunaCC as $i2){
+                                if($i->animalCode_id == $verificarCodigo && $i->vaccine_id == $request->vaccine_id){
+                                    return 'modificastes el codigo animal pero ya esta tiene esa vacuna';
+                                }
+                            }
+                        }
+                    } */           
+                    foreach($vacunaCC as $i){
+                        if($i->date != $request->date && $i->animalCode_id == $request->animalCode_id && $i->vaccine_id == $request->vaccine_id) {
+                            return 'modifica fecha pero el resto es igual';
+                        }elseif($i->date_r != $request->date_r  && $i->animalCode_id == $request->animalCode_id && $i->vaccine_id == $request->vaccine_id){
+                           return'modifico fecha 2 docis';
+                        }elseif ($i->actual_state !=  $request->actual_state && $i->animalCode_id == $request->animalCode_id && $i->vaccine_id == $request->vaccine_id ) {
+                            return'modifico estado';
+                        }elseif ($i->animalCode_id != $request->animalCode_id && $i->vaccine_id == $request->vaccine_id ) {
+                             return'modifico animal code pero la cacuna es la misma';
+                             
+                        }elseif ($i->vaccine_id != $request->vaccine_id && $i->animalCode_id == $request->animalCode_id) {
+                               /* $verificarVacuna = $request->vaccine_id;
+                                if($i->animalCode_id == $request->animalCode_id){
+                                    if($i->vaccine_id == $verificarVacuna){
+                                        return 'aniamla ya esta vacuando con esa vacuna';
+                                    }
+                                }*/
+
+                        }
+                    }
+                   
+           
         }
-
-       
-
-
         $vacunaC->date = $request->date;
         $vacunaC->animalCode_id = $request->animalCode_id;
         $vacunaC->vaccine_id = $request->vaccine_id;
         $vacunaC->date_r = $request->date_r;
         $vacunaC->actual_state = $request->actual_state;
+       
         $vacunaC->save(); 
+      
 
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;

@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Bovino',
+    'title' => 'SoftGanadoBOVINO',
     'title_prefix' => '',
     'title_postfix' => '',
 

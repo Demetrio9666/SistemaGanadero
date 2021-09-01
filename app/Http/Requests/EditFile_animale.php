@@ -27,7 +27,7 @@ class EditFile_animale extends FormRequest
     {
         return [
            
-            'file'=>'required|image',
+            
             'fecha_nacimiento'=>'required',
             'raza'=>'required',
             'sexo'=>'required',

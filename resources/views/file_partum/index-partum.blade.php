@@ -48,7 +48,10 @@ Fichas de Partos
                         <td >{{$i->partum_type}}</td>
                         <td >{{$i->actual_state}}</td>
                         <td>
-                            <a class="btn btn-primary d-grid gap-2 d-md-block " href="{{route('fichaParto.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                            <center>
+                                <a class="btn btn-primary" href="{{route('fichaParto.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                            </center>
+                            
                                                 
                         </td>  
                     </tr>

@@ -29,7 +29,7 @@ unset($__errorArgs, $__bag); ?>
                                    
                                     <input type="text"  placeholder="Código Animal" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
                                     <input type="hidden" class="<?php echo e($errors->has('animalCode_id') ? 'is-invalid':''); ?>" id="idcodi" name="animalCode_id">
-                                    <?php $__errorArgs = ['animalCode_id'];
+                            <?php $__errorArgs = ['animalCode_id'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

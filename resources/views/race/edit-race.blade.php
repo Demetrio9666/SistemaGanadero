@@ -1,6 +1,6 @@
 @extends('race.base')
 @section('nombre_regitro')
-         Editar Raza
+         Editar Raza Activos
 @endsection
 @section('formulario')
 <form action=" {{route('confRaza.update',$raza->id)}}" method="POST">

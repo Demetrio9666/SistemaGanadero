@@ -48,7 +48,10 @@ Fichas de Partos
                         <td ><?php echo e($i->partum_type); ?></td>
                         <td ><?php echo e($i->actual_state); ?></td>
                         <td>
-                            <a class="btn btn-primary d-grid gap-2 d-md-block " href="<?php echo e(route('fichaParto.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
+                            <center>
+                                <a class="btn btn-primary" href="<?php echo e(route('fichaParto.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
+                            </center>
+                            
                                                 
                         </td>  
                     </tr>

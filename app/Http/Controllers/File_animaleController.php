@@ -159,14 +159,16 @@ class File_animaleController extends Controller
         //$url = Storage::url($imagen);
         $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
 
+        //ruta donde se guarda 
         $ruta = storage_path() . '\app\public\imagenes/' .$nombre;
 
+        //comprimir
         Image::make($request->file('file'))
               ->resize(182 ,190 ,function($constraint){
                 $constraint->aspectRatio();
         })
         ->save($ruta);
-
+        // guardo la ruta del acceso creado
         $animal->url = '/storage/imagenes/'.$nombre;
         $animal->date = $request->fecha_nacimiento;
         $animal->race_id = $request->raza;
@@ -252,6 +254,8 @@ class File_animaleController extends Controller
     {
         $this->validate(request(), [
             'codigo_animal' => ['required','unique:file_animale,animalCode,'.$id]
+            //'file'=> ['required','unique:file_animale,file,'.$id]
+            
             
         ]);
 

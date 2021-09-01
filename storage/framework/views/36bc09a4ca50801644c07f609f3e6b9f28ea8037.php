@@ -1,6 +1,6 @@
 
     <?php $__env->startSection('css'); ?>
-        <link rel="stylesheet" type="text/css" href="/css/registroPartos1.css">
+        <link rel="stylesheet" type="text/css" href="/css/registroPartos11.css">
     <?php $__env->stopSection(); ?>
     <?php $__env->startSection('content_header'); ?>
         <div class="card card-dark">
