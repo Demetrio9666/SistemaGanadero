@@ -48,7 +48,7 @@ Fichas de Reproducción por Monta Natural Externa Inactivos
             <td>{{$i->hacienda_name}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-              
+              <center>
                 <a class="btn btn-primary" href="{{route('inactivos.fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
                 @can('fichaReproduccionEx.destroy')
                 <form action="{{route('inactivos.fichaReproduccionEx.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
@@ -61,6 +61,8 @@ Fichas de Reproducción por Monta Natural Externa Inactivos
                 </form>
                     
                 @endcan
+              </center>
+               
                   
             </td>  
         </tr>

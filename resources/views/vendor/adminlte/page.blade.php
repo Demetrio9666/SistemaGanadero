@@ -116,32 +116,9 @@
                  'previous':'Anterior'
              }
          },
-        /* dom: 'Bfrtilp',
-         buttons:[
-             {
-                 extend:'excel',
-                 text: '<i class="fas fa-file-excel"></i>',
-                 titleAttr:'Exportar a Excel',
-                 className:'btn btn-success',
-                 excelStyles: {                // Add an excelStyles definition
-                              template: 'blue_medium',  // Apply the 'blue_medium' template
-                    },
-             },
-             {
-                 extend:'pdfHtml5',
-                 text: '<i class="fas fa-file-pdf"></i>',
-                 titleAttr:'Exportar a PDF',
-                 className:'btn btn-danger'
-             },
-             {
-                 extend:'print',
-                 text: '<i class="fas fa-print"></i>',
-                 titleAttr:'Imprimir',
-                 className:'btn btn-warning'
-             },
-         ],*/
 
         });
+  
 
 
      </script>
@@ -153,7 +130,7 @@
                       'success'
                       )      
       </script>
-  @endif
+        @endif
   <script>
       $('.formulario-eliminar').submit(function(e){
           e.preventDefault();
@@ -172,7 +149,36 @@
                   }
           }) 
       });
+
+
   </script>
+    {{-- @if (session('validacion') == 'ok')
+     <script>
+          Swal.fire(
+                     '¡Animal !',
+                     'Ya esta vacunado con la vacuna seleccionada.',
+                     'success'
+                     )      
+     </script>
+       @endif
+ <script>
+     $('.formulario-validacion').submit(function(e){
+         e.preventDefault();
+           Swal.fire({
+                     title: 'Advertencia',
+                     text: "El animal ya tiene la vacuna seleccionada ",
+                     icon: 'error',
+                     showCancelButton: true,
+                     showConfirmButton: false,
+                     cancelButtonColor: '#3733dc',
+                     concelButtonText: 'Cancelar'
+                 }).then((result) => {
+                 if (result.isConfirmed) {
+                     this.submit();
+                 }
+         }) 
+     });
+ </script>--}}
 
   
     @stack('js')

@@ -129,42 +129,17 @@ class File_reproductionAController extends Controller
                         )->where('actual_state','=','DISPONIBLE')
                 ->get();
 
-        
-       /* $animalRH= DB::table('file_animale')
-                        ->join('race','file_animale.race_id','=','race.id')
-                        ->select('file_animale.id',
-                        'file_animale.animalCode',
-                        'file_animale.age_month',
-                        'race.race_d',
-                        'file_animale.sex')
-                        ->where(function($query){
-                                            $query = DB::table('file_reproduction_artificial')
-                                            ->select(
-                                                    'animalCode_id_m',
-                                                    )->where('file_animale.animalCode','!=','file_reproduction_artificial.animalCode_id_m')
-                                                     //->where('file_reproduction_artificial.actual_state','=','DISPONIBLE');
-                                            -
-            
-                          })
-                        //->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                        //->where('file_animale.stage','=','VACA','AND','file_animale.gestation_state','=','NO')
-                       ->get();*/
-
-
-
-                      
-
-                       $animalRH= DB::table('file_animale')
-                                    ->join('race','file_animale.race_id','=','race.id')
-                                    ->select('file_animale.id',
-                                    'file_animale.animalCode',
-                                    'file_animale.age_month',
-                                    'race.race_d',
-                                    'file_animale.sex')
-                          ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                          ->where('file_animale.stage','=','VACA')
-                         
-                      ->get();
+        $animalhembra= DB::table('file_animale')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->select('file_animale.id',
+                            'file_animale.animalCode',
+                            'file_animale.age_month',
+                            'race.race_d as raza',
+                            'file_animale.sex')
+                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                    ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
+                    
+                ->get();
 
         
 
@@ -188,8 +163,8 @@ class File_reproductionAController extends Controller
         ->get();  
 
        
-        return view('file_reproductionA.create-reproductionA',compact('raza','animalRH','arti'));
-       //return $animalRH;
+        return view('file_reproductionA.create-reproductionA',compact('raza','animalhembra','arti'));
+       //return $animalhembra;
     }
 
     /**
@@ -259,17 +234,16 @@ class File_reproductionAController extends Controller
     {
         $re =  File_reproduction_artificial::findOrFail($id);
 
-        $animalRH= DB::table('file_animale')
-                        ->join('race','file_animale.race_id','=','race.id')
-                        ->select('file_animale.id',
-                        'file_animale.animalCode',
-                        'file_animale.age_month',
-                        'race.race_d',
-                        'file_animale.sex')
-                        ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                        ->where('file_animale.stage','=','VACA','AND','file_animale.gestation_state','=','NO')
-                        
-     
+        $animalhembra= DB::table('file_animale')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->select('file_animale.id',
+                            'file_animale.animalCode',
+                            'file_animale.age_month',
+                            'race.race_d as raza',
+                            'file_animale.sex')
+                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                    ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
+                    
                 ->get();
         $raza =Race::all();
 
@@ -295,7 +269,7 @@ class File_reproductionAController extends Controller
                     )
                     ->get();    
 
-        return view('file_reproductionA.edit-reproductionA',compact('raza','animalRH','arti','re'));
+        return view('file_reproductionA.edit-reproductionA',compact('raza','animalhembra','arti','re'));
         
     }
 

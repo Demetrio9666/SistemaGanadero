@@ -22,7 +22,7 @@
                                    
                                     <input type="text"  placeholder="Código Animal" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled >
                                     <input type="hidden" class="{{$errors->has('animalCode_id') ? 'is-invalid':''}}" id="idcodi" name="animalCode_id">
-                                    @error('animalCode_id')
+                            @error('animalCode_id')
                                 <div class="invalid-feedback">{{$message}}</div>
                             @enderror
                             </div>

@@ -32,15 +32,18 @@ Registros de Ubicaciones Inactivos
             <td >{{$i->description}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('inactivos.Ubicaciones.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                <form action="{{route('inactivos.Ubicaciones.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
-                    @csrf
-                    @method('DELETE') 
-                    @include('layouts.base-usuario')
-                    <button type="submit"  class="btn btn-danger" value="Eliminar">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </form>                         
+                <center>
+                    <a class="btn btn-primary" href="{{route('inactivos.Ubicaciones.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                    <form action="{{route('inactivos.Ubicaciones.destroy',$i->id)}}" method="POST" class="d-inline  formulario-eliminar">
+                        @csrf
+                        @method('DELETE') 
+                        @include('layouts.base-usuario')
+                        <button type="submit"  class="btn btn-danger" value="Eliminar">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>       
+                </center>
+                                 
             </td>  
         </tr>
         @endforeach

@@ -6,7 +6,7 @@ Registro de Reproducción Natural Externa
 <form action="{{route('fichaReproduccionEx.store')}}" method="POST">
     @csrf
     <div class="row">
-            <div class="form-group">
+            <div class="col-md-4">
                 <label for="">Fecha de Registro:</label>
                 <input type="date" class="form-control {{$errors->has('date') ? 'is-invalid':''}}" id="" name="date" value="{{old('date')}}">
                 @error('date')
@@ -19,9 +19,10 @@ Registro de Reproducción Natural Externa
                     <div class="input-group mb-3">
                             <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimalEX" >Buscar</button>
                             <input type="text" class="{{$errors->has('animalCode_id') ? 'is-invalid':''}}" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1" name="codigo_animal" id="codigo_animal" disabled=disabled >
-                            <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled >
+                            <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1" id="edad" name="age_month" disabled=disabled value="{{old('edad')}}">
+                            <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" name="race" disabled=disabled >
                             <input type="hidden" id="idcodi" name="animalCode_id">
-                            <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1" id="edad" name="age_month" disabled=disabled value="{{old('edad')}}">
+                            
                             <input type="text" placeholder="Sexo" aria-label="Example text with button addon" aria-describedby="button-addon1" id="sexo" name="sex" disabled=disabled value="{{old('sex')}}">
                             @error('animalCode_id')
                                <div class="invalid-feedback">{{$message}}</div>

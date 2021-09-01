@@ -41,7 +41,7 @@ Registros de Materiales Genéticos Activos
             <td >{{$i->supplier}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('confMate.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+               <center><a class="btn btn-primary" href="{{route('confMate.edit',$i->id)}}" ><i class="fas fa-edit"></i></a></center> 
                                      
             </td>  
         </tr>

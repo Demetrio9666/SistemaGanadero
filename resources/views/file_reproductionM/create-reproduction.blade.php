@@ -18,7 +18,7 @@ Registro de Reproducción Natural
                 <h5>Animal Hembra</h5>
                 <br>
                     <div class="input-group mb-3">
-                            <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                            <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimalhembra" >Buscar</button>
                             
                             <input type="text" class="{{$errors->has('animalCode_id_m') ? 'is-invalid':''}}"placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled  value="{{old('codigo_animal')}}">
 
@@ -71,23 +71,23 @@ Registro de Reproducción Natural
                         <table id="tabla" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>#</th> 
-                                    <th>Codigo Animal</th>
-                                    <th>Raza</th>
+                                    <th>#</th>
+                                    <th>Código Animal</th>
                                     <th>Edad</th>
-                                    <th>Sexo</th>
+                                    <th>Raza</th>
+                                    <th>Sexo</th> 
                                     <th>Acción</th>   
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($animalRM as $i)          
+                                @foreach ($animalmacho as $i)          
                                 <tr>
-                                    <td>{{$i->id}}</td>
-                                    <td>{{$i->animalCode}}</td>
-                                    <td>{{$i->race_d}}</td>
-                                    <td>{{$i->age_month}}</td>
-                                    <td>{{$i->sex}}</td>
-                                    <td> <center> <button type="button" class="btn btn-success btn   btselect2"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></center></td>
+                                    <td class="col1">{{$i->id}}</td>
+                                    <td class="col2">{{$i->animalCode}}</td>
+                                    <td class="col3">{{$i->age_month}}</td>
+                                    <td class="col4">{{$i->raza}}</td>
+                                    <td class="col5">{{$i->sex}}</td>
+                                    <td> <center> <button type="button" class="btn btn-success btn   btselectMacho"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></center></td>
                                     
                                     </tr>
                                 @endforeach        

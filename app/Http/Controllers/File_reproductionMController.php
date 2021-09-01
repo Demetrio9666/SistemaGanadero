@@ -140,31 +140,31 @@ class File_reproductionMController extends Controller
                     'race.actual_state')
                     ->where('race.actual_state','=','Disponible')
                     ->get();
-        $animalRM= DB::table('file_animale')
+        $animalhembra= DB::table('file_animale')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->select('file_animale.id',
+                            'file_animale.animalCode',
+                            'file_animale.age_month',
+                            'race.race_d as raza',
+                            'file_animale.sex')
+                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                    ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
+                    
+                ->get();
+        $animalmacho= DB::table('file_animale')
                 ->join('race','file_animale.race_id','=','race.id')
                 ->select('file_animale.id',
-                'file_animale.animalCode',
-                'file_animale.age_month',
-                'race.race_d',
-                'file_animale.sex')
-                ->Where('file_animale.actual_state','=','REPRODUCCIÓN')
-                ->Where('file_animale.stage','=','TORO')
+                        'file_animale.animalCode',
+                        'file_animale.age_month',
+                        'race.race_d as raza',
+                        'file_animale.sex')
+                ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                ->where('file_animale.stage','=','TORO')
                 
-                ->get();
-        $animalRH= DB::table('file_animale')
-                ->join('race','file_animale.race_id','=','race.id')
-                ->select('file_animale.id',
-                'file_animale.animalCode',
-                'file_animale.age_month',
-                'race.race_d',
-                'file_animale.sex')
-                ->Where('file_animale.actual_state','=','REPRODUCCIÓN')
-                ->where('file_animale.stage','=','VACA')
-                
-                ->get();
+            ->get();
 
           
-        return view('file_reproductionM.create-reproduction',compact('raza','animalRM','animalRH'));
+        return view('file_reproductionM.create-reproduction',compact('raza','animalhembra','animalmacho'));
     }
 
     /**
@@ -240,29 +240,30 @@ class File_reproductionMController extends Controller
                     'race.actual_state')
                     ->where('race.actual_state','=','Disponible')
                     ->get();
-            $animalRM= DB::table('file_animale')
+        $animalhembra= DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->select('file_animale.id',
-                    'file_animale.animalCode',
-                    'file_animale.age_month',
-                    'race.race_d',
-                    'file_animale.sex')
-                    ->Where('file_animale.actual_state','=','REPRODUCCIÓN')
-                    ->Where('file_animale.stage','=','Toro')
-                    ->get();
-            $animalRH= DB::table('file_animale')
-                    ->join('race','file_animale.race_id','=','race.id')
-                    ->select('file_animale.id',
-                    'file_animale.animalCode',
-                    'file_animale.age_month',
-                    'race.race_d',
-                    'file_animale.sex')
-                    ->Where('file_animale.actual_state','=','REPRODUCCIÓN')
-                    ->where('file_animale.stage','=','Vaca')
+                            'file_animale.animalCode',
+                            'file_animale.age_month',
+                            'race.race_d as raza',
+                            'file_animale.sex')
+                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                    ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
                     
-                    ->get();
+                ->get();
+        $animalmacho= DB::table('file_animale')
+                ->join('race','file_animale.race_id','=','race.id')
+                ->select('file_animale.id',
+                        'file_animale.animalCode',
+                        'file_animale.age_month',
+                        'race.race_d as raza',
+                        'file_animale.sex')
+                ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                ->where('file_animale.stage','=','TORO')
+                
+            ->get();
 
-        return view('file_reproductionM.edit-reproduction',compact('raza','animalRM','animalRH','re'));
+        return view('file_reproductionM.edit-reproduction',compact('raza','animalhembra','animalmacho','re'));
     }
 
     /**

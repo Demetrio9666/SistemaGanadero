@@ -29,14 +29,15 @@
                 $('#myInput2').trigger('focus')
               });
         
-                   $(".btselect").on('click',function(){
-                        var currentRow = $(this).closest("tr");
-                        var col1=currentRow.find("td:eq(0)").text();
-                        var col2=currentRow.find("td:eq(1)").text();
-                        $("#idcodi").val(col1);
-                        $("#codigo_animal").val(col2);
-                   });
+                    $('#tabla').on('click','.btselect',function(){
+                        var self = $(this).closest("tr");
+                        var col1 = self.find(".col1").text();
+                        var col2 = self.find(".col2").text();
+                            $("#idcodi").val(col1);
+                            $("#codigo_animal").val(col2);
+                        });
         
+
                 function ValidarPeso(id){
                     peso = document.getElementById("peso").value;
                     var RE = /^\d*(\.\d{1})?\d{0,1}$/;
@@ -47,7 +48,7 @@
                                 icon: 'error',
                                 title: 'Error',
                                 text: 'Formato no aceptado ejemplo 00.00 ',
-                                
+                                confirmButtonColor: '#3733dc',
                             }) 
                             document.getElementById("peso").value ="";
                         return false;

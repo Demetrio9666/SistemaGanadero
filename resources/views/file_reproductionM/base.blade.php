@@ -20,41 +20,40 @@
         </div>
     </div>
 </div> 
-@include("modal.modalAnimalesR")
+@include("modal.modalAnimalesHembras")
 @endsection
 @section('js')
 <script>
       $('#modalanimal').on('shown.bs.modal', function () {
         $('#myInput2').trigger('focus')
       });
-      $(".btselect").on('click',function(){
-                var currentRow = $(this).closest("tr");
-                var col1=currentRow.find("td:eq(0)").text();
-                var col2=currentRow.find("td:eq(1)").text();
-                var col3=currentRow.find("td:eq(2)").text();
-                var col4=currentRow.find("td:eq(3)").text();
-                var col5=currentRow.find("td:eq(4)").text();
-                
-                $("#idcodi").val(col1);
-                $("#codigo_animal").val(col2);
-                $("#raza").val(col3);
-                $("#edad").val(col4);
-                $("#sexo").val(col5);
-           });
-           $(".btselect2").on('click',function(){
-                var currentRow = $(this).closest("tr");
-                var col1=currentRow.find("td:eq(0)").text();
-                var col2=currentRow.find("td:eq(1)").text();
-                var col3=currentRow.find("td:eq(2)").text();
-                var col4=currentRow.find("td:eq(3)").text();
-                var col5=currentRow.find("td:eq(4)").text();
-                
-                $("#idcodi2").val(col1);
-                $("#codigo_animal2").val(col2);
-                $("#raza2").val(col3);
-                $("#edad2").val(col4);
-                $("#sexo2").val(col5);
-           });
+      $('#tablaHembra').on('click','.btselectHembra',function(){
+                        var self = $(this).closest("tr");
+                        var col1 = self.find(".col1").text();
+                        var col2 = self.find(".col2").text();
+                        var col3 = self.find(".col3").text();
+                        var col4 = self.find(".col4").text();
+                        var col5 = self.find(".col5").text();
+                        $("#idcodi").val(col1);
+                        $("#codigo_animal").val(col2);
+                        $("#raza").val(col3);
+                        $("#edad").val(col4);
+                        $("#sexo").val(col5);
+            });
+            
+           $('#tabla').on('click','.btselectMacho',function(){
+                        var self = $(this).closest("tr");
+                        var col1 = self.find(".col1").text();
+                        var col2 = self.find(".col2").text();
+                        var col3 = self.find(".col3").text();
+                        var col4 = self.find(".col4").text();
+                        var col5 = self.find(".col5").text();
+                        $("#idcodi2").val(col1);
+                        $("#codigo_animal2").val(col2);
+                        $("#raza2").val(col3);
+                        $("#edad2").val(col4);
+                        $("#sexo2").val(col5);
+            });
      
 </script>
 

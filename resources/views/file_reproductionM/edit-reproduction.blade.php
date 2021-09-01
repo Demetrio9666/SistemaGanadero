@@ -18,10 +18,10 @@ Editar de Reproducción Natural
                     <div class="input-group mb-3">
                             <input type="hidden" id="idcodi" name="animalCode_id_m"  value="{{$re->animalCode_id_m}}">
 
-                            <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                            <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimalhembra" >Buscar</button>
                             
                             <input type="text" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
-                            @foreach ($animalRH as $i)
+                            @foreach ($animalhembra as $i)
                                     @if ($re->animalCode_id_m == $i->id )
                                         value =" {{$i->animalCode}} "
                                     @endif
@@ -29,15 +29,15 @@ Editar de Reproducción Natural
 
                          
                             <input type="text"  placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
-                            @foreach ($animalRH as $i)
+                            @foreach ($animalhembra as $i)
                                     @if ($re->animalCode_id_m == $i->id )
-                                        value =" {{$i->race_d}} "
+                                        value =" {{$i->raza}} "
                                     @endif
                             @endforeach >
 
                               
                                 <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="edad" name="age_month" disabled=disabled 
-                                @foreach ($animalRH as $i)
+                                @foreach ($animalhembra as $i)
                                         @if ($re->animalCode_id_m == $i->id )
                                             value =" {{$i->age_month}} "
                                         @endif
@@ -46,7 +46,7 @@ Editar de Reproducción Natural
                           
                               
                                 <input type="text" placeholder="Sexo" aria-label="Example text with button addon" aria-describedby="button-addon1" id="sexo" name="sex" disabled=disabled  
-                                @foreach ($animalRH as $i)
+                                @foreach ($animalhembra as $i)
                                         @if ($re->animalCode_id_m == $i->id )
                                             value =" {{$i->sex}} "
                                         @endif
@@ -61,7 +61,7 @@ Editar de Reproducción Natural
                             <div  class="col-md-6">
                                 <label>Codigo Animal:</label>
                                 <input type="text" class="form-control" name="codigo_animal2" id="codigo_animal2"  disabled=disabled 
-                                @foreach ($animalRM as $i)
+                                @foreach ($animalmacho as $i)
                                         @if ($re->animalCode_id_p == $i->id )
                                             value =" {{$i->animalCode}} "
                                         @endif
@@ -70,9 +70,9 @@ Editar de Reproducción Natural
                             <div  class="col-md-6">
                                 <label>Raza:</label>
                                 <input type="text" class="form-control" name ="raza2" id="raza2"  disabled=disabled 
-                                @foreach ($animalRM as $i)
+                                @foreach ($animalmacho as $i)
                                         @if ($re->animalCode_id_p == $i->id )
-                                            value =" {{$i->race_d}} "
+                                            value =" {{$i->raza}} "
                                         @endif
                                 @endforeach >
                             </div>
@@ -81,7 +81,7 @@ Editar de Reproducción Natural
                             <div  class="col-md-6">
                                 <label>Edad:</label>
                                 <input type="text" class="form-control" id="edad2" name="age_month"  name="age_month" disabled=disabled  
-                                @foreach ($animalRM as $i)
+                                @foreach ($animalmacho as $i)
                                         @if ($re->animalCode_id_p == $i->id )
                                             value =" {{$i->age_month}} "
                                         @endif
@@ -90,7 +90,7 @@ Editar de Reproducción Natural
                             <div  class="col-md-6">
                                 <label >Sexo:</label>
                                 <input type="text" class="form-control" id="sexo2" name="sexo2" disabled=disabled 
-                                @foreach ($animalRM as $i)
+                                @foreach ($animalmacho as $i)
                                         @if ($re->animalCode_id_p == $i->id )
                                             value =" {{$i->sex}} "
                                         @endif
@@ -102,30 +102,30 @@ Editar de Reproducción Natural
                         <table id="tabla" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>#</th> 
-                                    <th>Codigo Animal</th>
-                                    <th>Raza</th>
+                                    <th>#</th>
+                                    <th>Código Animal</th>
                                     <th>Edad</th>
-                                    <th>Sexo</th>
+                                    <th>Raza</th>
+                                    <th>Sexo</th> 
                                     <th>Acción</th>   
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($animalRM as $i)          
+                                @foreach ($animalmacho as $i)          
                                 <tr>
-                                    <td>{{$i->id}}</td>
-                                    <td>{{$i->animalCode}}</td>
-                                    <td>{{$i->race_d}}</td>
-                                    <td>{{$i->age_month}}</td>
-                                    <td>{{$i->sex}}</td>
-                                    <td> <button type="button" class="btn btn-success btn   btselect2"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
+                                    <td class="col1">{{$i->id}}</td>
+                                    <td class="col2">{{$i->animalCode}}</td>
+                                    <td class="col3">{{$i->age_month}}</td>
+                                    <td class="col4">{{$i->raza}}</td>
+                                    <td class="col5">{{$i->sex}}</td>
+                                    <td> <center> <button type="button" class="btn btn-success btn   btselectMacho"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></center></td>
                                     
                                     </tr>
                                 @endforeach        
                             </tbody>
                         </table>
                         </div>
-                    </div>       
+                    </div>      
             
             <div  class="form-group">
                 <label for="">Estado Actual:</label>

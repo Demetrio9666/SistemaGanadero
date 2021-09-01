@@ -148,14 +148,14 @@ class ReproductionMEInactivosController extends Controller
         $animaleEX= DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->select('file_animale.id',
-                    'file_animale.animalCode',
-                    'file_animale.age_month',
-                    'race.race_d',
-                    'file_animale.sex')
-                    ->where('file_animale.actual_state','=','Disponible')
-                    ->where('file_animale.stage','=','Vaca')->OrWhere('file_animale.stage','=','Toro')
-        
-        ->get();
+                            'file_animale.animalCode',
+                            'file_animale.age_month',
+                            'race.race_d as raza',
+                            'file_animale.sex')
+                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                    ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
+                    
+                ->get();
         
         $raza = Race::all();
         return view('file_reproductionME.edit-inactivo',compact('ext','raza','animaleEX'));

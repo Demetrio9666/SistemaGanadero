@@ -37,7 +37,7 @@ Registros de Ubicaciones Activos
             <td >{{$i->description}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('confUbicacion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+               <center><a class="btn btn-primary" href="{{route('confUbicacion.edit',$i->id)}}" ><i class="fas fa-edit"></i></a></center> 
                                         
             </td>  
         </tr>

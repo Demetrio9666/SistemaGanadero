@@ -8,7 +8,7 @@ Registro Control de Desparasitación
     <div class="row">
         <div class="col-md-6">
             <label for="">Fecha de Desparasitación:</label>
-            <input type="date" class="form-control" id="fecha_r" name="date" value="{{old('date')}}">
+            <input type="date" class="form-control" id="fecha" name="date" value="{{old('date')}}">
         </div>
         <div class="col-md-6">
             <div class="input-group mb-3" style="margin: 40px">
@@ -50,5 +50,33 @@ Registro Control de Desparasitación
     @include('layouts.base-usuario')
     </form>
     </div>
+    <script>
+        window.onload = function(){
+                  var fecha = new Date(); //Fecha actual
+                  var mes = fecha.getMonth()+1; //obteniendo mes
+                  var dia = fecha.getDate(); //obteniendo dia
+                  var ano = fecha.getFullYear(); //obteniendo año
+                  if(dia<10)
+                    dia='0'+dia; //agrega cero si el menor de 10
+                  if(mes<10)
+                    mes='0'+mes //agrega cero si el menor de 10
+                  document.getElementById('fecha').value=ano+"-"+mes+"-"+dia;
+                }
+      
+                ////bloqueo de fechas futuras
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1;
+                var yyyy = today.getFullYear();
+                if(dd<10){
+                        dd='0'+dd
+                    } 
+                    if(mm<10){
+                        mm='0'+mm
+                    } 
+    
+                today = yyyy+'-'+mm+'-'+dd;
+                document.getElementById("fecha").setAttribute("max", today);
+      </script>
     
 @endsection

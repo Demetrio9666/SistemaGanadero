@@ -9,7 +9,7 @@ Editar Reproducción Artificial
     <div class="row">
     <div class="col-md-6">
         <label for="">Fecha de Registro:</label>
-        <input type="date" class="form-control" id="fecha_r" name="date" value="{{$re->date}}">
+        <input type="date" class="form-control" id="fecha" name="date" value="{{$re->date}}">
     </div>
     <br>
     <div class="form-group">
@@ -18,36 +18,32 @@ Editar Reproducción Artificial
             <div class="input-group mb-3">
                     <input type="hidden" id="idcodi" name="animalCode_id_m"  value="{{$re->animalCode_id_m}}">
 
-                    <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" >Buscar</button>
+                    <button class="btn btn-primary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimalhembra" >Buscar</button>
                     
                     <input type="text" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
-                    @foreach ($animalRH as $i)
+                    @foreach ($animalhembra as $i)
                             @if ($re->animalCode_id_m == $i->id )
                                 value =" {{$i->animalCode}} "
                             @endif
                     @endforeach >
 
-                    
-                    <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
-                    @foreach ($animalRH as $i)
-                            @if ($re->animalCode_id_m == $i->id )
-                                value =" {{$i->race_d}} "
-                            @endif
-                    @endforeach >
-
-                    
                         
                         <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1" id="edad" name="age_month" disabled=disabled 
-                        @foreach ($animalRH as $i)
+                        @foreach ($animalhembra as $i)
                                 @if ($re->animalCode_id_m == $i->id )
                                     value =" {{$i->age_month}} "
                                 @endif
                         @endforeach>
                    
-                   
+                        <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
+                        @foreach ($animalhembra as $i)
+                                @if ($re->animalCode_id_m == $i->id )
+                                    value =" {{$i->raza}} "
+                                @endif
+                        @endforeach >
                         
                         <input type="text"  placeholder="Sexo" aria-label="Example text with button addon" aria-describedby="button-addon1" id="sexo" name="sex" disabled=disabled  
-                        @foreach ($animalRH as $i)
+                        @foreach ($animalhembra as $i)
                                 @if ($re->animalCode_id_m == $i->id )
                                     value =" {{$i->sex}} "
                                 @endif
@@ -136,7 +132,6 @@ Editar Reproducción Artificial
          </select>
     </div>
 
-
     <center>
         <div class="col-md-8-self-center" style="margin: 40px" >
             <a type="submit" class="btn btn-secondary btn"  href="{{url('fichaReproduccionA')}}">Cancelar</a>
@@ -147,7 +142,22 @@ Editar Reproducción Artificial
 </div>
 @include('layouts.base-usuario')
 </form>
+<script>
+            ////bloqueo de fechas futuras
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1;
+            var yyyy = today.getFullYear();
+            if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
 
+            today = yyyy+'-'+mm+'-'+dd;
+            document.getElementById("fecha").setAttribute("max", today);
+  </script>
 @endsection
 
 

@@ -21,33 +21,29 @@ Editar Reproducción Artificial
                     <button class="btn btn-outline-secondary" type="button" id="button-addon1"  data-toggle="modal" data-target="#modalanimal" disabled=disabled>Buscar</button>
                     
                     <input type="text" placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled 
-                    @foreach ($animalRH as $i)
+                    @foreach ($animalhembra as $i)
                             @if ($re->animalCode_id_m == $i->id )
                                 value =" {{$i->animalCode}} "
                             @endif
                     @endforeach >
 
-                    
-                    <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
-                    @foreach ($animalRH as $i)
+                    <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1" id="edad" name="age_month" disabled=disabled 
+                    @foreach ($animalhembra as $i)
                             @if ($re->animalCode_id_m == $i->id )
-                                value =" {{$i->race_d}} "
+                                value =" {{$i->age_month}} "
                             @endif
-                    @endforeach >
+                    @endforeach>
 
                     
-                        
-                        <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1" id="edad" name="age_month" disabled=disabled 
-                        @foreach ($animalRH as $i)
-                                @if ($re->animalCode_id_m == $i->id )
-                                    value =" {{$i->age_month}} "
-                                @endif
-                        @endforeach>
+                    <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
+                    @foreach ($animalhembra as $i)
+                            @if ($re->animalCode_id_m == $i->id )
+                                value =" {{$i->raza}} "
+                            @endif
+                    @endforeach >
                    
-                   
-                        
                         <input type="text"  placeholder="Sexo" aria-label="Example text with button addon" aria-describedby="button-addon1" id="sexo" name="sex" disabled=disabled  
-                        @foreach ($animalRH as $i)
+                        @foreach ($animalhembra as $i)
                                 @if ($re->animalCode_id_m == $i->id )
                                     value =" {{$i->sex}} "
                                 @endif
@@ -111,7 +107,7 @@ Editar Reproducción Artificial
                               <td>{{$i->reproduccion}}</td>
                               <td>{{$i->supplier}}</td>
                               <center>
-                                <td> <button type="button" class="btn btn-success btn btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></td>
+                                <td> <button type="button" class="btn btn-success btn btselect3"  data-dismiss="modal" disabled=disabled><i class="fas fa-check-circle"></i></button></td>
                               </center>
                               
                             </tr>

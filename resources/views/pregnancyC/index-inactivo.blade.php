@@ -42,15 +42,18 @@ Fichas de Control de Preñes Inactivos
             <td >{{$i->date_r}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-                <a class="btn btn-primary d-grid gap-2 d-md-block " href="{{route('inactivos.controlPrenes.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                <form action="{{route('inactivos.controlPrenes.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
-                    @method('DELETE') 
-                    @csrf
-                    @include('layouts.base-usuario')
-                    <button type="submit"  class="btn btn-danger" value="Eliminar">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </form>                         
+                <center>
+                    <a class="btn btn-primary" href="{{route('inactivos.controlPrenes.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                    <form action="{{route('inactivos.controlPrenes.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
+                        @method('DELETE') 
+                        @csrf
+                        @include('layouts.base-usuario')
+                        <button type="submit"  class="btn btn-danger" value="Eliminar">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>   
+                </center>
+                                     
             </td>  
         </tr>
         @endforeach 

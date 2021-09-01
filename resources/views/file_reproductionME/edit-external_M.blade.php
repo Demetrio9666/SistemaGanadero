@@ -7,7 +7,7 @@ Editar Reproducción Natural Externa
     @csrf
     @method('PUT')
     <div class="row">
-        <div class="form-group">
+        <div class="col-md-4">
             <label for="">Fecha de Registro:</label>
             <input type="date" class="form-control" id="desp" name="date" value="{{$ext->date}}">
         </div>
@@ -23,23 +23,25 @@ Editar Reproducción Natural Externa
                                 value =" {{$i->animalCode}} "
                             @endif
                         @endforeach >
-    
-
                         <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled
                         @foreach ($animaleEX as $i)
                             @if ($ext->animalCode_id == $i->id )
-                                value =" {{$i->race_d}} "
+                                value =" {{$i->raza}} "
                             @endif
                         @endforeach >
+                        
+                        <input type="text" placeholder="Edad"  id="edad" name="age_month" disabled=disabled
+                        @foreach ($animaleEX as $i)
+                            @if ($ext->animalCode_id == $i->id )
+                                value =" {{$i->age_month}} "
+                            @endif
+                        @endforeach  >
+
+                        
     
                         <input type="hidden" id="idcodi" name="animalCode_id"  value="{{$ext->animalCode_id}}">
             
-                             <input type="text" placeholder="Edad"  id="edad" name="age_month" disabled=disabled
-                            @foreach ($animaleEX as $i)
-                                @if ($ext->animalCode_id == $i->id )
-                                    value =" {{$i->age_month}} "
-                                @endif
-                            @endforeach  >
+                          
      
 
                             <input type="text" placeholder="Sexo"  id="sexo" name="sex" disabled=disabled

@@ -131,15 +131,16 @@ class ReproductionAInactivosController extends Controller
     public function edit($id)
     {
         $re =  File_reproduction_artificial::findOrFail($id);
-        $animalRH= DB::table('file_animale')
-                ->join('race','file_animale.race_id','=','race.id')
-                ->select('file_animale.id',
-                'file_animale.animalCode',
-                'file_animale.age_month',
-                'race.race_d',
-                'file_animale.sex')
-            
-                ->where('file_animale.stage','=','Vaca')
+        $animalhembra= DB::table('file_animale')
+                    ->join('race','file_animale.race_id','=','race.id')
+                    ->select('file_animale.id',
+                            'file_animale.animalCode',
+                            'file_animale.age_month',
+                            'race.race_d as raza',
+                            'file_animale.sex')
+                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                    ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
+                    
                 ->get();
         $raza =Race::all();
         $re_A = DB::table('file_reproduction_artificial')
@@ -164,7 +165,7 @@ class ReproductionAInactivosController extends Controller
                 )
                 ->get();    
 
-        return view('file_reproductionA.edit-inactivo',compact('raza','animalRH','arti','re'));
+        return view('file_reproductionA.edit-inactivo',compact('raza','animalhembra','arti','re'));
     }
 
     /**

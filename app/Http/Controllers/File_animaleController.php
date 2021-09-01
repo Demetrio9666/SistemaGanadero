@@ -265,7 +265,8 @@ class File_animaleController extends Controller
         $animal->actual_state = $request->actual_state;
         $animal->location_id = $request->localizacion;
         $animal->conceived = $request->concebido;
-
+        
+        //si exite 
         if($request->hasFile('file')){
             $destino = $animal->url;
             //storage/imagenes/o6OjntwgUcpexels-lucas-allmann-4

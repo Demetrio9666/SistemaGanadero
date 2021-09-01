@@ -114,32 +114,9 @@
                  'previous':'Anterior'
              }
          },
-        /* dom: 'Bfrtilp',
-         buttons:[
-             {
-                 extend:'excel',
-                 text: '<i class="fas fa-file-excel"></i>',
-                 titleAttr:'Exportar a Excel',
-                 className:'btn btn-success',
-                 excelStyles: {                // Add an excelStyles definition
-                              template: 'blue_medium',  // Apply the 'blue_medium' template
-                    },
-             },
-             {
-                 extend:'pdfHtml5',
-                 text: '<i class="fas fa-file-pdf"></i>',
-                 titleAttr:'Exportar a PDF',
-                 className:'btn btn-danger'
-             },
-             {
-                 extend:'print',
-                 text: '<i class="fas fa-print"></i>',
-                 titleAttr:'Imprimir',
-                 className:'btn btn-warning'
-             },
-         ],*/
 
         });
+  
 
 
      </script>
@@ -151,7 +128,7 @@
                       'success'
                       )      
       </script>
-  <?php endif; ?>
+        <?php endif; ?>
   <script>
       $('.formulario-eliminar').submit(function(e){
           e.preventDefault();
@@ -170,7 +147,10 @@
                   }
           }) 
       });
+
+
   </script>
+    
 
   
     <?php echo $__env->yieldPushContent('js'); ?>

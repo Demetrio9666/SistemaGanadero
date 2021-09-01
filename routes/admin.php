@@ -223,10 +223,11 @@ Route::resource('inactivos/controlVacunas',VaccineControlInactivosController::cl
 Route::get('descarga-pdf-controlVacunas-Inactivos',[VaccineControlInactivosController::class,'PDF'])->name('controlVacunas-I.PDF');
 Route::get('exportar-excel-controlVacunas-Inactivos',[VaccineControlInactivosController::class,'Excel']);
 
+
 Route::resource('controlVacuna',Vaccine_controlController::class)->names('controlVacuna');
 Route::get('descarga-pdf-controlVacuna',[Vaccine_controlController::class,'PDF']);
 Route::get('exportar-excel-controlVacuna',[Vaccine_controlController::class,'Excel']);
-
+Route::post('buscar-animal',[Vaccine_controlController::class,'Buscar'])->name('buscar-animal');
 
 //SEGURIDAD
 Route::resource('rol',RoleController::class)->names('rol');

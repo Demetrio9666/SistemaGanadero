@@ -1,5 +1,5 @@
 <body>
-    <div class="modal fade" id="modalanimal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="modalanimalhembra" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <!--modal-dialog modal-dialog-centered se cambiael tamaño   -->
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -10,7 +10,7 @@
               </button>
             </div>
             <div class="modal-body" style="width:100%">
-                @include('tablas.tablaAnimalesR')
+                @include('tablas.tablaAnimalesHembra')
             </div>
             <!--div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Guardar</button>

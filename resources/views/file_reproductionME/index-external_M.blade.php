@@ -53,7 +53,7 @@ Fichas de Reproducción por Monta Natural Externa
             <td>{{$i->hacienda_name}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
-                <a class="btn btn-primary" href="{{route('fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>   
+               <center><a class="btn btn-primary" href="{{route('fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>  </center>  
             </td>  
         </tr>
         @endforeach
