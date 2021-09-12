@@ -20,8 +20,8 @@ class DashboardController extends Controller
     
         $disponible = File_Animale::whereIn('actual_state',['DISPONIBLE'])->count();
         $vendidos = File_Animale::whereIn('actual_state',['VENDIDO'])->count();
-        $reproduccion = File_Animale::whereIn('actual_state',['REPRODUCCION'])->count();
-        $total = File_Animale::whereIn('actual_state',['DISPONIBLE','REPRODUCCION','VENDIDO'])->count();
+        $reproduccion = File_Animale::whereIn('actual_state',['REPRODUCCIÓN'])->count();
+        $total = File_Animale::whereIn('actual_state',['DISPONIBLE','REPRODUCCIÓN','VENDIDO'])->count();
 
         $toro = File_Animale::whereIn('stage',['TORO'])->count();
         $torete = File_Animale::whereIn('stage',['TORETE'])->count();
@@ -47,9 +47,9 @@ class DashboardController extends Controller
     }
 
     public function DashboardReproduccion(){
-        $reproduccion = File_Animale::whereIn('actual_state',['REPRODUCCION'])->count();
-        $reproduccionMachos = File_Animale::where('sex','=','MACHO') ->whereIn('actual_state',['REPRODUCCION'])->count();
-        $reproduccionHembras = File_Animale::where('sex','=','HEMBRA') ->whereIn('actual_state',['REPRODUCCION'])->count();
+        $reproduccion = File_Animale::whereIn('actual_state',['REPRODUCCIÓN'])->count();
+        $reproduccionMachos = File_Animale::where('sex','=','MACHO') ->whereIn('actual_state',['REPRODUCCIÓN'])->count();
+        $reproduccionHembras = File_Animale::where('sex','=','HEMBRA') ->whereIn('actual_state',['REPRODUCCIÓN'])->count();
 
 
         $data = [$reproduccion, $reproduccionMachos, $reproduccionHembras ];

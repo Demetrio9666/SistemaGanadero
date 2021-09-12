@@ -1,4 +1,4 @@
-@extends('layouts.baseTablas')
+@extends('layouts.baseTablasUsuario')
 
 @section('nombre_card')
         Lista de Usuarios
@@ -7,12 +7,7 @@
 @section('boton_registro')
 "{{url('usuarios/create')}}"
 @endsection
-@section('boton_reciclaje')
-@endsection
-@section('boton_reporte_excel')
-@endsection
-@section('boton_reporte_pdf')
-@endsection
+
 
 @section('nombre_tabla')
 Registros de Usuarios

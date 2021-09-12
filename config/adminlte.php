@@ -437,7 +437,7 @@ return [
                     'shift' => 'ml-3',
                     'submenu' =>[
                         [
-                            'text' => 'Desparacitantes',
+                            'text' => 'Desparasitante',
                             'url'  => '/confDespa',
                             'icon'  => 'fas fa-vial',
                             'can' =>'confDespa.index',
@@ -471,7 +471,7 @@ return [
                     ],
                 ],
                 [
-                    'text' => 'Material Genetico ',
+                    'text' => 'Material Genético ',
                     'url'  => '/confMate',
                     'icon' =>'fas fa-vial',
                     'can' =>'confMate.index',

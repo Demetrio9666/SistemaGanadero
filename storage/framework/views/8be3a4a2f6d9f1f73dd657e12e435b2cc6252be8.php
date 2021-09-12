@@ -118,12 +118,12 @@
         
         <div class="card-body">
             
-            <div class="titulo1 "><h1> @yield('nombre_tabla')</h1></div>
-            <label id="derecha">Impreso por : {{auth()->user()->name}}</label>
+            <div class="titulo1 "><h1> <?php echo $__env->yieldContent('nombre_tabla'); ?></h1></div>
+            <label id="derecha">Impreso por : <?php echo e(auth()->user()->name); ?></label>
             <br>
-            <label id="izquierda">Fecha:{{ date('Y-m-d H:i:s') }}</label>
+            <label id="izquierda">Fecha:<?php echo e(date('Y-m-d H:i:s')); ?></label>
             
-            @yield('tabla')
+            <?php echo $__env->yieldContent('tabla'); ?>
         </div>
     </div>
       
@@ -138,4 +138,4 @@
             $pdf->text(370, 570, "Página $PAGE_NUM de $PAGE_COUNT", $font, 10);
         ');
     }
-</script>
+</script><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/layouts/pdf.blade.php ENDPATH**/ ?>

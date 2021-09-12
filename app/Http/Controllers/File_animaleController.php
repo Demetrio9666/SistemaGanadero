@@ -88,6 +88,7 @@ class File_animaleController extends Controller
        $actvividad->save();
    
        return $pdf->setPaper('a4','landscape')->download('FichasAnimalesActivos-'.date('Y-m-d H:i:s').'.pdf');
+       //return $pdf->setPaper('a4','landscape')->stream('FichasAnimalesActivos-'.date('Y-m-d H:i:s').'.pdf');
     }
 
     

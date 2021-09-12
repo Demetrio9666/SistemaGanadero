@@ -14,7 +14,7 @@ Fichas de Animales Activos
             <th >Sexo</th>
             <th >Etapa</th>
             <th >Origen</th>
-            <th >Edad Meses</th>
+            <th >Meses</th>
             <th >Salud</th>
             <th >Embarazo</th>
             <th >Localización</th>

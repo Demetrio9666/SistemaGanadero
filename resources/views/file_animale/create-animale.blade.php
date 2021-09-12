@@ -143,7 +143,7 @@
                             <option value="MONTA"@if(old('concebido') == "MONTA") {{'selected'}} @endif>MONTA</option>
                             <option value="INSIMINACIÓN ARTIFICIAL"@if(old('concebido') == "INSIMINACIÓN ARTIFICIAL") {{'selected'}} @endif>INSIMINACIÓN ARTIFICIAL</option>
                             <option value="EMBRIONAL" @if(old('concebido') == "EMBRIONAL") {{'selected'}} @endif>EMBRIONAL</option>
-                    </select>
+                       </select>
                     @error('concebido')
                        <div class="invalid-feedback">{{$message}}</div>
                     @enderror
