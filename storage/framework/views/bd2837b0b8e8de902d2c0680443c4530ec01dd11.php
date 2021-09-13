@@ -56,6 +56,7 @@ Fichas de Animales Inactivos
                     <td>
                         <center>
                             <a class="btn btn-primary" href="<?php echo e(route('inactivos.fichaAnimales.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
+                            <br>
                             <form action="<?php echo e(route('inactivos.fichaAnimales.destroy',$i->id)); ?>"  class="d-inline  formulario-eliminar"  method="POST">
                                 <?php echo method_field('DELETE'); ?> 
                                 <?php echo csrf_field(); ?>

@@ -19,7 +19,7 @@ Fichas de Controles de Vacunaciones Inactivos
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">
     <thead>             
         <tr>
-            <th></th>
+            
             <th>Fecha de la Vacunación</th>
             <th>Código del Animal</th>
             <th>Vacuna</th>
@@ -31,7 +31,7 @@ Fichas de Controles de Vacunaciones Inactivos
     <tbody>  
         @foreach ($vacunaC as $i)          
         <tr>
-            <td>{{$i->id}}</td>
+            
             <td>{{$i->date}}</td>
             <td >{{$i->animal}}</td>
             <td >{{$i->vacuna}}</td>

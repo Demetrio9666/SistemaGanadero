@@ -19,7 +19,7 @@ Fichas de Controles de Vacunaciones Inactivos
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">
     <thead>             
         <tr>
-            <th></th>
+            
             <th>Fecha de la Vacunación</th>
             <th>Código del Animal</th>
             <th>Vacuna</th>
@@ -31,7 +31,7 @@ Fichas de Controles de Vacunaciones Inactivos
     <tbody>  
         <?php $__currentLoopData = $vacunaC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>          
         <tr>
-            <td><?php echo e($i->id); ?></td>
+            
             <td><?php echo e($i->date); ?></td>
             <td ><?php echo e($i->animal); ?></td>
             <td ><?php echo e($i->vacuna); ?></td>
