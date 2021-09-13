@@ -1,3 +1,5 @@
+
+
 <?php $layoutHelper = app('\JeroenNoten\LaravelAdminLte\Helpers\LayoutHelper'); ?>
 
 <?php if($layoutHelper->isLayoutTopnavEnabled()): ?>
