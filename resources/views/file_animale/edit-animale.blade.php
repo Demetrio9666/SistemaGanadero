@@ -68,8 +68,6 @@
                     <option value="VACA"   @if($animal->stage == "VACA" ) selected @endif>VACA</option>
                     <option value="TORETE" @if($animal->stage == "TORETE")selected @endif >TORETE</option>
                     <option value="TORO"   @if($animal->stage == "TORO" ) selected @endif>TORO</option>
-                    
-                    <option value="NOVILLO"   @if($animal->stage == "NOVILLO" ) selected @endif>NOVILLO</option>
             </select>
                 @error('etapa')
                     <div class="invalid-feedback">{{$message}}</div>

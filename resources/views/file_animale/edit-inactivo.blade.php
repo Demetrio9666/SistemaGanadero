@@ -49,11 +49,13 @@
                     <label for="">Etapa:</label>
                     <select class="form-control" id="inputPassword4" name="etapa"  value="{{$animal->stage}}" disabled=disabled>
                         <option selected></option>
-                        <option value="VACA"   @if($animal->stage == "VACA" ) selected @endif>VACA</option>
-                        <option value="TORO"   @if($animal->stage == "TORO" ) selected @endif>TORO</option>
+                        <option value="TERNERA" @if($animal->stage == "TERNERA") selected @endif>TERNERA</option>
                         <option value="TERNERO"   @if($animal->stage == "TERNERO" ) selected @endif>TERNERO</option>
-                        <option value="VAQUILLA"   @if($animal->stage == "VAQUILLA" ) selected @endif>VAQUILLA</option>
-                        <option value="NOVILLO"   @if($animal->stage == "NOVILLO" ) selected @endif>NOVILLO</option>
+                        <option value="VACONILLA" @if($animal->stage == "VACONILLA" ) selected @endif>VACONILLA </option>
+                        <option value="VACONA"   @if($animal->stage == "VACONA" ) selected @endif>VACONA</option>
+                        <option value="VACA"   @if($animal->stage == "VACA" ) selected @endif>VACA</option>
+                        <option value="TORETE" @if($animal->stage == "TORETE")selected @endif >TORETE</option>
+                        <option value="TORO"   @if($animal->stage == "TORO" ) selected @endif>TORO</option>
                 </select>
                 </div>
                 <div  class="col-md-6">
