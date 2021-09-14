@@ -175,7 +175,72 @@ class File_reproductionAController extends Controller
      */
     public function store(StoreFile_reproductionA $request)
     {
+        $re_A = DB::table('file_reproduction_artificial')
+                    ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
+                    ->leftJoin('artificial_reproduction','file_reproduction_artificial.artificial_id','=','artificial_reproduction.id')
+                    ->leftJoin('race as f','file_animale.race_id','=','f.id')
+                    ->leftJoin('race as a','artificial_reproduction.race_id','=','a.id')
+                    ->select('file_reproduction_artificial.id',
+                            'file_reproduction_artificial.date as fecha_A',
+                            'file_animale.animalCode as animalA',
+                            'f.race_d as raza_h',  
+                            'artificial_reproduction.reproduccion as tipo', 
+                            'a.race_d as raza_m',
+                            'file_reproduction_artificial.actual_state'
+                            )
+                            ->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
+                            
+                    ->get(); 
+        $re_MI = DB::table('file_reproduction_internal')
+                    ->join('file_animale as M','file_reproduction_internal.animalCode_id_m','=','M.id')
+                    ->join('file_animale as P','file_reproduction_internal.animalCode_id_p','=','P.id')
+                    ->join('race as RM','M.race_id','=','RM.id')
+                    ->join('race as RP','P.race_id','=','RP.id')
+                    ->select('file_reproduction_internal.id',
+                             'file_reproduction_internal.date as fecha_MI',
+      
+                             'M.animalCode as animal_h_MI',
+                             'RM.race_d as raza_h_MI',
+                             'M.sex as sexo_h',
+                             'M.age_month as edad_h',
+      
+                             'P.animalCode as animal_m_MI',
+                             'RP.race_d as raza_m_MI',
+                             'P.sex as sexo_m',
+                             'P.age_month as edad_m',
+                             'file_reproduction_internal.actual_state'
+                            )->where('file_reproduction_internal.actual_state','=','Disponible')
+                            
+                    ->get();
+        $ext =  DB::table('file_reproduction_external')
+                    ->join('file_animale','file_reproduction_external.animalCode_id','=','file_animale.id')
+                    ->leftJoin('race as R','file_animale.race_id','=','R.id')
+                    ->leftJoin('race','file_reproduction_external.race_id','=','race.id')
+                    ->select('file_reproduction_external.id',
+                                'file_reproduction_external.date',
+                                'file_animale.animalCode',
+                                'R.race_d as raza',
+                                'file_animale.age_month as edad',
+                                'file_animale.sex as sexo',
+                                'file_reproduction_external.animalCode_Exte',
+                                'race.race_d',
+                                'file_reproduction_external.age_month',
+                                'file_reproduction_external.sex',
+                                'file_reproduction_external.hacienda_name',
+                                'file_reproduction_external.actual_state')
+                                ->where('file_reproduction_external.actual_state','=','Disponible')
+                                
+                    ->get();
+
         $re = new File_reproduction_artificial();
+
+
+
+
+
+
+
+
         $re->date= $request->date;
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->artificial_id = $request->artificial_id;
