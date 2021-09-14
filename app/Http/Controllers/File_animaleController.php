@@ -261,6 +261,101 @@ class File_animaleController extends Controller
         ]);
 
         $animal = File_Animale::findOrFail($id);
+        $id;
+        $animal1 = DB::table('file_animale')
+                    ->leftJoin('race','file_animale.race_id','=','race.id')
+                    ->leftJoin('location','file_animale.location_id','=','location.id')
+                    ->select('file_animale.id','file_animale.animalCode','file_animale.url','file_animale.date','race.race_d as raza',
+                            'file_animale.sex','file_animale.stage','file_animale.source','file_animale.age_month',
+                            'file_animale.health_condition','file_animale.gestation_state','file_animale.actual_state','location.location_d as ubicacion'
+                            ,'file_animale.conceived')
+                            ->where('file_animale.actual_state','=','DISPONIBLE')
+                            ->orwhere('file_animale.actual_state','=','REPRODUCCIÓN')
+                            ->orwhere('file_animale.actual_state','=','VENDIDO')
+                            
+                            
+                    ->get();
+        foreach($animal1 as $i){
+            if($i->id == $id){
+                $sexo =$i->sex ;
+                $etapa=$i->stage;
+                $edad=$i->age_month ;
+                $embarazo=$i->gestation_state ;
+                $estado=$i->actual_state ;
+            }
+        }
+        foreach($animal as $i2){
+            if($request->sexo == 'HEMBRA'){
+                if($request->etapa =='TERNERO' || $request->etapa =='TORETE' || $request->etapa =='TORO' ){
+                    return view('mensajes.fichaAnimal.generoH'); 
+                }else{
+                    if($request->etapa =='TERNERA' )  {
+                        if(($request->edad < 0 || $request->edad >10)  || $request->actual_state =='REPRODUCCIÓN' ||  $request->estado_de_gestacion == 'SI' ){
+                            return view('mensajes.fichaAnimal.ternera'); 
+                        }
+                      
+                    }elseif ($request->etapa =='VACONILLA' ) {
+                        if(($request->edad < 11 || $request->edad >22) || $request->actual_state =='REPRODUCCIÓN' || $request->estado_de_gestacion =='SI'){
+                            return view('mensajes.fichaAnimal.vaconilla'); 
+                        }
+                    }elseif ($request->etapa =='VACONA' ) {
+                        if($request->edad < 23 || $request->edad >36 ){
+                            return view('mensajes.fichaAnimal.vacona'); 
+                        }
+                    }elseif ($request->etapa =='VACA') {
+                        if($request->edad < 37 || $request->edad >600 ){
+                            return view('mensajes.fichaAnimal.vaca'); 
+                        }
+                    }else{
+                        break;
+                    }
+                }
+                
+            }elseif($request->sexo == 'MACHO'){
+                if($request->etapa =='TERNERA' || $request->etapa =='VACONILLA' || $request->etapa =='VACONA' || $request->etapa =='VACA'){
+                    return view('mensajes.fichaAnimal.generoM'); 
+                }else{
+                    if($request->etapa =='TERNERO'){
+                        if(($request->edad < 0 || $request->edad >3)  || $request->actual_state =='REPRODUCCIÓN' ||  $request->estado_de_gestacion == 'SI' ){
+                            return view('mensajes.fichaAnimal.ternero'); 
+                        }
+                    }elseif ($request->etapa =='TORETE') {
+                        if(($request->edad < 4 || $request->edad >20)  || $request->actual_state =='REPRODUCCIÓN' ||  $request->estado_de_gestacion == 'SI' ){
+                            return view('mensajes.fichaAnimal.torete'); 
+                        }
+                    }elseif ($request->etapa =='TORO') {
+                        if(($request->edad < 21 || $request->edad >600) ||  $request->estado_de_gestacion == 'SI' ){
+                            return view('mensajes.fichaAnimal.toro'); 
+                        }
+                    }else{
+                        break;
+                    }
+
+                }
+                   
+            
+            }else{
+                break;
+            }
+
+           /* if($request->etapa =='TERNERO' || $request->etapa =='TORETE' || $request->etapa =='TORO' ){
+                if($request->sexo == 'HEMBRA'){
+                    return view('mensajes.fichaAnimal.generoH'); 
+                }
+            }elseif ($request->etapa =='TERNERA' || $request->etapa =='VACONILLA' || $request->etapa =='VACONA' || $request->etapa =='VACA') {
+                if($request->sexo == 'MACHO'){
+                    return view('mensajes.fichaAnimal.generoM'); 
+                }
+            }else{
+                break;
+            }*/
+         
+        }
+       
+
+
+
+
 
         $animal->animalCode = $request->codigo_animal;
         $animal->date = $request->fecha_nacimiento;
@@ -296,6 +391,8 @@ class File_animaleController extends Controller
                 $animal->update();
           
         }
+
+
        
     
         $animal->update(); 

@@ -284,15 +284,7 @@ class Vaccine_controlController extends Controller
      */
     public function update(StoreVaccineC $request, $id)
     {
-       /* $animal  = DB::table('file_animale')
-        ->select(    'id',
-                     'animalCode',
-                     'date',
-                     'age_month',
-                     'sex'
-                  )->where('actual_state','=','Disponible')
-                  
-        ->get();*/
+       
 
         $vacunaCC= DB::table('vaccine_control')
         ->select('id',
@@ -305,7 +297,7 @@ class Vaccine_controlController extends Controller
         ->get();
         $vacuna = DB::table('vaccine')
             ->select('id','vaccine_d')
-            ->where('actual_state','=','Disponible')
+            ->where('actual_state','=','DISPONIBLE')
             ->get();
 
 

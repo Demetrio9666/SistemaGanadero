@@ -62,7 +62,6 @@
                 etapa = document.getElementById("opetapa").value;
                 
                 if(sexo == "MACHO"){
-                
                     if(etapa == "TERNERO"){
                             $("#REPRODUCCIÓN").hide();
                             $("#DISPONIBLE").show();
