@@ -222,7 +222,7 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/8.-Menu-Configuration
     |
     */
-    date_default_timezone_set('America/Guayaquil'),
+    date_default_timezone_set('America/Bogota'),
     'menu' => [
         [
             'text'=>date('Y-m-d H:i:s'),

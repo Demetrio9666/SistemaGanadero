@@ -315,12 +315,6 @@ class External_mountController extends Controller
                 ->get();
                 //return $re_MI;
        
-         
-
-       
-
-        
-
         foreach($re_A as $i3){
             foreach($re_MI as $i2){
                 foreach( $ext as $i){
