@@ -184,10 +184,10 @@ class VaccineControlInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy(Request $request , $id)
     {
         $vacunaC = Vaccine_control::findOrFail($id);
-
+        $vacunaC->delete();
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -216,7 +216,7 @@ class VaccineControlInactivosController extends Controller
         $actvividad->subject_type =('App\Models\Vaccine_control');
     
         $actvividad->save();
-        $vacunaC->delete();
+        
         return redirect('inactivos/controlVacunas')->with('eliminar','ok'); 
     }
 }

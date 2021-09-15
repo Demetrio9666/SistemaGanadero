@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\File_animale;
 use App\Models\Race;
 use App\Models\File_reproduction_internal;
+use App\Models\File_reproduction_artificial;
+use App\Models\File_reproduction_external;
 use App\Http\Requests\StoreFile_reproductionM;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
@@ -28,19 +30,14 @@ class File_reproductionMController extends Controller
        $re_MI = DB::table('file_reproduction_internal')
               ->join('file_animale as M','file_reproduction_internal.animalCode_id_m','=','M.id')
               ->join('file_animale as P','file_reproduction_internal.animalCode_id_p','=','P.id')
-
               ->join('race as RM','M.race_id','=','RM.id')
               ->join('race as RP','P.race_id','=','RP.id')
-
-
               ->select('file_reproduction_internal.id',
                        'file_reproduction_internal.date as fecha_MI',
-
                        'M.animalCode as animal_h_MI',
                        'RM.race_d as raza_h_MI',
                        'M.sex as sexo_h',
                        'M.age_month as edad_h',
-
                        'P.animalCode as animal_m_MI',
                        'RP.race_d as raza_m_MI',
                        'P.sex as sexo_m',
@@ -134,13 +131,25 @@ class File_reproductionMController extends Controller
     public function create()
     {
         $raza = DB::table('race')
-        ->select('race.id',
+                ->select('race.id',
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
                     ->where('race.actual_state','=','Disponible')
                     ->get();
+
         $animalhembra= DB::table('file_animale')
+                        ->join('race','file_animale.race_id','=','race.id')
+                        ->select('file_animale.id',
+                                    'file_animale.animalCode',
+                                    'file_animale.age_month',
+                                    'race.race_d as raza',
+                                    'file_animale.sex')
+                        ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                        ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
+                    
+                ->get();
+        $animalmacho= DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
                     ->select('file_animale.id',
                             'file_animale.animalCode',
@@ -148,20 +157,9 @@ class File_reproductionMController extends Controller
                             'race.race_d as raza',
                             'file_animale.sex')
                     ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                    ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
+                    ->where('file_animale.stage','=','TORO')
                     
                 ->get();
-        $animalmacho= DB::table('file_animale')
-                ->join('race','file_animale.race_id','=','race.id')
-                ->select('file_animale.id',
-                        'file_animale.animalCode',
-                        'file_animale.age_month',
-                        'race.race_d as raza',
-                        'file_animale.sex')
-                ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                ->where('file_animale.stage','=','TORO')
-                
-            ->get();
 
           
         return view('file_reproductionM.create-reproduction',compact('raza','animalhembra','animalmacho'));
@@ -174,8 +172,61 @@ class File_reproductionMController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreFile_reproductionM $request)
-    {
+    {   
+
+        $re_A = DB::table('file_reproduction_artificial')
+        ->select('id',
+                'date',
+                'animalCode_id_m',
+                'actual_state'
+                )
+                ->where('actual_state','=','DISPONIBLE')
+                
+                ->get(); 
+       // return $re_A;
+
+        $re_MI = DB::table('file_reproduction_internal')
+                ->select('id',
+                        'date',
+                        'animalCode_id_m',
+                        'actual_state'
+                        )->where('actual_state','=','DISPONIBLE')
+                        
+                ->get();
+                //return $re_MI;
+        $ext =  DB::table('file_reproduction_external')
+                ->select('id',
+                        'date',
+                        'animalCode_id',
+                        'actual_state')
+                        ->where('actual_state','=','DISPONIBLE')
+                            
+                ->get();
+                
         $re = new File_reproduction_internal();
+        foreach($ext as $i3){
+            foreach( $re_A as $i2){
+                foreach($re_MI as $i){
+                    
+                        if( $i->animalCode_id_m == $request->animalCode_id_m){
+                            return view('mensajes.fichaReproduccionInterna.montaInterna');
+                        }elseif($i2->animalCode_id_m == $request->animalCode_id_m){
+                            return view('mensajes.fichaReproduccionInterna.artificial');
+                        } elseif($i3->animalCode_id == $request->animalCode_id_m){
+                            return view('mensajes.fichaReproduccionInterna.externa'); 
+                        }
+                    
+                    
+                    
+                }
+            }
+        }
+        
+       
+        
+        
+
+        
         $re->date= $request->date;
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->animalCode_id_p = $request->animalCode_id_p;

@@ -151,9 +151,10 @@ class AntibioticInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy($id, Request $request )
     {
         $anti = Antibiotic::findOrFail($id);
+        $anti->delete();
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -170,7 +171,7 @@ class AntibioticInactivosController extends Controller
         $actvividad->subject_type =('App\Models\Antibiotic');
         
         $actvividad->save();
-        $anti->delete();
+        
         return redirect('inactivos/Antibioticos')->with('eliminar','ok');
     }
 }

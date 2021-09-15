@@ -218,10 +218,11 @@ class ReproductionAInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request , $id)
     {
         $re =  File_reproduction_artificial::findOrFail($id);
-
+        $re->delete();
+        
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -251,7 +252,7 @@ class ReproductionAInactivosController extends Controller
     
         $actvividad->save();
 
-        $re->delete();
+        
         return redirect('/fichaReproduccionA')->with('eliminar','ok'); 
     }
 }

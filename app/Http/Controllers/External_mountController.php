@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Race;
+use App\Models\File_reproduction_internal;
+use App\Models\File_reproduction_artificial;
 use App\Models\File_reproduction_external;
 use App\Models\File_animale;
 use App\Http\Requests\StoreFile_reproductionEX;
@@ -152,7 +154,58 @@ class External_mountController extends Controller
 
     public function store(StoreFile_reproductionEX $request)
     {
+        $ext =  DB::table('file_reproduction_external')
+        ->select('id',
+                'date',
+                'animalCode_id',
+                'actual_state'
+                )
+                ->where('actual_state','=','DISPONIBLE')
+                    
+        ->get();
+       //return $ext; 
+        $re_A = DB::table('file_reproduction_artificial')
+        ->select('id',
+                'date',
+                'animalCode_id_m',
+                'actual_state'
+                )
+                ->where('actual_state','=','DISPONIBLE')
+                
+                ->get(); 
+       // return $re_A;
+
+        $re_MI = DB::table('file_reproduction_internal')
+                ->select('id',
+                        'date',
+                        'animalCode_id_m',
+                        'actual_state'
+                        )->where('actual_state','=','DISPONIBLE')
+                        
+                ->get();
+                //return $re_MI;
+       
+         
+
+        foreach($re_A as $i3){
+            foreach($re_MI as $i2){
+                foreach( $ext as $i){
+                        if($i->animalCode_id == $request->animalCode_id ){
+                            return view('mensajes.fichaReproduccionExterna.externa');
+                        }elseif($i2->animalCode_id_m == $request->animalCode_id){
+                            return view('mensajes.fichaReproduccionExterna.montaInterna'); 
+                        } elseif($i3->animalCode_id_m == $request->animalCode_id){
+                            return view('mensajes.fichaReproduccionExterna.artificial'); 
+                        }         
+
+
+                }
+            }
+        }
+
+        
         $ext = new File_reproduction_external();
+        
        
         $ext->date= $request->date;
         $ext->animalCode_id = $request->animalCode_id;
@@ -162,7 +215,6 @@ class External_mountController extends Controller
         $ext->sex = $request->sex;
         $ext->hacienda_name = $request->hacienda_name;
         $ext->actual_state = $request->actual_state;
-        
         $ext->save(); 
 
         $actvividad = new  Activity();

@@ -190,10 +190,11 @@ class PartumInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy(Request $request , $id)
     {
         $par =  File_partum::findOrFail($id);
-       
+        $par->delete();
+        
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -222,7 +223,7 @@ class PartumInactivosController extends Controller
         $actvividad->subject_type =('App\Models\File_partum');
     
         $actvividad->save();
-        $par->delete();
+       
 
 
         return redirect('/fichaParto')->with('eliminar','ok');

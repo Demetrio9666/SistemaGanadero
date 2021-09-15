@@ -181,10 +181,11 @@ class DewormingControlInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy(Request $request , $id)
     {
         $desC = Deworming_control::findOrFail($id);
-
+        $desC->delete();
+        
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -213,7 +214,7 @@ class DewormingControlInactivosController extends Controller
         $actvividad->subject_type =('App\Models\Deworming_control');
     
         $actvividad->save();
-        $desC->delete();
+        
         return redirect('inactivos/controlDesparasitaciones')->with('eliminar','ok'); 
     }
 }

@@ -115,9 +115,10 @@ class LocationInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request , $id)
     {
         $ubicacion = Location::findOrFail($id);
+        $ubicacion->delete();
         
         $ubicacion->actual_state =$request->actual_state;
         $ubicacion->save(); 
@@ -169,7 +170,7 @@ class LocationInactivosController extends Controller
         $actvividad->subject_type =('App\Models\Location');
         
         $actvividad->save();
-        $ubicacion->delete();
+        
         return redirect('/inactivos/Ubicaciones')->with('eliminar','ok'); 
     }
 }

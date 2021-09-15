@@ -1,27 +1,27 @@
-@extends('adminlte::page')
-@section('css')
 
-@endsection
-@section('content_header')
+<?php $__env->startSection('css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content_header'); ?>
 <div class="card card-dark">
     <div class="card-header">
     <h3 class="card-title">
         <i class="fas fa-book"></i>
-        @yield('nombre_regitro')  </h3>
+        <?php echo $__env->yieldContent('nombre_regitro'); ?>  </h3>
     </div>
 
    <div class="container" id="registration-form">
         <div class="image"></div>
         <div class="frm">
 
-            @yield('formulario')
+            <?php echo $__env->yieldContent('formulario'); ?>
             
         </div>
     </div>
 </div> 
-@include("modal.modalAnimalesEX")
-@endsection
-@section('js')
+<?php echo $__env->make("modal.modalAnimalesEX", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
 <script>
             $('#modalanimalEx').on('shown.bs.modal', function () {
             $('#myInput2').trigger('focus')
@@ -65,7 +65,7 @@
      
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
  <script>
       $('#tabla').on('click','.btselect',function(){
                         var self = $(this).closest("tr");
@@ -81,3 +81,4 @@
                             $("#sexo").val(col5);
                         });
  </script>
+<?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/file_reproductionME/base.blade.php ENDPATH**/ ?>

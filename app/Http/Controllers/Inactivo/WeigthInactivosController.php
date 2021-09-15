@@ -174,7 +174,8 @@ class WeigthInactivosController extends Controller
     public function destroy(Request $request,$id)
     {
         $pesoC = Weigth_control::findOrFail($id);
-
+        $pesoC->delete();
+        
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -203,7 +204,7 @@ class WeigthInactivosController extends Controller
         $actvividad->subject_type =('App\Models\Weigth_control');
     
         $actvividad->save();
-        $pesoC->delete();
+        
         return redirect('/controlPeso')->with('eliminar','ok'); 
     }
 }

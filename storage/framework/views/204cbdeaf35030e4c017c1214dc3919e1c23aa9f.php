@@ -1,13 +1,13 @@
-@extends('adminlte::page')
-@section('css')
 
-@endsection
-@section('content_header')
+<?php $__env->startSection('css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content_header'); ?>
 <div class="card card-dark">
     <div class="card-header">
     <h3 class="card-title">
         <i class="fas fa-book"></i>
-        @yield('nombre_regitro')  </h3>
+        <?php echo $__env->yieldContent('nombre_regitro'); ?>  </h3>
 
     </div>
 
@@ -15,14 +15,14 @@
         <div class="image"></div>
         <div class="frm">
 
-            @yield('formulario')
+            <?php echo $__env->yieldContent('formulario'); ?>
             
         </div>
     </div>
 </div> 
-@include("modal.modalAnimalesHembras")
-@endsection
-@section('js')
+<?php echo $__env->make("modal.modalAnimalesHembras", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
 <script>
     
       $('#modalanimalhembra').on('shown.bs.modal', function () {
@@ -88,5 +88,6 @@
      
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
  
+<?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/file_reproductionM/base.blade.php ENDPATH**/ ?>

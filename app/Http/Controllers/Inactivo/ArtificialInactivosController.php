@@ -174,9 +174,11 @@ class ArtificialInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy($id, Request $request  )
     {
         $arti = Artificial_Reproduction::findOrFail($id);
+        $arti->delete();
+        
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -204,7 +206,7 @@ class ArtificialInactivosController extends Controller
         $actvividad->subject_type =('App\Models\Artificial_Reproduction');
         
         $actvividad->save();
-        $arti->delete();
+        
         return redirect('/inactivos/Materiales')->with('eliminar','ok');
     }
 }

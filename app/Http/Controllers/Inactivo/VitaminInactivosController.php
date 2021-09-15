@@ -141,6 +141,8 @@ class VitaminInactivosController extends Controller
     public function destroy(Request $request,$id)
     {
         $vitamina = Vitamin::findOrFail($id);
+        $vitamina->delete();
+        
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -157,7 +159,7 @@ class VitaminInactivosController extends Controller
         $actvividad->subject_type =('App\Models\Vitamin');
         
         $actvividad->save();
-        $vitamina->delete();
+        
         return redirect('inactivos/Vitaminas')->with('eliminar','ok');
     }
 }

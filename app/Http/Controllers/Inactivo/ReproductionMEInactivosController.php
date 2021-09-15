@@ -213,10 +213,11 @@ class ReproductionMEInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy(Request $request , $id)
     {
         $ext =  File_reproduction_external::findOrFail($id);
-
+        $ext->delete();
+        
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -247,7 +248,7 @@ class ReproductionMEInactivosController extends Controller
         $actvividad->save();
 
 
-        $ext->delete();
+        
         return redirect('inactivos/fichaReproduccionEx')->with('eliminar','ok');
     }
 }

@@ -224,10 +224,12 @@ class ReproductionMInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy(Request $request , $id)
     {
         $re =  File_reproduction_internal::findOrFail($id);
+        $re->delete();
 
+        
         $actvividad = new  Activity();
         $actvividad->log_name = $request->usuario;
         $actvividad->email = $request->correo;
@@ -252,11 +254,10 @@ class ReproductionMInactivosController extends Controller
             }
         }
         
-        
         $actvividad->subject_type =('App\Models\File_reproduction_internal');
     
         $actvividad->save();
-        $re->delete();
+       
         return redirect('inactivos/fichaReproduccionEx')->with('eliminar','ok'); 
     }
 }

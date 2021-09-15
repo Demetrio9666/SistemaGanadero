@@ -25,7 +25,8 @@ class StoreFile_reproductionA extends FormRequest
     {
         return [
             'date'=>'required',
-            'animalCode_id_m' =>'required|unique:file_reproduction_artificial,animalCode_id_m,id',
+            //'animalCode_id_m' =>'required|unique:file_reproduction_artificial,animalCode_id_m,id',
+            'animalCode_id_m'=>'required',
             'artificial_id' =>'required',
            
         

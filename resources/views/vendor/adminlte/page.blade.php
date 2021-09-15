@@ -118,8 +118,10 @@
          },
 
         });
-  
 
+       
+  
+        
 
      </script>
       @if (session('eliminar') == 'ok')
