@@ -113,7 +113,10 @@ unset($__errorArgs, $__bag); ?>
                                     <td class="col4"><?php echo e($i->supplier); ?></td>
                                     
                                         <td> 
-                                            <center><button type="button" class="btn btn-success btn   btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></center></td>   
+                                            <center>
+                                                <button type="button" class="btn btn-success btn   btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button>
+                                            </center>
+                                        </td>   
                                     
                                     
                                     </tr>

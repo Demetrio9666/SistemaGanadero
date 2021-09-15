@@ -22,12 +22,12 @@ Registro de Reproducción Natural
                             
                             <input type="text" class="{{$errors->has('animalCode_id_m') ? 'is-invalid':''}}"placeholder="Código Animal"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="codigo_animal" disabled=disabled  value="{{old('codigo_animal')}}">
 
-                            <input type="text" placeholder="Raza"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza"  disabled=disabled >
+                            <input type="text" placeholder="Edad"  aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza"  disabled=disabled >
 
                             <input type="hidden" id="idcodi" name="animalCode_id_m">
                 
                         
-                                <input type="text" placeholder="Edad"  id="edad"aria-label="Example text with button addon" aria-describedby="button-addon1" name="age_month" disabled=disabled  value="{{old('edad')}}">
+                                <input type="text" placeholder="Raza"  id="edad"aria-label="Example text with button addon" aria-describedby="button-addon1" name="age_month" disabled=disabled  value="{{old('edad')}}">
                         
                         
                             
@@ -49,11 +49,11 @@ Registro de Reproducción Natural
                                 <input type="text" class="form-control" id="codigo_animal2"  disabled=disabled value="{{old('codigo_animal2')}}">
                             </div>
                             <div class="col-md-3">
-                                <label>Raza:</label>
+                                <label>Edad:</label>
                                 <input type="text" class="form-control" id="raza2"  disabled=disabled value="{{old('raza2')}}">
                             </div>
                             <div class="col-md-3">
-                                <label>Edad:</label>
+                                <label>Raza:</label>
                                 <input type="text" class="form-control" id="edad2" name="age_month" disabled=disabled value="{{old('edad2')}}">
                             </div>
                             <div class="col-md-3">

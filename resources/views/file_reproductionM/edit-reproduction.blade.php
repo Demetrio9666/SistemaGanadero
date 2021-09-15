@@ -28,7 +28,7 @@ Editar de Reproducción Natural
                             @endforeach >
 
                          
-                            <input type="text"  placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
+                            <input type="text"  placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
                             @foreach ($animalhembra as $i)
                                     @if ($re->animalCode_id_m == $i->id )
                                         value =" {{$i->raza}} "
@@ -36,7 +36,7 @@ Editar de Reproducción Natural
                             @endforeach >
 
                               
-                                <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="edad" name="age_month" disabled=disabled 
+                                <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="edad" name="age_month" disabled=disabled 
                                 @foreach ($animalhembra as $i)
                                         @if ($re->animalCode_id_m == $i->id )
                                             value =" {{$i->age_month}} "
@@ -55,10 +55,10 @@ Editar de Reproducción Natural
             </div>                
             <h5>Animal Macho</h5>
             <br>
-                    <div class="input-group mb-3">
+                   
                             <input type="hidden" id="idcodi2" name="animalCode_id_p"    value="{{$re->animalCode_id_p}}">
                             
-                            <div  class="col-md-6">
+                            <div  class="col-md-3">
                                 <label>Codigo Animal:</label>
                                 <input type="text" class="form-control" name="codigo_animal2" id="codigo_animal2"  disabled=disabled 
                                 @foreach ($animalmacho as $i)
@@ -67,27 +67,28 @@ Editar de Reproducción Natural
                                         @endif
                                 @endforeach >
                             </div>
-                            <div  class="col-md-6">
-                                <label>Raza:</label>
-                                <input type="text" class="form-control" name ="raza2" id="raza2"  disabled=disabled 
-                                @foreach ($animalmacho as $i)
-                                        @if ($re->animalCode_id_p == $i->id )
-                                            value =" {{$i->raza}} "
-                                        @endif
-                                @endforeach >
-                            </div>
+                            
 
 
-                            <div  class="col-md-6">
+                            <div  class="col-md-3">
                                 <label>Edad:</label>
-                                <input type="text" class="form-control" id="edad2" name="age_month"  name="age_month" disabled=disabled  
+                                <input type="text" class="form-control" id="raza2"   name="age_month" disabled=disabled  
                                 @foreach ($animalmacho as $i)
                                         @if ($re->animalCode_id_p == $i->id )
                                             value =" {{$i->age_month}} "
                                         @endif
                                 @endforeach  >
                             </div>
-                            <div  class="col-md-6">
+                            <div  class="col-md-3">
+                                <label>Raza:</label>
+                                <input type="text" class="form-control"   id="edad2" disabled=disabled 
+                                @foreach ($animalmacho as $i)
+                                        @if ($re->animalCode_id_p == $i->id )
+                                            value =" {{$i->raza}} "
+                                        @endif
+                                @endforeach >
+                            </div>
+                            <div  class="col-md-3">
                                 <label >Sexo:</label>
                                 <input type="text" class="form-control" id="sexo2" name="sexo2" disabled=disabled 
                                 @foreach ($animalmacho as $i)
@@ -96,7 +97,10 @@ Editar de Reproducción Natural
                                         @endif
                                 @endforeach>
                             </div>
-                    </div>
+                            <br>      
+                            <h1></h1>
+                            <br>
+                    
                     <div class="card">
                         <div class="card-body">
                         <table id="tabla" class="table table-striped table-bordered" style="width:100%">

@@ -28,26 +28,26 @@ Editar Reproducción Artificial
                     @endforeach >
 
                         
-                        <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1" id="edad" name="age_month" disabled=disabled 
-                        @foreach ($animalhembra as $i)
-                                @if ($re->animalCode_id_m == $i->id )
-                                    value =" {{$i->age_month}} "
-                                @endif
-                        @endforeach>
-                   
-                        <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
-                        @foreach ($animalhembra as $i)
-                                @if ($re->animalCode_id_m == $i->id )
-                                    value =" {{$i->raza}} "
-                                @endif
-                        @endforeach >
-                        
-                        <input type="text"  placeholder="Sexo" aria-label="Example text with button addon" aria-describedby="button-addon1" id="sexo" name="sex" disabled=disabled  
-                        @foreach ($animalhembra as $i)
-                                @if ($re->animalCode_id_m == $i->id )
-                                    value =" {{$i->sex}} "
-                                @endif
-                        @endforeach>
+                    <input type="text" placeholder="Edad" aria-label="Example text with button addon" aria-describedby="button-addon1" id="edad" name="age_month" disabled=disabled 
+                    @foreach ($animalhembra as $i)
+                            @if ($re->animalCode_id_m == $i->id )
+                                value =" {{$i->age_month}} "
+                            @endif
+                    @endforeach>
+                
+                    <input type="text" placeholder="Raza" aria-label="Example text with button addon" aria-describedby="button-addon1"  id="raza" disabled=disabled 
+                    @foreach ($animalhembra as $i)
+                            @if ($re->animalCode_id_m == $i->id )
+                                value =" {{$i->raza}} "
+                            @endif
+                    @endforeach >
+                    
+                    <input type="text"  placeholder="Sexo" aria-label="Example text with button addon" aria-describedby="button-addon1" id="sexo" name="sex" disabled=disabled  
+                    @foreach ($animalhembra as $i)
+                            @if ($re->animalCode_id_m == $i->id )
+                                value =" {{$i->sex}} "
+                            @endif
+                    @endforeach>
                     
             </div>
 
@@ -102,14 +102,14 @@ Editar Reproducción Artificial
                     <tbody>
                           @foreach ($arti as $i)          
                           <tr>
-                              <td>{{$i->id}}</td>
-                              <td>{{$i->race_d}}</td>
-                              <td>{{$i->reproduccion}}</td>
-                              <td>{{$i->supplier}}</td>
+                              <<td class="col1">{{$i->id}}</td>
+                              <td class="col2">{{$i->race_d}}</td>
+                              <td class="col3">{{$i->reproduccion}}</td>
+                              <td class="col4">{{$i->supplier}}</td>
                               
                                 <td> 
                                     <center>
-                                        <button type="button" class="btn btn-success btn btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button>
+                                        <button type="button" class="btn btn-success btn   btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button>
                                     </center>
                                     
                                 </td>

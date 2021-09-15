@@ -219,25 +219,10 @@ class File_reproductionAController extends Controller
                         } elseif($i3->animalCode_id == $request->animalCode_id_m){
                             return view('mensajes.fichaReproduccionArtificial.externa'); 
                         }
-                    
-                    
-                    
                 }
-        }
+            }
         }
            
-        /*foreach($re_MI as $i2){
-
-            foreach($ext as $i3){
-               
-            }
-        }*/
-
-
-
-
-
-
         $re->date= $request->date;
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->artificial_id = $request->artificial_id;
@@ -344,8 +329,54 @@ class File_reproductionAController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $re_A = DB::table('file_reproduction_artificial')
+                    ->select('id',
+                            'date',
+                            'animalCode_id_m',
+                            'actual_state'
+                            )
+                            ->where('actual_state','=','DISPONIBLE')
+                            
+                    ->get(); 
+                   // return $re_A;
+            
+        $re_MI = DB::table('file_reproduction_internal')
+                    ->select('id',
+                             'date',
+                             'animalCode_id_m',
+                             'actual_state'
+                            )->where('actual_state','=','DISPONIBLE')
+                            
+                    ->get();
+                    //return $re_MI;
+        $ext =  DB::table('file_reproduction_external')
+                    ->select('id',
+                            'date',
+                            'animalCode_id',
+                            'actual_state')
+                            ->where('actual_state','=','DISPONIBLE')
+                                
+                    ->get();
+
         $re =  File_reproduction_artificial::findOrFail($id);
         
+        foreach($ext as $i3){
+            foreach($re_MI as $i2){
+                foreach($re_A as $i){
+                        if($i->animalCode_id_m == $request->animalCode_id_m){
+                            break;
+                        
+                        }elseif( $i->animalCode_id_m == $request->animalCode_id_m){
+                            return view('mensajes.fichaReproduccionArtificial.artificial'); 
+                        }elseif($i2->animalCode_id_m == $request->animalCode_id_m){
+                            return view('mensajes.fichaReproduccionArtificial.montaInterna'); 
+                        } elseif($i3->animalCode_id == $request->animalCode_id_m){
+                            return view('mensajes.fichaReproduccionArtificial.externa'); 
+                        }
+                }
+            }
+        }
+
         $re->date= $request->date;
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->artificial_id = $request->artificial_id;

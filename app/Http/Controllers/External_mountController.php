@@ -284,8 +284,60 @@ class External_mountController extends Controller
 
     public function update(StoreFile_reproductionEX $request, $id)
     {
-        $ext =  File_reproduction_external::findOrFail($id);
+        $ext =  DB::table('file_reproduction_external')
+        ->select('id',
+                'date',
+                'animalCode_id',
+                'actual_state'
+                )
+                ->where('actual_state','=','DISPONIBLE')
+                    
+        ->get();
+       //return $ext; 
+        $re_A = DB::table('file_reproduction_artificial')
+        ->select('id',
+                'date',
+                'animalCode_id_m',
+                'actual_state'
+                )
+                ->where('actual_state','=','DISPONIBLE')
+                
+                ->get(); 
+       // return $re_A;
 
+        $re_MI = DB::table('file_reproduction_internal')
+                ->select('id',
+                        'date',
+                        'animalCode_id_m',
+                        'actual_state'
+                        )->where('actual_state','=','DISPONIBLE')
+                        
+                ->get();
+                //return $re_MI;
+       
+         
+
+       
+
+        
+
+        foreach($re_A as $i3){
+            foreach($re_MI as $i2){
+                foreach( $ext as $i){
+                        if($i->animalCode_id == $request->animalCode_id ){
+                            //return view('mensajes.fichaReproduccionExterna.externa');
+                            break;
+                        }elseif($i2->animalCode_id_m == $request->animalCode_id){
+                            return view('mensajes.fichaReproduccionExterna.montaInterna'); 
+                        } elseif($i3->animalCode_id_m == $request->animalCode_id){
+                            return view('mensajes.fichaReproduccionExterna.artificial'); 
+                        }         
+
+
+                }
+            }
+        }
+        $ext =  File_reproduction_external::findOrFail($id);
         $ext->date= $request->date;
         $ext->animalCode_id = $request->animalCode_id;
         $ext->animalCode_Exte = $request->animalCode_Exte;

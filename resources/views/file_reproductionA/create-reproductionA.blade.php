@@ -92,7 +92,10 @@ Registro Reproducción Artificial
                                     <td class="col4">{{$i->supplier}}</td>
                                     
                                         <td> 
-                                            <center><button type="button" class="btn btn-success btn   btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button></center></td>   
+                                            <center>
+                                                <button type="button" class="btn btn-success btn   btselect3"  data-dismiss="modal"><i class="fas fa-check-circle"></i></button>
+                                            </center>
+                                        </td>   
                                     
                                     
                                     </tr>

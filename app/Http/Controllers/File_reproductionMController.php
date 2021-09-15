@@ -326,6 +326,53 @@ class File_reproductionMController extends Controller
      */
     public function update(StoreFile_reproductionM $request, $id)
     {
+        $re_A = DB::table('file_reproduction_artificial')
+        ->select('id',
+                'date',
+                'animalCode_id_m',
+                'actual_state'
+                )
+                ->where('actual_state','=','DISPONIBLE')
+                
+                ->get(); 
+       // return $re_A;
+
+        $re_MI = DB::table('file_reproduction_internal')
+                ->select('id',
+                        'date',
+                        'animalCode_id_m',
+                        'actual_state'
+                        )->where('actual_state','=','DISPONIBLE')
+                        
+                ->get();
+                //return $re_MI;
+        $ext =  DB::table('file_reproduction_external')
+                ->select('id',
+                        'date',
+                        'animalCode_id',
+                        'actual_state')
+                        ->where('actual_state','=','DISPONIBLE')
+                            
+                ->get();
+        foreach($ext as $i3){
+            foreach( $re_A as $i2){
+                foreach($re_MI as $i){
+                    
+                        if( $i->animalCode_id_m == $request->animalCode_id_m){
+                            //return view('mensajes.fichaReproduccionInterna.montaInterna');
+                            break;
+                        }elseif($i2->animalCode_id_m == $request->animalCode_id_m){
+                            return view('mensajes.fichaReproduccionInterna.artificial');
+                        } elseif($i3->animalCode_id == $request->animalCode_id_m){
+                            return view('mensajes.fichaReproduccionInterna.externa'); 
+                        }
+                    
+                    
+                    
+                }
+            }
+        }
+
         $re =  File_reproduction_internal::findOrFail($id);
         
         
