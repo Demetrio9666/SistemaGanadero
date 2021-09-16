@@ -1,6 +1,6 @@
 @extends('layouts.pdf')
 @section('nombre_tabla')
-Registros de Control de Desparacitaciones Activos
+Registros de Control de Desparasitaciones Activos
 @endsection
 
 @section('tabla')
@@ -10,7 +10,7 @@ Registros de Control de Desparacitaciones Activos
             <th>Fecha de Desparasitación</th>
             <th>Código del Animal</th>
             <th>Desparasitante</th>
-            <th>Fecha de re-desparasitación</th>
+            <th>Fecha de próxima dosis</th>
             <th>Estado Actual</th> 
         </tr>
     </thead>

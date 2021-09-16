@@ -13,13 +13,13 @@ Registros de Desparacitantes Activas
 "{{url('descarga-pdf-Desparasitantes-Inactivos')}}"
 @endsection
 @section('nombre_tabla')
-Registros de Desparacitantes Inactivos
+Registros de Desparasitantes Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">
     <thead>             
         <tr>
-            <th>Nombre del Desparacitante</th>
+            <th>Nombre del Desparasitante</th>
             <th>Fecha Elaboración</th>
             <th>Fecha Caducidad </th>
             <th>Proveedor</th>

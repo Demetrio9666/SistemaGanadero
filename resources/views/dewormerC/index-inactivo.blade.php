@@ -1,7 +1,7 @@
 @extends('layouts.baseTablasInactivas')
 
 @section('nombre_card')
-Registros de Controles de Desparacitaciones Inactivas
+Registros de Controles de Desparasitaciones Inactivas
 @endsection
 @section('boton_atras')
 "{{url('/controlDesparasitacion')}}"
@@ -13,7 +13,7 @@ Registros de Controles de Desparacitaciones Inactivas
 "{{url('descarga-pdf-controlDesparasitaciones-Inactivos')}}"
 @endsection
 @section('nombre_tabla')
-Fichas de Controles de Desparacitaciones Inactivos
+Fichas de Controles de Desparasitaciones Inactivos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">
@@ -22,7 +22,7 @@ Fichas de Controles de Desparacitaciones Inactivos
             <th>Fecha de Desparasitación</th>
             <th>Código del Animal</th>
             <th>Desparasitante</th>
-            <th>Fecha de próxima desparasitación</th>
+            <th>Fecha de próxima dosis</th>
             <th>Estado Actual</th> 
             <th>Acción</th>
         </tr>

@@ -28,7 +28,7 @@ Registro Control de Desparasitación
           </select>
         </div>  
         <div class="col-md-6">
-            <label for="">Fecha de re-desparasitación:</label>
+            <label for="">Fecha de próxima dosis:</label>
             <input type="date" class="form-control" id="fecha_r" name="date_r"   value="{{old('date_r')}}">
         </div>
         <div  class="form-group">

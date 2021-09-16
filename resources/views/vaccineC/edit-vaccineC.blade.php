@@ -35,7 +35,7 @@ Editar Control de Vacunación
           </select>
         </div>  
         <div  class="col-md-6">
-            <label for="">Fecha de Segunda Docis:</label>
+            <label for="">Fecha de próxima dosis:</label>
             <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{$vacunaC->date_r}}">
         </div>
         <div  class="col-md-6">

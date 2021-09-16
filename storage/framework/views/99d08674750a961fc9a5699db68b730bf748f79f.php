@@ -1,1 +1,0 @@
-<?php /**PATH C:\xampp\htdocs\SistemaGanadero\resources\views/navigation-menu.blade.php ENDPATH**/ ?>

@@ -41,7 +41,7 @@ Registro Control Vacunación
 
                 </div>  
                 <div class="col-md-6">
-                    <label for="">Fecha de Segunda Docis:</label>
+                    <label for="">Fecha de próxima dosis:</label>
                     <input type="date" class="form-control {{$errors->has('date_r') ? 'is-invalid':''}}" id="fecha_r" name="date_r" value="{{old('date_r')}}">
                     @error('date_r')
                                 <div class="invalid-feedback">{{$message}}</div>

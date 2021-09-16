@@ -105,7 +105,7 @@
                      <option  value = '100' >100</option>
                      <option  value =  '-1'>All</option>
              </select>`
-             +" Registro por Pagina",
+             +" Registro por Página",
              "zeroRecords": "Resultados No encontrados -Disculpe",
              "info": "Mostrando la página _PAGE_ de _PAGES_",
              "infoEmpty": "No records available",

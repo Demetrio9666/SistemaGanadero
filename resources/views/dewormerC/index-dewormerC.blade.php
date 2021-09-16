@@ -1,7 +1,7 @@
 @extends('layouts.baseTablas')
 
 @section('nombre_card')
-Registros de Controle de Desparacitaciones Activas
+Registros de Controle de Desparasitaciones Activas
 @endsection
 
 @section('boton_registro')
@@ -18,7 +18,7 @@ Registros de Controle de Desparacitaciones Activas
 @endsection
 
 @section('nombre_tabla')
-Ficha de Controles de Desparacitaciones Activos
+Ficha de Controles de Desparasitaciones Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">
@@ -27,7 +27,7 @@ Ficha de Controles de Desparacitaciones Activos
             <th>Fecha de Desparasitación</th>
             <th>Código del Animal</th>
             <th>Desparasitante</th>
-            <th>Fecha de próxima desparasitación</th>
+            <th>Fecha de próxima dosis</th>
             <th>Estado Actual</th> 
             <th>Acción</th>
         </tr>

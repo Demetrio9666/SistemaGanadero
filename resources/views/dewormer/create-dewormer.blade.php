@@ -1,6 +1,6 @@
 @extends('dewormer.base')
 @section('nombre_regitro')
-Registar Desparacitante
+Registar Desparasitante
 @endsection
 @section('formulario')
 <form action="{{route('confDespa.store')}}" method="POST">

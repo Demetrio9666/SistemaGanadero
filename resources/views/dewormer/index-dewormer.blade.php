@@ -18,7 +18,7 @@ Registros de Desparasitante Activas
 @endsection
 
 @section('nombre_tabla')
-Registros de Desparacitantes Activos
+Registros de Desparasitantes Activos
 @endsection
 @section('tabla')
 <table id="tabla" class="table table-striped table-bordered" style="width:100%">

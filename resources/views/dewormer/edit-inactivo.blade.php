@@ -7,7 +7,7 @@ Editar Desparacitante Inactiva
     @csrf
     @method('PUT')
     <div class="form-group">
-        <label for="">Nombre del Desparacitante:</label>
+        <label for="">Nombre del Desparasitante:</label>
         <input type="text" class="form-control" id="dewormer_d" name="dewormer_d" value="{{$desp->dewormer_d}}" onblur="upperCase()"disabled=disabled>
     </div>
     <div class="form-group">
