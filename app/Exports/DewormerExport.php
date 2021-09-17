@@ -32,7 +32,7 @@ class DewormerExport implements FromCollection ,WithHeadings,WithColumnWidths, W
     public function headings():array{
         return[
             'ID',
-            'Nombre del Desparacitante',
+            'Nombre del Desparasitante',
             'Fecha de Elaboracion',
             'Fecha de Caducidad',
             'Proveedor',
@@ -45,9 +45,9 @@ class DewormerExport implements FromCollection ,WithHeadings,WithColumnWidths, W
     {
         return [
             'A'=>5,
-            'B'=>25,
-            'C'=>19,
-            'D'=>19,
+            'B'=>30,
+            'C'=>20,
+            'D'=>20,
             'E'=>20, 
             'F'=>15, 
             

@@ -1,7 +1,7 @@
 @extends('layouts.baseTablas')
 
 @section('nombre_card')
-Registros de Controle de Desparasitaciones Activas
+Registros de Controles de Desparasitaciones Activas
 @endsection
 
 @section('boton_registro')

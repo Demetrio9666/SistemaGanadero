@@ -74,7 +74,7 @@ class Deworming_controlController extends Controller
                 $actvividad->subject_type =('App\Models\Deworming_control');
             
                 $actvividad->save();
-                return $pdf->setPaper('a4','landscape')->download('ControlesDesparacitacionesActivos-'.date('Y-m-d H:i:s').'.pdf');
+                return $pdf->setPaper('a4','landscape')->download('ControlesDesparasitacionesActivos-'.date('Y-m-d H:i:s').'.pdf');
 
     }
 
@@ -101,7 +101,7 @@ class Deworming_controlController extends Controller
         $actvividad->subject_type =('App\Models\Deworming_control');
     
         $actvividad->save();
-        return Excel::download(new Deworming_controlExport, 'ControlesDesparacitacionesActivos'.date('Y-m-d H:i:s').'.xlsx');
+        return Excel::download(new Deworming_controlExport, 'ControlesDesparasitacionesActivos'.date('Y-m-d H:i:s').'.xlsx');
     }
 
     /**

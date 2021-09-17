@@ -46,10 +46,10 @@ class ArtificialReproductionExport implements FromCollection ,WithHeadings,WithC
         return [
             'A'=>5,
             'B'=>13,
-            'C'=>18,
-            'D'=>15,
-            'E'=>10, 
-            'F'=>15, 
+            'C'=>20,
+            'D'=>20,
+            'E'=>20, 
+            'F'=>30, 
             'G'=>15, 
                      
         ];

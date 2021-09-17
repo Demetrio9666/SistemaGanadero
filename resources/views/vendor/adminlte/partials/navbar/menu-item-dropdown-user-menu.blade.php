@@ -25,6 +25,7 @@
         <span @if(config('adminlte.usermenu_image')) class="d-none d-md-inline" @endif>
             {{-- enviar nombre del usuario --}}
             {{ Auth::user()->name }}
+         
             
         </span>
     </a>

@@ -57,13 +57,13 @@ class File_treatmentExport implements FromCollection ,WithHeadings,WithColumnWid
     {
         return [
             'A'=>5,
-            'B'=>13,
+            'B'=>16,
             'C'=>18,
-            'D'=>15,
-            'E'=>10, 
-            'F'=>10.89, 
-            'G'=>12, 
-            'H'=>11, 
+            'D'=>20,
+            'E'=>33, 
+            'F'=>15, 
+            'G'=>20, 
+            'H'=>27, 
             'I'=>14, 
             'J'=>15,          
         ];

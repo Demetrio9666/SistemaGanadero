@@ -1,7 +1,7 @@
 
 
 <?php $__env->startSection('nombre_card'); ?>
-Registros de Controle de Desparasitaciones Activas
+Registros de Controles de Desparasitaciones Activas
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('boton_registro'); ?>
@@ -27,7 +27,7 @@ Ficha de Controles de Desparasitaciones Activos
             <th>Fecha de Desparasitación</th>
             <th>Código del Animal</th>
             <th>Desparasitante</th>
-            <th>Fecha de próxima desparasitación</th>
+            <th>Fecha de próxima dosis</th>
             <th>Estado Actual</th> 
             <th>Acción</th>
         </tr>

@@ -26,6 +26,7 @@
             
             <?php echo e(Auth::user()->name); ?>
 
+         
             
         </span>
     </a>

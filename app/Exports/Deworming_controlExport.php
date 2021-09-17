@@ -38,8 +38,8 @@ class Deworming_controlExport implements FromCollection ,WithHeadings,WithColumn
             'ID',
             'Fecha de Control',
             'Codigo Animal',
-            'Desparacitante',
-            'Fecha segunda Docis',
+            'Desparasitante',
+            'Fecha de próxima dosis',
             'Estado Actual',
         ];
     }

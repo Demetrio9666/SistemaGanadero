@@ -58,7 +58,7 @@ class File_partumExport implements FromCollection ,WithHeadings,WithColumnWidths
             'D'=>15,
             'E'=>15, 
             'F'=>15, 
-            'G'=>19, 
+            'G'=>21, 
             'H'=>22, 
             'I'=>15,        
         ];
