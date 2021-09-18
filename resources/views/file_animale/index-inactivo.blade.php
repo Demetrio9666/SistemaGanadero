@@ -56,7 +56,7 @@ Fichas de Animales Inactivos
                     <td>
                         <center>
                             <a class="btn btn-primary" href="{{route('inactivos.fichaAnimales.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
-                            <br>
+                            
                             <form action="{{route('inactivos.fichaAnimales.destroy',$i->id)}}"  class="d-inline  formulario-eliminar"  method="POST">
                                 @method('DELETE') 
                                 @csrf

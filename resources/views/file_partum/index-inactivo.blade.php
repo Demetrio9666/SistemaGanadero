@@ -43,7 +43,7 @@ Fichas de Partos Inactivos
             <td >{{$i->actual_state}}</td>
             <td>
                 <center>
-                    <a class="btn-lg btn-primary  " href="{{route('inactivos.fichaPartos.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-primary  " href="{{route('inactivos.fichaPartos.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>
                 <form action="{{route('inactivos.fichaPartos.destroy',$i->id)}}"  class="d-inline  formulario-eliminar  "  method="POST">
                     @method('DELETE') 
                     @csrf

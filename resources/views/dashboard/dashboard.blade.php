@@ -1,13 +1,10 @@
 @extends('adminlte::page')
-<head>
-
-</head>
-<body>
-
-    @section('css')
-    
-    @endsection
     @section('content_header')
+    <label>Hora:</label>
+    <br>
+    <div id="reloj" class="reloj">00 : 00 : 00</div>
+    <br>
+    <br>
     <div class="row">
         <div class="col-lg-3 col-6">
           <!-- small box -->
@@ -186,10 +183,9 @@
         </script>
 
        
-        
-
+  
     @endsection
-</body>
+
 
 
 

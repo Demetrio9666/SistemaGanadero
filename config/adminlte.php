@@ -225,14 +225,14 @@ return [
 
 
     
-    date_default_timezone_set('America/Guayaquil'),
+    //date_default_timezone_set('America/Guayaquil'),
     'menu' => [
-        [
+       /* [
             'text'=>date('Y-m-d H:i:s'),
             'url'=>'#',
             'topnav'=>true
 
-        ],
+        ],*/
         [
             'text' => 'profile',
             'url'  => 'user/profile',

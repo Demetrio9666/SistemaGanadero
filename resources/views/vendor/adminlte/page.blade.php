@@ -12,7 +12,7 @@
     <link href="{{asset('css/app.css')}}"> 
     <link rel="stylesheet" type="text/css" href="{{('/css/tabla.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/bootstrap.min.css')}}">
-    
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/reloj.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Buttons-1.7.1/css/buttons.bootstrap4.min.css')}}">
@@ -27,6 +27,7 @@
 @section('body_data', $layoutHelper->makeBodyData())
 
 @section('body')
+
     <div class="wrapper">
 
         {{-- Top Navbar --}}
@@ -152,7 +153,33 @@
           }) 
       });
 
+      function actual() {
+         fecha=new Date(); //Actualizar fecha.
+         hora=fecha.getHours(); //hora actual
+         minuto=fecha.getMinutes(); //minuto actual
+         segundo=fecha.getSeconds(); //segundo actual
+         if (hora<10) { //dos cifras para la hora
+            hora="0"+hora;
+            }
+         if (minuto<10) { //dos cifras para el minuto
+            minuto="0"+minuto;
+            }
+         if (segundo<10) { //dos cifras para el segundo
+            segundo="0"+segundo;
+            }
+         //ver en el recuadro del reloj:
+         mireloj = hora+" : "+minuto+" : "+segundo;	
+				 return mireloj; 
+         }
 
+        
+
+        function actualizar() { //función del temporizador
+          mihora=actual(); //recoger hora actual
+          mireloj=document.getElementById("reloj"); //buscar elemento reloj
+          mireloj.innerHTML=mihora; //incluir hora en 
+        }
+   setInterval(actualizar,1000); //iniciar temporizador
   </script>
     {{-- @if (session('validacion') == 'ok')
      <script>

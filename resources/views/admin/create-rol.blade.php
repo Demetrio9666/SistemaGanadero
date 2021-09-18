@@ -1,14 +1,11 @@
 @extends('adminlte::page')
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>Registration Form</title>
-</head>
-<body>
-    @section('css')
-    
-    @endsection
+  
     @section('content_header')
+    <label>Hora:</label>
+    <br>
+    <div id="reloj" class="reloj">00 : 00 : 00</div>
+    <br>
+    <br>
     <div class="card card-dark">
         <div class="card-header">
           <h3 class="card-title">
@@ -51,4 +48,3 @@
     @endsection
     @section('js')
     @endsection
-</body>

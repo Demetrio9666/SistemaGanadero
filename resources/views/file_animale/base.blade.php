@@ -4,7 +4,11 @@
         <link rel="stylesheet" type="text/css" href="/css/imagen.css">
 @endsection
 @section('content_header')
-      {{-- @include('messages.message')--}}
+<label>Hora:</label>
+<br>
+<div id="reloj" class="reloj">00 : 00 : 00</div>
+<br>
+<br>
  
         <div class="card card-dark">
             <div class="card-header">

@@ -1,4 +1,5 @@
 @extends('admin.usuarios.base')
+
 @section('nombre_regitro')
          Registro de Usuarios
 @endsection

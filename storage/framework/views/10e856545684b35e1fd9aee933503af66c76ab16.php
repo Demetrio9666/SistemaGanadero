@@ -1,6 +1,11 @@
 
 
 <?php $__env->startSection('content_header'); ?>
+<label>Hora:</label>
+<br>
+<div id="reloj" class="reloj">00 : 00 : 00</div>
+<br>
+<br>
         <div class="card card-dark">
             <div class="card-header">
             <h3 class="card-title">
