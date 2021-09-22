@@ -52,46 +52,10 @@
             $("#codigo_animal").val(col2);
         });
 
-        function actual() {
-         fecha=new Date(); //Actualizar fecha.
-         hora=fecha.getHours(); //hora actual
-         minuto=fecha.getMinutes(); //minuto actual
-         segundo=fecha.getSeconds(); //segundo actual
-         if (hora<10) { //dos cifras para la hora
-            hora="0"+hora;
-            }
-         if (minuto<10) { //dos cifras para el minuto
-            minuto="0"+minuto;
-            }
-         if (segundo<10) { //dos cifras para el segundo
-            segundo="0"+segundo;
-            }
-         //ver en el recuadro del reloj:
-         mireloj = hora+" : "+minuto+" : "+segundo;	
-				 return mireloj; 
-         }
-
-        
-
-        function actualizar() { //función del temporizador
-          mihora=actual(); //recoger hora actual
-          mireloj=document.getElementById("reloj"); //buscar elemento reloj
-          mireloj.innerHTML=mihora; //incluir hora en 
-        }
-   setInterval(actualizar,1000); //iniciar temporizador
+       
    
 </script>
-<style>
- 
-        .reloj { width: 120px; height: 30px; padding: 5px 10px; border: 1px solid black; 
-         font: bold 1em dotum, "lucida sans", arial; 
-         text-align: center;
-         left: auto; 
-         top: auto;
-         position: absolute;}
-  
 
-</style>
 
 
 <?php $__env->stopSection(); ?>
