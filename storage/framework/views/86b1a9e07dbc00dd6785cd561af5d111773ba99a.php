@@ -11,6 +11,7 @@
                 <i class="fas fa-book-open"></i>
                 Actividades de Usuarios
             </div>
+        </div>
                 <table id="tabla" class="table table-striped table-bordered" style="width:100%">
                     <thead>             
                         <tr>
