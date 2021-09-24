@@ -247,7 +247,7 @@
                             
             }
 
-          /*  function validarEmbarazo(id){
+           function validarEmbarazo(id){
                 etapa = document.getElementById("opetapa").value;
                 if(etapa == "VACA" || etapa == "VACONA"){
                     $("#SI").show();
@@ -265,7 +265,7 @@
                     $("#INACTIVO").show();
                     $("#REPRODUCCIÓN").show();
                 }
-                /*if( id == "SI"){
+                if( id == "SI"){
                     $("#DISPONIBLE").show();
                     $("#VENDIDO").show();
                     $("#INACTIVO").show();
@@ -277,7 +277,7 @@
                     $("#INACTIVO").show();
                     $("#REPRODUCCIÓN").show();
                 }
-            }*/
+            }
 
             function validarEdadyEtapa(id){
                 sexo = document.getElementById("opsexo").value;
