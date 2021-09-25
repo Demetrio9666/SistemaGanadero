@@ -114,7 +114,7 @@ class Deworming_controlController extends Controller
         $des =  DB::table('dewormer')
         ->select('id',
                 'dewormer_d'
-                )
+                )->where('actual_state','=','DISPONIBLE')
         ->get();
 
         $animal  = DB::table('file_animale')
@@ -123,9 +123,11 @@ class Deworming_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )
+                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
+                  
+        
         return view('dewormerC.create-dewormerC',compact('animal','des'));
     }
 
@@ -137,7 +139,44 @@ class Deworming_controlController extends Controller
      */
     public function store(StoreDewormerC $request)
     {
-        $desC = new Deworming_control();
+        
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode',
+                     'date',
+                     'age_month',
+                     'sex'
+                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
+                  
+        ->get();
+        $desCC = DB::table('deworming_control')
+                    ->select('id',
+                            'date',
+                            'animalCode_id',
+                            'deworming_id',
+                            'date_r',
+                            'actual_state')
+                            ->where('actual_state','=','Disponible')
+        ->get();
+
+       
+     $desC = new Deworming_control();
+
+      
+
+       foreach($desCC as $i){
+        if($i->animalCode_id == $request->animalCode_id){
+            if( $i->deworming_id == $request->deworming_id ){   
+                 $codigo= $request->codigo_animal;
+                 $desp =$request->deworming_id;
+            //return with('Existe','o');
+             return view('mensajes.controldesp',compact('codigo','desp','desCC')); 
+            // return redirect('/controlVacuna')-with('validacion','ok');
+            
+            }
+        }
+    }
+     
 
        $desC->date = $request->date;
        $desC->animalCode_id = $request->animalCode_id;
@@ -198,7 +237,13 @@ class Deworming_controlController extends Controller
      */
     public function edit($id)
     {
-        $des =  Dewormer::all();
+       
+        $des =  DB::table('dewormer')
+        ->select('id',
+                'dewormer_d'
+                )->where('actual_state','=','DISPONIBLE')
+        ->get();
+
         $desC = Deworming_control::findOrFail($id);
         $animal  = DB::table('file_animale')
         ->select(    'id',
@@ -206,7 +251,7 @@ class Deworming_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )
+                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
 
@@ -222,7 +267,76 @@ class Deworming_controlController extends Controller
      */
     public function update(StoreDewormerC $request, $id)
     {
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode',
+                     'date',
+                     'age_month',
+                     'sex'
+                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
+                  
+        ->get();
+        $desCC = DB::table('deworming_control')
+                    ->select('id',
+                            'date',
+                            'animalCode_id',
+                            'deworming_id',
+                            'date_r',
+                            'actual_state')
+                            ->where('actual_state','=','Disponible')
+        ->get();
         $desC = Deworming_control::findOrFail($id);
+        $id;
+        foreach($desCC as $i2){
+            if($i2->id == $id){
+                 $idcodigoAnimal=$i2->animalCode_id;
+                 $fecha=$i2->date ;
+                 $iddesp=$i2->deworming_id ;
+                 $fecha_r=$i2->date_r;
+                 $estado =$i2->actual_state ;
+            }
+           
+        }
+        foreach($desCC as $i){
+            if($idcodigoAnimal != $request->animalCode_id  ||  $fecha !=  $request->date ||  $fecha_r !=  $request->date_r || $estado != $request->actual_state){
+                break;
+            }elseif($idcodigoAnimal == $request->animalCode_id ) {
+               
+                if( $i->deworming_id == $request->deworming_id ){      
+                    $codigo= $request->codigo_animal;
+                    $desp =$request->deworming_id;
+                
+                     return view('mensajes.controldespEdit',compact('codigo','desp','desCC')); 
+                
+                }
+            }elseif ($iddesp != $request->deworming_id && $fecha != $request->date ||  $fecha_r !=  $request->date_r || $estado != $request->actual_state) {
+                   if($idcodigoAnimal == $request->animalCode_id){
+                        break;
+                   }
+            }elseif ( $iddesp != $request->deworming_id ) {
+                    if($idcodigoAnimal == $request->animalCode_id){
+                        break;
+                   }
+            }elseif ($idcodigoAnimal != $request->animalCode_id &&  $iddesp != $request->deworming_id) {
+                  foreach($desCC as $i3){
+                        if($i->animalCode_id == $request->animalCode_id){
+                            if( $i->deworming_id == $request->deworming_id ){      
+                                $codigo= $request->codigo_animal;
+                                $desp =$request->deworming_id;
+                        
+                                 return view('mensajes.controldespEdit',compact('codigo','desp','desCC')); 
+                            
+                            
+                            }
+                        }
+                  }
+            }
+        }
+
+
+
+
+        
 
         $desC->date = $request->date;
         $desC->animalCode_id = $request->animalCode_id;

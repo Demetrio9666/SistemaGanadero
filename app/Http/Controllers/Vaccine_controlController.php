@@ -114,7 +114,7 @@ class Vaccine_controlController extends Controller
     {
         $vacuna = DB::table('vaccine')
         ->select('id','vaccine_d')
-        ->where('actual_state','=','Disponible')
+        ->where('actual_state','=','DISPONIBLE')
         ->get();
 
         $animal  = DB::table('file_animale')
@@ -123,7 +123,7 @@ class Vaccine_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','Disponible')
+                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
 
@@ -157,7 +157,7 @@ class Vaccine_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','Disponible')
+                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
 
@@ -177,6 +177,7 @@ class Vaccine_controlController extends Controller
         ->get();*/
 
         $vacunaC = new Vaccine_control();
+
 
         foreach($vacunaCC as $i){
             if($i->animalCode_id == $request->animalCode_id){
@@ -258,18 +259,19 @@ class Vaccine_controlController extends Controller
     {   
 
         $vacuna = DB::table('vaccine')
-        ->select('id','vaccine_d')
-        ->where('actual_state','=','Disponible')
+                ->select('id','vaccine_d')
+                ->where('actual_state','=','Disponible')
         ->get();
 
         $vacunaC = Vaccine_control::findOrFail($id);
+        
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','Disponible')
+                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
         return view('vaccineC.edit-vaccineC', compact('vacunaC','vacuna','animal'));
@@ -305,6 +307,7 @@ class Vaccine_controlController extends Controller
 
        $vacunaC = Vaccine_control::findOrFail($id);
        $id;
+       
        foreach($vacunaCC as $i2){
            if($i2->id == $id){
                 $idcodigoAnimal=$i2->animalCode_id;

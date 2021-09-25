@@ -15,21 +15,43 @@ class DewormerSeeder extends Seeder
     {
         Dewormer::create([
            
-            'dewormer_d'=>'BENZIMIDAZOLES',
+            'dewormer_d'=>'BENZIMIDAZOLES-D1',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ANYKAS',
             'actual_state'=>'DISPONIBLE',
         ]);
         Dewormer::create([
-            'dewormer_d'=>'ECTOSIN',
+           
+            'dewormer_d'=>'BENZIMIDAZOLES-D2',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ANYKAS',
             'actual_state'=>'DISPONIBLE',
         ]);
         Dewormer::create([
-            'dewormer_d'=>'MAGAP',
+            'dewormer_d'=>'ECTOSIN-D1',
+            'date_e'=> '2021-07-01',
+            'date_c'=> '2024-07-19',
+            'supplier'=>'ANYKAS',
+            'actual_state'=>'DISPONIBLE',
+        ]);
+        Dewormer::create([
+            'dewormer_d'=>'ECTOSIN-D2',
+            'date_e'=> '2021-07-01',
+            'date_c'=> '2024-07-19',
+            'supplier'=>'ANYKAS',
+            'actual_state'=>'DISPONIBLE',
+        ]);
+        Dewormer::create([
+            'dewormer_d'=>'MAGAP-D1',
+            'date_e'=> '2021-07-01',
+            'date_c'=> '2024-07-19',
+            'supplier'=>'ANYKAS',
+            'actual_state'=>'DISPONIBLE',
+        ]);
+        Dewormer::create([
+            'dewormer_d'=>'MAGAP-D2',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ANYKAS',
