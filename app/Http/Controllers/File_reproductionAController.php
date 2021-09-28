@@ -177,7 +177,7 @@ class File_reproductionAController extends Controller
      */
     public function store(StoreFile_reproductionA $request)
     {
-        $re_A = DB::table('file_reproduction_artificial')
+        /*$re_A = DB::table('file_reproduction_artificial')
                     ->select('id',
                             'date',
                             'animalCode_id_m',
@@ -221,12 +221,32 @@ class File_reproductionAController extends Controller
                         }
                 }
             }
-        }
+        }*/
+        $re = new File_reproduction_artificial();
            
         $re->date= $request->date;
+        
+
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->artificial_id = $request->artificial_id;
         $re->actual_state = $request->actual_state;
+        $estadoActual = $request->actual_state;
+        if($estadoActual == "DISPONIBLE"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->update(); 
+                }
+            }
+        }
+
         $re->save(); 
 
         $actvividad = new  Activity();
@@ -288,11 +308,17 @@ class File_reproductionAController extends Controller
                             'file_animale.age_month',
                             'race.race_d as raza',
                             'file_animale.sex')
-                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                    ->where('file_animale.actual_state','=','DISPONIBLE')
                     ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
                     
                 ->get();
-        $raza =Race::all();
+        $raza = DB::table('race')
+                ->select('race.id',
+                            'race.race_d',
+                            'race.percentage',
+                            'race.actual_state')
+                            ->where('race.actual_state','=','Disponible')
+                            ->get();
 
         $re_A = DB::table('file_reproduction_artificial')
                     ->join('file_animale','file_reproduction_artificial.animalCode_id_m','=','file_animale.id')
@@ -329,7 +355,7 @@ class File_reproductionAController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $re_A = DB::table('file_reproduction_artificial')
+        /*$re_A = DB::table('file_reproduction_artificial')
                     ->select('id',
                             'date',
                             'animalCode_id_m',
@@ -375,12 +401,42 @@ class File_reproductionAController extends Controller
                         }
                 }
             }
-        }
-
+        }*/
+        $re =  File_reproduction_artificial::findOrFail($id);
         $re->date= $request->date;
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->artificial_id = $request->artificial_id;
         $re->actual_state = $request->actual_state;
+        $estadoActual = $request->actual_state;
+        if($estadoActual == "DISPONIBLE"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->update(); 
+                }
+            }
+        }elseif ($estadoActual == "INACTIVO") {
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "REPRODUCCIÓN";
+                    $animal_estado->update(); 
+                }
+            }
+        }
         
         $re->save();
 
