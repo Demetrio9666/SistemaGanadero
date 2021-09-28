@@ -287,7 +287,6 @@ class Vaccine_controlController extends Controller
     public function update(StoreVaccineC $request, $id)
     {
        
-
         $vacunaCC= DB::table('vaccine_control')
         ->select('id',
                 'date',

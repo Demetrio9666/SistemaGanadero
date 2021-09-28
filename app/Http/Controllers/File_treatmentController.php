@@ -37,6 +37,7 @@ class File_treatmentController extends Controller
                  'antibiotic.antibiotic_d as anti',
                  'vitamin.vitamin_d as vi',
                  'file_treatment.treatment',
+                 'file_treatment.recovery',
                  'file_treatment.actual_state'
                 )->where('file_treatment.actual_state','=','Disponible')    
                 
@@ -57,6 +58,7 @@ class File_treatmentController extends Controller
                  'antibiotic.antibiotic_d as anti',
                  'vitamin.vitamin_d as vi',
                  'file_treatment.treatment',
+                 'file_treatment.recovery',
                  'file_treatment.actual_state'
                 )->where('file_treatment.actual_state','=','Disponible')    
                 
@@ -115,8 +117,21 @@ class File_treatmentController extends Controller
   /////////////////////////////////////////////////////////////////////////////////////////7
     public function create()
     {   
-        $anti = Antibiotic::all();
-        $vitamina = Vitamin::all();
+        
+        $anti = DB::table('antibiotic')
+        ->select('id',
+                  'antibiotic_d',
+                  'date_e',
+                  'date_c',
+                  'supplier',
+                  'actual_state')
+                  ->where('actual_state','=','DISPONIBLE')
+       ->get();
+        
+        $vitamina= DB::table('vitamin')
+        ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
+        ->where('actual_state','=','DISPONIBLE')
+        ->get();
         $animalT  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
@@ -126,10 +141,10 @@ class File_treatmentController extends Controller
                      'actual_state',
                      'health_condition',
                      'actual_state'
-                     
                   )
-                  ->where('health_condition','=','Enfermo')
-                  ->where('actual_state','=','Disponible')
+                  ->where('health_condition','=','ENFERMO')
+                  ->where('actual_state','=','DISPONIBLE')
+                  
                   
         ->get();
         return view('file_treatment.create-treatment',compact('vitamina','animalT','anti'));
@@ -143,7 +158,27 @@ class File_treatmentController extends Controller
      */
     public function store(StoreFile_treatment $request)
     {
+        $animal  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode',
+                     'actual_state'
+                  ) ->where('health_condition','=','ENFERMO')
+                    ->where('actual_state','=','DISPONIBLE')
+                  
+        ->get();
+        $tra1 = DB::table('file_treatment')
+        ->select('id',
+                 'animalCode_id'
+                )->where('actual_state','=','DISPONIBLE')    
+                
+        ->get();
         $tra = new File_treatment();
+
+        foreach($tra1 as $i){
+            if($i->animalCode_id == $request->animalCode_id){
+                return view('mensajes.fichaTratamiento.tratamiento');
+            }
+        }
        
         $tra->date= $request->date;
         $tra->animalCode_id = $request->animalCode_id;
@@ -152,6 +187,25 @@ class File_treatmentController extends Controller
         $tra->detail = $request->detail;
         $tra->antibiotic_id = $request->antibiotic_id;
         $tra->vitamin_id = $request->vitamin_id;
+        $tra->recovery =$request->recovery;
+        $salud=$request->recovery;
+        if($salud == "SI"){
+                $animalB  = DB::table('file_animale')
+                ->select(   'id',
+                            'animalCode',
+                            'health_condition'  
+                        )->get();
+
+            foreach($animalB as $i){
+                if($request->animalCode_id ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->health_condition = "SANO";
+                    $animal_estado->update(); 
+                }
+            }
+
+        }
         $tra->treatment = $request->treatment;
         $tra->actual_state = $request->actual_state;
         
@@ -239,6 +293,8 @@ class File_treatmentController extends Controller
                   )
                   ->where('health_condition','=','Enfermo')
                   ->where('actual_state','=','Disponible')
+                  ->orwhere('actual_state','=','REPRODUCCIÓN')
+                  
                   
         ->get();
         return view('file_treatment.edit-treatment',compact('vitamina','animalT','anti','tra'));   
@@ -253,7 +309,64 @@ class File_treatmentController extends Controller
      */
     public function update(StoreFile_treatment $request, $id)
     {
+       
+        $tra1 = DB::table('file_treatment')
+        ->select('id',
+                'date',
+                'animalCode_id',
+                'disease',
+                'detail',
+                'antibiotic_id',
+                'vitamin_id',
+                'recovery',
+                'treatment',
+                'actual_state'
+                )->where('actual_state','=','DISPONIBLE')    
+                
+        ->get();
+
         $tra = File_treatment::findOrFail($id);
+        $id;
+
+        foreach($tra1 as $i2){
+            if($i2->id == $id){
+                $fecha = $i2->date;
+                $idcodigoAnimal=$i2->animalCode_id;
+                $enfermedad = $i2->disease;
+                $detalle = $i2->detail;
+                $anti = $i2->antibiotic_id;
+                $vitamina = $i2->vitamin_id;
+                $recuperacion= $i2->recovery;
+                $tratamiento = $i2->treatment;
+                $estado = $i2->actual_state;
+            }
+        }
+        foreach($tra1 as $i){
+            if($idcodigoAnimal != $request->animalCode_id || $fecha != $request->date
+               || $enfermedad != $request->disease || $detalle != $request->detail 
+               || $anti != $request->antibiotic_id || $vitamina != $request->vitamin_id
+               || $recuperacion != $request->recovery || $tratamiento != $request->treatment
+               || $estado != $request->actual_state){
+                break;
+            }elseif($idcodigoAnimal == $request->animalCode_id ){
+                return view('mensajes.fichaTratamiento.tratamientoEdit');
+
+            }elseif($idcodigoAnimal != $request->animalCode_id && $fecha != $request->date
+            || $enfermedad != $request->disease || $detalle != $request->detail 
+            || $anti != $request->antibiotic_id || $vitamina != $request->vitamin_id
+            || $recuperacion != $request->recovery || $tratamiento != $request->treatment
+            || $estado != $request->actual_state){
+                break;
+
+            }elseif($idcodigoAnimal == $request->animalCode_id && $fecha != $request->date
+            || $enfermedad != $request->disease || $detalle != $request->detail 
+            || $anti != $request->antibiotic_id || $vitamina != $request->vitamin_id
+            || $recuperacion != $request->recovery || $tratamiento != $request->treatment
+            || $estado != $request->actual_state){
+                return view('mensajes.fichaTratamiento.tratamientoEdit');
+            }
+        }
+
         $tra->date= $request->date;
         $tra->animalCode_id = $request->animalCode_id;
         $tra->vitamin_id = $request->vitamin_id;
@@ -262,6 +375,27 @@ class File_treatmentController extends Controller
         $tra->antibiotic_id = $request->antibiotic_id;
         $tra->vitamin_id = $request->vitamin_id;
         $tra->treatment = $request->treatment;
+        
+        $salud=$request->recovery;
+
+        if($salud == "SI"){
+                $animalB  = DB::table('file_animale')
+                ->select(   'id',
+                            'animalCode',
+                            'health_condition'  
+                        )->get();
+
+            foreach($animalB as $i){
+                if($request->animalCode_id ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->health_condition = "SANO";
+                    $animal_estado->update(); 
+                }
+            }
+
+        }
+        $tra->recovery =$request->recovery;
         $tra->actual_state = $request->actual_state;
         $tra->save(); 
         $actvividad = new  Activity();

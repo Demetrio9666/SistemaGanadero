@@ -36,6 +36,7 @@ class TreatmentInactivosController extends Controller
                  'antibiotic.antibiotic_d as anti',
                  'vitamin.vitamin_d as vi',
                  'file_treatment.treatment',
+                 'file_treatment.recovery',
                  'file_treatment.actual_state'
                 )->where('file_treatment.actual_state','=','INACTIVO')    
                 
@@ -58,6 +59,7 @@ class TreatmentInactivosController extends Controller
                  'antibiotic.antibiotic_d as anti',
                  'vitamin.vitamin_d as vi',
                  'file_treatment.treatment',
+                 'file_treatment.recovery',
                  'file_treatment.actual_state'
                 )->where('file_treatment.actual_state','=','INACTIVO')    
                 
@@ -142,7 +144,6 @@ class TreatmentInactivosController extends Controller
                     'vitamin.actual_state')
                     ->where('vitamin.actual_state','=','Disponible')
         ->get();
-
 
         $animalT  = DB::table('file_animale')
         ->select(    'id',

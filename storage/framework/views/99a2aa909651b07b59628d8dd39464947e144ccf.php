@@ -52,7 +52,7 @@
                     $("#V").hide();
                     $("#VA").hide();
                     $("#VACO").hide();
-                //$("#SI").hide();
+                    $("#SI").hide();
                     $("#TO").show();
                     $("#TORE").show();
                // $("#NO").show();
@@ -64,7 +64,7 @@
             function ValidarEdad(id){
                 sexo = document.getElementById("opsexo").value;
                 etapa = document.getElementById("opetapa").value;
-                
+                embarazo = document.getElementById("embarazo").value;
                 if(sexo == "MACHO"){
                     if(etapa == "TERNERO"){
                             $("#REPRODUCCIÓN").hide();
@@ -161,12 +161,13 @@
                             return true;
                         }
                     }else if(etapa == "VACONILLA"){
+                            $("#SI").hide();
+                            $("#NO").show();
                             $("#REPRODUCCIÓN").hide();
                             $("#DISPONIBLE").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
-                            $("#SI").hide();
-                            $("#NO").show();
+                           
                         if(id < 11  || id > 22){
                             Swal.fire({
                                     icon: 'error',
@@ -184,12 +185,20 @@
                         }
 
                     }else if(etapa == "VACONA"){
+                        var si = $("#SI").show();
+                        var no = $("#NO").show();
+                        if(embarazo == si){
+                            $("#REPRODUCCIÓN").hide();
+                            $("#DISPONIBLE").show();
+                            $("#VENDIDO").show();
+                            $("#INACTIVO").show();
+                        }
                             $("#REPRODUCCIÓN").show();
                             $("#DISPONIBLE").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
-                            $("#SI").show();
-                            $("#NO").show();
+
+                           
                         if(id < 23  || id > 36){
                             Swal.fire({
                                     icon: 'error',
@@ -207,12 +216,19 @@
                         }
 
                     }else if(etapa == "VACA"){
+                             var si = $("#SI").show();
+                             var no = $("#NO").show();
+                        if(embarazo == si){
+                            $("#REPRODUCCIÓN").hide();
+                            $("#DISPONIBLE").show();
+                            $("#VENDIDO").show();
+                            $("#INACTIVO").show();
+                        }
                             $("#REPRODUCCIÓN").show();
                             $("#DISPONIBLE").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
-                            $("#SI").show();
-                            $("#NO").show();
+
                         if(id  < 37 || id >600){
                             Swal.fire({
                                     icon: 'error',
@@ -247,39 +263,77 @@
                             
             }
 
-           function validarEmbarazo(id){
-                etapa = document.getElementById("opetapa").value;
-                if(etapa == "VACA" || etapa == "VACONA"){
-                    $("#SI").show();
+          function validarEmbarazo(id){
+                  
                     if( id == "SI"){
-                        
                         $("#DISPONIBLE").show();
                         $("#VENDIDO").show();
                         $("#INACTIVO").show();
                         $("#REPRODUCCIÓN").hide();
-                    }                 
-                }else{
-                    $("#SI").hide();
-                    $("#DISPONIBLE").show();
-                    $("#VENDIDO").show();
-                    $("#INACTIVO").show();
-                    $("#REPRODUCCIÓN").show();
-                }
-                if( id == "SI"){
-                    $("#DISPONIBLE").show();
-                    $("#VENDIDO").show();
-                    $("#INACTIVO").show();
-                    $("#REPRODUCCIÓN").hide();
+                        
+                    }else{
+                         
+                        $("#DISPONIBLE").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").show();
+                    }         
+               
+               
+           }
 
-                }else{
-                    $("#DISPONIBLE").show();
-                    $("#VENDIDO").show();
-                    $("#INACTIVO").show();
-                    $("#REPRODUCCIÓN").show();
-                }
-            }
+           /*  if(id == "SI"){
+                   if(sexo == "MACHO"){
+                      if(etapa == "TERNERO"){
+                          
+                        $("#DISPONIBLE").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").hide();
+                      }else if(etapa == "TORETE"){
+                        $("#DISPONIBLE").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").show();
 
-            function validarEdadyEtapa(id){
+                      }else if(etapa == "TORO"){
+                        $("#DISPONIBLE").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").show();
+                      }
+
+                  }if(sexo == "HEMBRA"){
+                      if(etapa == "TERNERA"){
+                        $("#DISPONIBLE").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").hide();
+                      }else if(etapa == "VACONILLA"){
+                        $("#DISPONIBLE").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").hide();
+                      }else if(etapa == "VACONA"){
+                        $("#DISPONIBLE").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").show();
+                      }else if(etapa == "VACA"){
+                        $("#DISPONIBLE").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").show();
+                      }
+                  }
+              }else{
+                       $("#DISPONIBLE").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").show();
+              }*/
+
+      /*      function validarEdadyEtapa(id){
                 sexo = document.getElementById("opsexo").value;
                 edad = document.getElementById("edad").value;
                 if(sexo == "MACHO"){
@@ -409,7 +463,7 @@
                 
 
 
-            }
+            }*/
             
             document.getElementById("imagen").onchange=function(e){
                 let reader= new FileReader();

@@ -62,6 +62,17 @@ Editar Tratamientos de animales Inactivo
             <label for="">Tratamiento:</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="treatment" disabled=disabled > {{$tra->treatment}}</textarea>
         </div>
+        <div class="form-group">
+                <label for="">Recuperación:</label>
+                <select class="form-control" id="inputPassword4" name="recovery" value="{{$tra->recovery}}">
+                    <option value="NO" @if( $tra->recovery == "NO") selected @endif>NO</option>
+                    <option value="SI" @if( $tra->recovery == "SI") selected @endif>SI</option>
+                </select>
+                @error('date')
+                        <div class="invalid-feedback">{{$message}}</div>
+                @enderror
+        </div>
+
         <div  class="form-group">
             <label for="">Estado Actual:</label>
             <select class="form-control" id="inputPassword4" name="actual_state" value="{{$tra->actual_state}}" >

@@ -120,7 +120,11 @@ class Pregnancy_controlController extends Controller
      */
     public function create()
     {
-        $vitamina= Vitamin::all();
+       
+        $vitamina= DB::table('vitamin')
+        ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
+        ->where('actual_state','=','DISPONIBLE')
+        ->get();
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
@@ -129,8 +133,9 @@ class Pregnancy_controlController extends Controller
                      'sex'
                   )
                   
-                  ->where('actual_state','=','Disponible')
-                  ->where('stage','=','Vaca')
+                  ->where('gestation_state','=', 'SI')
+                  ->where('sex','Hembra')
+                  ->where('actual_state','=','DISPONIBLE')
                   
         ->get();
         return view('PregnancyC.create-PregnancyC',compact('vitamina','animal'));
@@ -206,7 +211,10 @@ class Pregnancy_controlController extends Controller
      */
     public function edit($id)
     {
-        $vitamina= Vitamin::all();
+        $vitamina= DB::table('vitamin')
+        ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
+        ->where('actual_state','=','DISPONIBLE')
+        ->get();
         $animal  = DB::table('file_animale')
         ->select(    'id',
                      'animalCode',
@@ -214,8 +222,9 @@ class Pregnancy_controlController extends Controller
                      'age_month',
                      'sex'
                   )
+                  ->where('gestation_state','=', 'SI')
                   ->where('sex','Hembra')
-                  ->where('age_month','>=',24)
+                  ->where('actual_state','=','DISPONIBLE')
         ->get();
         $pre = Pregnancy_control::findOrFail($id);
         return view('pregnancyC.edit-pregnancyC', compact('pre','vitamina','animal'));

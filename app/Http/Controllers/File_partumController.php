@@ -146,9 +146,35 @@ class File_partumController extends Controller
        
         $par->date= $request->date;
         $par->animalCode_id = $request->animalCode_id;
+
+        $animalB  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animalB as $i){
+            if($request->animalCode_id ==$i->id){
+                $id_b=$i->id;
+                $animal_estado = File_Animale::findOrFail($id_b);
+                $animal_estado->gestation_state = "NO";
+                $animal_estado->update(); 
+            }
+        }
+
         $par->male = $request->male;
         $par->female = $request->female;
         $par->dead = $request->dead;
+        
+        $estadoMadre = $request->mother_status;
+        if($estadoMadre == "MUERTA"){
+            foreach($animalB as $i){
+                if($request->animalCode_id ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "INACTIVO";
+                    $animal_estado->update(); 
+                }
+            }
+        }
         $par->mother_status = $request->mother_status;
         $par->partum_type = $request->partum_type;
         $par->actual_state = $request->actual_state;
@@ -217,7 +243,6 @@ class File_partumController extends Controller
                      'gestation_state',
                      'actual_state'
                   )
-                  ->where('gestation_state','=','SI')
                   ->where('actual_state','=','DISPONIBLE')
                   
         ->get();
@@ -238,11 +263,45 @@ class File_partumController extends Controller
     {
         $par =  File_partum::findOrFail($id);
 
+        $animalB  = DB::table('file_animale')
+        ->select(    'id',
+                     'animalCode'  
+                  )->get();
+        foreach($animalB as $i){
+            if($request->animalCode_id ==$i->id){
+                $id_b=$i->id;
+                $animal_estado = File_Animale::findOrFail($id_b);
+                $animal_estado->gestation_state = "NO";
+                $animal_estado->update(); 
+            }
+        }
+
         $par->date= $request->date;
         $par->animalCode_id = $request->animalCode_id;
         $par->male = $request->male;
         $par->female = $request->female;
         $par->dead = $request->dead;
+        $estadoMadre = $request->mother_status;
+        foreach($animalB as $i){
+            if($estadoMadre == "MUERTA"){
+                
+                    if($request->animalCode_id ==$i->id){
+                        $id_b=$i->id;
+                        $animal_estado = File_Animale::findOrFail($id_b);
+                        $animal_estado->actual_state = "INACTIVO";
+                        $animal_estado->update(); 
+                    
+                }
+            }else {
+                if($request->animalCode_id ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->update(); 
+                }
+            }
+        }
+
         $par->mother_status = $request->mother_status;
         $par->partum_type = $request->partum_type;
         $par->actual_state = $request->actual_state;

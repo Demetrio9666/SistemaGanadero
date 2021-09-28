@@ -82,8 +82,18 @@
                             @enderror
                     
                     </div>
+                    <div class="form-group">
+                        <label for="">Recuperación:</label>
+                        <select class="form-control" id="inputPassword4" name="recovery">
+                            <option value="NO">NO</option>
+                            <option value="SI">SI</option>
+                        </select>
+                        @error('date')
+                                <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
 
-                    <div  class="form-group">
+                    <div class="form-group">
                         <label for="">Estado Actual:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state">
                             <option value="DISPONIBLE">DISPONIBLE</option>
@@ -91,7 +101,7 @@
                         </select>
                         @error('date')
                                 <div class="invalid-feedback">{{$message}}</div>
-                            @enderror
+                        @enderror
                     </div>
                     <center>
                         <div class="col-md-6-self-center" style="margin: 40px">

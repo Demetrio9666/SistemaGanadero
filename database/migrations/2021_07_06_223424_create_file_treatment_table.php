@@ -30,7 +30,7 @@ class CreateFileTreatmentTable extends Migration
             $table->unsignedBigInteger('vitamin_id')->nullable();
             $table->foreign('vitamin_id')->references('id')->on('vitamin')
                   ->onDelete('set null')->onUpdate('cascade');
-                  
+            $table->string('recovery');
             $table->text('treatment');
             $table->string('actual_state');
             $table->timestamps();

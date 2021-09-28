@@ -13,7 +13,8 @@ Fichas de Tratamientos Inactivos
                             <th>Antibiótico</th>
                             <th>Vitamina</th>
                             <th>Tratamiento</th>
-                            <th>Estado Actual</th> 
+                            <th>Recuperación</th>
+                            <th>Estado Actual</th>
                         </tr> 
                 </thead>
                 <tbody>  
@@ -22,11 +23,12 @@ Fichas de Tratamientos Inactivos
                         <td>{{$i->date}}</td>
                         <td>{{$i->animal}}</td>
                         <td>{{$i->disease}}</td>
-                        <td >{{$i->detail}}</td>
-                        <td >{{$i->anti}}</td>
-                        <td >{{$i->vi}}</td>
-                        <td >{{$i->treatment}}</td>
-                        <td >{{$i->actual_state}}</td>
+                        <td>{{$i->detail}}</td>
+                        <td>{{$i->anti}}</td>
+                        <td>{{$i->vi}}</td>
+                        <td>{{$i->treatment}}</td>
+                        <td>{{$i->recovery>}}</td>
+                        <td>{{$i->actual_state}}</td>
                     </tr>
                     @endforeach
                 </tbody>

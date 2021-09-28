@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 @section('css')
-        <link rel="stylesheet" type="text/css" href="/css/registroTratamientos1.css">
+        <link rel="stylesheet" type="text/css" href="/css/registroTratamientos2.css">
 @endsection
 @section('content_header')
 <label>Hora:</label>

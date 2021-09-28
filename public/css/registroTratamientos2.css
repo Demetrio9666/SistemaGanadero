@@ -11,7 +11,7 @@ body{
 #registration-form .image{
 	float:left;
 	background-image: url("../imagen/tratamiento.jpg");
-	height:  800px;
+	height:  840px;
     width: 30%;
 	background-size: cover;
 	background-position: 16%;
@@ -19,7 +19,7 @@ body{
 
 #registration-form .frm{
 	float:right;
-	height: 750px;
+	height: 840px;
     width: 70%;
     min-width: 250px;
     padding: 0 35px;

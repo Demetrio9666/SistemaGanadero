@@ -414,11 +414,6 @@ class File_animaleController extends Controller
          
         }
        
-
-
-
-
-
         $animal->animalCode = $request->codigo_animal;
         $animal->date = $request->fecha_nacimiento;
         $animal->race_id = $request->raza;
