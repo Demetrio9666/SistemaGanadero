@@ -225,9 +225,7 @@ class File_reproductionAController extends Controller
         //$re = new File_reproduction_artificial();
            
         $re->date= $request->date;
-        
 
-        
         $re->artificial_id = $request->artificial_id;
         $re->actual_state = $request->actual_state;
         $estadoActual = $request->actual_state;
@@ -323,6 +321,7 @@ class File_reproductionAController extends Controller
                             'race.race_d as raza',
                             'file_animale.sex')
                     ->where('file_animale.actual_state','=','DISPONIBLE')
+                    ->orwhere('file_animale.actual_state','=','VENDIDO')
                     ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
                     
                 ->get();
@@ -373,9 +372,10 @@ class File_reproductionAController extends Controller
                     ->select('id',
                             'date',
                             'animalCode_id_m',
+                            'artificial_id',
                             'actual_state'
                             )
-                            ->where('actual_state','=','REPRODUCCIÓN')
+                            ->where('actual_state','=','DISPONIBLE')
                             
                     ->get(); 
                    // return $re_A;
@@ -385,7 +385,7 @@ class File_reproductionAController extends Controller
                              'date',
                              'animalCode_id_m',
                              'actual_state'
-                            )->where('actual_state','=','REPRODUCCIÓN')
+                            )->where('actual_state','=','DISPONIBLE')
                             
                     ->get();
                     //return $re_MI;
@@ -394,23 +394,41 @@ class File_reproductionAController extends Controller
                             'date',
                             'animalCode_id',
                             'actual_state')
-                            ->where('actual_state','=','REPRODUCCIÓN')
+                            ->where('actual_state','=','DISPONIBLE')
                                 
                     ->get();
         //return $ext;
-        $re = new File_reproduction_artificial();
+        $re =  File_reproduction_artificial::findOrFail($id);
+        $id;
+        foreach($re_A as $o){
+            if($id == $o->id){
+                $codigo = $o->animalCode_id_m;
+                $fecha = $o->date;
+                $artificial = $o->artificial_id;
+                $estadoActual = $o->actual_state;
+            }
+           
+        }
         
         foreach($ext as $i3){
             foreach($re_MI as $i2){
                 foreach($re_A as $i){
+                        
 
-                        if( $i->animalCode_id_m == $request->animalCode_id_m){
-                            return view('mensajes.fichaReproduccionArtificial.artificial'); 
-                        }elseif($i2->animalCode_id_m == $request->animalCode_id_m){
-                            return view('mensajes.fichaReproduccionArtificial.montaInterna'); 
-                        } elseif($i3->animalCode_id == $request->animalCode_id_m){
-                            return view('mensajes.fichaReproduccionArtificial.externa'); 
+                        if( $codigo != $request->animalCode_id_m  || $fecha != $request->date || $artificial != $request->artificial_id 
+                            || $estadoActual = $request->actual_state){
+                             break;
+
+                        }else {
+                            if( $i->animalCode_id_m == $request->animalCode_id_m ){
+                                return view('mensajes.fichaReproduccionArtificial.artificial'); 
+                            }elseif($i2->animalCode_id_m == $request->animalCode_id_m){
+                                return view('mensajes.fichaReproduccionArtificial.montaInterna'); 
+                            } elseif($i3->animalCode_id == $request->animalCode_id_m){
+                                return view('mensajes.fichaReproduccionArtificial.externa'); 
+                            }
                         }
+                      
                 }
             }
         }
@@ -421,35 +439,33 @@ class File_reproductionAController extends Controller
         $re->artificial_id = $request->artificial_id;
         $re->actual_state = $request->actual_state;
         $estadoActual = $request->actual_state;
+        $animalB  = DB::table('file_animale')
+        ->select(   'id',
+                    'animalCode',
+                    'actual_state'  
+                )->get();
+    foreach($animalB as $i){
         if($estadoActual == "DISPONIBLE"){
-            $animalB  = DB::table('file_animale')
-            ->select(   'id',
-                        'animalCode',
-                        'actual_state'  
-                    )->get();
-            foreach($animalB as $i){
+           
+           
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
                     $animal_estado->actual_state = "DISPONIBLE";
                     $animal_estado->update(); 
                 }
-            }
+            
         }elseif ($estadoActual == "INACTIVO") {
-            $animalB  = DB::table('file_animale')
-            ->select(   'id',
-                        'animalCode',
-                        'actual_state'  
-                    )->get();
-            foreach($animalB as $i){
+           
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
                     $animal_estado->actual_state = "REPRODUCCIÓN";
                     $animal_estado->update(); 
                 }
-            }
+            
         }
+    }
         
         $re->save();
 
