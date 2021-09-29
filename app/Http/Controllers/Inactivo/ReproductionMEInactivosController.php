@@ -171,7 +171,70 @@ class ReproductionMEInactivosController extends Controller
     public function update(Request $request, $id)
     {
         $ext =  File_reproduction_external::findOrFail($id);
+        $extt =  DB::table('file_reproduction_external')
+        ->select('id',
+                'date',
+                'animalCode_id',
+                'actual_state'
+                )
+                ->where('actual_state','=','DISPONIBLE')
+                    
+        ->get();
+       //return $ext; 
+        $re_A = DB::table('file_reproduction_artificial')
+        ->select('id',
+                'date',
+                'animalCode_id_m',
+                'actual_state'
+                )
+                ->where('actual_state','=','DISPONIBLE')
+                
+                ->get(); 
+       // return $re_A;
+
+        $re_MI = DB::table('file_reproduction_internal')
+                ->select('id',
+                        'date',
+                        'animalCode_id_m',
+                        'actual_state'
+                        )->where('actual_state','=','DISPONIBLE')
+                        
+                ->get();
+                //return $re_MI;
+       
+        foreach($re_A as $i3){
+            foreach($re_MI as $i2){
+                foreach( $extt as $i){
+                        if($i->animalCode_id == $request->animalCode_id ){
+                            //return view('mensajes.fichaReproduccionExterna.externa');
+                            break;
+                        }elseif($i2->animalCode_id_m == $request->animalCode_id){
+                            return view('mensajes.fichaReproduccionExterna.montaInterna'); 
+                        } elseif($i3->animalCode_id_m == $request->animalCode_id){
+                            return view('mensajes.fichaReproduccionExterna.artificial'); 
+                        }         
+
+
+                }
+            }
+        }
         $ext->actual_state = $request->actual_state;
+        $estadoActual = $request->actual_state;
+        if($estadoActual == "DISPONIBLE"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->update(); 
+                }
+            }
+        }
         
         $ext->save(); 
 

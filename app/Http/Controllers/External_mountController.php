@@ -154,13 +154,13 @@ class External_mountController extends Controller
 
     public function store(StoreFile_reproductionEX $request)
     {
-        $ext =  DB::table('file_reproduction_external')
+        $extt =  DB::table('file_reproduction_external')
         ->select('id',
                 'date',
                 'animalCode_id',
                 'actual_state'
                 )
-                ->where('actual_state','=','DISPONIBLE')
+                ->where('actual_state','=','REPRODUCCIÓN')
                     
         ->get();
        //return $ext; 
@@ -170,7 +170,7 @@ class External_mountController extends Controller
                 'animalCode_id_m',
                 'actual_state'
                 )
-                ->where('actual_state','=','DISPONIBLE')
+                ->where('actual_state','=','REPRODUCCIÓN')
                 
                 ->get(); 
        // return $re_A;
@@ -180,7 +180,7 @@ class External_mountController extends Controller
                         'date',
                         'animalCode_id_m',
                         'actual_state'
-                        )->where('actual_state','=','DISPONIBLE')
+                        )->where('actual_state','=','REPRODUCCIÓN')
                         
                 ->get();
                 //return $re_MI;
@@ -189,7 +189,7 @@ class External_mountController extends Controller
 
         foreach($re_A as $i3){
             foreach($re_MI as $i2){
-                foreach( $ext as $i){
+                foreach( $extt as $i){
                         if($i->animalCode_id == $request->animalCode_id ){
                             return view('mensajes.fichaReproduccionExterna.externa');
                         }elseif($i2->animalCode_id_m == $request->animalCode_id){
@@ -215,6 +215,36 @@ class External_mountController extends Controller
         $ext->sex = $request->sex;
         $ext->hacienda_name = $request->hacienda_name;
         $ext->actual_state = $request->actual_state;
+        $estadoActual = $request->actual_state;
+        if($estadoActual == "DISPONIBLE"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+                if($request->animalCode_id ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->update(); 
+                }
+            }
+        }elseif ($estadoActual == "INACTIVO") {
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "REPRODUCCIÓN";
+                    $animal_estado->update(); 
+                }
+            }
+        }
         $ext->save(); 
 
         $actvividad = new  Activity();
@@ -264,7 +294,7 @@ class External_mountController extends Controller
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','Disponible')
+                    ->where('race.actual_state','=','DISPONIBLE')
                     ->get();
         $animaleEX=  DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')
@@ -273,7 +303,7 @@ class External_mountController extends Controller
                             'file_animale.age_month',
                             'race.race_d as raza',
                             'file_animale.sex')
-                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
+                    ->where('file_animale.actual_state','=','DISPONIBLE')
                     ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
                     
                 ->get();
@@ -284,7 +314,7 @@ class External_mountController extends Controller
 
     public function update(StoreFile_reproductionEX $request, $id)
     {
-        $ext =  DB::table('file_reproduction_external')
+        $extt =  DB::table('file_reproduction_external')
         ->select('id',
                 'date',
                 'animalCode_id',
@@ -315,12 +345,13 @@ class External_mountController extends Controller
                 ->get();
                 //return $re_MI;
        
+         
+
         foreach($re_A as $i3){
             foreach($re_MI as $i2){
-                foreach( $ext as $i){
+                foreach( $extt as $i){
                         if($i->animalCode_id == $request->animalCode_id ){
-                            //return view('mensajes.fichaReproduccionExterna.externa');
-                            break;
+                            return view('mensajes.fichaReproduccionExterna.externa');
                         }elseif($i2->animalCode_id_m == $request->animalCode_id){
                             return view('mensajes.fichaReproduccionExterna.montaInterna'); 
                         } elseif($i3->animalCode_id_m == $request->animalCode_id){
@@ -331,6 +362,7 @@ class External_mountController extends Controller
                 }
             }
         }
+
         $ext =  File_reproduction_external::findOrFail($id);
         $ext->date= $request->date;
         $ext->animalCode_id = $request->animalCode_id;
@@ -340,6 +372,36 @@ class External_mountController extends Controller
         $ext->sex = $request->sex;
         $ext->hacienda_name = $request->hacienda_name;
         $ext->actual_state = $request->actual_state;
+        $estadoActual = $request->actual_state;
+        if($estadoActual == "DISPONIBLE"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+                if($request->animalCode_id ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->update(); 
+                }
+            }
+        }elseif ($estadoActual == "INACTIVO") {
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+                if($request->animalCode_id ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "REPRODUCCIÓN";
+                    $animal_estado->update(); 
+                }
+            }
+        }
         
         $ext->save(); 
 

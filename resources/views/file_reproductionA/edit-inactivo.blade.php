@@ -129,8 +129,8 @@ Editar Reproducción Artificial
 
     <center>
         <div class="col-md-8-self-center" style="margin: 40px" >
-            <a type="submit" class="btn btn-secondary btn"   href="{{url('/fichaReproduccionA')}}">Cancelar</a>
-            <button type="submit" class="btn btn-success btn"  style="margin: 10px" href="{{ Redirect::to('/fichaReproduccionA') }}" >Guardar</button>
+            <a type="submit" class="btn btn-secondary btn"   href="{{url('/inactivos/fichaReproduccionA')}}">Cancelar</a>
+            <button type="submit" class="btn btn-success btn"  style="margin: 10px" href="{{ Redirect::to('/inactivos/fichaReproduccionA') }}" >Guardar</button>
         </div>
     </center>
     
