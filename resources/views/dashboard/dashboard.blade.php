@@ -80,7 +80,7 @@
                 </div>
             </div>
             <section-->
-
+          
          <section section class="col-lg-6 connectedSortable">
             <div class="card card-dark">
                 <div class="card-header">

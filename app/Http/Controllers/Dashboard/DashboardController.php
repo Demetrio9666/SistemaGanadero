@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\File_Animale;
 use App\Models\Location;
 use App\Models\Race;
+use App\Models\File_reproduction_artificial;
+use App\Models\File_reproduction_internal;
+use App\Models\File_reproduction_external;
 
 class DashboardController extends Controller
 {
@@ -47,12 +50,13 @@ class DashboardController extends Controller
     }
 
     public function DashboardReproduccion(){
-        $reproduccion = File_Animale::whereIn('actual_state',['REPRODUCCIÓN'])->count();
-        $reproduccionMachos = File_Animale::where('sex','=','MACHO') ->whereIn('actual_state',['REPRODUCCIÓN'])->count();
-        $reproduccionHembras = File_Animale::where('sex','=','HEMBRA') ->whereIn('actual_state',['REPRODUCCIÓN'])->count();
+        $artificial = File_reproduction_artificial::whereIn('actual_state',['DISPONIBLE'])->count();
+        $natual = File_reproduction_internal::whereIn('actual_state',['DISPONIBLE'])->count();
+        $externa = File_reproduction_external::whereIn('actual_state',['DISPONIBLE'])->count();
+        //$reproduccionHembras = File_Animale::where('sex','=','HEMBRA') ->whereIn('actual_state',['REPRODUCCIÓN'])->count();
+        $sumaNatual= $natual + $externa;
 
-
-        $data = [$reproduccion, $reproduccionMachos, $reproduccionHembras ];
+        $data = [$artificial, $sumaNatual ];
         $datas = json_encode($data);
 
 
@@ -61,7 +65,7 @@ class DashboardController extends Controller
         $data2 = [$embarazosSi,$embarazosNo];
         $datas2 = json_encode($data2);
 
-        return view('dashboard.reproduccion',compact('datas','datas2'));
+        return view('dashboard.reproduccion',compact('datas','datas2','artificial','natual','externa'));
     }
 
 }

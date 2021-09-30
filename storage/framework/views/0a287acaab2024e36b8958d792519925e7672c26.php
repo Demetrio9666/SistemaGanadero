@@ -5,9 +5,62 @@
     <div id="reloj" class="reloj">00 : 00 : 00</div>
     <br>
     <br>
-    
     <div class="row">
-         <section section class="col-lg-12 connectedSortable">
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-primary" >
+            <div class="inner">
+              <h3><?php echo e($artificial); ?></h3>
+
+              <p>Animales en Reproducción Artificial </p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <!--a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a-->
+          </div>
+        </div>
+
+
+        <!-- ./col -->
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3><?php echo e($natual); ?></h3>
+
+              <p>Animales en Reproducción Natural Interno</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <!--a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a-->
+          </div>
+        </div>
+        <!-- ./col -->
+       
+        <!-- ./col -->
+        <div class="col-lg-4 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3><?php echo e($externa); ?></h3>
+
+              <p>Animales en Reproducción Natural Externo</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <!--a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a-->
+          </div>
+        </div>
+
+        
+    </div>
+    <br>
+    <br>
+    <div class="row">
+         <section section class="col-lg-6 connectedSortable">
             <div class="card card-dark">
                 <div class="card-header">
                   <h3 class="card-title">
@@ -24,7 +77,7 @@
             </div>
            
          </section>
-         <section section class="col-lg-12 connectedSortable">
+         <section section class="col-lg-6 connectedSortable">
             <div class="card card-dark">
                 <div class="card-header">
                   <h3 class="card-title">
@@ -52,14 +105,14 @@
         var ctx = document.getElementById('barChart').getContext('2d');
         var cData = JSON.parse(`<?php echo $datas; ?>`)
         var myChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'bar',
             data: {
-                labels: ['Total', 'Machos', 'Hembras'],
+                labels: ['Artificial', 'Natural'],
                 datasets: [{
                     label: 'Ganado Reproducción',
                     data: cData,
                     backgroundColor: [
-                        'rgba(12, 45, 246, 0.97)',
+                        
                         'rgba(121, 12, 246, 1)',
                         'rgba(0, 170, 252, 1)',
                         
@@ -80,7 +133,7 @@
         var ctx = document.getElementById('barChart2').getContext('2d');
         var cData = JSON.parse(`<?php echo $datas2; ?>`)
         var myChart = new Chart(ctx, {
-            type: 'polarArea',
+            type: 'pie',
             data: {
                 labels: ['SI', 'NO'],
                 datasets: [{
