@@ -9,7 +9,7 @@
     </div>
     
     <center>
-        <a type="submit" class="btn btn-primary btn" href="{{url('/fichaReproduccionA')}}" >Regresar</a>
+        <a type="submit" class="btn btn-primary btn" href="{{url('/fichaReproduccionM')}}" >Regresar</a>
     </center>
     <br>
 @endsection

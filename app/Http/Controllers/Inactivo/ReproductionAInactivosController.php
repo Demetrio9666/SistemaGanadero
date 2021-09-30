@@ -178,13 +178,19 @@ class ReproductionAInactivosController extends Controller
     public function update(Request $request, $id)
     {
         //$re =  File_reproduction_artificial::findOrFail($id);
+        $animal1 = DB::table('file_animale')
+                    ->select('id','animalCode','actual_state')
+                            ->where('file_animale.actual_state','=','VENDIDO')
+                            
+                            
+                    ->get();
          $re_A = DB::table('file_reproduction_artificial')
                     ->select('id',
                             'date',
                             'animalCode_id_m',
                             'actual_state'
                             )
-                            ->where('actual_state','=','DISPONIBLE')
+                            ->where('actual_state','=','INACTIVO')
                             
                     ->get(); 
                    // return $re_A;
@@ -208,25 +214,37 @@ class ReproductionAInactivosController extends Controller
                     ->get();
 
         $re =  File_reproduction_artificial::findOrFail($id);
-        
-        foreach($ext as $i3){
-            foreach($re_MI as $i2){
-                foreach($re_A as $i){
-                        if($i->animalCode_id_m == $request->animalCode_id_m){
-                            break;
-                        
-                        }elseif( $i->animalCode_id_m == $request->animalCode_id_m){
-                            return view('mensajes.fichaReproduccionArtificial.artificial'); 
-                        }elseif($i2->animalCode_id_m == $request->animalCode_id_m){
-                            return view('mensajes.fichaReproduccionArtificial.montaInterna'); 
-                        } elseif($i3->animalCode_id == $request->animalCode_id_m){
-                            return view('mensajes.fichaReproduccionArtificial.externa'); 
-                        }
-                }
-            }
-        }
         $re->actual_state = $request->actual_state;
         $estadoActual = $request->actual_state;
+       /*if($estadoActual == "DISPONIBLE"){
+           foreach( $re_A  as $a1){
+              if($a1->animalCode_id_m == $a2->id){
+                $estadoFichaAnimal = $a1->actual_state;
+                foreach($animal1 as $a2){
+                        if($estadoFichaAnimal == "VENDIDO"){
+                            return view('mensajes.vendido');
+             
+                    }else {
+                        $animalB  = DB::table('file_animale')
+                                    ->select(   'id',
+                                                'animalCode',
+                                                'actual_state'  
+                                            )->get();
+                        foreach($animalB as $i){
+                            if($request->animalCode_id_m ==$i->id){
+                                $id_b=$i->id;
+                                $animal_estado = File_Animale::findOrFail($id_b);
+                                $animal_estado->actual_state = "DISPONIBLE";
+                                $animal_estado->update(); 
+                            }
+                        }
+                    }
+                }  
+
+           }
+             
+       }*/
+        
         if($estadoActual == "DISPONIBLE"){
             $animalB  = DB::table('file_animale')
             ->select(   'id',

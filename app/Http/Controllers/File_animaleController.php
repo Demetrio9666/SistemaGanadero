@@ -9,6 +9,9 @@ use App\Models\File_Animale;
 use App\Models\Location;
 use App\Models\Race;
 use App\Models\User;
+use App\Models\File_reproduction_artificial;
+use App\Models\File_reproduction_internal;
+use App\Models\File_reproduction_external;
 use App\Http\Requests\StoreFile_animale;
 use App\Http\Requests\EditFile_animale;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -222,9 +225,8 @@ class File_animaleController extends Controller
                         break;
                     }
 
-
-
                     }
+       
         
         $animal->animalCode = $request->codigo_animal;
 
@@ -251,9 +253,13 @@ class File_animaleController extends Controller
         $animal->age_month = $request->edad;
         $animal->health_condition = $request->estado_de_salud;
         $animal->gestation_state = $request->estado_de_gestacion;
-        $animal->actual_state = $request->actual_state;
         $animal->location_id = $request->localizacion;
         $animal->conceived = $request->concebido;
+
+      
+            
+
+        $animal->actual_state = $request->actual_state;
         $animal->save(); 
        
         $actvividad = new  Activity();
@@ -334,6 +340,35 @@ class File_animaleController extends Controller
 
         $animal = File_Animale::findOrFail($id);
         $id;
+        $re_A = DB::table('file_reproduction_artificial')
+        ->select('id',
+                'date',
+                'animalCode_id_m',
+                'actual_state'
+                )
+                ->where('actual_state','=','DISPONIBLE')
+                
+        ->get(); 
+//return $re_A;
+
+        $re_MI = DB::table('file_reproduction_internal')
+                ->select('id',
+                        'date',
+                        'animalCode_id_m',
+                        'actual_state'
+                        )->where('actual_state','=','DISPONIBLE')
+                        
+                ->get();
+                //return $re_MI;
+        $ext =  DB::table('file_reproduction_external')
+                ->select('id',
+                        'date',
+                        'animalCode_id',
+                        'actual_state')
+                        ->where('actual_state','=','DISPONIBLE')
+                            
+                ->get();
+
         $animal1 = DB::table('file_animale')
                     ->leftJoin('race','file_animale.race_id','=','race.id')
                     ->leftJoin('location','file_animale.location_id','=','location.id')
@@ -423,6 +458,42 @@ class File_animaleController extends Controller
         $animal->age_month = $request->edad;
         $animal->health_condition = $request->estado_de_salud;
         $animal->gestation_state = $request->estado_de_gestacion;
+
+        if($request->actual_state == "REPRODUCCIÓN"){
+            $codigoAnimal=$id;
+            foreach($ext as $i3){
+                foreach($re_MI as $i){
+                    foreach($re_A as $i2){
+                        if( $i2->animalCode_id_m == $codigoAnimal){
+                            return view('mensajes.fichaReproduccionArtificial.artificial'); 
+                        }elseif ($i->animalCode_id_m == $codigoAnimal) {
+                            return view('mensajes.fichaReproduccionArtificial.montaInterna');
+                        }elseif($i3->animalCode_id == $codigoAnimal){
+                            return view('mensajes.fichaReproduccionArtificial.externa');
+                        }
+                    }
+                }
+            }
+                   
+        }elseif ($request->actual_state == "VENDIDO") {
+            $codigoAnimal=$id;
+            foreach($ext as $i3){
+                foreach($re_MI as $i){
+                    foreach($re_A as $i2){
+                        if( $i2->animalCode_id_m == $codigoAnimal){
+                            return view('mensajes.fichaReproduccionArtificial.artificial'); 
+                        }elseif ($i->animalCode_id_m == $codigoAnimal) {
+                            return view('mensajes.fichaReproduccionArtificial.montaInterna');
+                        }elseif($i3->animalCode_id == $codigoAnimal){
+                            return view('mensajes.fichaReproduccionArtificial.externa');
+                        }
+                    }
+                }
+            }
+        }
+
+
+
         $animal->actual_state = $request->actual_state;
         $animal->location_id = $request->localizacion;
         $animal->conceived = $request->concebido;

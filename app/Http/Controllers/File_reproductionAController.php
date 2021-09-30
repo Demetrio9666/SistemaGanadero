@@ -177,7 +177,7 @@ class File_reproductionAController extends Controller
      */
     public function store(StoreFile_reproductionA $request)
     {
-        $re_A = DB::table('file_reproduction_artificial')
+        /*$re_A = DB::table('file_reproduction_artificial')
                     ->select('id',
                             'date',
                             'animalCode_id_m',
@@ -198,17 +198,18 @@ class File_reproductionAController extends Controller
                     ->get();
                     //return $re_MI;
         $ext =  DB::table('file_reproduction_external')
+
                     ->select('id',
                             'date',
                             'animalCode_id',
                             'actual_state')
                             ->where('actual_state','=','DISPONIBLE')
                                 
-                    ->get();
+                    ->get();*/
              //return $ext;
         $re = new File_reproduction_artificial();
-        $re->animalCode_id_m = $request->animalCode_id_m;
-        foreach($ext as $i3){
+    
+        /*foreach($ext as $i3){
             foreach($re_MI as $i2){
                 foreach($re_A as $i){
 
@@ -221,9 +222,9 @@ class File_reproductionAController extends Controller
                         }
                 }
             }
-        }
+        }*/
         //$re = new File_reproduction_artificial();
-           
+        $re->animalCode_id_m = $request->animalCode_id_m;  
         $re->date= $request->date;
 
         $re->artificial_id = $request->artificial_id;
