@@ -135,7 +135,7 @@
         var myChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['SI', 'NO'],
+                labels: ['Vacona', 'Vaca'],
                 datasets: [{
                     label: 'Ganado Reproducción',
                     data: cData,

@@ -59,7 +59,7 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>{{$total}}</h3>
+              <h3>{{$totales}}</h3>
 
               <p>Total de Animales</p>
             </div>

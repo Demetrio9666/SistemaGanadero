@@ -23,22 +23,27 @@ class DashboardController extends Controller
     
         $disponible = File_Animale::whereIn('actual_state',['DISPONIBLE'])->count();
         $vendidos = File_Animale::whereIn('actual_state',['VENDIDO'])->count();
+
+        
         $reproduccion = File_Animale::whereIn('actual_state',['REPRODUCCIÓN'])->count();
         $total = File_Animale::whereIn('actual_state',['DISPONIBLE','REPRODUCCIÓN','VENDIDO'])->count();
 
-        $toro = File_Animale::whereIn('stage',['TORO'])->count();
-        $torete = File_Animale::whereIn('stage',['TORETE'])->count();
-        $terneroM = File_Animale::where('sex','=','MACHO') ->whereIn('stage',['TERNERO'])->count();
-        $vaca = File_Animale::whereIn('stage',['VACA'])->count();
-        $vacona = File_Animale::whereIn('stage',['VACONA'])->count();
-        $vaconilla = File_Animale::whereIn('stage',['VACONILLA'])->count();
-        $terneroH = File_Animale::where('sex','=','HEMBRA') ->whereIn('stage',['TERNERA'])->count();
+        $totales= $total - $vendidos;
+
+        $vaca = File_Animale::where('stage',['VACA'])->whereIn('actual_state',['DISPONIBLE','REPRODUCCIÓN'])->count();
+        $toro = File_Animale::where('stage',['TORO'])->whereIn('actual_state',['DISPONIBLE','REPRODUCCIÓN'])->count();
+        $torete = File_Animale::where('stage',['TORETE'])->whereIn('actual_state',['DISPONIBLE'])->count();
+        $terneroM = File_Animale::where('stage',['TERNERO'])->whereIn('actual_state',['DISPONIBLE'])->count();
+       
+        $vacona = File_Animale::where('stage',['VACONA'])->whereIn('actual_state',['DISPONIBLE','REPRODUCCIÓN'])->count();
+        $vaconilla = File_Animale::where('stage',['VACONILLA'])->whereIn('actual_state',['DISPONIBLE'])->count();
+        $terneroH = File_Animale::where('stage',['TERNERA'])->whereIn('actual_state',['DISPONIBLE'])->count();
 
         $data = [$toro,$torete,$terneroM,$vaca,$vacona,$vaconilla,$terneroH];
         $datas= json_encode($data);
 
-        $macho = File_Animale::whereIn('sex',['MACHO'])->count();
-        $hembra = File_Animale::whereIn('sex',['HEMBRA'])->count();
+        $macho = File_Animale::where('sex',['MACHO'])->whereIn('actual_state',['DISPONIBLE','REPRODUCCIÓN'])->count();
+        $hembra = File_Animale::where('sex',['HEMBRA'])->whereIn('actual_state',['DISPONIBLE','REPRODUCCIÓN'])->count();
 
         $data2 = [$macho,$hembra];
 
@@ -46,7 +51,7 @@ class DashboardController extends Controller
 
         //return $datas;
 
-        return view('dashboard.dashboard',compact('disponible','vendidos','reproduccion','total','datas','datas2'));
+        return view('dashboard.dashboard',compact('disponible','vendidos','reproduccion','totales','datas','datas2'));
     }
 
     public function DashboardReproduccion(){
@@ -60,9 +65,10 @@ class DashboardController extends Controller
         $datas = json_encode($data);
 
 
-        $embarazosSi = File_Animale::whereIn('gestation_state',['SI'])->count();
-        $embarazosNo = File_Animale::where('sex','=','HEMBRA') ->whereIn('gestation_state',['NO'])->count();
-        $data2 = [$embarazosSi,$embarazosNo];
+        $embarazosVacona = File_Animale::where('stage',['VACONA'])->whereIn('gestation_state',['SI'])->count();
+        $embarazosVaca = File_Animale::where('stage',['VACA'])->whereIn('gestation_state',['SI'])->count();
+        $embarazosNo = File_Animale::where('sex','=','HEMBRA')->whereIn('gestation_state',['NO'])->count();
+        $data2 = [$embarazosVacona, $embarazosVaca];
         $datas2 = json_encode($data2);
 
         return view('dashboard.reproduccion',compact('datas','datas2','artificial','natual','externa'));
