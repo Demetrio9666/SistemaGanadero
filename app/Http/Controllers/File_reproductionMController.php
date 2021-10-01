@@ -304,7 +304,24 @@ class File_reproductionMController extends Controller
                 }
             }
         }
-
+        if($estadoActual == "INACTIVO"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'gestation_state',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+              
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->gestation_state ="NO";
+                    $animal_estado->actual_state = "ACTIVO";
+                    $animal_estado->update(); 
+                }
+            }
+        }
         $re->reproduction_state =$request->reproduction_state;
         $re->actual_state = $request->actual_state;
         $re->save(); 
@@ -448,6 +465,24 @@ class File_reproductionMController extends Controller
                             'gestation_state',
                             'actual_state'  
                         )->get();
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->gestation_state ="NO";
+                    $animal_estado->actual_state = "ACTIVO";
+                    $animal_estado->update(); 
+                }
+            }
+        }
+        if($estadoActual == "INACTIVO"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'gestation_state',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+              
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);

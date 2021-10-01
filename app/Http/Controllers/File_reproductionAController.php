@@ -209,12 +209,7 @@ class File_reproductionAController extends Controller
                                 
                     ->get();*/
              //return $ext;
-             $animalB  = DB::table('file_animale')
-             ->select(   'id',
-                         'animalCode',
-                         'gestation_state',
-                         'actual_state'  
-                     )->get();
+           
         $re = new File_reproduction_artificial();
     
         /*foreach($ext as $i3){
@@ -272,13 +267,13 @@ class File_reproductionAController extends Controller
                 }
             }
         }else {
-            foreach($animalB as $i){
-                $animalB  = DB::table('file_animale')
+            $animalB  = DB::table('file_animale')
                 ->select(   'id',
                             'animalCode',
                             'gestation_state',
                             'actual_state'  
                         )->get();
+            foreach($animalB as $i){
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
@@ -434,15 +429,7 @@ class File_reproductionAController extends Controller
       
         $re =  File_reproduction_artificial::findOrFail($id);
         $id;
-        foreach($re_A as $o){
-            if($id == $o->id){
-                $codigo = $o->animalCode_id_m;
-                $fecha = $o->date;
-                $artificial = $o->artificial_id;
-                $estadoActual = $o->actual_state;
-            }
-           
-        }
+
         
         $re =  File_reproduction_artificial::findOrFail($id);
         $re->date= $request->date;

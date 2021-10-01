@@ -96,9 +96,17 @@ Editar Reproducción Natural Externa Inactivas
             <input type="text" class="form-control" id="hacienda_name" name="hacienda_name" value="{{$ext->hacienda_name}}" onblur="upperCase()" disabled=disabled>
         </div> 
         <div  class="col-md-6">
-            <label for="">Estado Actual:</label>
-            <select class="form-control" id="inputPassword4" name="actual_state"  value="{{$ext->actual_state}}" >
-                <option value="DISPONIBLE" @if( $ext->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+            <label for="">Estado de la Reproducción:</label>
+            <select class="form-control" id="inputPassword4" name="reproduction_state" value="{{$ext->reproduction_state}}"disabled=disabled>
+                <option value="ESPERA"@if($ext->reproduction_state == "ESPERA") {{'selected'}} @endif>ESPERA</option>
+                <option value="EXITOSO"@if($ext->reproduction_state == "EXITOSO") {{'selected'}} @endif>EXITOSO</option>
+                <option value="FALLIDO"@if($ext->reproduction_state == "FALLIDO") {{'selected'}} @endif>FALLIDO</option>
+            </select>
+        </div>
+        <div  class="col-md-6">
+            <label for="">Estado actual de la Información:</label>
+            <select class="form-control" id="inputPassword4" name="actual_state"  value="{{$ext->actual_state}}">
+                <option value="ACTIVO" @if( $ext->actual_state == "ACTIVO") selected @endif>ACTIVO</option>
                 <option value="INACTIVO" @if( $ext->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
              </select>
         </div> 

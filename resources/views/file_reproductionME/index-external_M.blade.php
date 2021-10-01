@@ -34,7 +34,8 @@ Fichas de Reproducción por Monta Natural Externa
             <th>Edad</th>
             <th>Sexo</th>
             <th>Hacienda</th>
-            <th>Estado Actual</th> 
+            <th>Estado de la Reproducción</th>
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>
@@ -51,6 +52,7 @@ Fichas de Reproducción por Monta Natural Externa
             <td>{{$i->age_month}}</td>
             <td>{{$i->sex}}</td>
             <td>{{$i->hacienda_name}}</td>
+            <td >{{$i->reproduction_state}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
                <center><a class="btn btn-primary" href="{{route('fichaReproduccionEx.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>  </center>  

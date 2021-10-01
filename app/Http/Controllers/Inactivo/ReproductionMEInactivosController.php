@@ -40,12 +40,12 @@ class ReproductionMEInactivosController extends Controller
                             'R.race_d as raza',
                             'file_animale.age_month as edad',
                             'file_animale.sex as sexo',
-
                             'file_reproduction_external.animalCode_Exte',
                             'race.race_d',
                             'file_reproduction_external.age_month',
                             'file_reproduction_external.sex',
                             'file_reproduction_external.hacienda_name',
+                            'file_reproduction_external.reproduction_state',
                             'file_reproduction_external.actual_state')
                             ->where('file_reproduction_external.actual_state','=','INACTIVO')
                 ->get();
@@ -64,12 +64,12 @@ class ReproductionMEInactivosController extends Controller
                     'R.race_d as raza',
                     'file_animale.age_month as edad',
                     'file_animale.sex as sexo',
-
                     'file_reproduction_external.animalCode_Exte',
                     'race.race_d',
                     'file_reproduction_external.age_month',
                     'file_reproduction_external.sex',
                     'file_reproduction_external.hacienda_name',
+                    'file_reproduction_external.reproduction_state',
                     'file_reproduction_external.actual_state')
                     ->where('file_reproduction_external.actual_state','=','INACTIVO')
                     

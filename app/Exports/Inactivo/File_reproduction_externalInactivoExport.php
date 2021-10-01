@@ -30,12 +30,12 @@ class File_reproduction_externalInactivoExport implements FromCollection ,WithHe
                     'R.race_d as raza',
                     'file_animale.age_month as edad',
                     'file_animale.sex as sexo',
-
                     'file_reproduction_external.animalCode_Exte',
                     'race.race_d',
                     'file_reproduction_external.age_month',
                     'file_reproduction_external.sex',
                     'file_reproduction_external.hacienda_name',
+                    'file_reproduction_external.reproduction_state',
                     'file_reproduction_external.actual_state')
                     ->where('file_reproduction_external.actual_state','=','INACTIVO')
                     
@@ -55,7 +55,8 @@ class File_reproduction_externalInactivoExport implements FromCollection ,WithHe
             'Edad',
             'Sexo',
             'Hacienda',
-            'Estado Actual',
+            'Estado de la Reproducción',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -72,7 +73,8 @@ class File_reproduction_externalInactivoExport implements FromCollection ,WithHe
             'I'=>14, 
             'J'=>10, 
             'K'=>11.22, 
-            'L'=>15, 
+            'L'=>30, 
+            'M'=>30, 
              
                      
         ];
@@ -91,6 +93,7 @@ class File_reproduction_externalInactivoExport implements FromCollection ,WithHe
        $sheet->getStyle('J1')->getFont()->setBold(true);
        $sheet->getStyle('K1')->getFont()->setBold(true);
        $sheet->getStyle('L1')->getFont()->setBold(true);
+       $sheet->getStyle('M1')->getFont()->setBold(true);
       
     }
 }

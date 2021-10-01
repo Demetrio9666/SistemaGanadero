@@ -17,7 +17,8 @@ Fichas de Reproducción por Monta Natural Externa Inactivos
             <th>Edad</th>
             <th>Sexo</th>
             <th>Hacienda</th>
-            <th>Estado Actual</th>
+            <th>Estado de la Reproducción</th>
+            <th>Estado actual de la Información</th>
         </tr>
     </thead>
     <tbody>  
@@ -33,6 +34,7 @@ Fichas de Reproducción por Monta Natural Externa Inactivos
             <td>{{$i->age_month}}</td>
             <td>{{$i->sex}}</td>
             <td>{{$i->hacienda_name}}</td>
+            <td >{{$i->reproduction_state}}</td>
             <td >{{$i->actual_state}}</td>
         </tr>
         @endforeach
