@@ -142,8 +142,8 @@ class File_treatmentController extends Controller
                      'health_condition',
                      'actual_state'
                   )
-                  ->where('health_condition','=','ENFERMO')
-                  ->where('actual_state','=','DISPONIBLE')
+                  ->where('health_condition','=','ENFERMO')->orwhere('health_condition','=','SANO')
+                  ->where('actual_state','=','ACTIVO')->orwhere('actual_state','=','REPRODUCCIÓN')
                   
                   
         ->get();
@@ -163,7 +163,7 @@ class File_treatmentController extends Controller
                      'animalCode',
                      'actual_state'
                   ) ->where('health_condition','=','ENFERMO')
-                    ->where('actual_state','=','DISPONIBLE')
+                    ->where('actual_state','=','ACTIVO')
                   
         ->get();
         $tra1 = DB::table('file_treatment')
@@ -172,13 +172,19 @@ class File_treatmentController extends Controller
                 )->where('actual_state','=','DISPONIBLE')    
                 
         ->get();
+        $animalB  = DB::table('file_animale')
+                ->select(   'id',
+                            'animalCode',
+                            'health_condition'  
+                        )->get();
+
         $tra = new File_treatment();
 
-        foreach($tra1 as $i){
+        /*foreach($tra1 as $i){
             if($i->animalCode_id == $request->animalCode_id){
                 return view('mensajes.fichaTratamiento.tratamiento');
             }
-        }
+        }*/
        
         $tra->date= $request->date;
         $tra->animalCode_id = $request->animalCode_id;
@@ -190,12 +196,6 @@ class File_treatmentController extends Controller
         $tra->recovery =$request->recovery;
         $salud=$request->recovery;
         if($salud == "SI"){
-                $animalB  = DB::table('file_animale')
-                ->select(   'id',
-                            'animalCode',
-                            'health_condition'  
-                        )->get();
-
             foreach($animalB as $i){
                 if($request->animalCode_id ==$i->id){
                     $id_b=$i->id;
@@ -205,6 +205,15 @@ class File_treatmentController extends Controller
                 }
             }
 
+        }elseif ($salud == "NO") {
+            foreach($animalB as $i){
+                if($request->animalCode_id ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->health_condition = "ENFERMO";
+                    $animal_estado->update(); 
+                }
+            }
         }
         $tra->treatment = $request->treatment;
         $tra->actual_state = $request->actual_state;
@@ -291,8 +300,8 @@ class File_treatmentController extends Controller
                      'actual_state'
                      
                   )
-                  ->where('health_condition','=','Enfermo')
-                  ->where('actual_state','=','Disponible')
+                  ->where('health_condition','=','Enfermo')->orwhere('health_condition','=','SANO')
+                  ->where('actual_state','=','ACTIVO')
                   ->orwhere('actual_state','=','REPRODUCCIÓN')
                   
                   
@@ -324,11 +333,16 @@ class File_treatmentController extends Controller
                 )->where('actual_state','=','DISPONIBLE')    
                 
         ->get();
+        $animalB  = DB::table('file_animale')
+        ->select(   'id',
+                    'animalCode',
+                    'health_condition'  
+                )->get();
 
         $tra = File_treatment::findOrFail($id);
         $id;
 
-        foreach($tra1 as $i2){
+        /*foreach($tra1 as $i2){
             if($i2->id == $id){
                 $fecha = $i2->date;
                 $idcodigoAnimal=$i2->animalCode_id;
@@ -365,7 +379,7 @@ class File_treatmentController extends Controller
             || $estado != $request->actual_state){
                 return view('mensajes.fichaTratamiento.tratamientoEdit');
             }
-        }
+        }*/
 
         $tra->date= $request->date;
         $tra->animalCode_id = $request->animalCode_id;
@@ -379,12 +393,6 @@ class File_treatmentController extends Controller
         $salud=$request->recovery;
 
         if($salud == "SI"){
-                $animalB  = DB::table('file_animale')
-                ->select(   'id',
-                            'animalCode',
-                            'health_condition'  
-                        )->get();
-
             foreach($animalB as $i){
                 if($request->animalCode_id ==$i->id){
                     $id_b=$i->id;
@@ -394,6 +402,15 @@ class File_treatmentController extends Controller
                 }
             }
 
+        }elseif ($salud == "NO") {
+            foreach($animalB as $i){
+                if($request->animalCode_id ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->health_condition = "ENFERMO";
+                    $animal_estado->update(); 
+                }
+            }
         }
         $tra->recovery =$request->recovery;
         $tra->actual_state = $request->actual_state;

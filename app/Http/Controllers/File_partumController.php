@@ -128,7 +128,7 @@ class File_partumController extends Controller
                      'actual_state'
                   )
                   ->where('gestation_state','=','SI')
-                  ->where('actual_state','=','DISPONIBLE')
+                  ->where('actual_state','=','ACTIVO')
                   
         ->get();
         return view('file_partum.create-partum',compact('animal'));
@@ -243,7 +243,7 @@ class File_partumController extends Controller
                      'gestation_state',
                      'actual_state'
                   )
-                  ->where('actual_state','=','DISPONIBLE')
+                  ->where('actual_state','=','ACTIVO')
                   
         ->get();
                   

@@ -152,7 +152,7 @@
                     <div  class="col-md-6">
                         <label for="">Estado Actual:</label>
                         <select class="form-control " id="estado" name="actual_state" value="{{old('actual_state')}}">
-                            <option id="DISPONIBLE" value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif style="display: none;">DISPONIBLE</option>
+                            <option id="ACTIVO" value="ACTIVO"@if(old('actual_state') == "ACTIVO") {{'selected'}} @endif style="display: none;">ACTIVO</option>
                             <option id="VENDIDO" value="VENDIDO"@if(old('actual_state') == "VENDIDO") {{'selected'}} @endif style="display: none;">VENDIDO</option>
                             <option id="REPRODUCCIÓN" value="REPRODUCCIÓN"@if(old('actual_state') == "REPRODUCCIÓN") {{'selected'}} @endif style="display: none;">REPRODUCCIÓN</option>
                             <option id="INACTIVO" value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif style="display: none;">INACTIVO</option>

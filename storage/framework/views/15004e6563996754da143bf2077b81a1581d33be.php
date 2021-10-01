@@ -126,12 +126,19 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                     </div>
                 
-            
+            <div  class="form-group">
+                <label for="">Estado de la Reproducción:</label>
+                <select class="form-control" id="inputPassword4" name="reproduction_state" value="<?php echo e(old('reproduction_state')); ?>">
+                    <option value="ESPERA"<?php if(old('reproduction_state') == "ESPERA"): ?> <?php echo e('selected'); ?> <?php endif; ?>>ESPERA</option>
+                    <option value="EXITOSO"<?php if(old('reproduction_state') == "EXITOSO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>EXITOSO</option>
+                    <option value="FALLIDO"<?php if(old('reproduction_state') == "FALLIDO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>FALLIDO</option>
+                </select>
+            </div>
             
             <div  class="form-group">
-                <label for="">Estado Actual:</label>
+                <label for="">Estado actual de la Información:</label>
                 <select class="form-control" id="inputPassword4" name="actual_state" value="<?php echo e(old('actual_state')); ?>">
-                    <option value="DISPONIBLE"<?php if(old('actual_state') == "DISPONIBLE"): ?> <?php echo e('selected'); ?> <?php endif; ?>>DISPONIBLE</option>
+                    <option value="ACTIVO"<?php if(old('actual_state') == "ACTIVO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>ACTIVO</option>
                     <option value="INACTIVO"<?php if(old('actual_state') == "INACTIVO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>INACTIVO</option>
                 </select>
             </div>

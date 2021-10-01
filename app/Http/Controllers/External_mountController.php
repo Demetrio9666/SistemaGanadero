@@ -226,7 +226,7 @@ class External_mountController extends Controller
                 if($request->animalCode_id ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
-                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->actual_state = "ACTIVO";
                     $animal_estado->update(); 
                 }
             }
@@ -303,7 +303,7 @@ class External_mountController extends Controller
                             'file_animale.age_month',
                             'race.race_d as raza',
                             'file_animale.sex')
-                    ->where('file_animale.actual_state','=','DISPONIBLE')
+                    ->where('file_animale.actual_state','=','ACTIVO')
                     ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
                     
                 ->get();
@@ -383,7 +383,7 @@ class External_mountController extends Controller
                 if($request->animalCode_id ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
-                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->actual_state = "ACTIVO";
                     $animal_estado->update(); 
                 }
             }

@@ -12,7 +12,8 @@ Fichas de Reproducción Artificial Activos
                 <th>Raza </th>
                 <th>Tipo de Reproducción Artificial</th>
                 <th>Raza Material Genético</th>
-                <th>Estado Actual</th> 
+                <th>Estado de la Reproducción</th>
+                <th>Estado actual de la Información</th>
             </tr> 
     </thead>
     <tbody>  
@@ -23,6 +24,7 @@ Fichas de Reproducción Artificial Activos
             <td>{{$i->raza_h}}</td>
             <td >{{$i->tipo}}</td>
             <td >{{$i->raza_m}}</td>
+            <td>{{$i->reproduction_state}}</td>
             <td >{{$i->actual_state}}</td>
         </tr>
         @endforeach

@@ -23,7 +23,7 @@ class CreateFileReproductionArtificialTable extends Migration
             $table-> unsignedBigInteger('artificial_id')->nullable();
             $table->foreign('artificial_id')->references('id')->on('artificial_reproduction')
                   ->onDelete('set null')->onUpdate('cascade');
-
+            $table->string('reproduction_state');
             $table->string('actual_state');
             $table->timestamps();
         });

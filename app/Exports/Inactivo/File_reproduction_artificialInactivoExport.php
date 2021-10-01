@@ -32,6 +32,7 @@ class File_reproduction_artificialInactivoExport implements FromCollection ,With
                             'f.race_d as raza_h',  
                             'artificial_reproduction.reproduccion as tipo', 
                             'a.race_d as raza_m',
+                            'file_reproduction_artificial.reproduction_state',
                             'file_reproduction_artificial.actual_state'
                             )
                             ->where('file_reproduction_artificial.actual_state','=','INACTIVO')
@@ -47,19 +48,21 @@ class File_reproduction_artificialInactivoExport implements FromCollection ,With
             'Raza',
             'Tipo de Material Genetico',
             'Raza',
-            'Estado Actual',
+            'Estado de la Reproducción',
+            'Estado actual de la información',
         ];
     }
     public function columnWidths(): array
     {
         return [
             'A'=>5,
-            'B'=>13,
+            'B'=>16,
             'C'=>18,
             'D'=>15,
             'E'=>23, 
-            'F'=>10.89, 
-            'G'=>15, 
+            'F'=>25, 
+            'G'=>35, 
+            'H'=>35,
         ];
     }
     public function styles(Worksheet $sheet)
@@ -71,6 +74,7 @@ class File_reproduction_artificialInactivoExport implements FromCollection ,With
        $sheet->getStyle('E1')->getFont()->setBold(true);
        $sheet->getStyle('F1')->getFont()->setBold(true);
        $sheet->getStyle('G1')->getFont()->setBold(true);
+       $sheet->getStyle('H1')->getFont()->setBold(true);
       
     }
 }

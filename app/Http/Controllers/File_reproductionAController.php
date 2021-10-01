@@ -39,9 +39,10 @@ class File_reproductionAController extends Controller
                             'f.race_d as raza_h',  
                             'artificial_reproduction.reproduccion as tipo', 
                             'a.race_d as raza_m',
+                            'file_reproduction_artificial.reproduction_state',
                             'file_reproduction_artificial.actual_state'
                             )
-                            ->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
+                            ->where('file_reproduction_artificial.actual_state','=','ACTIVO')
                             
                     ->get(); 
   
@@ -59,9 +60,10 @@ class File_reproductionAController extends Controller
                             'f.race_d as raza_h',  
                             'artificial_reproduction.reproduccion as tipo', 
                             'a.race_d as raza_m',
+                            'file_reproduction_artificial.reproduction_state',
                             'file_reproduction_artificial.actual_state'
                             )
-                            ->where('file_reproduction_artificial.actual_state','=','DISPONIBLE')
+                            ->where('file_reproduction_artificial.actual_state','=','ACTIVO')
                             
                     ->get(); 
         $pdf = PDF::loadView('file_reproductionA.pdf',compact('re_A'));
@@ -207,6 +209,12 @@ class File_reproductionAController extends Controller
                                 
                     ->get();*/
              //return $ext;
+             $animalB  = DB::table('file_animale')
+             ->select(   'id',
+                         'animalCode',
+                         'gestation_state',
+                         'actual_state'  
+                     )->get();
         $re = new File_reproduction_artificial();
     
         /*foreach($ext as $i3){
@@ -228,28 +236,20 @@ class File_reproductionAController extends Controller
         $re->date= $request->date;
 
         $re->artificial_id = $request->artificial_id;
-        $re->actual_state = $request->actual_state;
-        $estadoActual = $request->actual_state;
-        if($estadoActual == "DISPONIBLE"){
-            $animalB  = DB::table('file_animale')
-            ->select(   'id',
-                        'animalCode',
-                        'actual_state'  
-                    )->get();
+        
+        $estadoActualReproduccion = $request->reproduction_state;
+        $estadoActual =$request->actual_state;
+        if($estadoActualReproduccion == "EXITOSO"){
             foreach($animalB as $i){
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
-                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->actual_state = "ACTIVO";
+                    $animal_estado->gestation_state ="SI";
                     $animal_estado->update(); 
                 }
             }
-        }elseif ($estadoActual == "INACTIVO") {
-            $animalB  = DB::table('file_animale')
-            ->select(   'id',
-                        'animalCode',
-                        'actual_state'  
-                    )->get();
+        }elseif ($estadoActual == "FALLIDO") {
             foreach($animalB as $i){
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
@@ -258,8 +258,20 @@ class File_reproductionAController extends Controller
                     $animal_estado->update(); 
                 }
             }
+        }else {
+            foreach($animalB as $i){
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->actual_state = "ACTIVO";
+                    $animal_estado->update(); 
+                }
+            }
         }
 
+
+        $re->reproduction_state =$request->reproduction_state;
+        $re->actual_state = $request->actual_state;
         $re->save(); 
 
         $actvividad = new  Activity();
@@ -321,7 +333,7 @@ class File_reproductionAController extends Controller
                             'file_animale.age_month',
                             'race.race_d as raza',
                             'file_animale.sex')
-                    ->where('file_animale.actual_state','=','DISPONIBLE')
+                    ->where('file_animale.actual_state','=','ACTIVO')
                     ->orwhere('file_animale.actual_state','=','VENDIDO')
                     ->where('file_animale.stage','=','VACA')->orwhere('file_animale.stage','=','VACONA')
                     
@@ -399,6 +411,7 @@ class File_reproductionAController extends Controller
                                 
                     ->get();
         //return $ext;
+      
         $re =  File_reproduction_artificial::findOrFail($id);
         $id;
         foreach($re_A as $o){
@@ -411,63 +424,84 @@ class File_reproductionAController extends Controller
            
         }
         
-        foreach($ext as $i3){
-            foreach($re_MI as $i2){
-                foreach($re_A as $i){
-                        
-
-                        if( $codigo != $request->animalCode_id_m  || $fecha != $request->date || $artificial != $request->artificial_id 
-                            || $estadoActual = $request->actual_state){
-                             break;
-
-                        }else {
-                            if( $i->animalCode_id_m == $request->animalCode_id_m ){
-                                return view('mensajes.fichaReproduccionArtificial.artificial'); 
-                            }elseif($i2->animalCode_id_m == $request->animalCode_id_m){
-                                return view('mensajes.fichaReproduccionArtificial.montaInterna'); 
-                            } elseif($i3->animalCode_id == $request->animalCode_id_m){
-                                return view('mensajes.fichaReproduccionArtificial.externa'); 
-                            }
-                        }
-                      
-                }
-            }
-        }
-       
         $re =  File_reproduction_artificial::findOrFail($id);
         $re->date= $request->date;
         $re->animalCode_id_m = $request->animalCode_id_m;
         $re->artificial_id = $request->artificial_id;
-        $re->actual_state = $request->actual_state;
-        $estadoActual = $request->actual_state;
-        $animalB  = DB::table('file_animale')
-        ->select(   'id',
-                    'animalCode',
-                    'actual_state'  
-                )->get();
-    foreach($animalB as $i){
-        if($estadoActual == "DISPONIBLE"){
-           
-           
+        
+        $estadoActualReproduccion = $request->reproduction_state;
+        $estadoActual =$request->actual_state;
+        if($estadoActualReproduccion == "EXITOSO"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'gestation_state',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
-                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->actual_state = "ACTIVO";
+                    $animal_estado->gestation_state ="SI";
                     $animal_estado->update(); 
                 }
-            
-        }elseif ($estadoActual == "INACTIVO") {
-           
+            }
+        }elseif ($estadoActualReproduccion == "FALLIDO") {
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'gestation_state',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->gestation_state ="NO";
                     $animal_estado->actual_state = "REPRODUCCIÓN";
                     $animal_estado->update(); 
                 }
-            
+            }
+        }else {
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'gestation_state',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+              
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->gestation_state ="NO";
+                    $animal_estado->actual_state = "ACTIVO";
+                    $animal_estado->update(); 
+                }
+            }
         }
-    }
         
+        $re->reproduction_state =$request->reproduction_state;
+        if($estadoActual == "INACTIVO"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'gestation_state',
+                        'actual_state'  
+                    )->get();
+            foreach($animalB as $i){
+              
+                if($request->animalCode_id_m ==$i->id){
+                    $id_b=$i->id;
+                    $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->gestation_state ="NO";
+                    $animal_estado->actual_state = "ACTIVO";
+                    $animal_estado->update(); 
+                }
+            }
+        }
+        $re->actual_state = $request->actual_state;
         $re->save();
 
         $actvividad = new  Activity();

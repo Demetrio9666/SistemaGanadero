@@ -119,9 +119,17 @@ Editar Reproducción Artificial
 
     </div>
     <div  class="form-group">
-        <label for="">Estado Actual:</label>
+        <label for="">Estado de la Reproducción:</label>
+        <select class="form-control" id="inputPassword4" name="reproduction_state" value="{{$re->reproduction_state}}">
+            <option value="ESPERA"@if($re->reproduction_state == "ESPERA") {{'selected'}} @endif>ESPERA</option>
+            <option value="EXITOSO"@if($re->reproduction_state == "EXITOSO") {{'selected'}} @endif>EXITOSO</option>
+            <option value="FALLIDO"@if($re->reproduction_state == "FALLIDO") {{'selected'}} @endif>FALLIDO</option>
+        </select>
+    </div>
+    <div  class="form-group">
+        <label for="">Estado actual de la Información:</label>
         <select class="form-control" id="inputPassword4" name="actual_state" value="{{$re->actual_state}}">
-            <option value="DISPONIBLE"  @if( $re->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+            <option value="ACTIVO" @if( $re->actual_state == "ACTIVO") selected @endif>ACTIVO</option>
             <option value="INACTIVO" @if( $re->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
          </select>
     </div>

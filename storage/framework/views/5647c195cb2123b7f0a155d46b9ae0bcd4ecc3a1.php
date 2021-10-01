@@ -236,7 +236,7 @@ unset($__errorArgs, $__bag); ?>
                     <div  class="col-md-6">
                         <label for="">Estado Actual:</label>
                         <select class="form-control " id="estado" name="actual_state" value="<?php echo e(old('actual_state')); ?>">
-                            <option id="DISPONIBLE" value="DISPONIBLE"<?php if(old('actual_state') == "DISPONIBLE"): ?> <?php echo e('selected'); ?> <?php endif; ?> style="display: none;">DISPONIBLE</option>
+                            <option id="ACTIVO" value="ACTIVO"<?php if(old('actual_state') == "ACTIVO"): ?> <?php echo e('selected'); ?> <?php endif; ?> style="display: none;">ACTIVO</option>
                             <option id="VENDIDO" value="VENDIDO"<?php if(old('actual_state') == "VENDIDO"): ?> <?php echo e('selected'); ?> <?php endif; ?> style="display: none;">VENDIDO</option>
                             <option id="REPRODUCCIÓN" value="REPRODUCCIÓN"<?php if(old('actual_state') == "REPRODUCCIÓN"): ?> <?php echo e('selected'); ?> <?php endif; ?> style="display: none;">REPRODUCCIÓN</option>
                             <option id="INACTIVO" value="INACTIVO"<?php if(old('actual_state') == "INACTIVO"): ?> <?php echo e('selected'); ?> <?php endif; ?> style="display: none;">INACTIVO</option>

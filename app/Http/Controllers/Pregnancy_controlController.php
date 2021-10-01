@@ -135,7 +135,7 @@ class Pregnancy_controlController extends Controller
                   
                   ->where('gestation_state','=', 'SI')
                   ->where('sex','Hembra')
-                  ->where('actual_state','=','DISPONIBLE')
+                  ->where('actual_state','=','ACTIVO')
                   
         ->get();
         return view('PregnancyC.create-PregnancyC',compact('vitamina','animal'));
@@ -224,7 +224,7 @@ class Pregnancy_controlController extends Controller
                   )
                   ->where('gestation_state','=', 'SI')
                   ->where('sex','Hembra')
-                  ->where('actual_state','=','DISPONIBLE')
+                  ->where('actual_state','=','ACTIVO')
         ->get();
         $pre = Pregnancy_control::findOrFail($id);
         return view('pregnancyC.edit-pregnancyC', compact('pre','vitamina','animal'));

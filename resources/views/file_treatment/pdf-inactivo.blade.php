@@ -27,7 +27,7 @@ Fichas de Tratamientos Inactivos
                         <td>{{$i->anti}}</td>
                         <td>{{$i->vi}}</td>
                         <td>{{$i->treatment}}</td>
-                        <td>{{$i->recovery>}}</td>
+                        <td>{{$i->recovery}}</td>
                         <td>{{$i->actual_state}}</td>
                     </tr>
                     @endforeach

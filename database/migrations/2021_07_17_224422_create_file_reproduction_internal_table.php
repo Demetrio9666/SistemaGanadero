@@ -23,7 +23,8 @@ class CreateFileReproductionInternalTable extends Migration
             $table-> unsignedBigInteger('animalCode_id_p');
             $table->foreign('animalCode_id_p')->references('id')->on('file_animale')
                     ->onDelete('cascade')->onUpdate('cascade');
-            
+                    
+            $table->string('reproduction_state');
             $table->string('actual_state');
             $table->timestamps();
         });

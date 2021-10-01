@@ -106,7 +106,7 @@ class Weigth_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','Disponible')
+                  )->where('actual_state','=','ACTIVO')
                   
         ->get();
         return view('weigthC.create-weigthC',compact('animal'));
@@ -189,7 +189,7 @@ class Weigth_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','Disponible')
+                  )->where('actual_state','=','ACTIVO')
                   
         ->get();
         return view('weigthC.edit-weigthC', compact('pesoC','animal'));

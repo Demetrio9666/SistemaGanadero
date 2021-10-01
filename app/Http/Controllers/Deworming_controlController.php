@@ -123,7 +123,7 @@ class Deworming_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
+                  )->where('actual_state','=','ACTIVO')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
                   
@@ -146,7 +146,7 @@ class Deworming_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
+                  )->where('actual_state','=','ACTIVO')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
         $desCC = DB::table('deworming_control')
@@ -251,7 +251,7 @@ class Deworming_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
+                  )->where('actual_state','=','ACTIVO')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
 
@@ -273,7 +273,7 @@ class Deworming_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
+                  )->where('actual_state','=','ACTIVO')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
         $desCC = DB::table('deworming_control')

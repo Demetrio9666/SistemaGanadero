@@ -144,7 +144,7 @@
             <div  class="col-md-6">
                 <label for="">Estado Actual:</label>
                 <select class="form-control" id="inputPassword4" name="actual_state" value="{{$animal->actual_state}}">
-                    <option value="DISPONIBLE" @if($animal->actual_state == "DISPONIBLE" ) selected @endif>DISPONIBLE</option>
+                    <option value="ACTIVO" @if($animal->actual_state == "ACTIVO" ) selected @endif>ACTIVO</option>
                     <option value="VENDIDO"    @if($animal->actual_state == "VENDIDO" ) selected @endif>VENDIDO</option>
                     <option value="INACTIVO"   @if($animal->actual_state == "INACTIVO" ) selected @endif>INACTIVO</option>
                     <option value="REPRODUCCIÓN"  @if($animal->actual_state == "REPRODUCCIÓN" ) selected @endif>REPRODUCIÓN</option>

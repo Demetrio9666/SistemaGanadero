@@ -112,7 +112,7 @@
                     <label for="">Estado Actual:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{$animal->actual_state}}">
                         <option selected></option>
-                        <option value="DISPONIBLE" @if($animal->actual_state == "DISPONIBLE" ) selected @endif>DISPONIBLE</option>
+                        <option value="ACTIVO" @if($animal->actual_state == "ACTIVO" ) selected @endif>ACTIVO</option>
                         <option value="VENDIDO"    @if($animal->actual_state == "VENDIDO" ) selected @endif>VENDIDO</option>
                         <option value="INACTIVO"   @if($animal->actual_state == "INACTIVO" ) selected @endif>INACTIVO</option>
                         <option value="REPRODUCIÓN"  @if($animal->actual_state == "REPRODUCIÓN" ) selected @endif>REPRODUCIÓN</option>

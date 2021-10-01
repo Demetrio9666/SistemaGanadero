@@ -41,6 +41,7 @@ class ReproductionAInactivosController extends Controller
                         'f.race_d as raza_h',  
                         'artificial_reproduction.reproduccion as tipo', 
                         'a.race_d as raza_m',
+                        'file_reproduction_artificial.reproduction_state',
                         'file_reproduction_artificial.actual_state'
                         )
                         ->where('file_reproduction_artificial.actual_state','=','INACTIVO')
@@ -63,6 +64,7 @@ class ReproductionAInactivosController extends Controller
                             'f.race_d as raza_h',  
                             'artificial_reproduction.reproduccion as tipo', 
                             'a.race_d as raza_m',
+                            'file_reproduction_artificial.reproduction_state',
                             'file_reproduction_artificial.actual_state'
                             )
                             ->where('file_reproduction_artificial.actual_state','=','INACTIVO')
@@ -152,6 +154,7 @@ class ReproductionAInactivosController extends Controller
                         'file_reproduction_artificial.date as fecha_A',
                         'file_animale.animalCode as animalA',
                         'f.race_d as raza_h',  
+                        'file_reproduction_artificial.reproduction_state',
                         'artificial_reproduction.reproduccion as tipo', 
                         'a.race_d as raza_m'
                         )
@@ -214,6 +217,7 @@ class ReproductionAInactivosController extends Controller
                     ->get();
 
         $re =  File_reproduction_artificial::findOrFail($id);
+
         $re->actual_state = $request->actual_state;
         $estadoActual = $request->actual_state;
        /*if($estadoActual == "DISPONIBLE"){
@@ -245,7 +249,7 @@ class ReproductionAInactivosController extends Controller
              
        }*/
         
-        if($estadoActual == "DISPONIBLE"){
+        if($estadoActual == "ACTIVO"){
             $animalB  = DB::table('file_animale')
             ->select(   'id',
                         'animalCode',
@@ -255,7 +259,7 @@ class ReproductionAInactivosController extends Controller
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
-                    $animal_estado->actual_state = "DISPONIBLE";
+                    $animal_estado->actual_state = "ACTIVO";
                     $animal_estado->update(); 
                 }
             }

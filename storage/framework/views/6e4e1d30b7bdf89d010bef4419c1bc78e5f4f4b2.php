@@ -29,7 +29,8 @@ Fichas de Reproducción Artificial Activos
             <th>Raza </th>
             <th>Tipo de Reproducción Artificial</th>
             <th>Raza Material Genético</th>
-            <th>Estado Actual</th> 
+            <th>Estado de la Reproducción</th>
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>
@@ -41,6 +42,7 @@ Fichas de Reproducción Artificial Activos
             <td><?php echo e($i->raza_h); ?></td>
             <td ><?php echo e($i->tipo); ?></td>
             <td ><?php echo e($i->raza_m); ?></td>
+            <td><?php echo e($i->reproduction_state); ?></td>
             <td ><?php echo e($i->actual_state); ?></td>
             <td>
                 <center>

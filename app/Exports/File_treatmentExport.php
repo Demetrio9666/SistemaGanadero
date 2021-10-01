@@ -33,6 +33,7 @@ class File_treatmentExport implements FromCollection ,WithHeadings,WithColumnWid
                  'antibiotic.antibiotic_d as anti',
                  'vitamin.vitamin_d as vi',
                  'file_treatment.treatment',
+                 'file_treatment.recovery',
                  'file_treatment.actual_state'
                 )->where('file_treatment.actual_state','=','Disponible')    
                 
@@ -49,6 +50,7 @@ class File_treatmentExport implements FromCollection ,WithHeadings,WithColumnWid
             'Antibiotico',
             'Vitamina',
             'Tratamiento',
+            'Recuperación',
             'Estado Actual'
 
         ];
@@ -65,7 +67,8 @@ class File_treatmentExport implements FromCollection ,WithHeadings,WithColumnWid
             'G'=>20, 
             'H'=>27, 
             'I'=>14, 
-            'J'=>15,          
+            'J'=>17, 
+            'K'=>17,         
         ];
     }
     public function styles(Worksheet $sheet)
@@ -80,6 +83,7 @@ class File_treatmentExport implements FromCollection ,WithHeadings,WithColumnWid
        $sheet->getStyle('H1')->getFont()->setBold(true);
        $sheet->getStyle('I1')->getFont()->setBold(true);
        $sheet->getStyle('J1')->getFont()->setBold(true);
+       $sheet->getStyle('K1')->getFont()->setBold(true);
     }
 
 }

@@ -27,7 +27,7 @@ class File_AnimalesExport implements FromCollection ,WithHeadings,WithColumnWidt
                             'file_animale.sex as Sexo','file_animale.stage as Etapa','file_animale.source as Origen','file_animale.age_month as Edad-Meses',
                             'file_animale.health_condition as Estado de Salud','file_animale.gestation_state as Embarazo','file_animale.actual_state as Estado Actual','location.location_d as Localizacion'
                             ,'file_animale.conceived as Concevido')
-                            ->where('file_animale.actual_state', '=', 'DISPONIBLE' )->Orwhere('file_animale.actual_state', '=', 'REPRODUCCION')
+                            ->where('file_animale.actual_state', '=', 'ACTIVO' )->Orwhere('file_animale.actual_state', '=', 'REPRODUCCION')
                     ->get();
         return $animal;
     }

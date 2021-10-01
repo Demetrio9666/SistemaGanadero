@@ -123,7 +123,7 @@ class Vaccine_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
+                  )->where('actual_state','=','ACTIVO')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
 
@@ -157,7 +157,7 @@ class Vaccine_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
+                  )->where('actual_state','=','ACTIVO')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
 
@@ -271,7 +271,7 @@ class Vaccine_controlController extends Controller
                      'date',
                      'age_month',
                      'sex'
-                  )->where('actual_state','=','DISPONIBLE')->ORwhere('actual_state','=','REPRODUCCIÓN')
+                  )->where('actual_state','=','ACTIVO')->ORwhere('actual_state','=','REPRODUCCIÓN')
                   
         ->get();
         return view('vaccineC.edit-vaccineC', compact('vacunaC','vacuna','animal'));
