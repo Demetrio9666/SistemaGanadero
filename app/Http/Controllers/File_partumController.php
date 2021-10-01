@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\File_animale;
+use App\Models\File_reproduction_artificial;
+use App\Models\File_reproduction_internal;
+use App\Models\File_reproduction_external;
 use App\Models\File_partum;
 use App\Models\Vitamin;
 use App\Http\Requests\StoreFile_partum;
@@ -151,6 +154,15 @@ class File_partumController extends Controller
         ->select(    'id',
                      'animalCode'  
                   )->get();
+        $re_A = DB::table('file_reproduction_artificial')
+        ->select('id',
+                'animalCode_id_m',
+                'actual_state'
+                )
+                ->where('actual_state','=','ACTIVO')
+                
+        ->get(); 
+     
         foreach($animalB as $i){
             if($request->animalCode_id ==$i->id){
                 $id_b=$i->id;
@@ -158,6 +170,17 @@ class File_partumController extends Controller
                 $animal_estado->gestation_state = "NO";
                 $animal_estado->update(); 
             }
+        }
+        foreach($re_A  as $i2){
+            foreach($animalB as $i1){
+                if($i1->id == $i2->animalCode_id_m){
+                    $id_arti=$i2->id;
+                    $estado_artificial = file_reproduction_artificial::findOrFail($id_arti);
+                    $estado_artificial->actual_state ="INACTIVO";
+                    $estado_artificial->update();
+                }
+            }
+           
         }
 
         $par->male = $request->male;

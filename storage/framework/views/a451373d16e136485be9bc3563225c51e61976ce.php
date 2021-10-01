@@ -120,7 +120,7 @@ Editar Reproducción Artificial
     </div>
     <div  class="form-group">
         <label for="">Estado de la Reproducción:</label>
-        <select class="form-control" id="inputPassword4" name="reproduction_state" value="<?php echo e($re->reproduction_state); ?>">
+        <select class="form-control" id="inputPassword4" name="reproduction_state" value="<?php echo e($re->reproduction_state); ?>" disabled=disabled>
             <option value="ESPERA"<?php if($re->reproduction_state == "ESPERA"): ?> <?php echo e('selected'); ?> <?php endif; ?>>ESPERA</option>
             <option value="EXITOSO"<?php if($re->reproduction_state == "EXITOSO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>EXITOSO</option>
             <option value="FALLIDO"<?php if($re->reproduction_state == "FALLIDO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>FALLIDO</option>
