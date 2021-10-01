@@ -125,12 +125,20 @@ Editar de Reproducción Natural
                             </tbody>
                         </table>
                         </div>
-                    </div>    
+                    </div>  
+            <div  class="form-group">
+                <label for="">Estado de la Reproducción:</label>
+                <select class="form-control" id="inputPassword4" name="reproduction_state" value="<?php echo e($re->reproduction_state); ?>" disabled=disabled>
+                    <option value="ESPERA"<?php if($re->reproduction_state == "ESPERA"): ?> <?php echo e('selected'); ?> <?php endif; ?>>ESPERA</option>
+                    <option value="EXITOSO"<?php if($re->reproduction_state == "EXITOSO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>EXITOSO</option>
+                    <option value="FALLIDO"<?php if($re->reproduction_state == "FALLIDO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>FALLIDO</option>
+                </select>
+            </div>  
             
             <div  class="form-group">
-                <label for="">Estado Actual:</label>
+                <label for="">Estado actual de la Información:</label>
                 <select class="form-control" id="inputPassword4" name="actual_state" value="<?php echo e($re->actual_state); ?>">
-                    <option value="DISPONIBLE"  <?php if( $re->actual_state == "DISPONIBLE"): ?> selected <?php endif; ?>>DISPONIBLE</option>
+                    <option value="ACTIVO"  <?php if( $re->actual_state == "ACTIVO"): ?> selected <?php endif; ?>>ACTIVO</option>
                     <option value="INACTIVO" <?php if( $re->actual_state == "INACTIVO"): ?> selected <?php endif; ?>>INACTIVO</option>
                 </select>
             </div>

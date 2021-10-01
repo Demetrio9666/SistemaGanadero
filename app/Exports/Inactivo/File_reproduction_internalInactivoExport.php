@@ -23,26 +23,21 @@ class File_reproduction_internalInactivoExport implements FromCollection ,WithHe
         $re_MI = DB::table('file_reproduction_internal')
               ->join('file_animale as M','file_reproduction_internal.animalCode_id_m','=','M.id')
               ->join('file_animale as P','file_reproduction_internal.animalCode_id_p','=','P.id')
-
               ->join('race as RM','M.race_id','=','RM.id')
               ->join('race as RP','P.race_id','=','RP.id')
-
-
               ->select('file_reproduction_internal.id',
                        'file_reproduction_internal.date as fecha_MI',
-
                        'M.animalCode as animal_h_MI',
                        'RM.race_d as raza_h_MI',
                        'M.sex as sexo_h',
                        'M.age_month as edad_h',
-
                        'P.animalCode as animal_m_MI',
                        'RP.race_d as raza_m_MI',
                        'P.sex as sexo_m',
                        'P.age_month as edad_m',
+                       'file_reproduction_internal.reproduction_state',
                        'file_reproduction_internal.actual_state'
                       )->where('file_reproduction_internal.actual_state','=','INACTIVO')
-                      
               ->get();
               return $re_MI;
     }
@@ -58,7 +53,8 @@ class File_reproduction_internalInactivoExport implements FromCollection ,WithHe
             'Raza',
             'Edad',
             'Sexo',
-            'Estado Actual',
+            'Estado de la Reproducción',
+            'Estado actual de la información',
         ];
     }
     public function columnWidths(): array
@@ -75,8 +71,8 @@ class File_reproduction_internalInactivoExport implements FromCollection ,WithHe
             'I'=>14, 
             'J'=>10, 
             'K'=>15, 
-               
-                     
+            'L'=>35,
+            'M'=>35,
         ];
     }
     public function styles(Worksheet $sheet)
@@ -92,5 +88,8 @@ class File_reproduction_internalInactivoExport implements FromCollection ,WithHe
        $sheet->getStyle('I1')->getFont()->setBold(true);
        $sheet->getStyle('J1')->getFont()->setBold(true);
        $sheet->getStyle('K1')->getFont()->setBold(true);
+       $sheet->getStyle('L1')->getFont()->setBold(true);
+       $sheet->getStyle('M1')->getFont()->setBold(true);
+
     }
 }

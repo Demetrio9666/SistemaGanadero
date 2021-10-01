@@ -40,8 +40,9 @@ class File_reproduction_internalExport implements FromCollection ,WithHeadings,W
                        'RP.race_d as raza_m_MI',
                        'P.sex as sexo_m',
                        'P.age_month as edad_m',
+                       'file_reproduction_internal.reproduction_state',
                        'file_reproduction_internal.actual_state'
-                      )->where('file_reproduction_internal.actual_state','=','Disponible')
+                      )->where('file_reproduction_internal.actual_state','=','ACTIVO')
                       
               ->get();
               return $re_MI;
@@ -58,7 +59,8 @@ class File_reproduction_internalExport implements FromCollection ,WithHeadings,W
             'Raza',
             'Edad',
             'Sexo',
-            'Estado Actual',
+            'Estado de la Reproducción',
+            'Estado actual de la información',
         ];
     }
     public function columnWidths(): array
@@ -75,6 +77,8 @@ class File_reproduction_internalExport implements FromCollection ,WithHeadings,W
             'I'=>14, 
             'J'=>10, 
             'K'=>15, 
+            'L'=>35,
+            'M'=>35,
                
                      
         ];

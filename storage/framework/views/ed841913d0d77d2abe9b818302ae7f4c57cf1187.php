@@ -28,7 +28,8 @@ Fichas de Reproducción por Monta Natural Interna Inactivos
             <th>Raza</th>
             <th>Edad</th>
             <th>Sexo</th>
-            <th>Estado Actual</th> 
+            <th>Estado de la Reproducción</th>
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>
@@ -44,6 +45,7 @@ Fichas de Reproducción por Monta Natural Interna Inactivos
             <td><?php echo e($i->raza_m_MI); ?></td>
             <td><?php echo e($i->edad_m); ?></td>
             <td ><?php echo e($i->sexo_m); ?></td>
+            <td ><?php echo e($i->reproduction_state); ?></td>
             <td ><?php echo e($i->actual_state); ?></td>
             <td>
                 <center>

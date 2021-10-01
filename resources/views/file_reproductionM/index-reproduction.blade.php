@@ -33,7 +33,8 @@ Fichas de Reproducción por Monta Natural Interna Activos
             <th>Raza</th>
             <th>Edad</th>
             <th>Sexo</th>
-            <th>Estado Actual</th> 
+            <th>Estado de la Reproducción</th>
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>
@@ -49,6 +50,7 @@ Fichas de Reproducción por Monta Natural Interna Activos
             <td>{{$i->raza_m_MI}}</td>
             <td>{{$i->edad_m}}</td>
             <td >{{$i->sexo_m}}</td>
+            <td >{{$i->reproduction_state}}</td>
             <td >{{$i->actual_state}}</td>
             <td>
                 <center> <a class="btn btn-primary  " href="{{route('fichaReproduccionM.edit',$i->id)}}" ><i class="fas fa-edit"></i></a></center>

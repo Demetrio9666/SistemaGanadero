@@ -16,8 +16,9 @@ Fichas de Reproducción por Monta Natural Interna Activos
                 <th>Raza</th>
                 <th>Edad</th>
                 <th>Sexo</th>
-                <th>Estado Actual</th> 
-                <th>Acción</th>
+                <th>Estado de la Reproducción</th>
+                <th>Estado actual de la Información</th>  
+                
             </tr> 
     </thead>
     <tbody>  
@@ -32,7 +33,8 @@ Fichas de Reproducción por Monta Natural Interna Activos
             <td>{{$i->raza_m_MI}}</td>
             <td>{{$i->edad_m}}</td>
             <td>{{$i->sexo_m}}</td>
-            <td>{{$i->actual_state}}</td>
+            <td >{{$i->reproduction_state}}</td>
+            <td >{{$i->actual_state}}</td>
         </tr>
         @endforeach
     </tbody>

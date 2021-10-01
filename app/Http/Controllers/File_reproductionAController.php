@@ -240,6 +240,12 @@ class File_reproductionAController extends Controller
         $estadoActualReproduccion = $request->reproduction_state;
         $estadoActual =$request->actual_state;
         if($estadoActualReproduccion == "EXITOSO"){
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'gestation_state',
+                        'actual_state'  
+                    )->get();
             foreach($animalB as $i){
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
@@ -250,19 +256,33 @@ class File_reproductionAController extends Controller
                 }
             }
         }elseif ($estadoActual == "FALLIDO") {
+            $animalB  = DB::table('file_animale')
+            ->select(   'id',
+                        'animalCode',
+                        'gestation_state',
+                        'actual_state'  
+                    )->get();
             foreach($animalB as $i){
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->gestation_state ="NO";
                     $animal_estado->actual_state = "REPRODUCCIÓN";
                     $animal_estado->update(); 
                 }
             }
         }else {
             foreach($animalB as $i){
+                $animalB  = DB::table('file_animale')
+                ->select(   'id',
+                            'animalCode',
+                            'gestation_state',
+                            'actual_state'  
+                        )->get();
                 if($request->animalCode_id_m ==$i->id){
                     $id_b=$i->id;
                     $animal_estado = File_Animale::findOrFail($id_b);
+                    $animal_estado->gestation_state ="NO";
                     $animal_estado->actual_state = "ACTIVO";
                     $animal_estado->update(); 
                 }

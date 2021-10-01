@@ -228,7 +228,7 @@ unset($__errorArgs, $__bag); ?>
             <div  class="col-md-6">
                 <label for="">Estado Actual:</label>
                 <select class="form-control" id="inputPassword4" name="actual_state" value="<?php echo e($animal->actual_state); ?>">
-                    <option value="DISPONIBLE" <?php if($animal->actual_state == "DISPONIBLE" ): ?> selected <?php endif; ?>>DISPONIBLE</option>
+                    <option value="ACTIVO" <?php if($animal->actual_state == "ACTIVO" ): ?> selected <?php endif; ?>>ACTIVO</option>
                     <option value="VENDIDO"    <?php if($animal->actual_state == "VENDIDO" ): ?> selected <?php endif; ?>>VENDIDO</option>
                     <option value="INACTIVO"   <?php if($animal->actual_state == "INACTIVO" ): ?> selected <?php endif; ?>>INACTIVO</option>
                     <option value="REPRODUCCIÓN"  <?php if($animal->actual_state == "REPRODUCCIÓN" ): ?> selected <?php endif; ?>>REPRODUCIÓN</option>

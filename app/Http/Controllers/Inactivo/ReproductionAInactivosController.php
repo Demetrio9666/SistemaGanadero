@@ -219,8 +219,6 @@ class ReproductionAInactivosController extends Controller
                     ->get();
 
         $re =  File_reproduction_artificial::findOrFail($id);
-
-        
         $estadoActualReproduccion = $request->reproduction_state;
         $estadoActual =$request->actual_state;
         if($estadoActual == "ACTIVO"){
