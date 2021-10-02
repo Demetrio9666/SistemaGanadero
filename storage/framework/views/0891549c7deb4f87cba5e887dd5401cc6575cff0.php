@@ -29,7 +29,8 @@ Fichas de Reproducción por Monta Natural Externa Inactivos
             <th>Edad</th>
             <th>Sexo</th>
             <th>Hacienda</th>
-            <th>Estado Actual</th> 
+            <th>Estado de la Reproducción</th>
+            <th>Estado actual de la Información</th>  
             <th>Acción</th>
         </tr>
     </thead>
@@ -46,6 +47,7 @@ Fichas de Reproducción por Monta Natural Externa Inactivos
             <td><?php echo e($i->age_month); ?></td>
             <td><?php echo e($i->sex); ?></td>
             <td><?php echo e($i->hacienda_name); ?></td>
+            <td ><?php echo e($i->reproduction_state); ?></td>
             <td ><?php echo e($i->actual_state); ?></td>
             <td>
               <center>

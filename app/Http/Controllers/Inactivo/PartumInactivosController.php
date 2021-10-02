@@ -132,8 +132,8 @@ class PartumInactivosController extends Controller
                      'actual_state'
                      
                   )
-                  ->where('gestation_state','=','Si')
-                  ->where('actual_state','=','Disponible')->orwhere('actual_state','=','Reproduccion')
+                  
+                  ->where('actual_state','=','ACTIVO')->orwhere('actual_state','=','Reproduccion')
                   ->get();
         return view('file_partum.edit-inactivo',compact('animal','par'));
     }
@@ -190,9 +190,10 @@ class PartumInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request , $id)
+    public function destroy($id , Request $request)
     {
         $par =  File_partum::findOrFail($id);
+
         $par->delete();
         
         $actvividad = new  Activity();

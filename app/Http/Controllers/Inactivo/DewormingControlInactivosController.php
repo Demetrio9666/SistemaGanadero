@@ -181,7 +181,7 @@ class DewormingControlInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request , $id)
+    public function destroy($id , Request $request)
     {
         $desC = Deworming_control::findOrFail($id);
         $desC->delete();

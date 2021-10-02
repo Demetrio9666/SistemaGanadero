@@ -396,37 +396,6 @@ class File_reproductionAController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $re_A = DB::table('file_reproduction_artificial')
-                    ->select('id',
-                            'date',
-                            'animalCode_id_m',
-                            'artificial_id',
-                            'actual_state'
-                            )
-                            ->where('actual_state','=','DISPONIBLE')
-                            
-                    ->get(); 
-                   // return $re_A;
-            
-        $re_MI = DB::table('file_reproduction_internal')
-                    ->select('id',
-                             'date',
-                             'animalCode_id_m',
-                             'actual_state'
-                            )->where('actual_state','=','DISPONIBLE')
-                            
-                    ->get();
-                    //return $re_MI;
-        $ext =  DB::table('file_reproduction_external')
-                    ->select('id',
-                            'date',
-                            'animalCode_id',
-                            'actual_state')
-                            ->where('actual_state','=','DISPONIBLE')
-                                
-                    ->get();
-        //return $ext;
-      
         $re =  File_reproduction_artificial::findOrFail($id);
         $id;
 

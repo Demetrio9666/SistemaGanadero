@@ -41,7 +41,7 @@ Fichas de Tratamientos Inactivos
                 <td >{{$i->anti}}</td>
                 <td >{{$i->vi}}</td>
                 <td >{{$i->treatment}}</td>
-                <td>{{$i->recovery>}}</td>
+                <td>{{$i->recovery}}</td>
                 <td >{{$i->actual_state}}</td>
                 <td>
                     <a class="btn btn-primary  " href="{{route('inactivos.fichaTratamientos.edit',$i->id)}}" ><i class="fas fa-edit"></i></a>

@@ -138,7 +138,7 @@ class VitaminInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy($id , Request $request)
     {
         $vitamina = Vitamin::findOrFail($id);
         $vitamina->delete();

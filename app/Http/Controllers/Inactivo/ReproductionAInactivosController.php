@@ -324,7 +324,7 @@ class ReproductionAInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request , $id)
+    public function destroy($id , Request $request)
     {
         $re =  File_reproduction_artificial::findOrFail($id);
         $re->delete();

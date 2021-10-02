@@ -96,9 +96,17 @@ Editar Reproducción Natural Externa Inactivas
             <input type="text" class="form-control" id="hacienda_name" name="hacienda_name" value="<?php echo e($ext->hacienda_name); ?>" onblur="upperCase()" disabled=disabled>
         </div> 
         <div  class="col-md-6">
-            <label for="">Estado Actual:</label>
-            <select class="form-control" id="inputPassword4" name="actual_state"  value="<?php echo e($ext->actual_state); ?>" >
-                <option value="DISPONIBLE" <?php if( $ext->actual_state == "DISPONIBLE"): ?> selected <?php endif; ?>>DISPONIBLE</option>
+            <label for="">Estado de la Reproducción:</label>
+            <select class="form-control" id="inputPassword4" name="reproduction_state" value="<?php echo e($ext->reproduction_state); ?>"disabled=disabled>
+                <option value="ESPERA"<?php if($ext->reproduction_state == "ESPERA"): ?> <?php echo e('selected'); ?> <?php endif; ?>>ESPERA</option>
+                <option value="EXITOSO"<?php if($ext->reproduction_state == "EXITOSO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>EXITOSO</option>
+                <option value="FALLIDO"<?php if($ext->reproduction_state == "FALLIDO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>FALLIDO</option>
+            </select>
+        </div>
+        <div  class="col-md-6">
+            <label for="">Estado actual de la Información:</label>
+            <select class="form-control" id="inputPassword4" name="actual_state"  value="<?php echo e($ext->actual_state); ?>">
+                <option value="ACTIVO" <?php if( $ext->actual_state == "ACTIVO"): ?> selected <?php endif; ?>>ACTIVO</option>
                 <option value="INACTIVO" <?php if( $ext->actual_state == "INACTIVO"): ?> selected <?php endif; ?>>INACTIVO</option>
              </select>
         </div> 

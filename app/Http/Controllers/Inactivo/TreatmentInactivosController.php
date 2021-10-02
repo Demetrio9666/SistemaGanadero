@@ -213,7 +213,7 @@ class TreatmentInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request , $id)
+    public function destroy($id , Request $request)
     {
         $tra = File_treatment::findOrFail($id);
         $tra->delete();

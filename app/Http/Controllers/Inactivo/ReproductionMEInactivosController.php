@@ -276,7 +276,7 @@ class ReproductionMEInactivosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request , $id)
+    public function destroy($id , Request $request)
     {
         $ext =  File_reproduction_external::findOrFail($id);
         $ext->delete();

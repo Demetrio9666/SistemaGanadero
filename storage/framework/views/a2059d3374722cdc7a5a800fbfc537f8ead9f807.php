@@ -40,8 +40,8 @@ Fichas de Tratamientos Inactivos
                 <td ><?php echo e($i->detail); ?></td>
                 <td ><?php echo e($i->anti); ?></td>
                 <td ><?php echo e($i->vi); ?></td>
-                <td>-</td>
                 <td ><?php echo e($i->treatment); ?></td>
+                <td><?php echo e($i->recovery); ?></td>
                 <td ><?php echo e($i->actual_state); ?></td>
                 <td>
                     <a class="btn btn-primary  " href="<?php echo e(route('inactivos.fichaTratamientos.edit',$i->id)); ?>" ><i class="fas fa-edit"></i></a>
