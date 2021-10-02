@@ -178,9 +178,9 @@ class File_partumController extends Controller
         foreach($animalB as $i){
             if($request->animalCode_id ==$i->id){
                 $id_b=$i->id;
-                //$animal_estado = File_Animale::findOrFail($id_b);
-                //$animal_estado->gestation_state = "NO";
-                //$animal_estado->update(); 
+                $animal_estado = File_Animale::findOrFail($id_b);
+                $animal_estado->gestation_state = "NO";
+                $animal_estado->update(); 
             }
         }
        
@@ -360,6 +360,28 @@ class File_partumController extends Controller
         ->select(    'id',
                      'animalCode'  
                   )->get();
+                  $re_A = DB::table('file_reproduction_artificial')
+                  ->select('id',
+                          'animalCode_id_m',
+                          'actual_state'
+                          )
+                          ->where('actual_state','=','ACTIVO')
+                          
+                  ->get(); 
+                  $re_MI = DB::table('file_reproduction_internal')
+                  ->select('id',
+                           'animalCode_id_m',
+                           'actual_state'
+                          )->where('actual_state','=','ACTIVO')
+                          
+                  ->get();
+                  $ext =  DB::table('file_reproduction_external')
+                  ->select('id',
+                          'animalCode_id',
+                          'actual_state')
+                          ->where('actual_state','=','ACTIVO')
+                              
+                  ->get();
         foreach($animalB as $i){
             if($request->animalCode_id ==$i->id){
                 $id_b=$i->id;
@@ -367,6 +389,69 @@ class File_partumController extends Controller
                 $animal_estado->gestation_state = "NO";
                 $animal_estado->update(); 
             }
+        }
+        foreach($ext as $i3){
+            if($i3->animalCode_id == $id_b){
+                ////////////MONTA EXTERNA/////////////////////
+                foreach($ext  as $a2){
+                    foreach($animalB as $a1){
+                        if($a1->id == $a2->animalCode_id){
+                            $id_MEX=$a2->id;
+                            $estado_artificial = file_reproduction_external::findOrFail($id_MEX);
+                            $estado_artificial->actual_state ="INACTIVO";
+                            $estado_artificial->update();
+                            $luz ="verde";
+                            break;
+                        }
+                    }
+                   
+                }
+            }
+        }
+
+        
+            foreach( $re_A as $i2){
+                if($i2->animalCode_id_m == $id_b){
+                    ////////ARTIFICIAL////////////////////
+                    foreach($re_A  as $a2){
+                        foreach($animalB as $a1){
+                            if($a1->id == $a2->animalCode_id_m){
+                                $id_arti=$a2->id;
+                                $estado_artificial = file_reproduction_artificial::findOrFail($id_arti);
+                                $estado_artificial->actual_state ="INACTIVO";
+                                $estado_artificial->update();
+                                $luz ="verde";
+                                break;
+                            }
+                        }
+                    
+                    }
+                }    
+            }
+            
+        
+     
+
+        foreach($re_MI as $i){
+            if( $i->animalCode_id_m == $id_b){
+                ///////////MONTA INTERNA/////////////////
+                foreach($re_MI  as $a2){
+                    foreach($animalB as $a1){
+                        if($a1->id == $a2->animalCode_id_m){
+                            $id_MI=$a2->id;
+                            $estado_artificial = file_reproduction_internal::findOrFail($id_MI);
+                            $estado_artificial->actual_state ="INACTIVO";
+                            $estado_artificial->update();
+                            $luz ="verde";
+                            break;
+                        }
+                    }
+                   
+                }
+               
+
+            }
+
         }
 
         $par->date= $request->date;
