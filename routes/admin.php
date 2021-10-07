@@ -25,7 +25,7 @@ use App\Http\Controllers\Inactivo\VaccineControlInactivosController;
 
 
 use App\Http\Controllers\Dashboard\DashboardController;
-
+use App\Http\Controllers\Dashboard\BusquedaController;
 
 
 use App\Http\Controllers\RaceController;
@@ -53,7 +53,7 @@ use App\Http\Controllers\Admin\ProfielController;
 
 Route::get('/dashboard',[DashboardController::class,'Dashboard']);
 Route::get('/dashboard-reproduccion',[DashboardController::class,'DashboardReproduccion']);
-
+Route::resource('/dashboard-busqueda',BusquedaController::class)->names('dashboard-busqueda');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {

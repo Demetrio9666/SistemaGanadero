@@ -166,10 +166,7 @@ class File_animaleController extends Controller
                 ->where('file_animale.actual_state','=','ACTIVO')
                 ->orwhere('file_animale.actual_state','=','REPRODUCCIÓN')
                 ->orwhere('file_animale.actual_state','=','VENDIDO')
-                
-                
                 ->get();
-                   
                     
                     foreach($animal as $i2){
                     if($request->sexo == 'HEMBRA'){
@@ -219,8 +216,6 @@ class File_animaleController extends Controller
                             }
 
                         }
-                        
-
                     }else{
                         break;
                     }

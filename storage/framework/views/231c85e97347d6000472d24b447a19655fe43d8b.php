@@ -5,7 +5,7 @@
     <div id="reloj" class="reloj">00 : 00 : 00</div>
     <br>
     <br>
-    <div class="row">
+  <div class="row">
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-primary" >

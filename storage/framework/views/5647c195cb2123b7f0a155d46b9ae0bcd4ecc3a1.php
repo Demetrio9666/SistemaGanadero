@@ -10,6 +10,7 @@
                         <div style="margin-top: 19px; ">
                             <div class="card " style="width: 200px">
                                 <div id="imagenPreview"  ></div>
+                            </div>
                         </div>
                             <input class="form-control form-control-sm <?php echo e($errors->has('file') ? 'is-invalid':''); ?>" id="imagen" type="file" name="file" >
                             

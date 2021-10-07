@@ -1,0 +1,10 @@
+.contenedor{
+    
+    float:right;
+	height: auto;
+    width: 70%;
+    min-width: 250px;
+    padding: 0 35px;
+    background-size: 100% 100%;
+    background-color: white;
+  }

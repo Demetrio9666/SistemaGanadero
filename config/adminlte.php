@@ -294,6 +294,13 @@ return [
                         'can'=>'dashboard.index',
                         'shift' => 'ml-4',
                     ],
+                    [
+                        'text' =>'Búsqueda',
+                        'url'=> '/dashboard-busqueda',
+                        'icon' => 'fas fa-chart-line',
+                        'can'=>'dashboard.index',
+                        'shift' => 'ml-4',
+                    ],
                        
                ],
 
