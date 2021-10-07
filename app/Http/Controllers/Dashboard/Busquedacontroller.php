@@ -203,6 +203,7 @@ class Busquedacontroller extends Controller
                             'file_reproduction_external.actual_state')
                             ->where('reproduction_state','=','EXITOSO')
                             ->where('file_animale.animalCode','LIKE',$buscar)->count();
+                            
             $ext_fallido =  DB::table('file_reproduction_external')
                     ->join('file_animale','file_reproduction_external.animalCode_id','=','file_animale.id')
                     ->leftJoin('race as R','file_animale.race_id','=','R.id')

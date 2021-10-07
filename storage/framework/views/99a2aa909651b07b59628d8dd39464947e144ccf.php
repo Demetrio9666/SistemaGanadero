@@ -68,7 +68,7 @@
                 if(sexo == "MACHO"){
                     if(etapa == "TERNERO"){
                             $("#REPRODUCCIÓN").hide();
-                            $("#DISPONIBLE").show();
+                            $("#ACTIVO").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
                             $("#SI").hide();
@@ -90,7 +90,7 @@
                         }
                     }else if(etapa == "TORETE"){
                             $("#REPRODUCCIÓN").hide();
-                            $("#DISPONIBLE").show();
+                            $("#ACTIVO").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
                             $("#SI").hide();
@@ -112,7 +112,7 @@
 
                     }else if(etapa == "TORO"){
                             $("#REPRODUCCIÓN").show();
-                            $("#DISPONIBLE").show();
+                            $("#ACTIVO").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
                             $("#SI").hide();
@@ -140,7 +140,7 @@
                 
                     if(etapa == "TERNERA"){
                             $("#REPRODUCCIÓN").hide();
-                            $("#DISPONIBLE").show();
+                            $("#ACTIVO").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
                             $("#SI").hide();
@@ -162,12 +162,13 @@
                         }
                     }else if(etapa == "VACONILLA"){
                             $("#SI").hide();
-                            $("#NO").show();
-                            $("#REPRODUCCIÓN").hide();
-                            $("#DISPONIBLE").show();
-                            $("#VENDIDO").show();
-                            $("#INACTIVO").show();
-                           
+                            var no = $("#NO").show();
+                            if(embarazo == no){
+                                    $("#REPRODUCCIÓN").hide();
+                                    $("#ACTIVO").show();
+                                    $("#VENDIDO").show();
+                                    $("#INACTIVO").show();
+                           }
                         if(id < 11  || id > 22){
                             Swal.fire({
                                     icon: 'error',
@@ -189,12 +190,12 @@
                         var no = $("#NO").show();
                         if(embarazo == si){
                             $("#REPRODUCCIÓN").hide();
-                            $("#DISPONIBLE").show();
+                            $("#ACTIVO").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
                         }
                             $("#REPRODUCCIÓN").show();
-                            $("#DISPONIBLE").show();
+                            $("#ACTIVO").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
 
@@ -220,12 +221,12 @@
                              var no = $("#NO").show();
                         if(embarazo == si){
                             $("#REPRODUCCIÓN").hide();
-                            $("#DISPONIBLE").show();
+                            $("#ACTIVO").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
                         }
                             $("#REPRODUCCIÓN").show();
-                            $("#DISPONIBLE").show();
+                            $("#ACTIVO").show();
                             $("#VENDIDO").show();
                             $("#INACTIVO").show();
 
@@ -264,20 +265,27 @@
             }
 
           function validarEmbarazo(id){
-                  
-                    if( id == "SI"){
-                        $("#DISPONIBLE").show();
+                sexo = document.getElementById("opsexo").value;
+                etapa = document.getElementById("opetapa").value;
+                embarazo = document.getElementById("embarazo").value;
+                    if( id == "SI" && etapa == 'VACA' || etapa == 'VACONA'){
+                        $("#ACTIVO").show();
                         $("#VENDIDO").show();
                         $("#INACTIVO").show();
                         $("#REPRODUCCIÓN").hide();
                         
-                    }else{
+                    }else if(id == "NO" && etapa == 'VACA' || etapa == 'VACONA'){
                          
-                        $("#DISPONIBLE").show();
+                        $("#ACTIVO").show();
                         $("#VENDIDO").show();
                         $("#INACTIVO").show();
                         $("#REPRODUCCIÓN").show();
-                    }         
+                    }else if(id == "NO" && etapa == 'TORO' || etapa == 'TERNERO' || etapa == "TORETE" || etapa == "TERNERA" || etapa == "VACONILLA"){
+                        $("#ACTIVO").show();
+                        $("#VENDIDO").show();
+                        $("#INACTIVO").show();
+                        $("#REPRODUCCIÓN").hide();
+                    }        
                
                
            }

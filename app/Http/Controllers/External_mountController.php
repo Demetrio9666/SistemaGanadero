@@ -143,7 +143,7 @@ class External_mountController extends Controller
                         'race.race_d as raza',
                         'file_animale.sex')
                 ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                ->where('file_animale.stage','=',['VACA','VACONA'])
+                //->where('file_animale.stage','=',['VACA','VACONA'])
                     ->get();
 
         
@@ -313,7 +313,7 @@ class External_mountController extends Controller
                             'race.race_d as raza',
                             'file_animale.sex')
                     ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                    ->where('file_animale.stage','=',['VACA','VACONA'])
+                    //->where('file_animale.stage','=',['VACA','VACONA'])
                         ->get();
     
         

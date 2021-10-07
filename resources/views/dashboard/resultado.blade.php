@@ -66,7 +66,7 @@
         </div>
         <div class="card-body">
           <div class="chart">
-            <canvas id="barChart" style="height:330px; min-height:430px"></canvas>
+            <canvas id="Artificial" style="height:330px; min-height:430px"></canvas>
           </div>
        </div>
   
@@ -83,7 +83,7 @@
         </div>
         <div class="card-body">
           <div class="chart">
-            <canvas id="barChart2" style="height:330px; min-height:430px"></canvas>
+            <canvas id="ArtificialTipo" style="height:330px; min-height:430px"></canvas>
           </div>
        </div>
   
@@ -100,7 +100,7 @@
         </div>
         <div class="card-body">
           <div class="chart">
-            <canvas id="barChart3" style="height:330px; min-height:430px"></canvas>
+            <canvas id="natural" style="height:330px; min-height:430px"></canvas>
           </div>
        </div>
   
@@ -118,7 +118,7 @@
         </div>
         <div class="card-body">
           <div class="chart">
-            <canvas id="barChart4" style="height:330px; min-height:430px"></canvas>
+            <canvas id="externo" style="height:330px; min-height:430px"></canvas>
           </div>
        </div>
   
@@ -229,7 +229,7 @@
 <script>
 
   //////////7
-  var ctx = document.getElementById('barChart').getContext('2d');
+  var ctx = document.getElementById('Artificial').getContext('2d');
   var cData = JSON.parse(`<?php echo $datas2; ?>`)
   var myChart = new Chart(ctx, {
       type: 'bar',
@@ -257,7 +257,7 @@
       }
   });
   ///////////
-  var ctx = document.getElementById('barChart2').getContext('2d');
+  var ctx = document.getElementById('ArtificialTipo').getContext('2d');
   var cData = JSON.parse(`<?php echo $datas3; ?>`)
   var myChart = new Chart(ctx, {
       type: 'bar',
@@ -285,7 +285,7 @@
       }
   });
   //////
-  var ctx = document.getElementById('barChart3').getContext('2d');
+  var ctx = document.getElementById('natural').getContext('2d');
   var cData = JSON.parse(`<?php echo $datas4; ?>`)
   var myChart = new Chart(ctx, {
       type: 'bar',
@@ -315,8 +315,8 @@
       }
   });
   //////
-  var ctx = document.getElementById('barChart4').getContext('2d');
-  var cData = JSON.parse(`<?php echo $datas4; ?>`)
+  var ctx = document.getElementById('externo').getContext('2d');
+  var cData = JSON.parse(`<?php echo $datas5; ?>`)
   var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -326,7 +326,6 @@
               data: cData,
               backgroundColor: [
                   'rgba(12, 45, 246, 0.97)',
-                  'rgba(121, 12, 246, 1)',
                   'rgba(255, 168, 255, 0.93)',
                   'rgba(234, 246, 101, 0.93)',
                   

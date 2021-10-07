@@ -143,7 +143,7 @@ class File_reproductionMController extends Controller
                             'race.race_d as raza',
                             'file_animale.sex')
                     ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                    ->where('file_animale.stage','=',['VACA','VACONA'])
+                    //->where('file_animale.stage','=',['VACA','VACONA'])
                 ->get();
 
         $animalmacho= DB::table('file_animale')
@@ -392,7 +392,7 @@ class File_reproductionMController extends Controller
                             'race.race_d as raza',
                             'file_animale.sex')
                     ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                    ->where('file_animale.stage','=',['VACA','VACONA'])
+                    //->where('file_animale.stage','=',['VACA','VACONA'])
                 ->get();
         $animalmacho= DB::table('file_animale')
                 ->join('race','file_animale.race_id','=','race.id')
