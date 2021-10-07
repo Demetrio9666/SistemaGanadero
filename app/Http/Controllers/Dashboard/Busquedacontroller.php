@@ -22,6 +22,9 @@ class Busquedacontroller extends Controller
     }
 
     public function store(Request $request){
+        if($request->buscar == ""){
+            return view('mensajes.buscar.buscar');
+        }
         $buscar= $request->buscar;
                 $animal = DB::table('file_animale')
                 ->leftJoin('race','file_animale.race_id','=','race.id')
@@ -265,6 +268,18 @@ class Busquedacontroller extends Controller
                     'deworming_control.actual_state')
                     ->where('file_animale.animalCode','LIKE',$buscar)
             ->get();
+
+        
+        $pesoC = DB::table('weigth_control')
+            ->join('file_animale','weigth_control.animalCode_id','=','file_animale.id')
+            ->select('weigth_control.id'
+            ,'weigth_control.date',
+            'file_animale.animalCode as animal',
+            'weigth_control.weigtht',
+            'weigth_control.date_r',
+            'weigth_control.actual_state')
+            ->where('file_animale.animalCode','LIKE',$buscar)
+            ->get();
                                          
 
         foreach($animal as $i){
@@ -285,7 +300,7 @@ class Busquedacontroller extends Controller
 
         return view('dashboard.resultado',compact('codigoA','imagen','fecha','raza','sexo','etapa','origen','edad','estado','par','datas2',
 
-        'datas3','datas4','datas5','vacunaC','desC' ));
+        'datas3','datas4','datas5','vacunaC','desC','pesoC' ));
     }
 
   

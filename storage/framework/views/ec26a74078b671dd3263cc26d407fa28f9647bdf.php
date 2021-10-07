@@ -128,7 +128,7 @@
 </div>
 <div class="card">
   <div class="card-body">
-    <div class="titulo "><h1> Vacunaciones</h1></div>
+    <div class="titulo "><h1> Control de Vacunaciones</h1></div>
     <div class="table-responsive">
       <table class="table">
         <thead>            
@@ -158,7 +158,7 @@
 
 <div class="card">
   <div class="card-body">
-    <div class="titulo "><h1> Desparasitaciones</h1></div>
+    <div class="titulo "><h1>Control de Desparasitaciones</h1></div>
     <div class="table-responsive">
       <table class="table">
         <thead>            
@@ -186,7 +186,39 @@
   
 </div>
 
+<div class="card">
+  <div class="card-body">
+    <div class="titulo "><h1>Control de  Pesos</h1></div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>            
+            <tr>
+                <th scope="col">Código Animal</th>
+                <th scope="col">Fecha de la desparasitación</th>
+                <th scope="col">Desparasitante</th>
+            </tr>
+        </thead>
+        <tbody>  
+          <?php $__currentLoopData = $pesoC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
+          <tr>
+            <td ><?php echo e($i->animal); ?></td>
+            <td><?php echo e($i->date); ?></td>
+            <td ><?php echo e($i->weigtht); ?></td>
+          </tr>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>    
+            
+           
+        </tbody>
+    </table>
+    </div>
+    
+  </div>
+  
+</div>
 
+<center>
+  <a type="submit" class="btn btn-primary btn" href="<?php echo e(url('/dashboard-busqueda')); ?>" >Regresar</a>
+</center>
 
 
 
@@ -195,6 +227,8 @@
 <?php $__env->startSection('js'); ?>
 <script type="text/javascript" src="<?php echo e(asset('Chartjs/Chart.js')); ?>"></script>
 <script>
+
+  //////////7
   var ctx = document.getElementById('barChart').getContext('2d');
   var cData = JSON.parse(`<?php echo $datas2; ?>`)
   var myChart = new Chart(ctx, {

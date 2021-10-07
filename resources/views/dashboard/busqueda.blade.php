@@ -8,13 +8,10 @@
 <div class="contenedor">
     <form action="{{route('dashboard-busqueda.store')}}" method="POST" >                                                     
         @csrf
-        
         <button type="submit"  class="btn btn-success "  style="margin: 10px"  >Buscar</button>
-        <input type="text" name="buscar" placeholder="Código Animal">
-        
+        <input type="text" name="buscar" id="buscar" placeholder="Código Animal" >
     </form>
 </div>
-
-
-
 @endsection
+
+

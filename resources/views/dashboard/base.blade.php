@@ -23,6 +23,21 @@
     
 @endsection
 @section('js')
+<script>
+  function vacio(id){
+    var buscar = document.getElementById("buscar").value;
+      if(id == ""){
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El Campo de busqueda esta vacio',
+                
+            }) 
+      }
+        }
+
+</script>
+
 
 
 @endsection
