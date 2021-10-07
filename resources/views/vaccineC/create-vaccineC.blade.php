@@ -50,7 +50,7 @@ Registro Control Vacunación
                 <div  class="col-md-6">
                     <label for="">Estado actual de la Información:</label>
                     <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
-                        <option value="ACTIVO"@if(old('actual_state') == "ACTIVO") {{'selected'}} @endif>DISPONIBLE</option>
+                        <option value="ACTIVO"@if(old('actual_state') == "ACTIVO") {{'selected'}} @endif>ACTIVO</option>
                         <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                     </select>
                 </div> 

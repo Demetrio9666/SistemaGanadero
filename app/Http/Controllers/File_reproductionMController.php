@@ -132,7 +132,7 @@ class File_reproductionMController extends Controller
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','Disponible')
+                    ->where('race.actual_state','=','ACTIVO')
                     ->get();
 
         $animalhembra= DB::table('file_animale')
@@ -177,7 +177,7 @@ class File_reproductionMController extends Controller
                 'animalCode_id_m',
                 'actual_state'
                 )
-                ->where('actual_state','=','DISPONIBLE')
+                ->where('actual_state','=','ACTIVO')
                 
                 ->get(); 
        // return $re_A;
@@ -187,7 +187,7 @@ class File_reproductionMController extends Controller
                         'date',
                         'animalCode_id_m',
                         'actual_state'
-                        )->where('actual_state','=','DISPONIBLE')
+                        )->where('actual_state','=','ACTIVO')
                         
                 ->get();
                 //return $re_MI;
@@ -196,7 +196,7 @@ class File_reproductionMController extends Controller
                         'date',
                         'animalCode_id',
                         'actual_state')
-                        ->where('actual_state','=','DISPONIBLE')
+                        ->where('actual_state','=','ACTIVO')
                             
                 ->get();
                 
@@ -382,7 +382,7 @@ class File_reproductionMController extends Controller
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','Disponible')
+                    ->where('race.actual_state','=','ACTIVO')
                     ->get();
         $animalhembra= DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')

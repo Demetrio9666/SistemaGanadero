@@ -114,7 +114,7 @@ class Vaccine_controlController extends Controller
     {
         $vacuna = DB::table('vaccine')
         ->select('id','vaccine_d')
-        ->where('actual_state','=','DISPONIBLE')
+        ->where('actual_state','=','ACTIVO')
         ->get();
 
         $animal  = DB::table('file_animale')

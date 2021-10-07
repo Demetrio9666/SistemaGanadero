@@ -72,9 +72,9 @@ endif;
 unset($__errorArgs, $__bag); ?>
     </div> 
     <div  class="form-group">
-        <label for="">Estado Actual:</label>
+        <label for="">Estado actual de la Información:</label>
         <select class="form-control" id="inputPassword4" name="actual_state" value="<?php echo e(old('actual_state')); ?>">
-            <option value="DISPONIBLE"<?php if(old('actual_state') == "DISPONIBLE"): ?> <?php echo e('selected'); ?> <?php endif; ?>>DISPONIBLE</option>
+            <option value="ACTIVO"<?php if(old('actual_state') == "ACTIVO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>ACTIVO</option>
             <option value="INACTIVO"<?php if(old('actual_state') == "INACTIVO"): ?> <?php echo e('selected'); ?> <?php endif; ?>>INACTIVO</option>
          </select>
     </div>  

@@ -132,7 +132,7 @@ class External_mountController extends Controller
                         'race.race_d',
                         'race.percentage',
                         'race.actual_state')
-                        ->where('race.actual_state','=','Disponible')
+                        ->where('race.actual_state','=','ACTIVO')
                         ->get();
 
         $animaleEX=  DB::table('file_animale')
@@ -304,7 +304,7 @@ class External_mountController extends Controller
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','DISPONIBLE')
+                    ->where('race.actual_state','=','ACTIVO')
                     ->get();
         $animaleEX=  DB::table('file_animale')
                     ->join('race','file_animale.race_id','=','race.id')

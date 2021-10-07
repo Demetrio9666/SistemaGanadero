@@ -130,7 +130,7 @@ class File_reproductionAController extends Controller
         $re_A = DB::table('file_reproduction_artificial')
                 ->select(
                         'animalCode_id_m',
-                        )->where('actual_state','=','DISPONIBLE')
+                        )->where('actual_state','=','ACTIVO')
                 ->get();
 
         $animalhembra= DB::table('file_animale')
@@ -152,7 +152,7 @@ class File_reproductionAController extends Controller
                         'race.race_d',
                         'race.percentage',
                         'race.actual_state')
-                        ->where('race.actual_state','=','DISPONIBLE')
+                        ->where('race.actual_state','=','ACTIVO')
                 ->get();
 
 
@@ -163,7 +163,7 @@ class File_reproductionAController extends Controller
                         'race.race_d',
                         'artificial_Reproduction.reproduccion',
                         'artificial_Reproduction.supplier'
-                        )->where('artificial_Reproduction.actual_state','=','DISPONIBLE')
+                        )->where('artificial_Reproduction.actual_state','=','ACTIVO')
         ->get();  
 
        
@@ -358,7 +358,7 @@ class File_reproductionAController extends Controller
                             'race.race_d',
                             'race.percentage',
                             'race.actual_state')
-                            ->where('race.actual_state','=','Disponible')
+                            ->where('race.actual_state','=','ACTIVO')
                             ->get();
 
         $re_A = DB::table('file_reproduction_artificial')
