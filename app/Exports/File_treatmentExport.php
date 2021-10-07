@@ -35,7 +35,7 @@ class File_treatmentExport implements FromCollection ,WithHeadings,WithColumnWid
                  'file_treatment.treatment',
                  'file_treatment.recovery',
                  'file_treatment.actual_state'
-                )->where('file_treatment.actual_state','=','Disponible')    
+                )->where('file_treatment.actual_state','=','ACTIVO')    
                 
         ->get();
         return $tra;
@@ -51,7 +51,7 @@ class File_treatmentExport implements FromCollection ,WithHeadings,WithColumnWid
             'Vitamina',
             'Tratamiento',
             'Recuperación',
-            'Estado Actual'
+            'Estado actual de la Información'
 
         ];
     }
@@ -68,7 +68,7 @@ class File_treatmentExport implements FromCollection ,WithHeadings,WithColumnWid
             'H'=>27, 
             'I'=>14, 
             'J'=>17, 
-            'K'=>17,         
+            'K'=>30,         
         ];
     }
     public function styles(Worksheet $sheet)

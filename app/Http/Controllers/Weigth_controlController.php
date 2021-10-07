@@ -33,7 +33,7 @@ class Weigth_controlController extends Controller
                 'weigth_control.weigtht',
                 'weigth_control.date_r',
                 'weigth_control.actual_state')
-                ->where('weigth_control.actual_state','=','Disponible')
+                ->where('weigth_control.actual_state','=','ACTIVO')
                 ->get();
         return view('weigthC.index-weigthC',compact('pesoC'));
     }
@@ -46,7 +46,7 @@ class Weigth_controlController extends Controller
                 'weigth_control.weigtht',
                 'weigth_control.date_r',
                 'weigth_control.actual_state')
-                ->where('weigth_control.actual_state','=','Disponible')
+                ->where('weigth_control.actual_state','=','ACTIVO')
                 ->get();
         $pdf = PDF::loadView('weigthC.pdf',compact('pesoC'));
 

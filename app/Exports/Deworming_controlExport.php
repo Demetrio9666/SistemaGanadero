@@ -29,7 +29,7 @@ class Deworming_controlExport implements FromCollection ,WithHeadings,WithColumn
                  'dewormer.dewormer_d as des',
                  'deworming_control.date_r',
                  'deworming_control.actual_state')
-                 ->where('deworming_control.actual_state','=','Disponible')
+                 ->where('deworming_control.actual_state','=','ACTIVO')
         ->get();
         return $desC;
     }
@@ -40,7 +40,7 @@ class Deworming_controlExport implements FromCollection ,WithHeadings,WithColumn
             'Codigo Animal',
             'Desparasitante',
             'Fecha de próxima dosis',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -51,7 +51,7 @@ class Deworming_controlExport implements FromCollection ,WithHeadings,WithColumn
             'C'=>25,
             'D'=>29,
             'E'=>20, 
-            'F'=>15,            
+            'F'=>30,            
         ];
     }
     public function styles(Worksheet $sheet)

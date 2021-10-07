@@ -9,7 +9,7 @@ Registros de Ubicaciones Inactivos
         <tr>
             <th>Nombre de ubicación</th>
             <th>Descripción</th>
-            <th>Estado Actual</th> 
+            <th>Estado actual de la Información</th> 
         </tr>
     </thead>
     <tbody>  

@@ -27,7 +27,7 @@ class Weigth_controlExport implements FromCollection ,WithHeadings,WithColumnWid
         'weigth_control.weigtht',
         'weigth_control.date_r',
         'weigth_control.actual_state')
-        ->where('weigth_control.actual_state','=','Disponible')
+        ->where('weigth_control.actual_state','=','ACTIVO')
         ->get();
         return $pesoC;
     }
@@ -38,7 +38,7 @@ class Weigth_controlExport implements FromCollection ,WithHeadings,WithColumnWid
             'Codigo Animal',
             'Peso',
             'Fecha de Proximo Control',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -49,7 +49,7 @@ class Weigth_controlExport implements FromCollection ,WithHeadings,WithColumnWid
             'C'=>18,
             'D'=>15,
             'E'=>21.89, 
-            'F'=>15,            
+            'F'=>30,            
         ];
     }
     public function styles(Worksheet $sheet)

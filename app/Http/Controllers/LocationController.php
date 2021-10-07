@@ -28,7 +28,7 @@ class LocationController extends Controller
                     'location.location_d',
                     'location.description',
                     'location.actual_state')
-                    ->where('location.actual_state','=','Disponible')
+                    ->where('location.actual_state','=','ACTIVO')
                     ->get();
         return view('location.index-location',compact('ubicacion'));
     }
@@ -38,7 +38,7 @@ class LocationController extends Controller
                     'location.location_d',
                     'location.description',
                     'location.actual_state')
-                    ->where('location.actual_state','=','Disponible')
+                    ->where('location.actual_state','=','ACTIVO')
                     ->get();
         $pdf = PDF::loadView('location.pdf',compact('ubicacion'));
 

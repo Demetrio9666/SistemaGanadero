@@ -23,7 +23,7 @@ class LocationExport implements FromCollection ,WithHeadings,WithColumnWidths, W
                     'location.location_d',
                     'location.description',
                     'location.actual_state')
-                    ->where('location.actual_state','=','Disponible')
+                    ->where('location.actual_state','=','ACTIVO')
                     ->get();
         return $ubicacion;
     }
@@ -32,7 +32,7 @@ class LocationExport implements FromCollection ,WithHeadings,WithColumnWidths, W
             'ID',
             'Localizacion',
             'Descripcion',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -41,7 +41,7 @@ class LocationExport implements FromCollection ,WithHeadings,WithColumnWidths, W
             'A'=>5,
             'B'=>13,
             'C'=>18,
-            'D'=>15,         
+            'D'=>30,         
         ];
     }
     public function styles(Worksheet $sheet)

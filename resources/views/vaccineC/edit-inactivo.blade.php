@@ -39,9 +39,9 @@ Editar Control de Vacunación
             <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{$vacunaC->date_r}}" disabled=disabled>
         </div>
         <div  class="col-md-6">
-            <label for="">Estado Actual:</label>
+            <label for="">Estado actual de la Información:</label>
             <select class="form-control" id="inputPassword4" name="actual_state" value="{{$vacunaC->actual_state}}">
-                <option value="DISPONIBLE" @if( $vacunaC->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                <option value="ACTIVO" @if( $vacunaC->actual_state == "ACTIVO") selected @endif>ACTIVO</option>
                 <option value="INACTIVO" @if( $vacunaC->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
              </select>
         </div> 

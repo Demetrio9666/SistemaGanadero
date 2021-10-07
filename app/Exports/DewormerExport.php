@@ -25,7 +25,7 @@ class DewormerExport implements FromCollection ,WithHeadings,WithColumnWidths, W
                     'dewormer.date_c',
                     'dewormer.supplier',
                     'dewormer.actual_state')
-                    ->where('dewormer.actual_state','=','DISPONIBLE')
+                    ->where('dewormer.actual_state','=','ACTIVO')
             ->get();  
         return $desp; 
     }
@@ -36,7 +36,7 @@ class DewormerExport implements FromCollection ,WithHeadings,WithColumnWidths, W
             'Fecha de Elaboracion',
             'Fecha de Caducidad',
             'Proveedor',
-            'Estado Actual',
+            'Estado actual de la Información',
           
 
         ];
@@ -49,7 +49,7 @@ class DewormerExport implements FromCollection ,WithHeadings,WithColumnWidths, W
             'C'=>20,
             'D'=>20,
             'E'=>20, 
-            'F'=>15, 
+            'F'=>30, 
             
                      
         ];

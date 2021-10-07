@@ -28,7 +28,7 @@ class RaceController extends Controller
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','Disponible')
+                    ->where('race.actual_state','=','ACTIVO')
                     ->get();
         return view('race.index-race',compact('raza'));
         
@@ -39,7 +39,7 @@ class RaceController extends Controller
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','Disponible')
+                    ->where('race.actual_state','=','ACTIVO')
                     ->get();
         $pdf = PDF::loadView('race.pdf',compact('raza'));
         $actvividad = new  Activity();

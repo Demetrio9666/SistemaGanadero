@@ -25,7 +25,7 @@ class VaccineExport implements FromCollection ,WithHeadings,WithColumnWidths, Wi
                     'date_c',
                     'supplier',
                     'actual_state')
-                    ->Where('actual_state','=','Disponible')
+                    ->Where('actual_state','=','ACTIVO')
         ->get();
         return $vacuna;
     }
@@ -36,7 +36,7 @@ class VaccineExport implements FromCollection ,WithHeadings,WithColumnWidths, Wi
             'Fecha de Elaboracion',
             'Fecha de Caducidad',
             'Proveedor',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -47,7 +47,7 @@ class VaccineExport implements FromCollection ,WithHeadings,WithColumnWidths, Wi
             'C'=>24,
             'D'=>15,
             'E'=>15, 
-            'F'=>15,            
+            'F'=>30,            
         ];
     }
     public function styles(Worksheet $sheet)

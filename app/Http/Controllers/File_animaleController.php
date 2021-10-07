@@ -132,7 +132,7 @@ class File_animaleController extends Controller
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','Disponible')
+                    ->where('race.actual_state','=','ACTIVO')
                     ->get();
 
          $ubicacion = DB::table('location')
@@ -140,7 +140,7 @@ class File_animaleController extends Controller
                     'location.location_d',
                     'location.description',
                     'location.actual_state')
-                    ->where('location.actual_state','=','Disponible')
+                    ->where('location.actual_state','=','ACTIVO')
                     ->get();
 
         return view('file_animale.create-animale',compact('raza','ubicacion'));
@@ -303,14 +303,14 @@ class File_animaleController extends Controller
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','DISPONIBLE')
+                    ->where('race.actual_state','=','ACTIVO')
                     ->get();
          $ubicacion = DB::table('location')
          ->select('location.id',
                     'location.location_d',
                     'location.description',
                     'location.actual_state')
-                    ->where('location.actual_state','=','DISPONIBLE')
+                    ->where('location.actual_state','=','ACTIVO')
                     ->get();
         $animal = File_Animale::findOrFail($id);
       
@@ -341,7 +341,7 @@ class File_animaleController extends Controller
                 'animalCode_id_m',
                 'actual_state'
                 )
-                ->where('actual_state','=','DISPONIBLE')
+                ->where('actual_state','=','ACTIVO')
                 
         ->get(); 
 //return $re_A;
@@ -351,7 +351,7 @@ class File_animaleController extends Controller
                         'date',
                         'animalCode_id_m',
                         'actual_state'
-                        )->where('actual_state','=','DISPONIBLE')
+                        )->where('actual_state','=','ACTIVO')
                         
                 ->get();
                 //return $re_MI;
@@ -360,7 +360,7 @@ class File_animaleController extends Controller
                         'date',
                         'animalCode_id',
                         'actual_state')
-                        ->where('actual_state','=','DISPONIBLE')
+                        ->where('actual_state','=','ACTIVO')
                             
                 ->get();
 

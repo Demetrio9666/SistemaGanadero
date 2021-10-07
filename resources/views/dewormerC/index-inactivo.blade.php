@@ -23,7 +23,7 @@ Fichas de Controles de Desparasitaciones Inactivos
             <th>Código del Animal</th>
             <th>Desparasitante</th>
             <th>Fecha de próxima dosis</th>
-            <th>Estado Actual</th> 
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>

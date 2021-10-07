@@ -12,7 +12,7 @@ Fichas de Controles de Pesos Activos
             <th>Código del Animal</th>
             <th>Peso</th>
             <th>Fecha de próximo control</th>
-            <th>Estado Actual</th>
+            <th>Estado actual de la Información</th>
         </tr>
     </thead>
     <tbody>  

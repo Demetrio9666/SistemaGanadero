@@ -32,7 +32,7 @@ class ArtificialReproductionController extends Controller
                             'artificial_reproduction.reproduccion',
                             'artificial_reproduction.supplier',
                             'artificial_reproduction.actual_state'
-                    )->where('artificial_reproduction.actual_state','=','Disponible')
+                    )->where('artificial_reproduction.actual_state','=','ACTIVO')
                 ->get();
 
        return view('artificialR.index-artificialR',compact('arti'));
@@ -47,7 +47,7 @@ class ArtificialReproductionController extends Controller
                             'artificial_reproduction.reproduccion',
                             'artificial_reproduction.supplier',
                             'artificial_reproduction.actual_state'
-                )->where('artificial_reproduction.actual_state','=','Disponible')
+                )->where('artificial_reproduction.actual_state','=','ACTIVO')
             ->get();
             $pdf = PDF::loadView('artificialR.pdf',compact('arti'));
 

@@ -37,7 +37,7 @@ class Pregnancy_controlController extends Controller
                          'pregnancy_control.observation',
                         'pregnancy_control.date_r',
                         'pregnancy_control.actual_state')
-                        ->where('pregnancy_control.actual_state','=','Disponible')
+                        ->where('pregnancy_control.actual_state','=','ACTIVO')
              ->get();     
         return view('PregnancyC.index-PregnancyC',compact('pre'));
     }
@@ -55,7 +55,7 @@ class Pregnancy_controlController extends Controller
                     'pregnancy_control.observation',
                    'pregnancy_control.date_r',
                    'pregnancy_control.actual_state')
-                   ->where('pregnancy_control.actual_state','=','Disponible')
+                   ->where('pregnancy_control.actual_state','=','ACTIVO')
         ->get();    
         $pdf = PDF::loadView('PregnancyC.pdf',compact('pre'));
 

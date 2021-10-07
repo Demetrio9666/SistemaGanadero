@@ -24,7 +24,7 @@ Fichas de Controles de Vacunaciones Inactivos
             <th>Código del Animal</th>
             <th>Vacuna</th>
             <th>Fecha de próxima dosis</th>
-            <th>Estado Actual</th> 
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>

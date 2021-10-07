@@ -14,7 +14,7 @@ Fichas de Partos Inactivos
                 <th>Cant.Muertos</th>
                 <th>Estado Animal</th>
                 <th>Tipo de Parto</th>
-                <th>Estado Actual</th> 
+                <th>Estado actual de la Información</th> 
             </tr> 
     </thead>
     <tbody>  

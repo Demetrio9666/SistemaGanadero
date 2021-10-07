@@ -23,9 +23,9 @@
         <input type="text" class="form-control" id="supplier" name="supplier" value="{{$vacuna->supplier}}" onblur="upperCase()">
     </div>  
     <div  class="form-group">
-        <label for="">Estado Actual:</label>
+        <label for="">Estado actual de la Información:</label>
         <select class="form-control" id="inputPassword4" name="actual_state" value="{{$vacuna->actual_state}}">
-            <option value="DISPONIBLE"@if( $vacuna->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+            <option value="ACTIVO"@if( $vacuna->actual_state == "ACTIVO") selected @endif>ACTIVO</option>
             <option value="INACTIVO" @if( $vacuna->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
          </select>
     </div>       

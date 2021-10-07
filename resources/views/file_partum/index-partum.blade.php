@@ -32,7 +32,7 @@ Fichas de Partos
                         <th>Cant.Muertos</th>
                         <th>Estado Animal</th>
                         <th>Tipo de Parto</th>
-                        <th>Estado Actual</th> 
+                        <th>Estado actual de la Información</th> 
                         <th>Acción</th>
                     </tr>
                 </thead>

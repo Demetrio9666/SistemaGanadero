@@ -35,9 +35,9 @@ Editar Material Genético
         <input type="text" class="form-control" id="proveedor" name="supplier"   value="{{$arti->supplier}}"onblur="upperCase()">
     </div>      
     <div  class="form-group">
-        <label for="">Estado Actual:</label>
+        <label for="">Estado actual de la Información:</label>
         <select class="form-control" id="inputPassword4" name="actual_state" value="{{$arti->actual_state}}">
-            <option value="DISPONIBLE" @if( $arti->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+            <option value="ACTIVO" @if( $arti->actual_state == "ACTIVO") selected @endif>ACTIVO</option>
             <option value="INACTIVO" @if( $arti->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
          </select>
     </div> 

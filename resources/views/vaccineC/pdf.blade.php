@@ -11,7 +11,7 @@ Fichas de Controles de Vacunaciones Activos
             <th>Código del Animal</th>
             <th>Vacuna</th>
             <th>Fecha de próxima dosis</th>
-            <th>Estado Actual</th>
+            <th>Estado actual de la Información</th>
         </tr>
     </thead>
     <tbody>  

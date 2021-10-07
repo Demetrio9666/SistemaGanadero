@@ -34,7 +34,7 @@ class Deworming_controlController extends Controller
                          'dewormer.dewormer_d as des',
                          'deworming_control.date_r',
                          'deworming_control.actual_state')
-                         ->where('deworming_control.actual_state','=','Disponible')
+                         ->where('deworming_control.actual_state','=','ACTIVO')
                 ->get();
         return view('dewormerC.index-dewormerC',compact('desC'));
         //return $desC;
@@ -49,7 +49,7 @@ class Deworming_controlController extends Controller
                          'dewormer.dewormer_d as des',
                          'deworming_control.date_r',
                          'deworming_control.actual_state')
-                         ->where('deworming_control.actual_state','=','Disponible')
+                         ->where('deworming_control.actual_state','=','ACTIVO')
                 ->get();
                 $pdf = PDF::loadView('dewormerC.pdf',compact('desC'));
 
@@ -114,7 +114,7 @@ class Deworming_controlController extends Controller
         $des =  DB::table('dewormer')
         ->select('id',
                 'dewormer_d'
-                )->where('actual_state','=','DISPONIBLE')
+                )->where('actual_state','=','ACTIVO')
         ->get();
 
         $animal  = DB::table('file_animale')
@@ -156,7 +156,7 @@ class Deworming_controlController extends Controller
                             'deworming_id',
                             'date_r',
                             'actual_state')
-                            ->where('actual_state','=','Disponible')
+                            ->where('actual_state','=','ACTIVO')
         ->get();
 
        
@@ -241,7 +241,7 @@ class Deworming_controlController extends Controller
         $des =  DB::table('dewormer')
         ->select('id',
                 'dewormer_d'
-                )->where('actual_state','=','DISPONIBLE')
+                )->where('actual_state','=','ACTIVO')
         ->get();
 
         $desC = Deworming_control::findOrFail($id);
@@ -283,7 +283,7 @@ class Deworming_controlController extends Controller
                             'deworming_id',
                             'date_r',
                             'actual_state')
-                            ->where('actual_state','=','Disponible')
+                            ->where('actual_state','=','ACTIVO')
         ->get();
         $desC = Deworming_control::findOrFail($id);
         $id;

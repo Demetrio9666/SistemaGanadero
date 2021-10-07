@@ -23,7 +23,7 @@ Registros de Materiales Inactivos
             <th>Raza</th>
             <th>Tipo de Material Genético</th>
             <th>Proveedor</th>
-            <th>Estado Actual</th> 
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>

@@ -32,7 +32,7 @@ class Pregnancy_controlExport implements FromCollection ,WithHeadings,WithColumn
                          'pregnancy_control.observation',
                         'pregnancy_control.date_r',
                         'pregnancy_control.actual_state')
-                        ->where('pregnancy_control.actual_state','=','Disponible')
+                        ->where('pregnancy_control.actual_state','=','ACTIVO')
              ->get();   
              return $pre;
     }
@@ -46,7 +46,7 @@ class Pregnancy_controlExport implements FromCollection ,WithHeadings,WithColumn
             'Alternativa 2 de Vitamina',
             'Observacion',
             'Fecha Proximo Control',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -60,7 +60,7 @@ class Pregnancy_controlExport implements FromCollection ,WithHeadings,WithColumn
             'F'=>10.89, 
             'G'=>12, 
             'H'=>11, 
-            'I'=>15, 
+            'I'=>30, 
                      
         ];
     }

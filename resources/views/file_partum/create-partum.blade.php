@@ -74,9 +74,9 @@
                     @enderror 
                     </div>
                     <div  class="col-md-6">
-                        <label for="">Estado Actual:</label>
+                        <label for="">Estado actual de la Información:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state" value="{{old('actual_state')}}">
-                            <option value="DISPONIBLE"@if(old('actual_state') == "DISPONIBLE") {{'selected'}} @endif>DISPONIBLE</option>
+                            <option value="ACTIVO"@if(old('actual_state') == "ACTIVO") {{'selected'}} @endif>ACTIVO</option>
                             <option value="INACTIVO"@if(old('actual_state') == "INACTIVO") {{'selected'}} @endif>INACTIVO</option>
                         </select>
                     </div>
@@ -90,32 +90,32 @@
            @include('layouts.base-usuario')
         </form>
 <script>
-            window.onload = function(){
-                      var fecha = new Date(); //Fecha actual
-                      var mes = fecha.getMonth()+1; //obteniendo mes
-                      var dia = fecha.getDate(); //obteniendo dia
-                      var ano = fecha.getFullYear(); //obteniendo año
-                      if(dia<10)
-                        dia='0'+dia; //agrega cero si el menor de 10
-                      if(mes<10)
-                        mes='0'+mes //agrega cero si el menor de 10
-                      document.getElementById('fecha').value=ano+"-"+mes+"-"+dia;
-                    }
-          
-                    ////bloqueo de fechas futuras
-                    var today = new Date();
-                    var dd = today.getDate();
-                    var mm = today.getMonth()+1;
-                    var yyyy = today.getFullYear();
-                    if(dd<10){
-                            dd='0'+dd
-                        } 
-                        if(mm<10){
-                            mm='0'+mm
-                        } 
-          
-                    today = yyyy+'-'+mm+'-'+dd;
-                    document.getElementById("fecha").setAttribute("max", today);
+    window.onload = function(){
+        var fecha = new Date(); //Fecha actual
+        var mes = fecha.getMonth()+1; //obteniendo mes
+        var dia = fecha.getDate(); //obteniendo dia
+        var ano = fecha.getFullYear(); //obteniendo año
+        if(dia<10)
+        dia='0'+dia; //agrega cero si el menor de 10
+        if(mes<10)
+        mes='0'+mes //agrega cero si el menor de 10
+        document.getElementById('fecha').value=ano+"-"+mes+"-"+dia;
+    }
+    
+    ////bloqueo de fechas futuras
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("fecha").setAttribute("max", today);
 </script>
 
 @endsection

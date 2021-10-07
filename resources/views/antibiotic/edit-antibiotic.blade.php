@@ -23,10 +23,10 @@ Editar Antibiótico
         <input type="text" class="form-control" id="supplier" name="supplier" value="{{$anti->supplier}}" onblur="upperCase()" >
     </div>   
     <div  class="form-group">
-        <label for="">Estado Actual:</label>
+        <label for="">Estado actual de la Información:</label>
         <select class="form-control" id="inputPassword4" name="actual_state" value="{{$anti->actual_state}}">
             <option selected></option>
-            <option value="DISPONIBLE" @if($anti->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+            <option value="ACTIVO" @if($anti->actual_state == "ACTIVO") selected @endif>ACTIVO</option>
             <option value="INACTIVO" @if($anti->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
          </select>
     </div>   

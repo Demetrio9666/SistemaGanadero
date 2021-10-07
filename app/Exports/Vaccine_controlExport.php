@@ -30,7 +30,7 @@ class Vaccine_controlExport implements FromCollection ,WithHeadings,WithColumnWi
                              'vaccine.vaccine_d as vacuna',
                             'vaccine_control.date_r',
                             'vaccine_control.actual_state'
-                            )->where('vaccine_control.actual_state','=','DISPONIBLE')
+                            )->where('vaccine_control.actual_state','=','ACTIVO')
                     ->get();
         return $vacunaC;
     }
@@ -41,7 +41,7 @@ class Vaccine_controlExport implements FromCollection ,WithHeadings,WithColumnWi
             'Codigo Animal',
             'Vacuna',
             'Fecha proxima Dosis',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -52,7 +52,7 @@ class Vaccine_controlExport implements FromCollection ,WithHeadings,WithColumnWi
             'C'=>18,
             'D'=>15,
             'E'=>10, 
-            'F'=>15,            
+            'F'=>30,            
         ];
     }
     public function styles(Worksheet $sheet)

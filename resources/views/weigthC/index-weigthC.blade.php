@@ -27,7 +27,7 @@ Fichas de Controles de Pesos
             <th>Código del Animal</th>
             <th>Peso</th>
             <th>Fecha de próximo control</th>
-            <th>Estado Actual</th> 
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>

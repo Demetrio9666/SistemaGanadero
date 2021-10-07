@@ -29,7 +29,7 @@ class DewormerController extends Controller
                     'dewormer.date_c',
                     'dewormer.supplier',
                     'dewormer.actual_state')
-                    ->where('dewormer.actual_state','=','DISPONIBLE')
+                    ->where('dewormer.actual_state','=','ACTIVO')
             ->get();
         return view('dewormer.index-dewormer',compact('desp'));
     }
@@ -42,7 +42,7 @@ class DewormerController extends Controller
                 'dewormer.date_c',
                 'dewormer.supplier',
                 'dewormer.actual_state')
-                ->where('dewormer.actual_state','=','DISPONIBLE')
+                ->where('dewormer.actual_state','=','ACTIVO')
         ->get();
         $pdf = PDF::loadView('dewormer.pdf',compact('desp'));
 

@@ -16,27 +16,27 @@ class LocationSeeder extends Seeder
         Location::create([
             'location_d'=>'ESTABLO A',
             'description'=> 'JEAN ANDRES',
-            'actual_state'=>'DISPONIBLE'
+            'actual_state'=>'ACTIVO'
         ]);
         Location::create([
             'location_d'=>'ESTABLO B',
             'description'=> 'JEAN ANDRES',
-            'actual_state'=>'DISPONIBLE'
+            'actual_state'=>'ACTIVO'
         ]);
         Location::create([
             'location_d'=>'ESTABLO C',
             'description'=> 'JEAN ANDRES',
-            'actual_state'=>'DISPONIBLE'
+            'actual_state'=>'ACTIVO'
         ]);
         Location::create([
             'location_d'=>'ESTABLO D',
             'description'=> 'JEAN ANDRES',
-            'actual_state'=>'DISPONIBLE'
+            'actual_state'=>'ACTIVO'
         ]);
         Location::create([
             'location_d'=>'ESTABLO H',
             'description'=> 'JEAN ANDRES',
-            'actual_state'=>'INACTIVO'
+            'actual_state'=>'ACTIVO'
         ]);
     }
 }

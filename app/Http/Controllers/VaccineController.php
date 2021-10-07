@@ -31,7 +31,7 @@ class VaccineController extends Controller
                     'date_c',
                     'supplier',
                     'actual_state')
-                    ->Where('actual_state','=','Disponible')
+                    ->Where('actual_state','=','ACTIVO')
         ->get();
         
         return view('vaccine.index-vaccine',compact('vacuna'));
@@ -45,7 +45,7 @@ class VaccineController extends Controller
                     'date_c',
                     'supplier',
                     'actual_state')
-                    ->Where('actual_state','=','Disponible')
+                    ->Where('actual_state','=','ACTIVO')
         ->get();
         $pdf = PDF::loadView('vaccine.pdf',compact('vacuna'));
 

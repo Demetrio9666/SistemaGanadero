@@ -25,7 +25,7 @@ class AntibioticosExport implements FromCollection ,WithHeadings,WithColumnWidth
                   'antibiotic.date_c',
                   'antibiotic.supplier',
                   'antibiotic.actual_state')
-                  ->where('antibiotic.actual_state','=','Disponible')
+                  ->where('antibiotic.actual_state','=','ACTIVO')
        ->get();
        return $anti;
     }
@@ -36,7 +36,7 @@ class AntibioticosExport implements FromCollection ,WithHeadings,WithColumnWidth
             'Fecha de Elaboracion',
             'Fecha de Caducidad',
             'Proveedor',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -47,7 +47,7 @@ class AntibioticosExport implements FromCollection ,WithHeadings,WithColumnWidth
             'C'=>19,
             'D'=>19,
             'E'=>20, 
-            'F'=>15,            
+            'F'=>30,            
         ];
     }
     public function styles(Worksheet $sheet)

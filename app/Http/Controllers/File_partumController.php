@@ -39,7 +39,7 @@ class File_partumController extends Controller
                     'file_partum.mother_status',
                     'file_partum.partum_type',
                     'file_partum.actual_state'
-                    )->where('file_partum.actual_state','=','Disponible')
+                    )->where('file_partum.actual_state','=','ACTIVO')
                     
             ->get();
 
@@ -57,7 +57,7 @@ class File_partumController extends Controller
                 'file_partum.mother_status',
                 'file_partum.partum_type',
                 'file_partum.actual_state'
-                )->where('file_partum.actual_state','=','Disponible')
+                )->where('file_partum.actual_state','=','ACTIVO')
                 
         ->get();
         $pdf = PDF::loadView('file_partum.pdf',compact('par'));
@@ -171,8 +171,7 @@ class File_partumController extends Controller
         ->select('id',
                 'animalCode_id',
                 'actual_state')
-                ->where('actual_state','=','ACTIVO')
-                    
+                ->where('actual_state','=','ACTIVO')     
         ->get();
      
         foreach($animalB as $i){

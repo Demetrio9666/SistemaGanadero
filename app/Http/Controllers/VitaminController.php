@@ -26,7 +26,7 @@ class VitaminController extends Controller
     {
         $vitamina= DB::table('vitamin')
                     ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
-                    ->where('actual_state','=','DISPONIBLE')
+                    ->where('actual_state','=','ACTIVO')
                     ->get();
         
         return view('vitamin.index-vitamin',compact('vitamina'));
@@ -34,7 +34,7 @@ class VitaminController extends Controller
     public function PDF(){
         $vitamina= DB::table('vitamin')
                     ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
-                    ->where('actual_state','=','DISPONIBLE')
+                    ->where('actual_state','=','ACTIVO')
                     ->get(); 
         $pdf = PDF::loadView('vitamin.pdf',compact('vitamina'));
         $actvividad = new  Activity();

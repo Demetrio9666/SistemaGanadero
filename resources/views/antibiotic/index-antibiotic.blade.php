@@ -28,7 +28,7 @@ Registros de Antibióticos Activos
             <th>Fecha Elaboración</th>
             <th>Fecha Caducidad </th>
             <th>Proveedor</th>
-            <th>Estado Actual</th> 
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>

@@ -27,7 +27,7 @@ class ArtificialReproductionExport implements FromCollection ,WithHeadings,WithC
                     'artificial_reproduction.reproduccion',
                     'artificial_reproduction.supplier',
                     'artificial_reproduction.actual_state'
-        )->where('artificial_reproduction.actual_state','=','Disponible')
+        )->where('artificial_reproduction.actual_state','=','ACTIVO')
     ->get();
     return $arti;
     }
@@ -38,7 +38,7 @@ class ArtificialReproductionExport implements FromCollection ,WithHeadings,WithC
             'Raza',
             'Material Genetico',
             'Proveedor',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -50,7 +50,7 @@ class ArtificialReproductionExport implements FromCollection ,WithHeadings,WithC
             'D'=>20,
             'E'=>20, 
             'F'=>30, 
-            'G'=>15, 
+            'G'=>30, 
                      
         ];
     }

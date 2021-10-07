@@ -17,7 +17,7 @@ Editar ubicación
     <div  class="form-group">
         <label for="">Estado Actual:</label>
         <select class="form-control" id="inputPassword4" name="actual_state" value="{{$ubicacion->actual_state}}">
-            <option value="DISPONIBLE" @if($ubicacion->actual_state == "DISPONIBLE") selected @endif >DISPONIBLE</option>
+            <option value="ACTIVO" @if($ubicacion->actual_state == "ACTIVO") selected @endif >ACTIVO</option>
             <option value="INACTIVO" @if($ubicacion->actual_state == "INACTIVO") selected @endif >INACTIVO</option>
          </select>
     </div>     

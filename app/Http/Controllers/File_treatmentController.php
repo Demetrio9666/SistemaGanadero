@@ -39,7 +39,7 @@ class File_treatmentController extends Controller
                  'file_treatment.treatment',
                  'file_treatment.recovery',
                  'file_treatment.actual_state'
-                )->where('file_treatment.actual_state','=','Disponible')    
+                )->where('file_treatment.actual_state','=','ACTIVO')    
                 
         ->get();
 
@@ -60,7 +60,7 @@ class File_treatmentController extends Controller
                  'file_treatment.treatment',
                  'file_treatment.recovery',
                  'file_treatment.actual_state'
-                )->where('file_treatment.actual_state','=','Disponible')    
+                )->where('file_treatment.actual_state','=','ACTIVO')    
                 
         ->get();
         $pdf = PDF::loadView('file_treatment.pdf',compact('tra'));

@@ -67,9 +67,9 @@ Editar Control de preñez
             <input type="date" class="form-control" id="fecha_r" name="date_r" value="{{$pre->date_r}}">
         </div>
         <div  class="form-group">
-            <label for="">Estado Actual:</label>
+            <label for="">Estado actual de la Información:</label>
             <select class="form-control" id="inputPassword4" name="actual_state" value="{{$pre->actual_state}}">
-                <option value="DISPONIBLE" @if( $pre->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                <option value="ACTIVO" @if( $pre->actual_state == "ACTIVO") selected @endif>ACTIVO</option>
                 <option value="INACTIVO" @if( $pre->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
              </select>
         </div> 

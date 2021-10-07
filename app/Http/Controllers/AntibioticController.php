@@ -30,7 +30,7 @@ class AntibioticController extends Controller
                   'antibiotic.date_c',
                   'antibiotic.supplier',
                   'antibiotic.actual_state')
-                  ->where('antibiotic.actual_state','=','Disponible')
+                  ->where('antibiotic.actual_state','=','ACTIVO')
        ->get();
         return view('antibiotic.index-antibiotic',compact('anti'));
     }
@@ -43,7 +43,7 @@ class AntibioticController extends Controller
                   'antibiotic.date_c',
                   'antibiotic.supplier',
                   'antibiotic.actual_state')
-                  ->where('antibiotic.actual_state','=','Disponible')
+                  ->where('antibiotic.actual_state','=','ACTIVO')
        ->get();
        $pdf = PDF::loadView('antibiotic.pdf',compact('anti'));
        

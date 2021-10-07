@@ -18,35 +18,35 @@ class VitaminSeeder extends Seeder
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ANDKAST',
-            'actual_state'=>'DISPONIBLE',
+            'actual_state'=>'ACTIVO',
         ]);
         Vitamin::create([
             'vitamin_d'=>'VITAMINA C',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ANDKAST',
-            'actual_state'=>'DISPONIBLE',
+            'actual_state'=>'ACTIVO',
         ]);
         Vitamin::create([
             'vitamin_d'=>'VITAMINA D',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ANDKAST',
-            'actual_state'=>'DISPONIBLE',
+            'actual_state'=>'ACTIVO',
         ]);
         Vitamin::create([
             'vitamin_d'=>'VITAMINA E',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ANDKAST',
-            'actual_state'=>'DISPONIBLE',
+            'actual_state'=>'ACTIVO',
         ]);
         Vitamin::create([
             'vitamin_d'=>'VITAMINA K',
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ANDKAST',
-            'actual_state'=>'DISPONIBLE',
+            'actual_state'=>'ACTIVO',
         ]);
         Vitamin::create([
             'vitamin_d'=>'VITAMINA K12',
@@ -60,7 +60,7 @@ class VitaminSeeder extends Seeder
             'date_e'=> '2021-07-01',
             'date_c'=> '2024-07-19',
             'supplier'=>'ANDKAST',
-            'actual_state'=>'DISPONIBLE',
+            'actual_state'=>'ACTIVO',
         ]);
     }
 }

@@ -46,7 +46,7 @@ class File_partumExport implements FromCollection ,WithHeadings,WithColumnWidths
             'Muerto',
             'Estado de la Madre ',
             'Tipo de Parto',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -60,7 +60,7 @@ class File_partumExport implements FromCollection ,WithHeadings,WithColumnWidths
             'F'=>15, 
             'G'=>21, 
             'H'=>22, 
-            'I'=>15,        
+            'I'=>30,        
         ];
     }
     public function styles(Worksheet $sheet)

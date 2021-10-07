@@ -26,7 +26,7 @@ Fichas de Control de Preñes Inactivos
             <th>Alternativa</th>
             <th>Observación</th>
             <th>Fecha de próximo control</th>
-            <th>Estado Actual</th> 
+            <th>Estado actual de la Información</th> 
             <th>Acción</th>
         </tr>
     </thead>

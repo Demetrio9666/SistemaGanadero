@@ -11,7 +11,7 @@ Registros de Control de Desparasitaciones Activos
             <th>Código del Animal</th>
             <th>Desparasitante</th>
             <th>Fecha de próxima dosis</th>
-            <th>Estado Actual</th> 
+            <th>Estado actual de la Información</th> 
         </tr>
     </thead>
     <tbody>  

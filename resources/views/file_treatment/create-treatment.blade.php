@@ -94,9 +94,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Estado Actual:</label>
+                        <label for="">Estado actual de la Información:</label>
                         <select class="form-control" id="inputPassword4" name="actual_state">
-                            <option value="DISPONIBLE">DISPONIBLE</option>
+                            <option value="ACTIVO">ACTIVO</option>
                             <option value="INACTIVO">INACTIVO</option>
                         </select>
                         @error('date')

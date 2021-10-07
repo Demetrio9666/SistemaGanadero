@@ -36,7 +36,7 @@ class Vaccine_controlController extends Controller
                             ,'file_animale.animalCode as animal',
                             'vaccine_control.date_r',
                             'vaccine_control.actual_state'
-                            )->where('vaccine_control.actual_state','=','DISPONIBLE')
+                            )->where('vaccine_control.actual_state','=','ACTIVO')
                     ->get();
                 
          return view('vaccineC.index-vaccineC',compact('vacunaC'));
@@ -51,7 +51,7 @@ class Vaccine_controlController extends Controller
                             ,'file_animale.animalCode as animal',
                             'vaccine_control.date_r',
                             'vaccine_control.actual_state'
-                            )->where('vaccine_control.actual_state','=','DISPONIBLE')
+                            )->where('vaccine_control.actual_state','=','ACTIVO')
                     ->get();
         $pdf = PDF::loadView('vaccineC.pdf',compact('vacunaC'));
 
@@ -134,7 +134,7 @@ class Vaccine_controlController extends Controller
                 'vaccine_id',
                 'date_r',
                 'actual_state'
-                )->where('actual_state','=','DISPONIBLE')
+                )->where('actual_state','=','ACTIVO')
         ->get();
       
 
@@ -168,7 +168,7 @@ class Vaccine_controlController extends Controller
                 'vaccine_id',
                 'date_r',
                 'actual_state'
-                )->where('actual_state','=','DISPONIBLE')
+                )->where('actual_state','=','ACTIVO')
         ->get();
 
        /* $vacuna_tabla = DB::table('vaccine')
@@ -260,7 +260,7 @@ class Vaccine_controlController extends Controller
 
         $vacuna = DB::table('vaccine')
                 ->select('id','vaccine_d')
-                ->where('actual_state','=','Disponible')
+                ->where('actual_state','=','ACTIVO')
         ->get();
 
         $vacunaC = Vaccine_control::findOrFail($id);
@@ -294,11 +294,11 @@ class Vaccine_controlController extends Controller
                 'vaccine_id',
                 'date_r',
                 'actual_state'
-                )->where('actual_state','=','DISPONIBLE')
+                )->where('actual_state','=','ACTIVO')
         ->get();
         $vacuna = DB::table('vaccine')
             ->select('id','vaccine_d')
-            ->where('actual_state','=','DISPONIBLE')
+            ->where('actual_state','=','ACTIVO')
             ->get();
 
 

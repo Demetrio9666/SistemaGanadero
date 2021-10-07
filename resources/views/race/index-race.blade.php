@@ -26,7 +26,7 @@ Registros de Razas Activos
         <tr>
             <th>Nombre de la Raza</th>
             <th>Porcentaje</th>
-            <th>Estado Actual</th> 
+            <th>Estado actual de la Información</th> 
             <th>Accion</th>
         </tr>
     </thead>

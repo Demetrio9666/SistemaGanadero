@@ -74,9 +74,9 @@ Editar Tratamientos de animales Inactivo
         </div>
 
         <div  class="form-group">
-            <label for="">Estado Actual:</label>
+            <label for="">Estado actual de la Información:</label>
             <select class="form-control" id="inputPassword4" name="actual_state" value="{{$tra->actual_state}}" >
-                <option value="DISPONIBLE" @if( $tra->actual_state == "DISPONIBLE") selected @endif>DISPONIBLE</option>
+                <option value="ACTIVO" @if( $tra->actual_state == "ACTIVO") selected @endif>ACTIVO</option>
                 <option value="INACTIVO" @if( $tra->actual_state == "INACTIVO") selected @endif>INACTIVO</option>
              </select>
         </div>

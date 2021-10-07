@@ -27,7 +27,7 @@ Fichas de Tratamientos Inactivos
                 <th>Vitamina</th>
                 <th>Tratamiento</th>
                 <th>Recuperación</th>
-                <th>Estado Actual</th> 
+                <th>Estado actual de la Información</th> 
                 <th>Acción</th>
             </tr>
         </thead>

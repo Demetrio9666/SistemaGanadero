@@ -20,7 +20,7 @@ class VitaminExport implements FromCollection ,WithHeadings,WithColumnWidths, Wi
     {
         $vitamina= DB::table('vitamin')
         ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
-        ->where('actual_state','=','DISPONIBLE')
+        ->where('actual_state','=','ACTIVO')
         ->get();
         return $vitamina;
     }
@@ -31,7 +31,7 @@ class VitaminExport implements FromCollection ,WithHeadings,WithColumnWidths, Wi
             'Fecha de Elaboracion',
             'Fecha de Caducidad',
             'Proveedor',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -42,7 +42,7 @@ class VitaminExport implements FromCollection ,WithHeadings,WithColumnWidths, Wi
             'C'=>18,
             'D'=>15,
             'E'=>10, 
-            'F'=>15,            
+            'F'=>30,            
         ];
     }
     public function styles(Worksheet $sheet)

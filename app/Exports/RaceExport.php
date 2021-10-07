@@ -23,7 +23,7 @@ class RaceExport implements FromCollection ,WithHeadings,WithColumnWidths, WithS
                     'race.race_d',
                     'race.percentage',
                     'race.actual_state')
-                    ->where('race.actual_state','=','Disponible')
+                    ->where('race.actual_state','=','ACTIVO')
                     ->get();
         return $raza;
     }
@@ -32,7 +32,7 @@ class RaceExport implements FromCollection ,WithHeadings,WithColumnWidths, WithS
             'ID',
             'Nombre de la Raza',
             'Porcentaje',
-            'Estado Actual',
+            'Estado actual de la Información',
         ];
     }
     public function columnWidths(): array
@@ -41,7 +41,7 @@ class RaceExport implements FromCollection ,WithHeadings,WithColumnWidths, WithS
             'A'=>5,
             'B'=>13,
             'C'=>18,
-            'D'=>15,         
+            'D'=>30,         
         ];
     }
     public function styles(Worksheet $sheet)
