@@ -125,12 +125,12 @@ class File_treatmentController extends Controller
                   'date_c',
                   'supplier',
                   'actual_state')
-                  ->where('actual_state','=','DISPONIBLE')
+                  ->where('actual_state','=','ACTIVO')
        ->get();
         
         $vitamina= DB::table('vitamin')
         ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
-        ->where('actual_state','=','DISPONIBLE')
+        ->where('actual_state','=','ACTIVO')
         ->get();
         $animalT  = DB::table('file_animale')
         ->select(    'id',
@@ -169,7 +169,7 @@ class File_treatmentController extends Controller
         $tra1 = DB::table('file_treatment')
         ->select('id',
                  'animalCode_id'
-                )->where('actual_state','=','DISPONIBLE')    
+                )->where('actual_state','=','ACTIVO')    
                 
         ->get();
         $animalB  = DB::table('file_animale')
@@ -279,13 +279,13 @@ class File_treatmentController extends Controller
                   'antibiotic.date_c',
                   'antibiotic.supplier',
                   'antibiotic.actual_state')
-                  ->where('antibiotic.actual_state','=','Disponible')
+                  ->where('antibiotic.actual_state','=','ACTIVO')
        ->get();
         $vitamina = DB::table('vitamin')
         ->select('vitamin.id',
         'vitamin.vitamin_d',
         'vitamin.actual_state')
-        ->where('vitamin.actual_state','=','Disponible')
+        ->where('vitamin.actual_state','=','ACTIVO')
         ->get();
 
 
@@ -330,7 +330,7 @@ class File_treatmentController extends Controller
                 'recovery',
                 'treatment',
                 'actual_state'
-                )->where('actual_state','=','DISPONIBLE')    
+                )->where('actual_state','=','ACTIVO')    
                 
         ->get();
         $animalB  = DB::table('file_animale')
