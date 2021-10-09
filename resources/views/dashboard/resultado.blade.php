@@ -194,7 +194,7 @@
         <thead>            
             <tr>
                 <th scope="col">Código Animal</th>
-                <th scope="col">Fecha de la desparasitación</th>
+                <th scope="col">Fecha del control</th>
                 <th scope="col">Desparasitante</th>
             </tr>
         </thead>
