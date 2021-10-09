@@ -140,8 +140,10 @@ class File_reproductionAController extends Controller
                             'file_animale.age_month',
                             'race.race_d as raza',
                             'file_animale.sex')
-                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                    //->where('file_animale.stage','=',['VACA','VACONA'])
+                    ->where('file_animale.actual_state','=','REPRODUCCIÓN') 
+                    ->where('file_animale.sex','=','HEMBRA')
+                    
+
                 ->get();
 
         
@@ -347,9 +349,12 @@ class File_reproductionAController extends Controller
                             'file_animale.age_month',
                             'race.race_d as raza',
                             'file_animale.sex')
-                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                    //->where('file_animale.stage','=',['VACA','VACONA'])
+                    ->where('file_animale.actual_state','=','REPRODUCCIÓN') 
+                    ->where('file_animale.sex','=','HEMBRA')
+                    
+
                 ->get();
+
         $raza = DB::table('race')
                 ->select('race.id',
                             'race.race_d',

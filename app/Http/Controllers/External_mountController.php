@@ -142,9 +142,12 @@ class External_mountController extends Controller
                         'file_animale.age_month',
                         'race.race_d as raza',
                         'file_animale.sex')
-                ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                //->where('file_animale.stage','=',['VACA','VACONA'])
-                    ->get();
+                ->where('file_animale.actual_state','=','REPRODUCCIÓN') 
+                ->where('file_animale.sex','=','HEMBRA')
+                
+
+            ->get();
+            
 
         
         return view('file_reproductionME.create-external_M',compact('raza','animaleEX'));
@@ -305,16 +308,18 @@ class External_mountController extends Controller
                     'race.actual_state')
                     ->where('race.actual_state','=','ACTIVO')
                     ->get();
-                    $animaleEX= DB::table('file_animale')
-                    ->join('race','file_animale.race_id','=','race.id')
-                    ->select('file_animale.id',
-                            'file_animale.animalCode',
-                            'file_animale.age_month',
-                            'race.race_d as raza',
-                            'file_animale.sex')
-                    ->where('file_animale.actual_state','=','REPRODUCCIÓN')
-                    //->where('file_animale.stage','=',['VACA','VACONA'])
-                        ->get();
+        $animaleEX= DB::table('file_animale')
+                ->join('race','file_animale.race_id','=','race.id')
+                ->select('file_animale.id',
+                        'file_animale.animalCode',
+                        'file_animale.age_month',
+                        'race.race_d as raza',
+                        'file_animale.sex')
+                ->where('file_animale.actual_state','=','REPRODUCCIÓN') 
+                ->where('file_animale.sex','=','HEMBRA')
+                
+
+            ->get();
     
         
         $raza = Race::all();
