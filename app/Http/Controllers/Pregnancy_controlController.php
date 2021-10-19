@@ -123,7 +123,7 @@ class Pregnancy_controlController extends Controller
        
         $vitamina= DB::table('vitamin')
         ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
-        ->where('actual_state','=','DISPONIBLE')
+        ->where('actual_state','=','ACTIVO')
         ->get();
         $animal  = DB::table('file_animale')
         ->select(    'id',
@@ -213,7 +213,7 @@ class Pregnancy_controlController extends Controller
     {
         $vitamina= DB::table('vitamin')
         ->select('id','vitamin_d','date_e','date_c','supplier','actual_state')
-        ->where('actual_state','=','DISPONIBLE')
+        ->where('actual_state','=','ACTIVO')
         ->get();
         $animal  = DB::table('file_animale')
         ->select(    'id',

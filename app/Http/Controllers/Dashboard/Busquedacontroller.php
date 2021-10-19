@@ -35,6 +35,14 @@ class Busquedacontroller extends Controller
                         ,'file_animale.conceived')
                        
                 ->get();
+        $existe = DB::table('file_animale')
+                ->select('animalCode')
+                ->where('animalCode','=',$buscar)
+                ->count();
+        if($existe == 0){
+            return view('mensajes.buscar.noExiste');
+        }
+
                 $par = DB::table('file_partum')
                     ->join('file_animale','file_partum.animalCode_id','=','file_animale.id')
                     ->select('file_partum.id',
