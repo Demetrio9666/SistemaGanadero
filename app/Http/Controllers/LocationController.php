@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LocationExport;
+use App\Imports\LocationImport;
 use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 
@@ -88,6 +89,19 @@ class LocationController extends Controller
         $actvividad->save();
         return Excel::download(new LocationExport, 'RegistroLocalizacionesActivos-'.date('Y-m-d H:i:s').'.xlsx');
     }
+
+    public function Excel_import(Request $request){
+        $file =$request->file;
+        //return file_get_contents($file);
+        //$utf8_line = array_map('utf8_encode',$file);
+        Excel::import(new LocationImport,$file);
+
+        return back()->with('message','importacion completada');
+        //return redirect('/confUbicacion'); 
+
+    }
+
+
 
 
 

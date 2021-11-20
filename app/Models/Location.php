@@ -8,5 +8,17 @@ use App\Models\File_Animale;
 class Location extends Model
 {
     use HasFactory;
+    
+    
     protected $table = "location";
+
+    //protected $fillable='location_d';
+
+    protected $fillable = [
+        'location_d',
+        'description',
+        'actual_state'
+    ];
+    
+
 }

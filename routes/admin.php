@@ -132,6 +132,7 @@ Route::get('exportar-excel-Ubicaciones-Inactivos',[LocationInactivosController::
 Route::resource('confUbicacion',LocationController::class)->names('confUbicacion');
 Route::get('descarga-pdf-confUbicacion',[LocationController::class,'PDF']);
 Route::get('exportar-excel-confUbicacion',[LocationController::class,'Excel']);
+Route::post('importar-excel-confUbicacion',[LocationController::class,'Excel_import'])->name('excel.import');
 
 //CONFI RAZAS
 Route::resource('inactivos/Razas',RaceInactivosController::class)->names('inactivos.Razas');
